@@ -9,7 +9,7 @@ vim.opt.hlsearch = true                         -- highlight all matches on prev
 vim.opt.ignorecase = true                       -- ignore case in search patterns
 vim.opt.mouse = "a"                             -- allow the mouse to be used in neovim
 vim.opt.pumheight = 15                          -- pop up menu height
-vim.opt.showmode = true                         -- shows the mode
+vim.opt.showmode = false                         -- shows the mode
 vim.opt.showtabline = 2                         -- always show tabs
 vim.opt.smartcase = true                        -- smart case
 vim.opt.smartindent = true                      -- make indenting smarter again
@@ -41,3 +41,5 @@ vim.cmd "set inccommand=split"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set iskeyword+=@]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
+vim.cmd ":hi clear Cursorline"
+vim.cmd ":hi Cursorline gui=underline cterm=underline"
