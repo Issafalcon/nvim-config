@@ -47,7 +47,7 @@ return packer.startup(function(use)
 
   -- Colours and Icons
   use "marko-cerovac/material.nvim"
-
+  use "christianchiarulli/nvcode-color-schemes.vim"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
