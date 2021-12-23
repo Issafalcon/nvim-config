@@ -50,7 +50,10 @@ return packer.startup(function(use)
   use "christianchiarulli/nvcode-color-schemes.vim" -- VSCode Like ColourScheme
   use "norcalli/nvim-colorizer.lua" -- HEX and RBG etc Colour Highlighter: https://github.com/norcalli/nvim-colorizer.lua
   use "kyazdani42/nvim-web-devicons" -- Vim devicons with colour: https://github.com/kyazdani42/nvim-web-devicons
-  
+
+  -- Key binding / Help plugins
+  use "folke/which-key.nvim" -- Key binding help: https://github.com/folke/which-key.nvim  
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
