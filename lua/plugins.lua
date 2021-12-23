@@ -54,12 +54,25 @@ return packer.startup(function(use)
   -- Key binding / Help plugins
   use "folke/which-key.nvim" -- Key binding help: https://github.com/folke/which-key.nvim  
 
+  -- Git plugins
   use "lewis6991/gitsigns.nvim"
   use "tpope/vim-fugitive"
   use "tpope/vim-rhubarb" -- Browse Github URLs
   use "rhysd/git-messenger.vim" -- Show commits under the cursor
   use "kdheepak/lazygit.nvim"
   use "sindrets/diffview.nvim"
+
+  -- cmp plugins
+  use "hrsh7th/nvim-cmp" -- The completion plugin
+  use "hrsh7th/cmp-buffer" -- buffer completions
+  use "hrsh7th/cmp-path" -- path completions
+  use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use "hrsh7th/cmp-vsnip"
+
+  -- snippets
+  use "hrsh7th/vim-vsnip" -- snippet completions
+  use "hrsh7th/vim-vsnip-integ"
+  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
