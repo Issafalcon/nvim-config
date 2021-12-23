@@ -1,6 +1,3 @@
-local wkOpts = require("utils.WhichKey-plugin")
-local wk = require("which-key")
-
 vim.cmd('let g:nvcode_termcolors=256')
 
 vim.g.material_style = 'deep ocean'
@@ -43,15 +40,3 @@ require('material').setup({
 vim.cmd('colorscheme material')
 
 vim.api.nvim_set_keymap('n', '<leader>tm', [[<Cmd>lua require('material.functions').toggle_style()<CR>]], { noremap = true, silent = true })
-
-wk.register(
-  {
-    ["<leader>"] = {
-      t = {
-        name = "+Theme",
-        m = "Material Theme Toggle",
-      }
-    }
-  },
-  wkOpts.defaultOpts
-)
