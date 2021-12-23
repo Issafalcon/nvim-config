@@ -54,6 +54,13 @@ return packer.startup(function(use)
   -- Key binding / Help plugins
   use "folke/which-key.nvim" -- Key binding help: https://github.com/folke/which-key.nvim  
 
+  use "lewis6991/gitsigns.nvim"
+  use "tpope/vim-fugitive"
+  use "tpope/vim-rhubarb" -- Browse Github URLs
+  use "rhysd/git-messenger.vim" -- Show commits under the cursor
+  use "kdheepak/lazygit.nvim"
+  use "sindrets/diffview.nvim"
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

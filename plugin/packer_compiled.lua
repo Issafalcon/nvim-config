@@ -69,6 +69,26 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["diffview.nvim"] = {
+    loaded = true,
+    path = "/home/adam/.local/share/nvim/site/pack/packer/start/diffview.nvim",
+    url = "https://github.com/sindrets/diffview.nvim"
+  },
+  ["git-messenger.vim"] = {
+    loaded = true,
+    path = "/home/adam/.local/share/nvim/site/pack/packer/start/git-messenger.vim",
+    url = "https://github.com/rhysd/git-messenger.vim"
+  },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "/home/adam/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
+  ["lazygit.nvim"] = {
+    loaded = true,
+    path = "/home/adam/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
+    url = "https://github.com/kdheepak/lazygit.nvim"
+  },
   ["material.nvim"] = {
     loaded = true,
     path = "/home/adam/.local/share/nvim/site/pack/packer/start/material.nvim",
@@ -103,6 +123,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/adam/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
+  },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/home/adam/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-rhubarb"] = {
+    loaded = true,
+    path = "/home/adam/.local/share/nvim/site/pack/packer/start/vim-rhubarb",
+    url = "https://github.com/tpope/vim-rhubarb"
   },
   ["which-key.nvim"] = {
     loaded = true,
