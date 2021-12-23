@@ -46,9 +46,11 @@ return packer.startup(function(use)
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
 
   -- Colours and Icons
-  use "marko-cerovac/material.nvim"
-  use "christianchiarulli/nvcode-color-schemes.vim"
-
+  use "marko-cerovac/material.nvim" -- Material Colourscheme
+  use "christianchiarulli/nvcode-color-schemes.vim" -- VSCode Like ColourScheme
+  use "norcalli/nvim-colorizer.lua" -- HEX and RBG etc Colour Highlighter: https://github.com/norcalli/nvim-colorizer.lua
+  use "kyazdani42/nvim-web-devicons" -- Vim devicons with colour: https://github.com/kyazdani42/nvim-web-devicons
+  
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
