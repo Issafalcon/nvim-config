@@ -74,6 +74,25 @@ return packer.startup(function(use)
   use "hrsh7th/vim-vsnip-integ"
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
+  -- Searching
+  use "junegunn/fzf"
+  use "nvim-telescope/telescope-fzy-native.nvim"
+  use {
+      "nvim-telescope/telescope.nvim",
+      requires = {
+        {"nvim-lua/popup.nvim"},
+        {"nvim-lua/plenary.nvim"}
+      }
+    }  
+  use  "kevinhwang91/rnvimr"
+
+  -- File Navigation
+  use  "preservim/tagbar"
+  use {
+    "phaazon/hop.nvim", 
+    as = "hop"
+  }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

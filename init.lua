@@ -6,4 +6,4 @@ require "colourscheme"
 require "utils"
 require "version-control"
 require "completion"
-
+require "searching"
