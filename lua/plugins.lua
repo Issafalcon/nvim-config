@@ -67,7 +67,16 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-path" -- path completions
   use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use "hrsh7th/cmp-nvim-lsp" -- LSP completion support
   use "hrsh7th/cmp-vsnip"
+
+  -- LSP
+  use "b0o/schemastore.nvim" -- JSON-ls schemas: https://github.com/b0o/SchemaStore.nvim 
+  use "neovim/nvim-lspconfig" -- The LSP config
+  use "williamboman/nvim-lsp-installer" -- Conveniently install LSPs: https://github.com/williamboman/nvim-lsp-installer
+  use  'tami5/lspsaga.nvim' 
+  use "ray-x/lsp_signature.nvim"
+  use "onsails/lspkind-nvim"
 
   -- snippets
   use "hrsh7th/vim-vsnip" -- snippet completions
@@ -77,13 +86,7 @@ return packer.startup(function(use)
   -- Searching
   use "junegunn/fzf"
   use "nvim-telescope/telescope-fzy-native.nvim"
-  use {
-      "nvim-telescope/telescope.nvim",
-      requires = {
-        {"nvim-lua/popup.nvim"},
-        {"nvim-lua/plenary.nvim"}
-      }
-    }  
+  use  "nvim-telescope/telescope.nvim"  
   use  "kevinhwang91/rnvimr"
 
   -- File Navigation
@@ -92,6 +95,8 @@ return packer.startup(function(use)
     "phaazon/hop.nvim", 
     as = "hop"
   }
+
+  use "junegunn/vim-easy-align"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

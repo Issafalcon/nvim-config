@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/home/adam/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
     url = "https://github.com/hrsh7th/cmp-cmdline"
   },
+  ["cmp-nvim-lsp"] = {
+    loaded = true,
+    path = "/home/adam/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
   ["cmp-path"] = {
     loaded = true,
     path = "/home/adam/.local/share/nvim/site/pack/packer/start/cmp-path",
@@ -124,6 +129,21 @@ _G.packer_plugins = {
     path = "/home/adam/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
     url = "https://github.com/kdheepak/lazygit.nvim"
   },
+  ["lsp_signature.nvim"] = {
+    loaded = true,
+    path = "/home/adam/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
+    url = "https://github.com/ray-x/lsp_signature.nvim"
+  },
+  ["lspkind-nvim"] = {
+    loaded = true,
+    path = "/home/adam/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
+    url = "https://github.com/onsails/lspkind-nvim"
+  },
+  ["lspsaga.nvim"] = {
+    loaded = true,
+    path = "/home/adam/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
+    url = "https://github.com/tami5/lspsaga.nvim"
+  },
   ["material.nvim"] = {
     loaded = true,
     path = "/home/adam/.local/share/nvim/site/pack/packer/start/material.nvim",
@@ -143,6 +163,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/adam/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
     url = "https://github.com/norcalli/nvim-colorizer.lua"
+  },
+  ["nvim-lsp-installer"] = {
+    loaded = true,
+    path = "/home/adam/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
+    url = "https://github.com/williamboman/nvim-lsp-installer"
+  },
+  ["nvim-lspconfig"] = {
+    loaded = true,
+    path = "/home/adam/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
@@ -169,6 +199,11 @@ _G.packer_plugins = {
     path = "/home/adam/.local/share/nvim/site/pack/packer/start/rnvimr",
     url = "https://github.com/kevinhwang91/rnvimr"
   },
+  ["schemastore.nvim"] = {
+    loaded = true,
+    path = "/home/adam/.local/share/nvim/site/pack/packer/start/schemastore.nvim",
+    url = "https://github.com/b0o/schemastore.nvim"
+  },
   tagbar = {
     loaded = true,
     path = "/home/adam/.local/share/nvim/site/pack/packer/start/tagbar",
@@ -183,6 +218,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/adam/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["vim-easy-align"] = {
+    loaded = true,
+    path = "/home/adam/.local/share/nvim/site/pack/packer/start/vim-easy-align",
+    url = "https://github.com/junegunn/vim-easy-align"
   },
   ["vim-fugitive"] = {
     loaded = true,
