@@ -74,6 +74,17 @@ return packer.startup(
     use "hrsh7th/cmp-vsnip"
     use "David-Kunz/cmp-npm" -- NPM completions in package.json
 
+    -- TreeSitter
+    use {
+      "nvim-treesitter/nvim-treesitter",
+      run = ":TSUpdate"
+    }
+    use {"nvim-treesitter/nvim-treesitter-textobjects"}
+    use {"nvim-treesitter/playground"}
+    use {"nvim-treesitter/nvim-treesitter-angular"}
+    use {"windwp/nvim-ts-autotag"}
+    use {"p00f/nvim-ts-rainbow"}
+
     -- LSP
     use "b0o/schemastore.nvim" -- JSON-ls schemas: https://github.com/b0o/SchemaStore.nvim
     use "neovim/nvim-lspconfig" -- The LSP config
@@ -108,5 +119,4 @@ return packer.startup(
       require("packer").sync()
     end
   end
-
 )
