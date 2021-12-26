@@ -159,6 +159,11 @@ _G.packer_plugins = {
     path = "/home/adam/.local/share/nvim/site/pack/packer/start/material.nvim",
     url = "https://github.com/marko-cerovac/material.nvim"
   },
+  neomake = {
+    loaded = true,
+    path = "/home/adam/.local/share/nvim/site/pack/packer/start/neomake",
+    url = "https://github.com/neomake/neomake"
+  },
   ["nvcode-color-schemes.vim"] = {
     loaded = true,
     path = "/home/adam/.local/share/nvim/site/pack/packer/start/nvcode-color-schemes.vim",
