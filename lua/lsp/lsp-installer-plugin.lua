@@ -35,7 +35,21 @@ lsp_installer.on_server_ready(function(server)
 	 	local stylelint_lsp_opts = require("lsp.settings.stylelint_lsp")
 	 	opts = vim.tbl_deep_extend("force", stylelint_lsp_opts, opts)
 	 end
+
+	 if server.name == "efm" then
+	 	local efm_opts = require("lsp.settings.efm")
+	 	opts = vim.tbl_deep_extend("force", efm_opts, opts)
+	 end
+
+   -- Emmet-ls main repo doesn't support jsx or tsx: https://github.com/aca/emmet-ls/issues/10
+   -- Until this is fixed install the alternative repo using lsp-config: https://github.com/kozer/emmet-language-server
+
+	 --if server.name == "emmet-ls" then
+	 --	local emmet_ls_opts = require("lsp.settings.emmet-ls")
+	 --	opts = vim.tbl_deep_extend("force", emmet_ls_opts, opts)
+	 --end
 	-- This setup() function is exactly the same as lspconfig's setup function.
 	-- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 	server:setup(opts)
 end)
+

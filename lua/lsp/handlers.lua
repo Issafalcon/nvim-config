@@ -3,14 +3,14 @@ local M = {}
 -- TODO: backfill this to template
 M.setup = function()
   local signs = {
-    { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn", text = "" },
-    { name = "DiagnosticSignHint", text = "" },
-    { name = "DiagnosticSignInfo", text = "" },
+    {name = "DiagnosticSignError", text = ""},
+    {name = "DiagnosticSignWarn", text = ""},
+    {name = "DiagnosticSignHint", text = ""},
+    {name = "DiagnosticSignInfo", text = ""}
   }
 
   for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+    vim.fn.sign_define(sign.name, {texthl = sign.name, text = sign.text, numhl = ""})
   end
 
   local config = {
@@ -18,7 +18,7 @@ M.setup = function()
     virtual_text = false,
     -- show signs
     signs = {
-      active = signs,
+      active = signs
     },
     update_in_insert = true,
     underline = true,
@@ -29,19 +29,27 @@ M.setup = function()
       border = "rounded",
       source = "always",
       header = "",
-      prefix = "",
-    },
+      prefix = ""
+    }
   }
 
   vim.diagnostic.config(config)
 
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded",
-  })
+  vim.lsp.handlers["textDocument/hover"] =
+    vim.lsp.with(
+    vim.lsp.handlers.hover,
+    {
+      border = "rounded"
+    }
+  )
 
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = "rounded",
-  })
+  vim.lsp.handlers["textDocument/signatureHelp"] =
+    vim.lsp.with(
+    vim.lsp.handlers.signature_help,
+    {
+      border = "rounded"
+    }
+  )
 
   -- Diagnostics handlers
   vim.lsp.handlers["textDocument/publishDiagnostics"] =
@@ -74,7 +82,7 @@ M.setup = function()
 end
 
 local function lsp_signature_config()
-    require("lsp_signature").on_attach(
+  require("lsp_signature").on_attach(
     {
       bind = false,
       use_lspsaga = true,
@@ -126,8 +134,8 @@ local function lsp_keymaps(bufnr, client)
   buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
   buf_set_keymap("n", "gtd", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
   buf_set_keymap("n", "<leader>gi", ":lua require('telescope.builtin').lsp_implementations()<CR>", opts)
-  buf_set_keymap('n', "gr", ":lua require('telescope.builtin').lsp_references()<CR>", opts)
-  buf_set_keymap('n', "gm", ":lua require('telescope.builtin').lsp_document_symbols()<CR>", opts)
+  buf_set_keymap("n", "gr", ":lua require('telescope.builtin').lsp_references()<CR>", opts)
+  buf_set_keymap("n", "gm", ":lua require('telescope.builtin').lsp_document_symbols()<CR>", opts)
   buf_set_keymap("n", "<Leader>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
   buf_set_keymap("n", "<leader>ac", ":lua require('telescope.builtin').lsp_workspace_diagnostics()<CR>", opts)
   buf_set_keymap("n", "K", ":Lspsaga hover_doc<CR>", opts)
@@ -153,7 +161,6 @@ local function lsp_keymaps(bufnr, client)
 
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
-
 
 M.on_attach = function(client, bufnr)
   if client.name == "tsserver" then

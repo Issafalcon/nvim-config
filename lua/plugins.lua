@@ -68,7 +68,9 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-path" -- path completions
   use "hrsh7th/cmp-cmdline" -- cmdline completions
   use "hrsh7th/cmp-nvim-lsp" -- LSP completion support
+  use "hrsh7th/cmp-nvim-lua" -- Lua in Vim language completions
   use "hrsh7th/cmp-vsnip"
+  use "David-Kunz/cmp-npm" -- NPM completions in package.json
 
   -- LSP
   use "b0o/schemastore.nvim" -- JSON-ls schemas: https://github.com/b0o/SchemaStore.nvim 
