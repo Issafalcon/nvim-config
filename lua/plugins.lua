@@ -49,6 +49,7 @@ return packer.startup(
 
     -- Utility Plugins
     use "windwp/nvim-autopairs" -- Autopair with cmp and treesitter integration
+    use "nvim-lualine/lualine.nvim"
 
     -- Colours and Icons
     use "marko-cerovac/material.nvim" -- Material Colourscheme
