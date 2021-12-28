@@ -107,6 +107,9 @@ return packer.startup(
     use "nvim-telescope/telescope.nvim"
     use "kevinhwang91/rnvimr"
 
+    -- Bufferline (depends on nvim-web-devicons installed above)
+    use {"akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons"}
+
     -- File Navigation
     use "preservim/tagbar"
     use {
