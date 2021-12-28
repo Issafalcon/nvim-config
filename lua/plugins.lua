@@ -50,6 +50,7 @@ return packer.startup(
     -- Utility Plugins
     use "windwp/nvim-autopairs" -- Autopair with cmp and treesitter integration
     use "nvim-lualine/lualine.nvim"
+    use "tpope/vim-unimpaired"
 
     -- Colours and Icons
     use "marko-cerovac/material.nvim" -- Material Colourscheme
@@ -121,6 +122,9 @@ return packer.startup(
     -- Commenting Out Code
     use {"terrortylor/nvim-comment"}
     use {"JoosepAlviste/nvim-ts-context-commentstring"}
+
+    -- Quickfix / Location lists
+    use "kevinhwang91/nvim-bqf"
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
