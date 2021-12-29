@@ -97,6 +97,7 @@ return packer.startup(
     use "tami5/lspsaga.nvim"
     use "ray-x/lsp_signature.nvim"
     use "onsails/lspkind-nvim"
+    use "nvim-lua/lsp-status.nvim"
 
     -- snippets
     use "hrsh7th/vim-vsnip" -- snippet completions

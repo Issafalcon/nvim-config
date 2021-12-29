@@ -1,5 +1,7 @@
-local M = {}
+local lsp_status = require('lsp-status')
+lsp_status.register_progress()
 
+local M = {}
 -- TODO: backfill this to template
 M.setup = function()
   local signs = {
@@ -161,17 +163,18 @@ local function lsp_keymaps(bufnr, client)
 
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
-
 M.on_attach = function(client, bufnr)
+
   if client.name == "tsserver" then
     client.resolved_capabilities.document_formatting = false
   end
+  lsp_status.on_attach(client)
   lsp_keymaps(bufnr, client)
   lsp_highlight_document(client)
   lsp_signature_config()
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = lsp_status.capabilities -- Wraps the standard call to make_client_capabilities on native LSP
 
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_ok then
