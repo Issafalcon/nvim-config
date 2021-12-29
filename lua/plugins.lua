@@ -134,9 +134,10 @@ return packer.startup(
       as = "hop"
     }
 
-    -- Commenting Out Code
+    -- Commenting
     use {"terrortylor/nvim-comment"}
     use {"JoosepAlviste/nvim-ts-context-commentstring"}
+    use {"kkoomen/vim-doge", run = ":call doge#install()"}
 
     -- Quickfix / Location lists
     use "kevinhwang91/nvim-bqf"
