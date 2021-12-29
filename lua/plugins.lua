@@ -69,6 +69,13 @@ return packer.startup(
     use "kdheepak/lazygit.nvim"
     use "sindrets/diffview.nvim"
 
+    -- Github
+    use {
+      "pwntester/octo.nvim",
+      config = function()
+        require "octo".setup()
+      end
+    }
     -- cmp plugins
     use "hrsh7th/nvim-cmp" -- The completion plugin
     use "hrsh7th/cmp-buffer" -- buffer completions
