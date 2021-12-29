@@ -51,6 +51,13 @@ return packer.startup(
     use "windwp/nvim-autopairs" -- Autopair with cmp and treesitter integration
     use "nvim-lualine/lualine.nvim"
     use "tpope/vim-unimpaired"
+    use {
+      "rmagatti/session-lens", -- Saves sessions after closing nvim
+      requires = {"rmagatti/auto-session", "nvim-telescope/telescope.nvim"},
+      config = function()
+        require("session-lens").setup()
+      end
+    }
 
     -- Colours and Icons
     use "marko-cerovac/material.nvim" -- Material Colourscheme

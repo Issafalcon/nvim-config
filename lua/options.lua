@@ -34,8 +34,10 @@ vim.opt.scrolloff = 8                           -- is one of my fav
 vim.opt.sidescrolloff = 8
 vim.opt.guifont = "firacode nerd font:h17"               -- the font used in graphical neovim applications
 vim.opt.hidden = true
-
 vim.opt.shortmess:append "c"
+
+-- Sessions
+vim.opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winpos,terminal"
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd "set inccommand=split"

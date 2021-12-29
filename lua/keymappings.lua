@@ -37,6 +37,9 @@ keymap("n", "<C-Right>", ":vertical resize -2<CR>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
+-- Quick close buffer
+keymap("n", '<C-x>', ':bdelete<CR>', opts)
+
 -- Insert --
 -- Press jk fast to enter
 keymap("i", "jk", "<ESC>", opts)
@@ -64,12 +67,13 @@ keymap('i', "<A-k>", '<Esc>:m .-2<CR>==gi', opts)
 keymap("n", '<A-j>', ':m .+1<CR>==', opts)
 keymap("n", '<A-k>', ':m .-2<CR>==', opts)
 
+
 -- Terminal --
 -- Better terminal navigation
-keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
-keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
-keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
-keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+-- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
+-- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
+-- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
+-- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Line Numbers
 keymap("n", "<leader>n", ":lua require('utils.UI').ToggleLineNumbers()<CR>", term_opts)
