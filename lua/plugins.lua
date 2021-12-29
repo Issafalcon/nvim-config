@@ -127,6 +127,9 @@ return packer.startup(
     -- Quickfix / Location lists
     use "kevinhwang91/nvim-bqf"
 
+    -- Terminal
+    use "akinsho/toggleterm.nvim"
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then
