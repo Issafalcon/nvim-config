@@ -44,11 +44,12 @@ return packer.startup(
   function(use)
     -- Essential "base" plugins
     use "wbthomason/packer.nvim" -- Have packer manage itself
-    use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-    use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+    use "nvim-lua/popup.nvim"    -- An implementation of the Popup API from vim in Neovim
+    use "nvim-lua/plenary.nvim"  -- Useful lua functions used ny lots of plugins
 
     -- Utility Plugins
     use "windwp/nvim-autopairs" -- Autopair with cmp and treesitter integration
+    use "junegunn/vim-easy-align" -- Align text
     use "nvim-lualine/lualine.nvim"
     use "tpope/vim-unimpaired"
     use {
