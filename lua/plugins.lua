@@ -63,7 +63,7 @@ return packer.startup(
     use "editorconfig/editorconfig-vim" -- Applies editorconfig to text
     use "mbbill/undotree"
     use "szw/vim-maximizer"
-    use  "sudormrfbin/cheatsheet.nvim"
+    use "sudormrfbin/cheatsheet.nvim"
     use {
       "rmagatti/session-lens", -- Saves sessions after closing nvim
       requires = {"rmagatti/auto-session", "nvim-telescope/telescope.nvim"},
@@ -96,6 +96,7 @@ return packer.startup(
         require "octo".setup()
       end
     }
+
     -- cmp plugins
     use "hrsh7th/nvim-cmp" -- The completion plugin
     use "hrsh7th/cmp-buffer" -- buffer completions
@@ -151,6 +152,17 @@ return packer.startup(
 
     -- Terminal
     use "akinsho/toggleterm.nvim"
+
+    -- Testing tools
+    use {
+      "rcarriga/vim-ultest",
+      requires = {"vim-test/vim-test"},
+      run = ":UpdateRemotePlugins"
+    }
+
+    --------------------------------------------------------------
+    ------------ Language Specific Plugins -----------------------
+    --------------------------------------------------------------
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
