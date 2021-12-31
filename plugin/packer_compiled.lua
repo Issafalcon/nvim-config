@@ -119,6 +119,11 @@ _G.packer_plugins = {
     path = "/home/adam/.local/share/nvim/site/pack/packer/start/diffview.nvim",
     url = "https://github.com/sindrets/diffview.nvim"
   },
+  ["editorconfig-vim"] = {
+    loaded = true,
+    path = "/home/adam/.local/share/nvim/site/pack/packer/start/editorconfig-vim",
+    url = "https://github.com/editorconfig/editorconfig-vim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/home/adam/.local/share/nvim/site/pack/packer/start/friendly-snippets",

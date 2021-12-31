@@ -52,6 +52,7 @@ return packer.startup(
     use "junegunn/vim-easy-align" -- Align text
     use "nvim-lualine/lualine.nvim"
     use "tpope/vim-unimpaired"
+    use "editorconfig/editorconfig-vim" -- Applies editorconfig to text
     use {
       "rmagatti/session-lens", -- Saves sessions after closing nvim
       requires = {"rmagatti/auto-session", "nvim-telescope/telescope.nvim"},
