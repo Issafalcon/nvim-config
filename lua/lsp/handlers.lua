@@ -1,4 +1,4 @@
-local lsp_status = require('lsp-status')
+local lsp_status = require("lsp-status")
 lsp_status.register_progress()
 
 local M = {}
@@ -161,13 +161,25 @@ local function lsp_keymaps(bufnr, client)
   buf_set_keymap("n", "<C-f>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts)
   buf_set_keymap("n", "<C-b>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
 
+  -- Additional LSP extension mappings
+  if client.name == "tsserver" then
+    buf_set_keymap("n", "<leader>to", ":TSLspOrganize<CR>", opts)
+    buf_set_keymap("n", "<leader>trn", ":TSLspRenameFile<CR>", opts)
+    buf_set_keymap("n", "<leader>ti", ":TSLspImportAll<CR>", opts)
+  end
+
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
-M.on_attach = function(client, bufnr)
 
+M.on_attach = function(client, bufnr)
   if client.name == "tsserver" then
     client.resolved_capabilities.document_formatting = false
+
+    local ts_utils = require("nvim-lsp-ts-utils")
+    ts_utils.setup({})
+    ts_utils.setup_client(client)
   end
+
   lsp_status.on_attach(client)
   lsp_keymaps(bufnr, client)
   lsp_highlight_document(client)

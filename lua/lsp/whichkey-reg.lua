@@ -8,7 +8,13 @@ wk.register(
         name = "+Go to",
         i = "Implementation",
       },
-      e = "Show line diagnostics"
+      e = "Show line diagnostics",
+      t = {
+        name = "+TS LSP Extensions",
+        o = "Organize Imports",
+        i = "Import All",
+        ["rn"] = "Rename TS File",
+      }
     },
     g = {
       D = "Go to declaration",

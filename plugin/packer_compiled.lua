@@ -119,6 +119,11 @@ _G.packer_plugins = {
     path = "/home/adam/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
     url = "https://github.com/hrsh7th/cmp-vsnip"
   },
+  colorschemes = {
+    loaded = true,
+    path = "/home/adam/.local/share/nvim/site/pack/packer/start/colorschemes",
+    url = "https://github.com/lunarvim/colorschemes"
+  },
   ["diffview.nvim"] = {
     loaded = true,
     path = "/home/adam/.local/share/nvim/site/pack/packer/start/diffview.nvim",
@@ -189,11 +194,6 @@ _G.packer_plugins = {
     path = "/home/adam/.local/share/nvim/site/pack/packer/start/material.nvim",
     url = "https://github.com/marko-cerovac/material.nvim"
   },
-  ["nvcode-color-schemes.vim"] = {
-    loaded = true,
-    path = "/home/adam/.local/share/nvim/site/pack/packer/start/nvcode-color-schemes.vim",
-    url = "https://github.com/christianchiarulli/nvcode-color-schemes.vim"
-  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/adam/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
@@ -223,6 +223,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/adam/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
     url = "https://github.com/williamboman/nvim-lsp-installer"
+  },
+  ["nvim-lsp-ts-utils"] = {
+    loaded = true,
+    path = "/home/adam/.local/share/nvim/site/pack/packer/start/nvim-lsp-ts-utils",
+    url = "https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -391,6 +396,21 @@ _G.packer_plugins = {
     path = "/home/adam/.local/share/nvim/site/pack/packer/start/vim-vsnip-integ",
     url = "https://github.com/hrsh7th/vim-vsnip-integ"
   },
+  ["vscode-es7-javascript-react-snippets"] = {
+    loaded = true,
+    path = "/home/adam/.local/share/nvim/site/pack/packer/start/vscode-es7-javascript-react-snippets",
+    url = "https://github.com/dsznajder/vscode-es7-javascript-react-snippets"
+  },
+  ["vscode-react"] = {
+    loaded = true,
+    path = "/home/adam/.local/share/nvim/site/pack/packer/start/vscode-react",
+    url = "https://github.com/xabikos/vscode-react"
+  },
+  ["vscode-svelte-snippets"] = {
+    loaded = true,
+    path = "/home/adam/.local/share/nvim/site/pack/packer/start/vscode-svelte-snippets",
+    url = "https://github.com/fivethree-team/vscode-svelte-snippets"
+  },
   ["which-key.nvim"] = {
     loaded = true,
     path = "/home/adam/.local/share/nvim/site/pack/packer/start/which-key.nvim",
@@ -399,14 +419,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: session-lens
-time([[Config for session-lens]], true)
-try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\17session-lens\frequire\0", "config", "session-lens")
-time([[Config for session-lens]], false)
 -- Config for: octo.nvim
 time([[Config for octo.nvim]], true)
 try_loadstring("\27LJ\2\n2\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\tocto\frequire\0", "config", "octo.nvim")
 time([[Config for octo.nvim]], false)
+-- Config for: session-lens
+time([[Config for session-lens]], true)
+try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\17session-lens\frequire\0", "config", "session-lens")
+time([[Config for session-lens]], false)
 if should_profile then save_profiles() end
 
 end)

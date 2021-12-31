@@ -74,7 +74,7 @@ return packer.startup(
 
     -- Colours and Icons
     use "marko-cerovac/material.nvim" -- Material Colourscheme
-    use "christianchiarulli/nvcode-color-schemes.vim" -- VSCode Like ColourScheme
+    use "lunarvim/colorschemes" -- VSCode Like ColourScheme
     use "norcalli/nvim-colorizer.lua" -- HEX and RBG etc Colour Highlighter: https://github.com/norcalli/nvim-colorizer.lua
     use "kyazdani42/nvim-web-devicons" -- Vim devicons with colour: https://github.com/kyazdani42/nvim-web-devicons
 
@@ -163,6 +163,12 @@ return packer.startup(
     --------------------------------------------------------------
     ------------ Language Specific Plugins -----------------------
     --------------------------------------------------------------
+
+    -- Typescript (React, Svelte, Angular, TS)
+    use "jose-elias-alvarez/nvim-lsp-ts-utils" -- Extends LSP functionality for tsserver
+    use "xabikos/vscode-react" -- React snippets
+    use "dsznajder/vscode-es7-javascript-react-snippets" -- More react snippets
+    use "fivethree-team/vscode-svelte-snippets" -- Svelete snippets
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
