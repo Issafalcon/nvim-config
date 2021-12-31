@@ -44,16 +44,26 @@ return packer.startup(
   function(use)
     -- Essential "base" plugins
     use "wbthomason/packer.nvim" -- Have packer manage itself
-    use "nvim-lua/popup.nvim"    -- An implementation of the Popup API from vim in Neovim
-    use "nvim-lua/plenary.nvim"  -- Useful lua functions used ny lots of plugins
+    use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
+    use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+
+    -- Searching
+    use "junegunn/fzf"
+    use "nvim-telescope/telescope-fzy-native.nvim"
+    use "nvim-telescope/telescope.nvim"
+    use "kevinhwang91/rnvimr"
 
     -- Utility Plugins
     use "windwp/nvim-autopairs" -- Autopair with cmp and treesitter integration
     use "junegunn/vim-easy-align" -- Align text
+    use "tpope/vim-surround"
+    use "tpope/vim-dispatch"
     use "nvim-lualine/lualine.nvim"
     use "tpope/vim-unimpaired"
     use "editorconfig/editorconfig-vim" -- Applies editorconfig to text
     use "mbbill/undotree"
+    use "szw/vim-maximizer"
+    use  "sudormrfbin/cheatsheet.nvim"
     use {
       "rmagatti/session-lens", -- Saves sessions after closing nvim
       requires = {"rmagatti/auto-session", "nvim-telescope/telescope.nvim"},
@@ -120,12 +130,6 @@ return packer.startup(
     use "hrsh7th/vim-vsnip" -- snippet completions
     use "hrsh7th/vim-vsnip-integ"
     use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
-
-    -- Searching
-    use "junegunn/fzf"
-    use "nvim-telescope/telescope-fzy-native.nvim"
-    use "nvim-telescope/telescope.nvim"
-    use "kevinhwang91/rnvimr"
 
     -- Bufferline (depends on nvim-web-devicons installed above)
     use {"akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons"}
