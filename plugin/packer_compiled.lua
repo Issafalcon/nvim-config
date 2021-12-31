@@ -321,6 +321,11 @@ _G.packer_plugins = {
     path = "/home/adam/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
   },
+  undotree = {
+    loaded = true,
+    path = "/home/adam/.local/share/nvim/site/pack/packer/start/undotree",
+    url = "https://github.com/mbbill/undotree"
+  },
   ["vim-doge"] = {
     loaded = true,
     path = "/home/adam/.local/share/nvim/site/pack/packer/start/vim-doge",

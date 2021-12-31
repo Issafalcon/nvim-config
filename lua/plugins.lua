@@ -53,6 +53,7 @@ return packer.startup(
     use "nvim-lualine/lualine.nvim"
     use "tpope/vim-unimpaired"
     use "editorconfig/editorconfig-vim" -- Applies editorconfig to text
+    use "mbbill/undotree"
     use {
       "rmagatti/session-lens", -- Saves sessions after closing nvim
       requires = {"rmagatti/auto-session", "nvim-telescope/telescope.nvim"},
