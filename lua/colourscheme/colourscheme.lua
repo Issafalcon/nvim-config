@@ -37,6 +37,6 @@ require('material').setup({
 	} -- Overwrite highlights with your own
 })
 
-vim.cmd('colorscheme material')
+vim.cmd('colorscheme tomorrow')
 
 vim.api.nvim_set_keymap('n', '<leader>mt', [[<Cmd>lua require('material.functions').toggle_style()<CR>]], { noremap = true, silent = true })

@@ -160,6 +160,12 @@ return packer.startup(
       run = ":UpdateRemotePlugins"
     }
 
+    -- Debugging
+    use "mfussenegger/nvim-dap"
+    use "theHamsta/nvim-dap-virtual-text"
+    use "nvim-telescope/telescope-dap.nvim"
+    use "rcarriga/nvim-dap-ui"
+
     --------------------------------------------------------------
     ------------ Language Specific Plugins -----------------------
     --------------------------------------------------------------

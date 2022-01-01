@@ -25,9 +25,6 @@ function _G.ToggleQFList(global)
   end
 end
 
-keymap('n', '<C-k>', ':cnext<CR>zz', opts)
-keymap('n', '<C-j>', ':cprev<CR>zz', opts)
-keymap('n', '<leader>k', ':lnext<CR>zz', opts)
-keymap('n', '<leader>j', ':lprev<CR>zz', opts)
+-- Vim-unimpaired has "[" and "]" to navigate next and previous items in both lists
 keymap('n', '<C-q>', ':lua ToggleQFList(1)<CR>', opts)
 keymap('n', '<leader>q', ':lua ToggleQFList(0)<CR>', opts)

@@ -24,7 +24,7 @@ vim.opt.writebackup = false                     -- if a file is being edited by 
 vim.opt.expandtab = true                        -- convert tabs to spaces
 vim.opt.shiftwidth = 2                          -- the number of spaces inserted for each indentation
 vim.opt.tabstop = 2                             -- insert 2 spaces for a tab
-vim.opt.cursorline = true                       -- highlight the current line
+vim.opt.cursorline = false                       -- highlight the current line
 vim.opt.number = true                           -- set numbered lines
 vim.opt.relativenumber = false                  -- set relative numbered lines
 vim.opt.numberwidth = 4                         -- set number column width to 2 {default 4}
@@ -41,6 +41,7 @@ vim.opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winpos,terminal
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd "set inccommand=split"
+vim.cmd "filetype plugin on"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set iskeyword+=@]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
