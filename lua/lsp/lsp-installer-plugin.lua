@@ -27,15 +27,10 @@ lsp_installer.on_server_ready(function(server)
 
     -- For developing Lua plugins for Neovim Only
     -- Comment out below lines so lua_dev is not used when working on other Lua projects
-    server:setup({})
-
-    local lua_dev = require('lua-dev').setup({
+    opts = require('lua-dev').setup({
       library = { vimruntime = true, types = true, plugins = true },
-      lspconfig = vim.tbl_deep_extend("force", opts, server:get_default_options())
+      lspconfig = opts
     })
-
-    require("lspconfig").sumneko_lua.setup(lua_dev)
-    return
 	 end
 
 	 if server.name == "texlab" then

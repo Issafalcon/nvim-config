@@ -83,8 +83,8 @@ cmp.setup {
   },
   sources = {
     {name = "nvim_lsp"},
-    {name = "vsnip"},
     {name = "nvim_lua"},
+    {name = "vsnip"},
     {name = "npm", keyword_length = 4},
     {name = "buffer"},
     {name = "path"}

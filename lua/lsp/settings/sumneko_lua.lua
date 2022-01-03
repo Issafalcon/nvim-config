@@ -9,11 +9,7 @@ local opts = {
         globals = {"vim"}
       },
       workspace = {
-        library = {
-          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-          [vim.fn.stdpath("config") .. "/lua"] = true,
-          [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true
-        },
+        library = { vim.api.nvim_get_runtime_file("", true), vim.fn.expand("$DOTFILES/nvim/.config/nvim") },
         maxPreload = 100000,
         preloadFileSize = 1000
       }
