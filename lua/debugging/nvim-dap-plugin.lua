@@ -68,4 +68,10 @@ keymap('n', '<leader>de', ':lua require"dap".set_exception_breakpoints({"all"})<
 -- Dap windows
 keymap('n', '<leader>dr', ':lua require"dap".repl.open({}, "vsplit")<CR><C-w>l', opts)
 
-keymap('n', '<F5>', ':lua require"debugging.dap-helper".startDebugging()<CR>', opts)
+-- Mapping to begin debugging for specific 'Modes'
+--  dA = Debug Attach (Attach to a running process)
+--  dL = Launch a process in debug
+--  dT = Run a test in debug mode
+keymap('n', '<leader>dT', ':lua require"debugging.dap-helper".startDebugTest()<CR>', opts)
+keymap('n', '<leader>dA', ':lua require"debugging.dap-helper".startDebugAttach()<CR>', opts)
+keymap('n', '<leader>dL', ':lua require"debugging.dap-helper".startDebugLaunch()<CR>', opts)
