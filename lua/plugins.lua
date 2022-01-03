@@ -20,7 +20,7 @@ end
 vim.cmd [[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+    autocmd BufWritePost plugins.lua source <afile>
   augroup end
 ]]
 
@@ -98,14 +98,12 @@ return packer.startup(
     }
 
     -- cmp plugins
-    use "hrsh7th/nvim-cmp" -- The completion plugin
-    use "hrsh7th/cmp-buffer" -- buffer completions
-    use "hrsh7th/cmp-path" -- path completions
-    use "hrsh7th/cmp-cmdline" -- cmdline completions
+    use "hrsh7th/nvim-cmp"     -- The completion plugin
+    use "hrsh7th/cmp-buffer"   -- buffer completions
+    use "hrsh7th/cmp-path"     -- path completions
+    use "hrsh7th/cmp-cmdline"  -- cmdline completions
     use "hrsh7th/cmp-nvim-lsp" -- LSP completion support
-    use "hrsh7th/cmp-nvim-lua" -- Lua in Vim language completions
     use "hrsh7th/cmp-vsnip"
-    use "David-Kunz/cmp-npm" -- NPM completions in package.json
 
     -- TreeSitter
     use {
@@ -170,11 +168,22 @@ return packer.startup(
     ------------ Language Specific Plugins -----------------------
     --------------------------------------------------------------
 
-    -- Typescript (React, Svelte, Angular, TS)
-    use "jose-elias-alvarez/nvim-lsp-ts-utils" -- Extends LSP functionality for tsserver
-    use "xabikos/vscode-react" -- React snippets
+    -- Typescript / JavaScript (React, Svelte, Angular, TS)
+    use "jose-elias-alvarez/nvim-lsp-ts-utils"           -- Extends LSP functionality for tsserver
+    use "xabikos/vscode-react"                           -- React snippets
     use "dsznajder/vscode-es7-javascript-react-snippets" -- More react snippets
-    use "fivethree-team/vscode-svelte-snippets" -- Svelete snippets
+    use "fivethree-team/vscode-svelte-snippets"          -- Svelete snippets
+    use "David-Kunz/cmp-npm"                             -- NPM completions in package.json
+
+    -- Lua / Neovim Plugin Development
+    use "hrsh7th/cmp-nvim-lua"                           -- Lua in Vim language completions
+
+    -- Latex
+    use "lervag/vimtex"
+
+    -- Markdown
+    use {"iamcco/markdown-preview.nvim", run = "cd app && npm install"}
+    use {"robole/vscode-markdown-snippets"}
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
