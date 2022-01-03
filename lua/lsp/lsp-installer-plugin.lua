@@ -24,6 +24,18 @@ lsp_installer.on_server_ready(function(server)
 	 if server.name == "sumneko_lua" then
 	 	local sumneko_opts = require("lsp.settings.sumneko_lua")
 	 	opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
+
+    -- For developing Lua plugins for Neovim Only
+    -- Comment out below lines so lua_dev is not used when working on other Lua projects
+    server:setup({})
+
+    local lua_dev = require('lua-dev').setup({
+      library = { vimruntime = true, types = true, plugins = true },
+      lspconfig = vim.tbl_deep_extend("force", opts, server:get_default_options())
+    })
+
+    require("lspconfig").sumneko_lua.setup(lua_dev)
+    return
 	 end
 
 	 if server.name == "texlab" then
@@ -46,13 +58,6 @@ lsp_installer.on_server_ready(function(server)
 	 	opts = vim.tbl_deep_extend("force", efm_opts, opts)
 	 end
 
-   -- Emmet-ls main repo doesn't support jsx or tsx: https://github.com/aca/emmet-ls/issues/10
-   -- Until this is fixed install the alternative repo using lsp-config: https://github.com/kozer/emmet-language-server
-
-	 --if server.name == "emmet-ls" then
-	 --	local emmet_ls_opts = require("lsp.settings.emmet-ls")
-	 --	opts = vim.tbl_deep_extend("force", emmet_ls_opts, opts)
-	 --end
 	-- This setup() function is exactly the same as lspconfig's setup function.
 	-- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 	server:setup(opts)

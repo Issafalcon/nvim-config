@@ -177,6 +177,7 @@ return packer.startup(
 
     -- Lua / Neovim Plugin Development
     use "hrsh7th/cmp-nvim-lua"                           -- Lua in Vim language completions
+    use "folke/lua-dev.nvim"                             -- For plugin dev with full signature help, docs and completion for neovim lua apis
 
     -- Latex
     use "lervag/vimtex"

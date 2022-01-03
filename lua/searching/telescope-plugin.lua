@@ -6,12 +6,13 @@ local telescope = require("telescope")
 telescope.load_extension('fzy_native')
 
 local actions = require "telescope.actions"
+
 -- Custom function to search vim config files
 function _G.search_dev_config()
   require("telescope.builtin").find_files(
     {
       prompt_title = "< Config Files >",
-      search_dirs = {"$DOTFILES"},
+      search_dirs = {"$DOTFILES/nvim/.config/nvim"},
       hidden = true
     }
   )
