@@ -65,6 +65,12 @@ return packer.startup(
     use "szw/vim-maximizer"
     use "sudormrfbin/cheatsheet.nvim"
     use {
+      "svermeulen/vim-easyclip",
+      requires = {
+        "tpope/vim-repeat"
+      }
+    }
+    use {
       "rmagatti/session-lens", -- Saves sessions after closing nvim
       requires = {"rmagatti/auto-session", "nvim-telescope/telescope.nvim"},
       config = function()

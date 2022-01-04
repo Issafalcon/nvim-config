@@ -39,4 +39,4 @@ require('material').setup({
 
 vim.cmd('colorscheme tomorrow')
 
-vim.api.nvim_set_keymap('n', '<leader>mt', [[<Cmd>lua require('material.functions').toggle_style()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>tm', [[<Cmd>lua require('material.functions').toggle_style()<CR>]], { noremap = true, silent = true })
