@@ -9,7 +9,7 @@ local opts = {
         globals = {"vim"}
       },
       workspace = {
-        library = { vim.api.nvim_get_runtime_file("", true), vim.fn.expand("$DOTFILES/nvim/.config/nvim") },
+        library =  vim.api.nvim_get_runtime_file("", true),
         maxPreload = 100000,
         preloadFileSize = 1000
       }
