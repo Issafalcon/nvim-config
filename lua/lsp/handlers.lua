@@ -179,6 +179,13 @@ M.on_attach = function(client, bufnr)
     ts_utils.setup_client(client)
   end
 
+  if client.name == "omnisharp" then
+    if vim.g.colors_name ~= "darkplus" then
+      print("Changing Coloursheme For .NET")
+      vim.cmd('colorscheme darkplus')
+    end
+  end
+
   lsp_status.on_attach(client)
   lsp_keymaps(bufnr, client)
   lsp_highlight_document(client)
