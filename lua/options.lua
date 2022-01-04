@@ -45,3 +45,18 @@ vim.cmd "filetype plugin on"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set iskeyword+=@]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
+
+-- Using winyank for wsl
+if vim.fn.has('win32unix') and vim.fn.has('wsl') then
+  vim.g.clipboard = {
+    name = "win32yank-wsl",
+    copy = {
+      ["+"] = "win32yank.exe -i --crlf",
+      ["*"] = "win32yank.exe -i --crlf"
+    },
+    paste = {
+      ["+"] = "win32yank.exe -o --lf",
+      ["*"] = "win32yank.exe -o --lf"
+    }
+  }
+end
