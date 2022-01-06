@@ -193,6 +193,10 @@ return packer.startup(
     use {"iamcco/markdown-preview.nvim", run = "cd app && npm install"}
     use {"robole/vscode-markdown-snippets"}
 
+    -- Terraform
+    use "hashivim/vim-terraform"
+    use "juliosueiras/vim-terraform-completion"
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then
