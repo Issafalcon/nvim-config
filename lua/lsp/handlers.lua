@@ -138,7 +138,7 @@ local function lsp_keymaps(bufnr, client)
   buf_set_keymap("n", "gr", ":lua require('telescope.builtin').lsp_references()<CR>", opts)
   buf_set_keymap("n", "gm", ":lua require('telescope.builtin').lsp_document_symbols()<CR>", opts)
   buf_set_keymap("n", "<Leader>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
-  buf_set_keymap("n", "<leader>ac", ":lua require('telescope.builtin').lsp_workspace_diagnostics()<CR>", opts)
+  buf_set_keymap("n", "<leader>ac", ":lua require('telescope.builtin').diagnostics()<CR>", opts)
   buf_set_keymap("n", "K", ":Lspsaga hover_doc<CR>", opts)
   -- buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   buf_set_keymap("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
@@ -184,6 +184,9 @@ M.on_attach = function(client, bufnr)
       print("Changing Coloursheme For .NET")
       vim.cmd('colorscheme darkplus')
     end
+
+    -- Experimental plugin I'm working on
+    require("neosharper").on_attach({}, bufnr)
   end
 
   lsp_status.on_attach(client)
