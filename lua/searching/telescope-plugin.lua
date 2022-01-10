@@ -39,6 +39,7 @@ keymap("n", "<Leader>st", ":lua require('telescope.builtin').colorscheme()<CR>",
 keymap("n", "<Leader>sm", ":lua require('telescope.builtin').marks()<CR>", opts)
 keymap("n", "<Leader>sr", ":lua require('telescope.builtin').registers()<CR>", opts)
 keymap("n", "<A-2>", ":lua require('telescope.builtin').registers()<CR>", opts)
+keymap("n", "<Leader>svc", ":lua require('telescope.builtin').command_history()<CR>", opts)
 keymap("i", "<A-2>", ":lua require('telescope.builtin').registers()<CR>", opts)
 
 require("telescope").setup {
