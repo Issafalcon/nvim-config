@@ -64,6 +64,10 @@ keymap('i', "<A-k>", '<Esc>:m .-2<CR>==gi', opts)
 keymap("n", '<A-j>', ':m .+1<CR>==', opts)
 keymap("n", '<A-k>', ':m .-2<CR>==', opts)
 
+-- 'Multicursor' style editing in normal mode
+keymap("n", "<leader>j", ":'<,'>g/^/norm ", opts)
+keymap("v", "<leader>j", ":g/^/norm ", opts)
+
 -- Line Numbers
 keymap("n", "<leader>n", ":lua require('utils.UI').ToggleLineNumbers()<CR>", term_opts)
 keymap("n", "<leader>rn", ":lua require('utils.UI').ToggleRelativeLineNumbers()<CR>", term_opts)
