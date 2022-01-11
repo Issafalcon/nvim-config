@@ -118,7 +118,6 @@ return packer.startup(
     }
     use {"nvim-treesitter/nvim-treesitter-textobjects"}
     use {"nvim-treesitter/playground"}
-    use {"nvim-treesitter/nvim-treesitter-angular"}
     use {"windwp/nvim-ts-autotag"}
     use {"p00f/nvim-ts-rainbow"}
 
@@ -180,12 +179,16 @@ return packer.startup(
     use "dsznajder/vscode-es7-javascript-react-snippets" -- More react snippets
     use "fivethree-team/vscode-svelte-snippets"          -- Svelete snippets
     use "David-Kunz/cmp-npm"                             -- NPM completions in package.json
+    use {"nvim-treesitter/nvim-treesitter-angular"}      -- Treesitter extension for angular
 
     -- Lua / Neovim Plugin Development
     use "hrsh7th/cmp-nvim-lua"                           -- Lua in Vim language completions
     use "folke/lua-dev.nvim"                             -- For plugin dev with full signature help, docs and completion for neovim lua apis
     use "rafcamlet/nvim-luapad"
+
+    -- .NET / C#
     use "~/repos/neo-sharper.nvim"
+    use "J0rgeSerran0/vscode-csharp-snippets"
 
     -- Latex
     use "lervag/vimtex"
