@@ -21,7 +21,7 @@ M.setup = function()
     signs = {
       active = signs
     },
-    update_in_insert = false,
+    update_in_insert = true,
     underline = true,
     severity_sort = true,
     float = {
@@ -59,7 +59,7 @@ M.setup = function()
     {
       underline = true,
       signs = true,
-      update_in_insert = false,
+      update_in_insert = true,
       virtual_text = false
     }
   )
