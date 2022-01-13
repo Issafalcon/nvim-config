@@ -180,7 +180,7 @@ M.on_attach = function(client, bufnr)
   end
 
   if client.name == "omnisharp" then
-    if vim.g.colors_name ~= "darkplus" then
+    if vim.g.colors_name ~= "darkplus" and not vim.o.diff then
       print("Changing Coloursheme For .NET")
       vim.cmd('colorscheme darkplus')
     end
