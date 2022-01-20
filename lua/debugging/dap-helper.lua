@@ -30,7 +30,7 @@ local function launchChromeDebug()
 end
 
 local function launchNetCoreDbg()
-  dap.set_log_level("TRACE")
+  -- dap.set_log_level("TRACE")
 
   dap.run(
     {
@@ -48,6 +48,29 @@ local function launchNetCoreDbg()
   )
 end
 
+local function launchBashDebug()
+  dap.run(
+    {
+      type = "bashdb",
+      name = "launch - bashDebug",
+      program = "${file}",
+      request = "launch",
+      env = {},
+      cwd = "${workspaceFolder}",
+      pathBash = "bash",
+      pathCat = "cat",
+      pathMkfifo = "mkfifo",
+      pathPkill = "pkill",
+      pathBashdb = {os.getenv('HOME') .. '/debug-adapters/vscode-bash-debug/bashdb_dir/bashdb'},
+      pathBashdbLib = {os.getenv('HOME') .. '/debug-adapters/vscode-bash-debug/bashdb_dir'},
+      terminalKind = "integrated",
+      args = function()
+        return vim.fn.split(vim.fn.input('Scripts args:'))
+      end,
+    }
+  )
+end
+
 local function startDebugLaunch()
   if dap.session() then
     dap.terminate()
@@ -58,6 +81,8 @@ local function startDebugLaunch()
     launchChromeDebug()
   elseif vim.bo.filetype == "cs" then
     launchNetCoreDbg()
+  elseif vim.bo.filetype == "sh" then
+    launchBashDebug()
   end
 end
 

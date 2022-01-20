@@ -35,19 +35,10 @@ dap.adapters.netcoredbg = {
   args = {'--interpreter=vscode'}
 }
 
--- Configuration
-dap.configurations.typescript = {
-  {
-    type = 'chrome',
-    request = 'launch',
-    program = '${file}',
-    cwd = vim.fn.getcwd(),
-    sourceMaps = true,
-    breakOnLoad = true,
-    protocol = 'inspector',
-    port = 9222,
-    webRoot = '${workspaceFolder}/src',
-  }
+dap.adapters.bashdb = {
+  type = 'executable',
+  command = 'node',
+  args = {os.getenv('HOME') .. '/debug-adapters/vscode-bash-debug/out/bashDebug.js'}
 }
 
 -- Mappings
