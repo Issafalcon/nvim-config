@@ -2,29 +2,32 @@ local dap = require("dap")
 local dapUtils = require("dap.utils")
 
 local function launchChromeDebug()
-  local launchUrl = vim.fn.input("Launch URL - Full path or relative to http://localhost: ")
+  local launchUrl = vim.fn.input("Launch URL - Full path or relative to http://localhost ")
 
-  if string.sub(launchUrl, 1, 1) == "/" then
+  local leadingChar = string.sub(launchUrl, 1, 1)
+
+  if leadingChar == "/" or leadingChar == ":" then
     launchUrl = "http://localhost" .. launchUrl
   end
 
   local sourcemapKeys = {"/./*", "/src/*", "webpack:///./*"}
   local webrootMapPath = "${webRoot}/*"
   local sourceMapOverrides = {}
-  sourceMapOverrides[sourcemapKeys[1]] = webrootMapPath
-  sourceMapOverrides[sourcemapKeys[2]] = webrootMapPath
-  sourceMapOverrides[sourcemapKeys[3]] = webrootMapPath
+  -- sourceMapOverrides[sourcemapKeys[1]] = webrootMapPath
+  -- sourceMapOverrides[sourcemapKeys[2]] = webrootMapPath
+  -- sourceMapOverrides[sourcemapKeys[3]] = webrootMapPath
   -- "/*": "*",
   -- "/./~/*": "${webRoot}/node_modules/*"
+  dap.set_log_level("TRACE")
   dap.run(
     {
       type = "chrome",
       request = "launch",
       stopOnEntry = true,
       url = launchUrl,
-      webRoot = "${workspaceFolder}",
+      webRoot = "${workspaceFolder}/src",
       runtimeExecutable = "/usr/bin/google-chrome",
-      sourceMapPathOverrides = sourceMapOverrides
+      -- sourceMapPathOverrides = sourceMapOverrides
     }
   )
 end
@@ -77,7 +80,7 @@ local function startDebugLaunch()
     dap.close()
   end
 
-  if vim.bo.filetype == "typescript" or vim.bo.filetype == "typescriptreact" then
+  if vim.bo.filetype == "typescript" or vim.bo.filetype == "typescriptreact" or vim.bo.filetype == "svelte" then
     launchChromeDebug()
   elseif vim.bo.filetype == "cs" then
     launchNetCoreDbg()
