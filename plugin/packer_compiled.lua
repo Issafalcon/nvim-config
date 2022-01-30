@@ -204,6 +204,11 @@ _G.packer_plugins = {
     path = "/home/issafalcon/.local/share/nvim/site/pack/packer/start/material.nvim",
     url = "https://github.com/marko-cerovac/material.nvim"
   },
+  ["neo-sharper.nvim"] = {
+    loaded = true,
+    path = "/home/issafalcon/.local/share/nvim/site/pack/packer/start/neo-sharper.nvim",
+    url = "/home/issafalcon/repos/neo-sharper.nvim"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/issafalcon/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
@@ -258,6 +263,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/issafalcon/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-luapad"] = {
+    loaded = true,
+    path = "/home/issafalcon/.local/share/nvim/site/pack/packer/start/nvim-luapad",
+    url = "https://github.com/rafcamlet/nvim-luapad"
   },
   ["nvim-treesitter"] = {
     loaded = true,
@@ -411,6 +421,16 @@ _G.packer_plugins = {
     path = "/home/issafalcon/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
   },
+  ["vim-terraform"] = {
+    loaded = true,
+    path = "/home/issafalcon/.local/share/nvim/site/pack/packer/start/vim-terraform",
+    url = "https://github.com/hashivim/vim-terraform"
+  },
+  ["vim-terraform-completion"] = {
+    loaded = true,
+    path = "/home/issafalcon/.local/share/nvim/site/pack/packer/start/vim-terraform-completion",
+    url = "https://github.com/juliosueiras/vim-terraform-completion"
+  },
   ["vim-test"] = {
     loaded = true,
     path = "/home/issafalcon/.local/share/nvim/site/pack/packer/start/vim-test",
@@ -420,6 +440,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/issafalcon/.local/share/nvim/site/pack/packer/start/vim-ultest",
     url = "https://github.com/rcarriga/vim-ultest"
+  },
+  ["vim-uncrustify"] = {
+    loaded = true,
+    path = "/home/issafalcon/.local/share/nvim/site/pack/packer/start/vim-uncrustify",
+    url = "https://github.com/cofyc/vim-uncrustify"
   },
   ["vim-unimpaired"] = {
     loaded = true,
@@ -440,6 +465,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/issafalcon/.local/share/nvim/site/pack/packer/start/vimtex",
     url = "https://github.com/lervag/vimtex"
+  },
+  ["vscode-csharp-snippets"] = {
+    loaded = true,
+    path = "/home/issafalcon/.local/share/nvim/site/pack/packer/start/vscode-csharp-snippets",
+    url = "https://github.com/J0rgeSerran0/vscode-csharp-snippets"
   },
   ["vscode-es7-javascript-react-snippets"] = {
     loaded = true,

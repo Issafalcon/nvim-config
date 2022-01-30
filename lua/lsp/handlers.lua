@@ -143,12 +143,18 @@ local function lsp_keymaps(bufnr, client)
   -- buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   buf_set_keymap("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 
-  if client.resolved_capabilities.document_formatting then
-    buf_set_keymap("n", "<Leader>f", "<cmd>lua vim.lsp.buf.formatting_sync()<CR>", opts)
-  end
+  if client.name == "omnisharp" then
+    vim.cmd [[let g:uncrustify_cfg_file_path="$HOME/.uncrustify.cfg"]]
+    buf_set_keymap("n", "<Leader>f", ":call Uncrustify('cs')<CR>", opts)
+    buf_set_keymap("v", "<Leader>f", ":call RangeUncrustify('cs')<CR>", opts)
+  else
+    if client.resolved_capabilities.document_formatting then
+      buf_set_keymap("n", "<Leader>f", "<cmd>lua vim.lsp.buf.formatting_sync()<CR>", opts)
+    end
 
-  if client.resolved_capabilities.document_range_formatting then
-    buf_set_keymap("v", "<Leader>f", "<cmd>lua vim.lsp.buf.range_formatting_sync()<CR>", opts)
+    if client.resolved_capabilities.document_range_formatting then
+      buf_set_keymap("v", "<Leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+    end
   end
 
   buf_set_keymap("n", "<A-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
@@ -180,10 +186,10 @@ M.on_attach = function(client, bufnr)
   end
 
   if client.name == "omnisharp" then
-    if vim.g.colors_name ~= "darkplus" and not vim.o.diff then
-      print("Changing Coloursheme For .NET")
-      vim.cmd('colorscheme darkplus')
-    end
+    -- if vim.g.colors_name ~= "darkplus" and not vim.o.diff then
+    --   print("Changing Coloursheme For .NET")
+    --   vim.cmd('colorscheme darkplus')
+    -- end
 
     -- Experimental plugin I'm working on
     require("neosharper").on_attach({}, bufnr)
