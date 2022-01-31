@@ -189,7 +189,6 @@ return packer.startup(
     -- .NET / C#
     use "~/repos/neo-sharper.nvim"
     use "J0rgeSerran0/vscode-csharp-snippets"
-    use "cofyc/vim-uncrustify"
 
     -- Latex
     use "lervag/vimtex"
