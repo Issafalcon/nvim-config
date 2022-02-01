@@ -104,10 +104,10 @@ return packer.startup(
     }
 
     -- cmp plugins
-    use "hrsh7th/nvim-cmp"     -- The completion plugin
-    use "hrsh7th/cmp-buffer"   -- buffer completions
-    use "hrsh7th/cmp-path"     -- path completions
-    use "hrsh7th/cmp-cmdline"  -- cmdline completions
+    use "hrsh7th/nvim-cmp" -- The completion plugin
+    use "hrsh7th/cmp-buffer" -- buffer completions
+    use "hrsh7th/cmp-path" -- path completions
+    use "hrsh7th/cmp-cmdline" -- cmdline completions
     use "hrsh7th/cmp-nvim-lsp" -- LSP completion support
     use "hrsh7th/cmp-vsnip"
 
@@ -174,21 +174,22 @@ return packer.startup(
     --------------------------------------------------------------
 
     -- Typescript / JavaScript (React, Svelte, Angular, TS)
-    use "jose-elias-alvarez/nvim-lsp-ts-utils"           -- Extends LSP functionality for tsserver
-    use "xabikos/vscode-react"                           -- React snippets
+    use "jose-elias-alvarez/nvim-lsp-ts-utils" -- Extends LSP functionality for tsserver
+    use "xabikos/vscode-react" -- React snippets
     use "dsznajder/vscode-es7-javascript-react-snippets" -- More react snippets
-    use "fivethree-team/vscode-svelte-snippets"          -- Svelete snippets
-    use "David-Kunz/cmp-npm"                             -- NPM completions in package.json
-    use {"nvim-treesitter/nvim-treesitter-angular"}      -- Treesitter extension for angular
+    use "fivethree-team/vscode-svelte-snippets" -- Svelete snippets
+    use "David-Kunz/cmp-npm" -- NPM completions in package.json
+    use {"nvim-treesitter/nvim-treesitter-angular"} -- Treesitter extension for angular
 
     -- Lua / Neovim Plugin Development
-    use "hrsh7th/cmp-nvim-lua"                           -- Lua in Vim language completions
-    use "folke/lua-dev.nvim"                             -- For plugin dev with full signature help, docs and completion for neovim lua apis
+    use "hrsh7th/cmp-nvim-lua" -- Lua in Vim language completions
+    use "folke/lua-dev.nvim" -- For plugin dev with full signature help, docs and completion for neovim lua apis
     use "rafcamlet/nvim-luapad"
 
     -- .NET / C#
     use "~/repos/neo-sharper.nvim"
     use "J0rgeSerran0/vscode-csharp-snippets"
+    use "Hoffs/omnisharp-extended-lsp.nvim"
 
     -- Latex
     use "lervag/vimtex"
