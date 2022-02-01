@@ -169,6 +169,7 @@ return packer.startup(
     use "nvim-telescope/telescope-dap.nvim"
     use "rcarriga/nvim-dap-ui"
 
+    use {"michaelb/sniprun", run = "bash install.sh"}
     --------------------------------------------------------------
     ------------ Language Specific Plugins -----------------------
     --------------------------------------------------------------
