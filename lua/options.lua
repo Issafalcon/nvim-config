@@ -23,7 +23,7 @@ vim.opt.writebackup = false                                       -- if a file i
 
 -- Indenting
 vim.opt.smartindent = true                                        -- make indenting smarter again
-vim.opt.expandtab = false                                          -- convert tabs to spaces
+vim.opt.expandtab = true                                          -- convert tabs to spaces
 vim.opt.shiftwidth = 2                                            -- the number of spaces inserted for each indentation
 vim.opt.tabstop = 2                                               -- insert 2 spaces for a tab
 vim.opt.softtabstop = 0
