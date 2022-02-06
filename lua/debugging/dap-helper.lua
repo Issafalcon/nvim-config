@@ -32,7 +32,7 @@ local function launchChromeDebug()
   )
 end
 
-local function launchNetCoreDbg()
+local function attachNetCoreDb()
   -- dap.set_log_level("TRACE")
 
   dap.run(
@@ -47,6 +47,21 @@ local function launchNetCoreDbg()
       -- program = function()
       --   return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
       -- end,
+    }
+  )
+end
+
+local function launchNetCoreDbg()
+  -- dap.set_log_level("TRACE")
+
+  dap.run(
+    {
+      type = "netcoredbg",
+      name = "launch - netcoredbg",
+      request = "launch",
+      program = function()
+        return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+      end,
     }
   )
 end
@@ -98,7 +113,7 @@ local function startDebugAttach()
   if vim.bo.filetype == "typescript" or vim.bo.filetype == "typescriptreact" then
     launchChromeDebug()
   elseif vim.bo.filetype == "cs" then
-    launchNetCoreDbg()
+    attachNetCoreDb()
   end
 end
 
