@@ -31,7 +31,7 @@ vim.cmd [[
 			\ shiftwidth=4
 			\ tabstop=4
 			\ softtabstop=4
-			\ expandtab
+			\ noexpandtab
   augroup end
   augroup _auto_resize
     autocmd!
