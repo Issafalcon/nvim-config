@@ -116,6 +116,9 @@ local function lsp_keymaps(bufnr, client)
 
   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
+  if client.name == "omnisharp" then
+    buf_set_keymap("n", "<leader>ac", ":OmnisharperGlobalDiagnostics<CR>", opts)
+  end
   -- Native lsp
   buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
@@ -168,7 +171,7 @@ M.on_attach = function(client, bufnr)
     -- end
 
     -- Experimental plugin I'm working on
-    require("neosharper").on_attach({}, bufnr)
+    require("omnisharper").on_attach({}, bufnr)
   end
 
   lsp_status.on_attach(client)

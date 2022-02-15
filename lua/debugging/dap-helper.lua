@@ -126,7 +126,7 @@ local function startDebugTest()
   if vim.bo.filetype == "typescript" or vim.bo.filetype == "typescriptreact" then
     -- TODO: Use the 'jester' plugin to debug jest test here
   elseif vim.bo.filetype == "cs" then
-  -- TODO: Run dotnet test with env variable set to wait for debug attachment. Get PID and attach
+		vim.cmd(":OmnisharperDebugTest")
   end
 end
 
