@@ -129,6 +129,7 @@ return packer.startup(
     use "ray-x/lsp_signature.nvim"
     use "onsails/lspkind-nvim"
     use "nvim-lua/lsp-status.nvim"
+    use "jose-elias-alvarez/null-ls.nvim"
 
     -- snippets
     use "hrsh7th/vim-vsnip" -- snippet completions

@@ -209,6 +209,11 @@ _G.packer_plugins = {
     path = "/home/issafalcon/.local/share/nvim/site/pack/packer/start/neo-sharper.nvim",
     url = "/home/issafalcon/repos/neo-sharper.nvim"
   },
+  ["null-ls.nvim"] = {
+    loaded = true,
+    path = "/home/issafalcon/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
+    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/issafalcon/.local/share/nvim/site/pack/packer/start/nvim-autopairs",

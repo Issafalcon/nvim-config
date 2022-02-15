@@ -5,21 +5,21 @@ local M = {}
 -- TODO: backfill this to template
 M.setup = function()
   local signs = {
-    {name = "DiagnosticSignError", text = ""},
-    {name = "DiagnosticSignWarn", text = ""},
-    {name = "DiagnosticSignHint", text = ""},
-    {name = "DiagnosticSignInfo", text = ""}
+    { name = "DiagnosticSignError", text = "" },
+    { name = "DiagnosticSignWarn", text = "" },
+    { name = "DiagnosticSignHint", text = "" },
+    { name = "DiagnosticSignInfo", text = "" },
   }
 
   for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, {texthl = sign.name, text = sign.text, numhl = ""})
+    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
   end
 
   local config = {
     virtual_text = true,
     -- show signs
     signs = {
-      active = signs
+      active = signs,
     },
     update_in_insert = false,
     underline = true,
@@ -30,39 +30,27 @@ M.setup = function()
       border = "rounded",
       source = "always",
       header = "",
-      prefix = ""
-    }
+      prefix = "",
+    },
   }
 
   vim.diagnostic.config(config)
 
-  vim.lsp.handlers["textDocument/hover"] =
-    vim.lsp.with(
-    vim.lsp.handlers.hover,
-    {
-      border = "rounded"
-    }
-  )
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = "rounded",
+  })
 
-  vim.lsp.handlers["textDocument/signatureHelp"] =
-    vim.lsp.with(
-    vim.lsp.handlers.signature_help,
-    {
-      border = "rounded"
-    }
-  )
+  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    border = "rounded",
+  })
 
   -- Diagnostics handlers
-  vim.lsp.handlers["textDocument/publishDiagnostics"] =
-    vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics,
-    {
-      underline = true,
-      signs = true,
-      update_in_insert = false,
-      virtual_text = false
-    }
-  )
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    underline = true,
+    signs = true,
+    update_in_insert = false,
+    virtual_text = false,
+  })
 
   -- Works with the autoformat on save autocommand that
   -- This will 1. create an autocommand for every buffer to format on save. And then save again after
@@ -83,14 +71,12 @@ M.setup = function()
 end
 
 local function lsp_signature_config()
-  require("lsp_signature").on_attach(
-    {
-      bind = false,
-      use_lspsaga = true,
-      fix_pos = false,
-      floating_window = false
-    }
-  )
+  require("lsp_signature").on_attach({
+    bind = false,
+    use_lspsaga = true,
+    fix_pos = false,
+    floating_window = false,
+  })
 end
 
 local function lsp_highlight_document(client)
@@ -112,10 +98,10 @@ end
 local function addAutoFormatOnSave(client)
   -- Format on save if the lsp has document formattin enabled
   if client.resolved_capabilities.document_formatting then
-    vim.api.nvim_command [[augroup Format]]
-    vim.api.nvim_command [[autocmd! * <buffer>]]
-    vim.api.nvim_command [[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()]]
-    vim.api.nvim_command [[augroup END]]
+    vim.api.nvim_command([[augroup Format]])
+    vim.api.nvim_command([[autocmd! * <buffer>]])
+    vim.api.nvim_command([[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()]])
+    vim.api.nvim_command([[augroup END]])
   end
 end
 
@@ -126,7 +112,7 @@ local function lsp_keymaps(bufnr, client)
   local function buf_set_option(...)
     vim.api.nvim_buf_set_option(bufnr, ...)
   end
-  local opts = {noremap = true, silent = true}
+  local opts = { noremap = true, silent = true }
 
   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -143,13 +129,9 @@ local function lsp_keymaps(bufnr, client)
   -- buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   buf_set_keymap("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 
-  if client.resolved_capabilities.document_formatting then
-    buf_set_keymap("n", "<Leader>f", "<cmd>lua vim.lsp.buf.formatting_sync()<CR>", opts)
-  end
+  buf_set_keymap("n", "<Leader>f", "<cmd>lua vim.lsp.buf.formatting_sync()<CR>", opts)
 
-  if client.resolved_capabilities.document_range_formatting then
-    buf_set_keymap("v", "<Leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-  end
+  buf_set_keymap("v", "<Leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
 
   buf_set_keymap("n", "<A-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   buf_set_keymap("n", "<leader>ca", ":lua require('telescope.builtin').lsp_code_actions()<CR>", opts)
@@ -167,7 +149,7 @@ local function lsp_keymaps(bufnr, client)
     buf_set_keymap("n", "<leader>ti", ":TSLspImportAll<CR>", opts)
   end
 
-  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+  vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 end
 
 M.on_attach = function(client, bufnr)
