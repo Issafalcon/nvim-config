@@ -21,5 +21,6 @@ null_ls.setup({
     diagnostics.shellcheck,
     diagnostics.vint,
     diagnostics.eslint_d,
+    diagnostics.chktex,
   },
 })
