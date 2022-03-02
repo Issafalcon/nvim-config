@@ -171,7 +171,7 @@ M.on_attach = function(client, bufnr)
     -- end
 
     -- Experimental plugin I'm working on
-    require("omnisharper").on_attach({}, bufnr)
+    require("neosharper").on_attach({}, bufnr)
   end
 
   lsp_status.on_attach(client)
