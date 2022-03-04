@@ -114,7 +114,7 @@ cmp.setup.cmdline(
         {name = "path"}
       },
       {
-        {name = "cmdline"}
+        {name = "cmdline", keyword_pattern = '[^!]\\k\\+'}
       }
     )
   }
