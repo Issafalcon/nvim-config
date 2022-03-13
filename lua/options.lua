@@ -53,7 +53,7 @@ vim.cmd [[set list]]
 vim.cmd [[set listchars=tab:\⍿·,eol:·,trail:\×,multispace:···]]
 
 -- Using winyank for wsl
-if vim.fn.has('win32unix') and vim.fn.has('wsl') then
+if vim.fn.has("wsl") then
   vim.g.clipboard = {
       name = "win32yank-wsl",
     copy = {
