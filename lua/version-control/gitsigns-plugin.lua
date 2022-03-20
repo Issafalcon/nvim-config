@@ -1,6 +1,3 @@
-local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
-
 local status_ok, gitsigns = pcall(require, "gitsigns")
 if not status_ok then
   return
