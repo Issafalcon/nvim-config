@@ -45,7 +45,7 @@ require("material").setup({
   }, -- Overwrite highlights with your own
 })
 
-vim.cmd("colorscheme material")
+vim.cmd("colorscheme spacedark")
 
 vim.api.nvim_set_keymap(
   "n",
