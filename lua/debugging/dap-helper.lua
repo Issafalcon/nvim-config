@@ -10,7 +10,7 @@ local function launchChromeDebug()
     launchUrl = "http://localhost" .. launchUrl
   end
 
-  local sourcemapKeys = {"/./*", "/src/*", "webpack:///./*"}
+  local sourcemapKeys = { "/./*", "/src/*", "webpack:///./*" }
   local webrootMapPath = "${webRoot}/*"
   local sourceMapOverrides = {}
   -- sourceMapOverrides[sourcemapKeys[1]] = webrootMapPath
@@ -19,74 +19,84 @@ local function launchChromeDebug()
   -- "/*": "*",
   -- "/./~/*": "${webRoot}/node_modules/*"
   dap.set_log_level("TRACE")
-  dap.run(
-    {
-      type = "chrome",
-      request = "launch",
-      stopOnEntry = true,
-      url = launchUrl,
-      webRoot = "${workspaceFolder}/src",
-      runtimeExecutable = "/usr/bin/google-chrome",
-      -- sourceMapPathOverrides = sourceMapOverrides
-    }
-  )
+  dap.run({
+    type = "chrome",
+    request = "launch",
+    stopOnEntry = true,
+    url = launchUrl,
+    webRoot = "${workspaceFolder}/src",
+    runtimeExecutable = "/usr/bin/google-chrome",
+    -- sourceMapPathOverrides = sourceMapOverrides
+  })
 end
 
 local function attachNetCoreDb()
   -- dap.set_log_level("TRACE")
 
-  dap.run(
-    {
-      type = "netcoredbg",
-      name = "attach - netcoredbg",
-      request = "attach",
-      processId = function()
-        -- TODO: Select a project and launchsettings to run with then dotnet run and attach to that PID
-        return dapUtils.pick_process()
-      end
-      -- program = function()
-      --   return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
-      -- end,
-    }
-  )
+  dap.run({
+    type = "netcoredbg",
+    name = "attach - netcoredbg",
+    request = "attach",
+    processId = function()
+      -- TODO: Select a project and launchsettings to run with then dotnet run and attach to that PID
+      return dapUtils.pick_process()
+    end,
+    -- program = function()
+    --   return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+    -- end,
+  })
 end
 
 local function launchNetCoreDbg()
   -- dap.set_log_level("TRACE")
 
-  dap.run(
-    {
-      type = "netcoredbg",
-      name = "launch - netcoredbg",
-      request = "launch",
-      program = function()
-        return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
-      end,
-    }
-  )
+  dap.run({
+    type = "netcoredbg",
+    name = "launch - netcoredbg",
+    request = "launch",
+    program = function()
+      return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
+    end,
+  })
+end
+
+local function mochaTestDebug()
+  local file_name = vim.fn.fnamemodify(vim.fn.expand('%'), ':t:r')
+  dap.set_log_level("TRACE")
+
+  dap.run({
+    type = "node2",
+    request = "launch",
+    name = "Debug Mocha",
+    program = "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+    stopOnEntry = true,
+    args = { "${workspaceFolder}/**/*" .. file_name .. ".js", "--no-timeouts" },
+    cwd = "${workspaceFolder}",
+    env = { "NODE_ENV='testing'" },
+    sourceMaps = true
+    -- outFiles = { "${workspaceFolder}/**/*.js" },
+  })
 end
 
 local function launchBashDebug()
-  dap.run(
-    {
-      type = "bashdb",
-      name = "launch - bashDebug",
-      program = "${file}",
-      request = "launch",
-      env = {},
-      cwd = "${workspaceFolder}",
-      pathBash = "bash",
-      pathCat = "cat",
-      pathMkfifo = "mkfifo",
-      pathPkill = "pkill",
-      pathBashdb = {os.getenv('HOME') .. '/debug-adapters/vscode-bash-debug/bashdb_dir/bashdb'},
-      pathBashdbLib = {os.getenv('HOME') .. '/debug-adapters/vscode-bash-debug/bashdb_dir'},
-      terminalKind = "integrated",
-      args = function()
-        return vim.fn.split(vim.fn.input('Scripts args:'))
-      end,
-    }
-  )
+  dap.run({
+    type = "bashdb",
+    name = "launch - bashDebug",
+    program = "${file}",
+    request = "launch",
+    env = {},
+    cwd = "${workspaceFolder}",
+    pathBash = "bash",
+    pathCat = "cat",
+    pathMkfifo = "mkfifo",
+    pathPkill = "pkill",
+    pathBashdb = { os.getenv("HOME") .. "/debug-adapters/vscode-bash-debug/bashdb_dir/bashdb" },
+    pathBashdbLib = { os.getenv("HOME") .. "/debug-adapters/vscode-bash-debug/bashdb_dir" },
+    terminalKind = "integrated",
+    args = function()
+      return vim.fn.split(vim.fn.input("Scripts args:"))
+    end,
+  })
 end
 
 local function startDebugLaunch()
@@ -125,13 +135,15 @@ local function startDebugTest()
 
   if vim.bo.filetype == "typescript" or vim.bo.filetype == "typescriptreact" then
     -- TODO: Use the 'jester' plugin to debug jest test here
+    -- TODO: Provide select function to determine which test runner is being used (Jest, Mocha) then use corresponding config
+    mochaTestDebug()
   elseif vim.bo.filetype == "cs" then
-		vim.cmd(":OmnisharperDebugTest")
+    vim.cmd(":OmnisharperDebugTest")
   end
 end
 
 return {
   startDebugAttach = startDebugAttach,
   startDebugLaunch = startDebugLaunch,
-  startDebugTest = startDebugTest
+  startDebugTest = startDebugTest,
 }
