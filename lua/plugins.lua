@@ -50,6 +50,7 @@ return packer.startup(function(use)
   use("nvim-telescope/telescope-fzy-native.nvim")
   use("nvim-telescope/telescope.nvim")
   use("kevinhwang91/rnvimr")
+  use("windwp/nvim-spectre")
 
   -- Utility Plugins
   use("windwp/nvim-autopairs") -- Autopair with cmp and treesitter integration

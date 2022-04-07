@@ -279,6 +279,11 @@ _G.packer_plugins = {
     path = "/home/issafalcon/.local/share/nvim/site/pack/packer/start/nvim-luapad",
     url = "https://github.com/rafcamlet/nvim-luapad"
   },
+  ["nvim-spectre"] = {
+    loaded = true,
+    path = "/home/issafalcon/.local/share/nvim/site/pack/packer/start/nvim-spectre",
+    url = "https://github.com/windwp/nvim-spectre"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/issafalcon/.local/share/nvim/site/pack/packer/start/nvim-treesitter",

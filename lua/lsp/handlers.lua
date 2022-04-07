@@ -122,7 +122,6 @@ local function lsp_keymaps(bufnr, client)
   -- Native lsp
   buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  buf_set_keymap("n", "gtd", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
   buf_set_keymap("n", "<leader>gi", ":lua require('telescope.builtin').lsp_implementations()<CR>", opts)
   buf_set_keymap("n", "gr", ":lua require('telescope.builtin').lsp_references()<CR>", opts)
   buf_set_keymap("n", "gm", ":lua require('telescope.builtin').lsp_document_symbols()<CR>", opts)
