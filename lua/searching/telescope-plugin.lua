@@ -27,7 +27,9 @@ keymap("n",
 keymap("n", "<leader>sl", ":lua require('searching.telescope-helpers').CustomLiveGrep()<CR>", opts)
 keymap("n", "<C-p>", ":lua require('telescope.builtin').git_files()<CR>", opts)
 keymap("n", "<Leader>sf", ":lua require('telescope.builtin').find_files({hidden = true})<CR>", opts)
-keymap("n", "<Leader>sw", ':lua require(\'telescope.builtin\').grep_string { search = vim.fn.expand("<cword>") }<CR>', opts)
+
+-- Function replaced with nvim-spectre
+-- keymap("n", "<Leader>sw", ':lua require(\'telescope.builtin\').grep_string { search = vim.fn.expand("<cword>") }<CR>', opts)
 keymap("n", "<Leader>sb", ":lua require('telescope.builtin').buffers()<CR>", opts)
 keymap("n", "<Leader>sh", ":lua require('telescope.builtin').help_tags()<CR>", opts)
 keymap("n", "<Leader>sc", ":lua search_dev_config()<CR>", opts)
