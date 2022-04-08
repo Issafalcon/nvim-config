@@ -49,7 +49,6 @@ return packer.startup(function(use)
   use("junegunn/fzf")
   use("nvim-telescope/telescope-fzy-native.nvim")
   use("nvim-telescope/telescope.nvim")
-  use("kevinhwang91/rnvimr")
   use("windwp/nvim-spectre")
 
   -- Utility Plugins
@@ -139,6 +138,8 @@ return packer.startup(function(use)
   use({ "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" })
 
   -- File Navigation
+  use("kevinhwang91/rnvimr")
+  use("kyazdani42/nvim-tree.lua")
   use("preservim/tagbar")
   use({
     "phaazon/hop.nvim",
