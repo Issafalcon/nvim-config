@@ -25,6 +25,11 @@ vim.cmd [[
     autocmd FileType markdown setlocal spell
   augroup end
 
+  augroup _latex
+    autocmd!
+    autocmd FileType tex setlocal spell
+  augroup end
+
   augroup _csharp
     autocmd!
     autocmd FileType cs setlocal
