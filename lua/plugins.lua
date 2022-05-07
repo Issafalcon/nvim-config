@@ -154,7 +154,6 @@ return packer.startup(function(use)
   use("kevinhwang91/nvim-bqf")
 
   -- Terminal
-  use("akinsho/toggleterm.nvim")
   use("voldikss/vim-floaterm")
 
   -- Testing tools
