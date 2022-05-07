@@ -1,9 +1,16 @@
 local lazygit_open = ":FloatermNew --height=0.9 --width=0.9 --wintype=float --name=Lazygit lazygit<CR>"
 local ranger_open = ":FloatermNew --height=0.8 --width=0.8 --wintype=float --name=Ranger --autoclose=2 ranger --cmd='set draw_borders both'<CR>"
 
-vim.api.nvim_set_keymap("n", "<leader>lg", lazygit_open, {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", "-", ranger_open, {noremap = true, silent = true})
+vim.keymap.set("n", "<leader>lg", lazygit_open, {noremap = true, silent = true})
+vim.keymap.set("n", "-", ranger_open, {noremap = true, silent = true})
 
 vim.keymap.set('n', '<c-y>', ":FloatermToggle<CR>")
+vim.keymap.set('n', '<c-t>', ":FloatermNew --wintype=split --name=Terminal<CR>")
 vim.keymap.set('i', '<c-y>', '<ESC>:FloatermToggle<CR>')
+vim.keymap.set('t', '<c-t>', ":FloatermNew")
 vim.keymap.set('t', '<c-y>', '<c-\\><c-n>:FloatermToggle<CR>')
+vim.keymap.set("t", "<esc>", [[<C-\><C-n>]])
+vim.keymap.set("t", "<C-h>", [[<C-\><C-n>:FloatermPrev<CR>]])
+vim.keymap.set("t", "<C-l>", [[<C-\><C-n>:FloatermNext<CR>]])
+vim.keymap.set("t", "<C-j>", [[<C-\><C-n><C-W>j]])
+vim.keymap.set("t", "<C-k>", [[<C-\><C-n><C-W>k]])
