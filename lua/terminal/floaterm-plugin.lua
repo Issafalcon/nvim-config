@@ -1,4 +1,4 @@
-local lazygit_open = ":FloatermNew --height=0.9 --width=0.9 --wintype=float --name=Lazygit --autoclose=0 lazygit<CR>"
+local lazygit_open = ":FloatermNew --height=0.9 --width=0.9 --wintype=float --name=Lazygit lazygit<CR>"
 
 vim.keymap.set("n", "<leader>lg", lazygit_open, {noremap = true, silent = true})
 
