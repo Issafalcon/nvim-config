@@ -15,5 +15,5 @@ vim.cmd([[let g:rnvimr_action = {
 \ }]])
 
 -- Draw border with both
-vim.g.rnvimr_ranger_cmd = 'ranger --cmd="set draw_borders both"'
+-- vim.g.rnvimr_ranger_cmd = 'ranger --cmd="set draw_borders both"'
 vim.api.nvim_set_keymap('n', '-', ':RnvimrToggle<CR>', { noremap = true, silent = true })
