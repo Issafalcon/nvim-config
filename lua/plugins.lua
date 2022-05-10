@@ -170,10 +170,8 @@ return packer.startup(function(use)
   use("theHamsta/nvim-dap-virtual-text")
   use("nvim-telescope/telescope-dap.nvim")
   use("rcarriga/nvim-dap-ui")
-  use({ "michaelb/sniprun", run = "bash install.sh" })
 
-  -- Note taking
-  use("nvim-neorg/neorg")
+  use({ "michaelb/sniprun", run = "bash install.sh" })
 
   --------------------------------------------------------------
   ------------ Language Specific Plugins -----------------------

@@ -214,11 +214,6 @@ _G.packer_plugins = {
     path = "/home/issafalcon/.local/share/nvim/site/pack/packer/start/neo-sharper.nvim",
     url = "/home/issafalcon/repos/neo-sharper.nvim"
   },
-  neorg = {
-    loaded = true,
-    path = "/home/issafalcon/.local/share/nvim/site/pack/packer/start/neorg",
-    url = "https://github.com/nvim-neorg/neorg"
-  },
   ["null-ls.nvim"] = {
     loaded = true,
     path = "/home/issafalcon/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
