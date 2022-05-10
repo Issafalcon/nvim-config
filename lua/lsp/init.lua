@@ -1,5 +1,4 @@
-require("lsp.lsp-installer-plugin")
-require("lsp.lsp-config-plugin")
+require("lsp.lsp-server-setup")
 require("lsp.null-ls-plugin")
 require("lsp.handlers").setup()
 require("lsp.whichkey-reg")

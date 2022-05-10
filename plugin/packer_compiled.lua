@@ -360,6 +360,11 @@ _G.packer_plugins = {
     path = "/home/issafalcon/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
   },
+  ["refactoring.nvim"] = {
+    loaded = true,
+    path = "/home/issafalcon/.local/share/nvim/site/pack/packer/start/refactoring.nvim",
+    url = "https://github.com/ThePrimeagen/refactoring.nvim"
+  },
   rnvimr = {
     loaded = true,
     path = "/home/issafalcon/.local/share/nvim/site/pack/packer/start/rnvimr",

@@ -75,6 +75,7 @@ return packer.startup(function(use)
       require("session-lens").setup()
     end,
   })
+  use("ThePrimeagen/refactoring.nvim")
 
   -- Colours and Icons
   use("marko-cerovac/material.nvim") -- Material Colourscheme

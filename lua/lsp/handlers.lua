@@ -164,11 +164,6 @@ M.on_attach = function(client, bufnr)
   end
 
   if client.name == "omnisharp" then
-    -- if vim.g.colors_name ~= "darkplus" and not vim.o.diff then
-    --   print("Changing Coloursheme For .NET")
-    --   vim.cmd('colorscheme darkplus')
-    -- end
-
     -- Experimental plugin I'm working on
     require("neosharper").on_attach({}, bufnr)
   end
