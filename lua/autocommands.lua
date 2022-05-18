@@ -4,7 +4,11 @@ vim.cmd [[
     autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR> 
     autocmd BufWinEnter * :set formatoptions-=cro
     autocmd FileType qf set nobuflisted
-		
+  augroup end
+
+  augroup _folds
+    autocmd!
+    autocmd BufReadPost,FileReadPost * normal zR
   augroup end
 
 	augroup _highlight_color_overrides
@@ -38,6 +42,7 @@ vim.cmd [[
 			\ softtabstop=4
 			\ noexpandtab
   augroup end
+
   augroup _auto_resize
     autocmd!
     autocmd VimResized * tabdo wincmd = 

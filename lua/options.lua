@@ -39,6 +39,10 @@ vim.opt.guifont = "firacode nerd font:h17"                        -- the font us
 vim.opt.hidden = true
 vim.opt.shortmess:append "c"
 
+-- Folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
 -- Sessions
 vim.opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winpos,terminal"
 
