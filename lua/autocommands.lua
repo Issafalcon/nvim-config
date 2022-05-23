@@ -6,11 +6,6 @@ vim.cmd [[
     autocmd FileType qf set nobuflisted
   augroup end
 
-  augroup _folds
-    autocmd!
-    autocmd BufReadPost,FileReadPost * normal zR
-  augroup end
-
 	augroup _highlight_color_overrides
 		autocmd!
 		"So that listchars show up
@@ -41,6 +36,7 @@ vim.cmd [[
 			\ tabstop=4
 			\ softtabstop=4
 			\ noexpandtab
+      \ foldlevelstart=2
   augroup end
 
   augroup _auto_resize

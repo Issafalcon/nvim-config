@@ -42,6 +42,7 @@ vim.opt.shortmess:append "c"
 -- Folding
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevelstart = 1
 
 -- Sessions
 vim.opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winpos,terminal"
