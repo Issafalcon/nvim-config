@@ -1,1 +1,1 @@
-require("terminal.floaterm-plugin")
+require("terminal.toggleterm-plugin")

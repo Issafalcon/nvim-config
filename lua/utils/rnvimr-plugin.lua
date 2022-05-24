@@ -1,8 +1,14 @@
--- Make Ranger replace netrw and be the file explorer
-vim.g.rnvimr_ex_enable = 1
+-- Make ranger replace Netrw and be the file explorer
+vim.g.rnvimr_enable_ex = 1
 vim.g.rnvimr_draw_border = 1
-vim.g.rnvimr_enable_picker = 0
-vim.g.rnvimr_bw_enable = 1
+
+-- Keep showing Ranger after choosing a file
+vim.g.rnvimr_enable_picker = 1
+vim.g.rnvimr_edit_cmd = 'edit'
+
+-- Make neovim wipe buffers corresponding to files deleted in Ranger
+vim.g.rnvimr_enable_bw = 1
+
 -- Change the border's color
 vim.g.rnvimr_border_attr = { fg = 14, bg = -1 }
 
@@ -15,5 +21,6 @@ vim.cmd([[let g:rnvimr_action = {
 \ }]])
 
 -- Draw border with both
--- vim.g.rnvimr_ranger_cmd = 'ranger --cmd="set draw_borders both"'
+vim.g.rnvimr_ranger_cmd = { 'ranger', '--cmd=set draw_borders both' }
+
 vim.api.nvim_set_keymap('n', '-', ':RnvimrToggle<CR>', { noremap = true, silent = true })
