@@ -131,8 +131,8 @@ return packer.startup(function(use)
   use("jose-elias-alvarez/null-ls.nvim")
 
   -- snippets
-  use("hrsh7th/vim-vsnip") -- snippet completions
-  use("hrsh7th/vim-vsnip-integ")
+  use("L3MON4D3/LuaSnip") -- Best snippet engine
+  use("saadparwaiz1/cmp_luasnip")
   use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
   -- Bufferline (depends on nvim-web-devicons installed above)
