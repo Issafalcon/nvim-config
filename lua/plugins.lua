@@ -62,6 +62,7 @@ return packer.startup(function(use)
   use("mbbill/undotree")
   use("szw/vim-maximizer")
   use("sudormrfbin/cheatsheet.nvim")
+  use("lukas-reineke/indent-blankline.nvim")
   use({
     "svermeulen/vim-easyclip",
     requires = {
@@ -79,7 +80,7 @@ return packer.startup(function(use)
 
   -- Colours and Icons
   use("marko-cerovac/material.nvim") -- Material Colourscheme
-  use({"catppuccin/nvim", as = "catppuccin"})
+  use({ "catppuccin/nvim", as = "catppuccin" })
   use("lunarvim/colorschemes") -- VSCode Like ColourScheme
   use("norcalli/nvim-colorizer.lua") -- HEX and RBG etc Colour Highlighter: https://github.com/norcalli/nvim-colorizer.lua
   use("kyazdani42/nvim-web-devicons") -- Vim devicons with colour: https://github.com/kyazdani42/nvim-web-devicons
@@ -120,6 +121,7 @@ return packer.startup(function(use)
   use({ "nvim-treesitter/playground" })
   use({ "windwp/nvim-ts-autotag" })
   use({ "p00f/nvim-ts-rainbow" })
+  use("simrat39/symbols-outline.nvim")
 
   -- LSP
   use("b0o/schemastore.nvim") -- JSON-ls schemas: https://github.com/b0o/SchemaStore.nvim
@@ -129,6 +131,7 @@ return packer.startup(function(use)
   use("ray-x/lsp_signature.nvim")
   use("onsails/lspkind-nvim")
   use("nvim-lua/lsp-status.nvim")
+  use("folke/trouble.nvim")
   use("jose-elias-alvarez/null-ls.nvim")
 
   -- snippets
@@ -157,7 +160,7 @@ return packer.startup(function(use)
   use("kevinhwang91/nvim-bqf")
 
   -- Terminal
-  use {"akinsho/toggleterm.nvim"}
+  use({ "akinsho/toggleterm.nvim" })
 
   -- Testing tools
   use({
