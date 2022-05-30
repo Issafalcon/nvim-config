@@ -79,6 +79,7 @@ return packer.startup(function(use)
 
   -- Colours and Icons
   use("marko-cerovac/material.nvim") -- Material Colourscheme
+  use({"catppuccin/nvim", as = "catppuccin"})
   use("lunarvim/colorschemes") -- VSCode Like ColourScheme
   use("norcalli/nvim-colorizer.lua") -- HEX and RBG etc Colour Highlighter: https://github.com/norcalli/nvim-colorizer.lua
   use("kyazdani42/nvim-web-devicons") -- Vim devicons with colour: https://github.com/kyazdani42/nvim-web-devicons
