@@ -2,7 +2,7 @@ local opts = {
   settings = {
     cucumber = {
       features = { "**/*.feature" },
-      glue = { "**/Steps/*.cs" },
+      glue = { "**/Steps/*.cs", "**/StepDefinitions/*.cs" },
     },
   },
 }
