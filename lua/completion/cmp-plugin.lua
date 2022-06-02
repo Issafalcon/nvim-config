@@ -50,20 +50,33 @@ cmp.setup({
     end, { "i", "s" }),
   },
   formatting = {
+    fields = {
+      cmp.ItemField.Abbr,
+      cmp.ItemField.Kind,
+      cmp.ItemField.Menu,
+    },
     format = lspkind.cmp_format({
-      with_text = true,
-      menu = {
-        buffer = "[Buffer]",
-        nvim_lsp = "[LSP]",
-        luasnip = "[Snip]",
-        nvim_lua = "[Lua]",
-        latex_symbols = "[Latex]",
-      },
+      mode = "symbol_text",
+      maxwidth = 80,
+      before = function(entry, vim_item)
+        vim_item.menu = ({
+          nvim_lsp = "",
+          nvim_lua = "",
+          treesitter = "",
+          path = "",
+          buffer = "﬘",
+          zsh = "",
+          luasnip = "",
+          spell = "暈",
+        })[entry.source.name]
+        return vim_item
+      end,
     }),
   },
   sources = {
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
+    { name = "treesitter" },
     { name = "luasnip" },
     { name = "npm", keyword_length = 4 },
     { name = "buffer" },
@@ -80,7 +93,7 @@ cmp.setup({
     },
   },
   experimental = {
-    ghost_text = false,
+    ghost_text = true,
     native_menu = false,
   },
 })
