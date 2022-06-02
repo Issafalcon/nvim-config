@@ -145,7 +145,6 @@ return packer.startup(function(use)
   -- File Navigation
   use("kevinhwang91/rnvimr")
   use("kyazdani42/nvim-tree.lua")
-  use("preservim/tagbar")
   use({
     "phaazon/hop.nvim",
     as = "hop",
