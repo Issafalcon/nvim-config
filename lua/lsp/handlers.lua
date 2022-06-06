@@ -16,7 +16,6 @@ M.setup = function()
   end
 
   local config = {
-    virtual_text = true,
     -- show signs
     signs = {
       active = signs,
@@ -130,7 +129,7 @@ local function lsp_keymaps(bufnr, client)
   -- buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   buf_set_keymap("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 
-  buf_set_keymap("n", "<Leader>f", "<cmd>lua vim.lsp.buf.formatting_sync()<CR>", opts)
+  buf_set_keymap("n", "<Leader>f", "<cmd>lua vim.lsp.buf.formatting_sync({}, 1500)<CR>", opts)
 
   buf_set_keymap("v", "<Leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
 

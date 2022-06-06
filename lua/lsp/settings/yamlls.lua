@@ -2,8 +2,11 @@ local opts = {
   settings = {
     yaml = {
       schemas = {
-        kubernetes = "globpattern"
-      }
+        kubernetes = { "*.yaml", "/*.yaml" },
+      },
+      schemaStore = {
+        enable = true,
+      },
     },
   },
 }
