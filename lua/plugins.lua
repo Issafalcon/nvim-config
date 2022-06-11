@@ -162,11 +162,25 @@ return packer.startup(function(use)
   use({ "akinsho/toggleterm.nvim" })
 
   -- Testing tools
-  use({
-    "rcarriga/vim-ultest",
-    requires = { "vim-test/vim-test" },
-    run = ":UpdateRemotePlugins",
-  })
+  -- use({
+  --   "rcarriga/vim-ultest",
+  --   requires = { "vim-test/vim-test" },
+  --   run = ":UpdateRemotePlugins",
+  -- })o
+  use {
+    "nvim-neotest/neotest",
+    requires = {
+      "vim-test/vim-test",
+      "nvim-lua/plenary.nvim",
+      "nvim-neotest/neotest-python",
+      "nvim-neotest/neotest-plenary",
+      "nvim-neotest/neotest-vim-test",
+      "haydenmeade/neotest-jest", -- TODO: Watch for when this becomes part of main nvim-neotest project
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim"
+    }
+  }
+
 
   -- Debugging
   use("mfussenegger/nvim-dap")
