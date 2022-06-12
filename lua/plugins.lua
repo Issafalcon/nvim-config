@@ -128,7 +128,6 @@ return packer.startup(function(use)
   use("neovim/nvim-lspconfig") -- The LSP config
   use("williamboman/nvim-lsp-installer") -- Conveniently install LSPs: https://github.com/williamboman/nvim-lsp-installer
   use("tami5/lspsaga.nvim")
-  use("ray-x/lsp_signature.nvim")
   use("onsails/lspkind-nvim")
   use("nvim-lua/lsp-status.nvim")
   use("folke/trouble.nvim")

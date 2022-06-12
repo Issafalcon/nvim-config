@@ -54,28 +54,19 @@ M.setup = function()
   -- Works with the autoformat on save autocommand that
   -- This will 1. create an autocommand for every buffer to format on save. And then save again after
   -- formatting is done (only if there are no changes to the buffer)
-  vim.lsp.handlers["textDocument/formatting"] = function(err, _, result, _, bufnr)
-    if err ~= nil or result == nil then
-      return
-    end
-    if not vim.api.nvim_buf_get_option(bufnr, "modified") then
-      local view = vim.fn.winsaveview()
-      vim.lsp.util.apply_text_edits(result, bufnr)
-      vim.fn.winrestview(view)
-      if bufnr == vim.api.nvim_get_current_buf() then
-        vim.api.nvim_command("noautocmd :update")
-      end
-    end
-  end
-end
-
-local function lsp_signature_config()
-  require("lsp_signature").on_attach({
-    bind = false,
-    use_lspsaga = true,
-    fix_pos = false,
-    floating_window = false,
-  })
+  -- vim.lsp.handlers["textDocument/formatting"] = function(err, _, result, _, bufnr)
+  --   if err ~= nil or result == nil then
+  --     return
+  --   end
+  --   if not vim.api.nvim_buf_get_option(bufnr, "modified") then
+  --     local view = vim.fn.winsaveview()
+  --     vim.lsp.util.apply_text_edits(result, bufnr)
+  --     vim.fn.winrestview(view)
+  --     if bufnr == vim.api.nvim_get_current_buf() then
+  --       vim.api.nvim_command("noautocmd :update")
+  --     end
+  --   end
+  -- end
 end
 
 local function lsp_highlight_document(client)
@@ -88,19 +79,9 @@ local function lsp_highlight_document(client)
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
-    ]],
+    ]] ,
       false
     )
-  end
-end
-
-local function addAutoFormatOnSave(client)
-  -- Format on save if the lsp has document formattin enabled
-  if client.resolved_capabilities.document_formatting then
-    vim.api.nvim_command([[augroup Format]])
-    vim.api.nvim_command([[autocmd! * <buffer>]])
-    vim.api.nvim_command([[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()]])
-    vim.api.nvim_command([[augroup END]])
   end
 end
 
@@ -108,9 +89,11 @@ local function lsp_keymaps(bufnr, client)
   local function buf_set_keymap(...)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
   end
+
   local function buf_set_option(...)
     vim.api.nvim_buf_set_option(bufnr, ...)
   end
+
   local opts = { noremap = true, silent = true }
 
   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -126,7 +109,6 @@ local function lsp_keymaps(bufnr, client)
   buf_set_keymap("n", "gm", ":lua require('telescope.builtin').lsp_document_symbols()<CR>", opts)
   buf_set_keymap("n", "<leader>ac", ":lua require('telescope.builtin').diagnostics()<CR>", opts)
   buf_set_keymap("n", "K", ":Lspsaga hover_doc<CR>", opts)
-  -- buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   buf_set_keymap("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 
   buf_set_keymap("n", "<Leader>f", "<cmd>lua vim.lsp.buf.formatting_sync({}, 1500)<CR>", opts)
@@ -134,6 +116,7 @@ local function lsp_keymaps(bufnr, client)
   buf_set_keymap("v", "<Leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
 
   buf_set_keymap("n", "<A-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+  buf_set_keymap("i", "<A-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   buf_set_keymap("n", "<leader>ca", ":Lspsaga code_action<CR>", opts)
   buf_set_keymap("v", "<leader>ca", ":<C-U>Lspsaga range_code_action<CR>", opts)
   buf_set_keymap("n", "<leader>sd", ":lua require('telescope.builtin').lsp_definitions()<CR>", opts)
@@ -167,13 +150,22 @@ M.on_attach = function(client, bufnr)
     require("neosharper").on_attach({}, bufnr)
   end
 
+  if client.server_capabilities.signatureHelpProvider then
+    require('lsp.lsp-signature').setup(client)
+  end
+
   lsp_status.on_attach(client)
   lsp_keymaps(bufnr, client)
   lsp_highlight_document(client)
-  lsp_signature_config()
 end
 
 local capabilities = lsp_status.capabilities -- Wraps the standard call to make_client_capabilities on native LSP
+
+-- Taken from https://github.com/ray-x/lsp_signature.nvim/blob/master/tests/init_paq.lua example
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
+-- capabilities.textDocument.completion.completionItem.resolveSupport = {
+--   properties = { "documentation", "detail", "additionalTextEdits" }
+-- }
 
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_ok then
