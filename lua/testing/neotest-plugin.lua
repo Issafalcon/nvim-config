@@ -13,6 +13,6 @@ require("neotest").setup({
   },
 })
 
-keymap('n', '<leader>us', 'lua require("neotest").summary.toggle()', opts)
-keymap('n', '<leader>uf', 'lua require("neotest").run.run(vim.fn.expand("%"))', opts)
-keymap('n', '<leader>un', 'lua require("neotest").run.run()', opts)
+keymap('n', '<leader>us', ':lua require("neotest").summary.toggle()<cr>', opts)
+keymap('n', '<leader>uf', ':lua require("neotest").run.run(vim.fn.expand("%"))<cr>', opts)
+keymap('n', '<leader>un', ':lua require("neotest").run.run()<cr>', opts)
