@@ -1,5 +1,4 @@
 require("lsp.lsp-server-setup")
--- require("lsp.lsp-signature-plugin")
 require("lsp.null-ls-plugin")
 require("lsp.handlers").setup()
 require("lsp.whichkey-reg")
