@@ -151,7 +151,7 @@ M.on_attach = function(client, bufnr)
   end
 
   if client.server_capabilities.signatureHelpProvider then
-    require('lsp-signature-enhanced').setup(client, {})
+    require('lsp-overloads').setup(client, {})
   end
 
   lsp_status.on_attach(client)

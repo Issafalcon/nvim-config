@@ -133,7 +133,7 @@ return packer.startup(function(use)
   use("nvim-lua/lsp-status.nvim")
   use("folke/trouble.nvim")
   use("jose-elias-alvarez/null-ls.nvim")
-  use("~/repos/lsp-signature-enhanced.nvim")
+  use("Issafalcon/lsp-overloads.nvim")
 
   -- snippets
   use("L3MON4D3/LuaSnip") -- Best snippet engine
