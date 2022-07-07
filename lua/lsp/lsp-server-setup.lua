@@ -18,7 +18,8 @@ local servers = {
   yamlls = require("lsp.settings.yamlls"),
   angularls = {},
   cssls = {},
-  tflint = {}
+  tflint = {},
+  sqls = {}
 }
 
 local opts = {

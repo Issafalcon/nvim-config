@@ -225,6 +225,9 @@ return packer.startup(function(use)
   use("hashivim/vim-terraform")
   use("juliosueiras/vim-terraform-completion")
 
+  -- SQL
+  use("nanotee/sqls.nvim")
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
