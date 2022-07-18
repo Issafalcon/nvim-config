@@ -12,7 +12,7 @@ function _G.search_dev_config()
   require("telescope.builtin").find_files(
     {
       prompt_title = "< Config Files >",
-      search_dirs = {"$DOTFILES/nvim/.config/nvim"},
+      search_dirs = { "$DOTFILES/nvim/.config/nvim" },
       hidden = true
     }
   )
@@ -59,11 +59,11 @@ require("telescope").setup {
     prompt_prefix = " ",
     selection_caret = " ",
     file_sorter = require "telescope.sorters".get_fzy_sorter,
-    file_ignore_patterns = {"node_modules"},
+    file_ignore_patterns = { "node_modules" },
     file_previewer = require "telescope.previewers".vim_buffer_cat.new,
     grep_previewer = require "telescope.previewers".vim_buffer_vimgrep.new,
     qflist_previewer = require "telescope.previewers".vim_buffer_qflist.new,
-    path_display = {"smart"},
+    path_display = "smart",
     layout_strategy = "vertical",
     layout_config = {
       vertical = {
@@ -103,38 +103,38 @@ require("telescope").setup {
         ["<C-l>"] = actions.complete_tag,
         ["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
       },
-
-      n = {
-        ["<esc>"] = actions.close,
-        ["<CR>"] = actions.select_default,
-        ["<C-x>"] = actions.select_horizontal,
-        ["<C-v>"] = actions.select_vertical,
-        ["<C-t>"] = actions.select_tab,
-
-        ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-        ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-        ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
-        ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-
-        ["j"] = actions.move_selection_next,
-        ["k"] = actions.move_selection_previous,
-        ["H"] = actions.move_to_top,
-        ["M"] = actions.move_to_middle,
-        ["L"] = actions.move_to_bottom,
-
-        ["<Down>"] = actions.move_selection_next,
-        ["<Up>"] = actions.move_selection_previous,
-        ["gg"] = actions.move_to_top,
-        ["G"] = actions.move_to_bottom,
-
-        ["<C-u>"] = actions.preview_scrolling_up,
-        ["<C-d>"] = actions.preview_scrolling_down,
-
-        ["<PageUp>"] = actions.results_scrolling_up,
-        ["<PageDown>"] = actions.results_scrolling_down,
-
-        ["?"] = actions.which_key,
-      },
+      --
+      -- n = {
+      --   ["<esc>"] = actions.close,
+      --   ["<CR>"] = actions.select_default,
+      --   ["<C-x>"] = actions.select_horizontal,
+      --   ["<C-v>"] = actions.select_vertical,
+      --   ["<C-t>"] = actions.select_tab,
+      --
+      --   ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+      --   ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+      --   ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+      --   ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+      --
+      --   ["j"] = actions.move_selection_next,
+      --   ["k"] = actions.move_selection_previous,
+      --   ["H"] = actions.move_to_top,
+      --   ["M"] = actions.move_to_middle,
+      --   ["L"] = actions.move_to_bottom,
+      --
+      --   ["<Down>"] = actions.move_selection_next,
+      --   ["<Up>"] = actions.move_selection_previous,
+      --   ["gg"] = actions.move_to_top,
+      --   ["G"] = actions.move_to_bottom,
+      --
+      --   ["<C-u>"] = actions.preview_scrolling_up,
+      --   ["<C-d>"] = actions.preview_scrolling_down,
+      --
+      --   ["<PageUp>"] = actions.results_scrolling_up,
+      --   ["<PageDown>"] = actions.results_scrolling_down,
+      --
+      --   ["?"] = actions.which_key,
+      -- },
     }
   },
   pickers = {
