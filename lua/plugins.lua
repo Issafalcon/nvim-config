@@ -144,6 +144,7 @@ return packer.startup(function(use)
   use({ "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" })
 
   -- File Navigation
+  use("ThePrimeagen/harpoon")
   use("kevinhwang91/rnvimr")
   use("kyazdani42/nvim-tree.lua")
   use({
