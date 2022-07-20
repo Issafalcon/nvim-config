@@ -64,13 +64,6 @@ require("telescope").setup({
     qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
     path_display = { "smart" },
     layout_strategy = "vertical",
-    layout_config = {
-      vertical = {
-        height = {
-          padding = 2,
-        },
-      },
-    },
     mappings = {
       i = {
         ["<C-n>"] = actions.cycle_history_next,
