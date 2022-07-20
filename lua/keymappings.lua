@@ -1,4 +1,5 @@
 local opts = { noremap = true, silent = true }
+local maps = require("custom_config").mappings
 
 local term_opts = { silent = true }
 
@@ -20,16 +21,16 @@ vim.g.maplocalleader = " "
 
 -- Normal --
 -- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+keymap("n", maps.change_window.left, "<C-w>h", opts)
+keymap("n", maps.change_window.down, "<C-w>j", opts)
+keymap("n", maps.change_window.up, "<C-w>k", opts)
+keymap("n", maps.change_window.right, "<C-w>l", opts)
 
 -- Resize with arrows
-keymap("n", "<C-Up>", ":resize +2<CR>", opts)
-keymap("n", "<C-Down>", ":resize -2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize +2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize -2<CR>", opts)
+keymap("n", maps.resize_window.up, ":resize +2<CR>", opts)
+keymap("n", maps.resize_window.down, ":resize -2<CR>", opts)
+keymap("n", maps.resize_window.left, ":vertical resize +2<CR>", opts)
+keymap("n", maps.resize_window.right, ":vertical resize -2<CR>", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
