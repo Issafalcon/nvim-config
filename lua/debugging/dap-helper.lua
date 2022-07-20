@@ -1,7 +1,6 @@
 local dap = require("dap")
 local dapUtils = require("dap.utils")
 
-
 local function attachNetCoreDb()
   -- dap.set_log_level("TRACE")
 
@@ -33,7 +32,7 @@ local function launchNetCoreDbg()
 end
 
 local function mochaTestDebug()
-  local file_name = vim.fn.fnamemodify(vim.fn.expand('%'), ':t:r')
+  local file_name = vim.fn.fnamemodify(vim.fn.expand("%"), ":t:r")
   dap.set_log_level("TRACE")
 
   dap.run({
@@ -45,7 +44,7 @@ local function mochaTestDebug()
     args = { "${workspaceFolder}/**/*" .. file_name .. ".js", "--no-timeouts" },
     cwd = "${workspaceFolder}",
     env = { "NODE_ENV='testing'" },
-    sourceMaps = true
+    sourceMaps = true,
     -- outFiles = { "${workspaceFolder}/**/*.js" },
   })
 end
@@ -71,6 +70,21 @@ local function launchBashDebug()
   })
 end
 
+local function attachChromeDebug()
+  dap.set_log_level("TRACE")
+
+  dap.run({
+    type = "chrome",
+    request = "attach",
+    program = "${file}",
+    cwd = vim.fn.getcwd(),
+    sourceMaps = true,
+    protocol = "inspector",
+    port = 9222,
+    webRoot = "${workspaceFolder}",
+  })
+end
+
 local function startDebugLaunch()
   if dap.session() then
     dap.terminate()
@@ -90,7 +104,9 @@ local function startDebugAttach()
     dap.close()
   end
 
-  if vim.bo.filetype == "cs" then
+  if vim.bo.filetype == "typescript" or vim.bo.filetype == "typescriptreact" then
+    attachChromeDebug()
+  elseif vim.bo.filetype == "cs" then
     attachNetCoreDb()
   end
 end

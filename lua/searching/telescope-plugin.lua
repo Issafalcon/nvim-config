@@ -3,25 +3,24 @@ local keymap = vim.api.nvim_set_keymap
 
 local telescope = require("telescope")
 
-telescope.load_extension('fzy_native')
+telescope.load_extension("fzy_native")
 
-local actions = require "telescope.actions"
+local actions = require("telescope.actions")
 
 -- Custom function to search vim config files
 function _G.search_dev_config()
-  require("telescope.builtin").find_files(
-    {
-      prompt_title = "< Config Files >",
-      search_dirs = { "$DOTFILES/nvim/.config/nvim" },
-      hidden = true
-    }
-  )
+  require("telescope.builtin").find_files({
+    prompt_title = "< Config Files >",
+    search_dirs = { "$DOTFILES/nvim/.config/nvim" },
+    hidden = true,
+  })
 end
 
 -- Telescope mappings
-keymap("n",
+keymap(
+  "n",
   "<Leader>ss",
-  ':lua require(\'telescope.builtin\').grep_string({ search = vim.fn.input("Grep For > ")})<CR>',
+  ":lua require('telescope.builtin').grep_string({ search = vim.fn.input(\"Grep For > \")})<CR>",
   opts
 )
 keymap("n", "<leader>sl", ":lua require('searching.telescope-helpers').CustomLiveGrep()<CR>", opts)
@@ -44,7 +43,7 @@ keymap("n", "<A-2>", ":lua require('telescope.builtin').registers()<CR>", opts)
 keymap("n", "<Leader>svc", ":lua require('telescope.builtin').command_history()<CR>", opts)
 keymap("i", "<A-2>", ":lua require('telescope.builtin').registers()<CR>", opts)
 
-require("telescope").setup {
+require("telescope").setup({
   defaults = {
     vimgrep_arguments = {
       "rg",
@@ -54,23 +53,23 @@ require("telescope").setup {
       "--line-number",
       "--column",
       "--smart-case",
-      "--glob=!accounts/"
+      "--glob=!accounts/",
     },
     prompt_prefix = " ",
     selection_caret = " ",
-    file_sorter = require "telescope.sorters".get_fzy_sorter,
+    file_sorter = require("telescope.sorters").get_fzy_sorter,
     file_ignore_patterns = { "node_modules" },
-    file_previewer = require "telescope.previewers".vim_buffer_cat.new,
-    grep_previewer = require "telescope.previewers".vim_buffer_vimgrep.new,
-    qflist_previewer = require "telescope.previewers".vim_buffer_qflist.new,
-    path_display = "smart",
+    file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+    grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+    qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+    path_display = { "smart" },
     layout_strategy = "vertical",
     layout_config = {
       vertical = {
         height = {
-          padding = 4
-        }
-      }
+          padding = 4,
+        },
+      },
     },
     mappings = {
       i = {
@@ -135,7 +134,7 @@ require("telescope").setup {
       --
       --   ["?"] = actions.which_key,
       -- },
-    }
+    },
   },
   pickers = {
     grep_string = {
@@ -147,8 +146,8 @@ require("telescope").setup {
         "--with-filename",
         "--line-number",
         "--column",
-        "--smart-case"
-      }
+        "--smart-case",
+      },
     },
     live_grep = {
       vimgrep_arguments = {
@@ -159,14 +158,14 @@ require("telescope").setup {
         "--with-filename",
         "--line-number",
         "--column",
-        "--smart-case"
-      }
-    }
+        "--smart-case",
+      },
+    },
   },
   extensions = {
     fzy_native = {
       override_generic_sorter = false,
-      override_file_sorter = true
-    }
-  }
-}
+      override_file_sorter = true,
+    },
+  },
+})

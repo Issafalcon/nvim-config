@@ -11,6 +11,7 @@ local servers = {
   omnisharp = require("lsp.settings.omnisharp"),
   terraformls = require("lsp.settings.terraformls"),
   stylelint_lsp = require("lsp.settings.stylelint_lsp"),
+  eslint = {},
   bashls = {},
   dockerls = {},
   html = {},
