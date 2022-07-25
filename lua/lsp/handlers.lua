@@ -143,6 +143,24 @@ M.on_attach = function(client, bufnr)
     local ts_utils = require("nvim-lsp-ts-utils")
     ts_utils.setup({})
     ts_utils.setup_client(client)
+
+    local clients = vim.lsp.buf_get_clients(bufnr)
+    for _, other_client in pairs(clients) do
+      if other_client.name == "angularls" then
+        -- Prevent tsserver rename duplication when angularls is in use
+        client.resolved_capabilities.rename = false
+      end
+    end
+  end
+
+  if client.name == "angularls" then
+    local clients = vim.lsp.buf_get_clients(bufnr)
+    for _, other_client in pairs(clients) do
+      if other_client.name == "tsserver" then
+        -- Prevent tsserver rename duplication when angularls is in use
+        other_client.resolved_capabilities.rename = false
+      end
+    end
   end
 
   if client.name == "omnisharp" then
