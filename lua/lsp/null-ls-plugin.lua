@@ -16,11 +16,8 @@ null_ls.setup({
     formatting.stylua,
     -- Use project-local exe only
     -- https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils#configuring-sources
-    formatting.eslint.with({
-      only_local = "node_modules/.bin"
-    }),
     formatting.eslint_d.with({
-      only_local = "node_modules/.bin"
+      prefer_local = "node_modules/.bin"
     }),
     formatting.shfmt,
     formatting.markdownlint,
