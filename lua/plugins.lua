@@ -91,6 +91,11 @@ return packer.startup(function(use)
     before = "telescope.nvim"
   }
 
+  -- Package manager
+  use { "williamboman/mason.nvim" }
+  use { "williamboman/mason-lspconfig.nvim" }
+  use { "WhoIsSethDaniel/mason-tool-installer.nvim" }
+
   -- Git plugins
   use("lewis6991/gitsigns.nvim")
   use("tpope/vim-fugitive")
@@ -130,7 +135,6 @@ return packer.startup(function(use)
   -- LSP
   use("b0o/schemastore.nvim") -- JSON-ls schemas: https://github.com/b0o/SchemaStore.nvim
   use("neovim/nvim-lspconfig") -- The LSP config
-  use("williamboman/nvim-lsp-installer") -- Conveniently install LSPs: https://github.com/williamboman/nvim-lsp-installer
   use("tami5/lspsaga.nvim")
   use("onsails/lspkind-nvim")
   use("nvim-lua/lsp-status.nvim")

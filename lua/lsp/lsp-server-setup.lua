@@ -1,5 +1,9 @@
--- Nvim-lsp-installer setup to add hooks to the native lsp-config setup functions
-require("nvim-lsp-installer").setup {}
+-- Mason setup to add hooks to the native lsp-config setup functions
+require("mason").setup {}
+require("mason-lspconfig").setup({
+  -- Automatically install all servers in the 'servers' array below
+  automatic_installation = true
+})
 
 -- Add lsp servers from local setup (i.e. Not installed as per nvim-lsp-installer
 local servers = {
@@ -11,6 +15,7 @@ local servers = {
   omnisharp = require("lsp.settings.omnisharp"),
   terraformls = require("lsp.settings.terraformls"),
   stylelint_lsp = require("lsp.settings.stylelint_lsp"),
+  emmet_ls = require("lsp.settings.emmet-ls"),
   bashls = {},
   dockerls = {},
   html = {},
@@ -26,10 +31,6 @@ local opts = {
   on_attach = require("lsp.handlers").on_attach,
   capabilities = require("lsp.handlers").capabilities
 }
-
--- Emmet-ls main repo doesn't support jsx or tsx: https://github.com/aca/emmet-ls/issues/10
--- Until this is fixed install the alternative repo using lsp-config: https://github.com/kozer/emmet-language-server
-servers.emmet_ls = require("lsp.settings.emmet-ls")
 
 for server, config in pairs(servers) do
   local setup_opts = vim.tbl_deep_extend("force", config, opts)

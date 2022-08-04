@@ -1,5 +1,5 @@
 local opts = {
-  cmd = {"emmet-language-server", "--stdio"},
+  cmd = {"emmet-ls", "--stdio"},
   filetypes = {
     "html",
     "typescriptreact",
