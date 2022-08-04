@@ -1,3 +1,7 @@
+local status_ok, spectre = pcall(require, "spectre")
+if not status_ok then
+  return
+end
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
@@ -9,7 +13,7 @@ keymap("n", "<leader>sw", ":lua require('spectre').open_visual({select_word=true
 keymap("v", "<leader>s", ":lua require('spectre').open_visual()<CR>", opts)
 keymap("n", "<leader>sp", "viw:lua require('spectre').open_file_search()<CR>", opts)
 
-require('spectre').setup({
+spectre.setup({
 
   color_devicons = true,
   open_cmd = 'vnew',

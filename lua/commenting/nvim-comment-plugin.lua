@@ -12,21 +12,3 @@ require "nvim-treesitter.configs".setup {
     enable_autocmd = false
   }
 }
-
-local wk = require("which-key")
-
-wk.register(
-  {
-    ["<leader>"] = {
-      ["/"] = {":CommentToggle<CR>", "Comment Toggle", mode = "n"}
-    }
-  }
-)
-
-wk.register(
-  {
-    ["<leader>"] = {
-      ["/"] = {":CommentToggle<CR>", "Comment Toggle", mode = "v"}
-    }
-  }
-)

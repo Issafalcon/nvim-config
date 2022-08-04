@@ -1,7 +1,12 @@
+local status_ok, cheatsheet = pcall(require, "cheatsheet")
+if not status_ok then
+  return
+end
+
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
-require("cheatsheet").setup({
+cheatsheet.setup({
     -- Whether to show bundled cheatsheets
 
     -- For generic cheatsheets like default, unicode, nerd-fonts, etc

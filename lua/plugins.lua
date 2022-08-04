@@ -79,14 +79,17 @@ return packer.startup(function(use)
   use("ThePrimeagen/refactoring.nvim")
 
   -- Colours and Icons
-  use("marko-cerovac/material.nvim") -- Material Colourscheme
   use({ "catppuccin/nvim", as = "catppuccin" })
   use("lunarvim/colorschemes") -- VSCode Like ColourScheme
   use("norcalli/nvim-colorizer.lua") -- HEX and RBG etc Colour Highlighter: https://github.com/norcalli/nvim-colorizer.lua
   use("kyazdani42/nvim-web-devicons") -- Vim devicons with colour: https://github.com/kyazdani42/nvim-web-devicons
 
   -- Key binding / Help plugins
-  use("folke/which-key.nvim") -- Key binding help: https://github.com/folke/which-key.nvim
+  use {
+    "lazytanuki/nvim-mapper",
+    config = function() require("nvim-mapper").setup {} end,
+    before = "telescope.nvim"
+  }
 
   -- Git plugins
   use("lewis6991/gitsigns.nvim")

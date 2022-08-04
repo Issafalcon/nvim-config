@@ -1,7 +1,10 @@
+local status_ok, telescope = pcall(require, "telescope")
+if not status_ok then
+  return
+end
+
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
-
-local telescope = require("telescope")
 
 telescope.load_extension("fzy_native")
 
@@ -39,6 +42,7 @@ keymap("n", "<Leader>sgs", ":lua require('telescope.builtin').git_status()<CR>",
 keymap("n", "<Leader>st", ":lua require('telescope.builtin').colorscheme()<CR>", opts)
 keymap("n", "<Leader>sm", ":lua require('telescope.builtin').marks()<CR>", opts)
 keymap("n", "<Leader>sr", ":lua require('telescope.builtin').registers()<CR>", opts)
+keymap("n", "<Leader>sas", ":lua require('session-lens').search_session()<CR>", opts)
 keymap("n", "<A-2>", ":lua require('telescope.builtin').registers()<CR>", opts)
 keymap("n", "<Leader>svc", ":lua require('telescope.builtin').command_history()<CR>", opts)
 keymap("i", "<A-2>", ":lua require('telescope.builtin').registers()<CR>", opts)
