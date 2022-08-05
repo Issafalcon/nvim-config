@@ -1,8 +1,12 @@
+local status_ok, hop = pcall(require, "hop")
+if not status_ok then
+  return
+end
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
-require("hop").setup()
+hop.setup()
 
 keymap("n", '<leader><leader>w', "<cmd>lua require'hop'.hint_words()<cr>", opts)
 keymap("n", '<leader><leader>o', "<cmd>lua require'hop'.hint_char1()<cr>", opts)
