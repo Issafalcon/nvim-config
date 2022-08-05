@@ -1,11 +1,11 @@
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 local dap = require('dap')
-local home_path = ''
+local home_path
 if vim.fn.has('wsl') or vim.fn.has('unix') then
-  home_path = os.getenv('HOME')
+  home_path = os.getenv('HOME') or ''
 else
-  home_path = os.getenv('USERPROFILE')
+  home_path = os.getenv('USERPROFILE') or ''
 end
 
 print(home_path)
