@@ -98,6 +98,7 @@ return packer.startup(function(use)
 
   -- Git plugins
   use("lewis6991/gitsigns.nvim")
+  use("kdheepak/lazygit.nvim")
   use("tpope/vim-fugitive")
   use("tpope/vim-rhubarb") -- Browse Github URLs
   use("rhysd/git-messenger.vim") -- Show commits under the cursor
@@ -167,15 +168,6 @@ return packer.startup(function(use)
   -- Quickfix / Location lists
   use("kevinhwang91/nvim-bqf")
 
-  -- Terminal
-  use({ "akinsho/toggleterm.nvim" })
-
-  -- Testing tools
-  -- use({
-  --   "rcarriga/vim-ultest",
-  --   requires = { "vim-test/vim-test" },
-  --   run = ":UpdateRemotePlugins",
-  -- })o
   use {
     "nvim-neotest/neotest",
     requires = {
