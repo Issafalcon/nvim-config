@@ -1,6 +1,13 @@
 local dap = require("dap")
 local dapUtils = require("dap.utils")
 
+local home_path
+if vim.fn.has('wsl') or vim.fn.has('unix') then
+  home_path = os.getenv('HOME')
+else
+  home_path = os.getenv('USERPROFILE')
+end
+
 local function attachNetCoreDb()
   -- dap.set_log_level("TRACE")
 
@@ -61,8 +68,8 @@ local function launchBashDebug()
     pathCat = "cat",
     pathMkfifo = "mkfifo",
     pathPkill = "pkill",
-    pathBashdb = { os.getenv("HOME") .. "/debug-adapters/vscode-bash-debug/bashdb_dir/bashdb" },
-    pathBashdbLib = { os.getenv("HOME") .. "/debug-adapters/vscode-bash-debug/bashdb_dir" },
+    pathBashdb = { home_path .. "/debug-adapters/vscode-bash-debug/bashdb_dir/bashdb" },
+    pathBashdbLib = { home_path .. "/debug-adapters/vscode-bash-debug/bashdb_dir" },
     terminalKind = "integrated",
     args = function()
       return vim.fn.split(vim.fn.input("Scripts args:"))
