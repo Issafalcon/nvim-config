@@ -1,14 +1,9 @@
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 local dap = require('dap')
-local home_path
-if vim.fn.has('wsl') or vim.fn.has('unix') then
-  home_path = os.getenv('HOME') or ''
-else
-  home_path = os.getenv('USERPROFILE') or ''
-end
+local path = require("utils.path")
 
-print(home_path)
+local install_dir = path.concat{ vim.fn.stdpath "data", "mason" }
 -- Settings
 dap.defaults.fallback.terminal_win_cmd = '80vsplit new'
 vim.fn.sign_define('DapBreakpoint', {text='🟥', texthl='', linehl='', numhl=''})
@@ -27,13 +22,13 @@ vim.cmd [[
 dap.adapters.node2 = {
   type = 'executable',
   command = 'node',
-  args = {home_path .. '/debug-adapters/vscode-node-debug2/out/src/nodeDebug.js'}
+  args = {install_dir .. '/packages/node-debug2-adapter/out/src/nodeDebug.js'}
 }
 
 dap.adapters.chrome = {
   type = 'executable',
   command = 'node',
-  args = {home_path .. '/debug-adapters/vscode-chrome-debug/out/src/chromeDebug.js'}
+  args = {install_dir .. '/packages/chrome-debug-adapter/out/src/chromeDebug.js'}
 }
 
 dap.adapters.netcoredbg = {
@@ -45,7 +40,7 @@ dap.adapters.netcoredbg = {
 dap.adapters.bashdb = {
   type = 'executable',
   command = 'node',
-  args = {home_path .. '/debug-adapters/vscode-bash-debug/out/bashDebug.js'}
+  args = {install_dir .. '/packages/vscode-bash-debug/out/bashDebug.js'}
 }
 
 -- Mappings
