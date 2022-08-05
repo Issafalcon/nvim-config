@@ -1,16 +1,3 @@
--- Mason setup to add hooks to the native lsp-config setup functions
-local status_ok, mason = pcall(require, "mason")
-if mason then
-  mason.setup {}
-end
-local status_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
-if mason_lspconfig then
-  mason_lspconfig.setup({
-    -- Automatically install all servers in the 'servers' array below
-    automatic_installation = true
-  })
-end
-
 -- Add lsp servers from local setup (i.e. Not installed as per nvim-lsp-installer
 local servers = {
   jsonls = require("lsp.settings.jsonls"),

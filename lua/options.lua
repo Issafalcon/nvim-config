@@ -63,8 +63,6 @@ vim.cmd "syntax on"
 vim.cmd "filetype plugin indent on"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set iskeyword+=@]]
--- vim.cmd [[set list]]
--- vim.cmd [[set listchars=tab:\⍿·,eol:·,trail:\×,multispace:···]]
 
 -- Using winyank for wsl
 if vim.fn.has("wsl") == 1 then

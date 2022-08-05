@@ -153,7 +153,9 @@ return packer.startup(function(use)
 
   -- File Navigation
   use("ThePrimeagen/harpoon")
-  use("kevinhwang91/rnvimr")
+  if vim.fn.has('wsl') or vim.fn.has('unix') then
+    use("kevinhwang91/rnvimr")
+  end
   use("kyazdani42/nvim-tree.lua")
   use({
     "phaazon/hop.nvim",
