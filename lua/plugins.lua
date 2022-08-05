@@ -212,7 +212,7 @@ return packer.startup(function(use)
   use("rafcamlet/nvim-luapad")
 
   -- .NET / C#
-  use("~/repos/neo-sharper.nvim")
+  use({ "Issafalcon/neo-sharper.nvim", branch = "plugin-testing" })
   use("J0rgeSerran0/vscode-csharp-snippets")
   use("Hoffs/omnisharp-extended-lsp.nvim")
 
