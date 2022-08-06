@@ -7,8 +7,8 @@ if not status_ok then
 end
 
 auto_session.setup({
-  auto_session_enabled = false,
   auto_session_create_enabled = false,
+  auto_save_enabled = false,
   auto_session_use_git_branch = true
 })
 
@@ -17,6 +17,9 @@ if not lens_status_ok then
   return
 end
 
-session_lens.setup()
+session_lens.setup({
+  path_display = { 'shorten' },
+  previewer = true
+})
 
 vim.api.nvim_set_keymap("n", "<leader>sl", ":lua require('session-lens').search_session()<cr>", { silent = true, noremap = true })
