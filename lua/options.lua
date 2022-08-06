@@ -53,8 +53,6 @@ vim.opt.fillchars = {
   verthoriz = '█',
 }
 
--- Sessions
-vim.opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winpos,terminal"
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd "set inccommand=split"

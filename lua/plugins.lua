@@ -69,14 +69,13 @@ return packer.startup(function(use)
       "tpope/vim-repeat",
     },
   })
+  use("ThePrimeagen/refactoring.nvim")
+
+  -- Session management
   use({
     "rmagatti/session-lens", -- Saves sessions after closing nvim
     requires = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
-    config = function()
-      require("session-lens").setup()
-    end,
   })
-  use("ThePrimeagen/refactoring.nvim")
 
   -- Colours and Icons
   use({ "catppuccin/nvim", as = "catppuccin" })

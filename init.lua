@@ -7,6 +7,7 @@ require "helpers"
 
 require "utils"
 require "version-control"
+require "sessions"
 require "completion"
 require "searching"
 require "lsp"

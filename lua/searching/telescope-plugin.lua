@@ -26,7 +26,6 @@ keymap(
   ":lua require('telescope.builtin').grep_string({ search = vim.fn.input(\"Grep For > \")})<CR>",
   opts
 )
-keymap("n", "<leader>sl", ":lua require('searching.telescope-helpers').CustomLiveGrep()<CR>", opts)
 keymap("n", "<C-p>", ":lua require('telescope.builtin').git_files()<CR>", opts)
 keymap("n", "<Leader>sf", ":lua require('telescope.builtin').find_files({hidden = true})<CR>", opts)
 
