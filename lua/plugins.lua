@@ -63,14 +63,13 @@ return packer.startup(function(use)
   use("szw/vim-maximizer")
   use("sudormrfbin/cheatsheet.nvim")
   use("lukas-reineke/indent-blankline.nvim")
-  use({
-    "svermeulen/vim-easyclip",
-    requires = {
-      "tpope/vim-repeat",
-    },
-  })
   use("ThePrimeagen/refactoring.nvim")
-
+  use {
+    "AckslD/nvim-neoclip.lua",
+    requires = {
+      { 'kkharji/sqlite.lua', module = 'sqlite' },
+    }
+  }
   -- Session management
   use({
     "rmagatti/session-lens", -- Saves sessions after closing nvim
@@ -97,7 +96,6 @@ return packer.startup(function(use)
 
   -- Git plugins
   use("lewis6991/gitsigns.nvim")
-  use("kdheepak/lazygit.nvim")
   use("tpope/vim-fugitive")
   use("tpope/vim-rhubarb") -- Browse Github URLs
   use("rhysd/git-messenger.vim") -- Show commits under the cursor
