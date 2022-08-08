@@ -1,9 +1,9 @@
 require "nvim-treesitter.configs".setup {
   ensure_installed = "all", -- one of "all" or a list of languages
-  ignore_install = {"haskell"},
+  ignore_install = { "haskell, phpdoc" },
   highlight = {
     enable = true, -- false will disable the whole extension
-    disable = {"latex"},
+    disable = { "latex" },
     additional_vim_regex_highlighting = true
   },
   rainbow = {
@@ -17,7 +17,7 @@ require "nvim-treesitter.configs".setup {
       "yaml"
     }
   },
-  autotag = {enable = true},
+  autotag = { enable = true },
   textobjects = {
     select = {
       enable = true,
@@ -53,8 +53,8 @@ require "nvim-treesitter.configs".setup {
     },
     swap = {
       enable = true,
-      swap_next = {["<leader>xp"] = "@parameter.inner"},
-      swap_previous = {["<leader>xP"] = "@parameter.inner"}
+      swap_next = { ["<leader>xp"] = "@parameter.inner" },
+      swap_previous = { ["<leader>xP"] = "@parameter.inner" }
     },
     lsp_interop = {
       enable = true,
