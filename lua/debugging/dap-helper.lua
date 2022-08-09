@@ -6,7 +6,7 @@ end
 local dapUtils = require("dap.utils")
 local path = require("utils.path")
 
-local install_dir = path.concat(vim.fn.stdpath, "data", "mason")
+local install_dir = path.concat({ vim.fn.stdpath("data"), "mason" })
 
 local function attachNetCoreDb()
   -- dap.set_log_level("TRACE")
