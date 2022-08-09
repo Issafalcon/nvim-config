@@ -67,14 +67,5 @@ keymap("n", '<A-k>', ':m .-2<CR>==', opts)
 keymap("n", "<leader>n", ":lua require('utils.UI').ToggleLineNumbers()<CR>", term_opts)
 keymap("n", "<leader>rn", ":lua require('utils.UI').ToggleRelativeLineNumbers()<CR>", term_opts)
 
--- Use non-yank register for deletes and chagnes
-keymap("n", 'd', '"dd', opts)
-keymap("n", 'D', '"dD', opts)
-keymap("n", 'dd', '"ddd', opts)
-keymap("n", 'c', '"dd', opts)
-keymap("n", 'C', '"dD', opts)
-keymap("n", 'cc', '"ddd', opts)
+-- Use non-yank register for character deletes
 keymap("n", 'x', '"_x', opts)
-keymap("n", '<leader>p', '"dp', opts)
-keymap("n", '<leader>P', '"dP', opts)
-
