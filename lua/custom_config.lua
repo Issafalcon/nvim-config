@@ -38,7 +38,11 @@ M.mappings = {
   },
   -- Searching with telescope and nvim-spectre
   search = {
+    open_panel = '<leader>S',
     string = '<leader>ss',
+    current_word = '<leader>sw',
+    current_selection = '<leader>s',
+    text_in_current_file = '<leader>sp',
     git_files = '<C-p>',
     git_commits = '<leader>sgc',
     git_branch_commits = '<leader>sgf',

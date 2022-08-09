@@ -46,7 +46,6 @@ return packer.startup(function(use)
   use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
 
   -- Searching
-  use("junegunn/fzf")
   use("nvim-telescope/telescope-fzy-native.nvim")
   use("nvim-telescope/telescope.nvim")
   use("windwp/nvim-spectre")

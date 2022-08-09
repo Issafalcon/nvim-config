@@ -3,18 +3,18 @@ if not status_ok then
   return
 end
 local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
+local maps = require("custom_config").mappings
+local mapper = require("utils.mapper")
 
-keymap("n", "<leader>S", ":lua require('spectre').open()<CR>", opts)
+mapper.map("n", maps.search.open_panel, ":lua require('spectre').open()<CR>", opts, "Search", "open_panel", "Open the search panel")
 
 -- Search current word
-keymap("n", "<leader>sw", ":lua require('spectre').open_visual({select_word=true})<CR>", opts)
+mapper.map("n", maps.search.current_word, ":lua require('spectre').open_visual({select_word=true})<CR>", opts, "Search", "search_current_word", "Search for current word")
 
-keymap("v", "<leader>s", ":lua require('spectre').open_visual()<CR>", opts)
-keymap("n", "<leader>sp", "viw:lua require('spectre').open_file_search()<CR>", opts)
+mapper.map("v", maps.search.current_selection, ":lua require('spectre').open_visual()<CR>", opts, "Search", "search_current_selection", "Search for currently selected text")
+mapper.map("n", maps.search.text_in_current_file, "viw:lua require('spectre').open_file_search()<CR>", opts, "Search", "text_curr", "Search for text in current file")
 
 spectre.setup({
-
   color_devicons = true,
   open_cmd = 'vnew',
   live_update = true, -- auto excute search again when you write any file in vim
