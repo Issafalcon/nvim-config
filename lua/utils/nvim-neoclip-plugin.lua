@@ -5,4 +5,4 @@ end
 
 neoclip.setup();
 
-vim.api.nvim_set_keymap("n", "<leader>sy", ":Telescope neoclip<cr>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>sy", ":Telescope neoclip default<cr>", {noremap = true, silent = true})

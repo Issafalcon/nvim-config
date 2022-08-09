@@ -4,9 +4,11 @@ if not status_ok then
 end
 
 local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
+local maps = require("custom_config").mappings
+local mapper = require("utils.mapper")
 
 telescope.load_extension("fzy_native")
+telescope.load_extension("mapper")
 
 local actions = require("telescope.actions")
 
@@ -20,31 +22,142 @@ function _G.search_dev_config()
 end
 
 -- Telescope mappings
-keymap(
+mapper.map(
   "n",
   "<Leader>ss",
   ":lua require('telescope.builtin').grep_string({ search = vim.fn.input(\"Grep For > \")})<CR>",
-  opts
+  opts,
+  "Search",
+  "search_string",
+  "Search (grep) for string"
 )
-keymap("n", "<C-p>", ":lua require('telescope.builtin').git_files()<CR>", opts)
-keymap("n", "<Leader>sf", ":lua require('telescope.builtin').find_files({hidden = true})<CR>", opts)
+mapper.map(
+  "n",
+  maps.search.git_files,
+  ":lua require('telescope.builtin').git_files()<CR>",
+  opts,
+  "Search",
+  "search_git_files",
+  "Search for files registered in git"
+)
+mapper.map(
+  "n",
+  maps.search.all_files,
+  ":lua require('telescope.builtin').find_files({hidden = true})<CR>",
+  opts,
+  "Search",
+  "search_all_files",
+  "Search in all files"
+)
 
--- Function replaced with nvim-spectre
--- keymap("n", "<Leader>sw", ':lua require(\'telescope.builtin\').grep_string { search = vim.fn.expand("<cword>") }<CR>', opts)
-keymap("n", "<Leader>sb", ":lua require('telescope.builtin').buffers()<CR>", opts)
-keymap("n", "<Leader>sh", ":lua require('telescope.builtin').help_tags()<CR>", opts)
-keymap("n", "<Leader>sc", ":lua search_dev_config()<CR>", opts)
-keymap("n", "<Leader>sgc", ":lua require('telescope.builtin').git_commits()<CR>", opts)
-keymap("n", "<Leader>sgf", ":lua require('telescope.builtin').git_bcommits()<CR>", opts)
-keymap("n", "<Leader>sgb", ":lua require('telescope.builtin').git_branches()<CR>", opts)
-keymap("n", "<Leader>sgs", ":lua require('telescope.builtin').git_status()<CR>", opts)
-keymap("n", "<Leader>st", ":lua require('telescope.builtin').colorscheme()<CR>", opts)
-keymap("n", "<Leader>sm", ":lua require('telescope.builtin').marks()<CR>", opts)
-keymap("n", "<Leader>sr", ":lua require('telescope.builtin').registers()<CR>", opts)
-keymap("n", "<Leader>sas", ":lua require('session-lens').search_session()<CR>", opts)
-keymap("n", "<A-2>", ":lua require('telescope.builtin').registers()<CR>", opts)
-keymap("n", "<Leader>svc", ":lua require('telescope.builtin').command_history()<CR>", opts)
-keymap("i", "<A-2>", ":lua require('telescope.builtin').registers()<CR>", opts)
+mapper.map(
+  "n",
+  maps.search.buffers,
+  ":lua require('telescope.builtin').buffers()<CR>",
+  opts,
+  "Search",
+  "search_buffers",
+  "Search for buffers"
+)
+mapper.map(
+  "n",
+  maps.search.help_tags,
+  ":lua require('telescope.builtin').help_tags()<CR>",
+  opts,
+  "Search",
+  "search_help_tags",
+  "Search for help tags"
+)
+mapper.map(
+  "n",
+  maps.search.nvim_config,
+  ":lua search_dev_config()<CR>",
+  opts,
+  "Search",
+  "search_dev_config",
+  "Search for neovim config files"
+)
+mapper.map(
+  "n",
+  maps.search.git_commits,
+  ":lua require('telescope.builtin').git_commits()<CR>",
+  opts,
+  "Search",
+  "search_git_commits",
+  "Search for git commits"
+)
+mapper.map(
+  "n",
+  maps.search.git_branch_commits,
+  ":lua require('telescope.builtin').git_bcommits()<CR>",
+  opts,
+  "Search",
+  "search_git_branch_commits",
+  "Search for git branch commits"
+)
+mapper.map(
+  "n",
+  maps.search.git_branches,
+  ":lua require('telescope.builtin').git_branches()<CR>",
+  opts,
+  "Search",
+  "search_git_branches",
+  "Search for git branches"
+)
+mapper.map(
+  "n",
+  maps.search.git_status,
+  ":lua require('telescope.builtin').git_status()<CR>",
+  opts,
+  "Search",
+  "search_git_status",
+  "Search for git status"
+)
+mapper.map(
+  "n",
+  maps.search.colourscheme,
+  ":lua require('telescope.builtin').colorscheme()<CR>",
+  opts,
+  "Search",
+  "search_colourscheme",
+  "Search for colourschemes"
+)
+mapper.map(
+  "n",
+  maps.search.marks,
+  ":lua require('telescope.builtin').marks()<CR>",
+  opts,
+  "Search",
+  "search_marks",
+  "Search for marks"
+)
+mapper.map(
+  "n",
+  maps.search.registers,
+  ":lua require('telescope.builtin').registers()<CR>",
+  opts,
+  "Search",
+  "search_registers",
+  "Search for registers"
+)
+mapper.map(
+  "n",
+  maps.search.vim_command_history,
+  ":lua require('telescope.builtin').command_history()<CR>",
+  opts,
+  "Search",
+  "search_vim_command_history",
+  "Search for vim command history"
+)
+mapper.map(
+  "i",
+  maps.search.registers_insert,
+  ":lua require('telescope.builtin').registers()<CR>",
+  opts,
+  "Search",
+  "search_registers_insert",
+  "Search for registers when in insert mode"
+)
 
 require("telescope").setup({
   defaults = {

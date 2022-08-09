@@ -1,6 +1,6 @@
 local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
 local maps = require("custom_config").mappings
+local mapper = require("utils.mapper")
 
 -- QF List toggle and navigation
 vim.g.issafalcon_qf_g = 0
@@ -27,5 +27,5 @@ function _G.ToggleQFList(global)
 end
 
 -- Vim-unimpaired has "[" and "]" to navigate next and previous items in both lists
-keymap('n', maps.toggle_lists.quickfix, ':lua ToggleQFList(1)<CR>', opts)
-keymap('n', maps.toggle_lists.loclist, ':lua ToggleQFList(0)<CR>', opts)
+mapper.map('n', maps.toggle_lists.quickfix, ':lua ToggleQFList(1)<CR>', opts, "Quickfix", "qf_toggle", "Toggle the quickfix list")
+mapper.map('n', maps.toggle_lists.loclist, ':lua ToggleQFList(0)<CR>', opts, "Location List", "loc_toggle", "Toggles the location list")
