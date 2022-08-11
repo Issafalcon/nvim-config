@@ -63,12 +63,7 @@ return packer.startup(function(use)
   use("sudormrfbin/cheatsheet.nvim")
   use("lukas-reineke/indent-blankline.nvim")
   use("ThePrimeagen/refactoring.nvim")
-  use {
-    "AckslD/nvim-neoclip.lua",
-    requires = {
-      { 'kkharji/sqlite.lua', module = 'sqlite' }
-    }
-  }
+  use({ "svermeulen/vim-easyclip" })
 
   -- Session management
   use({
@@ -83,16 +78,18 @@ return packer.startup(function(use)
   use("kyazdani42/nvim-web-devicons") -- Vim devicons with colour: https://github.com/kyazdani42/nvim-web-devicons
 
   -- Key binding / Help plugins
-  use {
+  use({
     "lazytanuki/nvim-mapper",
-    config = function() require("nvim-mapper").setup {} end,
-    before = "telescope.nvim"
-  }
+    config = function()
+      require("nvim-mapper").setup({})
+    end,
+    before = "telescope.nvim",
+  })
 
   -- Package manager
-  use { "williamboman/mason.nvim" }
-  use { "williamboman/mason-lspconfig.nvim" }
-  use { "WhoIsSethDaniel/mason-tool-installer.nvim" }
+  use({ "williamboman/mason.nvim" })
+  use({ "williamboman/mason-lspconfig.nvim" })
+  use({ "WhoIsSethDaniel/mason-tool-installer.nvim" })
 
   -- Git plugins
   use("lewis6991/gitsigns.nvim")
@@ -150,7 +147,7 @@ return packer.startup(function(use)
 
   -- File Navigation
   use("ThePrimeagen/harpoon")
-  if vim.fn.has('wsl') or vim.fn.has('unix') then
+  if vim.fn.has("wsl") or vim.fn.has("unix") then
     use("kevinhwang91/rnvimr")
   end
   use("kyazdani42/nvim-tree.lua")
@@ -167,7 +164,7 @@ return packer.startup(function(use)
   -- Quickfix / Location lists
   use("kevinhwang91/nvim-bqf")
 
-  use {
+  use({
     "nvim-neotest/neotest",
     requires = {
       "vim-test/vim-test",
@@ -177,10 +174,9 @@ return packer.startup(function(use)
       "nvim-neotest/neotest-vim-test",
       "haydenmeade/neotest-jest", -- TODO: Watch for when this becomes part of main nvim-neotest project
       "nvim-treesitter/nvim-treesitter",
-      "antoinemadec/FixCursorHold.nvim"
-    }
-  }
-
+      "antoinemadec/FixCursorHold.nvim",
+    },
+  })
 
   -- Debugging
   use("mfussenegger/nvim-dap")
