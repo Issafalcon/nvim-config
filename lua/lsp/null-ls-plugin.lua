@@ -17,25 +17,19 @@ null_ls.setup({
     -- Use project-local exe only
     -- https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils#configuring-sources
     formatting.eslint_d.with({
-      prefer_local = "node_modules/.bin"
+      only_local = "node_modules/.bin"
     }),
     formatting.shfmt,
     formatting.markdownlint,
     diagnostics.yamllint,
     diagnostics.shellcheck,
     diagnostics.vint,
-    diagnostics.eslint.with({
-      only_local = "node_modules/.bin"
-    }),
     diagnostics.eslint_d.with({
       only_local = "node_modules/.bin"
     }),
     diagnostics.chktex,
     code_actions.eslint.with({
-      only_local = "node_modules/.bin"
-    }),
-    code_actions.eslint_d.with({
-      only_local = "node_modules/.bin"
+      prefer_local = "node_modules/.bin"
     }),
     code_actions.refactoring
   },
