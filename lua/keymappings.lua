@@ -211,3 +211,6 @@ mapper.map(
 
 -- Use non-yank register for character deletes
 mapper.map("n", "x", '"_x', opts, "Editing", "delete_char", "Delete character override, preventing it from occupying yank register")
+
+-- Terminal navigation
+mapper.map("t", "<esc>", [[<C-\><C-n>]], opts, "Terminal", "terminal_escape", "Enter normal mode in terminal")
