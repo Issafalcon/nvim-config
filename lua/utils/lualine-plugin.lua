@@ -6,7 +6,7 @@ end
 
 lualine.setup({
   options = {
-    theme = "catppuccin",
+    theme = "dracula",
     icons_enabled = true,
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
@@ -32,7 +32,7 @@ lualine.setup({
       lualine_custom.nvim_diagnostics_error(),
       lualine_custom.nvim_diagnostics_warn(),
       { "filename", file_status = false, path = 1 },
-      { lualine_custom.modified, color = { bg = lualine_custom.colors.red } },
+      -- { lualine_custom.modified, color = { bg = lualine_custom.colors.red } },
       {
         "%w",
         cond = function()
@@ -56,7 +56,6 @@ lualine.setup({
       {
         "require'lsp-status'.status()",
         color = {
-          bg = lualine_custom.colors.purple,
           fg = lualine_custom.colors.green,
         },
       },
