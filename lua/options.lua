@@ -44,13 +44,13 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevelstart = 99
 vim.opt.fillchars = {
-  horiz = '█',
-  horizup = '█',
-  horizdown = '█',
-  vert = '█',
-  vertleft = '█',
-  vertright = '█',
-  verthoriz = '█',
+  horiz = '-',
+  horizup = '-',
+  horizdown = '-',
+  vert = '|',
+  vertleft = '|',
+  vertright = '|',
+  verthoriz = '|',
 }
 
 
