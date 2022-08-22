@@ -138,7 +138,7 @@ return packer.startup(function(use)
   use("Issafalcon/lsp-overloads.nvim")
 
   -- snippets
-  use("L3MON4D3/LuaSnip") -- Best snippet engine
+  use({ "L3MON4D3/LuaSnip", commit = "fc25e77d74efb06033355b2175e2f5b78d15e7df" }) -- Best snippet engine
   use("saadparwaiz1/cmp_luasnip")
   use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 

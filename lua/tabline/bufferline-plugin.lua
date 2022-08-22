@@ -1,75 +1,75 @@
 local custom_highlights = {
   fill = {
-    fg = {attribute = "fg", highlight = "#ff0000"},
-    bg = {attribute = "bg", highlight = "TabLine"}
+    fg = { attribute = "fg", highlight = "#ff0000" },
+    bg = { attribute = "bg", highlight = "TabLine" },
   },
   background = {
-    fg = {attribute = "fg", highlight = "TabLine"},
-    bg = {attribute = "bg", highlight = "TabLine"}
+    fg = { attribute = "fg", highlight = "TabLine" },
+    bg = { attribute = "bg", highlight = "TabLine" },
   },
   buffer_visible = {
-    fg = {attribute = "fg", highlight = "TabLine"},
-    bg = {attribute = "bg", highlight = "TabLine"}
+    fg = { attribute = "fg", highlight = "TabLine" },
+    bg = { attribute = "bg", highlight = "TabLine" },
   },
   close_button = {
-    fg = {attribute = "fg", highlight = "TabLine"},
-    bg = {attribute = "bg", highlight = "TabLine"}
+    fg = { attribute = "fg", highlight = "TabLine" },
+    bg = { attribute = "bg", highlight = "TabLine" },
   },
   close_button_visible = {
-    fg = {attribute = "fg", highlight = "TabLine"},
-    bg = {attribute = "bg", highlight = "TabLine"}
+    fg = { attribute = "fg", highlight = "TabLine" },
+    bg = { attribute = "bg", highlight = "TabLine" },
   },
   tab_selected = {
-    fg = {attribute = "fg", highlight = "Normal"},
-    bg = {attribute = "bg", highlight = "Normal"}
+    fg = { attribute = "fg", highlight = "Normal" },
+    bg = { attribute = "bg", highlight = "Normal" },
   },
   tab = {
-    fg = {attribute = "fg", highlight = "TabLine"},
-    bg = {attribute = "bg", highlight = "TabLine"}
+    fg = { attribute = "fg", highlight = "TabLine" },
+    bg = { attribute = "bg", highlight = "TabLine" },
   },
   tab_close = {
-    fg = {attribute = "fg", highlight = "TabLineSel"},
-    bg = {attribute = "bg", highlight = "Normal"}
+    fg = { attribute = "fg", highlight = "TabLineSel" },
+    bg = { attribute = "bg", highlight = "Normal" },
   },
   duplicate_selected = {
-    fg = {attribute = "fg", highlight = "TabLineSel"},
-    bg = {attribute = "bg", highlight = "TabLineSel"},
+    fg = { attribute = "fg", highlight = "TabLineSel" },
+    bg = { attribute = "bg", highlight = "TabLineSel" },
   },
   duplicate_visible = {
-    fg = {attribute = "fg", highlight = "TabLine"},
-    bg = {attribute = "bg", highlight = "TabLine"},
+    fg = { attribute = "fg", highlight = "TabLine" },
+    bg = { attribute = "bg", highlight = "TabLine" },
   },
   duplicate = {
-    fg = {attribute = "fg", highlight = "TabLine"},
-    bg = {attribute = "bg", highlight = "TabLine"},
+    fg = { attribute = "fg", highlight = "TabLine" },
+    bg = { attribute = "bg", highlight = "TabLine" },
   },
   modified = {
-    fg = {attribute = "fg", highlight = "TabLine"},
-    bg = {attribute = "bg", highlight = "TabLine"}
+    fg = { attribute = "fg", highlight = "TabLine" },
+    bg = { attribute = "bg", highlight = "TabLine" },
   },
   modified_selected = {
-    fg = {attribute = "fg", highlight = "Normal"},
-    bg = {attribute = "bg", highlight = "Normal"}
+    fg = { attribute = "fg", highlight = "Normal" },
+    bg = { attribute = "bg", highlight = "Normal" },
   },
   modified_visible = {
-    fg = {attribute = "fg", highlight = "TabLine"},
-    bg = {attribute = "bg", highlight = "TabLine"}
+    fg = { attribute = "fg", highlight = "TabLine" },
+    bg = { attribute = "bg", highlight = "TabLine" },
   },
   separator = {
-    fg = {attribute = "bg", highlight = "TabLine"},
-    bg = {attribute = "bg", highlight = "TabLine"}
+    fg = { attribute = "bg", highlight = "TabLine" },
+    bg = { attribute = "bg", highlight = "TabLine" },
   },
   separator_selected = {
-    fg = {attribute = "bg", highlight = "Normal"},
-    bg = {attribute = "bg", highlight = "Normal"}
+    fg = { attribute = "bg", highlight = "Normal" },
+    bg = { attribute = "bg", highlight = "Normal" },
   },
   indicator_selected = {
-    fg = {attribute = "fg", highlight = "LspDiagnosticsDefaultHint"},
-    bg = {attribute = "bg", highlight = "Normal"}
-  }
+    fg = { attribute = "fg", highlight = "LspDiagnosticsDefaultHint" },
+    bg = { attribute = "bg", highlight = "Normal" },
+  },
 }
 
-require("bufferline").setup {
+require("bufferline").setup({
   options = {
     numbers = "ordinal", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
     close_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
@@ -122,7 +122,7 @@ require("bufferline").setup {
     --     return true
     --   end
     -- end,
-    offsets = {{filetype = "NvimTree", text = "", padding = 1}},
+    offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
     show_buffer_icons = true,
     show_buffer_close_icons = true,
     show_close_icon = true,
@@ -132,39 +132,37 @@ require("bufferline").setup {
     -- [focused and unfocused]. eg: { '|', '|' }
     separator_style = "thin", -- | "thick" | "thin" | { 'any', 'any' },
     enforce_regular_tabs = true,
-    always_show_bufferline = true
+    always_show_bufferline = true,
     -- sort_by = 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
     --   -- add custom logic
     --   return buffer_a.modified > buffer_b.modified
     -- end
+    groups = {
+      options = {
+        toggle_hidden_on_enter = true, -- when you re-enter a hidden group this options re-opens that group so the buffer is visible
+      },
+      items = {
+        {
+          name = "Tests", -- Mandatory
+          priority = 2, -- determines where it will appear relative to other groups (Optional)
+          icon = "", -- Optional
+          matcher = function(buf) -- Mandatory
+            return buf.filename:match("%_test") or buf.filename:match("%.spec")
+          end,
+        },
+        {
+          name = "Docs",
+          auto_close = false, -- whether or not close this group if it doesn't contain the current buffer
+          matcher = function(buf)
+            return buf.filename:match("%.md") or buf.filename:match("%.txt")
+          end,
+          separator = {
+            -- Optional
+            style = require("bufferline.groups").separator.tab,
+          },
+        },
+      },
+    },
   },
   highlights = custom_highlights,
-  groups = {
-    options = {
-      toggle_hidden_on_enter = true -- when you re-enter a hidden group this options re-opens that group so the buffer is visible
-    },
-    items = {
-      {
-        name = "Tests", -- Mandatory
-        highlight = {gui = "underline", guisp = "blue"}, -- Optional
-        priority = 2, -- determines where it will appear relative to other groups (Optional)
-        icon = "", -- Optional
-        matcher = function(buf) -- Mandatory
-          return buf.filename:match("%_test") or buf.filename:match("%.spec")
-        end
-      },
-      {
-        name = "Docs",
-        highlight = {gui = "undercurl", guisp = "green"},
-        auto_close = false, -- whether or not close this group if it doesn't contain the current buffer
-        matcher = function(buf)
-          return buf.filename:match("%.md") or buf.filename:match("%.txt")
-        end,
-        separator = {
-          -- Optional
-          style = require("bufferline.groups").separator.tab
-        }
-      }
-    }
-  }
-}
+})
