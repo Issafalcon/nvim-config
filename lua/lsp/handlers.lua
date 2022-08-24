@@ -1,4 +1,5 @@
 local lsp_status = require("lsp-status")
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 lsp_status.register_progress()
 
 local M = {}
@@ -50,23 +51,6 @@ M.setup = function()
     update_in_insert = false,
     virtual_text = false,
   })
-
-  -- Works with the autoformat on save autocommand that
-  -- This will 1. create an autocommand for every buffer to format on save. And then save again after
-  -- formatting is done (only if there are no changes to the buffer)
-  -- vim.lsp.handlers["textDocument/formatting"] = function(err, _, result, _, bufnr)
-  --   if err ~= nil or result == nil then
-  --     return
-  --   end
-  --   if not vim.api.nvim_buf_get_option(bufnr, "modified") then
-  --     local view = vim.fn.winsaveview()
-  --     vim.lsp.util.apply_text_edits(result, bufnr)
-  --     vim.fn.winrestview(view)
-  --     if bufnr == vim.api.nvim_get_current_buf() then
-  --       vim.api.nvim_command("noautocmd :update")
-  --     end
-  --   end
-  -- end
 end
 
 local function lsp_highlight_document(client)
@@ -79,7 +63,7 @@ local function lsp_highlight_document(client)
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
-    ]] ,
+    ]],
       false
     )
   end
@@ -111,7 +95,7 @@ local function lsp_keymaps(bufnr, client)
   buf_set_keymap("n", "K", ":Lspsaga hover_doc<CR>", opts)
   buf_set_keymap("n", "rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 
-  buf_set_keymap("n", "<Leader>f", "<cmd>lua vim.lsp.buf.formatting_sync({}, 1500)<CR>", opts)
+  buf_set_keymap("n", "<Leader>f", "<cmd>lua vim.lsp.buf.formatting_sync({}, 5000)<CR>", opts)
 
   buf_set_keymap("v", "<Leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
 
@@ -174,8 +158,21 @@ M.on_attach = function(client, bufnr)
   end
 
   if client.server_capabilities.signatureHelpProvider then
-    require('lsp-overloads').setup(client, {})
+    require("lsp-overloads").setup(client, {})
   end
+
+  -- Autoformat on save from https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Formatting-on-save
+  -- if client.supports_method("textDocument/formatting") then
+  --   vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+  --   vim.api.nvim_create_autocmd("BufWritePre", {
+  --     group = augroup,
+  --     buffer = bufnr,
+  --     callback = function()
+  --       -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+  --       vim.lsp.buf.formatting_sync({}, 5000)
+  --     end,
+  --   })
+  -- end
 
   lsp_status.on_attach(client)
   lsp_keymaps(bufnr, client)
