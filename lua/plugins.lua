@@ -134,7 +134,8 @@ return packer.startup(function(use)
   use("onsails/lspkind-nvim")
   use("nvim-lua/lsp-status.nvim")
   use("folke/trouble.nvim")
-  use("jose-elias-alvarez/null-ls.nvim")
+  -- TODO: Raise an issue. NULL-LS formatting times out in later versions (with prettier and eslint combined)
+  use({ "jose-elias-alvarez/null-ls.nvim", commit = "9caa5d6d19e4d0bc8782c2a75988af0c20eed59e" })
   use("Issafalcon/lsp-overloads.nvim")
 
   -- snippets
