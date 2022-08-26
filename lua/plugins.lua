@@ -129,7 +129,7 @@ return packer.startup(function(use)
   -- LSP
   use("b0o/schemastore.nvim") -- JSON-ls schemas: https://github.com/b0o/SchemaStore.nvim
   use("neovim/nvim-lspconfig") -- The LSP config
-  use("tami5/lspsaga.nvim")
+  use("glepnir/lspsaga.nvim")
   use("onsails/lspkind-nvim")
   use("nvim-lua/lsp-status.nvim")
   use("folke/trouble.nvim")
