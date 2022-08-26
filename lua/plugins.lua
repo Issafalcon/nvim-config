@@ -125,7 +125,6 @@ return packer.startup(function(use)
   use({ "nvim-treesitter/playground" })
   use({ "windwp/nvim-ts-autotag" })
   use({ "p00f/nvim-ts-rainbow" })
-  use("simrat39/symbols-outline.nvim")
 
   -- LSP
   use("b0o/schemastore.nvim") -- JSON-ls schemas: https://github.com/b0o/SchemaStore.nvim

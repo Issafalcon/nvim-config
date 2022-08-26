@@ -106,6 +106,7 @@ local function lsp_keymaps(bufnr, client)
   buf_set_keymap("n", "<leader>gh", ":Lspsaga lsp_finder<CR>", opts)
   buf_set_keymap("n", "[g", ":Lspsaga diagnostic_jump_prev<CR>", opts)
   buf_set_keymap("n", "]g", ":Lspsaga diagnostic_jump_next<CR>", opts)
+  buf_set_keymap("n", "<leader>so", "<cmd>LSoutlineToggle<CR>", opts)
   buf_set_keymap("n", "<C-f>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts)
   buf_set_keymap("n", "<C-b>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
 
