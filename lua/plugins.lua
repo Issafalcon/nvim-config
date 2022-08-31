@@ -46,6 +46,7 @@ return packer.startup(function(use)
   use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
 
   -- Searching
+  use("junegunn/fzf")
   use("nvim-telescope/telescope-fzy-native.nvim")
   use("nvim-telescope/telescope.nvim")
   use("windwp/nvim-spectre")
@@ -119,6 +120,7 @@ return packer.startup(function(use)
   -- TreeSitter
   use({
     "nvim-treesitter/nvim-treesitter",
+    commit = "4effdd6b58c98da82a815a07d6807bfd87267fd5",
     run = ":TSUpdate",
   })
   use({ "nvim-treesitter/nvim-treesitter-textobjects" })
@@ -173,7 +175,6 @@ return packer.startup(function(use)
       "nvim-neotest/neotest-plenary",
       "nvim-neotest/neotest-vim-test",
       "haydenmeade/neotest-jest", -- TODO: Watch for when this becomes part of main nvim-neotest project
-      "nvim-treesitter/nvim-treesitter",
       "antoinemadec/FixCursorHold.nvim",
     },
   })
