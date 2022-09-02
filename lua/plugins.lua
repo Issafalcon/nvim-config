@@ -174,7 +174,8 @@ return packer.startup(function(use)
       "nvim-neotest/neotest-python",
       "nvim-neotest/neotest-plenary",
       "nvim-neotest/neotest-vim-test",
-      "haydenmeade/neotest-jest", -- TODO: Watch for when this becomes part of main nvim-neotest project
+      "Issafalcon/neotest-dotnet",
+      "haydenmeade/neotest-jest",
       "antoinemadec/FixCursorHold.nvim",
     },
   })

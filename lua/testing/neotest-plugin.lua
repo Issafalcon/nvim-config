@@ -7,15 +7,16 @@ require("neotest").setup({
       dap = { justMyCode = false },
     }),
     require("neotest-plenary"),
+    require("neotest-dotnet"),
     require("neotest-vim-test")({
-      ignore_file_types = { "python", "vim", "lua" },
+      ignore_file_types = { "python", "vim", "lua", "cs" },
     }),
     require("neotest-jest")({
-      jestCommand = "npm test --"
-    })
+      jestCommand = "npm test --",
+    }),
   },
 })
 
-keymap('n', '<leader>us', ':lua require("neotest").summary.toggle()<cr>', opts)
-keymap('n', '<leader>uf', ':lua require("neotest").run.run(vim.fn.expand("%"))<cr>', opts)
-keymap('n', '<leader>un', ':lua require("neotest").run.run()<cr>', opts)
+keymap("n", "<leader>us", ':lua require("neotest").summary.toggle()<cr>', opts)
+keymap("n", "<leader>uf", ':lua require("neotest").run.run(vim.fn.expand("%"))<cr>', opts)
+keymap("n", "<leader>un", ':lua require("neotest").run.run()<cr>', opts)
