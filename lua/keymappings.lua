@@ -9,14 +9,6 @@ vim.api.nvim_set_keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
-
 -- Normal --
 -- Better window navigation
 mapper.map("n", maps.change_window.left, "<C-w>h", opts, "Window", "window_left", "Move to next window to the left")
