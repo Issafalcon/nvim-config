@@ -168,12 +168,6 @@ end
 
 local capabilities = lsp_status.capabilities -- Wraps the standard call to make_client_capabilities on native LSP
 
--- Taken from https://github.com/ray-x/lsp_signature.nvim/blob/master/tests/init_paq.lua example
--- capabilities.textDocument.completion.completionItem.snippetSupport = true
--- capabilities.textDocument.completion.completionItem.resolveSupport = {
---   properties = { "documentation", "detail", "additionalTextEdits" }
--- }
-
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_ok then
   return

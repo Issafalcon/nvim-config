@@ -136,11 +136,11 @@ return packer.startup(function(use)
   use("nvim-lua/lsp-status.nvim")
   use("folke/trouble.nvim")
   -- TODO: Raise an issue. NULL-LS formatting times out in later versions (with prettier and eslint combined)
-  use({ "jose-elias-alvarez/null-ls.nvim", commit = "9caa5d6d19e4d0bc8782c2a75988af0c20eed59e" })
+  use({ "jose-elias-alvarez/null-ls.nvim" })
   use("Issafalcon/lsp-overloads.nvim")
 
   -- snippets
-  use({ "L3MON4D3/LuaSnip", commit = "fc25e77d74efb06033355b2175e2f5b78d15e7df" }) -- Best snippet engine
+  use({ "L3MON4D3/LuaSnip" }) -- Best snippet engine
   use("saadparwaiz1/cmp_luasnip")
   use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 

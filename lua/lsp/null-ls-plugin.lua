@@ -34,17 +34,18 @@ null_ls.setup({
     }),
     code_actions.refactoring,
   },
-  on_attach = function(client, bufnr)
-    if client.supports_method("textDocument/formatting") and client.name == "null-ls" then
-      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = augroup,
-        buffer = bufnr,
-        callback = function()
-          -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-          vim.lsp.buf.formatting_sync({}, 2500)
-        end,
-      })
-    end
-  end,
+  -- on_attach = function(client, bufnr)
+  --   -- TODO: Update this when Neovim 0.8 is in stable release (see https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts)
+  --   if client.supports_method("textDocument/formatting") and client.name == "null-ls" then
+  --     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+  --     vim.api.nvim_create_autocmd("BufWritePre", {
+  --       group = augroup,
+  --       buffer = bufnr,
+  --       callback = function()
+  --         -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+  --         vim.lsp.buf.formatting_sync({}, 2500)
+  --       end,
+  --     })
+  --   end
+  -- end,
 })
