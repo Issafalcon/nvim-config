@@ -68,8 +68,8 @@ local function launchBashDebug()
     pathCat = "cat",
     pathMkfifo = "mkfifo",
     pathPkill = "pkill",
-    pathBashdb = { install_dir .. "/packages/vscode-bash-debug/bashdb_dir/bashdb" },
-    pathBashdbLib = { install_dir .. "/packages/vscode-bash-debug/bashdb_dir" },
+    pathBashdb = { install_dir .. "/packages/bash-debug-adapter/extension/bashdb_dir/bashdb" },
+    pathBashdbLib = { install_dir .. "/packages/bash-debug-adapter/extension/bashdb_dir" },
     terminalKind = "integrated",
     args = function()
       return vim.fn.split(vim.fn.input("Scripts args:"))

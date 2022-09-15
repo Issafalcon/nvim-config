@@ -40,7 +40,7 @@ dap.adapters.netcoredbg = {
 dap.adapters.bashdb = {
   type = 'executable',
   command = 'node',
-  args = {install_dir .. '/packages/vscode-bash-debug/out/bashDebug.js'}
+  args = {install_dir .. '/packages/bash-debug-adapter/extension/out/bashDebug.js'}
 }
 
 -- Mappings
