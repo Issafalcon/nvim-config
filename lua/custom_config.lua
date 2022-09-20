@@ -13,7 +13,9 @@ M.mappings = {
     up = '<C-Up>',
     down = '<C-Down>',
     left = '<C-Left>',
-    right = '<C-Right>'
+    right = '<C-Right>',
+    maximize = '<leader>m',
+    toggle_autosize = '<leader>a'
   },
   -- Toggle quickfix and loclist in normal mode
   toggle_lists = {

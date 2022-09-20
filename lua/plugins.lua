@@ -45,6 +45,15 @@ return packer.startup(function(use)
   use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
   use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
 
+  -- UI Plugins (affecting the way Neovim looks and feels)
+  use({
+    "anuvyklack/windows.nvim",
+    requires = {
+      "anuvyklack/middleclass",
+      "anuvyklack/animation.nvim",
+    }
+  })
+
   -- Searching
   use("junegunn/fzf")
   use("nvim-telescope/telescope-fzy-native.nvim")
@@ -60,7 +69,6 @@ return packer.startup(function(use)
   use("tpope/vim-unimpaired")
   use("editorconfig/editorconfig-vim") -- Applies editorconfig to text
   use("mbbill/undotree")
-  use("szw/vim-maximizer")
   use("sudormrfbin/cheatsheet.nvim")
   use("lukas-reineke/indent-blankline.nvim")
   use("ThePrimeagen/refactoring.nvim")

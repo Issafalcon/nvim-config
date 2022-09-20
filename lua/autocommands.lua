@@ -9,7 +9,8 @@ vim.cmd [[
 	augroup _highlight_color_overrides
 		autocmd!
 		"So that listchars show up
-		autocmd ColorScheme * highlight Whitespace ctermfg=11 guifg=#4b5263
+		autocmd ColorScheme * highlight Whitespace ctermfg=11 guifg=#4b5263 |
+                        \ highlight VertSplit ctermfg=13 guifg=#CBA6F7
 	augroup end
 
   augroup _git

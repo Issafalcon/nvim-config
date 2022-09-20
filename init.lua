@@ -5,6 +5,7 @@ require "autocommands"
 require "colourscheme"
 require "helpers"
 
+require "ui"
 require "utils"
 require "version-control"
 require "sessions"
