@@ -61,7 +61,7 @@ vim.cmd([[set iskeyword+=-]])
 vim.cmd([[set iskeyword+=@]])
 
 -- Use powershell as default shell when on windows
-if vim.fn.has("win32") then
+if vim.fn.has("win32") == 1 then
   -- Adding -NoProfile stops powershell from loading the profile every time shell command is run
   -- but still loads it when creating Neovim terminal buffer
   vim.cmd([[let &shell = executable('pwsh') ? 'pwsh' : 'powershell']])
