@@ -66,17 +66,19 @@ return packer.startup(function(use)
   use("ThePrimeagen/refactoring.nvim")
   use({ "svermeulen/vim-easyclip" })
 
+  -- UI Plugins (colours, icons, inputs etc)
+  use("stevearc/dressing.nvim")
+  use("ziontee113/icon-picker.nvim")
+  use({ "catppuccin/nvim", as = "catppuccin" })
+  use("lunarvim/colorschemes") -- VSCode Like ColourScheme
+  use("norcalli/nvim-colorizer.lua") -- HEX and RBG etc Colour Highlighter: https://github.com/norcalli/nvim-colorizer.lua
+  use("kyazdani42/nvim-web-devicons") -- Vim devicons with colour: https://github.com/kyazdani42/nvim-web-devicons
+
   -- Session management
   use({
     "rmagatti/session-lens", -- Saves sessions after closing nvim
     requires = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
   })
-
-  -- Colours and Icons
-  use({ "catppuccin/nvim", as = "catppuccin" })
-  use("lunarvim/colorschemes") -- VSCode Like ColourScheme
-  use("norcalli/nvim-colorizer.lua") -- HEX and RBG etc Colour Highlighter: https://github.com/norcalli/nvim-colorizer.lua
-  use("kyazdani42/nvim-web-devicons") -- Vim devicons with colour: https://github.com/kyazdani42/nvim-web-devicons
 
   -- Key binding / Help plugins
   use({
@@ -174,7 +176,7 @@ return packer.startup(function(use)
       "nvim-neotest/neotest-python",
       "nvim-neotest/neotest-plenary",
       "nvim-neotest/neotest-vim-test",
-      "Issafalcon/neotest-dotnet",
+      "~/repos/neotest-dotnet",
       "haydenmeade/neotest-jest",
       "antoinemadec/FixCursorHold.nvim",
     },

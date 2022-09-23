@@ -2,7 +2,7 @@ local opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 require("neotest").setup({
-  -- log_level = 1, -- For verbose logs
+  log_level = 1, -- For verbose logs
   adapters = {
     require("neotest-python")({
       dap = { justMyCode = false },
@@ -27,6 +27,7 @@ require("neotest").setup({
     running = "",
     failed = "",
     unknown = "",
+    skipped = ""
   },
 })
 
