@@ -58,6 +58,12 @@ M.mappings = {
     registers_insert = '<A-2>',
     sessions = '<leader>sl',
     vim_command_history = '<leader>svc',
+  },
+  lsp = {
+
+  },
+  notes = {
+    display_equation = '<leader>pe'
   }
 }
 

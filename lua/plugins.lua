@@ -215,6 +215,7 @@ return packer.startup(function(use)
 
   -- Latex
   use("lervag/vimtex")
+  use("jbyuki/nabla.nvim")
 
   -- Markdown
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install" })
