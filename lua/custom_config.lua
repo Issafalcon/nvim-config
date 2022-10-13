@@ -64,6 +64,16 @@ M.mappings = {
   },
   notes = {
     display_equation = '<leader>pe'
+  },
+  diffview = {
+    view = {
+      select_next_entry = '<tab>',
+      select_prev_entry = '<s-tab>',
+      focus_files = '<leader>e',
+      toggle_files = '<leader>b'
+
+    }
+
   }
 }
 
