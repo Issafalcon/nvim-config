@@ -34,14 +34,15 @@ require("diffview").setup({
       ["U"] = cb("unstage_all"), -- Unstage all entries.
       ["X"] = cb("restore_entry"), -- Restore entry to the state on the left side.
       ["R"] = cb("refresh_files"), -- Update stats and entries in the file list.
-      ["<tab>"] = cb("select_next_entry"),
-      ["<s-tab>"] = cb("select_prev_entry"),
-      ["<leader>e"] = cb("focus_files"),
-      ["<leader>b"] = cb("toggle_files"),
+      [maps.diffview.view.select_next_entry] = cb("select_next_entry"), -- Open the diff for the next file
+      [maps.diffview.view.select_prev_entry] = cb("select_prev_entry"), -- Open the diff for the previous file
+      [maps.diffview.view.focus_files] = cb("focus_files"), -- Bring focus to the files panel
+      [maps.diffview.view.toggle_files] = cb("toggle_files"), -- Toggle the files panel.
     },
   },
 })
 
-mapper.map_virtual("n", maps.diffview.view.select_next_entry, "", "DiffView - View", "diffview_select_next_entry", "Opens the diff for the next file when in the View panel")
-mapper.map_virtual("n", maps.diffview.view.select_prev_entry, "", "DiffView - View", "diffview_select_prev_entry", "Opens the diff for the previous file when in the View panel")
-mapper.map_virtual("n", maps.diffview.view.focus_files, "", "DiffView - View", "diffview_focus_files", "Brings focus to the Files panel when in View panel")
+mapper.map_virtual("n", maps.diffview.select_next_entry, "", "DiffView", "diffview_select_next_entry", "Opens the diff for the next file")
+mapper.map_virtual("n", maps.diffview.select_prev_entry, "", "DiffView", "diffview_select_prev_entry", "Opens the diff for the previous file")
+mapper.map_virtual("n", maps.diffview.focus_files, "", "DiffView", "diffview_focus_files", "Brings focus to the Files panel")
+mapper.map_virtual("n", maps.diffview.toggle_files, "", "DiffView", "diffview_toggle_files", "Toggles the Files panel")
