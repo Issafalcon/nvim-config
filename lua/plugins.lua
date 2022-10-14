@@ -205,7 +205,7 @@ return packer.startup(function(use)
 
   -- Lua / Neovim Plugin Development
   use("hrsh7th/cmp-nvim-lua") -- Lua in Vim language completions
-  use("folke/lua-dev.nvim") -- For plugin dev with full signature help, docs and completion for neovim lua apis
+  use("folke/neodev.nvim") -- For plugin dev with full signature help, docs and completion for neovim lua apis
   use("rafcamlet/nvim-luapad")
 
   -- .NET / C#

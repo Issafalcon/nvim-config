@@ -31,8 +31,8 @@ for server, config in pairs(servers) do
   if server == "sumneko_lua" then
     -- For developing Lua plugins for Neovim Only
     -- Comment out below lines so lua_dev is not used when working on other Lua projects
-    setup_opts = require("lua-dev").setup({
-      library = { vimruntime = true, types = true, plugins = true },
+    setup_opts = require("neodev").setup({
+      library = { runtime = true, types = true, plugins = true },
       lspconfig = opts,
     })
   end
