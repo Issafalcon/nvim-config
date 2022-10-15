@@ -166,13 +166,11 @@ M.on_attach = function(client, bufnr)
   lsp_highlight_document(client)
 end
 
-local capabilities = lsp_status.capabilities -- Wraps the standard call to make_client_capabilities on native LSP
-
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_ok then
   return
 end
 
-M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+M.capabilities = vim.tbl_deep_extend("force", cmp_nvim_lsp.default_capabilities(), lsp_status.capabilities)
 
 return M

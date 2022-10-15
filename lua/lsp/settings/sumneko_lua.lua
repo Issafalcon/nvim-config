@@ -1,6 +1,9 @@
 local opts = {
   settings = {
     Lua = {
+      completion = {
+        callSnippet = "Replace"
+      },
       runtime = {
         version = "LuaJIT",
         path = vim.split(package.path, ";")
