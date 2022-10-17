@@ -9,6 +9,13 @@ local opts = { silent = true, noremap = true }
 
 neogen.setup({
   snippet_support = "luasnip",
+  languages = {
+    csharp = {
+      template = {
+        annotation_convention = "xmldoc",
+      },
+    },
+  },
 })
 
 mapper.map(
