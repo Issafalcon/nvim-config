@@ -83,6 +83,10 @@ M.mappings = {
       refresh_files = "R",
     },
   },
+  commenting = {
+    line_comment = 'gc',
+    block_comment = 'gb'
+  }
 }
 
 return M

@@ -1,4 +1,3 @@
--- Lua
 local cb = require("diffview.config").diffview_callback
 local maps = require("custom_config").mappings
 local mapper = require("utils.mapper")
@@ -42,7 +41,7 @@ require("diffview").setup({
   },
 })
 
-mapper.map_virtual("n", maps.diffview.select_next_entry, "", "DiffView", "diffview_select_next_entry", "Opens the diff for the next file")
-mapper.map_virtual("n", maps.diffview.select_prev_entry, "", "DiffView", "diffview_select_prev_entry", "Opens the diff for the previous file")
-mapper.map_virtual("n", maps.diffview.focus_files, "", "DiffView", "diffview_focus_files", "Brings focus to the Files panel")
-mapper.map_virtual("n", maps.diffview.toggle_files, "", "DiffView", "diffview_toggle_files", "Toggles the Files panel")
+mapper.map_virtual("n", maps.diffview.select_next_entry, "", {}, "DiffView", "diffview_select_next_entry", "Opens the diff for the next file")
+mapper.map_virtual("n", maps.diffview.select_prev_entry, "", {}, "DiffView", "diffview_select_prev_entry", "Opens the diff for the previous file")
+mapper.map_virtual("n", maps.diffview.focus_files, "", {}, "DiffView", "diffview_focus_files", "Brings focus to the Files panel")
+mapper.map_virtual("n", maps.diffview.toggle_files, "", {}, "DiffView", "diffview_toggle_files", "Toggles the Files panel")

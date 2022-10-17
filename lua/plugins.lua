@@ -161,7 +161,7 @@ return packer.startup(function(use)
   })
 
   -- Commenting
-  use({ "terrortylor/nvim-comment" })
+  use({ "numToStr/Comment.nvim" })
   use({ "JoosepAlviste/nvim-ts-context-commentstring" })
   use({ "kkoomen/vim-doge", run = ":call doge#install()" })
 
