@@ -63,6 +63,12 @@ M.mappings = {
   notes = {
     display_equation = "<leader>pe",
   },
+  completion = {
+    snippet_expand_or_next = "<c-k>",
+    snippet_previous = "<c-j>",
+    snippet_choice = "<c-l>",
+    edit_snippet = "<leader><leader>s",
+  },
   diffview = {
     select_next_entry = "<tab>",
     select_prev_entry = "<s-tab>",
