@@ -13,7 +13,7 @@
 #### Plugins
 
 | Plugin Name    | URL                                        | Description                                                        |
-| -------------- | --------------                             | --------------                                                     |
+| -------------- | ------------------------------------------ | ------------------------------------------------------------------ |
 | Mason          | https://github.com/williamboman/mason.nvim | Package manager for LSP clients, DAP adapters, Linters and more... |
 | Mason          | https://github.com/williamboman/mason.nvim | Package manager for LSP clients, DAP adapters, Linters and more... |
 
@@ -31,6 +31,7 @@
 
 ####
 
-| Plugin Name      | URL                                      | Description                                              |
-| ---------------- | ---------------                          | ---------------                                          |
-| Comment.nvim     | https://github.com/numToStr/Comment.nvim | Most feature rich commenting plugin for Neovim out there |
+| Plugin Name                   | URL                                                            | Description                                                                            |
+| ----------------              | ---------------                                                | ---------------                                                                        |
+| Comment.nvim                  | https://github.com/numToStr/Comment.nvim                       | Most feature rich commenting plugin for Neovim out there                               |
+| nvim-ts-context-commentstring | https://github.com/JoosepAlviste/nvim-ts-context-commentstring | Sets `commentstring` option based on cursor location in file (Used mainly for tsx etc) |
