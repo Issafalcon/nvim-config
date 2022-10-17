@@ -163,7 +163,7 @@ return packer.startup(function(use)
   -- Commenting
   use({ "numToStr/Comment.nvim" })
   use({ "JoosepAlviste/nvim-ts-context-commentstring" })
-  use({ "kkoomen/vim-doge", run = ":call doge#install()" })
+  use({ "danymat/neogen" })
 
   -- Quickfix / Location lists
   use("kevinhwang91/nvim-bqf")

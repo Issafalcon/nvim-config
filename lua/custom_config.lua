@@ -91,7 +91,8 @@ M.mappings = {
   },
   commenting = {
     line_comment = 'gc',
-    block_comment = 'gb'
+    block_comment = 'gb',
+    generate_annotation = '<leader>/'
   }
 }
 

@@ -1,2 +1,2 @@
 require("commenting.comment-plugin")
-require("commenting.doge-plugin")
+require("commenting.neogen-plugin")
