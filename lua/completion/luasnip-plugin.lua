@@ -9,7 +9,7 @@ require("luasnip.loaders.from_lua").lazy_load({ paths = { "~/snippets" } })
 
 local maps = require("custom_config").mappings
 local mapper = require("utils.mapper")
-local opts = { noremap = true, silent = true }
+local opts = { silent = true }
 local types = require("luasnip.util.types")
 
 ls.config.setup({
@@ -24,31 +24,31 @@ ls.config.setup({
   },
 })
 
-vim.keymap.set({ "i", "s" }, maps.completion.snippet_choice, function()
+mapper.map({ "i", "s" }, maps.completion.snippet_choice, function()
   if ls.choice_active() then
     ls.change_choice(1)
   end
-end)
---, opts, "Completion", "cmp_snippet_choice", "Toggle the next choice in the LuaSnip snippet when available")
+end, opts, "Completion", "cmp_snippet_choice", "Toggle the next choice in the LuaSnip snippet when available")
 
-vim.keymap.set({ "i", "s" }, maps.completion.snippet_expand_or_next, function()
-  if ls.expand_or_jumpable() then
-    ls.expand_or_jump()
-  end
-end)
--- ,
---   opts,
---   "Completion",
---   "cmp_snippet_expand",
---   "Expand the snippet under the cursor or jump to next snippet placeholder"
--- )
+mapper.map(
+  { "i", "s" },
+  maps.completion.snippet_expand_or_next,
+  function()
+    if ls.expand_or_jumpable() then
+      ls.expand_or_jump()
+    end
+  end,
+  opts,
+  "Completion",
+  "cmp_snippet_expand",
+  "Expand the snippet under the cursor or jump to next snippet placeholder"
+)
 
-vim.keymap.set({ "i", "s" }, maps.completion.snippet_previous, function()
+mapper.map({ "i", "s" }, maps.completion.snippet_previous, function()
   if ls.jumpable(-1) then
     ls.jump(-1)
   end
-end)
---, opts, "Completion", "cmp_snippet_previous", "Jump to the previous snippet placeholder")
+end, opts, "Completion", "cmp_snippet_previous", "Jump to the previous snippet placeholder")
 
 vim.cmd([[
   command! LuaSnipEdit :lua require("luasnip.loaders").edit_snippet_files()

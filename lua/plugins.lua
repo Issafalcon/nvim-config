@@ -82,7 +82,7 @@ return packer.startup(function(use)
 
   -- Key binding / Help plugins
   use({
-    "lazytanuki/nvim-mapper",
+    "Issafalcon/nvim-mapper", -- Keep an eye on https://github.com/lazytanuki/nvim-mapper/pull/22 for when to switch back to original plugin
     config = function()
       require("nvim-mapper").setup({})
     end,
