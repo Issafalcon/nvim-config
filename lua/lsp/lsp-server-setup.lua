@@ -17,12 +17,12 @@ local servers = {
   angularls = {},
   cssls = {},
   tflint = {},
-  sqls = {}
+  sqls = {},
 }
 
 local opts = {
   on_attach = require("lsp.handlers").on_attach,
-  capabilities = require("lsp.handlers").capabilities
+  capabilities = require("lsp.handlers").capabilities,
 }
 
 for server, config in pairs(servers) do
@@ -31,7 +31,17 @@ for server, config in pairs(servers) do
   if server == "sumneko_lua" then
     -- For developing Lua plugins for Neovim Only
     -- Comment out below lines so lua_dev is not used when working on other Lua projects
-    require("neodev").setup({})
+    require("neodev").setup({
+      library = {
+        enabled = false,
+        types = true,
+        -- you can also specify the list of plugins to make available as a workspace library
+        -- plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
+        plugins = false,
+        runtime = false,
+      },
+      setup_jsonls = true,
+    })
   end
 
   require("lspconfig")[server].setup(setup_opts)
