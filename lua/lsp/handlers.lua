@@ -54,7 +54,7 @@ end
 
 local function lsp_highlight_document(client)
   -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.document_highlight then
     vim.api.nvim_exec(
       [[
       augroup lsp_document_highlight
@@ -122,7 +122,7 @@ end
 
 M.on_attach = function(client, bufnr)
   if client.name == "tsserver" then
-    client.resolved_capabilities.document_formatting = false
+    client.server_capabilities.document_formatting = false
 
     local ts_utils = require("nvim-lsp-ts-utils")
     ts_utils.setup({})
@@ -132,7 +132,7 @@ M.on_attach = function(client, bufnr)
     for _, other_client in pairs(clients) do
       if other_client.name == "angularls" then
         -- Prevent tsserver rename duplication when angularls is in use
-        client.resolved_capabilities.rename = false
+        client.server_capabilities.rename = false
       end
     end
   end
@@ -142,7 +142,7 @@ M.on_attach = function(client, bufnr)
     for _, other_client in pairs(clients) do
       if other_client.name == "tsserver" then
         -- Prevent tsserver rename duplication when angularls is in use
-        other_client.resolved_capabilities.rename = false
+        other_client.server_capabilities.rename = false
       end
     end
   end
