@@ -39,3 +39,7 @@ luac.out
 *.x86_64
 *.hex
 
+# Nvim output
+plugin
+plugin/packer_compiled.lua
+lua/packer_compiled.lua
