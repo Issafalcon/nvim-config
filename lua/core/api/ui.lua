@@ -14,3 +14,11 @@ fignvim.ui.get_icon = function(kind)
   if not fignvim[icon_pack] then fignvim.ui.initialize_icons() end
   return fignvim[icon_pack] and fignvim[icon_pack][kind] or ""
 end
+
+--- Wrapper function for neovim echo API
+-- @param messages an array like table where each item is an array like table of strings to echo
+function fignvim.ui.echo(messages)
+  -- if no parameter provided, echo a new line
+  messages = messages or { { "\n" } }
+  if type(messages) == "table" then vim.api.nvim_echo(messages, false, {}) end
+end
