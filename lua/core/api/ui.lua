@@ -2,7 +2,7 @@ fignvim.ui = {}
 
 --- Initialize icons used throughout the user interface
 fignvim.ui.initialize_icons = function()
-  fignvim.icons = fignvim.user_plugin_opts("icons", require "core.icons.nerd_font")
+  fignvim.icons = fignvim.plug.opts("icons", require "core.icons.nerd_font")
   fignvim.text_icons = fignvim.user_plugin_opts("text_icons", require "core.icons.text")
 end
 
