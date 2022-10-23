@@ -33,7 +33,7 @@ dap.adapters.chrome = {
 
 dap.adapters.netcoredbg = {
   type = 'executable',
-  command = '/usr/local/netcoredbg',
+  command = install_dir .. '/packages/netcoredbg/netcoredbg',
   args = {'--interpreter=vscode'}
 }
 
