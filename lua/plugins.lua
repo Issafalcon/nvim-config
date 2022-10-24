@@ -199,7 +199,6 @@ return packer.startup(function(use)
   use("dsznajder/vscode-es7-javascript-react-snippets") -- More react snippets
   use("fivethree-team/vscode-svelte-snippets") -- Svelete snippets
   use("David-Kunz/cmp-npm") -- NPM completions in package.json
-  use({ "nvim-treesitter/nvim-treesitter-angular" }) -- Treesitter extension for angular
   use("David-Kunz/jester") -- Debugging Jest tests
 
   -- Lua / Neovim Plugin Development
