@@ -76,6 +76,8 @@ fignvim.config.vim_opts({
     diagnostics_enabled = true, -- enable diagnostics at start
     status_diagnostics_enabled = true, -- enable diagnostics in statusline
     icons_enabled = true, -- disable icons in the UI (disable if no nerd font is available)
+    quickfix_open = false, -- whether qf list is open
+    loclist_open = false -- whether loclist is open
   },
 })
 
