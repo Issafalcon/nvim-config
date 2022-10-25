@@ -1,4 +1,4 @@
-fignvim.config.vim_opts({
+fignvim.config.set_vim_opts({
   opt = {
     backspace = vim.opt.backspace + { "nostop" }, -- Don't stop backspace at insert
     clipboard = "unnamedplus", -- Connection to the system clipboard

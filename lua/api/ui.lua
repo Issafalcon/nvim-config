@@ -70,4 +70,32 @@ function fignvim.ui.toggle_fix_list(global)
   end
 end
 
+--- Toggle diagnostics
+function fignvim.ui.toggle_diagnostics()
+  local status = "on"
+  if vim.g.status_diagnostics_enabled then
+    if vim.g.diagnostics_enabled then
+      vim.g.diagnostics_enabled = false
+      status = "virtual text off"
+    else
+      vim.g.status_diagnostics_enabled = false
+      status = "fully off"
+    end
+  else
+    vim.g.diagnostics_enabled = true
+    vim.g.status_diagnostics_enabled = true
+  end
+
+  local on_off = vim.g.diagnostics_enabled and "on" or "off"
+  vim.diagnostic.config(fignvim.config.get_config("diagnostics")[on_off])
+  -- fignvim.ui.notify(string.format("diagnostics %s", status))
+end
+
+--- Toggle auto format
+function fignvim.ui.toggle_autoformat()
+  vim.g.autoformat_enabled = not vim.g.autoformat_enabled
+  local on_off = vim.g.autoformat_enabled and "on" or "off"
+  -- fignvim.notify(string.format("Autoformatting %s", bool2str(vim.g.autoformat_enabled)))
+end
+
 return fignvim.ui

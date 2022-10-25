@@ -2,12 +2,17 @@ fignvim.config = {}
 
 --- Set vim options with a nested table like API with the format vim.<first_key>.<second_key>.<value>
 ---@param options table the nested table of vim options
-fignvim.config.vim_opts = function(options)
+fignvim.config.set_vim_opts = function(options)
   for scope, table in pairs(options) do
     for setting, value in pairs(table) do
       vim[scope][setting] = value
     end
   end
+end
+
+function fignvim.config.get_config(name)
+  local config = fignvim.plug.load_module_file("user-configs." .. name)
+  return config
 end
 
 fignvim.config.set_shell_as_powershell = function()
@@ -70,4 +75,5 @@ else
     fignvim.config.map_buf_virtual = function(_, _, _, _, _, _, _) return end
 
 end
+
 return fignvim.config

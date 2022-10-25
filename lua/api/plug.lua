@@ -11,7 +11,7 @@ function fignvim.plug.is_available(plugin) return packer_plugins ~= nil and pack
 --- Looks to see if a module path references a lua file in a configuration folder and tries to load it. If there is an error loading the file, write an error and continue
 ---@param module string the module path to try and load
 ---@return any the loaded module if successful or nil
-fignvim.plug.load_module_file = function(module)
+function fignvim.plug.load_module_file(module)
   local found_module
   -- try to load the file
   local status_ok, loaded_module = pcall(require, module)
