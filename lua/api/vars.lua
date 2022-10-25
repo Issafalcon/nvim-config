@@ -1,7 +1,7 @@
 fignvim.vars = {}
 
 --- Settings from the base `config/init.lua` file
-fignvim.vars.config = fignvim.plug.load_module_file("config.init")
+fignvim.vars.settings = fignvim.plug.load_module_file("user-configs.settings")
 
 --- regex used for matching a valid URL/URI string
 fignvim.vars.url_matcher =
