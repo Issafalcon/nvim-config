@@ -12,7 +12,7 @@ local M = {}
 
 -- stylua: ignore
 ---@type table<string, table<string, FigNvimMapping>>
-M.mappings = {
+M.general_mappings = {
   -- Navigate between windows in normal mode
   Window = {
     window_left = { mode = "n", lhs = "<C-h>", rhs = "<C-w>h", desc = "Move to next window to the left", },
@@ -85,9 +85,12 @@ M.lsp_mappings = {
     code_action_saga = { mode = "n", lhs = "<leader>ca", rhs = ":Lspsaga code_action<CR>", desc = "Opens LSP Saga Code Action Window" },
     goto_declaration = { mode = "n", lhs = "gD", rhs = function() vim.lsp.buf.declaration() end, desc = "Go to declaration of current symbol" },
     goto_definition = { mode = "n", lhs = "gd", rhs = function() vim.lsp.buf.definition() end, desc = "Go to definition of current symbol" },
+    goto_implementation = { mode = "n", lhs = "gi", rhs = function() vim.lsp.buf.implementation() end, desc = "Go to implementation of current symbol" },
+    goto_implementation_telescope = { mode = "n", lhs = "gi", rhs = function() require('telescope.builtin').lsp_implementations() end, desc = "Go to implementation of current symbol using Telescope" },
     goto_references = { mode = "n", lhs = "gr", rhs = function() vim.lsp.buf.references() end, desc = "Go to references of current symbol" },
     goto_references_telescope = { mode = "n", lhs = "gr", rhs = function () require('telescope.builtin').lsp_references() end, desc = "Go to references of current symbol using Telescope" },
     document_symbols_telescope = { mode = "n", lhs = "gm", rhs = function() require('telescope.builtin').lsp_document_symbols() end, desc = "List document symbols in Telescope" },
+    hover_doc = { mode = "n", lhs = "K", rhs = function() vim.lsp.buf.hover() end, desc = "Hover documentation" },
     hover_doc_saga = { mode = "n", lhs = "K", rhs = ":Lspsaga hover_doc<CR>", desc = "Hover documentation using LSP Saga" },
     rename_symbol = { mode = "n", lhs = "rn", rhs = function() vim.lsp.buf.rename() end, desc = "Rename current symbol" },
     signature_help = { mode = { "i", "n" }, lhs = "<A-s>", rhs = function() vim.lsp.buf.signature_help() end, desc = "Show signature help" },

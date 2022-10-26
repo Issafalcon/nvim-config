@@ -42,38 +42,54 @@ fignvim.config.set_win32yank_wsl_as_clip = function()
 end
 
 if fignvim.plug.is_available("nvim-mapper") then
-    local mapper = require("nvim-mapper")
+  local mapper = require("nvim-mapper")
 
-    fignvim.config.map = function(mode, keys, cmd, options, category, unique_identifier,
-                     description)
-        mapper.map(mode, keys, cmd, options, category, unique_identifier,
-                   description)
-    end
-    fignvim.config.map_buf = function(bufnr, mode, keys, cmd, options, category, unique_identifier,
-                         description)
-        mapper.map_buf(bufnr, mode, keys, cmd, options, category, unique_identifier,
-                       description)
-    end
-    fignvim.config.map_virtual = function(mode, keys, cmd, options, category,
-                             unique_identifier, description)
-        mapper.map_virtual(mode, keys, cmd, options, category,
-                           unique_identifier, description)
-    end
-    fignvim.config.map_buf_virtual = function(mode, keys, cmd, options, category,
-                                 unique_identifier, description)
-        mapper.map_buf_virtual(mode, keys, cmd, options, category,
-                               unique_identifier, description)
-    end
+  fignvim.config.map = function(mode, keys, cmd, options, category, unique_identifier, description)
+    mapper.map(mode, keys, cmd, options, category, unique_identifier, description)
+  end
+  fignvim.config.map_buf = function(bufnr, mode, keys, cmd, options, category, unique_identifier, description)
+    mapper.map_buf(bufnr, mode, keys, cmd, options, category, unique_identifier, description)
+  end
+  fignvim.config.map_virtual = function(mode, keys, cmd, options, category, unique_identifier, description)
+    mapper.map_virtual(mode, keys, cmd, options, category, unique_identifier, description)
+  end
+  fignvim.config.map_buf_virtual = function(mode, keys, cmd, options, category, unique_identifier, description)
+    mapper.map_buf_virtual(mode, keys, cmd, options, category, unique_identifier, description)
+  end
 else
-    fignvim.config.map = function(mode, keys, cmd, options, _, _, _)
-        vim.api.nvim_set_keymap(mode, keys, cmd, options)
-    end
-    fignvim.config.map_buf = function(bufnr, mode, keys, cmd, options, _, _, _)
-        vim.api.nvim_buf_set_keymap(bufnr, mode, keys, cmd, options)
-    end
-    fignvim.config.map_virtual = function(_, _, _, _, _, _, _) return end
-    fignvim.config.map_buf_virtual = function(_, _, _, _, _, _, _) return end
-
+  fignvim.config.map = function(mode, keys, cmd, options, _, _, _) vim.api.nvim_set_keymap(mode, keys, cmd, options) end
+  fignvim.config.map_buf =
+    function(bufnr, mode, keys, cmd, options, _, _, _) vim.api.nvim_buf_set_keymap(bufnr, mode, keys, cmd, options) end
+  fignvim.config.map_virtual = function(_, _, _, _, _, _, _) return end
+  fignvim.config.map_buf_virtual = function(_, _, _, _, _, _, _) return end
 end
 
+--- Recurses through a set of FigNvimMappings and creates a set of keymaps for them
+---@param mapping_group table<string, FigNvimMapping>
+---@param group_name string The name of the mapping group
+---@param bufnr? number Optional buffer number to create keymapping for
+function fignvim.config.create_mapping_group(mapping_group, group_name, bufnr)
+  for key, mapping in pairs(mapping_group) do
+    fignvim.config.create_mapping(key, group_name, mapping, bufnr)
+  end
+end
+
+--- Create a mapping based on a FigNvimMapping
+---@param id string The unique identifier of the mapping
+---@param group_name string The name of the mapping group
+---@param mapping FigNvimMapping The mapping parameters
+---@param bufnr? number Optional buffer number to create keymapping for
+function fignvim.config.create_mapping(id, group_name, mapping, bufnr)
+  local opts = mapping.opts or { silent = true }
+
+  if bufnr then
+    opts.buffer = bufnr
+  end
+
+  if mapping.isVirtual then
+    fignvim.config.map_virtual(mapping.mode, mapping.lhs, "", {}, group_name, id, mapping.desc)
+  else
+    fignvim.config.map(mapping.mode, mapping.lhs, mapping.rhs, opts, group_name, id, mapping.desc)
+  end
+end
 return fignvim.config
