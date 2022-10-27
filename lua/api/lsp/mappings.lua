@@ -2,8 +2,9 @@ fignvim.lsp.mappings = {}
 
 --- Sets buffer mappings for the given client, if the client supports them.
 ---@param capabilities table The current server capabilities for the language server
+---@param client_name string Name of the current language server client
 ---@param bufnr number the buffer number to set mappings for
-function fignvim.lsp.mappings.set_buf_mappings(capabilities, bufnr)
+function fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr)
   local lsp_mappings = fignvim.config.get_config("mappings").lsp_mappings
 
   fignvim.config.create_mapping("prev_diagnostic", "LSP", lsp_mappings.LSP.prev_diagnostic, bufnr)
@@ -75,6 +76,12 @@ function fignvim.lsp.mappings.set_buf_mappings(capabilities, bufnr)
 
   if capabilities.typeDefinitionProvider then
     fignvim.config.create_mapping("goto_definition", "LSP", lsp_mappings.LSP.goto_definition, bufnr)
+  end
+
+  if client_name == "tsserver" then
+    fignvim.config.create_mapping("tsserver_organize", "LSP", lsp_mappings.LSP.tsserver_organize, bufnr)
+    fignvim.config.create_mapping("tsserver_rename_file", "LSP", lsp_mappings.LSP.tsserver_rename_file, bufnr)
+    fignvim.config.create_mapping("tsserver_import_all", "LSP", lsp_mappings.LSP.tsserver_import_all, bufnr)
   end
 end
 

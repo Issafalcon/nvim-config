@@ -13,8 +13,12 @@ fignvim.lsp.capabilities.textDocument.completion.completionItem.tagSupport = { v
 fignvim.lsp.capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = { "documentation", "detail", "additionalTextEdits" },
 }
-fignvim.lsp.capabilities = user_plugin_opts("lsp.capabilities", astronvim.lsp.capabilities)
-fignvim.lsp.flags = user_plugin_opts "lsp.flags"
+
+-- Add capabilities required for LSP based completions
+local cmp_nvim_lsp = fignvim.plug.load_module_file("cmp_nvim_lsp")
+if cmp_nvim_lsp then
+  fignvim.lsp.capabilities = vim.tbl.deep_extend("force", fignvim.lsp.capabilities, cmp_nvim_lsp.default_capabilities())
+end
 
 function fignvim.lsp.capabilities.handle_document_highlighting(bufnr)
   local highlight_name = vim.fn.printf("lsp_document_highlight_%d", bufnr)

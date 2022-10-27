@@ -15,6 +15,11 @@ function fignvim.config.get_config(name)
   return config
 end
 
+function fignvim.config.get_lsp_server_config(server_name)
+  local config = fignvim.plug.load_module_file("user-configs.lsp_servers." .. server_name)
+  return config
+end
+
 fignvim.config.set_shell_as_powershell = function()
   -- Adding -NoProfile stops powershell from loading the profile every time shell command is run
   -- but still loads it when creating Neovim terminal buffer
