@@ -1,18 +1,28 @@
 fignvim.lsp = {}
 
-fignvim.lsp = {}
-local tbl_contains = vim.tbl_contains
-local tbl_isempty = vim.tbl_isempty
-
 --- Helper function to set up a given server with the Neovim LSP client
 -- @param server the name of the server to be setup
 fignvim.lsp.setup = function(server)
   local opts = fignvim.lsp.server_settings(server)
-  if type(user_registration) == "function" then
-    user_registration(server, opts)
-  else
-    require("lspconfig")[server].setup(opts)
+
+  local neodev = fignvim.plug.load_module_file("neodev")
+  if server == "sumneko_lua" and neodev then
+    -- For developing Lua plugins for Neovim Only
+    -- Comment out below lines so lua_dev is not used when working on other Lua projects
+    neodev.setup({
+      library = {
+        enabled = false,
+        types = true,
+        -- you can also specify the list of plugins to make available as a workspace library
+        -- plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
+        plugins = false,
+        runtime = false,
+      },
+      setup_jsonls = true,
+    })
   end
+
+  require("lspconfig")[server].setup(opts)
 end
 
 --- The `on_attach` function used by fignvim
@@ -23,12 +33,17 @@ function fignvim.lsp.on_attach(client, bufnr)
 
   fignvim.lsp.mappings.set_buf_mappings(capabilities, client.name, bufnr)
 
-  if capabilities.documentHighlightProvider then fignvim.lsp.capabilities.handle_document_highlighting(bufnr) end
+  if capabilities.documentHighlightProvider then
+    fignvim.lsp.capabilities.handle_document_highlighting(bufnr)
+  end
 
-  local on_attach_override = user_plugin_opts("lsp.on_attach", nil, false)
-  local aerial_avail, aerial = pcall(require, "aerial")
-  conditional_func(on_attach_override, true, client, bufnr)
-  conditional_func(aerial.on_attach, aerial_avail, client, bufnr)
+  if client.server_capabilities.signatureHelpProvider then
+    local lsp_overloads = fignvim.plug.load_module_file("lsp_overloads")
+    fignvim.fn.conditional_func(lsp_overloads.setup, lsp_overloads ~= nil, client, {})
+  end
+
+  local aerial = fignvim.plug.load_module_file("aerial")
+  fignvim.fn.conditional_func(aerial.on_attach, aerial ~= nil, client, bufnr)
 end
 
 --- Get the server settings for a given language server to be provided to the server's `setup()` call

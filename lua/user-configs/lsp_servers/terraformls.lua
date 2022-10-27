@@ -1,5 +1,6 @@
-local opts = {
+M = {}
+M.opts = {
   filetypes = { "terraform", "tf" },
 }
 
-return opts
+return M

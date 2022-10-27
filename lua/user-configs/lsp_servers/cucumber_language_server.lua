@@ -1,4 +1,5 @@
-local opts = {
+M = {}
+M.opts = {
   settings = {
     cucumber = {
       features = { "**/*.feature" },
@@ -7,4 +8,4 @@ local opts = {
   },
 }
 
-return opts
+return M

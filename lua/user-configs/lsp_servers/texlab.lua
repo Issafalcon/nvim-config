@@ -1,4 +1,5 @@
-local opts = {
+M = {}
+M.opts = {
   cmd = { "texlab" },
   filetypes = { "tex", "bib" },
   settings = {
@@ -23,4 +24,4 @@ local opts = {
   }
 }
 
-return opts
+return M

@@ -1,4 +1,6 @@
-local opts = {
+M = {}
+
+M.opts = {
   filetypes = { "css", "scss" },
   settings = {
     stylelintplus = {
@@ -7,4 +9,4 @@ local opts = {
   }
 }
 
-return opts
+return M

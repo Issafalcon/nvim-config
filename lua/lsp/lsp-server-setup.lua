@@ -17,7 +17,6 @@ local servers = {
   angularls = {},
   cssls = {},
   tflint = {},
-  sqls = {},
 }
 
 local opts = {

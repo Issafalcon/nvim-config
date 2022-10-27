@@ -1,4 +1,5 @@
-local opts = {
+M ={}
+M.opts = {
   cmd = {"emmet-ls", "--stdio"},
   filetypes = {
     "html",
@@ -16,4 +17,4 @@ local opts = {
   settings = {}
 }
 
-return opts
+return M

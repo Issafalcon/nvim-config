@@ -1,4 +1,5 @@
-local opts = {
+M = {}
+M.opts = {
   settings = {
     Lua = {
       completion = {
@@ -11,4 +12,4 @@ local opts = {
   },
 }
 
-return opts
+return M

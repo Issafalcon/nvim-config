@@ -152,11 +152,6 @@ M.on_attach = function(client, bufnr)
     require("neosharper").on_attach({}, bufnr)
   end
 
-  if client.name == "sqls" then
-    print("Attaching sqls plugin")
-    require("sqls").on_attach(client, bufnr)
-  end
-
   if client.server_capabilities.signatureHelpProvider then
     require("lsp-overloads").setup(client, {})
   end
