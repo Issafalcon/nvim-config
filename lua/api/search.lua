@@ -1,4 +1,4 @@
-local telescope_builtin = fignvim.plug.load_module_file("telescope.builtin")
+local telescope_builtin = fignvim.plug.load_module_file("telescope.builtin", true)
 
 fignvim.search = {}
 

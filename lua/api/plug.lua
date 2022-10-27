@@ -1,7 +1,7 @@
 fignvim.plug = {}
 
---- default packer compilation location to be used in bootstrapping and packer setup call
 fignvim.plug.default_compile_path = vim.fn.stdpath("data" .. "/packer_compiled.lua")
+fignvim.plug.default_snapshot_path = vim.fn.stdpath("config" .. "/packer_snapshots")
 
 --- Check if a plugin is defined in packer. Useful with lazy loading when a plugin is not necessarily loaded yet
 ---@param plugin string the plugin string to search for
@@ -58,8 +58,7 @@ fignvim.plug.initialise_packer = function()
   -- if packer is available, check if there is a compiled packer file
   if packer_avail then
     -- try to load the packer compiled file
-    local run_me, _ =
-      loadfile(fignvim.plug.opts("plugins.packer", { compile_path = fignvim.plug.default_compile_path }).compile_path)
+    local run_me, _ = loadfile(fignvim.plug.default_compile_path)
     -- if the file loads, run the compiled function
     if run_me then
       run_me()
@@ -67,6 +66,43 @@ fignvim.plug.initialise_packer = function()
     else
       fignvim.ui.echo({ { "Please run " }, { ":PackerSync", "Title" } })
     end
+  end
+end
+
+function fignvim.plug.setup_plugins()
+  local status_ok, packer = pcall(require, "packer")
+  if status_ok then
+    packer.startup({
+      function(use)
+        for key, plugin in pairs(require("user-configs.plugins").plugins) do
+          if type(key) == "string" and not plugin[1] then
+            plugin[1] = key
+          end
+          use(plugin)
+        end
+      end,
+      config = {
+        compile_path = fignvim.plug.default_compile_path,
+        snapshot_path = fignvim.plug.default_snapshot_path,
+        display = {
+          open_fn = function()
+            return require("packer.util").float({ border = "rounded" })
+          end,
+        },
+        profile = {
+          enable = true,
+          threshold = 0.0001,
+        },
+        git = {
+          clone_timeout = 300,
+          subcommands = {
+            update = "pull --rebase",
+          },
+        },
+        auto_clean = true,
+        compile_on_sync = true,
+      },
+    })
   end
 end
 

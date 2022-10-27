@@ -1,6 +1,10 @@
 _G.fignvim = {}
 
-require("core.api.ui")
-require("core.api.plug")
-require("core.api.vars")
-require("core.api.tables")
+require("api.ui")
+require("api.plug")
+require("api.config")
+require("api.vars")
+require("api.functions")
+require("api.term")
+require("api.tables")
+require("api.search")
