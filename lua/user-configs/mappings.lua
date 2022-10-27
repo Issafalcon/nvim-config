@@ -1,7 +1,6 @@
 local M = {}
 
 ---@class FigNvimMapping
----@field id string Unique identifier for the Mapping (for nvim-mapper)
 ---@field group string Group name for the Mapping (for nvim-mapper)
 ---@field desc string Description of the Mapping
 ---@field mode string | table Mode or Modes for the Mapping

@@ -15,8 +15,8 @@ fignvim.lsp.capabilities.textDocument.completion.completionItem.resolveSupport =
 }
 
 -- Add capabilities required for LSP based completions
-local cmp_nvim_lsp = fignvim.plug.load_module_file("cmp_nvim_lsp")
-if cmp_nvim_lsp then
+if fignvim.plug.is_available("cmp-nvim-lsp") then
+  local cmp_nvim_lsp = fignvim.plug.load_module_file("cmp_nvim_lsp")
   fignvim.lsp.capabilities = vim.tbl.deep_extend("force", fignvim.lsp.capabilities, cmp_nvim_lsp.default_capabilities())
 end
 

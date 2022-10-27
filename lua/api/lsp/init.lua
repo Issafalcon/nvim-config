@@ -1,12 +1,16 @@
 fignvim.lsp = {}
 
+require("api.lsp.capabilities")
+require("api.lsp.mappings")
+require("api.lsp.formatting")
+
 --- Helper function to set up a given server with the Neovim LSP client
 -- @param server the name of the server to be setup
 fignvim.lsp.setup = function(server)
   local opts = fignvim.lsp.server_settings(server)
 
-  local neodev = fignvim.plug.load_module_file("neodev")
-  if server == "sumneko_lua" and neodev then
+  if server == "sumneko_lua" and fignvim.plug.is_available("neodev.nvim") then
+    local neodev = fignvim.plug.load_module_file("neodev")
     -- For developing Lua plugins for Neovim Only
     -- Comment out below lines so lua_dev is not used when working on other Lua projects
     neodev.setup({
@@ -32,6 +36,10 @@ function fignvim.lsp.on_attach(client, bufnr)
   local capabilities = client.server_capabilities
 
   fignvim.lsp.mappings.set_buf_mappings(capabilities, client.name, bufnr)
+
+  if capabilities.documentFormattingProvider then
+    fignvim.lsp.formatting.create_buf_commands(bufnr)
+  end
 
   if capabilities.documentHighlightProvider then
     fignvim.lsp.capabilities.handle_document_highlighting(bufnr)

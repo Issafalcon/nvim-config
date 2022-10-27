@@ -6,23 +6,24 @@ fignvim.plug.default_compile_path = vim.fn.stdpath("data" .. "/packer_compiled.l
 --- Check if a plugin is defined in packer. Useful with lazy loading when a plugin is not necessarily loaded yet
 ---@param plugin string the plugin string to search for
 ---@return boolean value if the plugin is available
-function fignvim.plug.is_available(plugin) return packer_plugins ~= nil and packer_plugins[plugin] ~= nil end
+function fignvim.plug.is_available(plugin)
+  return packer_plugins ~= nil and packer_plugins[plugin] ~= nil
+end
 
 --- Looks to see if a module path references a lua file in a configuration folder and tries to load it. If there is an error loading the file, write an error and continue
 ---@param module string the module path to try and load
----@return any the loaded module if successful or nil
-function fignvim.plug.load_module_file(module)
+---@param required? boolean Whether the module is essential for core operations or not (default: false)
+---@return any the loaded module if successful or nil. Errors if the module is required and fails to load
+function fignvim.plug.load_module_file(module, required)
   local found_module
-  -- try to load the file
   local status_ok, loaded_module = pcall(require, module)
-  -- if successful at loading, set the return variable
+
   if status_ok then
     found_module = loaded_module
-    -- if unsuccessful, throw an error
-  else
+  elseif required then
     vim.api.nvim_err_writeln("Error loading file: " .. found_module .. "\n\n" .. loaded_module)
   end
-  -- return the loaded module or nil if no file found
+
   return found_module
 end
 
@@ -50,7 +51,9 @@ fignvim.plug.initialise_packer = function()
     vim.cmd.packadd("packer.nvim")
     packer_avail, _ = pcall(require, "packer")
     -- if packer didn't load, print error
-    if not packer_avail then vim.api.nvim_err_writeln("Failed to load packer at:" .. packer_path) end
+    if not packer_avail then
+      vim.api.nvim_err_writeln("Failed to load packer at:" .. packer_path)
+    end
   end
   -- if packer is available, check if there is a compiled packer file
   if packer_avail then
