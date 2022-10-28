@@ -42,6 +42,4 @@ M.config = {
   },
 }
 
-vim.diagnostic.config(M.config[vim.g.diagnostics_enabled and "on" or "off"])
-
 return M

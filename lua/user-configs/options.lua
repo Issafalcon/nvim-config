@@ -50,6 +50,7 @@ fignvim.config.set_vim_opts({
     backup = false,
   },
   g = {
+    catppuccin_flavour = "mocha",
     highlighturl_enabled = true, -- highlight URLs by default
     mapleader = " ", -- set leader key
     zipPlugin = false, -- disable zip

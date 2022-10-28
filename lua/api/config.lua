@@ -20,7 +20,7 @@ function fignvim.config.get_lsp_server_config(server_name)
   return config
 end
 
-fignvim.config.set_shell_as_powershell = function()
+function fignvim.config.set_shell_as_powershell()
   -- Adding -NoProfile stops powershell from loading the profile every time shell command is run
   -- but still loads it when creating Neovim terminal buffer
   vim.cmd([[let &shell = executable('pwsh') ? 'pwsh' : 'powershell']])
@@ -62,11 +62,27 @@ if fignvim.plug.is_available("nvim-mapper") then
     mapper.map_buf_virtual(mode, keys, cmd, options, category, unique_identifier, description)
   end
 else
-  fignvim.config.map = function(mode, keys, cmd, options, _, _, _) vim.api.nvim_set_keymap(mode, keys, cmd, options) end
-  fignvim.config.map_buf =
-    function(bufnr, mode, keys, cmd, options, _, _, _) vim.api.nvim_buf_set_keymap(bufnr, mode, keys, cmd, options) end
-  fignvim.config.map_virtual = function(_, _, _, _, _, _, _) return end
-  fignvim.config.map_buf_virtual = function(_, _, _, _, _, _, _) return end
+  fignvim.config.map = function(mode, keys, cmd, options, _, _, _)
+    vim.api.nvim_set_keymap(mode, keys, cmd, options)
+  end
+  fignvim.config.map_buf = function(bufnr, mode, keys, cmd, options, _, _, _)
+    vim.api.nvim_buf_set_keymap(bufnr, mode, keys, cmd, options)
+  end
+  fignvim.config.map_virtual = function(_, _, _, _, _, _, _)
+    return
+  end
+  fignvim.config.map_buf_virtual = function(_, _, _, _, _, _, _)
+    return
+  end
+end
+
+--- Top level function to convert all mappings in the general_mappings config into keymaps
+function fignvim.config.set_general_mappings()
+  local general_mappings = require("user-configs.mappings").general_mappings
+
+  for group, group_mappings in pairs(general_mappings) do
+    fignvim.config.create_mapping_group(group_mappings, group)
+  end
 end
 
 --- Recurses through a set of FigNvimMappings and creates a set of keymaps for them
@@ -97,4 +113,5 @@ function fignvim.config.create_mapping(id, group_name, mapping, bufnr)
     fignvim.config.map(mapping.mode, mapping.lhs, mapping.rhs, opts, group_name, id, mapping.desc)
   end
 end
+
 return fignvim.config

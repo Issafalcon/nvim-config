@@ -28,7 +28,7 @@ function fignvim.plug.load_module_file(module, required)
 end
 
 --- Check if packer is installed and loadable, if not then install it and make sure it loads
-fignvim.plug.initialise_packer = function()
+function fignvim.plug.initialise_packer()
   -- try loading packer
   local packer_avail, _ = pcall(require, "packer")
   -- if packer isn't availble, reinstall it

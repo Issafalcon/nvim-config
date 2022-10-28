@@ -77,4 +77,11 @@ function fignvim.lsp.server_settings(server_name)
   return vim.tbl_deep_extend("force", opts, server_config.opts)
 end
 
+function fignvim.lsp.setup_all_lsp_servers()
+  local server_list = require("user-configs.lsp").servers
+  for _, server in ipairs(server_list) do
+    fignvim.lsp.setup(server)
+  end
+end
+
 return fignvim.lsp
