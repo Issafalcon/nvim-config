@@ -9,5 +9,13 @@ M.plugins = {
 
   -- Lua functions
   ["nvim-lua/plenary.nvim"] = { module = "plenary" },
+
+  -- Notification Enhancer
+  ["rcarriga/nvim-notify"] = {
+    event = "UIEnter",
+    config = function()
+      require("plugin-configs.notify")
+    end,
+  },
 }
 return M

@@ -13,7 +13,7 @@ end
 --- Looks to see if a module path references a lua file in a configuration folder and tries to load it. If there is an error loading the file, write an error and continue
 ---@param module string the module path to try and load
 ---@param required? boolean Whether the module is essential for core operations or not (default: false)
----@return any the loaded module if successful or nil. Errors if the module is required and fails to load
+---@return table the loaded module if successful or nil. Errors if the module is required and fails to load
 function fignvim.plug.load_module_file(module, required)
   local found_module
   local status_ok, loaded_module = pcall(require, module)

@@ -22,7 +22,7 @@ function fignvim.ui.get_icon(kind)
 end
 
 --- A utility function to stylize a string with an icon from lspkind, separators, and left/right padding
----@param str | boolean string the string to stylize 
+---@param str | boolean string the string to stylize
 ---@param opts table options of `{ padding = { left = 0, right = 0 }, separator = { left = "|", right = "|" }, show_empty = false, icon = { kind = "NONE", padding = { left = 0, right = 0 } } }`
 ---@return string the stylized string
 ---@usage local string = fignvim.status.utils.stylize("Hello", { padding = { left = 1, right = 1 }, icon = { kind = "String" } })
@@ -33,10 +33,10 @@ function fignvim.ui.stylize(str, opts)
     show_empty = false,
     icon = { kind = "NONE", padding = { left = 0, right = 0 } },
   })
-  local icon = fignvim.pad_string(fignvim.ui.get_icon(opts.icon.kind), opts.icon.padding)
+  local icon = fignvim.string.pad_string(fignvim.ui.get_icon(opts.icon.kind), opts.icon.padding)
   return str
       and (str ~= "" or opts.show_empty)
-      and opts.separator.left .. fignvim.pad_string(icon .. str, opts.padding) .. opts.separator.right
+      and opts.separator.left .. fignvim.string.pad_string(icon .. str, opts.padding) .. opts.separator.right
     or ""
 end
 

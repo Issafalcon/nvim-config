@@ -2,7 +2,7 @@ local heirline = fignvim.plug.load_module_file("heirline")
 if not heirline or not fignvim.status then
   return
 end
-local C = rere("user-configs").colours
+local C = require("user-configs").colours
 
 local function setup_colors()
   local StatusLine = fignvim.get_hlgroup("StatusLine", { fg = C.fg, bg = C.grey_4 })
@@ -73,6 +73,7 @@ end
 
 heirline.load_colors(setup_colors())
 local heirline_opts = {
+  -- Statusline
   {
     hl = { fg = "fg", bg = "bg" },
     fignvim.status.component.mode(),
@@ -90,6 +91,8 @@ local heirline_opts = {
     fignvim.status.component.nav(),
     fignvim.status.component.mode({ surround = { separator = "right" } }),
   },
+
+  --Winbar
   {
     fallthrough = false,
     {
