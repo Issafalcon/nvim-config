@@ -1,5 +1,9 @@
 fignvim.ui = {}
 
+local bool2str = function(bool)
+  return bool and "on" or "off"
+end
+
 --- Initialize icons used throughout the user interface
 function fignvim.ui.initialize_icons()
   fignvim.icons = fignvim.plug.opts("icons", require("core.icons.nerd_font"))
@@ -22,7 +26,7 @@ function fignvim.ui.get_icon(kind)
 end
 
 --- A utility function to stylize a string with an icon from lspkind, separators, and left/right padding
----@param str | boolean string the string to stylize
+---@param str string | boolean string the string to stylize
 ---@param opts table options of `{ padding = { left = 0, right = 0 }, separator = { left = "|", right = "|" }, show_empty = false, icon = { kind = "NONE", padding = { left = 0, right = 0 } } }`
 ---@return string the stylized string
 ---@usage local string = fignvim.status.utils.stylize("Hello", { padding = { left = 1, right = 1 }, icon = { kind = "String" } })
@@ -48,6 +52,14 @@ function fignvim.ui.echo(messages)
   if type(messages) == "table" then
     vim.api.nvim_echo(messages, false, {})
   end
+end
+
+--- Serve a notification with a title of AstroNvim
+---@param msg string the notification body
+---@param type? string the type of the notification (:help vim.log.levels)
+---@param opts? table of nvim-notify options to use (:help notify-options)
+function fignvim.ui.notify(msg, type, opts)
+  vim.notify(msg, type, fignvim.table.default_tbl(opts or {}, { title = "FigNvim" }))
 end
 
 --- Delete the syntax matching rules for URLs/URIs if set
@@ -103,7 +115,7 @@ end
 
 function fignvim.ui.configure_diagnostics()
   local ui_settings = require("user-configs.ui")
-  vim.diagnostic.config(ui_settings.config[vim.g.diagnostics_enabled and "on" or "off"])
+  vim.diagnostic.config(ui_settings.config[bool2str(vim.g.diagnostics_enabled)])
 end
 
 --- Toggle diagnostics
@@ -124,14 +136,13 @@ function fignvim.ui.toggle_diagnostics()
 
   local on_off = vim.g.diagnostics_enabled and "on" or "off"
   vim.diagnostic.config(fignvim.config.get_config("diagnostics")[on_off])
-  -- fignvim.ui.notify(string.format("diagnostics %s", status))
+  fignvim.ui.notify(string.format("diagnostics %s", status))
 end
 
 --- Toggle auto format
 function fignvim.ui.toggle_autoformat()
   vim.g.autoformat_enabled = not vim.g.autoformat_enabled
-  local on_off = vim.g.autoformat_enabled and "on" or "off"
-  -- fignvim.notify(string.format("Autoformatting %s", bool2str(vim.g.autoformat_enabled)))
+  fignvim.notify(string.format("Autoformatting %s", bool2str(vim.g.autoformat_enabled)))
 end
 
 --- Get highlight properties for a given highlight name

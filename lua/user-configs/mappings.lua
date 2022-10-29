@@ -71,35 +71,47 @@ M.plugin_mappings = {
     registers_insert   = { mode = "i", lhs = "<A-2>",       rhs = ":lua require('telescope.builtin').registers()<CR>",                                           desc = "Search registers while in insert mode"                     },
     command_history    = { mode = "n", lhs = "<leader>svc",  rhs = ":lua require('telescope.builtin').command_history()<CR>",                                      desc = "Search command history"               },
   },
+  Comment = {
+    opleader_line        = { isVirtual = true, mode = "o", lhs = "gc", rhs  = "", desc = "Operator pending prefix for line commenting in Normal and Visual modes", opts  = {} },
+    opleader_block       = { isVirtual = true, mode = "o", lhs = "gb", rhs  = "", desc = "Operator pending prefix for block commenting in Normal and Visual modes", opts = {} },
+    comment_line_toggle  = { isVirtual = true, mode = "n", lhs = "gcc", rhs = "", desc = "Toggle line comment", opts                                                     = {} },
+    comment_block_toggle = { isVirtual = true, mode = "n", lhs = "gbc", rhs = "", desc = "Toggle line comment", opts                                                     = {} },
+    comment_above        = { isVirtual = true, mode = "n", lhs = "gcO", rhs = "", desc = "Add a comment on the line above", opts                                         = {} },
+    comment_below        = { isVirtual = true, mode = "n", lhs = "gco", rhs = "", desc = "Add a comment on the line above", opts                                         = {} },
+    comment_eol          = { isVirtual = true, mode = "n", lhs = "gcA", rhs = "", desc = "Add a comment at the end of a line", opts                                      = {} }
+  },
+  ["vim-easy-align"] = {
+    easy_align = { mode = {"n", "x"}, lhs = "ga", rhs = "<Plug>(EasyAlign)", desc = "Easy align in visual mode, or for a motion" }
+  }
 }
 
 -- stylua: ignore
 ---@type table<string, table<string, FigNvimMapping>>
 M.lsp_mappings = {
   LSP = {
-    prev_diagnostic = { mode = "n", lhs = "[g", rhs = function() vim.diagnostic.goto_prev() end, desc = "Go to previous diagnostic" },
-    next_diagnostic = { mode = "n", lhs = "]g", rhs = function() vim.diagnostic.goto_next() end, desc = "Go to next diagnostic" },
-    hover_diagnostic = { mode = "n", lhs = "<leader>ld", rhs = function() vim.diagnostic.open_float() end, desc = "Hover diagnostics" },
-    code_action = { mode = "n", lhs = "<leader>ca", rhs = function() vim.lsp.buf.code_action() end, desc = "Opens the default Code Action Window" },
-    code_action_saga = { mode = "n", lhs = "<leader>ca", rhs = ":Lspsaga code_action<CR>", desc = "Opens LSP Saga Code Action Window" },
-    goto_declaration = { mode = "n", lhs = "gD", rhs = function() vim.lsp.buf.declaration() end, desc = "Go to declaration of current symbol" },
-    goto_definition = { mode = "n", lhs = "gd", rhs = function() vim.lsp.buf.definition() end, desc = "Go to definition of current symbol" },
-    goto_implementation = { mode = "n", lhs = "gi", rhs = function() vim.lsp.buf.implementation() end, desc = "Go to implementation of current symbol" },
-    goto_implementation_telescope = { mode = "n", lhs = "gi", rhs = function() require('telescope.builtin').lsp_implementations() end, desc = "Go to implementation of current symbol using Telescope" },
-    goto_references = { mode = "n", lhs = "gr", rhs = function() vim.lsp.buf.references() end, desc = "Go to references of current symbol" },
-    goto_references_telescope = { mode = "n", lhs = "gr", rhs = function () require('telescope.builtin').lsp_references() end, desc = "Go to references of current symbol using Telescope" },
-    document_symbols_telescope = { mode = "n", lhs = "gm", rhs = function() require('telescope.builtin').lsp_document_symbols() end, desc = "List document symbols in Telescope" },
-    hover_doc = { mode = "n", lhs = "K", rhs = function() vim.lsp.buf.hover() end, desc = "Hover documentation" },
-    hover_doc_saga = { mode = "n", lhs = "K", rhs = ":Lspsaga hover_doc<CR>", desc = "Hover documentation using LSP Saga" },
-    rename_symbol = { mode = "n", lhs = "rn", rhs = function() vim.lsp.buf.rename() end, desc = "Rename current symbol" },
-    signature_help = { mode = { "i", "n" }, lhs = "<A-s>", rhs = function() vim.lsp.buf.signature_help() end, desc = "Show signature help" },
-    format_code = { mode = {"n", "v"}, lhs = "<leader>f", rhs = fignvim.lsp.formatting.format, desc = "Format code in file, or the selected portion of code"},
-    toggle_autoformat = { mode = "n", lhs = "<leader>tf", rhs = fignvim.ui.toggle_autoformat, desc = "Toggle autoformatting on save" },
-    saga_scroll_up = { mode = "n", lhs = "<C-f>", rhs = function () require('lspsaga.action').smart_scroll_with_saga(1) end, desc = "Scroll up in an LSP Saga popup window"},
-    saga_scroll_down = { mode = "n", lhs = "<C-b>", rhs = function () require('lspsaga.action').smart_scroll_with_saga(-1) end, desc = "Scroll down in an LSP Saga popup window"},
-    tsserver_organize = { mode = "n", lhs = "<leader>to", rhs = ":TSLspOrganize<CR>", desc = "Organize imports using tsserver" },
-    tsserver_rename_file = { mode = "n", lhs = "<leader>trn", rhs = ":TSLspRenameFile<CR>", desc = "Rename file using tsserver" },
-    tsserver_import_all = { mode = "n", lhs = "<leader>ti", rhs = ":TSLspImportAll<CR>", desc = "Import all missing imports using tsserver" },
+    prev_diagnostic               = { mode = "n", lhs          = "[g", rhs          = function() vim.diagnostic.goto_prev() end, desc                            = "Go to previous diagnostic" },
+    next_diagnostic               = { mode = "n", lhs          = "]g", rhs          = function() vim.diagnostic.goto_next() end, desc                            = "Go to next diagnostic" },
+    hover_diagnostic              = { mode = "n", lhs          = "<leader>ld", rhs  = function() vim.diagnostic.open_float() end, desc                           = "Hover diagnostics" },
+    code_action                   = { mode = "n", lhs          = "<leader>ca", rhs  = function() vim.lsp.buf.code_action() end, desc                             = "Opens the default Code Action Window" },
+    code_action_saga              = { mode = "n", lhs          = "<leader>ca", rhs  = ":Lspsaga code_action<CR>", desc                                           = "Opens LSP Saga Code Action Window" },
+    goto_declaration              = { mode = "n", lhs          = "gD", rhs          = function() vim.lsp.buf.declaration() end, desc                             = "Go to declaration of current symbol" },
+    goto_definition               = { mode = "n", lhs          = "gd", rhs          = function() vim.lsp.buf.definition() end, desc                              = "Go to definition of current symbol" },
+    goto_implementation           = { mode = "n", lhs          = "gi", rhs          = function() vim.lsp.buf.implementation() end, desc                          = "Go to implementation of current symbol" },
+    goto_implementation_telescope = { mode = "n", lhs          = "gi", rhs          = function() require('telescope.builtin').lsp_implementations() end, desc    = "Go to implementation of current symbol using Telescope" },
+    goto_references               = { mode = "n", lhs          = "gr", rhs          = function() vim.lsp.buf.references() end, desc                              = "Go to references of current symbol" },
+    goto_references_telescope     = { mode = "n", lhs          = "gr", rhs          = function () require('telescope.builtin').lsp_references() end, desc        = "Go to references of current symbol using Telescope" },
+    document_symbols_telescope    = { mode = "n", lhs          = "gm", rhs          = function() require('telescope.builtin').lsp_document_symbols() end, desc   = "List document symbols in Telescope" },
+    hover_doc                     = { mode = "n", lhs          = "K", rhs           = function() vim.lsp.buf.hover() end, desc                                   = "Hover documentation" },
+    hover_doc_saga                = { mode = "n", lhs          = "K", rhs           = ":Lspsaga hover_doc<CR>", desc                                             = "Hover documentation using LSP Saga" },
+    rename_symbol                 = { mode = "n", lhs          = "rn", rhs          = function() vim.lsp.buf.rename() end, desc                                  = "Rename current symbol" },
+    signature_help                = { mode = { "i", "n" }, lhs = "<A-s>", rhs       = function() vim.lsp.buf.signature_help() end, desc                          = "Show signature help" },
+    format_code                   = { mode = {"n", "v"}, lhs   = "<leader>f", rhs   = fignvim.lsp.formatting.format, desc                                        = "Format code in file, or the selected portion of code"},
+    toggle_autoformat             = { mode = "n", lhs          = "<leader>tf", rhs  = fignvim.ui.toggle_autoformat, desc                                         = "Toggle autoformatting on save" },
+    saga_scroll_up                = { mode = "n", lhs          = "<C-f>", rhs       = function () require('lspsaga.action').smart_scroll_with_saga(1) end, desc  = "Scroll up in an LSP Saga popup window"},
+    saga_scroll_down              = { mode = "n", lhs          = "<C-b>", rhs       = function () require('lspsaga.action').smart_scroll_with_saga(-1) end, desc = "Scroll down in an LSP Saga popup window"},
+    tsserver_organize             = { mode = "n", lhs          = "<leader>to", rhs  = ":TSLspOrganize<CR>", desc                                                 = "Organize imports using tsserver" },
+    tsserver_rename_file          = { mode = "n", lhs          = "<leader>trn", rhs = ":TSLspRenameFile<CR>", desc                                               = "Rename file using tsserver" },
+    tsserver_import_all           = { mode = "n", lhs          = "<leader>ti", rhs  = ":TSLspImportAll<CR>", desc                                                = "Import all missing imports using tsserver" },
   },
 }
 
