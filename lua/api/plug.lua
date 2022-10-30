@@ -169,8 +169,6 @@ function fignvim.plug.setup_plugins()
         use("onsails/lspkind-nvim")
         use("nvim-lua/lsp-status.nvim")
         use("folke/trouble.nvim")
-        -- TODO: Raise an issue. NULL-LS formatting times out in later versions (with prettier and eslint combined)
-        use({ "jose-elias-alvarez/null-ls.nvim" })
         use("Issafalcon/lsp-overloads.nvim")
 
         -- snippets

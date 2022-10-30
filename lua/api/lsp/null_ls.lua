@@ -6,7 +6,6 @@ fignvim.lsp.null_ls = {}
 function fignvim.lsp.null_ls.providers(filetype)
   local registered = {}
   -- try to load null-ls
-  require("null-ls.sources").get_available("lua")
   local sources = fignvim.plug.load_module_file("null-ls.sources")
   if sources then
     -- get the available sources of a given filetype
@@ -20,20 +19,6 @@ function fignvim.lsp.null_ls.providers(filetype)
   end
   -- return the found null-ls sources
   return registered
-end
-
---- Register a null-ls source given a name if it has not been manually configured in the null-ls configuration
----@param source string the source name to register from all builtin types
-function fignvim.lsp.null_ls.register(source)
-  -- try to load null-ls
-  local null_ls = fignvim.plug.load_module_file("null-ls.sources")
-  if null_ls then
-    if null_ls.is_registered(source) then return end
-    for _, type in ipairs { "diagnostics", "formatting", "code_actions", "completion", "hover" } do
-      local builtin = require("null-ls.builtins._meta." .. type)
-      if builtin[source] then null_ls.register(null_ls.builtins[type][source]) end
-    end
-  end
 end
 
 --- Get the null-ls sources for a given null-ls method

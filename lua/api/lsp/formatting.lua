@@ -17,7 +17,7 @@ function fignvim.lsp.formatting.format()
   vim.lsp.buf.format(formatting_opts)
 end
 
-function fignvim.lsp.formatting.create_buf_commands(bufnr)
+function fignvim.lsp.formatting.create_buf_autocmds(bufnr)
     vim.api.nvim_buf_create_user_command(
       bufnr,
       "Format",

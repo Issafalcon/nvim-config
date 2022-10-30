@@ -92,6 +92,12 @@ M.plugins = {
     config = function()
       require("plugin-configs.vim-easy-align")
     end,
-  }
+  },
+
+  -- LSP
+  ["jose-elias-alvarez/null-ls.nvim"] = {
+    event = "BufEnter",
+    config = function() require "plugin-configs.null-ls" end,
+  },
 }
 return M

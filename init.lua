@@ -6,7 +6,7 @@ end
 -- 1. Get all the required Fignvim API functions and commands required for setup
 for _, source in ipairs({
   "api",
-  -- "api.lsp",
+  "api.lsp",
   "commands.autocommands",
   "commands.usercommands",
 }) do

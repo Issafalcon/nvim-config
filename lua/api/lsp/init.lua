@@ -39,7 +39,7 @@ function fignvim.lsp.on_attach(client, bufnr)
   fignvim.lsp.mappings.set_buf_mappings(capabilities, client.name, bufnr)
 
   if capabilities.documentFormattingProvider then
-    fignvim.lsp.formatting.create_buf_commands(bufnr)
+    fignvim.lsp.formatting.create_buf_autocmds(bufnr)
   end
 
   if capabilities.documentHighlightProvider then
@@ -48,11 +48,15 @@ function fignvim.lsp.on_attach(client, bufnr)
 
   if client.server_capabilities.signatureHelpProvider then
     local lsp_overloads = fignvim.plug.load_module_file("lsp_overloads")
-    fignvim.fn.conditional_func(lsp_overloads.setup, lsp_overloads ~= nil, client, {})
+    if lsp_overloads then
+      lsp_overloads.setup(client, {})
+    end
   end
 
   local aerial = fignvim.plug.load_module_file("aerial")
-  fignvim.fn.conditional_func(aerial.on_attach, aerial ~= nil, client, bufnr)
+  if aerial then
+    aerial.on_attach(client, bufnr)
+  end
 end
 
 --- Get the server settings for a given language server to be provided to the server's `setup()` call
