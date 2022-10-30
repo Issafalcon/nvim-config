@@ -77,7 +77,6 @@ function fignvim.lsp.server_settings(server_name)
       fignvim.fn.conditional_func(server_on_attach, server_on_attach ~= nil, client, bufnr)
       fignvim.lsp.on_attach(client, bufnr)
       fignvim.fn.conditional_func(custom_on_attach, custom_on_attach ~= nil, client, bufnr)
-      fignvim.ui.notify("Attached " .. client.name, "info", { title = "LSP", icon = fignvim.ui.get_icon("LSPLoaded") })
     end,
   }
 
@@ -89,6 +88,7 @@ function fignvim.lsp.server_settings(server_name)
 end
 
 function fignvim.lsp.setup_all_lsp_servers()
+  fignvim.lsp.handlers.add_global_handlers()
   local server_list = require("user-configs.lsp").servers
   for _, server in ipairs(server_list) do
     fignvim.lsp.setup(server)

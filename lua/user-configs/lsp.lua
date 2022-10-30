@@ -24,7 +24,7 @@ M.servers = {
 M.formatting = {
   format_on_save = {
     -- Enable / disable formatting globally
-    enabled = false,
+    enabled = true,
     -- Enable / disable formatting on save for specific filetypes
     allow_filetypes = {
       "typescript",

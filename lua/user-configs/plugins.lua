@@ -98,7 +98,23 @@ M.plugins = {
   ["neovim/nvim-lspconfig"] = {},
   ["jose-elias-alvarez/null-ls.nvim"] = {
     event = "BufEnter",
-    config = function() require "plugin-configs.null-ls" end,
+    config = function()
+      require("plugin-configs.null-ls")
+    end,
+  },
+
+  -- Diagnostics
+  ["folke/trouble.nvim"] = {
+    config = function()
+      require("plugin-configs.trouble")
+    end,
+  },
+
+  ["glepnir/lspsaga.nvim"] = {
+    config = function()
+      require("plugin-configs.lsp-saga")
+    end,
   },
 }
+
 return M

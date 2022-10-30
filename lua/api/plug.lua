@@ -165,10 +165,8 @@ function fignvim.plug.setup_plugins()
         -- LSP
         use("b0o/schemastore.nvim") -- JSON-ls schemas: https://github.com/b0o/SchemaStore.nvim
         use("neovim/nvim-lspconfig") -- The LSP config
-        use("glepnir/lspsaga.nvim")
         use("onsails/lspkind-nvim")
         use("nvim-lua/lsp-status.nvim")
-        use("folke/trouble.nvim")
         use("Issafalcon/lsp-overloads.nvim")
 
         -- snippets

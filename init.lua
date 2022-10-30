@@ -16,6 +16,18 @@ for _, source in ipairs({
   end
 end
 
+--2. Load general options
+local options = require("user-configs.options")
+fignvim.config.set_vim_opts(options)
+
+if vim.fn.has("win32") == 1 then
+  fignvim.config.set_shell_as_powershell()
+end
+
+if vim.fn.has("wsl") then
+  fignvim.config.set_win32yank_wsl_as_clip()
+end
+
 -- 3. Initialise the plugin manager and load all plugins
 fignvim.plug.initialise_packer()
 fignvim.plug.setup_plugins()
@@ -27,9 +39,10 @@ fignvim.ui.configure_diagnostics()
 -- 5. Set up the LSP servers
 fignvim.lsp.setup_all_lsp_servers()
 
-require "options"
+-- 6. Create remaining general mappings
+vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { silent = true}) -- Prep for space to be leader key
+
 require "keymappings"
--- require "plugins"
 require "autocommands"
 require "colourscheme"
 require "helpers"

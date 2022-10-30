@@ -53,6 +53,7 @@ M = {
     catppuccin_flavour = "mocha",
     highlighturl_enabled = true, -- highlight URLs by default
     mapleader = " ", -- set leader key
+    maplocalleader = " ", -- set local leader key
     zipPlugin = false, -- disable zip
     load_black = false, -- disable black
     loaded_2html_plugin = true, -- disable 2html
@@ -81,13 +82,5 @@ M = {
     loclist_open = false -- whether loclist is open
   },
 }
-
--- if vim.fn.has("win32") == 1 then
---   fignvim.config.set_shell_as_powershell()
--- end
---
--- if vim.fn.has("wsl") then
---   fignvim.config.set_win32yank_wsl_as_clip()
--- end
 
 return M
