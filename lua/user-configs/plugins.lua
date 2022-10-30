@@ -2,16 +2,17 @@ M = {}
 
 M.plugins = {
   -- Plugin manager
-  ["wbthomason/packer.nvim"] = {},
+  ["wbthomason/packer.nvim"] = {}, -- https://github.com/wbthomason/packer.nvim
 
   -- Optimiser
-  ["lewis6991/impatient.nvim"] = {},
+  ["lewis6991/impatient.nvim"] = {}, -- https://github.com/lewis6991/impatient.nvim
 
   -- Lua functions
-  ["nvim-lua/plenary.nvim"] = { module = "plenary" },
+  ["nvim-lua/plenary.nvim"] = { module = "plenary" }, -- https://github.com/nvim-lua/plenary.nvim
 
   -- Notification Enhancer
   ["rcarriga/nvim-notify"] = {
+    -- https://github.com/rcarriga/nvim-notify
     event = "UIEnter",
     config = function()
       require("plugin-configs.notify")
@@ -20,6 +21,7 @@ M.plugins = {
 
   -- Neovim UI Enhancer
   ["stevearc/dressing.nvim"] = {
+    -- https://github.com/stevearc/dressing.nvim
     event = "UIEnter",
     config = function()
       require("plugin-configs.dressing")
@@ -28,6 +30,7 @@ M.plugins = {
 
   -- Icons
   ["kyazdani42/nvim-web-devicons"] = {
+    -- https://github.com/nvim-tree/nvim-web-devicons
     disable = not vim.g.icons_enabled,
     module = "nvim-web-devicons",
     config = function()
@@ -44,6 +47,7 @@ M.plugins = {
 
   -- Bufferline
   ["akinsho/bufferline.nvim"] = {
+    -- https://github.com/akinsho/bufferline.nvim
     event = "UIEnter",
     config = function()
       require("plugin-configs.bufferline")
@@ -52,9 +56,8 @@ M.plugins = {
 
   -- File explorer
   ["nvim-neo-tree/neo-tree.nvim"] = {
+    -- https://github.com/nvim-neo-tree/neo-tree.nvim/tree/v2.x
     branch = "v2.x",
-    module = "neo-tree",
-    cmd = "Neotree",
     requires = { { "MunifTanjim/nui.nvim", module = "nui" } },
     setup = function()
       vim.g.neo_tree_remove_legacy_commands = true

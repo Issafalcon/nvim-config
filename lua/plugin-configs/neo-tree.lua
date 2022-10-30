@@ -60,3 +60,6 @@ neotree.setup({
     },
   },
 })
+
+local mappings = fignvim.config.get_plugin_mappings("neo-tree")
+fignvim.fn.conditional_func(fignvim.config.create_mapping_group, mappings ~= nil, mappings, "Navigation")

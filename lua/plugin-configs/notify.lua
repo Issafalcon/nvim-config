@@ -3,5 +3,5 @@ if not notify then
   return
 end
 
-notify.setup({ stages = "fade" })
+notify.setup({ stages = "fade_in_slide_out" })
 vim.notify = notify

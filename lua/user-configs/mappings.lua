@@ -82,6 +82,9 @@ M.plugin_mappings = {
   },
   ["vim-easy-align"] = {
     easy_align = { mode = {"n", "x"}, lhs = "ga", rhs = "<Plug>(EasyAlign)", desc = "Easy align in visual mode, or for a motion" }
+  },
+  ["neo-tree"] = {
+    open_browser = { mode = "n", lhs = "<leader>e", rhs = ":Neotree toggle<CR>", desc = "Open Neotree" }
   }
 }
 

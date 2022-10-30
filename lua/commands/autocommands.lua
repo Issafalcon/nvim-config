@@ -96,7 +96,7 @@ cmd("FileType", {
   group = "enable_spelling",
   pattern = { "markdown", "text", "tex", "org" },
   callback = function()
-    vim.bo.spell = true
+    vim.api.nvim_set_option_value("spell", true, { scope = "local" })
   end,
 })
 

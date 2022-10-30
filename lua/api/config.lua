@@ -16,6 +16,20 @@ function fignvim.config.get_lsp_server_config(server_name)
   return config
 end
 
+--- Get the configuration for a given plugin (name must match file in "plugin-configs" folder)
+---@param plugin_name string Name of the plugin
+---@param required? boolean Whether ot not the mappings are required
+---@return table The mappings for the plugin
+function fignvim.config.get_plugin_mappings(plugin_name, required)
+  local mappings = fignvim.plug.load_module_file("user-configs.mappings", required)
+  local plug_maps = mappings["plugin_mappings"][plugin_name]
+
+  if not plug_maps then
+    fignvim.ui.notify("No plugin mappings found for " .. plugin_name, "warn")
+  end
+  return plug_maps
+end
+
 function fignvim.config.set_shell_as_powershell()
   -- Adding -NoProfile stops powershell from loading the profile every time shell command is run
   -- but still loads it when creating Neovim terminal buffer

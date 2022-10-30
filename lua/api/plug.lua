@@ -20,8 +20,8 @@ function fignvim.plug.load_module_file(module, required)
 
   if status_ok then
     found_module = loaded_module
-  elseif required then
-    vim.api.nvim_err_writeln("Error loading file: " .. found_module .. "\n\n" .. loaded_module)
+  elseif not status_ok and required then
+    vim.api.nvim_err_writeln("Error loading file: " .. module .. "\n\n" .. loaded_module)
   end
 
   return found_module
@@ -74,10 +74,6 @@ function fignvim.plug.setup_plugins()
   if status_ok then
     packer.startup({
       function(use)
-        use("wbthomason/packer.nvim") -- Have packer manage itself
-        use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
-        use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
-
         -- Searching
         use("junegunn/fzf")
         use("nvim-telescope/telescope-fzy-native.nvim")
@@ -99,12 +95,10 @@ function fignvim.plug.setup_plugins()
         use({ "svermeulen/vim-easyclip" })
 
         -- UI Plugins (colours, icons, inputs etc)
-        use("stevearc/dressing.nvim")
         use("ziontee113/icon-picker.nvim")
         use({ "catppuccin/nvim", as = "catppuccin" })
         use("lunarvim/colorschemes") -- VSCode Like ColourScheme
         use("norcalli/nvim-colorizer.lua") -- HEX and RBG etc Colour Highlighter: https://github.com/norcalli/nvim-colorizer.lua
-        use("kyazdani42/nvim-web-devicons") -- Vim devicons with colour: https://github.com/kyazdani42/nvim-web-devicons
 
         -- Session management
         use({
@@ -164,7 +158,6 @@ function fignvim.plug.setup_plugins()
         -- LSP
         use("b0o/schemastore.nvim") -- JSON-ls schemas: https://github.com/b0o/SchemaStore.nvim
         use("neovim/nvim-lspconfig") -- The LSP config
-        use("onsails/lspkind-nvim")
         use("nvim-lua/lsp-status.nvim")
         use("Issafalcon/lsp-overloads.nvim")
 
@@ -173,23 +166,16 @@ function fignvim.plug.setup_plugins()
         use("saadparwaiz1/cmp_luasnip")
         use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
-        -- Bufferline (depends on nvim-web-devicons installed above)
-        use({ "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" })
-
         -- File Navigation
         use("ThePrimeagen/harpoon")
-        if vim.fn.has("wsl") or vim.fn.has("unix") then
+        if vim.fn.has("wsl") == 1 or vim.fn.has("unix") == 1 then
           use("kevinhwang91/rnvimr")
         end
-        use("kyazdani42/nvim-tree.lua")
         use({
           "phaazon/hop.nvim",
           as = "hop",
         })
 
-        -- Commenting
-        use({ "numToStr/Comment.nvim" })
-        use({ "JoosepAlviste/nvim-ts-context-commentstring" })
         use({ "danymat/neogen" })
 
         -- Quickfix / Location lists
