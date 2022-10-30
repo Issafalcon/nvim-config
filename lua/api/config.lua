@@ -10,13 +10,9 @@ fignvim.config.set_vim_opts = function(options)
   end
 end
 
-function fignvim.config.get_config(name)
-  local config = fignvim.plug.load_module_file("user-configs." .. name)
-  return config
-end
-
 function fignvim.config.get_lsp_server_config(server_name)
-  local config = fignvim.plug.load_module_file("user-configs.lsp_servers." .. server_name)
+  local module_file = "user-configs.lsp.servers." .. server_name
+  local config = fignvim.plug.load_module_file(module_file)
   return config
 end
 
@@ -63,17 +59,13 @@ if fignvim.plug.is_available("nvim-mapper") then
   end
 else
   fignvim.config.map = function(mode, keys, cmd, options, _, _, _)
-    vim.api.nvim_set_keymap(mode, keys, cmd, options)
+    vim.keymap.set(mode, keys, cmd, options)
   end
   fignvim.config.map_buf = function(bufnr, mode, keys, cmd, options, _, _, _)
-    vim.api.nvim_buf_set_keymap(bufnr, mode, keys, cmd, options)
+    vim.keymap.set(bufnr, mode, keys, cmd, options)
   end
-  fignvim.config.map_virtual = function(_, _, _, _, _, _, _)
-    return
-  end
-  fignvim.config.map_buf_virtual = function(_, _, _, _, _, _, _)
-    return
-  end
+  fignvim.config.map_virtual = function(_, _, _, _, _, _, _) end
+  fignvim.config.map_buf_virtual = function(_, _, _, _, _, _, _) end
 end
 
 --- Top level function to convert all mappings in the general_mappings config into keymaps

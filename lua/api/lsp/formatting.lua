@@ -1,11 +1,12 @@
 fignvim.lsp.formatting = {}
 
 local formatting_config = require('user-configs.lsp').formatting
+local formatting_opts = {}
 
 fignvim.lsp.formatting = vim.deepcopy(formatting_config)
-fignvim.lsp.formatting_opts.disabled = nil
-fignvim.lsp.formatting_opts.format_on_save = nil
-fignvim.lsp.formatting_opts.filter = function(client)
+formatting_opts.disabled = nil
+formatting_opts.format_on_save = nil
+formatting_opts.filter = function(client)
   local filter = formatting_config.filter
   local disabled = formatting_config.disabled or {}
   -- check if client is fully disabled or filtered by function
@@ -13,14 +14,14 @@ fignvim.lsp.formatting_opts.filter = function(client)
 end
 
 function fignvim.lsp.formatting.format()
-  vim.lsp.buf.format(fignvim.lsp.formatting_opts)
+  vim.lsp.buf.format(formatting_opts)
 end
 
 function fignvim.lsp.formatting.create_buf_commands(bufnr)
     vim.api.nvim_buf_create_user_command(
       bufnr,
       "Format",
-      function() vim.lsp.buf.format(fignvim.lsp.formatting_opts) end,
+      function() vim.lsp.buf.format(formatting_opts) end,
       { desc = "Format file with LSP" }
     )
 

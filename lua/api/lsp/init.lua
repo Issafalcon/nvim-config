@@ -63,7 +63,7 @@ function fignvim.lsp.server_settings(server_name)
   local server_config = fignvim.config.get_lsp_server_config(server_name)
 
   local server_on_attach = server.on_attach
-  local custom_on_attach = server_config.on_attach
+  local custom_on_attach = server_config and server_config.on_attach
 
   local opts = {
     capabilities = vim.tbl_deep_extend("force", fignvim.lsp.capabilities, server.capabilities or {}),
@@ -75,7 +75,11 @@ function fignvim.lsp.server_settings(server_name)
     end,
   }
 
-  return vim.tbl_deep_extend("force", opts, server_config.opts)
+  if server_config and server_config.opts then
+    vim.tbl_deep_extend("force", opts, server_config.opts)
+  end
+
+  return opts
 end
 
 function fignvim.lsp.setup_all_lsp_servers()

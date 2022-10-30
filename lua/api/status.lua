@@ -104,7 +104,7 @@ end
 -- @usage local heirline_component = { init = astronvim.status.init.breadcrumbs { padding = { left = 1 } } }
 function fignvim.status.init.breadcrumbs(opts)
   local aerial = fignvim.plug.load_module_file("aerial")
-  opts = fignvim.table.table.default_tbl(
+  opts = fignvim.table.default_tbl(
     opts,
     { separator = " > ", icon = { enabled = true, hl = false }, padding = { left = 0, right = 0 } }
   )
@@ -465,7 +465,7 @@ function fignvim.status.provider.lsp_progress(opts)
       Lsp
           and string.format(
             " %%<%s %s %s (%s%%%%) ",
-            fignvim.get_icon("LSP" .. ((Lsp.percentage or 0) >= 70 and { "Loaded", "Loaded", "Loaded" } or {
+            fignvim.ui.get_icon("LSP" .. ((Lsp.percentage or 0) >= 70 and { "Loaded", "Loaded", "Loaded" } or {
               "Loading1",
               "Loading2",
               "Loading3",
@@ -503,7 +503,7 @@ function fignvim.status.provider.lsp_client_names(opts)
     end
     local str = table.concat(buf_client_names, ", ")
     if type(opts.truncate) == "number" then
-      local max_width = math.floor(fignvim.ui.width() * opts.truncate)
+      local max_width = math.floor(fignvim.status.utils.width() * opts.truncate)
       if #str > max_width then
         str = string.sub(str, 0, max_width) .. "…"
       end
@@ -874,7 +874,7 @@ function fignvim.status.component.lsp(opts)
   for i, provider in ipairs({ "lsp_progress", "lsp_client_names" }) do
     if type(opts[provider]) == "table" then
       local new_provider = opts[provider].str
-          and fignvim.ui.make_flexible(
+          and fignvim.status.utils.make_flexible(
             i,
             { provider = fignvim.status.provider[provider](opts[provider]) },
             { provider = fignvim.status.provider.str(opts[provider]) }
@@ -919,7 +919,7 @@ function fignvim.status.component.builder(opts)
 end
 
 --- A utility function to get the width of the bar
----@param is_winbar boolean true if you want the width of the winbar, false if you want the statusline width
+---@param is_winbar? boolean true if you want the width of the winbar, false if you want the statusline width
 ---@return number The width of the specified bar
 function fignvim.status.utils.width(is_winbar)
   return vim.o.laststatus == 3 and not is_winbar and vim.o.columns or vim.api.nvim_win_get_width(0)

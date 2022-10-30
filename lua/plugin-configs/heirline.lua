@@ -2,28 +2,28 @@ local heirline = fignvim.plug.load_module_file("heirline")
 if not heirline or not fignvim.status then
   return
 end
-local C = require("user-configs").colours
+local C = require("user-configs.ui").colours
 
 local function setup_colors()
-  local StatusLine = fignvim.get_hlgroup("StatusLine", { fg = C.fg, bg = C.grey_4 })
-  local WinBar = fignvim.get_hlgroup("WinBar", { fg = C.grey_2, bg = C.bg })
-  local WinBarNC = fignvim.get_hlgroup("WinBarNC", { fg = C.grey, bg = C.bg })
-  local Conditional = fignvim.get_hlgroup("Conditional", { fg = C.purple_1, bg = C.grey_4 })
-  local String = fignvim.get_hlgroup("String", { fg = C.green, bg = C.grey_4 })
-  local TypeDef = fignvim.get_hlgroup("TypeDef", { fg = C.yellow, bg = C.grey_4 })
-  local HeirlineNormal = fignvim.get_hlgroup("HerlineNormal", { fg = C.blue, bg = C.grey_4 })
-  local HeirlineInsert = fignvim.get_hlgroup("HeirlineInsert", { fg = C.green, bg = C.grey_4 })
-  local HeirlineVisual = fignvim.get_hlgroup("HeirlineVisual", { fg = C.purple, bg = C.grey_4 })
-  local HeirlineReplace = fignvim.get_hlgroup("HeirlineReplace", { fg = C.red_1, bg = C.grey_4 })
-  local HeirlineCommand = fignvim.get_hlgroup("HeirlineCommand", { fg = C.yellow_1, bg = C.grey_4 })
-  local HeirlineInactive = fignvim.get_hlgroup("HeirlineInactive", { fg = C.grey_7, bg = C.grey_4 })
-  local GitSignsAdd = fignvim.get_hlgroup("GitSignsAdd", { fg = C.green, bg = C.grey_4 })
-  local GitSignsChange = fignvim.get_hlgroup("GitSignsChange", { fg = C.orange_1, bg = C.grey_4 })
-  local GitSignsDelete = fignvim.get_hlgroup("GitSignsDelete", { fg = C.red_1, bg = C.grey_4 })
-  local DiagnosticError = fignvim.get_hlgroup("DiagnosticError", { fg = C.red_1, bg = C.grey_4 })
-  local DiagnosticWarn = fignvim.get_hlgroup("DiagnosticWarn", { fg = C.orange_1, bg = C.grey_4 })
-  local DiagnosticInfo = fignvim.get_hlgroup("DiagnosticInfo", { fg = C.white_2, bg = C.grey_4 })
-  local DiagnosticHint = fignvim.get_hlgroup("DiagnosticHint", { fg = C.yellow_1, bg = C.grey_4 })
+  local StatusLine = fignvim.ui.get_hlgroup("StatusLine", { fg = C.fg, bg = C.grey_4 })
+  local WinBar = fignvim.ui.get_hlgroup("WinBar", { fg = C.grey_2, bg = C.bg })
+  local WinBarNC = fignvim.ui.get_hlgroup("WinBarNC", { fg = C.grey, bg = C.bg })
+  local Conditional = fignvim.ui.get_hlgroup("Conditional", { fg = C.purple_1, bg = C.grey_4 })
+  local String = fignvim.ui.get_hlgroup("String", { fg = C.green, bg = C.grey_4 })
+  local TypeDef = fignvim.ui.get_hlgroup("TypeDef", { fg = C.yellow, bg = C.grey_4 })
+  local HeirlineNormal = fignvim.ui.get_hlgroup("HerlineNormal", { fg = C.blue, bg = C.grey_4 })
+  local HeirlineInsert = fignvim.ui.get_hlgroup("HeirlineInsert", { fg = C.green, bg = C.grey_4 })
+  local HeirlineVisual = fignvim.ui.get_hlgroup("HeirlineVisual", { fg = C.purple, bg = C.grey_4 })
+  local HeirlineReplace = fignvim.ui.get_hlgroup("HeirlineReplace", { fg = C.red_1, bg = C.grey_4 })
+  local HeirlineCommand = fignvim.ui.get_hlgroup("HeirlineCommand", { fg = C.yellow_1, bg = C.grey_4 })
+  local HeirlineInactive = fignvim.ui.get_hlgroup("HeirlineInactive", { fg = C.grey_7, bg = C.grey_4 })
+  local GitSignsAdd = fignvim.ui.get_hlgroup("GitSignsAdd", { fg = C.green, bg = C.grey_4 })
+  local GitSignsChange = fignvim.ui.get_hlgroup("GitSignsChange", { fg = C.orange_1, bg = C.grey_4 })
+  local GitSignsDelete = fignvim.ui.get_hlgroup("GitSignsDelete", { fg = C.red_1, bg = C.grey_4 })
+  local DiagnosticError = fignvim.ui.get_hlgroup("DiagnosticError", { fg = C.red_1, bg = C.grey_4 })
+  local DiagnosticWarn = fignvim.ui.get_hlgroup("DiagnosticWarn", { fg = C.orange_1, bg = C.grey_4 })
+  local DiagnosticInfo = fignvim.ui.get_hlgroup("DiagnosticInfo", { fg = C.white_2, bg = C.grey_4 })
+  local DiagnosticHint = fignvim.ui.get_hlgroup("DiagnosticHint", { fg = C.yellow_1, bg = C.grey_4 })
   local colors = {
     fg = StatusLine.fg,
     bg = StatusLine.bg,
@@ -118,7 +118,7 @@ local heirline_opts = {
   },
 }
 
-heirline.setup(heirline_opts[1], heirline_opts[2])
+heirline.setup(heirline_opts[1])
 
 vim.api.nvim_create_augroup("Heirline", { clear = true })
 vim.api.nvim_create_autocmd("ColorScheme", {

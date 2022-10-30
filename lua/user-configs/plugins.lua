@@ -83,14 +83,14 @@ M.plugins = {
     module = { "Comment", "Comment.api" },
     keys = { "gc", "gb", "g<", "g>" },
     config = function()
-      require("configs.Comment")
+      require("plugin-configs.Comment")
     end,
   },
 
   -- General editing and formatting
   ["junegunn/vim-easy-align"] = {
     config = function()
-      require("plugin-configs.easy-align")
+      require("plugin-configs.vim-easy-align")
     end,
   }
 }

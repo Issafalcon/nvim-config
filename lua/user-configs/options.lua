@@ -1,4 +1,4 @@
-fignvim.config.set_vim_opts({
+M = {
   opt = {
     backspace = vim.opt.backspace + { "nostop" }, -- Don't stop backspace at insert
     clipboard = "unnamedplus", -- Connection to the system clipboard
@@ -80,12 +80,14 @@ fignvim.config.set_vim_opts({
     quickfix_open = false, -- whether qf list is open
     loclist_open = false -- whether loclist is open
   },
-})
+}
 
-if vim.fn.has("win32") == 1 then
-  fignvim.config.set_shell_as_powershell()
-end
+-- if vim.fn.has("win32") == 1 then
+--   fignvim.config.set_shell_as_powershell()
+-- end
+--
+-- if vim.fn.has("wsl") then
+--   fignvim.config.set_win32yank_wsl_as_clip()
+-- end
 
-if vim.fn.has("wsl") then
-  fignvim.config.set_win32yank_wsl_as_clip()
-end
+return M

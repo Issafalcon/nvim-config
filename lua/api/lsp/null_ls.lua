@@ -14,7 +14,7 @@ function fignvim.lsp.null_ls.providers(filetype)
       -- get each source name
       for method in pairs(source.methods) do
         registered[method] = registered[method] or {}
-        vim.fn.tbl_insert(registered[method], source.name)
+        table.insert(registered[method], source.name)
       end
     end
   end

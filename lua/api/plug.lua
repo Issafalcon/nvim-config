@@ -1,7 +1,7 @@
 fignvim.plug = {}
 
-fignvim.plug.default_compile_path = vim.fn.stdpath("data" .. "/packer_compiled.lua")
-fignvim.plug.default_snapshot_path = vim.fn.stdpath("config" .. "/packer_snapshots")
+fignvim.plug.default_compile_path = vim.fn.stdpath("data") .. "/packer_compiled.lua"
+fignvim.plug.default_snapshot_path = vim.fn.stdpath("config") .. "/packer_snapshots"
 
 --- Check if a plugin is defined in packer. Useful with lazy loading when a plugin is not necessarily loaded yet
 ---@param plugin string the plugin string to search for
@@ -74,6 +74,190 @@ function fignvim.plug.setup_plugins()
   if status_ok then
     packer.startup({
       function(use)
+        use("wbthomason/packer.nvim") -- Have packer manage itself
+        use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
+        use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
+
+        -- Searching
+        use("junegunn/fzf")
+        use("nvim-telescope/telescope-fzy-native.nvim")
+        use("nvim-telescope/telescope.nvim")
+        use("windwp/nvim-spectre")
+
+        -- Utility Plugins
+        use("windwp/nvim-autopairs") -- Autopair with cmp and treesitter integration
+        use("junegunn/vim-easy-align") -- Align text
+        use("tpope/vim-surround")
+        use("tpope/vim-dispatch")
+        use("nvim-lualine/lualine.nvim")
+        use("tpope/vim-unimpaired")
+        use("editorconfig/editorconfig-vim") -- Applies editorconfig to text
+        use("mbbill/undotree")
+        use("szw/vim-maximizer")
+        use("sudormrfbin/cheatsheet.nvim")
+        use("lukas-reineke/indent-blankline.nvim")
+        use("ThePrimeagen/refactoring.nvim")
+        use({ "svermeulen/vim-easyclip" })
+
+        -- UI Plugins (colours, icons, inputs etc)
+        use("stevearc/dressing.nvim")
+        use("ziontee113/icon-picker.nvim")
+        use({ "catppuccin/nvim", as = "catppuccin" })
+        use("lunarvim/colorschemes") -- VSCode Like ColourScheme
+        use("norcalli/nvim-colorizer.lua") -- HEX and RBG etc Colour Highlighter: https://github.com/norcalli/nvim-colorizer.lua
+        use("kyazdani42/nvim-web-devicons") -- Vim devicons with colour: https://github.com/kyazdani42/nvim-web-devicons
+
+        -- Session management
+        use({
+          "rmagatti/session-lens", -- Saves sessions after closing nvim
+          requires = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
+        })
+
+        -- Key binding / Help plugins
+        use({
+          "Issafalcon/nvim-mapper", -- Keep an eye on https://github.com/lazytanuki/nvim-mapper/pull/22 for when to switch back to original plugin
+          config = function()
+            require("nvim-mapper").setup({})
+          end,
+          before = "telescope.nvim",
+        })
+
+        -- Package manager
+        use({ "williamboman/mason.nvim" })
+        use({ "williamboman/mason-lspconfig.nvim" })
+        use({ "WhoIsSethDaniel/mason-tool-installer.nvim" })
+
+        -- Git plugins
+        use("lewis6991/gitsigns.nvim")
+        use("tpope/vim-fugitive")
+        use("tpope/vim-rhubarb") -- Browse Github URLs
+        use("rhysd/git-messenger.vim") -- Show commits under the cursor
+        use("kdheepak/lazygit.nvim")
+        use("sindrets/diffview.nvim")
+
+        -- Github
+        use({
+          "pwntester/octo.nvim",
+          config = function()
+            require("octo").setup()
+          end,
+        })
+        use("github/copilot.vim")
+
+        -- cmp plugins
+        use("hrsh7th/nvim-cmp") -- The completion plugin
+        use("hrsh7th/cmp-buffer") -- buffer completions
+        use("hrsh7th/cmp-path") -- path completions
+        use("hrsh7th/cmp-cmdline") -- cmdline completions
+        use("hrsh7th/cmp-nvim-lsp") -- LSP completion support
+        use("hrsh7th/cmp-vsnip")
+
+        -- TreeSitter
+        use({
+          "nvim-treesitter/nvim-treesitter",
+          run = ":TSUpdate",
+        })
+        use({ "nvim-treesitter/nvim-treesitter-textobjects" })
+        use({ "nvim-treesitter/playground" })
+        use({ "windwp/nvim-ts-autotag" })
+        use({ "p00f/nvim-ts-rainbow" })
+
+        -- LSP
+        use("b0o/schemastore.nvim") -- JSON-ls schemas: https://github.com/b0o/SchemaStore.nvim
+        use("neovim/nvim-lspconfig") -- The LSP config
+        use("glepnir/lspsaga.nvim")
+        use("onsails/lspkind-nvim")
+        use("nvim-lua/lsp-status.nvim")
+        use("folke/trouble.nvim")
+        -- TODO: Raise an issue. NULL-LS formatting times out in later versions (with prettier and eslint combined)
+        use({ "jose-elias-alvarez/null-ls.nvim" })
+        use("Issafalcon/lsp-overloads.nvim")
+
+        -- snippets
+        use({ "L3MON4D3/LuaSnip" }) -- Best snippet engine
+        use("saadparwaiz1/cmp_luasnip")
+        use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
+
+        -- Bufferline (depends on nvim-web-devicons installed above)
+        use({ "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" })
+
+        -- File Navigation
+        use("ThePrimeagen/harpoon")
+        if vim.fn.has("wsl") or vim.fn.has("unix") then
+          use("kevinhwang91/rnvimr")
+        end
+        use("kyazdani42/nvim-tree.lua")
+        use({
+          "phaazon/hop.nvim",
+          as = "hop",
+        })
+
+        -- Commenting
+        use({ "numToStr/Comment.nvim" })
+        use({ "JoosepAlviste/nvim-ts-context-commentstring" })
+        use({ "danymat/neogen" })
+
+        -- Quickfix / Location lists
+        use("kevinhwang91/nvim-bqf")
+
+        use({
+          "nvim-neotest/neotest",
+          requires = {
+            "vim-test/vim-test",
+            "nvim-lua/plenary.nvim",
+            "nvim-neotest/neotest-python",
+            "nvim-neotest/neotest-plenary",
+            "nvim-neotest/neotest-vim-test",
+            "Issafalcon/neotest-dotnet",
+            "haydenmeade/neotest-jest",
+            "antoinemadec/FixCursorHold.nvim",
+          },
+        })
+
+        -- Debugging
+        use("mfussenegger/nvim-dap")
+        use("theHamsta/nvim-dap-virtual-text")
+        use("nvim-telescope/telescope-dap.nvim")
+        use("rcarriga/nvim-dap-ui")
+
+        use({ "michaelb/sniprun", run = "bash install.sh" })
+
+        --------------------------------------------------------------
+        ------------ Language Specific Plugins -----------------------
+        --------------------------------------------------------------
+
+        -- Typescript / JavaScript (React, Svelte, Angular, TS)
+        use("jose-elias-alvarez/nvim-lsp-ts-utils") -- Extends LSP functionality for tsserver
+        use("xabikos/vscode-react") -- React snippets
+        use("dsznajder/vscode-es7-javascript-react-snippets") -- More react snippets
+        use("fivethree-team/vscode-svelte-snippets") -- Svelete snippets
+        use("David-Kunz/cmp-npm") -- NPM completions in package.json
+        use("David-Kunz/jester") -- Debugging Jest tests
+
+        -- Lua / Neovim Plugin Development
+        use("hrsh7th/cmp-nvim-lua") -- Lua in Vim language completions
+        use("folke/neodev.nvim") -- For plugin dev with full signature help, docs and completion for neovim lua apis
+        use("rafcamlet/nvim-luapad")
+
+        -- .NET / C#
+        use({ "Issafalcon/neo-sharper.nvim", branch = "plugin-testing" })
+        use("J0rgeSerran0/vscode-csharp-snippets")
+        use("Hoffs/omnisharp-extended-lsp.nvim")
+
+        -- Latex
+        use("lervag/vimtex")
+        use("jbyuki/nabla.nvim")
+
+        -- Markdown
+        use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install" })
+        use({ "robole/vscode-markdown-snippets" })
+
+        -- Terraform
+        use("hashivim/vim-terraform")
+        use("juliosueiras/vim-terraform-completion")
+
+        -- SQL
+        use("nanotee/sqls.nvim")
         for key, plugin in pairs(require("user-configs.plugins").plugins) do
           if type(key) == "string" and not plugin[1] then
             plugin[1] = key
