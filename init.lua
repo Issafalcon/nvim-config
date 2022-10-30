@@ -40,24 +40,21 @@ fignvim.ui.configure_diagnostics()
 fignvim.lsp.setup_all_lsp_servers()
 
 -- 6. Create remaining general mappings
-vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { silent = true}) -- Prep for space to be leader key
+vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { silent = true }) -- Prep for space to be leader key
 
-require "keymappings"
-require "autocommands"
-require "colourscheme"
-require "helpers"
+require("keymappings")
+require("colourscheme")
 
-require "utils"
-require "version-control"
-require "sessions"
-require "completion"
-require "searching"
-require "lsp"
-require "syntax-highlighting"
-require "tabline"
-require "commenting"
-require "quickfix"
-require "testing"
-require "debugging"
-require "notes"
-require "navigation"
+require("utils")
+require("version-control")
+require("sessions")
+require("completion")
+require("searching")
+require("syntax-highlighting")
+require("tabline")
+require("commenting")
+require("quickfix")
+require("testing")
+require("debugging")
+require("notes")
+require("navigation")

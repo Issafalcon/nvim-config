@@ -1,5 +1,4 @@
 require("utils.nvim-autopairs-plugin")
-require("utils.lualine-plugin")
 require("utils.easy-align-plugin")
 require("utils.colorizer-plugin")
 require("utils.editor-config-plugin")

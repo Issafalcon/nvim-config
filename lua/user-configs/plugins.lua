@@ -109,12 +109,6 @@ M.plugins = {
       require("plugin-configs.trouble")
     end,
   },
-
-  ["glepnir/lspsaga.nvim"] = {
-    config = function()
-      require("plugin-configs.lsp-saga")
-    end,
-  },
 }
 
 return M

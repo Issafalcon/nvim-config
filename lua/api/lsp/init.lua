@@ -48,7 +48,7 @@ function fignvim.lsp.on_attach(client, bufnr)
   end
 
   if client.server_capabilities.signatureHelpProvider then
-    local lsp_overloads = fignvim.plug.load_module_file("lsp_overloads")
+    local lsp_overloads = fignvim.plug.load_module_file("lsp-overloads")
     if lsp_overloads then
       lsp_overloads.setup(client, {})
     end

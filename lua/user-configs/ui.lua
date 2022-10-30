@@ -1,7 +1,11 @@
 M = {}
 
 M.theme = {
-  colourscheme = "catppuccin"
+  colourscheme = "catppuccin",
+  highlights = {
+    Whitespace = { fg = "#4b5263" },
+    VertSplit = { fg = "#CBA6F7" },
+  },
 }
 
 M.colours = {

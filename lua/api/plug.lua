@@ -89,7 +89,6 @@ function fignvim.plug.setup_plugins()
         use("junegunn/vim-easy-align") -- Align text
         use("tpope/vim-surround")
         use("tpope/vim-dispatch")
-        use("nvim-lualine/lualine.nvim")
         use("tpope/vim-unimpaired")
         use("editorconfig/editorconfig-vim") -- Applies editorconfig to text
         use("mbbill/undotree")

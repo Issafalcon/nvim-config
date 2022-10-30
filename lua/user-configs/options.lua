@@ -51,6 +51,7 @@ M = {
   },
   g = {
     catppuccin_flavour = "mocha",
+    colours_name = true, -- Whether to include custom highlight options from the UI configs
     highlighturl_enabled = true, -- highlight URLs by default
     mapleader = " ", -- set leader key
     maplocalleader = " ", -- set local leader key
@@ -79,7 +80,7 @@ M = {
     status_diagnostics_enabled = true, -- enable diagnostics in statusline
     icons_enabled = true, -- disable icons in the UI (disable if no nerd font is available)
     quickfix_open = false, -- whether qf list is open
-    loclist_open = false -- whether loclist is open
+    loclist_open = false, -- whether loclist is open
   },
 }
 
