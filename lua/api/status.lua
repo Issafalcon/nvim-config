@@ -63,8 +63,8 @@ fignvim.status.env.buf_matchers = {
 
 fignvim.status.env.separators = {
   none = { "", "" },
-  left = { "", "  " },
-  right = { "  ", "" },
+  left = { "", " " },
+  right = { " ", "" },
   center = { "  ", "  " },
   tab = { "", "" },
 }

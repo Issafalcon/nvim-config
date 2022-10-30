@@ -24,7 +24,7 @@ if vim.fn.has("win32") == 1 then
   fignvim.config.set_shell_as_powershell()
 end
 
-if vim.fn.has("wsl") then
+if vim.fn.has("wsl") == 1 then
   fignvim.config.set_win32yank_wsl_as_clip()
 end
 

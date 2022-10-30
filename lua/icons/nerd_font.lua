@@ -38,4 +38,5 @@ return {
   NeovimClose = "",
   Paste = "",
   Spellcheck = "暈",
+  VimIcon = "",
 }

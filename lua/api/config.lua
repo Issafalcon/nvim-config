@@ -28,7 +28,7 @@ function fignvim.config.set_shell_as_powershell()
   vim.cmd([[set shellquote= shellxquote=]])
 end
 
-fignvim.config.set_win32yank_wsl_as_clip = function()
+function fignvim.config.set_win32yank_wsl_as_clip()
   vim.g.clipboard = {
     name = "win32yank-wsl",
     copy = {
