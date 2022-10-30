@@ -29,3 +29,5 @@ function fignvim.lsp.null_ls.sources(filetype, method)
   local methods_avail, methods = pcall(require, "null-ls.methods")
   return methods_avail and fignvim.lsp.null_ls.providers(filetype)[methods.internal[method]] or {}
 end
+
+return fignvim.lsp.null_ls

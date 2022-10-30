@@ -11,7 +11,7 @@ fignvim.config.set_vim_opts = function(options)
 end
 
 function fignvim.config.get_lsp_server_config(server_name)
-  local module_file = "user-configs.lsp.servers." .. server_name
+  local module_file = "user-configs.lsp_servers." .. server_name
   local config = fignvim.plug.load_module_file(module_file)
   return config
 end

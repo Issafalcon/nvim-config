@@ -20,19 +20,4 @@ if fignvim.plug.is_available("cmp-nvim-lsp") then
   fignvim.lsp.capabilities = vim.tbl.deep_extend("force", fignvim.lsp.capabilities, cmp_nvim_lsp.default_capabilities())
 end
 
-function fignvim.lsp.capabilities.handle_document_highlighting(bufnr)
-  local highlight_name = vim.fn.printf("lsp_document_highlight_%d", bufnr)
-  vim.api.nvim_create_augroup(highlight_name, {})
-  vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-    group = highlight_name,
-    buffer = bufnr,
-    callback = function() vim.lsp.buf.document_highlight() end,
-  })
-  vim.api.nvim_create_autocmd("CursorMoved", {
-    group = highlight_name,
-    buffer = bufnr,
-    callback = function() vim.lsp.buf.clear_references() end,
-  })
-end
-
 return fignvim.lsp.capabilities

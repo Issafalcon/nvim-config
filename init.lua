@@ -20,6 +20,13 @@ end
 fignvim.plug.initialise_packer()
 fignvim.plug.setup_plugins()
 
+-- 4. Set up some UI features
+fignvim.ui.set_colourscheme()
+fignvim.ui.configure_diagnostics()
+
+-- 5. Set up the LSP servers
+fignvim.lsp.setup_all_lsp_servers()
+
 require "options"
 require "keymappings"
 -- require "plugins"

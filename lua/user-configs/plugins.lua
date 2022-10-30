@@ -95,6 +95,7 @@ M.plugins = {
   },
 
   -- LSP
+  ["neovim/nvim-lspconfig"] = {},
   ["jose-elias-alvarez/null-ls.nvim"] = {
     event = "BufEnter",
     config = function() require "plugin-configs.null-ls" end,

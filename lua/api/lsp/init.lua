@@ -4,6 +4,7 @@ require("api.lsp.capabilities")
 require("api.lsp.mappings")
 require("api.lsp.formatting")
 require("api.lsp.null_ls")
+require("api.lsp.handlers")
 
 --- Helper function to set up a given server with the Neovim LSP client
 -- @param server the name of the server to be setup
@@ -43,7 +44,7 @@ function fignvim.lsp.on_attach(client, bufnr)
   end
 
   if capabilities.documentHighlightProvider then
-    fignvim.lsp.capabilities.handle_document_highlighting(bufnr)
+    fignvim.lsp.handlers.handle_document_highlighting(bufnr)
   end
 
   if client.server_capabilities.signatureHelpProvider then
@@ -73,9 +74,10 @@ function fignvim.lsp.server_settings(server_name)
     capabilities = vim.tbl_deep_extend("force", fignvim.lsp.capabilities, server.capabilities or {}),
     flags = server.flags or {},
     on_attach = function(client, bufnr)
-      fignvim.fn.conditional_func(server_on_attach, true, client, bufnr)
+      fignvim.fn.conditional_func(server_on_attach, server_on_attach ~= nil, client, bufnr)
       fignvim.lsp.on_attach(client, bufnr)
-      fignvim.fn.conditional_func(custom_on_attach, true, client, bufnr)
+      fignvim.fn.conditional_func(custom_on_attach, custom_on_attach ~= nil, client, bufnr)
+      fignvim.ui.notify("Attached " .. client.name, "info", { title = "LSP", icon = fignvim.ui.get_icon("LSPLoaded") })
     end,
   }
 
