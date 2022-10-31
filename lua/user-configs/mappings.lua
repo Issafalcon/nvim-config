@@ -89,6 +89,16 @@ M.plugin_mappings = {
   },
   ["neo-tree"] = {
     open_browser = { mode = "n", lhs = "<leader>e", rhs = ":Neotree toggle<CR>", desc = "Open Neotree" }
+  },
+  ["toggleterm.nvim"] = {
+    toggle_lazygit    = { mode = "n", lhs        = "<leader>lg", rhs = function () fignvim.term.toggle_term_cmd("lazygit") end, desc = "ToggleTerm with lazygit" },
+    toggle_node       = { mode = "n", lhs        = "<leader>tn", rhs = function () fignvim.term.toggle_term_cmd("node") end, desc    = "ToggleTerm with Node" },
+    toggle_python     = { mode = "n", lhs        = "<leader>tp", rhs = function () fignvim.term.toggle_term_cmd("python") end, desc  = "ToggleTerm with Python" },
+    toggle_float      = { mode = "n", lhs        = "<leader>tf", rhs = "<cmd>ToggleTerm direction=float<cr>", desc                   = "ToggleTerm in floating window" },
+    toggle_horizontal = { mode = "n", lhs        = "<leader>th", rhs = "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc      = "ToggleTerm in horizontal split" },
+    toggle_vertical   = { mode = "n", lhs        = "<leader>tv", rhs = "<cmd>ToggleTerm size=80 direction=vertical<cr>", desc        = "ToggleTerm in vertical split" },
+    toggleterm        = { mode = {"n", "t"}, lhs = "<F7>", rhs       = "<cmd>ToggleTerm<cr>", desc                                   = "ToggleTerm" },
+    toggleterm_alt    = { mode = {"n", "t"}, lhs = "<C-'>", rhs      = "<cmd>ToggleTerm<cr>", desc                                   = "ToggleTerm" }
   }
 }
 
@@ -113,7 +123,7 @@ M.lsp_mappings = {
     rename_symbol                 = { mode = "n", lhs          = "rn", rhs          = function() vim.lsp.buf.rename() end, desc                                  = "Rename current symbol" },
     signature_help                = { mode = { "i", "n" }, lhs = "<A-s>", rhs       = function() vim.lsp.buf.signature_help() end, desc                          = "Show signature help" },
     format_code                   = { mode = {"n", "v"}, lhs   = "<leader>f", rhs   = fignvim.lsp.formatting.format, desc                                        = "Format code in file, or the selected portion of code"},
-    toggle_autoformat             = { mode = "n", lhs          = "<leader>tf", rhs  = fignvim.ui.toggle_autoformat, desc                                         = "Toggle autoformatting on save" },
+    toggle_autoformat             = { mode = "n", lhs          = "<leader>taf", rhs  = fignvim.ui.toggle_autoformat, desc                                         = "Toggle autoformatting on save" },
     saga_scroll_up                = { mode = "n", lhs          = "<C-f>", rhs       = function () require('lspsaga.action').smart_scroll_with_saga(1) end, desc  = "Scroll up in an LSP Saga popup window"},
     saga_scroll_down              = { mode = "n", lhs          = "<C-b>", rhs       = function () require('lspsaga.action').smart_scroll_with_saga(-1) end, desc = "Scroll down in an LSP Saga popup window"},
     tsserver_organize             = { mode = "n", lhs          = "<leader>to", rhs  = ":TSLspOrganize<CR>", desc                                                 = "Organize imports using tsserver" },

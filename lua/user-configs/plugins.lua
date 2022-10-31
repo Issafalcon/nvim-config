@@ -99,11 +99,7 @@ M.plugins = {
   },
 
   -- General editing and formatting
-  ["junegunn/vim-easy-align"] = {
-    config = function()
-      require("plugin-configs.vim-easy-align")
-    end,
-  },
+  ["junegunn/vim-easy-align"] = {},
 
   -- Package management
   ["williamboman/mason.nvim"] = {
@@ -145,6 +141,15 @@ M.plugins = {
       require("nvim-mapper").setup({})
     end,
     before = "telescope.nvim",
+  },
+
+  -- Terminal
+  ["akinsho/toggleterm.nvim"] = {
+    cmd = "ToggleTerm",
+    module = { "toggleterm", "toggleterm.terminal" },
+    config = function()
+      require("plugin-configs.toggleterm")
+    end,
   },
 }
 

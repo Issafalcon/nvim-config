@@ -31,6 +31,7 @@ end
 -- 3. Initialise the plugin manager and load all plugins
 fignvim.plug.initialise_packer()
 fignvim.plug.setup_plugins()
+fignvim.plug.create_plugin_mappings()
 
 -- 4. Set up some UI features
 fignvim.ui.set_colourscheme()

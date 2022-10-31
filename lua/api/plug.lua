@@ -114,7 +114,6 @@ function fignvim.plug.setup_plugins()
         use("tpope/vim-fugitive")
         use("tpope/vim-rhubarb") -- Browse Github URLs
         use("rhysd/git-messenger.vim") -- Show commits under the cursor
-        use("kdheepak/lazygit.nvim")
         use("sindrets/diffview.nvim")
 
         -- Github
@@ -257,6 +256,23 @@ function fignvim.plug.setup_plugins()
         compile_on_sync = true,
       },
     })
+  end
+end
+
+function fignvim.plug.create_plugin_mappings()
+  if fignvim.plug.is_available("Comment.nvim") then
+    local mappings = fignvim.config.get_plugin_mappings("Comment")
+    fignvim.fn.conditional_func(fignvim.config.create_mapping_group, mappings ~= nil, mappings, "Commenting")
+  end
+
+  if fignvim.plug.is_available("toggleterm.nvim") then
+    local mappings = fignvim.config.get_plugin_mappings("toggleterm.nvim")
+    fignvim.fn.conditional_func(fignvim.config.create_mapping_group, mappings ~= nil, mappings, "Terminal")
+  end
+
+  if fignvim.plug.is_available("vim-easy-align") then
+    local mappings = require("user-configs.mappings").plugin_mappings["vim-easy-align"]
+    fignvim.config.create_mapping_group(mappings, "EasyAlign")
   end
 end
 
