@@ -14,7 +14,9 @@ local signs = {
 }
 
 for _, sign in ipairs(signs) do
-  if not sign.texthl then sign.texthl = sign.name end
+  if not sign.texthl then
+    sign.texthl = sign.name
+  end
   vim.fn.sign_define(sign.name, sign)
 end
 
@@ -26,7 +28,7 @@ M.config = {
     update_in_insert = false,
   },
   on = {
-    virtual_text = true,
+    virtual_text = false,
     signs = { active = signs },
     update_in_insert = false,
     underline = true,
