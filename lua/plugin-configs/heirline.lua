@@ -105,7 +105,7 @@ local heirline_opts = {
         fname = function()
           return vim.fn.expand("%")
         end,
-        modify = "",
+        modify = ":.",
       },
       -- enable the file_icon and disable the highlighting based on filetype
       file_icon = { padding = { left = 0 } },

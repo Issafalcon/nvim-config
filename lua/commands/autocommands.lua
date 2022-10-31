@@ -81,7 +81,7 @@ cmd("FileType", {
   group = "csharp",
   pattern = "cs",
   callback = function()
-    vim.bo.noexpandtab = true
+    vim.bo.expandtab = false
     vim.bo.shiftwidth = 4
     vim.bo.softtabstop = 4
     vim.bo.tabstop = 4
