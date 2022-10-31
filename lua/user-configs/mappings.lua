@@ -42,7 +42,11 @@ M.general_mappings = {
     move_text_down = { mode = "v", lhs = "<A-k>", rhs = ":m .-2<CR>==", desc = "Move selected lines down" },
     move_text_up_alt = { mode = "x", lhs = "J", rhs = ":move '>+1<CR>gv-gv", desc = "Move current line up" },
     move_text_down_alt = { mode = "x", lhs = "K", rhs = ":move '<-2<CR>gv-gv", desc = "Move current line down" },
+    delete_char = { mode = "n", lhs = "x", rhs = '"_x', desc = "Delete character override, preventing it from occupying yank register" },
   },
+  Terminal = {
+    terminal_escape = { mode = "t", lhs = "<esc>", rhs = [[<C-\\><C-n>]], desc = "Enter normal mode in terminal" },
+  }
 }
 
 --stylua: ignore

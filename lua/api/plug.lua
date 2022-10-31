@@ -106,19 +106,8 @@ function fignvim.plug.setup_plugins()
           requires = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
         })
 
-        -- Key binding / Help plugins
-        use({
-          "Issafalcon/nvim-mapper", -- Keep an eye on https://github.com/lazytanuki/nvim-mapper/pull/22 for when to switch back to original plugin
-          config = function()
-            require("nvim-mapper").setup({})
-          end,
-          before = "telescope.nvim",
-        })
-
         -- Package manager
-        use({ "williamboman/mason.nvim" })
         use({ "williamboman/mason-lspconfig.nvim" })
-        use({ "WhoIsSethDaniel/mason-tool-installer.nvim" })
 
         -- Git plugins
         use("lewis6991/gitsigns.nvim")

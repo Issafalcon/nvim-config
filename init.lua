@@ -16,7 +16,7 @@ for _, source in ipairs({
   end
 end
 
---2. Load general options
+-- 2. Load general options
 local options = require("user-configs.options")
 fignvim.config.set_vim_opts(options)
 
@@ -41,8 +41,8 @@ fignvim.lsp.setup_all_lsp_servers()
 
 -- 6. Create remaining general mappings
 vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { silent = true }) -- Prep for space to be leader key
+fignvim.config.set_general_mappings()
 
-require("keymappings")
 require("colourscheme")
 
 require("utils")

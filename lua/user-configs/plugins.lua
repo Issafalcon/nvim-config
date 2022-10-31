@@ -29,7 +29,7 @@ M.plugins = {
   },
 
   -- Icons
-  ["kyazdani42/nvim-web-devicons"] = {
+  ["nvim-tree/nvim-web-devicons"] = {
     -- https://github.com/nvim-tree/nvim-web-devicons
     disable = not vim.g.icons_enabled,
     module = "nvim-web-devicons",
@@ -51,6 +51,14 @@ M.plugins = {
     event = "UIEnter",
     config = function()
       require("plugin-configs.bufferline")
+    end,
+  },
+
+  ["s1n7ax/nvim-window-picker"] = {
+    tag = "v1.*",
+    module = "window-picker",
+    config = function()
+      require("configs.window-picker")
     end,
   },
 
@@ -97,6 +105,24 @@ M.plugins = {
     end,
   },
 
+  -- Package management
+  ["williamboman/mason.nvim"] = {
+    config = function()
+      require("plugin-configs.mason")
+    end,
+  },
+  ["williamboman/mason-lspconfig.nvim"] = {
+    after = "mason.nvim",
+    config = function()
+      require("plugin-configs.mason-lspconfig")
+    end,
+  },
+  ["WhoIsSethDaniel/mason-tool-installer.nvim"] = {
+    config = function()
+      require("plugin-configs.mason-tool-installer")
+    end,
+  },
+
   -- LSP
   ["neovim/nvim-lspconfig"] = {},
   ["jose-elias-alvarez/null-ls.nvim"] = {
@@ -111,6 +137,14 @@ M.plugins = {
     config = function()
       require("plugin-configs.trouble")
     end,
+  },
+
+  -- Keybindings
+  ["Issafalcon/nvim-mapper"] = {
+    config = function()
+      require("nvim-mapper").setup({})
+    end,
+    before = "telescope.nvim",
   },
 }
 
