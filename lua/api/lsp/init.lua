@@ -81,7 +81,7 @@ function fignvim.lsp.server_settings(server_name)
   }
 
   if server_config and server_config.opts then
-    vim.tbl_deep_extend("force", opts, server_config.opts)
+    opts = vim.tbl_deep_extend("force", opts, server_config.opts)
   end
 
   return opts

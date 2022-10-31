@@ -85,7 +85,7 @@ cmd("FileType", {
     vim.bo.shiftwidth = 4
     vim.bo.softtabstop = 4
     vim.bo.tabstop = 4
-    vim.bo.foldlevelstart = 2
+    vim.api.nvim_set_option_value("foldlevelstart", 2, { scope = "local" })
   end,
 })
 
