@@ -100,6 +100,15 @@ M.plugins = {
 
   -- General editing and formatting
   ["junegunn/vim-easy-align"] = {},
+  ["tpope/vim-surround"] = {}, -- https://github.com/tpope/vim-surround
+  ["tpope/vim-unimpaired"] = {}, -- https://github.com/tpope/vim-unimpaired
+  ["windwp/nvim-autopairs"] = {
+    event = "InsertEnter",
+    config = function()
+      require("plugin-configs.nvim-autopairs")
+    end,
+  },
+  ["editorconfig/editorconfig-vim"] = {},
 
   -- Package management
   ["williamboman/mason.nvim"] = {

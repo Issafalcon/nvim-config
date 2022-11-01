@@ -100,6 +100,15 @@ cmd("FileType", {
   end,
 })
 
+-- Stops editorconfig formatting of git commit messages
+augroup("editorconfig", { clear = true })
+cmd("FileType", {
+  pattern = "gitcommit",
+  callback = function()
+    vim.b.EditorConfig_disable = 1
+  end,
+})
+
 -- Alpha (dashboard) configuration when it exists
 if fignvim.plug.is_available("alpha-nvim") then
   augroup("alpha_settings", { clear = true })

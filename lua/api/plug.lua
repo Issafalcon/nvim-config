@@ -81,12 +81,6 @@ function fignvim.plug.setup_plugins()
         use("windwp/nvim-spectre")
 
         -- Utility Plugins
-        use("windwp/nvim-autopairs") -- Autopair with cmp and treesitter integration
-        use("junegunn/vim-easy-align") -- Align text
-        use("tpope/vim-surround")
-        use("tpope/vim-dispatch")
-        use("tpope/vim-unimpaired")
-        use("editorconfig/editorconfig-vim") -- Applies editorconfig to text
         use("mbbill/undotree")
         use("szw/vim-maximizer")
         use("sudormrfbin/cheatsheet.nvim")
@@ -97,7 +91,6 @@ function fignvim.plug.setup_plugins()
         -- UI Plugins (colours, icons, inputs etc)
         use("ziontee113/icon-picker.nvim")
         use({ "catppuccin/nvim", as = "catppuccin" })
-        use("lunarvim/colorschemes") -- VSCode Like ColourScheme
         use("norcalli/nvim-colorizer.lua") -- HEX and RBG etc Colour Highlighter: https://github.com/norcalli/nvim-colorizer.lua
 
         -- Session management
@@ -105,9 +98,6 @@ function fignvim.plug.setup_plugins()
           "rmagatti/session-lens", -- Saves sessions after closing nvim
           requires = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
         })
-
-        -- Package manager
-        use({ "williamboman/mason-lspconfig.nvim" })
 
         -- Git plugins
         use("lewis6991/gitsigns.nvim")

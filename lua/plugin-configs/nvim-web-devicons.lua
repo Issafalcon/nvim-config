@@ -1,5 +1,7 @@
 local icons = fignvim.plug.load_module_file("nvim-web-devicons")
-if not icons then return end
+if not icons then
+  return
+end
 
 icons.set_icon({
   deb = { icon = "", name = "Deb" },
@@ -14,4 +16,9 @@ icons.set_icon({
   woff2 = { icon = "", name = "WebOpenFontFormat2" },
   xz = { icon = "", name = "Xz" },
   zip = { icon = "", name = "Zip" },
+  tex = { icon = "", name = "Tex" },
 })
+
+-- Workaround for a bug in nerd-tree devicons where tex files move across the screen
+-- vim.cmd("let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}")
+-- vim.cmd('let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols["tex"] = ""')
