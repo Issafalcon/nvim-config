@@ -41,7 +41,7 @@ function fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr)
   end
 
   if capabilities.implementationProvider then
-    if fignvim.plug.is_available("telescope") then
+    if fignvim.plug.is_available("telescope.nvim") then
       fignvim.config.create_mapping(
         "goto_implementation_telescope",
         "LSP",
@@ -54,7 +54,7 @@ function fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr)
   end
 
   if capabilities.referencesProvider then
-    if fignvim.plug.is_available("telescope") then
+    if fignvim.plug.is_available("telescope.nvim") then
       fignvim.config.create_mapping(
         "goto_references_telescope",
         "LSP",

@@ -136,6 +136,12 @@ M.plugins = {
       require("plugin-configs.null-ls")
     end,
   },
+  ["stevearc/aerial.nvim"] = {
+    module = "aerial",
+    config = function()
+      require("plugin-configs.aerial")
+    end,
+  },
 
   -- Diagnostics
   ["folke/trouble.nvim"] = {

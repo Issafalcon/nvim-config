@@ -38,14 +38,14 @@ M.general_mappings = {
     escape_insert           = { mode = "i", lhs          = "jk", rhs    = "<ESC>", desc               = "Escape insert mode" },
     indent_left             = { mode = "v", lhs          = "<", rhs     = "<gv", desc                 = "Indent selection left" },
     indent_right            = { mode = "v", lhs          = ">", rhs     = ">gv", desc                 = "Indent selection right" },
-    move_selection_up       = { mode = { "n", "v" }, lhs = "<A-j>", rhs = ":m .+1<CR>==", desc        = "Move selected lines up" },
-    move_selection_down     = { mode = { "n", "v" }, lhs = "<A-k>", rhs = ":m .-2<CR>==", desc        = "Move selected lines down" },
-    move_selection_up_alt   = { mode = "x", lhs          = "J", rhs     = ":move '>+1<CR>gv-gv", desc = "Move current line up" },
-    move_selection_down_alt = { mode = "x", lhs          = "K", rhs     = ":move '<-2<CR>gv-gv", desc = "Move current line down" },
-    move_selection_up_x     = { mode = "x", lhs          = "<A-j>", rhs = ":move '>+1<CR>gv-gv", desc = "Move current line up" },
-    move_selection_down_x   = { mode = "x", lhs          = "<A-k>", rhs = ":move '<-2<CR>gv-gv", desc = "Move current line down" },
-    move_line_up            = { mode = "i", lhs          = "<A-j>", rhs = "<Esc>:m .+1<CR>==gi", desc = "Move current line up" },
-    move_line_down          = { mode = "i", lhs          = "<A-k>", rhs = "<Esc>:m .-2<CR>==gi", desc = "Move current line down" },
+    move_selection_up       = { mode = { "n", "v" }, lhs = "<A-k>", rhs = ":m .+1<CR>==", desc        = "Move selected lines up" },
+    move_selection_down     = { mode = { "n", "v" }, lhs = "<A-j>", rhs = ":m .-2<CR>==", desc        = "Move selected lines down" },
+    move_selection_up_alt   = { mode = "x", lhs          = "K", rhs     = ":move '>+1<CR>gv-gv", desc = "Move current line up" },
+    move_selection_down_alt = { mode = "x", lhs          = "J", rhs     = ":move '<-2<CR>gv-gv", desc = "Move current line down" },
+    move_selection_up_x     = { mode = "x", lhs          = "<A-k>", rhs = ":move '>+1<CR>gv-gv", desc = "Move current line up" },
+    move_selection_down_x   = { mode = "x", lhs          = "<A-j>", rhs = ":move '<-2<CR>gv-gv", desc = "Move current line down" },
+    move_line_up            = { mode = "i", lhs          = "<A-k>", rhs = "<Esc>:m .+1<CR>==gi", desc = "Move current line up" },
+    move_line_down          = { mode = "i", lhs          = "<A-j>", rhs = "<Esc>:m .-2<CR>==gi", desc = "Move current line down" },
     delete_char             = { mode = "n", lhs          = "x", rhs     = '"_x', desc                 = "Delete character override, preventing it from occupying yank register" },
   },
   Terminal = {
@@ -62,7 +62,7 @@ M.plugin_mappings = {
     current_selection    = { mode = "v", lhs = "<leader>s",  rhs = ":lua require('spectre').open_visual()<CR>",                   desc  = "Search for current selection" },
     text_in_current_file = { mode = "n", lhs = "<leader>sp", rhs = ":lua require('spectre').open_file_search()<CR>",              desc = "Search for text in current file"   },
   },
-  telescope = {
+  ["telescope.nvim"] = {
     grep_string        = { mode = "n", lhs = "<leader>ss",  rhs = ":lua require('telescope.builtin').grep_string({ search = vim.fn.input(\"Grep For > \")})<CR>", desc = "Grep for strings in all files"      },
     git_files          = { mode = "n", lhs = "<C-p>",       rhs = ":lua require('telescope.builtin').git_files()<CR>",                                            desc = "Search files in git repo"             },
     all_files          = { mode = "n", lhs = "<leader>sf",  rhs = ":lua require('telescope.builtin').find_files({hidden = true})<CR>",                            desc = "Search files in current directory"    },
@@ -103,6 +103,9 @@ M.plugin_mappings = {
     toggle_vertical   = { mode = "n", lhs        = "<leader>tv", rhs = "<cmd>ToggleTerm size=80 direction=vertical<cr>", desc        = "ToggleTerm in vertical split" },
     toggleterm        = { mode = {"n", "t"}, lhs = "<F7>", rhs       = "<cmd>ToggleTerm<cr>", desc                                   = "ToggleTerm" },
     toggleterm_alt    = { mode = {"n", "t"}, lhs = "<C-'>", rhs      = "<cmd>ToggleTerm<cr>", desc                                   = "ToggleTerm" }
+  },
+  ["aerial.nvim"] = {
+    toggle_aerial    = { mode = "n", lhs        = "<leader>a", rhs = "<cmd>AerialToggle!<CR>", desc = "Toggle LSP symbol outline panel" },
   }
 }
 

@@ -264,6 +264,11 @@ function fignvim.plug.create_plugin_mappings()
     local mappings = require("user-configs.mappings").plugin_mappings["vim-easy-align"]
     fignvim.config.create_mapping_group(mappings, "EasyAlign")
   end
+
+  if fignvim.plug.is_available("aerial.nvim") then
+    local mappings = fignvim.config.get_plugin_mappings("aerial.nvim")
+    fignvim.config.create_mapping_group(mappings, "Aerial")
+  end
 end
 
 return fignvim.plug
