@@ -75,9 +75,6 @@ function fignvim.plug.setup_plugins()
     packer.startup({
       function(use)
         -- Searching
-        use("junegunn/fzf")
-        use("nvim-telescope/telescope-fzy-native.nvim")
-        use("nvim-telescope/telescope.nvim")
         use("windwp/nvim-spectre")
 
         -- Utility Plugins
@@ -130,13 +127,9 @@ function fignvim.plug.setup_plugins()
         })
         use({ "nvim-treesitter/nvim-treesitter-textobjects" })
         use({ "nvim-treesitter/playground" })
-        use({ "windwp/nvim-ts-autotag" })
-        use({ "p00f/nvim-ts-rainbow" })
 
         -- LSP
         use("b0o/schemastore.nvim") -- JSON-ls schemas: https://github.com/b0o/SchemaStore.nvim
-        use("neovim/nvim-lspconfig") -- The LSP config
-        use("nvim-lua/lsp-status.nvim")
         use("Issafalcon/lsp-overloads.nvim")
 
         -- snippets
@@ -185,7 +178,8 @@ function fignvim.plug.setup_plugins()
         ------------ Language Specific Plugins -----------------------
         --------------------------------------------------------------
 
-        -- Typescript / JavaScript (React, Svelte, Angular, TS)
+        -- Lua / Neovim Plugin Development
+        -- Typescript / JavaScript (React, Svelte, Angular, TS)plug
         use("jose-elias-alvarez/nvim-lsp-ts-utils") -- Extends LSP functionality for tsserver
         use("xabikos/vscode-react") -- React snippets
         use("dsznajder/vscode-es7-javascript-react-snippets") -- More react snippets
@@ -193,7 +187,6 @@ function fignvim.plug.setup_plugins()
         use("David-Kunz/cmp-npm") -- NPM completions in package.json
         use("David-Kunz/jester") -- Debugging Jest tests
 
-        -- Lua / Neovim Plugin Development
         use("hrsh7th/cmp-nvim-lua") -- Lua in Vim language completions
         use("folke/neodev.nvim") -- For plugin dev with full signature help, docs and completion for neovim lua apis
         use("rafcamlet/nvim-luapad")
@@ -263,6 +256,11 @@ function fignvim.plug.create_plugin_mappings()
   if fignvim.plug.is_available("vim-easy-align") then
     local mappings = require("user-configs.mappings").plugin_mappings["vim-easy-align"]
     fignvim.config.create_mapping_group(mappings, "EasyAlign")
+  end
+
+  if fignvim.plug.is_available("telescope.nvim") then
+    local mappings = fignvim.config.get_plugin_mappings("telescope.nvim")
+    fignvim.config.create_mapping_group(mappings, "Telescope")
   end
 
   if fignvim.plug.is_available("aerial.nvim") then

@@ -4,8 +4,10 @@ if not aerial then
 end
 
 aerial.setup({
-  attach_mode = "global",
+  attach_mode = "window",
   backends = { "lsp", "treesitter", "markdown" },
+  close_automatic_events = { "unfocus" },
+  highlight_on_hover = true,
   layout = {
     min_width = 28,
   },

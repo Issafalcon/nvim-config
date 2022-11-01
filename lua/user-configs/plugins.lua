@@ -75,6 +75,16 @@ M.plugins = {
     end,
   },
 
+  -- Fuzzy finder
+  ["nvim-telescope/telescope.nvim"] = {
+    module = "telescope",
+    config = function()
+      require("plugin-configs.telescope")
+    end,
+  },
+  ["nvim-telescope/telescope-fzy-native.nvim"] = { after = "telescope.nvim" },
+  ["junegunn/fzf"] = { after = "telescope.nvim" },
+
   -- Statusline
   ["rebelot/heirline.nvim"] = {
     config = function()
@@ -138,6 +148,7 @@ M.plugins = {
   },
   ["stevearc/aerial.nvim"] = {
     module = "aerial",
+    before = "telescope.nvim",
     config = function()
       require("plugin-configs.aerial")
     end,
@@ -154,8 +165,11 @@ M.plugins = {
   ["Issafalcon/nvim-mapper"] = {
     config = function()
       require("nvim-mapper").setup({})
+      if fignvim.plug.is_available("telescope.nvim") then
+        require("telescope").load_extension("mapper")
+      end
     end,
-    before = "telescope.nvim",
+    after = "telescope.nvim",
   },
 
   -- Terminal

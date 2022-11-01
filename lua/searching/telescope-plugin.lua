@@ -272,6 +272,9 @@ require("telescope").setup({
     },
   },
   extensions = {
+    aerial = {
+      show_nestig = {},
+    },
     fzy_native = {
       override_generic_sorter = false,
       override_file_sorter = true,
