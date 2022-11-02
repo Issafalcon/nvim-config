@@ -38,14 +38,14 @@ M.general_mappings = {
     escape_insert           = { mode = "i", lhs          = "jk", rhs    = "<ESC>", desc               = "Escape insert mode" },
     indent_left             = { mode = "v", lhs          = "<", rhs     = "<gv", desc                 = "Indent selection left" },
     indent_right            = { mode = "v", lhs          = ">", rhs     = ">gv", desc                 = "Indent selection right" },
-    move_selection_up       = { mode = { "n", "v" }, lhs = "<A-k>", rhs = ":m .+1<CR>==", desc        = "Move selected lines up" },
-    move_selection_down     = { mode = { "n", "v" }, lhs = "<A-j>", rhs = ":m .-2<CR>==", desc        = "Move selected lines down" },
-    move_selection_up_alt   = { mode = "x", lhs          = "K", rhs     = ":move '>+1<CR>gv-gv", desc = "Move current line up" },
-    move_selection_down_alt = { mode = "x", lhs          = "J", rhs     = ":move '<-2<CR>gv-gv", desc = "Move current line down" },
-    move_selection_up_x     = { mode = "x", lhs          = "<A-k>", rhs = ":move '>+1<CR>gv-gv", desc = "Move current line up" },
-    move_selection_down_x   = { mode = "x", lhs          = "<A-j>", rhs = ":move '<-2<CR>gv-gv", desc = "Move current line down" },
-    move_line_up            = { mode = "i", lhs          = "<A-k>", rhs = "<Esc>:m .+1<CR>==gi", desc = "Move current line up" },
-    move_line_down          = { mode = "i", lhs          = "<A-j>", rhs = "<Esc>:m .-2<CR>==gi", desc = "Move current line down" },
+    move_selection_up       = { mode = { "n", "v" }, lhs = "<A-j>", rhs = ":m .+1<CR>==", desc        = "Move selected lines up" },
+    move_selection_down     = { mode = { "n", "v" }, lhs = "<A-k>", rhs = ":m .-2<CR>==", desc        = "Move selected lines down" },
+    move_selection_up_alt   = { mode = "x", lhs          = "J", rhs     = ":move '>+1<CR>gv-gv", desc = "Move current line up" },
+    move_selection_down_alt = { mode = "x", lhs          = "K", rhs     = ":move '<-2<CR>gv-gv", desc = "Move current line down" },
+    move_selection_up_x     = { mode = "x", lhs          = "<A-j>", rhs = ":move '>+1<CR>gv-gv", desc = "Move current line up" },
+    move_selection_down_x   = { mode = "x", lhs          = "<A-K>", rhs = ":move '<-2<CR>gv-gv", desc = "Move current line down" },
+    move_line_up            = { mode = "i", lhs          = "<A-j>", rhs = "<Esc>:m .+1<CR>==gi", desc = "Move current line up" },
+    move_line_down          = { mode = "i", lhs          = "<A-K>", rhs = "<Esc>:m .-2<CR>==gi", desc = "Move current line down" },
     delete_char             = { mode = "n", lhs          = "x", rhs     = '"_x', desc                 = "Delete character override, preventing it from occupying yank register" },
   },
   Terminal = {
@@ -56,11 +56,21 @@ M.general_mappings = {
 --stylua: ignore
 ---@type table<string, table<string, FigNvimMapping>>
 M.plugin_mappings = {
-  spectre = {
-    open_panel           = { mode = "n", lhs = "<leader>S",  rhs = ":lua require('spectre').open()<CR>",                          desc  = "Open Spectre Panel"    },
-    current_word         = { mode = "n", lhs = "<leader>sw", rhs = ":lua require('spectre').open_visual({select_word=true})<CR>", desc = "Search for current word under cursor"           },
-    current_selection    = { mode = "v", lhs = "<leader>s",  rhs = ":lua require('spectre').open_visual()<CR>",                   desc  = "Search for current selection" },
-    text_in_current_file = { mode = "n", lhs = "<leader>sp", rhs = ":lua require('spectre').open_file_search()<CR>",              desc = "Search for text in current file"   },
+  ["nvim-spectre"] = {
+    open_panel           = { mode      = "n", lhs   = "<leader>S",  rhs = ":lua require('spectre').open()<CR>",                          desc = "Open Spectre Panel"    },
+    current_word         = { mode      = "n", lhs   = "<leader>sw", rhs = ":lua require('spectre').open_visual({select_word=true})<CR>", desc = "Search for current word under cursor"           },
+    current_selection    = { mode      = "v", lhs   = "<leader>s",  rhs = ":lua require('spectre').open_visual()<CR>",                   desc = "Search for current selection" },
+    text_in_current_file = { mode      = "n", lhs   = "<leader>sp", rhs = ":lua require('spectre').open_file_search()<CR>",              desc = "Search for text in current file"   },
+    toggle_line          = { isVirtual = true, mode = "n", lhs          = "dd", rhs                                                           = "<cmd>lua require('spectre').toggle_line()<CR>", desc                   = "Spectre: Toggle current item", opts                   = {} },
+    enter_file           = { isVirtual = true, mode = "n", lhs          = "<cr>", rhs                                                         = "<cmd>lua require('spectre.actions').select_entry()<CR>", desc          = "Spectre: Go to current file", opts                    = {} },
+    send_to_qf           = { isVirtual = true, mode = "n", lhs          = "<cr>", rhs                                                         = "<cmd>lua require('spectre.actions').send_to_qf()<CR>", desc            = "Spectre: Send all items to quickfix", opts            = {} },
+    replace_cmd          = { isVirtual = true, mode = "n", lhs          = "<leader>c", rhs                                                    = "<cmd>lua require('spectre.actions').replace_cmd()<CR>", desc           = "Spectre: Input a vim replace command", opts           = {} },
+    run_replace          = { isVirtual = true, mode = "n", lhs          = "<leader>R", rhs                                                    = "<cmd>lua require('spectre.actions').run_replace()<CR>", desc           = "Spectre: Replace all", opts                           = {} },
+    show_option_menu     = { isVirtual = true, mode = "n", lhs          = "<leader>o", rhs                                                    = "<cmd>lua require('spectre').show_options()<CR>", desc                  = "Spectre: Show available options", opts                = {} },
+    change_view_mode     = { isVirtual = true, mode = "n", lhs          = "<leader>v", rhs                                                    = "<cmd>lua require('spectre').change_view()<CR>", desc                   = "Spectre: Change result view mode", opts               = {} },
+    toggle_live_update   = { isVirtual = true, mode = "n", lhs          = "tu", rhs                                                           = "<cmd>lua require('spectre').toggle_live_update()<CR>", desc            = "Spectre: Toggle updates when vim writes a file", opts = {} },
+    toggle_ignore_case   = { isVirtual = true, mode = "n", lhs          = "ti", rhs                                                           = "<cmd>lua require('spectre').change_options('ignore-case')()<CR>", desc = "Spectre: Toggle ignore case", opts                    = {} },
+    toggle_ignore_hidden = { isVirtual = true, mode = "n", lhs          = "th", rhs                                                           = "<cmd>lua require('spectre').change_options('hiddne')()<CR>", desc      = "Spectre: Toggle show hidden", opts                    = {} },
   },
   ["telescope.nvim"] = {
     grep_string        = { mode = "n", lhs = "<leader>ss",  rhs  = ":lua require('telescope.builtin').grep_string({ search = vim.fn.input(\"Grep For > \")})<CR>", desc = "Grep for strings in all files"      },
@@ -80,7 +90,7 @@ M.plugin_mappings = {
     command_history    = { mode = "n", lhs = "<leader>svc",  rhs = ":lua require('telescope.builtin').command_history()<CR>",                                      desc = "Search command history"               },
     aerial_symbols     = { mode = "n", lhs = "<leader>sa",  rhs  = ":Telescope aerial<CR>",                                      desc                                   = "Search through Aerial Symbols"               },
   },
-  Comment = {
+  ["Comment.nvim"] = {
     opleader_line        = { isVirtual = true, mode = "o", lhs = "gc", rhs  = "", desc = "Operator pending prefix for line commenting in Normal and Visual modes", opts  = {} },
     opleader_block       = { isVirtual = true, mode = "o", lhs = "gb", rhs  = "", desc = "Operator pending prefix for block commenting in Normal and Visual modes", opts = {} },
     comment_line_toggle  = { isVirtual = true, mode = "n", lhs = "gcc", rhs = "", desc = "Toggle line comment", opts                                                     = {} },
@@ -92,7 +102,7 @@ M.plugin_mappings = {
   ["vim-easy-align"] = {
     easy_align = { mode = {"n", "x"}, lhs = "ga", rhs = "<Plug>(EasyAlign)", desc = "Easy align in visual mode, or for a motion" }
   },
-  ["neo-tree"] = {
+  ["neo-tree.nvim"] = {
     open_browser = { mode = "n", lhs = "<leader>e", rhs = ":Neotree toggle<CR>", desc = "Open Neotree" }
   },
   ["toggleterm.nvim"] = {

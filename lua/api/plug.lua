@@ -74,9 +74,6 @@ function fignvim.plug.setup_plugins()
   if status_ok then
     packer.startup({
       function(use)
-        -- Searching
-        use("windwp/nvim-spectre")
-
         -- Utility Plugins
         use("mbbill/undotree")
         use("szw/vim-maximizer")
@@ -243,35 +240,47 @@ function fignvim.plug.setup_plugins()
 end
 
 function fignvim.plug.create_plugin_mappings()
-  if fignvim.plug.is_available("Comment.nvim") then
-    local mappings = fignvim.config.get_plugin_mappings("Comment")
-    fignvim.fn.conditional_func(fignvim.config.create_mapping_group, mappings ~= nil, mappings, "Commenting")
+  local plugin_mapping_dictionary = {
+    ["Comment.nvim"] = "Commenting",
+    ["toggleterm.nvim"] = "Terminal",
+    ["vim-easy-align"] = "EasyAlign",
+    ["telescope.nvim"] = "Searching",
+    ["aerial.nvim"] = "Aerial",
+    ["neo-tree.nvim"] = "NeoTree",
+    ["nvim-spectre"] = "Searching",
+  }
+
+  for plugin, groupname in pairs(plugin_mapping_dictionary) do
+    if fignvim.plug.is_available(plugin) then
+      local mappings = fignvim.config.get_plugin_mappings(plugin)
+      fignvim.fn.conditional_func(fignvim.config.create_mapping_group, mappings ~= nil, mappings, groupname)
+    end
   end
 
-  if fignvim.plug.is_available("toggleterm.nvim") then
-    local mappings = fignvim.config.get_plugin_mappings("toggleterm.nvim")
-    fignvim.fn.conditional_func(fignvim.config.create_mapping_group, mappings ~= nil, mappings, "Terminal")
-  end
-
-  if fignvim.plug.is_available("vim-easy-align") then
-    local mappings = require("user-configs.mappings").plugin_mappings["vim-easy-align"]
-    fignvim.config.create_mapping_group(mappings, "EasyAlign")
-  end
-
-  if fignvim.plug.is_available("telescope.nvim") then
-    local mappings = fignvim.config.get_plugin_mappings("telescope.nvim")
-    fignvim.config.create_mapping_group(mappings, "Telescope")
-  end
-
-  if fignvim.plug.is_available("aerial.nvim") then
-    local mappings = fignvim.config.get_plugin_mappings("aerial.nvim")
-    fignvim.config.create_mapping_group(mappings, "Aerial")
-  end
-
-  if fignvim.plug.is_available("neo-tree.nvim") then
-    local mappings = fignvim.config.get_plugin_mappings("neo-tree")
-    fignvim.config.create_mapping_group(mappings, "NeoTree")
-  end
+  -- if fignvim.plug.is_available("toggleterm.nvim") then
+  --   local mappings = fignvim.config.get_plugin_mappings("toggleterm.nvim")
+  --   fignvim.fn.conditional_func(fignvim.config.create_mapping_group, mappings ~= nil, mappings, "Terminal")
+  -- end
+  --
+  -- if fignvim.plug.is_available("vim-easy-align") then
+  --   local mappings = require("user-configs.mappings").plugin_mappings["vim-easy-align"]
+  --   fignvim.config.create_mapping_group(mappings, "EasyAlign")
+  -- end
+  --
+  -- if fignvim.plug.is_available("telescope.nvim") then
+  --   local mappings = fignvim.config.get_plugin_mappings("telescope.nvim")
+  --   fignvim.config.create_mapping_group(mappings, "Telescope")
+  -- end
+  --
+  -- if fignvim.plug.is_available("aerial.nvim") then
+  --   local mappings = fignvim.config.get_plugin_mappings("aerial.nvim")
+  --   fignvim.config.create_mapping_group(mappings, "Aerial")
+  -- end
+  --
+  -- if fignvim.plug.is_available("neo-tree.nvim") then
+  --   local mappings = fignvim.config.get_plugin_mappings("neo-tree")
+  --   fignvim.config.create_mapping_group(mappings, "NeoTree")
+  -- end
 end
 
 return fignvim.plug

@@ -3,7 +3,7 @@ if not comment then
   return
 end
 
-local mappings = fignvim.config.get_plugin_mappings("Comment", true)
+local mappings = fignvim.config.get_plugin_mappings("Comment.nvim", true)
 
 comment.setup({
   opleader = {

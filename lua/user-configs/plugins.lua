@@ -84,6 +84,11 @@ M.plugins = {
   },
   ["nvim-telescope/telescope-fzy-native.nvim"] = { after = "telescope.nvim" },
   ["junegunn/fzf"] = { after = "telescope.nvim" },
+  ["windwp/nvim-spectre"] = {
+    config = function()
+      require("plugin-configs.spectre")
+    end,
+  },
 
   -- Statusline
   ["rebelot/heirline.nvim"] = {
