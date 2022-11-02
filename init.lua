@@ -31,13 +31,16 @@ end
 -- 3. Initialise the plugin manager and load all plugins
 fignvim.plug.initialise_packer()
 fignvim.plug.setup_plugins()
+
+-- 3.5 Get mapper functions ready to create fignvim keymaps and create plugin mappings
+fignvim.config.initialize_mapper() -- Need to do this in between loading mapper plugin and setting up any fignvim keymaps
 fignvim.plug.create_plugin_mappings()
 
 -- 4. Set up some UI features
 fignvim.ui.set_colourscheme()
 fignvim.ui.configure_diagnostics()
 
--- 5. Set up the LSP servers
+-- 5. Set up the LSP servers (also sets keymaps for LSP related actions)
 fignvim.lsp.setup_all_lsp_servers()
 
 -- 6. Create remaining general mappings

@@ -56,30 +56,33 @@ function fignvim.config.set_win32yank_wsl_as_clip()
   }
 end
 
-if fignvim.plug.is_available("nvim-mapper") then
-  local mapper = require("nvim-mapper")
+--- Set up mapping functions before we create fignvim keymappings
+function fignvim.config.initialize_mapper()
+  if fignvim.plug.is_available("nvim-mapper") then
+    local mapper = require("nvim-mapper")
 
-  fignvim.config.map = function(mode, keys, cmd, options, category, unique_identifier, description)
-    mapper.map(mode, keys, cmd, options, category, unique_identifier, description)
+    fignvim.config.map = function(mode, keys, cmd, options, category, unique_identifier, description)
+      mapper.map(mode, keys, cmd, options, category, unique_identifier, description)
+    end
+    fignvim.config.map_buf = function(bufnr, mode, keys, cmd, options, category, unique_identifier, description)
+      mapper.map_buf(bufnr, mode, keys, cmd, options, category, unique_identifier, description)
+    end
+    fignvim.config.map_virtual = function(mode, keys, cmd, options, category, unique_identifier, description)
+      mapper.map_virtual(mode, keys, cmd, options, category, unique_identifier, description)
+    end
+    fignvim.config.map_buf_virtual = function(mode, keys, cmd, options, category, unique_identifier, description)
+      mapper.map_buf_virtual(mode, keys, cmd, options, category, unique_identifier, description)
+    end
+  else
+    fignvim.config.map = function(mode, keys, cmd, options, _, _, _)
+      vim.keymap.set(mode, keys, cmd, options)
+    end
+    fignvim.config.map_buf = function(bufnr, mode, keys, cmd, options, _, _, _)
+      vim.keymap.set(bufnr, mode, keys, cmd, options)
+    end
+    fignvim.config.map_virtual = function(_, _, _, _, _, _, _) end
+    fignvim.config.map_buf_virtual = function(_, _, _, _, _, _, _) end
   end
-  fignvim.config.map_buf = function(bufnr, mode, keys, cmd, options, category, unique_identifier, description)
-    mapper.map_buf(bufnr, mode, keys, cmd, options, category, unique_identifier, description)
-  end
-  fignvim.config.map_virtual = function(mode, keys, cmd, options, category, unique_identifier, description)
-    mapper.map_virtual(mode, keys, cmd, options, category, unique_identifier, description)
-  end
-  fignvim.config.map_buf_virtual = function(mode, keys, cmd, options, category, unique_identifier, description)
-    mapper.map_buf_virtual(mode, keys, cmd, options, category, unique_identifier, description)
-  end
-else
-  fignvim.config.map = function(mode, keys, cmd, options, _, _, _)
-    vim.keymap.set(mode, keys, cmd, options)
-  end
-  fignvim.config.map_buf = function(bufnr, mode, keys, cmd, options, _, _, _)
-    vim.keymap.set(bufnr, mode, keys, cmd, options)
-  end
-  fignvim.config.map_virtual = function(_, _, _, _, _, _, _) end
-  fignvim.config.map_buf_virtual = function(_, _, _, _, _, _, _) end
 end
 
 --- Top level function to convert all mappings in the general_mappings config into keymaps

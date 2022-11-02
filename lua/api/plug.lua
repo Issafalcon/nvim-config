@@ -267,6 +267,11 @@ function fignvim.plug.create_plugin_mappings()
     local mappings = fignvim.config.get_plugin_mappings("aerial.nvim")
     fignvim.config.create_mapping_group(mappings, "Aerial")
   end
+
+  if fignvim.plug.is_available("neo-tree.nvim") then
+    local mappings = fignvim.config.get_plugin_mappings("neo-tree")
+    fignvim.config.create_mapping_group(mappings, "NeoTree")
+  end
 end
 
 return fignvim.plug
