@@ -102,6 +102,17 @@ M.theme = {
     TelescopeResultsBorder = { fg = bg, bg = bg },
     TelescopeResultsNormal = { bg = bg },
     TelescopeResultsTitle = { fg = bg, bg = bg },
+    CmpItemAbbrDeprecated = { bg = NONE, fg = "#808080", strikethrough = true },
+    CmpItemAbbrMatch = { bg = NONE, fg = "#569CD6" },
+    CmpItemAbbrMatchFuzzy = { link = "CmpItemAbbrMatch" },
+    CmpItemKindVariable = { bg = NONE, fg = "#9CDCFE" },
+    CmpItemKindInterface = { link = "CmpItemKindVariable" },
+    CmpItemKindText = { link = "CmpItemKindVariable" },
+    CmpItemKindFunction = { bg = NONE, fg = "#C586C0" },
+    CmpItemKindMethod = { link = "CmpItemKindFunction" },
+    CmpItemKindKeyword = { bg = NONE, fg = "#D4D4D4" },
+    CmpItemKindProperty = { link = "CmpItemKindKeyword" },
+    CmpItemKindUnit = { link = "CmpItemKindKeyword" },
   },
 }
 

@@ -75,7 +75,7 @@ M.plugins = {
     end,
   },
 
-  -- Fuzzy finder
+  -- Fuzzy finding / searching
   ["nvim-telescope/telescope.nvim"] = {
     module = "telescope",
     config = function()
@@ -88,6 +88,37 @@ M.plugins = {
     config = function()
       require("plugin-configs.spectre")
     end,
+  },
+
+  -- Completion engine and sources
+  ["hrsh7th/nvim-cmp"] = {
+    config = function()
+      require("plugin-configs.nvim-cmp")
+    end,
+  },
+  ["saadparwaiz1/cmp_luasnip"] = {
+    after = "nvim-cmp",
+  },
+  ["hrsh7th/cmp-buffer"] = {
+    after = "nvim-cmp",
+  },
+  ["hrsh7th/cmp-cmdline"] = {
+    after = "nvim-cmp",
+  },
+  ["hrsh7th/cmp-path"] = {
+    after = "nvim-cmp",
+  },
+  ["hrsh7th/cmp-nvim-lsp"] = {
+    after = "nvim-cmp",
+  },
+  ["hrsh7th/cmp-nvim-lua"] = {
+    after = "nvim-cmp",
+  },
+  ["David-Kunz/cmp-npm"] = {
+    after = "nvim-cmp",
+  },
+  ["lukas-reineke/cmp-rg"] = {
+    after = "nvim-cmp",
   },
 
   -- Statusline

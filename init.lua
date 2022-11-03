@@ -3,6 +3,14 @@ if impatient_ok then
   impatient.enable_profile()
 end
 
+-- Check compatible version of Neovim
+if vim.fn.has("nvim-0.8") ~= 1 or vim.version().prerelease then
+  vim.schedule(
+    function() --[[ fignvim.ui.notify("Unsupported Neovim Version! Please check the requirements", "error" )]]
+    end
+  )
+end
+
 -- 1. Get all the required Fignvim API functions and commands required for setup
 for _, source in ipairs({
   "api",

@@ -109,14 +109,6 @@ function fignvim.plug.setup_plugins()
         })
         use("github/copilot.vim")
 
-        -- cmp plugins
-        use("hrsh7th/nvim-cmp") -- The completion plugin
-        use("hrsh7th/cmp-buffer") -- buffer completions
-        use("hrsh7th/cmp-path") -- path completions
-        use("hrsh7th/cmp-cmdline") -- cmdline completions
-        use("hrsh7th/cmp-nvim-lsp") -- LSP completion support
-        use("hrsh7th/cmp-vsnip")
-
         -- TreeSitter
         use({
           "nvim-treesitter/nvim-treesitter",
@@ -131,7 +123,6 @@ function fignvim.plug.setup_plugins()
 
         -- snippets
         use({ "L3MON4D3/LuaSnip" }) -- Best snippet engine
-        use("saadparwaiz1/cmp_luasnip")
         use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
         -- File Navigation
@@ -181,10 +172,8 @@ function fignvim.plug.setup_plugins()
         use("xabikos/vscode-react") -- React snippets
         use("dsznajder/vscode-es7-javascript-react-snippets") -- More react snippets
         use("fivethree-team/vscode-svelte-snippets") -- Svelete snippets
-        use("David-Kunz/cmp-npm") -- NPM completions in package.json
         use("David-Kunz/jester") -- Debugging Jest tests
 
-        use("hrsh7th/cmp-nvim-lua") -- Lua in Vim language completions
         use("folke/neodev.nvim") -- For plugin dev with full signature help, docs and completion for neovim lua apis
         use("rafcamlet/nvim-luapad")
 
@@ -248,6 +237,7 @@ function fignvim.plug.create_plugin_mappings()
     ["aerial.nvim"] = "Aerial",
     ["neo-tree.nvim"] = "NeoTree",
     ["nvim-spectre"] = "Searching",
+    ["nvim-cmp"] = "Completion",
   }
 
   for plugin, groupname in pairs(plugin_mapping_dictionary) do
@@ -256,31 +246,6 @@ function fignvim.plug.create_plugin_mappings()
       fignvim.fn.conditional_func(fignvim.config.create_mapping_group, mappings ~= nil, mappings, groupname)
     end
   end
-
-  -- if fignvim.plug.is_available("toggleterm.nvim") then
-  --   local mappings = fignvim.config.get_plugin_mappings("toggleterm.nvim")
-  --   fignvim.fn.conditional_func(fignvim.config.create_mapping_group, mappings ~= nil, mappings, "Terminal")
-  -- end
-  --
-  -- if fignvim.plug.is_available("vim-easy-align") then
-  --   local mappings = require("user-configs.mappings").plugin_mappings["vim-easy-align"]
-  --   fignvim.config.create_mapping_group(mappings, "EasyAlign")
-  -- end
-  --
-  -- if fignvim.plug.is_available("telescope.nvim") then
-  --   local mappings = fignvim.config.get_plugin_mappings("telescope.nvim")
-  --   fignvim.config.create_mapping_group(mappings, "Telescope")
-  -- end
-  --
-  -- if fignvim.plug.is_available("aerial.nvim") then
-  --   local mappings = fignvim.config.get_plugin_mappings("aerial.nvim")
-  --   fignvim.config.create_mapping_group(mappings, "Aerial")
-  -- end
-  --
-  -- if fignvim.plug.is_available("neo-tree.nvim") then
-  --   local mappings = fignvim.config.get_plugin_mappings("neo-tree")
-  --   fignvim.config.create_mapping_group(mappings, "NeoTree")
-  -- end
 end
 
 return fignvim.plug

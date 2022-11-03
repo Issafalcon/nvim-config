@@ -5,8 +5,8 @@ end
 
 local luasnip = require("luasnip")
 local lspkind = require("lspkind")
-local highlight = require('cmp.utils.highlight')
-local autocmd = require('cmp.utils.autocmd')
+local highlight = require("cmp.utils.highlight")
+local autocmd = require("cmp.utils.autocmd")
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -109,46 +109,50 @@ cmp.setup.cmdline(":", {
   }),
 })
 
-autocmd.subscribe('ColorScheme', function()
-  highlight.inherit('CmpItemKindField', 'CmpItemKindField', { fg = "#EED8DA", bg = "#B5585F" })
-  highlight.inherit('PmenuSel', 'PmenuSel', { bg = "#282C34", fg = "NONE" })
-  highlight.inherit('Pmenu', 'Pmenu', { fg = "#C5CDD9", bg = "#22252A" })
+autocmd.subscribe("ColorScheme", function()
+  highlight.inherit("CmpItemKindField", "CmpItemKindField", { fg = "#EED8DA", bg = "#B5585F" })
+  highlight.inherit("PmenuSel", "PmenuSel", { bg = "#282C34", fg = "NONE" })
+  highlight.inherit("Pmenu", "Pmenu", { fg = "#C5CDD9", bg = "#22252A" })
 
-  highlight.inherit('CmpItemAbbrDeprecated','CmpItemAbbrDeprecated', { fg = "#7E8294", bg = "NONE", strikethrough = true })
-  highlight.inherit('CmpItemAbbrMatch','CmpItemAbbrMatch', { fg = "#82AAFF", bg = "NONE", bold = true })
-  highlight.inherit('CmpItemAbbrMatchFuzzy','CmpItemAbbrMatchFuzzy', { fg = "#82AAFF", bg = "NONE", bold = true })
-  highlight.inherit('CmpItemMenu','CmpItemMenu', { fg = "#C792EA", bg = "NONE", italic = true })
+  highlight.inherit(
+    "CmpItemAbbrDeprecated",
+    "CmpItemAbbrDeprecated",
+    { fg = "#7E8294", bg = "NONE", strikethrough = true }
+  )
+  highlight.inherit("CmpItemAbbrMatch", "CmpItemAbbrMatch", { fg = "#82AAFF", bg = "NONE", bold = true })
+  highlight.inherit("CmpItemAbbrMatchFuzzy", "CmpItemAbbrMatchFuzzy", { fg = "#82AAFF", bg = "NONE", bold = true })
+  highlight.inherit("CmpItemMenu", "CmpItemMenu", { fg = "#C792EA", bg = "NONE", italic = true })
 
-  highlight.inherit('CmpItemKindField','CmpItemKindField', { fg = "#EED8DA", bg = "#B5585F" })
-  highlight.inherit('CmpItemKindProperty','CmpItemKindProperty', { fg = "#EED8DA", bg = "#B5585F" })
-  highlight.inherit('CmpItemKindEvent','CmpItemKindEvent', { fg = "#EED8DA", bg = "#B5585F" })
+  highlight.inherit("CmpItemKindField", "CmpItemKindField", { fg = "#EED8DA", bg = "#B5585F" })
+  highlight.inherit("CmpItemKindProperty", "CmpItemKindProperty", { fg = "#EED8DA", bg = "#B5585F" })
+  highlight.inherit("CmpItemKindEvent", "CmpItemKindEvent", { fg = "#EED8DA", bg = "#B5585F" })
 
-  highlight.inherit('CmpItemKindText','CmpItemKindText', { fg = "#C3E88D", bg = "#9FBD73" })
-  highlight.inherit('CmpItemKindEnum','CmpItemKindEnum', { fg = "#C3E88D", bg = "#9FBD73" })
-  highlight.inherit('CmpItemKindKeyword','CmpItemKindKeyword', { fg = "#C3E88D", bg = "#9FBD73" })
+  highlight.inherit("CmpItemKindText", "CmpItemKindText", { fg = "#C3E88D", bg = "#9FBD73" })
+  highlight.inherit("CmpItemKindEnum", "CmpItemKindEnum", { fg = "#C3E88D", bg = "#9FBD73" })
+  highlight.inherit("CmpItemKindKeyword", "CmpItemKindKeyword", { fg = "#C3E88D", bg = "#9FBD73" })
 
-  highlight.inherit('CmpItemKindConstant','CmpItemKindConstant', { fg = "#FFE082", bg = "#D4BB6C" })
-  highlight.inherit('CmpItemKindConstructor','CmpItemKindConstructor', { fg = "#FFE082", bg = "#D4BB6C" })
-  highlight.inherit('CmpItemKindReference','CmpItemKindReference', { fg = "#FFE082", bg = "#D4BB6C" })
+  highlight.inherit("CmpItemKindConstant", "CmpItemKindConstant", { fg = "#FFE082", bg = "#D4BB6C" })
+  highlight.inherit("CmpItemKindConstructor", "CmpItemKindConstructor", { fg = "#FFE082", bg = "#D4BB6C" })
+  highlight.inherit("CmpItemKindReference", "CmpItemKindReference", { fg = "#FFE082", bg = "#D4BB6C" })
 
-  highlight.inherit('CmpItemKindFunction','CmpItemKindFunction', { fg = "#EADFF0", bg = "#A377BF" })
-  highlight.inherit('CmpItemKindStruct','CmpItemKindStruct', { fg = "#EADFF0", bg = "#A377BF" })
-  highlight.inherit('CmpItemKindClass','CmpItemKindClass', { fg = "#EADFF0", bg = "#A377BF" })
-  highlight.inherit('CmpItemKindModule','CmpItemKindModule', { fg = "#EADFF0", bg = "#A377BF" })
-  highlight.inherit('CmpItemKindOperator','CmpItemKindOperator', { fg = "#EADFF0", bg = "#A377BF" })
+  highlight.inherit("CmpItemKindFunction", "CmpItemKindFunction", { fg = "#EADFF0", bg = "#A377BF" })
+  highlight.inherit("CmpItemKindStruct", "CmpItemKindStruct", { fg = "#EADFF0", bg = "#A377BF" })
+  highlight.inherit("CmpItemKindClass", "CmpItemKindClass", { fg = "#EADFF0", bg = "#A377BF" })
+  highlight.inherit("CmpItemKindModule", "CmpItemKindModule", { fg = "#EADFF0", bg = "#A377BF" })
+  highlight.inherit("CmpItemKindOperator", "CmpItemKindOperator", { fg = "#EADFF0", bg = "#A377BF" })
 
-  highlight.inherit('CmpItemKindVariable','CmpItemKindVariable', { fg = "#C5CDD9", bg = "#7E8294" })
-  highlight.inherit('CmpItemKindFile','CmpItemKindFile', { fg = "#C5CDD9", bg = "#7E8294" })
+  highlight.inherit("CmpItemKindVariable", "CmpItemKindVariable", { fg = "#C5CDD9", bg = "#7E8294" })
+  highlight.inherit("CmpItemKindFile", "CmpItemKindFile", { fg = "#C5CDD9", bg = "#7E8294" })
 
-  highlight.inherit('CmpItemKindUnit','CmpItemKindUnit', { fg = "#F5EBD9", bg = "#D4A959" })
-  highlight.inherit('CmpItemKindSnippet','CmpItemKindSnippet', { fg = "#F5EBD9", bg = "#D4A959" })
-  highlight.inherit('CmpItemKindFolder','CmpItemKindFolder', { fg = "#F5EBD9", bg = "#D4A959" })
+  highlight.inherit("CmpItemKindUnit", "CmpItemKindUnit", { fg = "#F5EBD9", bg = "#D4A959" })
+  highlight.inherit("CmpItemKindSnippet", "CmpItemKindSnippet", { fg = "#F5EBD9", bg = "#D4A959" })
+  highlight.inherit("CmpItemKindFolder", "CmpItemKindFolder", { fg = "#F5EBD9", bg = "#D4A959" })
 
-  highlight.inherit('CmpItemKindMethod','CmpItemKindMethod', { fg = "#DDE5F5", bg = "#6C8ED4" })
-  highlight.inherit('CmpItemKindValue','CmpItemKindValue', { fg = "#DDE5F5", bg = "#6C8ED4" })
-  highlight.inherit('CmpItemKindEnumMember','CmpItemKindEnumMember', { fg = "#DDE5F5", bg = "#6C8ED4" })
+  highlight.inherit("CmpItemKindMethod", "CmpItemKindMethod", { fg = "#DDE5F5", bg = "#6C8ED4" })
+  highlight.inherit("CmpItemKindValue", "CmpItemKindValue", { fg = "#DDE5F5", bg = "#6C8ED4" })
+  highlight.inherit("CmpItemKindEnumMember", "CmpItemKindEnumMember", { fg = "#DDE5F5", bg = "#6C8ED4" })
 
-  highlight.inherit('CmpItemKindInterface','CmpItemKindInterface', { fg = "#D8EEEB", bg = "#58B5A8" })
-  highlight.inherit('CmpItemKindColor','CmpItemKindColor', { fg = "#D8EEEB", bg = "#58B5A8" })
-  highlight.inherit('CmpItemKindTypeParameter','CmpItemKindTypeParameter', { fg = "#D8EEEB", bg = "#58B5A8" })
+  highlight.inherit("CmpItemKindInterface", "CmpItemKindInterface", { fg = "#D8EEEB", bg = "#58B5A8" })
+  highlight.inherit("CmpItemKindColor", "CmpItemKindColor", { fg = "#D8EEEB", bg = "#58B5A8" })
+  highlight.inherit("CmpItemKindTypeParameter", "CmpItemKindTypeParameter", { fg = "#D8EEEB", bg = "#58B5A8" })
 end)

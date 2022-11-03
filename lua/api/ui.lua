@@ -6,8 +6,9 @@ end
 
 --- Initialize icons used throughout the user interface
 function fignvim.ui.initialize_icons()
-  fignvim.ui.icons =  require("icons.nerd_font")
+  fignvim.ui.icons = require("icons.nerd_font")
   fignvim.ui.text_icons = require("icons.text")
+  fignvim.ui.lspkind_icons = require("icons.lspkind")
 end
 
 function fignvim.ui.set_colourscheme()

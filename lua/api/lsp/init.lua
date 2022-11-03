@@ -57,11 +57,6 @@ function fignvim.lsp.on_attach(client, bufnr)
       })
     end
   end
-
-  local aerial = fignvim.plug.load_module_file("aerial")
-  if aerial then
-    aerial.on_attach(client, bufnr)
-  end
 end
 
 --- Get the server settings for a given language server to be provided to the server's `setup()` call

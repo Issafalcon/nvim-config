@@ -117,6 +117,18 @@ M.plugin_mappings = {
   },
   ["aerial.nvim"] = {
     toggle_aerial    = { mode = "n", lhs        = "<leader>a", rhs = "<cmd>AerialToggle!<CR>", desc = "Toggle LSP symbol outline panel" },
+  },
+  ["nvim-cmp"] = {
+    cmp_prev_item     = { isVirtual = true, mode = "i", lhs          = "<C-k>", rhs     = "", desc = "Cmp: Select the previous completion item", opts = {} },
+    cmp_next_item     = { isVirtual = true, mode = "i", lhs          = "<C-j>", rhs     = "", desc = "Cmp: Select the next completion item", opts     = {} },
+    cmp_prev_item_alt = { isVirtual = true, mode = "i", lhs          = "<Up>", rhs      = "", desc = "Cmp: Select the previous completion item", opts = {} },
+    cmp_next_item_alt = { isVirtual = true, mode = "i", lhs          = "<Down>", rhs    = "", desc = "Cmp: Select the next completion item", opts     = {} },
+    cmp_scroll_up     = { isVirtual = true, mode ={ "c", "i" }, lhs          = "<C-b>", rhs     = "", desc = "Cmp: Scroll up on the completion docs", opts    = {} },
+    cmp_scroll_down   = { isVirtual = true, mode ={ "c", "i" }, lhs          = "<C-f>", rhs     = "", desc = "Cmp: Scroll down on the completion docs", opts  = {} },
+    cmp_complete      = { isVirtual = true, mode = { "c", "i" }, lhs = "<C-space>", rhs = "", desc = "Cmp: Show completion options", opts             = {} },
+    cmp_abort         = { isVirtual = true, mode = { "c", "i" }, lhs = "<C-e>", rhs     = "", desc = "Cmp: Abort current completion", opts            = {} },
+    cmp_disable         = { isVirtual = true, mode = "n", lhs = "<C-y>", rhs     = "", desc = "Cmp: Toggle completion on and off", opts            = {} },
+    cmp_confirm         = { isVirtual = true, mode = "n", lhs = "<CR>", rhs     = "", desc = "Cmp: Confirm selection", opts            = {} },
   }
 }
 
