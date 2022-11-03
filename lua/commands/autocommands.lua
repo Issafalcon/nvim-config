@@ -8,7 +8,8 @@ cmd({ "VimEnter", "ColorScheme" }, {
   group = "fignvim_highlights",
   callback = function()
     if vim.g.colours_name then
-      for group, spec in pairs(require("user-configs.ui").theme.highlights) do
+      local ui_config = require("user-configs.ui")
+      for group, spec in pairs(ui_config.theme.highlights) do
         vim.api.nvim_set_hl(0, group, spec)
       end
     end
