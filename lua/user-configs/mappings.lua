@@ -9,29 +9,30 @@ local M = {}
 ---@field isVirtual? boolean Whether the keymap should only be virtual (i.e. Displayed in nvim-mapper) rather than being created - default = false
 ---@field opts? table Options for the Mapping (default = { silent = true })
 
+local opt = { silent = true, noremap = true }
 -- stylua: ignore
 ---@type table<string, table<string, FigNvimMapping>>
 M.general_mappings = {
   -- Navigate between windows in normal mode
   Window = {
-    window_left = { mode = "n", lhs = "<C-h>", rhs = "<C-w>h", desc = "Move to next window to the left", },
-    window_right = { mode = "n", lhs = "<C-l>", rhs = "<C-w>l", desc = "Move to next window to the right" },
-    window_down = { mode = "n", lhs = "<C-j>", rhs = "<C-w>j", desc = "Move to next window down" },
-    window_up = { mode = "n", lhs = "<C-k>", rhs = "<C-w>k", desc = "Move to next window up" },
-    window_resize_up = { mode = "n", lhs = "<C-Up>", rhs = ":resize +2<CR>", desc = "Resize window horizontally up", },
-    window_resize_down = { mode = "n", lhs = "<C-Down>", rhs = ":resize -2<CR>", desc = "Resize window horizontally down", },
-    window_resize_left = { mode = "n", lhs = "<C-Left>", rhs = ":vertical resize +2<CR>", desc = "Resize window vertically to the left", },
+    window_left         = { mode = "n", lhs = "<C-h>", rhs     = "<C-w>h", desc                  = "Move to next window to the left", },
+    window_right        = { mode = "n", lhs = "<C-l>", rhs     = "<C-w>l", desc                  = "Move to next window to the right" },
+    window_down         = { mode = "n", lhs = "<C-j>", rhs     = "<C-w>j", desc                  = "Move to next window down" },
+    window_up           = { mode = "n", lhs = "<C-k>", rhs     = "<C-w>k", desc                  = "Move to next window up" },
+    window_resize_up    = { mode = "n", lhs = "<C-Up>", rhs    = ":resize +2<CR>", desc          = "Resize window horizontally up", },
+    window_resize_down  = { mode = "n", lhs = "<C-Down>", rhs  = ":resize -2<CR>", desc          = "Resize window horizontally down", },
+    window_resize_left  = { mode = "n", lhs = "<C-Left>", rhs  = ":vertical resize +2<CR>", desc = "Resize window vertically to the left", },
     window_resize_right = { mode = "n", lhs = "<C-Right>", rhs = ":vertical resize -2<CR>", desc = "Resize window vertically to the right", },
   },
   Navigation = {
-    buf_next = { mode = "n", lhs = "<S-l>", rhs = ":bnext<CR>", desc = "Move to next buffer", },
-    buf_prev = { mode = "n", lhs = "<S-h>", rhs = ":bprevious<CR>", desc = "Move to previous buffer", },
-    buf_close = { mode = "n", lhs = "<C-x>", rhs = ":bdelete<CR>", desc = "Close current buffer", },
-    toggle_line_nums = { mode = "n", lhs = "<leader>l", rhs = ":lua require('core.api.ui).toggle_line_numbers", desc = "Toggle line numbers", },
+    buf_next                  = { mode = "n", lhs = "<S-l>", rhs      = ":bnext<CR>", desc                                                 = "Move to next buffer", },
+    buf_prev                  = { mode = "n", lhs = "<S-h>", rhs      = ":bprevious<CR>", desc                                             = "Move to previous buffer", },
+    buf_close                 = { mode = "n", lhs = "<C-x>", rhs      = ":bdelete<CR>", desc                                               = "Close current buffer", },
+    toggle_line_nums          = { mode = "n", lhs = "<leader>l", rhs  = ":lua require('core.api.ui).toggle_line_numbers", desc             = "Toggle line numbers", },
     toggle_relative_line_nums = { mode = "n", lhs = "<leader>rn", rhs = ":lua require('core.api.ui').toggle_relative_line_numbers()", desc = "Toggle relative line numbers", },
   },
   Lists = {
-    toggle_qf = { mode = "n", lhs = "<C-q>", rhs = ":lua require('core.api.ui').toggle_fix_list(true)", desc = "Toggle quickfix window", },
+    toggle_qf      = { mode = "n", lhs = "<C-q>", rhs     = ":lua require('core.api.ui').toggle_fix_list(true)", desc  = "Toggle quickfix window", },
     toggle_loclist = { mode = "n", lhs = "<leader>q", rhs = ":lua require('core.api.ui').toggle_fix_list(false)", desc = "Toggle location list window", },
   },
   Editing = {
@@ -123,12 +124,12 @@ M.plugin_mappings = {
     cmp_next_item     = { isVirtual = true, mode = "i", lhs          = "<C-j>", rhs     = "", desc = "Cmp: Select the next completion item", opts     = {} },
     cmp_prev_item_alt = { isVirtual = true, mode = "i", lhs          = "<Up>", rhs      = "", desc = "Cmp: Select the previous completion item", opts = {} },
     cmp_next_item_alt = { isVirtual = true, mode = "i", lhs          = "<Down>", rhs    = "", desc = "Cmp: Select the next completion item", opts     = {} },
-    cmp_scroll_up     = { isVirtual = true, mode ={ "c", "i" }, lhs          = "<C-b>", rhs     = "", desc = "Cmp: Scroll up on the completion docs", opts    = {} },
-    cmp_scroll_down   = { isVirtual = true, mode ={ "c", "i" }, lhs          = "<C-f>", rhs     = "", desc = "Cmp: Scroll down on the completion docs", opts  = {} },
+    cmp_scroll_up     = { isVirtual = true, mode = { "c", "i" }, lhs = "<C-b>", rhs     = "", desc = "Cmp: Scroll up on the completion docs", opts    = {} },
+    cmp_scroll_down   = { isVirtual = true, mode = { "c", "i" }, lhs = "<C-f>", rhs     = "", desc = "Cmp: Scroll down on the completion docs", opts  = {} },
     cmp_complete      = { isVirtual = true, mode = { "c", "i" }, lhs = "<C-space>", rhs = "", desc = "Cmp: Show completion options", opts             = {} },
     cmp_abort         = { isVirtual = true, mode = { "c", "i" }, lhs = "<C-e>", rhs     = "", desc = "Cmp: Abort current completion", opts            = {} },
-    cmp_disable         = { isVirtual = true, mode = "n", lhs = "<C-y>", rhs     = "", desc = "Cmp: Toggle completion on and off", opts            = {} },
-    cmp_confirm         = { isVirtual = true, mode = "n", lhs = "<CR>", rhs     = "", desc = "Cmp: Confirm selection", opts            = {} },
+    cmp_disable       = { isVirtual = true, mode = "n", lhs          = "<C-y>", rhs     = "", desc = "Cmp: Toggle completion on and off", opts        = {} },
+    cmp_confirm       = { isVirtual = true, mode = "n", lhs          = "<CR>", rhs      = "", desc = "Cmp: Confirm selection", opts                   = {} },
   },
   ["LuaSnip"] = {
     snippet_choice         = { mode = {"i", "s"}, lhs = "<C-l>", rhs             = function() fignvim.luasnip.change_choice() end, desc = "Toggle the next choice in the LuaSnip snippet", opts                           = {} },
@@ -138,7 +139,29 @@ M.plugin_mappings = {
   },
   ["copilot.vim"] = {
     accept_suggestion = { mode = "i", lhs = "<C-x>", rhs = "copilot#Accept('<CR>')", desc = "Accept the current copilot suggestion", opts = { expr = true, silent = true, script = true} }
-  }
+  },
+  ["diffview.nvim"] = {
+    dv_select_next_entry = { isVirtual = true, mode = "n", lhs = "<tab>", rhs     = "", desc = "Diffview: Open diff for the next file in view and file panel", opts     = {} },
+    dv_select_prev_entry = { isVirtual = true, mode = "n", lhs = "<s-tab>", rhs   = "", desc = "Diffview: Open diff for the previous file in view and file panel", opts = {} },
+    dv_focus_files       = { isVirtual = true, mode = "n", lhs = "<leader>e", rhs = "", desc = "Diffview: Bring focus to files panel", opts                             = {} },
+    dv_toggle_files      = { isVirtual = true, mode = "n", lhs = "<leader>b", rhs = "", desc = "Diffview: Toggle the files panel", opts                                 = {} },
+  },
+  ["gitsigns.nvim"] = {
+    gs_next_hunk       = { mode = "n", lhs          = "]c", rhs         = function () fignvim.gitsigns.next_hunk() end, desc         = "Gitsigns: Next hunk", opts                                        = { noremap = true, silent = true, buffer = true, expr = true} },
+    gs_prev_hunk       = { mode = "n", lhs          = "[c", rhs         = function () fignvim.gitsigns.prev_hunk() end, desc         = "Gitsigns: Previous hunk", opts                                    = { silent = true, buffer = true, expr = true} },
+    gs_stage_hunk      = { mode = { "v", "n" }, lhs = "<leader>hs", rhs = ":Gitsigns stage_hunk<CR>", desc                             = "Gitsigns: Stage hunk", opts                                       = { silent = true, buffer = true} },
+    gs_reset_hunk      = { mode = { "v", "n" }, lhs = "<leader>hr", rhs = ":Gitsigns reset_hunk<CR>", desc                             = "Gitsigns: Reset hunk", opts                                       = { silent = true, buffer = true} },
+    gs_stage_buffer    = { mode = "n", lhs          = "<leader>hS", rhs = "<cmd>Gitsigns stage_buffer<CR>", desc                       = "Gitsigns: Stage buffer", opts                                     = { silent = true, buffer = true} },
+    gs_undo_stage_hunk = { mode = "n", lhs          = "<leader>hu", rhs = "<cmd>Gitsigns undo_stage_hunk<CR>", desc                    = "Gitsigns: Undo the last hunk or buffer staging command", opts     = { silent = true, buffer = true} },
+    gs_reset_buffer    = { mode = "n", lhs          = "<leader>hR", rhs = "<cmd>Gitsigns reset_buffer<CR>", desc                       = "Gitsigns: Reset the buffer", opts                                 = { silent = true, buffer = true} },
+    gs_preview_hunk    = { mode = "n", lhs          = "<leader>hp", rhs = "<cmd>Gitsigns preview_hunk<CR>", desc                       = "Gitsigns: Preview the hunk in floating window", opts              = { silent = true, buffer = true} },
+    gs_blame_line      = { mode = "n", lhs          = "<leader>hb", rhs = "<cmd>lua require'gitsigns'.blame_line{full=true}<CR>", desc = "Gitsigns: Show git blame of full change in floating window", opts = { silent = true, buffer = true} },
+    gs_toggle_blame    = { mode = "n", lhs          = "<leader>gb", rhs = "<cmd>Gitsigns toggle_current_line_blame<CR>", desc          = "Gitsigns: Toggle virtual text line blame", opts                   = { silent = true, buffer = true} },
+    gs_diffthis        = { mode = "n", lhs          = "<leader>hd", rhs = "<cmd>Gitsigns diffthis<CR>", desc                           = "Gitsigns: Diff the current file against index", opts              = { silent = true, buffer = true} },
+    gs_diffthis_main   = { mode = "n", lhs          = "<leader>hD", rhs = "<cmd>Gitsigns diffthis('main')<CR>", desc                   = "Gitsigns: Diff the current file against main", opts               = { silent = true, buffer = true} },
+    gs_toggle_deleted  = { mode = "n", lhs          = "<leader>gd", rhs = "<cmd>Gitsigns toggle_deleted<CR>", desc                     = "Gitsigns: Toggle deleted lines in buffer", opts                   = { silent = true, buffer = true} },
+    gs_select_hunk     = { mode = { "o", "x" }, lhs = "ih", rhs         = ":<C-U>Gitsigns select_hunk<CR>", desc                       = "Gitsigns: Select the current hunk as a text object", opts         = { silent = true, buffer = true} },
+  },
 }
 
 -- stylua: ignore

@@ -113,6 +113,7 @@ M.theme = {
     CmpItemKindKeyword = { bg = NONE, fg = "#D4D4D4" },
     CmpItemKindProperty = { link = "CmpItemKindKeyword" },
     CmpItemKindUnit = { link = "CmpItemKindKeyword" },
+    GitSignsCurrentLineBlame = { link = "Comment" },
   },
 }
 

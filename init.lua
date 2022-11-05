@@ -58,7 +58,6 @@ fignvim.config.set_general_mappings()
 require("colourscheme")
 
 require("utils")
-require("version-control")
 require("sessions")
 require("syntax-highlighting")
 require("commenting")

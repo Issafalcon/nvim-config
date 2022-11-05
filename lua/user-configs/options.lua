@@ -54,6 +54,11 @@ M = {
     colours_name = true, -- Whether to include custom highlight options from the UI configs
     copilot_no_tab_map = true, -- Disable tab mapping in insert mode when using copilot (so you can override the default mapping)
     EditorConfig_exclude_patterns = { "fugitive://.*", "scp://.*" },
+    git_messenger_always_into_popup = true, -- Always open git-messenger in a popup
+    git_messenger_floating_win_opts = {
+      border = "single",
+      style = "minimal",
+    },
     highlighturl_enabled = true, -- highlight URLs by default
     winbar_enabled = false, -- Enable winbar
     statusline_enabled = true, -- Enable statusline

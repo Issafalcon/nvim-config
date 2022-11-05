@@ -42,3 +42,4 @@
 
 - Add virtual mappings for `vim-surround`
 - Add virtual mappings for `vim-unimpaired`
+- Add virtual mappings for `diffview.nvim` file panel mappings

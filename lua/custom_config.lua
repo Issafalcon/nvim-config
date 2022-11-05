@@ -69,31 +69,11 @@ M.mappings = {
     snippet_choice = "<c-l>",
     edit_snippet = "<leader><leader>s",
   },
-  diffview = {
-    select_next_entry = "<tab>",
-    select_prev_entry = "<s-tab>",
-    focus_files = "<leader>e",
-    toggle_files = "<leader>b",
-    file_panel = {
-      next_entry = "j",
-      next_entry_alt = "<down>",
-      prev_entry = "k",
-      prev_entry_alt = "<up>",
-      select_entry = "<cr>",
-      select_entry_alt = "<2-LeftMouse>",
-      select_entry_alt2 = "o",
-      toggle_stage_entry = "-",
-      stage_all = "S",
-      unstage_all = "U",
-      restore_entry = "X",
-      refresh_files = "R",
-    },
-  },
   commenting = {
-    line_comment = 'gc',
-    block_comment = 'gb',
-    generate_annotation = '<leader>/'
-  }
+    line_comment = "gc",
+    block_comment = "gb",
+    generate_annotation = "<leader>/",
+  },
 }
 
 return M

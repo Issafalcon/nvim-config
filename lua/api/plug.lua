@@ -93,21 +93,6 @@ function fignvim.plug.setup_plugins()
           requires = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
         })
 
-        -- Git plugins
-        use("lewis6991/gitsigns.nvim")
-        use("tpope/vim-fugitive")
-        use("tpope/vim-rhubarb") -- Browse Github URLs
-        use("rhysd/git-messenger.vim") -- Show commits under the cursor
-        use("sindrets/diffview.nvim")
-
-        -- Github
-        use({
-          "pwntester/octo.nvim",
-          config = function()
-            require("octo").setup()
-          end,
-        })
-
         -- TreeSitter
         use({
           "nvim-treesitter/nvim-treesitter",
@@ -235,6 +220,7 @@ function fignvim.plug.create_plugin_mappings()
     ["nvim-cmp"] = "Completion",
     ["LuaSnip"] = "Snippets",
     ["copilot.vim"] = "Copilot",
+    ["diffview.nvim"] = "Diffview",
   }
 
   for plugin, groupname in pairs(plugin_mapping_dictionary) do
@@ -243,6 +229,14 @@ function fignvim.plug.create_plugin_mappings()
       fignvim.fn.conditional_func(fignvim.config.create_mapping_group, mappings ~= nil, mappings, groupname)
     end
   end
+end
+
+--- Special mapping callback for git_signs so mappings are created per buffer during the on_attach callback
+---@param bufnr number The buffer number to create mappings for
+function fignvim.plug.gitsigns_on_attach_cb(bufnr)
+  local plugin = "gitsigns.nvim"
+  local mappings = fignvim.config.get_plugin_mappings(plugin)
+  fignvim.fn.conditional_func(fignvim.config.create_mapping_group, mappings ~= nil, mappings, "Gitsigns", bufnr)
 end
 
 return fignvim.plug

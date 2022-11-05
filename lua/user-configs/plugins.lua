@@ -233,6 +233,22 @@ M.plugins = {
       require("plugin-configs.toggleterm")
     end,
   },
+
+  -- Git integrations
+  ["sindrets/diffview.nvim"] = {
+    module = "diffview",
+    config = function()
+      require("plugin-configs.diffview")
+    end,
+  },
+  ["lewis6991/gitsigns.nvim"] = {
+    module = "gitsigns",
+    config = function()
+      require("plugin-configs.gitsigns")
+    end,
+  },
+  ["rhysd/git-messenger.vim"] = {},
+  ["tpope/vim-fugitive"] = {},
 }
 
 return M
