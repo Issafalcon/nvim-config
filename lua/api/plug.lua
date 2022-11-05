@@ -107,7 +107,6 @@ function fignvim.plug.setup_plugins()
             require("octo").setup()
           end,
         })
-        use("github/copilot.vim")
 
         -- TreeSitter
         use({
@@ -120,10 +119,6 @@ function fignvim.plug.setup_plugins()
         -- LSP
         use("b0o/schemastore.nvim") -- JSON-ls schemas: https://github.com/b0o/SchemaStore.nvim
         use("Issafalcon/lsp-overloads.nvim")
-
-        -- snippets
-        use({ "L3MON4D3/LuaSnip" }) -- Best snippet engine
-        use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
         -- File Navigation
         use("ThePrimeagen/harpoon")
@@ -238,6 +233,8 @@ function fignvim.plug.create_plugin_mappings()
     ["neo-tree.nvim"] = "NeoTree",
     ["nvim-spectre"] = "Searching",
     ["nvim-cmp"] = "Completion",
+    ["LuaSnip"] = "Snippets",
+    ["copilot.vim"] = "Copilot",
   }
 
   for plugin, groupname in pairs(plugin_mapping_dictionary) do

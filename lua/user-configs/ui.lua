@@ -103,7 +103,7 @@ M.theme = {
     TelescopeResultsNormal = { bg = bg },
     TelescopeResultsTitle = { fg = bg, bg = bg },
     CmpItemAbbrDeprecated = { bg = NONE, fg = "#808080", strikethrough = true },
-    CmpItemAbbrMatch = { bg = NONE, fg = "#569CD6" },
+    CmpItemAbbrMatch = { bg = NONE, fg = "#569CD6", bold = true },
     CmpItemAbbrMatchFuzzy = { link = "CmpItemAbbrMatch" },
     CmpItemKindVariable = { bg = NONE, fg = "#9CDCFE" },
     CmpItemKindInterface = { link = "CmpItemKindVariable" },

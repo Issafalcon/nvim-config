@@ -52,6 +52,7 @@ M = {
   g = {
     catppuccin_flavour = "mocha",
     colours_name = true, -- Whether to include custom highlight options from the UI configs
+    copilot_no_tab_map = true, -- Disable tab mapping in insert mode when using copilot (so you can override the default mapping)
     EditorConfig_exclude_patterns = { "fugitive://.*", "scp://.*" },
     highlighturl_enabled = true, -- highlight URLs by default
     winbar_enabled = false, -- Enable winbar

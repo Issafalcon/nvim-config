@@ -129,6 +129,15 @@ M.plugin_mappings = {
     cmp_abort         = { isVirtual = true, mode = { "c", "i" }, lhs = "<C-e>", rhs     = "", desc = "Cmp: Abort current completion", opts            = {} },
     cmp_disable         = { isVirtual = true, mode = "n", lhs = "<C-y>", rhs     = "", desc = "Cmp: Toggle completion on and off", opts            = {} },
     cmp_confirm         = { isVirtual = true, mode = "n", lhs = "<CR>", rhs     = "", desc = "Cmp: Confirm selection", opts            = {} },
+  },
+  ["LuaSnip"] = {
+    snippet_choice         = { mode = {"i", "s"}, lhs = "<C-l>", rhs             = function() fignvim.luasnip.change_choice() end, desc = "Toggle the next choice in the LuaSnip snippet", opts                           = {} },
+    snippet_expand_or_next = { mode = {"i", "s"}, lhs = "<C-k>", rhs             = function() fignvim.luasnip.jump_next() end, desc     = "Expand the snippet under the cursor or jump to next snippet placeholder", opts = {} },
+    snippet_prev           = { mode = {"i", "s"}, lhs = "<C-j>", rhs             = function() fignvim.luasnip.jump_prev() end, desc = "Jump to the previous snippet placeholder", opts                                = {} },
+    edit_snippets          = { mode = "n", lhs        = "<leader><leader>s", rhs = ":LuaSnipEdit<CR>", desc                             = "Edit the snippet files for the filetype of the current buffer", opts           = {} }
+  },
+  ["copilot.vim"] = {
+    accept_suggestion = { mode = "i", lhs = "<C-x>", rhs = "copilot#Accept('<CR>')", desc = "Accept the current copilot suggestion", opts = { expr = true, silent = true, script = true} }
   }
 }
 

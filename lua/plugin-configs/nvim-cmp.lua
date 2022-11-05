@@ -20,7 +20,7 @@ local sources = {
   emoji = { name = "emoji", priority = 700, keyword_length = 2 },
   rg = { name = "rg", priority = 600, keyword_length = 2 },
   buffer = { name = "buffer", priority = 500, keyword_length = 2 },
-  path = { name = "path", priority = 250, keyword_length = 2 },
+  path = { name = "path", priority = 250, keyword_length = 3 },
 }
 
 local common_sources = { sources.nvim_lsp, sources.luasnip, sources.rg, sources.emoji, sources.buffer, sources.path }
@@ -35,15 +35,15 @@ cmp.setup({
   preselect = cmp.PreselectMode.None,
   formatting = {
     fields = {
-      cmp.ItemField.Kind,
       cmp.ItemField.Abbr,
+      cmp.ItemField.Kind,
       cmp.ItemField.Menu,
     },
     format = function(entry, vim_item)
       local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
       local strings = vim.split(kind.kind, "%s", { trimempty = true })
       kind.kind = " " .. strings[1] .. " "
-      kind.menu = "    (" .. strings[2] .. ")"
+      kind.menu = "(" .. strings[2] .. ")"
 
       return kind
     end,
@@ -69,8 +69,6 @@ cmp.setup({
     completion = {
       border = "none",
       winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-      col_offset = -3,
-      side_padding = 0,
     },
     documentation = {
       border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },

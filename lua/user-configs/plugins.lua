@@ -90,6 +90,18 @@ M.plugins = {
     end,
   },
 
+  -- Snippets
+  ["rafamadriz/friendly-snippets"] = {
+    opt = true,
+  },
+  ["L3MON4D3/LuaSnip"] = {
+    module = "luasnip",
+    wants = "friendly-snippets",
+    config = function()
+      require("plugin-configs.LuaSnip")
+    end,
+  },
+
   -- Completion engine and sources
   ["hrsh7th/nvim-cmp"] = {
     config = function()
@@ -119,6 +131,11 @@ M.plugins = {
   },
   ["lukas-reineke/cmp-rg"] = {
     after = "nvim-cmp",
+  },
+
+  -- Copilot
+  ["github/copilot.vim"] = {
+    commit = "1bfbaf5b027ee4d3d3dbc828c8bfaef2c45d132d",
   },
 
   -- Statusline
