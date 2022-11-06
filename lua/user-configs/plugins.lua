@@ -255,6 +255,23 @@ M.plugins = {
 
   -- Note taking
   ["lervag/vimtex"] = {},
+
+  -- Testing
+  ["nvim-neotest/neotest"] = {
+    config = function()
+      require("plugin-configs.neotest")
+    end,
+    requires = {
+      "vim-test/vim-test",
+      "nvim-lua/plenary.nvim",
+      "nvim-neotest/neotest-python",
+      "nvim-neotest/neotest-plenary",
+      "nvim-neotest/neotest-vim-test",
+      "Issafalcon/neotest-dotnet",
+      "haydenmeade/neotest-jest",
+      "antoinemadec/FixCursorHold.nvim",
+    },
+  },
 }
 
 return M

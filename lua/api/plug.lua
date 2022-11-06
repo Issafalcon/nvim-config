@@ -120,20 +120,6 @@ function fignvim.plug.setup_plugins()
         -- Quickfix / Location lists
         use("kevinhwang91/nvim-bqf")
 
-        use({
-          "nvim-neotest/neotest",
-          requires = {
-            "vim-test/vim-test",
-            "nvim-lua/plenary.nvim",
-            "nvim-neotest/neotest-python",
-            "nvim-neotest/neotest-plenary",
-            "nvim-neotest/neotest-vim-test",
-            "Issafalcon/neotest-dotnet",
-            "haydenmeade/neotest-jest",
-            "antoinemadec/FixCursorHold.nvim",
-          },
-        })
-
         -- Debugging
         use("mfussenegger/nvim-dap")
         use("theHamsta/nvim-dap-virtual-text")
@@ -218,6 +204,7 @@ function fignvim.plug.create_plugin_mappings()
     ["copilot.vim"] = "Copilot",
     ["diffview.nvim"] = "Diffview",
     ["vimtex"] = "LaTex",
+    ["neotest"] = "Neotest",
   }
 
   for plugin, groupname in pairs(plugin_mapping_dictionary) do

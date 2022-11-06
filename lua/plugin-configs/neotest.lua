@@ -1,7 +1,9 @@
-local opts = { silent = true }
-local keymap = vim.api.nvim_set_keymap
+local neotest = fignvim.plug.load_module_file("neotest")
+if not neotest then
+  return
+end
 
-require("neotest").setup({
+neotest.setup({
   log_level = 1, -- For verbose logs
   adapters = {
     require("neotest-python")({
@@ -27,11 +29,6 @@ require("neotest").setup({
     running = "",
     failed = "",
     unknown = "",
-    skipped = ""
+    skipped = "",
   },
 })
-
-keymap("n", "<leader>us", ':lua require("neotest").summary.toggle()<cr>', opts)
-keymap("n", "<leader>uf", ':lua require("neotest").run.run(vim.fn.expand("%"))<cr>', opts)
-keymap("n", "<leader>un", ':lua require("neotest").run.run()<cr>', opts)
-keymap("n", "<leader>ud", ':lua require("neotest").run.run({strategy = "dap"})<cr>', opts)

@@ -9,7 +9,6 @@ local M = {}
 ---@field isVirtual? boolean Whether the keymap should only be virtual (i.e. Displayed in nvim-mapper) rather than being created - default = false
 ---@field opts? table Options for the Mapping (default = { silent = true })
 
-local opt = { silent = true, noremap = true }
 -- stylua: ignore
 ---@type table<string, table<string, FigNvimMapping>>
 M.general_mappings = {
@@ -74,22 +73,22 @@ M.plugin_mappings = {
     toggle_ignore_hidden = { isVirtual = true, mode = "n", lhs          = "th", rhs                                                           = "<cmd>lua require('spectre').change_options('hiddne')()<CR>", desc      = "Spectre: Toggle show hidden", opts                    = {} },
   },
   ["telescope.nvim"] = {
-    grep_string        = { mode = "n", lhs = "<leader>ss",  rhs  = ":lua require('telescope.builtin').grep_string({ search = vim.fn.input(\"Grep For > \")})<CR>", desc = "Grep for strings in all files"      },
-    git_files          = { mode = "n", lhs = "<C-p>",       rhs  = ":lua require('telescope.builtin').git_files()<CR>",                                            desc = "Search files in git repo"             },
-    all_files          = { mode = "n", lhs = "<leader>sf",  rhs  = ":lua require('telescope.builtin').find_files({hidden = true})<CR>",                            desc = "Search files in current directory"    },
-    buffers            = { mode = "n", lhs = "<leader>sb",  rhs  = ":lua require('telescope.builtin').buffers()<CR>",                                              desc = "Search buffers"                       },
-    help_tags          = { mode = "n", lhs = "<leader>sh",  rhs  = ":lua require('telescope.builtin').help_tags()<CR>",                                            desc = "Search help tags"                     },
-    dev_config         = { mode = "n", lhs = "<leader>sc",  rhs  = fignvim.search.dev_config_files,                                                                desc = "Search config files"                  },
-    git_commits        = { mode = "n", lhs = "<leader>sgc", rhs  = ":lua require('telescope.builtin').git_commits()<CR>",                                          desc = "Search git commits"                   },
-    git_branch_commits = { mode = "n", lhs = "<leader>sbc", rhs  = ":lua require('telescope.builtin').git_bcommits()<CR>",                                         desc = "Search git commits on current branch" },
-    git_branches       = { mode = "n", lhs = "<leader>sgb", rhs  = ":lua require('telescope.builtin').git_branches()<CR>",                                         desc = "Search git branches"                  },
-    git_status         = { mode = "n", lhs = "<leader>sgs", rhs  = ":lua require('telescope.builtin').git_status()<CR>",                                           desc = "Search git status"                    },
-    colourscheme       = { mode = "n", lhs = "<leader>st",  rhs  = ":lua require('telescope.builtin').colorscheme()<CR>",                                          desc = "Search colourschemes"                 },
-    marks              = { mode = "n", lhs = "<leader>sm",  rhs  = ":lua require('telescope.builtin').marks()<CR>",                                                desc = "Search marks"                         },
-    registers          = { mode = "n", lhs = "<leader>sr",  rhs  = ":lua require('telescope.builtin').registers()<CR>",                                            desc = "Search registers"                     },
-    registers_insert   = { mode = "i", lhs = "<A-2>",       rhs  = ":lua require('telescope.builtin').registers()<CR>",                                           desc  = "Search registers while in insert mode"                     },
-    command_history    = { mode = "n", lhs = "<leader>svc",  rhs = ":lua require('telescope.builtin').command_history()<CR>",                                      desc = "Search command history"               },
-    aerial_symbols     = { mode = "n", lhs = "<leader>sa",  rhs  = ":Telescope aerial<CR>",                                      desc                                   = "Search through Aerial Symbols"               },
+    grep_string        = { mode = "n", lhs = "<leader>ss",  rhs  = ":lua require('telescope.builtin').grep_string({ search = vim.fn.input(\"Grep For > \")})<CR>", desc = "Grep for strings in all files"         },
+    git_files          = { mode = "n", lhs = "<C-p>",       rhs  = ":lua require('telescope.builtin').git_files()<CR>",                                            desc = "Search files in git repo"              },
+    all_files          = { mode = "n", lhs = "<leader>sf",  rhs  = ":lua require('telescope.builtin').find_files({hidden = true})<CR>",                            desc = "Search files in current directory"     },
+    buffers            = { mode = "n", lhs = "<leader>sb",  rhs  = ":lua require('telescope.builtin').buffers()<CR>",                                              desc = "Search buffers"                        },
+    help_tags          = { mode = "n", lhs = "<leader>sh",  rhs  = ":lua require('telescope.builtin').help_tags()<CR>",                                            desc = "Search help tags"                      },
+    dev_config         = { mode = "n", lhs = "<leader>sc",  rhs  = fignvim.search.dev_config_files,                                                                desc = "Search config files"                   },
+    git_commits        = { mode = "n", lhs = "<leader>sgc", rhs  = ":lua require('telescope.builtin').git_commits()<CR>",                                          desc = "Search git commits"                    },
+    git_branch_commits = { mode = "n", lhs = "<leader>sbc", rhs  = ":lua require('telescope.builtin').git_bcommits()<CR>",                                         desc = "Search git commits on current branch"  },
+    git_branches       = { mode = "n", lhs = "<leader>sgb", rhs  = ":lua require('telescope.builtin').git_branches()<CR>",                                         desc = "Search git branches"                   },
+    git_status         = { mode = "n", lhs = "<leader>sgs", rhs  = ":lua require('telescope.builtin').git_status()<CR>",                                           desc = "Search git status"                     },
+    colourscheme       = { mode = "n", lhs = "<leader>st",  rhs  = ":lua require('telescope.builtin').colorscheme()<CR>",                                          desc = "Search colourschemes"                  },
+    marks              = { mode = "n", lhs = "<leader>sm",  rhs  = ":lua require('telescope.builtin').marks()<CR>",                                                desc = "Search marks"                          },
+    registers          = { mode = "n", lhs = "<leader>sr",  rhs  = ":lua require('telescope.builtin').registers()<CR>",                                            desc = "Search registers"                      },
+    registers_insert   = { mode = "i", lhs = "<A-2>",       rhs  = ":lua require('telescope.builtin').registers()<CR>",                                           desc  = "Search registers while in insert mode" },
+    command_history    = { mode = "n", lhs = "<leader>svc",  rhs = ":lua require('telescope.builtin').command_history()<CR>",                                      desc = "Search command history"                },
+    aerial_symbols     = { mode = "n", lhs = "<leader>sa",  rhs  = ":Telescope aerial<CR>",                                      desc                                   = "Search through Aerial Symbols"         },
   },
   ["Comment.nvim"] = {
     opleader_line        = { isVirtual = true, mode = "o", lhs = "gc", rhs  = "", desc = "Operator pending prefix for line commenting in Normal and Visual modes", opts  = {} },
@@ -164,6 +163,12 @@ M.plugin_mappings = {
   },
   ["vimtex"] = {
     tex_custom_launch = { mode = "n", lhs = "\\lg", rhs = ":Start latexmk-custom-launch.sh %:p<CR>", desc = "Run a custom script to launch latex with bibliography", opts = { silent = true, noremap = true }}
+  },
+  ["neotest"] = {
+    neotest_toggle_summary = { mode = "n", lhs = "<leader>us", rhs = function () require("neotest").summary.toggle() end, desc            = "Neotest: Open test summary window" },
+    neotest_run_file       = { mode = "n", lhs = "<leader>uf", rhs = function () require("neotest").run.run(vim.fn.expand("%")) end, desc = "Neotest: Run tests in file" },
+    neotest_run_nearest    = { mode = "n", lhs = "<leader>un", rhs = function () require("neotest").run.run() end, desc                   = "Neotest: Run nearest test" },
+    neotest_debug_nearest  = { mode = "n", lhs = "<leader>ud", rhs = function () require("neotest").run.run({strategy                     = "dap"}) end, desc = "Neotest: Debug nearest test" }
   }
 }
 
