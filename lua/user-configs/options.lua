@@ -90,6 +90,22 @@ M = {
     icons_enabled = true, -- disable icons in the UI (disable if no nerd font is available)
     quickfix_open = false, -- whether qf list is open
     loclist_open = false, -- whether loclist is open
+    vimtex_view_method = "zathura", -- set default viewer for vimtex
+    vimtex_view_general_viewer = "zathura", -- set default viewer for vimtex
+    vimtex_compiler_latexmk = {
+      build_dir = "",
+      callback = 1,
+      continuous = 1,
+      executable = "latexmk",
+      hooks = {},
+      options = {
+        "-verbose",
+        "-file-line-error",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-shell-escape",
+      },
+    },
   },
 }
 

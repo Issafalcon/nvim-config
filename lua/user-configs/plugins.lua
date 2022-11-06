@@ -10,6 +10,9 @@ M.plugins = {
   -- Lua functions
   ["nvim-lua/plenary.nvim"] = { module = "plenary" }, -- https://github.com/nvim-lua/plenary.nvim
 
+  -- Background compilation / script runner
+  ["tpope/vim-dispatch"] = {},
+
   -- Notification Enhancer
   ["rcarriga/nvim-notify"] = {
     -- https://github.com/rcarriga/nvim-notify
@@ -249,6 +252,9 @@ M.plugins = {
   },
   ["rhysd/git-messenger.vim"] = {},
   ["tpope/vim-fugitive"] = {},
+
+  -- Note taking
+  ["lervag/vimtex"] = {},
 }
 
 return M

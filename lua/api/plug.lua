@@ -162,10 +162,6 @@ function fignvim.plug.setup_plugins()
         use("J0rgeSerran0/vscode-csharp-snippets")
         use("Hoffs/omnisharp-extended-lsp.nvim")
 
-        -- Latex
-        use("lervag/vimtex")
-        use("jbyuki/nabla.nvim")
-
         -- Markdown
         use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install" })
         use({ "robole/vscode-markdown-snippets" })
@@ -221,6 +217,7 @@ function fignvim.plug.create_plugin_mappings()
     ["LuaSnip"] = "Snippets",
     ["copilot.vim"] = "Copilot",
     ["diffview.nvim"] = "Diffview",
+    ["vimtex"] = "LaTex",
   }
 
   for plugin, groupname in pairs(plugin_mapping_dictionary) do
