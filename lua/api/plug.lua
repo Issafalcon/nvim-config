@@ -93,14 +93,6 @@ function fignvim.plug.setup_plugins()
           requires = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
         })
 
-        -- TreeSitter
-        use({
-          "nvim-treesitter/nvim-treesitter",
-          run = ":TSUpdate",
-        })
-        use({ "nvim-treesitter/nvim-treesitter-textobjects" })
-        use({ "nvim-treesitter/playground" })
-
         -- LSP
         use("b0o/schemastore.nvim") -- JSON-ls schemas: https://github.com/b0o/SchemaStore.nvim
         use("Issafalcon/lsp-overloads.nvim")
@@ -138,7 +130,6 @@ function fignvim.plug.setup_plugins()
         use("xabikos/vscode-react") -- React snippets
         use("dsznajder/vscode-es7-javascript-react-snippets") -- More react snippets
         use("fivethree-team/vscode-svelte-snippets") -- Svelete snippets
-        use("David-Kunz/jester") -- Debugging Jest tests
 
         use("folke/neodev.nvim") -- For plugin dev with full signature help, docs and completion for neovim lua apis
         use("rafcamlet/nvim-luapad")

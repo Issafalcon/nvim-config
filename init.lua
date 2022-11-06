@@ -5,10 +5,9 @@ end
 
 -- Check compatible version of Neovim
 if vim.fn.has("nvim-0.8") ~= 1 or vim.version().prerelease then
-  vim.schedule(
-    function() --[[ fignvim.ui.notify("Unsupported Neovim Version! Please check the requirements", "error" )]]
-    end
-  )
+  vim.schedule(function()
+    fignvim.ui.notify("Unsupported Neovim Version! Please check the requirements", "error")
+  end)
 end
 
 -- 1. Get all the required Fignvim API functions and commands required for setup
@@ -59,7 +58,6 @@ require("colourscheme")
 
 require("utils")
 require("sessions")
-require("syntax-highlighting")
 require("commenting")
 require("debugging")
 require("navigation")

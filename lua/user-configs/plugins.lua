@@ -148,14 +148,23 @@ M.plugins = {
     end,
   },
 
-  -- Parenthesis highlighting
+  -- Treesitter (syntax highlighting and more)
   ["p00f/nvim-ts-rainbow"] = { after = "nvim-treesitter" },
-
-  -- Autoclose tags
   ["windwp/nvim-ts-autotag"] = { after = "nvim-treesitter" },
+  ["JoosepAlviste/nvim-ts-context-commentstring"] = { after = "nvim-treesitter" },
+  ["nvim-treesitter/nvim-treesitter-textobjects"] = { after = "nvim-treesitter" },
+  ["nvim-treesitter/playground"] = { after = "nvim-treesitter" },
+  ["nvim-treesitter/nvim-treesitter"] = {
+    run = function()
+      require("nvim-treesitter.install").update({ with_sync = true })
+    end,
+    event = "BufEnter",
+    config = function()
+      require("plugin-configs.nvim-treesitter")
+    end,
+  },
 
   -- Commenting
-  ["JoosepAlviste/nvim-ts-context-commentstring"] = { after = "nvim-treesitter" },
   ["numToStr/Comment.nvim"] = {
     module = { "Comment", "Comment.api" },
     keys = { "gc", "gb", "g<", "g>" },
