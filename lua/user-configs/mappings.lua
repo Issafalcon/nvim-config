@@ -28,12 +28,12 @@ M.general_mappings = {
     buf_next                  = { mode = "n", lhs = "<S-l>", rhs      = ":bnext<CR>", desc                                                 = "Move to next buffer", },
     buf_prev                  = { mode = "n", lhs = "<S-h>", rhs      = ":bprevious<CR>", desc                                             = "Move to previous buffer", },
     buf_close                 = { mode = "n", lhs = "<C-x>", rhs      = ":bdelete<CR>", desc                                               = "Close current buffer", },
-    toggle_line_nums          = { mode = "n", lhs = "<leader>l", rhs  = ":lua require('core.api.ui).toggle_line_numbers", desc             = "Toggle line numbers", },
-    toggle_relative_line_nums = { mode = "n", lhs = "<leader>rn", rhs = ":lua require('core.api.ui').toggle_relative_line_numbers()", desc = "Toggle relative line numbers", },
+    toggle_line_nums          = { mode = "n", lhs = "<leader>l", rhs  = function () fignvim.ui.toggle_line_numbers() end, desc             = "Toggle line numbers", },
+    toggle_relative_line_nums = { mode = "n", lhs = "<leader>rn", rhs = function () fignvim.ui.toggle_relative_line_numbers() end, desc = "Toggle relative line numbers", },
   },
   Lists = {
-    toggle_qf      = { mode = "n", lhs = "<C-q>", rhs     = ":lua require('core.api.ui').toggle_fix_list(true)", desc  = "Toggle quickfix window", },
-    toggle_loclist = { mode = "n", lhs = "<leader>q", rhs = ":lua require('core.api.ui').toggle_fix_list(false)", desc = "Toggle location list window", },
+    toggle_qf      = { mode = "n", lhs = "<C-q>", rhs     = function () fignvim.ui.toggle_fix_list(true) end, desc  = "Toggle quickfix window", },
+    toggle_loclist = { mode = "n", lhs = "<leader>q", rhs = function () fignvim.ui.toggle_fix_list(false) end, desc = "Toggle location list window", },
   },
   Editing = {
     escape_insert           = { mode = "i", lhs          = "jk", rhs    = "<ESC>", desc               = "Escape insert mode" },
