@@ -126,28 +126,21 @@ function fignvim.plug.setup_plugins()
         -- Lua / Neovim Plugin Development
         -- Typescript / JavaScript (React, Svelte, Angular, TS)plug
         use("jose-elias-alvarez/nvim-lsp-ts-utils") -- Extends LSP functionality for tsserver
-        use("xabikos/vscode-react") -- React snippets
-        use("dsznajder/vscode-es7-javascript-react-snippets") -- More react snippets
-        use("fivethree-team/vscode-svelte-snippets") -- Svelete snippets
 
         use("folke/neodev.nvim") -- For plugin dev with full signature help, docs and completion for neovim lua apis
         use("rafcamlet/nvim-luapad")
 
         -- .NET / C#
         use({ "Issafalcon/neo-sharper.nvim", branch = "plugin-testing" })
-        use("J0rgeSerran0/vscode-csharp-snippets")
         use("Hoffs/omnisharp-extended-lsp.nvim")
 
         -- Markdown
         use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install" })
-        use({ "robole/vscode-markdown-snippets" })
 
         -- Terraform
         use("hashivim/vim-terraform")
         use("juliosueiras/vim-terraform-completion")
 
-        -- SQL
-        use("nanotee/sqls.nvim")
         for key, plugin in pairs(require("user-configs.plugins").plugins) do
           if type(key) == "string" and not plugin[1] then
             plugin[1] = key

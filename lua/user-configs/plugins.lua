@@ -105,6 +105,11 @@ M.plugins = {
   ["rafamadriz/friendly-snippets"] = {
     opt = true,
   },
+  ["robole/vscode-markdown-snippets"] = { opt = true },
+  ["J0rgeSerran0/vscode-csharp-snippets"] = { opt = true },
+  ["dsznajder/vscode-es7-javascript-react-snippets"] = { opt = true },
+  ["fivethree-team/vscode-svelte-snippets"] = { opt = true },
+  ["xabikos/vscode-react"] = { opt = true },
   ["L3MON4D3/LuaSnip"] = {
     module = "luasnip",
     wants = "friendly-snippets",
