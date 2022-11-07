@@ -13,6 +13,14 @@ M.plugins = {
   -- Background compilation / script runner
   ["tpope/vim-dispatch"] = {},
 
+  -- Colorschemes
+  ["catppuccin/nvim"] = {
+    module = "catppuccin",
+    config = function()
+      require("plugin-configs.catppuccin")
+    end,
+  },
+
   -- Notification Enhancer
   ["rcarriga/nvim-notify"] = {
     -- https://github.com/rcarriga/nvim-notify
@@ -248,13 +256,11 @@ M.plugins = {
 
   -- Git integrations
   ["sindrets/diffview.nvim"] = {
-    module = "diffview",
     config = function()
       require("plugin-configs.diffview")
     end,
   },
   ["lewis6991/gitsigns.nvim"] = {
-    module = "gitsigns",
     config = function()
       require("plugin-configs.gitsigns")
     end,

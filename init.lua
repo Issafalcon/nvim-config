@@ -54,8 +54,6 @@ fignvim.lsp.setup_all_lsp_servers()
 vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { silent = true }) -- Prep for space to be leader key
 fignvim.config.set_general_mappings()
 
-require("colourscheme")
-
 require("utils")
 require("sessions")
 require("commenting")

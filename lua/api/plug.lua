@@ -84,7 +84,6 @@ function fignvim.plug.setup_plugins()
 
         -- UI Plugins (colours, icons, inputs etc)
         use("ziontee113/icon-picker.nvim")
-        use({ "catppuccin/nvim", as = "catppuccin" })
         use("norcalli/nvim-colorizer.lua") -- HEX and RBG etc Colour Highlighter: https://github.com/norcalli/nvim-colorizer.lua
 
         -- Session management
