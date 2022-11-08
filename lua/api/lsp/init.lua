@@ -1,6 +1,5 @@
 fignvim.lsp = {}
 
-require("api.lsp.capabilities")
 require("api.lsp.mappings")
 require("api.lsp.formatting")
 require("api.lsp.null_ls")
@@ -22,7 +21,7 @@ fignvim.lsp.setup = function(server)
         -- you can also specify the list of plugins to make available as a workspace library
         -- plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
         plugins = false,
-        runtime = false,
+        runtime = true,
       },
       setup_jsonls = true,
     })
@@ -63,6 +62,7 @@ end
 -- @param  server_name the name of the server
 -- @return the table of LSP options used when setting up the given language server
 function fignvim.lsp.server_settings(server_name)
+  local fignvim_capabilities = require("api.lsp.capabilities")
   local server = require("lspconfig")[server_name]
   local server_config = fignvim.config.get_lsp_server_config(server_name)
 
@@ -70,7 +70,7 @@ function fignvim.lsp.server_settings(server_name)
   local custom_on_attach = server_config and server_config.on_attach
 
   local opts = {
-    capabilities = vim.tbl_deep_extend("force", fignvim.lsp.capabilities, server.capabilities or {}),
+    capabilities = vim.tbl_deep_extend("force", server.capabilities or {}, fignvim_capabilities),
     flags = server.flags or {},
     on_attach = function(client, bufnr)
       fignvim.fn.conditional_func(server_on_attach, server_on_attach ~= nil, client, bufnr)

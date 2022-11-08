@@ -72,6 +72,8 @@ cmp.setup({
     },
     documentation = {
       border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+      max_width = 80,
+      max_height = 50,
     },
   },
   mapping = {
