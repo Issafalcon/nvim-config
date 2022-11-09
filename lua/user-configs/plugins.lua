@@ -8,7 +8,7 @@ M.plugins = {
   ["lewis6991/impatient.nvim"] = {}, -- https://github.com/lewis6991/impatient.nvim
 
   -- Lua functions
-  ["nvim-lua/plenary.nvim"] = { module = "plenary" }, -- https://github.com/nvim-lua/plenary.nvim
+  ["nvim-lua/plenary.nvim"] = {}, -- https://github.com/nvim-lua/plenary.nvim
 
   -- Background compilation / script runner
   ["tpope/vim-dispatch"] = {},
@@ -261,7 +261,7 @@ M.plugins = {
 
   -- Git integrations
   ["sindrets/diffview.nvim"] = {
-    after = "plenary",
+    after = "plenary.nvim",
     config = function()
       require("plugin-configs.diffview")
     end,

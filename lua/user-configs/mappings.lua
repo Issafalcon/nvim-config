@@ -49,7 +49,7 @@ M.general_mappings = {
     delete_char             = { mode = "n", lhs          = "x", rhs     = '"_x', desc                 = "Delete character override, preventing it from occupying yank register" },
   },
   Terminal = {
-    terminal_escape = { mode = "t", lhs = "<esc>", rhs = [[<C-\\><C-n>]], desc = "Enter normal mode in terminal" },
+    terminal_escape = { mode = "t", lhs = "<esc>", rhs = [[<C-\><C-n>]], desc = "Enter normal mode in terminal" },
   }
 }
 
