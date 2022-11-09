@@ -261,6 +261,7 @@ M.plugins = {
 
   -- Git integrations
   ["sindrets/diffview.nvim"] = {
+    after = "plenary",
     config = function()
       require("plugin-configs.diffview")
     end,
