@@ -6,6 +6,7 @@ if not (cmp and luasnip) then
 end
 
 local mappings = fignvim.config.get_plugin_mappings("nvim-cmp", true)
+local copilot_mappings = fignvim.config.get_plugin_mappings("copilot.vim", true)
 
 local function has_words_before()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -90,6 +91,14 @@ cmp.setup({
       c = cmp.mapping.close(),
     }),
     [mappings.cmp_confirm.lhs] = cmp.mapping.confirm({ select = false }),
+    -- Fix for copilot key-mapping fallback mechanism issue - https://github.com/hrsh7th/nvim-cmp/blob/b16e5bcf1d8fd466c289eab2472d064bcd7bab5d/doc/cmp.txt#L830-L852
+    [copilot_mappings.accept_suggestion.lhs] = cmp.mapping(function(fallback)
+      vim.api.nvim_feedkeys(
+        vim.fn["copilot#Accept"](vim.api.nvim_replace_termcodes("<Tab>", true, true, true)),
+        "n",
+        true
+      )
+    end),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()

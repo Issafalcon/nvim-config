@@ -137,7 +137,9 @@ M.plugin_mappings = {
     edit_snippets          = { mode = "n", lhs        = "<leader><leader>s", rhs = ":LuaSnipEdit<CR>", desc                             = "Edit the snippet files for the filetype of the current buffer", opts           = {} }
   },
   ["copilot.vim"] = {
-    accept_suggestion = { mode = "i", lhs = "<C-x>", rhs = "copilot#Accept('<CR>')", desc = "Accept the current copilot suggestion", opts = { expr = true, silent = true, script = true} }
+    -- Used in nvim-cmp mappings as fix for copilot key-mapping fallback mechanism issue - https://github.com/hrsh7th/nvim-cmp/blob/b16e5bcf1d8fd466c289eab2472d064bcd7bab5d/doc/cmp.txt#L830-L852
+    accept_suggestion = { isVirtual = true, mode = "i", lhs = "<C-x>", rhs = "", desc = "Accept the current copilot suggestion", opts = { expr = true, silent = true, script = true} },
+    dummy_accept = { mode = "i", lhs = "<Plug>(vimrc:copilot-dummy-map)", rhs = 'copilot#Accept("")', desc = "Copilot dummy accept to workaround fallback issues with nvim-cmp", opts = { expr = true, silent = true } }
   },
   ["diffview.nvim"] = {
     dv_select_next_entry = { isVirtual = true, mode = "n", lhs = "<tab>", rhs     = "", desc = "Diffview: Open diff for the next file in view and file panel", opts     = {} },
