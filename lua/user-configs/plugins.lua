@@ -197,6 +197,12 @@ M.plugins = {
     end,
   },
   ["editorconfig/editorconfig-vim"] = {},
+  ["lukas-reineke/indent-blankline.nvim"] = {
+    event = "BufEnter",
+    config = function()
+      require("plugin-configs.indent-blankline")
+    end,
+  },
 
   -- Package management
   ["williamboman/mason.nvim"] = {

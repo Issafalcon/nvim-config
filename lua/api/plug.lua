@@ -77,7 +77,6 @@ function fignvim.plug.setup_plugins()
         -- Utility Plugins
         use("mbbill/undotree")
         use("szw/vim-maximizer")
-        use("lukas-reineke/indent-blankline.nvim")
         use("ThePrimeagen/refactoring.nvim")
         use({ "svermeulen/vim-easyclip" })
 

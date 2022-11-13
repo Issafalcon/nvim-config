@@ -25,6 +25,8 @@ M = {
     iskeyword = vim.opt.iskeyword + { "-", "@" }, -- Treat dash separated words as a word text object
     laststatus = 3, -- globalstatus
     lazyredraw = true, -- lazily redraw screen
+    list = true, -- Show some invisible characters
+    listchars = vim.opt.listchars + { space = "⋅", eol = "↴" }, -- Invisible characters
     mouse = "a", -- Enable mouse support
     number = true, -- Show numberline
     preserveindent = true, -- Preserve indent structure as much as possible
