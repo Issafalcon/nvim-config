@@ -76,7 +76,6 @@ function fignvim.plug.setup_plugins()
       function(use)
         -- Utility Plugins
         use("mbbill/undotree")
-        use("szw/vim-maximizer")
         use("ThePrimeagen/refactoring.nvim")
         use({ "svermeulen/vim-easyclip" })
 
@@ -187,6 +186,7 @@ function fignvim.plug.create_plugin_mappings()
     ["vimtex"] = "LaTex",
     ["neotest"] = "Neotest",
     ["cheatsheet.nvim"] = "Cheatsheet",
+    ["vim-maximizer"] = "Maximizer",
   }
 
   for plugin, groupname in pairs(plugin_mapping_dictionary) do

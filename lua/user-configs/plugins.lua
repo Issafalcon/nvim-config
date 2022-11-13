@@ -56,7 +56,10 @@ M.plugins = {
     end,
   },
 
-  -- Bufferline
+  -- Windows, Buffers and Tabs
+  ["szw/vim-maximizer"] = {
+    cmd = "MaximizerToggle",
+  },
   ["akinsho/bufferline.nvim"] = {
     -- https://github.com/akinsho/bufferline.nvim
     event = "UIEnter",
