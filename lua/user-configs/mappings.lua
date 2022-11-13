@@ -171,6 +171,10 @@ M.plugin_mappings = {
     neotest_run_file       = { mode = "n", lhs = "<leader>uf", rhs = function () require("neotest").run.run(vim.fn.expand("%")) end, desc = "Neotest: Run tests in file" },
     neotest_run_nearest    = { mode = "n", lhs = "<leader>un", rhs = function () require("neotest").run.run() end, desc                   = "Neotest: Run nearest test" },
     neotest_debug_nearest  = { mode = "n", lhs = "<leader>ud", rhs = function () require("neotest").run.run({strategy                     = "dap"}) end, desc = "Neotest: Debug nearest test" }
+  },
+  ["cheatsheet.nvim"] = {
+    cheatsheet_toggle = { mode = "n", lhs = "<leader>?", rhs = ":Cheatsheet<CR>", desc = "Toggles Cheatsheet help window in Telescope"}
+
   }
 }
 

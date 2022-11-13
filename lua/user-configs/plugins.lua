@@ -239,7 +239,7 @@ M.plugins = {
     end,
   },
 
-  -- Keybindings
+  -- Keybindings / Cheatsheets / Help
   ["Issafalcon/nvim-mapper"] = {
     config = function()
       require("nvim-mapper").setup({})
@@ -248,6 +248,11 @@ M.plugins = {
       end
     end,
     after = "telescope.nvim",
+  },
+  ["sudormrfbin/cheatsheet.nvim"] = {
+    config = function()
+      require("plugin-configs.cheatsheet")
+    end,
   },
 
   -- Terminal
