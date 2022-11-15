@@ -307,6 +307,29 @@ M.plugins = {
       "antoinemadec/FixCursorHold.nvim",
     },
   },
+
+  -- Debugging
+  ["mfussenegger/nvim-dap"] = {
+    module = "dap",
+    config = function()
+      require("plugin-configs.nvim-dap")
+    end,
+    after = "telescope.nvim",
+    requires = {
+      {
+        "rcarriga/nvim-dap-ui",
+        config = function()
+          require("plugin-configs.nvim-dap-ui")
+        end,
+      },
+      {
+        "theHamsta/nvim-dap-virtual-text",
+        config = function()
+          require("plugin-configs.nvim-dap-virtual-text")
+        end,
+      },
+    },
+  },
 }
 
 return M

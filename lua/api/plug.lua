@@ -109,11 +109,7 @@ function fignvim.plug.setup_plugins()
         use("kevinhwang91/nvim-bqf")
 
         -- Debugging
-        use("mfussenegger/nvim-dap")
-        use("theHamsta/nvim-dap-virtual-text")
         use("nvim-telescope/telescope-dap.nvim")
-        use("rcarriga/nvim-dap-ui")
-
         use({ "michaelb/sniprun", run = "bash install.sh" })
 
         --------------------------------------------------------------
@@ -187,6 +183,7 @@ function fignvim.plug.create_plugin_mappings()
     ["neotest"] = "Neotest",
     ["cheatsheet.nvim"] = "Cheatsheet",
     ["vim-maximizer"] = "Maximizer",
+    ["nvim-dap"] = "Debug",
   }
 
   for plugin, groupname in pairs(plugin_mapping_dictionary) do

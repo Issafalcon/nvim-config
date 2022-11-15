@@ -177,6 +177,32 @@ M.plugin_mappings = {
   },
   ["vim-maximizer"] = {
     maximize = { mode = "n", lhs = "<leader>m", rhs = ":MaximizerToggle!<CR>", desc = "Toggle maximizer (current window)" }
+  },
+  ["nvim-dap"]= {
+    dap_continue               = { mode = "n", lhs = "<leader>dd", rhs  = ':lua require"dap".continue()<CR>', desc                                               = "DAP Continue" },
+    dap_breakpoint             = { mode = "n", lhs = "<leader>db", rhs  = ':lua require"dap".toggle_breakpoint()<CR>', desc                                      = "DAP Toggle Breakpoint" },
+    dap_conditional_breakpoint = { mode = "n", lhs = "<leader>dB", rhs  = ':lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>', desc   = "DAP Toggle Conditional Breakpoint" },
+    dap_exception_breakpoints  = { mode = "n", lhs = "<leader>de", rhs  = ':lua require"dap".set_exception_breakpoints()<CR>', desc                              = "DAP Set breakpoints on exceptions" },
+    dap_clear_breakpoints      = { mode = "n", lhs = "<leader>dbc", rhs = ':lua require"dap".clear_breakpoints()<CR>', desc                                      = "DAP Clear all breakpoints on exceptions" },
+    dap_step_out               = { mode = "n", lhs = "<leader>dk", rhs  = ':lua require"dap".step_out()<CR>', desc                                               = "DAP Step Out" },
+    dap_step_into              = { mode = "n", lhs = "<leader>dl", rhs  = ':lua require"dap".step_into()<CR>', desc                                              = "DAP Step Into" },
+    dap_step_over              = { mode = "n", lhs = "<leader>dj", rhs  = ':lua require"dap".step_over()<CR>', desc                                              = "DAP Step Over" },
+    dap_up                     = { mode = "n", lhs = "<leader>dp", rhs  = ':lua require"dap".up()<CR>', desc                                                     = "DAP Go up in current stacktrace without stepping" },
+    dap_down                   = { mode = "n", lhs = "<leader>dn", rhs  = ':lua require"dap".down()<CR>', desc                                                   = "DAP Go down in current stacktrace without stepping" },
+    dap_close                  = { mode = "n", lhs = "<leader>dc", rhs  = ':lua require"dap".disconnect();require"dap".close();require"dapui".close()<CR>', desc = "DAP Disconnect and close nvim-dap and dap-ui. Doesn't kill the debugee" },
+    dap_terminate              = { mode = "n", lhs = "<leader>dC", rhs  = ':lua require"dap".terminate();require"dap".close()<CR>', desc                         = "DAP Terminates the debug session, also killing the debugee" },
+    dap_inspect                = { mode = "n", lhs = "<leader>di", rhs  = ':lua require"dap.ui.widgets".hover()<CR>', desc                                       = "DAP Hover info for variables" },
+    dap_scopes                 = { mode = "n", lhs = "<leader>d?", rhs  = ':lua local widgets                                                                    = require"dap.ui.widgets";widgets.centered_float(widgets.scopes)<CR>', desc = "DAP Show scopes in sidebar" },
+    dap_repl                   = { mode = "n", lhs = "<leader>dr", rhs  = ':lua require"dap".repl.open({}, "vsplit")<CR><C-w>l', desc                            = "DAP Opens repl in vsplit" }
+
+
+-- Mapping to begin debugging for specific 'Modes'
+--  dA = Debug Attach (Attach to a running process)
+--  dL = Launch a process in debug
+--  dT = Run a test in debug mode
+-- keymap("n", "<leader>dT", ':lua require"debugging.dap-helper".startDebugTest()<CR>', opts)
+-- keymap("n", "<leader>dA", ':lua require"debugging.dap-helper".startDebugAttach()<CR>', opts)
+-- keymap("n", "<leader>dL", ':lua require"debugging.dap-helper".startDebugLaunch()<CR>', opts)
   }
 }
 

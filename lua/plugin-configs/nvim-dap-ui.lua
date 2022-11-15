@@ -1,4 +1,9 @@
-local dap, dapui = require("dap"), require("dapui")
+local dap = fignvim.plug.load_module_file("dap")
+local dapui = fignvim.plug.load_module_file("dapui")
+if not dap or not dapui then
+  return
+end
+
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
 end
@@ -13,7 +18,6 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
 
-
 dapui.setup({
   icons = { expanded = "▾", collapsed = "▸" },
   mappings = {
@@ -27,21 +31,21 @@ dapui.setup({
   layouts = {
     {
       elements = {
-        'scopes',
-        'breakpoints',
-        'stacks',
-        'watches',
+        "scopes",
+        "breakpoints",
+        "stacks",
+        "watches",
       },
       size = 40,
-      position = 'left',
+      position = "left",
     },
     {
       elements = {
-        'repl',
-        'console',
+        "repl",
+        "console",
       },
       size = 10,
-      position = 'bottom',
+      position = "bottom",
     },
   },
   floating = {

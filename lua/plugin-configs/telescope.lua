@@ -84,10 +84,6 @@ telescope.setup({
   },
 })
 
--- telescope.load_extension("fzy_native")
--- telescope.load_extension("mapper")
--- telescope.load_extension("aerial")
--- telescope.load_extension("notify")
 fignvim.fn.conditional_func(telescope.load_extension, pcall(require, "notify"), "notify")
 fignvim.fn.conditional_func(telescope.load_extension, pcall(require, "aerial"), "aerial")
 fignvim.fn.conditional_func(telescope.load_extension, pcall(require, "fzy_native"), "fzy_native")
