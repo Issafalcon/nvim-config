@@ -4,19 +4,14 @@ if not dap then
 end
 
 local install_dir = fignvim.path.concat({ vim.fn.stdpath("data"), "mason" })
+
 -- Settings
 dap.defaults.fallback.terminal_win_cmd = "80vsplit new"
+
+-- dap.set_log_level("TRACE") -- Verbose logging
 vim.fn.sign_define("DapBreakpoint", { text = "👊", texthl = "", linehl = "", numhl = "" })
 vim.fn.sign_define("DapBreakpointRejected", { text = "✋", texthl = "", linehl = "", numhl = "" })
 vim.fn.sign_define("DapStopped", { text = "👉", texthl = "", linehl = "", numhl = "" })
-
--- Enable autocompletion in dap-repl
-vim.cmd([[
-  augroup dap_config
-    autocmd!
-    autocmd FileType dap-repl lua require('dap.ext.autocompl').attach()
-  augroup end
-]])
 
 -- Adapters
 dap.adapters.node2 = {

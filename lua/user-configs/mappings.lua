@@ -179,7 +179,7 @@ M.plugin_mappings = {
     maximize = { mode = "n", lhs = "<leader>m", rhs = ":MaximizerToggle!<CR>", desc = "Toggle maximizer (current window)" }
   },
   ["nvim-dap"]= {
-    dap_continue               = { mode = "n", lhs = "<leader>dd", rhs  = ':lua require"dap".continue()<CR>', desc                                               = "DAP Continue" },
+    dap_continue               = { mode = "n", lhs = "<F5>", rhs  = ':lua require"dap".continue()<CR>', desc                                               = "DAP Continue" },
     dap_breakpoint             = { mode = "n", lhs = "<leader>db", rhs  = ':lua require"dap".toggle_breakpoint()<CR>', desc                                      = "DAP Toggle Breakpoint" },
     dap_conditional_breakpoint = { mode = "n", lhs = "<leader>dB", rhs  = ':lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>', desc   = "DAP Toggle Conditional Breakpoint" },
     dap_exception_breakpoints  = { mode = "n", lhs = "<leader>de", rhs  = ':lua require"dap".set_exception_breakpoints()<CR>', desc                              = "DAP Set breakpoints on exceptions" },

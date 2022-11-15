@@ -108,10 +108,6 @@ function fignvim.plug.setup_plugins()
         -- Quickfix / Location lists
         use("kevinhwang91/nvim-bqf")
 
-        -- Debugging
-        use("nvim-telescope/telescope-dap.nvim")
-        use({ "michaelb/sniprun", run = "bash install.sh" })
-
         --------------------------------------------------------------
         ------------ Language Specific Plugins -----------------------
         --------------------------------------------------------------

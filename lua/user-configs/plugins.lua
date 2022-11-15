@@ -314,21 +314,30 @@ M.plugins = {
     config = function()
       require("plugin-configs.nvim-dap")
     end,
-    after = "telescope.nvim",
-    requires = {
-      {
-        "rcarriga/nvim-dap-ui",
-        config = function()
-          require("plugin-configs.nvim-dap-ui")
-        end,
-      },
-      {
-        "theHamsta/nvim-dap-virtual-text",
-        config = function()
-          require("plugin-configs.nvim-dap-virtual-text")
-        end,
-      },
-    },
+  },
+  ["rcarriga/nvim-dap-ui"] = {
+    requires = "mfussenegger/nvim-dap",
+    config = function()
+      require("plugin-configs.nvim-dap-ui")
+    end,
+  },
+  ["theHamsta/nvim-dap-virtual-text"] = {
+    requires = "mfussenegger/nvim-dap",
+    config = function()
+      require("plugin-configs.nvim-dap-virtual-text")
+    end,
+  },
+  ["michaelb/sniprun"] = {
+    run = "bash install.sh",
+    config = function()
+      require("plugin-configs.sniprun")
+    end,
+  },
+  ["mxsdev/nvim-dap-vscode-js"] = {
+    requires = "mfussenegger/nvim-dap",
+    config = function()
+      require("plugin-configs.nvim-dap-vscode-js")
+    end,
   },
 }
 

@@ -171,3 +171,14 @@ if fignvim.plug.is_available("alpha-nvim") then
     end,
   })
 end
+
+if fignvim.plug.is_available("nvim-dap") then
+  augroup("dap_config", { clear = true })
+  cmd("FileType", {
+    desc = "Enable autocompletion in the dap-repl",
+    pattern = "dap-repl",
+    callback = function()
+      require("dap.ext.autocompl").attach()
+    end,
+  })
+end
