@@ -76,7 +76,7 @@ M.plugins = {
     end,
   },
 
-  -- File explorer
+  -- Navigation
   ["nvim-neo-tree/neo-tree.nvim"] = {
     -- https://github.com/nvim-neo-tree/neo-tree.nvim/tree/v2.x
     branch = "v2.x",
@@ -86,6 +86,11 @@ M.plugins = {
     end,
     config = function()
       require("plugin-configs.neo-tree")
+    end,
+  },
+  ["ggandor/leap.nvim"] = {
+    config = function()
+      require("plugin-configs.leap")
     end,
   },
 
