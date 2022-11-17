@@ -194,15 +194,12 @@ M.plugin_mappings = {
     dap_inspect                = { mode = "n", lhs = "<leader>di", rhs  = ':lua require"dap.ui.widgets".hover()<CR>', desc                                       = "DAP Hover info for variables" },
     dap_scopes                 = { mode = "n", lhs = "<leader>d?", rhs  = ':lua local widgets                                                                    = require"dap.ui.widgets";widgets.centered_float(widgets.scopes)<CR>', desc = "DAP Show scopes in sidebar" },
     dap_repl                   = { mode = "n", lhs = "<leader>dr", rhs  = ':lua require"dap".repl.open({}, "vsplit")<CR><C-w>l', desc                            = "DAP Opens repl in vsplit" }
-
-
--- Mapping to begin debugging for specific 'Modes'
---  dA = Debug Attach (Attach to a running process)
---  dL = Launch a process in debug
---  dT = Run a test in debug mode
--- keymap("n", "<leader>dT", ':lua require"debugging.dap-helper".startDebugTest()<CR>', opts)
--- keymap("n", "<leader>dA", ':lua require"debugging.dap-helper".startDebugAttach()<CR>', opts)
--- keymap("n", "<leader>dL", ':lua require"debugging.dap-helper".startDebugLaunch()<CR>', opts)
+  },
+  ["neogen"] = {
+    neogen_file = { mode = "n", lhs = "<leader>/F", rhs = function() require('neogen').generate({type="file"}) end, desc = "Generates filetype specific annotations for the nearest file" },
+    neogen_function = { mode = "n", lhs = "<leader>/f", rhs = function() require('neogen').generate({type="func"}) end, desc = "Generates filetype specific annotations for the nearest function" },
+    neogen_class = { mode = "n", lhs = "<leader>/c", rhs = function() require('neogen').generate({type="class"}) end, desc = "Generates filetype specific annotations for the nearest class" },
+    neogen_type = { mode = "n", lhs = "<leader>/t", rhs = function() require('neogen').generate({type="type"}) end, desc = "Generates filetype specific annotations for the nearest type" },
   }
 }
 

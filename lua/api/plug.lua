@@ -103,8 +103,6 @@ function fignvim.plug.setup_plugins()
           as = "hop",
         })
 
-        use({ "danymat/neogen" })
-
         -- Quickfix / Location lists
         use("kevinhwang91/nvim-bqf")
 
@@ -180,6 +178,7 @@ function fignvim.plug.create_plugin_mappings()
     ["cheatsheet.nvim"] = "Cheatsheet",
     ["vim-maximizer"] = "Maximizer",
     ["nvim-dap"] = "Debug",
+    ["neogen"] = "Docstring",
   }
 
   for plugin, groupname in pairs(plugin_mapping_dictionary) do

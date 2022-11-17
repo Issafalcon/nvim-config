@@ -188,6 +188,12 @@ M.plugins = {
       require("plugin-configs.Comment")
     end,
   },
+  ["danymat/neogen"] = {
+    module = "neogen",
+    config = function()
+      require("plugin-configs.neogen")
+    end,
+  },
 
   -- General editing and formatting
   ["junegunn/vim-easy-align"] = {},
@@ -302,7 +308,7 @@ M.plugins = {
       "nvim-neotest/neotest-python",
       "nvim-neotest/neotest-plenary",
       "nvim-neotest/neotest-vim-test",
-      "Issafalcon/neotest-dotnet",
+      "~/repos/neotest-dotnet",
       "haydenmeade/neotest-jest",
       "antoinemadec/FixCursorHold.nvim",
     },
