@@ -59,4 +59,3 @@ fignvim.debug.setup_debug_configs()
 
 require("utils")
 require("sessions")
-require("navigation")

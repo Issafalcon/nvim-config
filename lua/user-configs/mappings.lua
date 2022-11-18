@@ -200,6 +200,14 @@ M.plugin_mappings = {
     neogen_function = { mode = "n", lhs = "<leader>/f", rhs = function() require('neogen').generate({type="func"}) end, desc = "Generates filetype specific annotations for the nearest function" },
     neogen_class = { mode = "n", lhs = "<leader>/c", rhs = function() require('neogen').generate({type="class"}) end, desc = "Generates filetype specific annotations for the nearest class" },
     neogen_type = { mode = "n", lhs = "<leader>/t", rhs = function() require('neogen').generate({type="type"}) end, desc = "Generates filetype specific annotations for the nearest type" },
+  },
+  ["rnvimr"] = {
+    rnvimr_tabedit    = { isVirtual = true, mode = "n", lhs = "<C-i>", rhs = "", desc = "Rnvimr: Open file in new tab"},
+    rnvimr_split      = { isVirtual = true, mode = "n", lhs = "<C-x>", rhs = "", desc = "Rnvimr: Open file in horizontal split"},
+    rnvimr_vsplit     = { isVirtual = true, mode = "n", lhs = "<C-v>", rhs = "", desc = "Rnvimr: Open file in vertical split"},
+    rnvimr_change_cwd = { isVirtual = true, mode = "n", lhs = "gw", rhs    = "", desc = "Rnvimr: Make directory the current working directory in Nvim"},
+    rnvimr_yank_dir   = { isVirtual = true, mode = "n", lhs = "yw", rhs    = "", desc = "Rnvimr: Yank the current directory path"},
+    rnvimr_open = { mode = "n", lhs = "-", rhs = ":RnvimrToggle<CR>", desc = "Rnvimr: Toggle Rnvimr" },
   }
 }
 

@@ -88,6 +88,12 @@ M.plugins = {
       require("plugin-configs.neo-tree")
     end,
   },
+  ["kevinhwang91/rnvimr"] = {
+    cmd = "RnvimrToggle",
+    cond = function()
+      return vim.fn.executable("ranger") == 1
+    end,
+  },
   ["ggandor/leap.nvim"] = {
     config = function()
       require("plugin-configs.leap")
@@ -313,7 +319,7 @@ M.plugins = {
       "nvim-neotest/neotest-python",
       "nvim-neotest/neotest-plenary",
       "nvim-neotest/neotest-vim-test",
-      "~/repos/neotest-dotnet",
+      "Issafalcon/neotest-dotnet",
       "haydenmeade/neotest-jest",
       "antoinemadec/FixCursorHold.nvim",
     },

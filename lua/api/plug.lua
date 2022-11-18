@@ -93,16 +93,6 @@ function fignvim.plug.setup_plugins()
         use("b0o/schemastore.nvim") -- JSON-ls schemas: https://github.com/b0o/SchemaStore.nvim
         use("Issafalcon/lsp-overloads.nvim")
 
-        -- File Navigation
-        use("ThePrimeagen/harpoon")
-        if vim.fn.has("wsl") == 1 or vim.fn.has("unix") == 1 then
-          use("kevinhwang91/rnvimr")
-        end
-        use({
-          "phaazon/hop.nvim",
-          as = "hop",
-        })
-
         -- Quickfix / Location lists
         use("kevinhwang91/nvim-bqf")
 
@@ -179,6 +169,7 @@ function fignvim.plug.create_plugin_mappings()
     ["vim-maximizer"] = "Maximizer",
     ["nvim-dap"] = "Debug",
     ["neogen"] = "Docstring",
+    ["rnvimr"] = "Ranger",
   }
 
   for plugin, groupname in pairs(plugin_mapping_dictionary) do
