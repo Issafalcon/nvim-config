@@ -11,7 +11,6 @@ catppuccin.setup({
     telescope = true,
     aerial = true,
     gitsigns = true,
-    hop = true,
     cmp = true,
     nvimtree = true,
     mason = true,

@@ -1,3 +1,5 @@
+local rnvimr_mappings = fignvim.config.get_plugin_mappings("rnvimr", true)
+
 M = {
   opt = {
     backspace = vim.opt.backspace + { "nostop" }, -- Don't stop backspace at insert
@@ -92,6 +94,20 @@ M = {
     icons_enabled = true, -- disable icons in the UI (disable if no nerd font is available)
     quickfix_open = false, -- whether qf list is open
     loclist_open = false, -- whether loclist is open
+    rnvimr_enable_ex = 1, -- Replace netrw with ranger
+    rnvimr_draw_border = 1, -- Draw border for ranger
+    rnvimr_enable_picker = 1, -- Keep showing ranger after choosing a file
+    rnvimr_edit_cmd = "edit", -- Edit file in current window
+    rnvimr_enable_bw = 1, -- Make nvim wipe buffers corresponding to files deleted in Ranger
+    rnvimr_border_attr = { fg = 14, bg = -1 }, -- Ranger border colour
+    rnvimr_ranger_cmd = { "ranger", "--cmd=set draw_borders both" },
+    rnvimr_action = {
+      [rnvimr_mappings.rnvimr_tabedit.lhs] = "NvimEdit tabedit",
+      [rnvimr_mappings.rnvimr_split.lhs] = "NvimEdit split",
+      [rnvimr_mappings.rnvimr_vsplit.lhs] = "NvimEdit vsplit",
+      [rnvimr_mappings.rnvimr_change_cwd.lhs] = "JumpNvimCwd",
+      [rnvimr_mappings.rnvimr_yank_dir.lhs] = "EmitRangerCwd",
+    }, -- Ranger keybindings
     vimtex_view_method = "zathura", -- set default viewer for vimtex
     vimtex_view_general_viewer = "zathura", -- set default viewer for vimtex
     vimtex_compiler_latexmk = {
