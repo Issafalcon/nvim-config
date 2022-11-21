@@ -75,13 +75,8 @@ function fignvim.plug.setup_plugins()
     packer.startup({
       function(use)
         -- Utility Plugins
-        use("mbbill/undotree")
         use("ThePrimeagen/refactoring.nvim")
         use({ "svermeulen/vim-easyclip" })
-
-        -- UI Plugins (colours, icons, inputs etc)
-        use("ziontee113/icon-picker.nvim")
-        use("norcalli/nvim-colorizer.lua") -- HEX and RBG etc Colour Highlighter: https://github.com/norcalli/nvim-colorizer.lua
 
         -- Session management
         use({
@@ -170,6 +165,7 @@ function fignvim.plug.create_plugin_mappings()
     ["nvim-dap"] = "Debug",
     ["neogen"] = "Docstring",
     ["rnvimr"] = "Ranger",
+    ["undotree"] = "Undotree",
   }
 
   for plugin, groupname in pairs(plugin_mapping_dictionary) do

@@ -30,12 +30,18 @@ M.plugins = {
     end,
   },
 
-  -- Neovim UI Enhancer
+  -- Neovim UI Enhancements
   ["stevearc/dressing.nvim"] = {
     -- https://github.com/stevearc/dressing.nvim
     event = "UIEnter",
     config = function()
       require("plugin-configs.dressing")
+    end,
+  },
+  ["NvChad/nvim-colorizer.lua"] = {
+    opt = true,
+    config = function()
+      require("plugin-configs.colorizer")
     end,
   },
 
@@ -98,6 +104,9 @@ M.plugins = {
     config = function()
       require("plugin-configs.leap")
     end,
+  },
+  ["mbbill/undotree"] = {
+    cmd = "UndotreeToggle",
   },
 
   -- Fuzzy finding / searching
@@ -221,6 +230,11 @@ M.plugins = {
     event = "BufEnter",
     config = function()
       require("plugin-configs.indent-blankline")
+    end,
+  },
+  ["ziontee113/icon-picker.nvim"] = {
+    config = function()
+      require("plugin-configs.icon-picker")
     end,
   },
 

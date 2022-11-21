@@ -208,6 +208,9 @@ M.plugin_mappings = {
     rnvimr_change_cwd = { isVirtual = true, mode = "n", lhs = "gw", rhs    = "", desc = "Rnvimr: Make directory the current working directory in Nvim"},
     rnvimr_yank_dir   = { isVirtual = true, mode = "n", lhs = "yw", rhs    = "", desc = "Rnvimr: Yank the current directory path"},
     rnvimr_open = { mode = "n", lhs = "-", rhs = ":RnvimrToggle<CR>", desc = "Rnvimr: Toggle Rnvimr" },
+  },
+  ["undotree"] = {
+    undotree_toggle = { mode = "n", lhs = "<A-u>", rhs = ":UndotreeToggle<CR>", desc = "Undotree: Toggle undotree" },
   }
 }
 
