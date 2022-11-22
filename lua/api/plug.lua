@@ -76,7 +76,6 @@ function fignvim.plug.setup_plugins()
       function(use)
         -- Utility Plugins
         use("ThePrimeagen/refactoring.nvim")
-        use({ "svermeulen/vim-easyclip" })
 
         -- Session management
         use({
@@ -166,6 +165,8 @@ function fignvim.plug.create_plugin_mappings()
     ["neogen"] = "Docstring",
     ["rnvimr"] = "Ranger",
     ["undotree"] = "Undotree",
+    ["nvim-neoclip.lua"] = "Neoclip",
+    ["vim-cutlass"] = "Cutlass",
   }
 
   for plugin, groupname in pairs(plugin_mapping_dictionary) do

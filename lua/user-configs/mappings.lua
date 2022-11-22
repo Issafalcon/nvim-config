@@ -211,6 +211,16 @@ M.plugin_mappings = {
   },
   ["undotree"] = {
     undotree_toggle = { mode = "n", lhs = "<A-u>", rhs = ":UndotreeToggle<CR>", desc = "Undotree: Toggle undotree" },
+  },
+  ["nvim-neoclip.lua"] = {
+    neoclip_search = { mode = "n", lhs = "<leader>sy", rhs = ":Telescope neoclip default<cr>", desc = "Neoclip: Search clipboard history" },
+    neoclip_search_macros = { mode = "n", lhs = "<leader>sq", rhs = function() require("telescope").extensions.macroscope.default() end, desc = "Neoclip: Search clipboard history" },
+  },
+  ["vim-cutlass"] = {
+    cutlass_cut_char = { mode = { "n", "x" }, lhs = "m", rhs = "d", desc = "Cutlass: Cut char to clipboard" },
+    cutlass_cut_line = { mode = "n", lhs = "mm", rhs = "dd", desc = "Cutlass: Cut line to clipboard" },
+    cutlass_cut_from_cursor = { mode = "n", lhs = "M", rhs = "D", desc = "Cutlass: Cut from cursor to end of line, to clipboard" },
+    cutlass_remap_marks = { mode = "n", lhs = "\\m", rhs = "m", desc = "Cutlass: Remap create mark key so it isn't shadowed" }
   }
 }
 

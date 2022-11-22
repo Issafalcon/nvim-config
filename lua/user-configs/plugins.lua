@@ -237,6 +237,16 @@ M.plugins = {
       require("plugin-configs.icon-picker")
     end,
   },
+  ["AckslD/nvim-neoclip.lua"] = {
+    requires = {
+      "kkharji/sqlite.lua",
+      module = "sqlite",
+    },
+    config = function()
+      require("plugin-configs.nvim-neoclip")
+    end,
+  },
+  ["svermeulen/vim-cutlass"] = {},
 
   -- Package management
   ["williamboman/mason.nvim"] = {

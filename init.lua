@@ -57,5 +57,4 @@ fignvim.config.set_general_mappings()
 -- 7. Setup debug config
 fignvim.debug.setup_debug_configs()
 
-require("utils")
 require("sessions")
