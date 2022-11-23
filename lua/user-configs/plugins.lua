@@ -116,8 +116,9 @@ M.plugins = {
       require("plugin-configs.telescope")
     end,
   },
-  ["nvim-telescope/telescope-fzy-native.nvim"] = { after = "telescope.nvim" },
-  ["junegunn/fzf"] = { after = "telescope.nvim" },
+  ["nvim-telescope/telescope-fzy-native.nvim"] = { before = "telescope.nvim" },
+  ["nvim-telescope/telescope-fzf-native.nvim"] = { before = "telescope.nvim" },
+  ["junegunn/fzf"] = { before = "telescope.nvim" },
   ["windwp/nvim-spectre"] = {
     config = function()
       require("plugin-configs.spectre")
@@ -239,9 +240,10 @@ M.plugins = {
   },
   ["AckslD/nvim-neoclip.lua"] = {
     requires = {
-      "kkharji/sqlite.lua",
-      module = "sqlite",
+      { "kkharji/sqlite.lua", module = "sqlite" },
+      { "nvim-telescope/telescope.nvim" },
     },
+    before = "telescope.nvim",
     config = function()
       require("plugin-configs.nvim-neoclip")
     end,
@@ -290,14 +292,15 @@ M.plugins = {
   },
 
   -- Keybindings / Cheatsheets / Help
-  ["Issafalcon/nvim-mapper"] = {
+  ["lazytanuki/nvim-mapper"] = {
+    requires = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-lua/popup.nvim" },
+    },
     config = function()
       require("nvim-mapper").setup({})
-      if fignvim.plug.is_available("telescope.nvim") then
-        require("telescope").load_extension("mapper")
-      end
     end,
-    after = "telescope.nvim",
+    before = "telescope.nvim",
   },
   ["sudormrfbin/cheatsheet.nvim"] = {
     config = function()

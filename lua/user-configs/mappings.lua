@@ -213,7 +213,7 @@ M.plugin_mappings = {
     undotree_toggle = { mode = "n", lhs = "<A-u>", rhs = ":UndotreeToggle<CR>", desc = "Undotree: Toggle undotree" },
   },
   ["nvim-neoclip.lua"] = {
-    neoclip_search = { mode = "n", lhs = "<leader>sy", rhs = ":Telescope neoclip default<cr>", desc = "Neoclip: Search clipboard history" },
+    neoclip_search = { mode = "n", lhs = "<leader>sy", rhs = function() require('telescope').extensions.neoclip.default() end, desc = "Neoclip: Search clipboard history" },
     neoclip_search_macros = { mode = "n", lhs = "<leader>sq", rhs = function() require("telescope").extensions.macroscope.default() end, desc = "Neoclip: Search clipboard history" },
   },
   ["vim-cutlass"] = {
