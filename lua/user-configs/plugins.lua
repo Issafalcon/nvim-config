@@ -73,7 +73,6 @@ M.plugins = {
       require("plugin-configs.bufferline")
     end,
   },
-
   ["s1n7ax/nvim-window-picker"] = {
     tag = "v1.*",
     module = "window-picker",
@@ -109,6 +108,9 @@ M.plugins = {
     cmd = "UndotreeToggle",
   },
 
+  -- Quickfix / Location List
+  ["kevinhwang91/nvim-bqf"] = {},
+
   -- Fuzzy finding / searching
   ["nvim-telescope/telescope.nvim"] = {
     module = "telescope",
@@ -141,6 +143,17 @@ M.plugins = {
       require("plugin-configs.LuaSnip")
     end,
   },
+
+  -- Markdown editing
+  ["iamcco/markdown-preview.nvim"] = {
+    run = "cd app && npm install",
+  },
+
+  -- .NET / C# development specific
+  ["Issafalcon/neo-sharper.nvim"] = {
+    branch = "plugin-testing",
+  },
+  ["Hoffs/omnisharp-extended-lsp.nvim"] = {},
 
   -- Completion engine and sources
   ["hrsh7th/nvim-cmp"] = {
@@ -249,6 +262,7 @@ M.plugins = {
     end,
   },
   ["svermeulen/vim-cutlass"] = {},
+  ["ThePrimeagen/refactoring.nvim"] = {},
 
   -- Package management
   ["williamboman/mason.nvim"] = {
@@ -283,6 +297,9 @@ M.plugins = {
       require("plugin-configs.aerial")
     end,
   },
+  ["jose-elias-alvarez/nvim-lsp-ts-utils"] = {},
+  ["Issafalcon/lsp-overloads.nvim"] = {},
+  ["b0o/schemastore.nvim"] = {},
 
   -- Diagnostics
   ["folke/trouble.nvim"] = {
@@ -396,6 +413,14 @@ M.plugins = {
       require("plugin-configs.session-lens")
     end,
   },
+
+  -- Terraform
+  ["hashivim/vim-terraform"] = {},
+  ["juliosueiras/vim-terraform-completion"] = {},
+
+  -- Plugin Development
+  ["folke/neodev.nvim"] = {},
+  ["rafcamlet/nvim-luapad"] = {},
 }
 
 return M
