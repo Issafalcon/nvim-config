@@ -9,3 +9,5 @@ M.on_attach = function (client, bufnr)
       end
     end
 end
+
+return M

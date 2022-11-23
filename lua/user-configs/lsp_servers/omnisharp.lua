@@ -1,5 +1,10 @@
 M = {}
-M.opts = {}
+M.opts = {
+  cmd = {
+    "dotnet",
+    fignvim.path.concat({ vim.fn.stdpath("data"), "mason", "packages", "omnisharp", "OmniSharp.dll" }),
+  },
+}
 
 local extended_definitions = fignvim.plug.load_module_file("omnisharp_extended")
 local neosharper = fignvim.plug.load_module_file("neosharper")

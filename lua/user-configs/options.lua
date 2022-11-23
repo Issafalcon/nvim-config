@@ -1,9 +1,11 @@
-fignvim.config.set_vim_opts({
+local rnvimr_mappings = fignvim.config.get_plugin_mappings("rnvimr", true)
+
+M = {
   opt = {
     backspace = vim.opt.backspace + { "nostop" }, -- Don't stop backspace at insert
     clipboard = "unnamedplus", -- Connection to the system clipboard
     cmdheight = 0, -- hide command line unless needed
-    completeopt = { "menuone", "noselect" }, -- Options for insert mode completion
+    completeopt = { "menu", "menuone", "noselect" }, -- Options for insert mode completion
     copyindent = true, -- Copy the previous indentation on autoindenting
     cursorline = true, -- Highlight the text line of the cursor
     conceallevel = 0, -- so that `` is visible in markdown files
@@ -25,17 +27,20 @@ fignvim.config.set_vim_opts({
     iskeyword = vim.opt.iskeyword + { "-", "@" }, -- Treat dash separated words as a word text object
     laststatus = 3, -- globalstatus
     lazyredraw = true, -- lazily redraw screen
+    list = true, -- Show some invisible characters
+    listchars = vim.opt.listchars + { space = "⋅", eol = "↴" }, -- Invisible characters
     mouse = "a", -- Enable mouse support
     number = true, -- Show numberline
     preserveindent = true, -- Preserve indent structure as much as possible
     pumheight = 10, -- Height of the pop up menu
     relativenumber = false, -- Show relative numberline
     scrolloff = 8, -- Number of lines to keep above and below the cursor
+    sessionoptions = { "blank", "buffers", "curdir", "folds", "help", "tabpages", "winpos", "terminal" },
     shiftwidth = 2, -- Number of space inserted for indentation
     showmode = false, -- Disable showing modes in command line
     showtabline = 2, -- always display tabline
     sidescrolloff = 8, -- Number of columns to keep at the sides of the cursor
-    signcolumn = "yes", -- Always show the sign column
+    signcolumn = "yes:2", -- Always show the sign column
     smartcase = true, -- Case sensitivie searching
     splitbelow = true, -- Splitting a new window below the current one
     splitright = true, -- Splitting a new window at the right of the current one
@@ -51,8 +56,19 @@ fignvim.config.set_vim_opts({
   },
   g = {
     catppuccin_flavour = "mocha",
+    colours_name = true, -- Whether to include custom highlight options from the UI configs
+    copilot_no_tab_map = true, -- Disable tab mapping in insert mode when using copilot (so you can override the default mapping)
+    EditorConfig_exclude_patterns = { "fugitive://.*", "scp://.*" },
+    git_messenger_always_into_popup = true, -- Always open git-messenger in a popup
+    git_messenger_floating_win_opts = {
+      border = "single",
+      style = "minimal",
+    },
     highlighturl_enabled = true, -- highlight URLs by default
+    winbar_enabled = false, -- Enable winbar
+    statusline_enabled = true, -- Enable statusline
     mapleader = " ", -- set leader key
+    maplocalleader = " ", -- set local leader key
     zipPlugin = false, -- disable zip
     load_black = false, -- disable black
     loaded_2html_plugin = true, -- disable 2html
@@ -78,14 +94,38 @@ fignvim.config.set_vim_opts({
     status_diagnostics_enabled = true, -- enable diagnostics in statusline
     icons_enabled = true, -- disable icons in the UI (disable if no nerd font is available)
     quickfix_open = false, -- whether qf list is open
-    loclist_open = false -- whether loclist is open
+    loclist_open = false, -- whether loclist is open
+    rnvimr_enable_ex = 1, -- Replace netrw with ranger
+    rnvimr_draw_border = 1, -- Draw border for ranger
+    rnvimr_enable_picker = 1, -- Keep showing ranger after choosing a file
+    rnvimr_edit_cmd = "edit", -- Edit file in current window
+    rnvimr_enable_bw = 1, -- Make nvim wipe buffers corresponding to files deleted in Ranger
+    rnvimr_border_attr = { fg = 14, bg = -1 }, -- Ranger border colour
+    rnvimr_ranger_cmd = { "ranger", "--cmd=set draw_borders both" },
+    rnvimr_action = {
+      [rnvimr_mappings.rnvimr_tabedit.lhs] = "NvimEdit tabedit",
+      [rnvimr_mappings.rnvimr_split.lhs] = "NvimEdit split",
+      [rnvimr_mappings.rnvimr_vsplit.lhs] = "NvimEdit vsplit",
+      [rnvimr_mappings.rnvimr_change_cwd.lhs] = "JumpNvimCwd",
+      [rnvimr_mappings.rnvimr_yank_dir.lhs] = "EmitRangerCwd",
+    }, -- Ranger keybindings
+    vimtex_view_method = "zathura", -- set default viewer for vimtex
+    vimtex_view_general_viewer = "zathura", -- set default viewer for vimtex
+    vimtex_compiler_latexmk = {
+      build_dir = "",
+      callback = 1,
+      continuous = 1,
+      executable = "latexmk",
+      hooks = {},
+      options = {
+        "-verbose",
+        "-file-line-error",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-shell-escape",
+      },
+    },
   },
-})
+}
 
-if vim.fn.has("win32") == 1 then
-  fignvim.config.set_shell_as_powershell()
-end
-
-if vim.fn.has("wsl") then
-  fignvim.config.set_win32yank_wsl_as_clip()
-end
+return M

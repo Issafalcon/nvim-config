@@ -1,9 +1,5 @@
 M = {}
 
-M.theme = {
-  colourscheme = "catppuccin"
-}
-
 M.colours = {
   none = "NONE",
   fg = "#abb2bf",
@@ -82,6 +78,43 @@ M.colours = {
   woff2 = "#abb2bf",
   zip = "#f9d71c",
   md = "#519aba",
+}
+
+local normal = fignvim.ui.get_hlgroup("Normal")
+local fg, bg = normal.fg, M.colours.black
+local green = fignvim.ui.get_hlgroup("String").fg
+local red = fignvim.ui.get_hlgroup("Error").fg
+
+M.theme = {
+  colourscheme = "catppuccin",
+  highlights = {
+    Whitespace = { fg = "#4b5263" },
+    VertSplit = { fg = "#CBA6F7" },
+    TelescopeBorder = { fg = fg, bg = M.colours.bg_1 },
+    TelescopeNormal = { bg = M.colours.orange_2 },
+    TelescopePreviewBorder = { fg = bg, bg = bg },
+    TelescopePreviewNormal = { bg = bg },
+    TelescopePreviewTitle = { fg = bg, bg = green },
+    TelescopePromptBorder = { fg = M.colours.bg_1, bg = M.colours.bg_1 },
+    TelescopePromptNormal = { fg = fg, bg = M.colours.bg_1 },
+    TelescopePromptPrefix = { fg = red, bg = M.colours.bg_1 },
+    TelescopePromptTitle = { fg = M.colours.black, bg = M.colours.vue },
+    TelescopeResultsBorder = { fg = bg, bg = bg },
+    TelescopeResultsNormal = { bg = bg },
+    TelescopeResultsTitle = { fg = bg, bg = bg },
+    CmpItemAbbrDeprecated = { bg = NONE, fg = "#808080", strikethrough = true },
+    CmpItemAbbrMatch = { bg = NONE, fg = "#569CD6", bold = true },
+    CmpItemAbbrMatchFuzzy = { link = "CmpItemAbbrMatch" },
+    CmpItemKindVariable = { bg = NONE, fg = "#9CDCFE" },
+    CmpItemKindInterface = { link = "CmpItemKindVariable" },
+    CmpItemKindText = { link = "CmpItemKindVariable" },
+    CmpItemKindFunction = { bg = NONE, fg = "#C586C0" },
+    CmpItemKindMethod = { link = "CmpItemKindFunction" },
+    CmpItemKindKeyword = { bg = NONE, fg = "#D4D4D4" },
+    CmpItemKindProperty = { link = "CmpItemKindKeyword" },
+    CmpItemKindUnit = { link = "CmpItemKindKeyword" },
+    GitSignsCurrentLineBlame = { link = "Comment" },
+  },
 }
 
 return M

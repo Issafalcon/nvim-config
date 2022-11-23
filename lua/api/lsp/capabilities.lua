@@ -15,24 +15,9 @@ fignvim.lsp.capabilities.textDocument.completion.completionItem.resolveSupport =
 }
 
 -- Add capabilities required for LSP based completions
-if fignvim.plug.is_available("cmp-nvim-lsp") then
+if fignvim.plug.is_available("nvim-cmp") then
   local cmp_nvim_lsp = fignvim.plug.load_module_file("cmp_nvim_lsp")
-  fignvim.lsp.capabilities = vim.tbl.deep_extend("force", fignvim.lsp.capabilities, cmp_nvim_lsp.default_capabilities())
-end
-
-function fignvim.lsp.capabilities.handle_document_highlighting(bufnr)
-  local highlight_name = vim.fn.printf("lsp_document_highlight_%d", bufnr)
-  vim.api.nvim_create_augroup(highlight_name, {})
-  vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-    group = highlight_name,
-    buffer = bufnr,
-    callback = function() vim.lsp.buf.document_highlight() end,
-  })
-  vim.api.nvim_create_autocmd("CursorMoved", {
-    group = highlight_name,
-    buffer = bufnr,
-    callback = function() vim.lsp.buf.clear_references() end,
-  })
+  fignvim.lsp.capabilities = vim.tbl_deep_extend("force", fignvim.lsp.capabilities, cmp_nvim_lsp.default_capabilities())
 end
 
 return fignvim.lsp.capabilities

@@ -5,7 +5,7 @@ fignvim.lsp.mappings = {}
 ---@param client_name string Name of the current language server client
 ---@param bufnr number the buffer number to set mappings for
 function fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr)
-  local lsp_mappings = require("user-configs.mappings.lsp_mappings")
+  local lsp_mappings = require("user-configs.mappings").lsp_mappings
 
   fignvim.config.create_mapping("prev_diagnostic", "LSP", lsp_mappings.LSP.prev_diagnostic, bufnr)
   fignvim.config.create_mapping("next_diagnostic", "LSP", lsp_mappings.LSP.next_diagnostic, bufnr)
@@ -41,7 +41,7 @@ function fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr)
   end
 
   if capabilities.implementationProvider then
-    if fignvim.plug.is_available("telescope") then
+    if fignvim.plug.is_available("telescope.nvim") then
       fignvim.config.create_mapping(
         "goto_implementation_telescope",
         "LSP",
@@ -54,7 +54,7 @@ function fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr)
   end
 
   if capabilities.referencesProvider then
-    if fignvim.plug.is_available("telescope") then
+    if fignvim.plug.is_available("telescope.nvim") then
       fignvim.config.create_mapping(
         "goto_references_telescope",
         "LSP",

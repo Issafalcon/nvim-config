@@ -1,7 +1,7 @@
 fignvim.plug = {}
 
-fignvim.plug.default_compile_path = vim.fn.stdpath("data" .. "/packer_compiled.lua")
-fignvim.plug.default_snapshot_path = vim.fn.stdpath("config" .. "/packer_snapshots")
+fignvim.plug.default_compile_path = vim.fn.stdpath("data") .. "/packer_compiled.lua"
+fignvim.plug.default_snapshot_path = vim.fn.stdpath("config") .. "/packer_snapshots"
 
 --- Check if a plugin is defined in packer. Useful with lazy loading when a plugin is not necessarily loaded yet
 ---@param plugin string the plugin string to search for
@@ -20,8 +20,8 @@ function fignvim.plug.load_module_file(module, required)
 
   if status_ok then
     found_module = loaded_module
-  elseif required then
-    vim.api.nvim_err_writeln("Error loading file: " .. found_module .. "\n\n" .. loaded_module)
+  elseif not status_ok and required then
+    vim.api.nvim_err_writeln("Error loading file: " .. module .. "\n\n" .. loaded_module)
   end
 
   return found_module
@@ -104,6 +104,48 @@ function fignvim.plug.setup_plugins()
       },
     })
   end
+end
+
+function fignvim.plug.create_plugin_mappings()
+  local plugin_mapping_dictionary = {
+    ["Comment.nvim"] = "Commenting",
+    ["toggleterm.nvim"] = "Terminal",
+    ["vim-easy-align"] = "EasyAlign",
+    ["telescope.nvim"] = "Searching",
+    ["aerial.nvim"] = "Aerial",
+    ["neo-tree.nvim"] = "NeoTree",
+    ["nvim-spectre"] = "Searching",
+    ["nvim-cmp"] = "Completion",
+    ["LuaSnip"] = "Snippets",
+    ["copilot.vim"] = "Copilot",
+    ["diffview.nvim"] = "Diffview",
+    ["vimtex"] = "LaTex",
+    ["neotest"] = "Neotest",
+    ["cheatsheet.nvim"] = "Cheatsheet",
+    ["vim-maximizer"] = "Maximizer",
+    ["nvim-dap"] = "Debug",
+    ["neogen"] = "Docstring",
+    ["rnvimr"] = "Ranger",
+    ["undotree"] = "Undotree",
+    ["nvim-neoclip.lua"] = "Neoclip",
+    ["vim-cutlass"] = "Cutlass",
+    ["session-lens"] = "Session",
+  }
+
+  for plugin, groupname in pairs(plugin_mapping_dictionary) do
+    if fignvim.plug.is_available(plugin) then
+      local mappings = fignvim.config.get_plugin_mappings(plugin)
+      fignvim.fn.conditional_func(fignvim.config.create_mapping_group, mappings ~= nil, mappings, groupname)
+    end
+  end
+end
+
+--- Special mapping callback for git_signs so mappings are created per buffer during the on_attach callback
+---@param bufnr number The buffer number to create mappings for
+function fignvim.plug.gitsigns_on_attach_cb(bufnr)
+  local plugin = "gitsigns.nvim"
+  local mappings = fignvim.config.get_plugin_mappings(plugin)
+  fignvim.fn.conditional_func(fignvim.config.create_mapping_group, mappings ~= nil, mappings, "Gitsigns", bufnr)
 end
 
 return fignvim.plug

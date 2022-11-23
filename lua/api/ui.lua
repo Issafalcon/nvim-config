@@ -6,8 +6,9 @@ end
 
 --- Initialize icons used throughout the user interface
 function fignvim.ui.initialize_icons()
-  fignvim.icons = fignvim.plug.opts("icons", require("core.icons.nerd_font"))
-  fignvim.text_icons = fignvim.plug.opts("text_icons", require("core.icons.text"))
+  fignvim.ui.icons = require("icons.nerd_font")
+  fignvim.ui.text_icons = require("icons.text")
+  fignvim.ui.lspkind_icons = require("icons.lspkind")
 end
 
 function fignvim.ui.set_colourscheme()
@@ -19,10 +20,10 @@ end
 ---@return string the icon
 function fignvim.ui.get_icon(kind)
   local icon_pack = vim.g.icons_enabled and "icons" or "text_icons"
-  if not fignvim[icon_pack] then
+  if not fignvim.ui[icon_pack] then
     fignvim.ui.initialize_icons()
   end
-  return fignvim[icon_pack] and fignvim[icon_pack][kind] or ""
+  return fignvim.ui[icon_pack] and fignvim.ui[icon_pack][kind] or ""
 end
 
 --- A utility function to stylize a string with an icon from lspkind, separators, and left/right padding
@@ -31,7 +32,7 @@ end
 ---@return string the stylized string
 ---@usage local string = fignvim.status.utils.stylize("Hello", { padding = { left = 1, right = 1 }, icon = { kind = "String" } })
 function fignvim.ui.stylize(str, opts)
-  opts = fignvim.default_tbl(opts, {
+  opts = fignvim.table.default_tbl(opts, {
     padding = { left = 0, right = 0 },
     separator = { left = "", right = "" },
     show_empty = false,
@@ -45,7 +46,7 @@ function fignvim.ui.stylize(str, opts)
 end
 
 --- Wrapper function for neovim echo API
--- @param messages an array like table where each item is an array like table of strings to echo
+-- @param messages table<string, table> an array like table where each item is an array like table of strings to echo
 function fignvim.ui.echo(messages)
   -- if no parameter provided, echo a new line
   messages = messages or { { "\n" } }
@@ -114,8 +115,8 @@ function fignvim.ui.toggle_fix_list(global)
 end
 
 function fignvim.ui.configure_diagnostics()
-  local ui_settings = require("user-configs.ui")
-  vim.diagnostic.config(ui_settings.config[bool2str(vim.g.diagnostics_enabled)])
+  local diagnostic_settings = require("user-configs.diagnostics").config
+  vim.diagnostic.config(diagnostic_settings[bool2str(vim.g.diagnostics_enabled)])
 end
 
 --- Toggle diagnostics
@@ -135,7 +136,7 @@ function fignvim.ui.toggle_diagnostics()
   end
 
   local on_off = vim.g.diagnostics_enabled and "on" or "off"
-  vim.diagnostic.config(fignvim.config.get_config("diagnostics")[on_off])
+  vim.diagnostic.config(require("user-configs.diagnostics")[on_off])
   fignvim.ui.notify(string.format("diagnostics %s", status))
 end
 

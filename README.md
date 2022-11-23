@@ -2,11 +2,14 @@
 
 ## Highlights
 
-- Configuration modularized by functionality
-- Keymappings upfront in `custom_config.lua`
+- Simplified port of [AstroNvim](https://github.com/AstroNvim/AstroNvim) tailored for my own specific tastes
+- API convenience functions (many of which are courtesy of the AstroNvim codebase) under the `api` folder
+- Centralised configuration under the `user-configs` folder
   - Allowing for easier visualisation and modification of keymaps
+  - LSP Server configurations
+  - Custom options to control / toggle behaviour of plugins
 
-## Modules
+## Functionality
 
 ### Utilities
 
@@ -14,7 +17,6 @@
 
 | Plugin Name    | URL                                        | Description                                                        |
 | -------------- | ------------------------------------------ | ------------------------------------------------------------------ |
-| Mason          | https://github.com/williamboman/mason.nvim | Package manager for LSP clients, DAP adapters, Linters and more... |
 | Mason          | https://github.com/williamboman/mason.nvim | Package manager for LSP clients, DAP adapters, Linters and more... |
 
 ### Searching
@@ -35,3 +37,9 @@
 | ----------------              | ---------------                                                | ---------------                                                                        |
 | Comment.nvim                  | https://github.com/numToStr/Comment.nvim                       | Most feature rich commenting plugin for Neovim out there                               |
 | nvim-ts-context-commentstring | https://github.com/JoosepAlviste/nvim-ts-context-commentstring | Sets `commentstring` option based on cursor location in file (Used mainly for tsx etc) |
+
+## TODO List
+
+- Add virtual mappings for `vim-surround`
+- Add virtual mappings for `vim-unimpaired`
+- Add virtual mappings for `diffview.nvim` file panel mappings
