@@ -221,6 +221,9 @@ M.plugin_mappings = {
     cutlass_cut_line = { mode = "n", lhs = "mm", rhs = "dd", desc = "Cutlass: Cut line to clipboard" },
     cutlass_cut_from_cursor = { mode = "n", lhs = "M", rhs = "D", desc = "Cutlass: Cut from cursor to end of line, to clipboard" },
     cutlass_remap_marks = { mode = "n", lhs = "\\m", rhs = "m", desc = "Cutlass: Remap create mark key so it isn't shadowed" }
+  },
+  ["session-lens"] = {
+    session_lens = { mode = "n", lhs = "<leader>sl", rhs = function() require("session-lens").search_session() end, desc = "Session Lens: Search for sessions using telescope" },
   }
 }
 

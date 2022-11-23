@@ -383,6 +383,19 @@ M.plugins = {
       require("plugin-configs.nvim-dap-vscode-js")
     end,
   },
+
+  -- Session management
+  ["rmagatti/auto-session"] = {
+    config = function()
+      require("plugin-configs.auto-session")
+    end,
+  },
+  ["rmagatti/session-lens"] = {
+    after = { "auto-session", "telescope.nvim" },
+    config = function()
+      require("plugin-configs.session-lens")
+    end,
+  },
 }
 
 return M

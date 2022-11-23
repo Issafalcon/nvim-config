@@ -35,6 +35,7 @@ M = {
     pumheight = 10, -- Height of the pop up menu
     relativenumber = false, -- Show relative numberline
     scrolloff = 8, -- Number of lines to keep above and below the cursor
+    sessionoptions = { "blank", "buffers", "curdir", "folds", "help", "tabpages", "winpos", "terminal" },
     shiftwidth = 2, -- Number of space inserted for indentation
     showmode = false, -- Disable showing modes in command line
     showtabline = 2, -- always display tabline

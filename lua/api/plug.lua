@@ -77,12 +77,6 @@ function fignvim.plug.setup_plugins()
         -- Utility Plugins
         use("ThePrimeagen/refactoring.nvim")
 
-        -- Session management
-        use({
-          "rmagatti/session-lens", -- Saves sessions after closing nvim
-          requires = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
-        })
-
         -- LSP
         use("b0o/schemastore.nvim") -- JSON-ls schemas: https://github.com/b0o/SchemaStore.nvim
         use("Issafalcon/lsp-overloads.nvim")
@@ -167,6 +161,7 @@ function fignvim.plug.create_plugin_mappings()
     ["undotree"] = "Undotree",
     ["nvim-neoclip.lua"] = "Neoclip",
     ["vim-cutlass"] = "Cutlass",
+    ["session-lens"] = "Session",
   }
 
   for plugin, groupname in pairs(plugin_mapping_dictionary) do
