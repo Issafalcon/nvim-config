@@ -130,6 +130,7 @@ function fignvim.plug.create_plugin_mappings()
     ["nvim-neoclip.lua"] = "Neoclip",
     ["vim-cutlass"] = "Cutlass",
     ["session-lens"] = "Session",
+    ["vim-yoink"] = "CopyPaste",
   }
 
   for plugin, groupname in pairs(plugin_mapping_dictionary) do

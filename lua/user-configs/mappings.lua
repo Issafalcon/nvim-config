@@ -5,6 +5,7 @@ local M = {}
 ---@field desc string Description of the Mapping
 ---@field mode string | table Mode or Modes for the Mapping
 ---@field lhs string Trigger keys for the Mapping
+---@field lhs string Trigger keys for the Mapping
 ---@field rhs string | function Command to run for the Mapping
 ---@field isVirtual? boolean Whether the keymap should only be virtual (i.e. Displayed in nvim-mapper) rather than being created - default = false
 ---@field opts? table Options for the Mapping (default = { silent = true })
@@ -46,7 +47,6 @@ M.general_mappings = {
     move_selection_down_x   = { mode = "x", lhs          = "<A-K>", rhs = ":move '<-2<CR>gv-gv", desc = "Move current line down" },
     move_line_up            = { mode = "i", lhs          = "<A-j>", rhs = "<Esc>:m .+1<CR>==gi", desc = "Move current line up" },
     move_line_down          = { mode = "i", lhs          = "<A-K>", rhs = "<Esc>:m .-2<CR>==gi", desc = "Move current line down" },
-    delete_char             = { mode = "n", lhs          = "x", rhs     = '"_x', desc                 = "Delete character override, preventing it from occupying yank register" },
   },
   Terminal = {
     terminal_escape = { mode = "t", lhs = "<esc>", rhs = [[<C-\><C-n>]], desc = "Enter normal mode in terminal" },
@@ -224,6 +224,13 @@ M.plugin_mappings = {
   },
   ["session-lens"] = {
     session_lens = { mode = "n", lhs = "<leader>sl", rhs = function() require("session-lens").search_session() end, desc = "Session Lens: Search for sessions using telescope" },
+  },
+  ["vim-yoink"] = {
+    yoink_paste_after = { mode = "n", lhs = "p", rhs = "<Plug>(YoinkPaste_p)", desc = "Yoink: Paste after cursor" },
+    yoink_paste_over = { mode = "n", lhs = "P", rhs = "<Plug>(YoinkPaste_P)", desc = "Yoink: Paste over the cursor" },
+    yoink_paste_swap_back = { mode = "n", lhs = "<C-p>", rhs = "yoink#canSwap() ? '<plug>(YoinkPostPasteSwapForward)' : ':lua require('telescope.builtin').git_files()<CR>'",
+                              desc = "Yoink: Paste over the cursor", opts = { expr = true, silent = true }
+    },
   }
 }
 

@@ -262,6 +262,7 @@ M.plugins = {
     end,
   },
   ["svermeulen/vim-cutlass"] = {},
+  ["svermeulen/vim-yoink"] = {},
   ["ThePrimeagen/refactoring.nvim"] = {},
 
   -- Package management
