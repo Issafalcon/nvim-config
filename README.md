@@ -1,5 +1,7 @@
 # Issafalcon Neovim Configuration
 
+[TOC]
+
 ## Highlights
 
 - Simplified port of [AstroNvim](https://github.com/AstroNvim/AstroNvim) tailored for my own specific tastes
@@ -11,35 +13,28 @@
 
 ## Functionality
 
-### Utilities
+### Package Installation
 
-#### Plugins
+- Uses [Packer.nvim](https://github.com/wbthomason/packer.nvim) for plugin management
+- Plugin configuration is kept in `lua/user-configs/plugins.lua`
 
-| Plugin Name    | URL                                        | Description                                                        |
-| -------------- | ------------------------------------------ | ------------------------------------------------------------------ |
-| Mason          | https://github.com/williamboman/mason.nvim | Package manager for LSP clients, DAP adapters, Linters and more... |
+Additional package management for third party dependencies is done via [Mason](https://github.com/williamboman/mason.nvim)
 
-### Searching
+### Copy - Paste workflow
 
-#### Plugins
+- Use [vim-cutlass](https://github.com/svermeulen/vim-cutlass) to prevent deletions from overriding the yank registers
+ - Combined with a remap of the `create marks` mapping to use `\m` instead so it isn't shadowed by the new cutlass move command
+- Uses a combination of [nvim-neoclip](https://github.com/AckslD/nvim-neoclip.lua) to cycle through yanks in the session,
+[vim-subversive](https://github.com/svermeulen/vim-subversive) to easily substitute using motions, and [vim-abolish](https://github.com/tpope/vim-abolish) to find and replace
+while preserving case and plurality.
 
-| Plugin Name          | URL                                                         | Description                                                                                       |
-| --------------       | --------------                                              | --------------                                                                                    |
-| Telescope            | https://github.com/nvim-telescope/telescope.nvim            | The ultimate, extensible fuzzy finder                                                             |
-| Telescope-fzy-native | https://github.com/nvim-telescope/telescope-fzy-native.nvim | Replaces the native file and generic sorter that comes with Telescope                             |
-| Spectre              | https://github.com/nvim-pack/nvim-spectre                   | Find and replace search panel with regex capabilities and file globbing for inclusion / exclusion |
+### Searching workflow
 
-### Commenting
+## Roadmap / TODO
 
-#### Plugins
-
-| Plugin Name                   | URL                                                            | Description                                                                            |
-| ----------------              | ---------------                                                | ---------------                                                                        |
-| Comment.nvim                  | https://github.com/numToStr/Comment.nvim                       | Most feature rich commenting plugin for Neovim out there                               |
-| nvim-ts-context-commentstring | https://github.com/JoosepAlviste/nvim-ts-context-commentstring | Sets `commentstring` option based on cursor location in file (Used mainly for tsx etc) |
-
-## TODO List
-
-- Add virtual mappings for `vim-surround`
-- Add virtual mappings for `vim-unimpaired`
-- Add virtual mappings for `diffview.nvim` file panel mappings
+- Investigate [vim-dadbod](https://github.com/tpope/vim-dadbod)
+ - Look into setting up additional related plugins [vim-dadbod-ui](https://github.com/kristijanhusak/vim-dadbod-ui) and [vim-dadbod-completion](https://github.com/kristijanhusak/vim-dadbod-completion)
+- Provide smarter way for reloading neovim configuration without leaving neovim
+- Create a package management snapshot and provide helper function to manage snapshots
+- Create toggle commands for certain neovim / plugin functionality
+- Organize the options
