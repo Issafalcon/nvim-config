@@ -231,6 +231,11 @@ M.plugins = {
 
   -- General editing and formatting
   ["junegunn/vim-easy-align"] = {},
+  ["AckslD/nvim-neoclip.lua"] = {
+    config = function()
+      require("plugin-configs.nvim-neoclip")
+    end,
+  },
   ["tpope/vim-surround"] = {}, -- https://github.com/tpope/vim-surround
   ["tpope/vim-unimpaired"] = {}, -- https://github.com/tpope/vim-unimpaired
   ["windwp/nvim-autopairs"] = {
@@ -251,17 +256,9 @@ M.plugins = {
       require("plugin-configs.icon-picker")
     end,
   },
-  ["AckslD/nvim-neoclip.lua"] = {
-    requires = {
-      { "kkharji/sqlite.lua", module = "sqlite" },
-      { "nvim-telescope/telescope.nvim" },
-    },
-    before = "telescope.nvim",
-    config = function()
-      require("plugin-configs.nvim-neoclip")
-    end,
-  },
   ["svermeulen/vim-cutlass"] = {},
+  ["svermeulen/vim-subversive"] = {},
+  ["tpope/vim-abolish"] = {},
   ["svermeulen/vim-yoink"] = {},
   ["ThePrimeagen/refactoring.nvim"] = {},
 

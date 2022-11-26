@@ -225,12 +225,15 @@ M.plugin_mappings = {
   ["session-lens"] = {
     session_lens = { mode = "n", lhs = "<leader>sl", rhs = function() require("session-lens").search_session() end, desc = "Session Lens: Search for sessions using telescope" },
   },
-  ["vim-yoink"] = {
-    yoink_paste_after = { mode = "n", lhs = "p", rhs = "<Plug>(YoinkPaste_p)", desc = "Yoink: Paste after cursor" },
-    yoink_paste_over = { mode = "n", lhs = "P", rhs = "<Plug>(YoinkPaste_P)", desc = "Yoink: Paste over the cursor" },
-    yoink_paste_swap_back = { mode = "n", lhs = "<C-p>", rhs = "yoink#canSwap() ? '<plug>(YoinkPostPasteSwapForward)' : ':lua require('telescope.builtin').git_files()<CR>'",
-                              desc = "Yoink: Paste over the cursor", opts = { expr = true, silent = true }
-    },
+  ["leap.nvim"] = {
+    leap_forward = { mode = "n", lhs = "<C-s>", rhs = "<plug>(leap-forward-to)", desc = "Leap: Forward to" },
+    leap_backward = { mode = "n", lhs = "<C-a>", rhs = "<plug>(leap-backward-to)", desc = "Leap: Backward to" },
+    leap_cross_window = { mode = "n", lhs = "gs", rhs = "<plug>(leap-cross-window)", desc = "Leap: Across all windows" },
+  },
+  ["vim-subversive"] = {
+    sub_motion = { mode = "n", lhs = "s", rhs = "<plug>(SubversiveSubstitute)", desc = "Subversive: Substitute motion" },
+    sub_line = { mode = "n", lhs = "ss", rhs = "<plug>(SubversiveSubstituteLine)", desc = "Subversive: Substitute line" },
+    sub_to_end_of_line = { mode = "n", lhs = "S", rhs = "<plug>(SubversiveSubstituteToEndOfLine)", desc = "Subversive: Substitute to end of line" },
   }
 }
 

@@ -89,4 +89,3 @@ fignvim.fn.conditional_func(telescope.load_extension, pcall(require, "aerial"), 
 fignvim.fn.conditional_func(telescope.load_extension, pcall(require, "fzy_native"), "fzy_native")
 fignvim.fn.conditional_func(telescope.load_extension, pcall(require, "fzf"), "fzf")
 fignvim.fn.conditional_func(telescope.load_extension, pcall(require, "nvim-mapper"), "mapper")
-fignvim.fn.conditional_func(telescope.load_extension, pcall(require, "neoclip"), "neoclip")
