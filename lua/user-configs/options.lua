@@ -109,9 +109,8 @@ M = {
       [rnvimr_mappings.rnvimr_change_cwd.lhs] = "JumpNvimCwd",
       [rnvimr_mappings.rnvimr_yank_dir.lhs] = "EmitRangerCwd",
     }, -- Ranger keybindings
-    yoinkMaxItems = 15,
-    yoinkIncludeDeleteOperations = 1,
-    yoinkMoveCursorToEndOfPaste = 1,
+    subversivePromptWithActualCommand = true, -- Show the actual command in the prompt
+    subversivePromptWithCurrent = true, -- Show the current word in the prompt
     vimtex_view_method = "zathura", -- set default viewer for vimtex
     vimtex_view_general_viewer = "zathura", -- set default viewer for vimtex
     vimtex_compiler_latexmk = {

@@ -73,7 +73,6 @@ M.plugin_mappings = {
     toggle_ignore_hidden = { isVirtual = true, mode = "n", lhs          = "th", rhs                                                           = "<cmd>lua require('spectre').change_options('hiddne')()<CR>", desc      = "Spectre: Toggle show hidden", opts                    = {} },
   },
   ["telescope.nvim"] = {
-    grep_string        = { mode = "n", lhs = "<leader>ss",  rhs  = ":lua require('telescope.builtin').grep_string({ search = vim.fn.input(\"Grep For > \")})<CR>", desc = "Grep for strings in all files"         },
     git_files          = { mode = "n", lhs = "<C-p>",       rhs  = ":lua require('telescope.builtin').git_files()<CR>",                                            desc = "Search files in git repo"              },
     all_files          = { mode = "n", lhs = "<leader>sf",  rhs  = ":lua require('telescope.builtin').find_files({hidden = true})<CR>",                            desc = "Search files in current directory"     },
     buffers            = { mode = "n", lhs = "<leader>sb",  rhs  = ":lua require('telescope.builtin').buffers()<CR>",                                              desc = "Search buffers"                        },
@@ -231,9 +230,13 @@ M.plugin_mappings = {
     leap_cross_window = { mode = "n", lhs = "gs", rhs = "<plug>(leap-cross-window)", desc = "Leap: Across all windows" },
   },
   ["vim-subversive"] = {
-    sub_motion = { mode = "n", lhs = "s", rhs = "<plug>(SubversiveSubstitute)", desc = "Subversive: Substitute motion" },
-    sub_line = { mode = "n", lhs = "ss", rhs = "<plug>(SubversiveSubstituteLine)", desc = "Subversive: Substitute line" },
-    sub_to_end_of_line = { mode = "n", lhs = "S", rhs = "<plug>(SubversiveSubstituteToEndOfLine)", desc = "Subversive: Substitute to end of line" },
+    sub_motion                 = { mode = "n", lhs          = "s", rhs         = "<plug>(SubversiveSubstitute)", desc            = "Subversive: Substitute the motion specified with whatever is in default yank register" },
+    sub_line                   = { mode = "n", lhs          = "ss", rhs        = "<plug>(SubversiveSubstituteLine)", desc        = "Subversive: Substitute the line with whatever is in default yank register" },
+    sub_to_end_of_line         = { mode = "n", lhs          = "S", rhs         = "<plug>(SubversiveSubstituteToEndOfLine)", desc = "Subversive: Substitute everything until the end of the line with whatever is in the yank register" },
+    sub_motion_in_range_motion = { mode = { "n", "x" }, lhs = "<leader>s", rhs = "<plug>(SubversiveSubstituteRange)", desc       = "Subversive: Substitute all instances of the text in the first motion that exist in the text within the second motion" },
+    sub_word_in_range_motion   = { mode = "n", lhs          = "<leader>ss", rhs        = "<plug>(SubversiveSubstituteWordRange)", desc   = "Subversive: Substitute all instances of word under the cursor within the motion specified" },
+    subvert_motion_in_range_motion = { mode = { "n", "x" }, lhs = "<leader><leader>v", rhs = "<plug>(SubversiveSubvertRange)", desc       = "Subversive: Subvert all instances of the text in the first motion that exist in the text within the second motion" },
+    subvert_word_in_range_motion   = { mode = "n", lhs          = "<leader><leader>vv", rhs        = "<plug>(SubversiveSubvertWordRange)", desc   = "Subversive: Subvert all instances of word under the cursor within the motion specified" },
   }
 }
 

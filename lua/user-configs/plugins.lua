@@ -259,7 +259,6 @@ M.plugins = {
   ["svermeulen/vim-cutlass"] = {},
   ["svermeulen/vim-subversive"] = {},
   ["tpope/vim-abolish"] = {},
-  ["svermeulen/vim-yoink"] = {},
   ["ThePrimeagen/refactoring.nvim"] = {},
 
   -- Package management
