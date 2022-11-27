@@ -150,8 +150,10 @@ M.plugins = {
   },
 
   -- .NET / C# development specific
-  ["Issafalcon/neo-sharper.nvim"] = {
-    branch = "plugin-testing",
+  ["~/repos/neo-sharper.nvim"] = {
+    config = function()
+      require("neo-sharper").setup()
+    end,
   },
   ["Hoffs/omnisharp-extended-lsp.nvim"] = {},
 
@@ -397,6 +399,7 @@ M.plugins = {
       require("plugin-configs.nvim-dap-vscode-js")
     end,
   },
+  ["jbyuki/one-small-step-for-vimkind"] = {},
 
   -- Session management
   ["rmagatti/auto-session"] = {

@@ -37,3 +37,7 @@ dap.adapters.bashdb = {
   command = "node",
   args = { install_dir .. "/packages/bash-debug-adapter/extension/out/bashDebug.js" },
 }
+
+dap.adapters.nlua = function(callback, config)
+  callback({ type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 })
+end

@@ -98,4 +98,12 @@ M.cs = {
   },
 }
 
+M.lua = {
+  {
+    type = "nlua",
+    request = "attach",
+    name = "Attach to running Neovim instance",
+  },
+}
+
 return M
