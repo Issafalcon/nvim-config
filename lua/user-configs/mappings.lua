@@ -226,8 +226,8 @@ M.plugin_mappings = {
     session_lens = { mode = "n", lhs = "<leader>sl", rhs = function() require("session-lens").search_session() end, desc = "Session Lens: Search for sessions using telescope" },
   },
   ["leap.nvim"] = {
-    leap_forward = { mode = "n", lhs = "<C-s>", rhs = "<plug>(leap-forward-to)", desc = "Leap: Forward to" },
-    leap_backward = { mode = "n", lhs = "<C-a>", rhs = "<plug>(leap-backward-to)", desc = "Leap: Backward to" },
+    leap_forward = { mode = "n", lhs = "<C-n>", rhs = "<plug>(leap-forward-to)", desc = "Leap: Forward to" },
+    leap_backward = { mode = "n", lhs = "<C-m>", rhs = "<plug>(leap-backward-to)", desc = "Leap: Backward to" },
     leap_cross_window = { mode = "n", lhs = "gs", rhs = "<plug>(leap-cross-window)", desc = "Leap: Across all windows" },
   },
   ["vim-subversive"] = {
