@@ -150,11 +150,12 @@ M.plugins = {
   },
 
   -- .NET / C# development specific
-  ["~/repos/neo-sharper.nvim"] = {
-    config = function()
-      require("neo-sharper").setup()
-    end,
-  },
+  -- ["~/repos/neo-sharper.nvim"] = {
+  --   config = function()
+  --     require("neo-sharper").setup()
+  --   end,
+  -- },
+
   ["Hoffs/omnisharp-extended-lsp.nvim"] = {},
 
   -- Completion engine and sources
