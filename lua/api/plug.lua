@@ -3,6 +3,9 @@ fignvim.plug = {}
 fignvim.plug.default_compile_path = vim.fn.stdpath("data") .. "/packer_compiled.lua"
 fignvim.plug.default_snapshot_path = vim.fn.stdpath("config") .. "/packer_snapshots"
 
+-- Plugins to load when file opened
+fignvim.plug.file_plugins = {}
+
 --- Check if a plugin is defined in packer. Useful with lazy loading when a plugin is not necessarily loaded yet
 ---@param plugin string the plugin string to search for
 ---@return boolean value if the plugin is available

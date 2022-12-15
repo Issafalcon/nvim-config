@@ -90,6 +90,7 @@ M.theme = {
   highlights = {
     Whitespace = { fg = "#4b5263" },
     VertSplit = { fg = "#CBA6F7" },
+    PmenuSel = { bg = M.colours.grey_7, fg = "NONE" },
     TelescopeBorder = { fg = fg, bg = M.colours.bg_1 },
     TelescopeNormal = { bg = M.colours.orange_2 },
     TelescopePreviewBorder = { fg = bg, bg = bg },
@@ -102,6 +103,7 @@ M.theme = {
     TelescopeResultsBorder = { fg = bg, bg = bg },
     TelescopeResultsNormal = { bg = bg },
     TelescopeResultsTitle = { fg = bg, bg = bg },
+    CmpItemMenu = { fg = "#C792EA", bg = "NONE", italic = true },
     CmpItemAbbrDeprecated = { bg = NONE, fg = "#808080", strikethrough = true },
     CmpItemAbbrMatch = { bg = NONE, fg = "#569CD6", bold = true },
     CmpItemAbbrMatchFuzzy = { link = "CmpItemAbbrMatch" },

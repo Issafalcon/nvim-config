@@ -69,7 +69,6 @@ cmp.setup({
   window = {
     completion = {
       border = "none",
-      winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
     },
     documentation = {
       border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },

@@ -10,7 +10,7 @@ M.plugins = {
   -- Lua functions
   ["nvim-lua/plenary.nvim"] = {}, -- https://github.com/nvim-lua/plenary.nvim
 
-  -- Background compilation / script runner
+  -- Background compilation / script runnerplugins
   ["tpope/vim-dispatch"] = {},
 
   -- Colorschemes
@@ -40,6 +40,9 @@ M.plugins = {
   },
   ["NvChad/nvim-colorizer.lua"] = {
     opt = true,
+    setup = function()
+      table.insert(fignvim.plug.file_plugins, "nvim-colorizer.lua")
+    end,
     config = function()
       require("plugin-configs.colorizer")
     end,
