@@ -22,7 +22,7 @@ colorizer.setup({
     "lua",
   },
   user_default_options = {
-    mode = "foreground",
+    mode = "background",
     names = false,
   },
 })
