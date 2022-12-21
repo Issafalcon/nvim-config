@@ -48,6 +48,23 @@ M.plugins = {
     end,
   },
 
+  -- PlantUML
+  ["aklt/plantuml-syntax"] = {
+    opt = true,
+    setup = function()
+      table.insert(fignvim.plug.file_plugins, "plantuml-syntax")
+    end,
+  },
+  ["weirongxu/plantuml-previewer.vim"] = {
+    opt = true,
+    requires = {
+      "tyru/open-browser.vim",
+    },
+    setup = function()
+      table.insert(fignvim.plug.file_plugins, "plantuml-previewer.vim")
+    end,
+  },
+
   -- Icons
   ["nvim-tree/nvim-web-devicons"] = {
     -- https://github.com/nvim-tree/nvim-web-devicons
