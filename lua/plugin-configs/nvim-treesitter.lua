@@ -5,7 +5,7 @@ end
 
 ts_config.setup({
   ensure_installed = "all", -- one of "all" or a list of languages
-  ignore_install = { "haskell, phpdoc" },
+  ignore_install = { "haskell, phpdoc", "t32" },
   highlight = {
     enable = true, -- false will disable the whole extension
     disable = { "latex" },
