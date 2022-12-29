@@ -71,6 +71,7 @@ function fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr)
   end
 
   if capabilities.signatureHelpProvider then
+    fignvim.config.create_mapping("signature_overloads", "LSP", lsp_mappings.LSP.signature_overloads, bufnr)
     fignvim.config.create_mapping("signature_help", "LSP", lsp_mappings.LSP.signature_help, bufnr)
   end
 
