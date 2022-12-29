@@ -182,3 +182,18 @@ if fignvim.plug.is_available("nvim-dap") then
     end,
   })
 end
+
+-- Lazy load plugins on entering a file
+cmd({ "BufRead", "BufWinEnter", "BufNewFile" }, {
+  group = augroup("file_plugin_lazy_load", { clear = true }),
+  callback = function()
+    local title = vim.fn.expand("%")
+    if not (title == "" or title == "[packer]" or title:match("^neo%-tree%s+filesystem")) then
+      vim.api.nvim_del_augroup_by_name("file_plugin_lazy_load")
+      local packer = require("packer")
+      vim.tbl_map(function(plugin)
+        packer.loader(plugin)
+      end, fignvim.plug.file_plugins)
+    end
+  end,
+})

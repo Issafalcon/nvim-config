@@ -13,15 +13,16 @@ colorizer.setup({
       mode = "background",
       names = true,
     },
-    sass = { enable = false, parsers = { css } }, -- Enable sass colors
+    sass = { enable = true, parsers = { css } }, -- Enable sass colors
     "javascript",
     "javascriptreact",
     "typescript",
     "typescriptreact",
     "html",
+    "lua",
   },
   user_default_options = {
-    mode = "foreground",
+    mode = "background",
     names = false,
   },
 })

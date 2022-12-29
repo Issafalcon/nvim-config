@@ -11,6 +11,21 @@ function fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr)
   fignvim.config.create_mapping("next_diagnostic", "LSP", lsp_mappings.LSP.next_diagnostic, bufnr)
   fignvim.config.create_mapping("hover_diagnostic", "LSP", lsp_mappings.LSP.hover_diagnostic, bufnr)
 
+  if fignvim.plug.is_available("telescope.nvim") then
+    fignvim.config.create_mapping(
+      "document_symbols_telescope",
+      "LSP",
+      lsp_mappings.LSP.document_symbols_telescope,
+      bufnr
+    )
+    fignvim.config.create_mapping(
+      "workspace_symbols_telescope",
+      "LSP",
+      lsp_mappings.LSP.workspace_symbols_telescope,
+      bufnr
+    )
+  end
+
   if capabilities.codeActionProvider then
     if fignvim.plug.is_available("lspsaga") then
       fignvim.config.create_mapping("code_action_saga", "LSP", lsp_mappings.LSP.code_action_saga, bufnr)

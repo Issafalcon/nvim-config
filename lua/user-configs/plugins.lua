@@ -10,7 +10,7 @@ M.plugins = {
   -- Lua functions
   ["nvim-lua/plenary.nvim"] = {}, -- https://github.com/nvim-lua/plenary.nvim
 
-  -- Background compilation / script runner
+  -- Background compilation / script runnerplugins
   ["tpope/vim-dispatch"] = {},
 
   -- Colorschemes
@@ -40,8 +40,28 @@ M.plugins = {
   },
   ["NvChad/nvim-colorizer.lua"] = {
     opt = true,
+    setup = function()
+      table.insert(fignvim.plug.file_plugins, "nvim-colorizer.lua")
+    end,
     config = function()
       require("plugin-configs.colorizer")
+    end,
+  },
+
+  -- PlantUML
+  ["aklt/plantuml-syntax"] = {
+    opt = true,
+    setup = function()
+      table.insert(fignvim.plug.file_plugins, "plantuml-syntax")
+    end,
+  },
+  ["weirongxu/plantuml-previewer.vim"] = {
+    opt = true,
+    requires = {
+      "tyru/open-browser.vim",
+    },
+    setup = function()
+      table.insert(fignvim.plug.file_plugins, "plantuml-previewer.vim")
     end,
   },
 
@@ -150,11 +170,12 @@ M.plugins = {
   },
 
   -- .NET / C# development specific
-  ["~/repos/neo-sharper.nvim"] = {
-    config = function()
-      require("neo-sharper").setup()
-    end,
-  },
+  -- ["~/repos/neo-sharper.nvim"] = {
+  --   config = function()
+  --     require("neo-sharper").setup()
+  --   end,
+  -- },
+
   ["Hoffs/omnisharp-extended-lsp.nvim"] = {},
 
   -- Completion engine and sources
