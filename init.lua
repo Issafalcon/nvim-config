@@ -40,8 +40,8 @@ fignvim.plug.initialise_packer()
 fignvim.plug.setup_plugins()
 
 -- 3.5 Get mapper functions ready to create fignvim keymaps and create plugin mappings
-fignvim.config.initialize_mapper() -- Need to do this in between loading mapper plugin and setting up any fignvim keymaps
-fignvim.plug.create_plugin_mappings()
+-- fignvim.config.initialize_mapper() -- Need to do this in between loading mapper plugin and setting up any fignvim keymaps
+-- fignvim.plug.create_plugin_mappings()
 
 -- 4. Set up some UI features
 fignvim.ui.set_colourscheme()
@@ -50,9 +50,9 @@ fignvim.ui.configure_diagnostics()
 -- 5. Set up the LSP servers (also sets keymaps for LSP related actions)
 fignvim.lsp.setup_all_lsp_servers()
 
--- 6. Create remaining general mappings
+-- 6. Create mappings
 vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { silent = true }) -- Prep for space to be leader key
-fignvim.config.set_general_mappings()
+fignvim.config.setup_keymaps()
 
 -- 7. Setup debug config
 fignvim.debug.setup_debug_configs()

@@ -62,15 +62,7 @@ cmd("FileType", {
   group = "support_buffers",
   pattern = { "qf", "help", "man", "lspinfo", "spectre_panel" },
   callback = function()
-    fignvim.config.map(
-      "n",
-      "q",
-      ":close<CR>",
-      { silent = true, buffer = true },
-      "Buffers",
-      "close_buf",
-      "Closes buffers related to plugin menus etc."
-    )
+    vim.keymap.set("n", "q", ":close<CR>", { silent = true, buffer = true })
     vim.api.nvim_set_option("buflisted", false)
   end,
 })
