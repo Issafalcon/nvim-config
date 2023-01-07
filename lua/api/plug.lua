@@ -109,42 +109,6 @@ function fignvim.plug.setup_plugins()
   end
 end
 
-function fignvim.plug.create_plugin_mappings()
-  local plugin_mapping_dictionary = {
-    ["Comment.nvim"] = "Commenting",
-    ["toggleterm.nvim"] = "Terminal",
-    ["vim-easy-align"] = "EasyAlign",
-    ["telescope.nvim"] = "Searching",
-    ["aerial.nvim"] = "Aerial",
-    ["neo-tree.nvim"] = "NeoTree",
-    ["nvim-spectre"] = "Searching",
-    ["nvim-cmp"] = "Completion",
-    ["LuaSnip"] = "Snippets",
-    ["copilot.vim"] = "Copilot",
-    ["diffview.nvim"] = "Diffview",
-    ["vimtex"] = "LaTex",
-    ["neotest"] = "Neotest",
-    ["cheatsheet.nvim"] = "Cheatsheet",
-    ["vim-maximizer"] = "Maximizer",
-    ["nvim-dap"] = "Debug",
-    ["neogen"] = "Docstring",
-    ["rnvimr"] = "Ranger",
-    ["undotree"] = "Undotree",
-    ["nvim-neoclip.lua"] = "Neoclip",
-    ["vim-cutlass"] = "Cutlass",
-    ["session-lens"] = "Session",
-    ["vim-subversive"] = "CopyPaste",
-    ["leap.nvim"] = "Searching",
-  }
-
-  for plugin, groupname in pairs(plugin_mapping_dictionary) do
-    if fignvim.plug.is_available(plugin) then
-      local mappings = fignvim.config.get_plugin_mappings(plugin)
-      fignvim.fn.conditional_func(fignvim.config.create_mapping_group, mappings ~= nil, mappings, groupname)
-    end
-  end
-end
-
 --- Special mapping callback for git_signs so mappings are created per buffer during the on_attach callback
 ---@param bufnr number The buffer number to create mappings for
 function fignvim.plug.gitsigns_on_attach_cb(bufnr)

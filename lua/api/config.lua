@@ -74,24 +74,102 @@ function fignvim.config.initialize_mapper()
       mapper.map_buf_virtual(mode, keys, cmd, options, category, unique_identifier, description)
     end
   else
-    fignvim.config.map = function(mode, keys, cmd, options, _, _, _)
-      vim.keymap.set(mode, keys, cmd, options)
-    end
-    fignvim.config.map_buf = function(bufnr, mode, keys, cmd, options, _, _, _)
-      vim.keymap.set(bufnr, mode, keys, cmd, options)
-    end
-    fignvim.config.map_virtual = function(_, _, _, _, _, _, _) end
-    fignvim.config.map_buf_virtual = function(_, _, _, _, _, _, _) end
   end
 end
 
---- Top level function to convert all mappings in the general_mappings config into keymaps
-function fignvim.config.set_general_mappings()
+--- Extract all mappings from 'user-configs.mappings' and convert into table for legendary.nvim
+function fignvim.config.get_legendary_keymaps()
+  local legendary_map_table = {}
+
+  local function create_legendary_map_table(map_config, as_virtual)
+    local legendary_map = {
+      map_config.lhs,
+      map_config.rhs,
+      description = map_config.desc,
+      mode = map_config.mode,
+      opts = map_config.opts or {},
+    }
+
+    -- Virtual keymaps (i.e. Ones set by plugins, but included in mappings config to register them as non-bound maps)
+    --  need to omit the handler element (i.e. the 'rhs' option)
+    if map_config.isVirtual or as_virtual then
+      table.remove(legendary_map, 2)
+    end
+
+    return legendary_map
+  end
+
   local general_mappings = require("user-configs.mappings").general_mappings
 
+  -- First create the general mappings groups
   for group, group_mappings in pairs(general_mappings) do
-    fignvim.config.create_mapping_group(group_mappings, group)
+    local legendary_maps = {}
+    for _, map in pairs(group_mappings) do
+      table.insert(legendary_maps, create_legendary_map_table(map))
+    end
+    table.insert(legendary_map_table, {
+      itemgroup = group,
+      keymaps = legendary_maps,
+    })
   end
+
+  -- Then create the plugin mappings groups
+  local plugin_mapping_dictionary = {
+    ["Comment.nvim"] = "Commenting",
+    ["toggleterm.nvim"] = "Terminal",
+    ["vim-easy-align"] = "EasyAlign",
+    ["telescope.nvim"] = "Searching",
+    ["aerial.nvim"] = "Aerial",
+    ["neo-tree.nvim"] = "NeoTree",
+    ["nvim-spectre"] = "Searching",
+    ["nvim-cmp"] = "Completion",
+    ["LuaSnip"] = "Snippets",
+    ["copilot.vim"] = "Copilot",
+    ["diffview.nvim"] = "Diffview",
+    ["vimtex"] = "LaTex",
+    ["neotest"] = "Neotest",
+    ["cheatsheet.nvim"] = "Cheatsheet",
+    ["vim-maximizer"] = "Maximizer",
+    ["nvim-dap"] = "Debug",
+    ["neogen"] = "Docstring",
+    ["rnvimr"] = "Ranger",
+    ["undotree"] = "Undotree",
+    ["nvim-neoclip.lua"] = "Neoclip",
+    ["vim-cutlass"] = "Cutlass",
+    ["session-lens"] = "Session",
+    ["vim-subversive"] = "CopyPaste",
+    ["leap.nvim"] = "Searching",
+  }
+
+  for plugin, groupname in pairs(plugin_mapping_dictionary) do
+    if fignvim.plug.is_available(plugin) then
+      local plugin_mappings = fignvim.config.get_plugin_mappings(plugin)
+      local legendary_maps = {}
+      for _, map in pairs(plugin_mappings) do
+        table.insert(legendary_maps, create_legendary_map_table(map))
+      end
+      table.insert(legendary_map_table, {
+        itemgroup = groupname,
+        keymaps = legendary_maps,
+      })
+    end
+  end
+
+  -- Then add the LSP mappings as virtual mappings (they are mapped per buffer during the LSP setup)
+  -- First create the general mappings groups
+  local lsp_mappings = require("user-configs.mappings").lsp_mappings
+  for group, lsp_maps in pairs(lsp_mappings) do
+    local legendary_maps = {}
+    for _, map in pairs(lsp_maps) do
+      table.insert(legendary_maps, create_legendary_map_table(map, true))
+    end
+    table.insert(legendary_map_table, {
+      itemgroup = group,
+      keymaps = legendary_maps,
+    })
+  end
+
+  return legendary_map_table
 end
 
 --- Recurses through a set of FigNvimMappings and creates a set of keymaps for them
@@ -109,18 +187,14 @@ end
 ---@param group_name string The name of the mapping group
 ---@param mapping FigNvimMapping The mapping parameters
 ---@param bufnr? number Optional buffer number to create keymapping for
-function fignvim.config.create_mapping(id, group_name, mapping, bufnr)
+function fignvim.config.create_mapping(_, _, mapping, bufnr)
   local opts = mapping.opts or { silent = true }
 
   if bufnr then
     opts.buffer = bufnr
   end
 
-  if mapping.isVirtual then
-    fignvim.config.map_virtual(mapping.mode, mapping.lhs, "", {}, group_name, id, mapping.desc)
-  else
-    fignvim.config.map(mapping.mode, mapping.lhs, mapping.rhs, opts, group_name, id, mapping.desc)
-  end
+  vim.keymap.set(mapping.mode, mapping.lhs, mapping.rhs, opts)
 end
 
 return fignvim.config
