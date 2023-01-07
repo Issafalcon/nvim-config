@@ -56,27 +56,30 @@ function fignvim.config.set_win32yank_wsl_as_clip()
   }
 end
 
---- Set up mapping functions before we create fignvim keymappings
-function fignvim.config.initialize_mapper()
-  if fignvim.plug.is_available("nvim-mapper") then
-    local mapper = require("nvim-mapper")
-
-    fignvim.config.map = function(mode, keys, cmd, options, category, unique_identifier, description)
-      mapper.map(mode, keys, cmd, options, category, unique_identifier, description)
+--- register mappings table with which-key
+-- @param mappings nested table of mappings where the first key is the mode, the second key is the prefix, and the value is the mapping table for which-key
+-- @param opts table of which-key options when setting the mappings (see which-key documentation for possible values)
+function fignvim.config.which_key_register(mappings, opts)
+  local status_ok, which_key = pcall(require, "which-key")
+  if not status_ok then
+    return
+  end
+  for mode, prefixes in pairs(mappings) do
+    for prefix, mapping_table in pairs(prefixes) do
+      which_key.register(
+        mapping_table,
+        vim.tbl_deep_extend("force", {
+          mode = mode,
+          prefix = prefix,
+          buffer = nil,
+          silent = true,
+          noremap = true,
+          nowait = true,
+        }, opts or {})
+      )
     end
-    fignvim.config.map_buf = function(bufnr, mode, keys, cmd, options, category, unique_identifier, description)
-      mapper.map_buf(bufnr, mode, keys, cmd, options, category, unique_identifier, description)
-    end
-    fignvim.config.map_virtual = function(mode, keys, cmd, options, category, unique_identifier, description)
-      mapper.map_virtual(mode, keys, cmd, options, category, unique_identifier, description)
-    end
-    fignvim.config.map_buf_virtual = function(mode, keys, cmd, options, category, unique_identifier, description)
-      mapper.map_buf_virtual(mode, keys, cmd, options, category, unique_identifier, description)
-    end
-  else
   end
 end
-
 --- Extract all mappings from 'user-configs.mappings' and convert into table for legendary.nvim
 function fignvim.config.get_legendary_keymaps()
   local legendary_map_table = {}
@@ -172,22 +175,10 @@ function fignvim.config.get_legendary_keymaps()
   return legendary_map_table
 end
 
---- Recurses through a set of FigNvimMappings and creates a set of keymaps for them
----@param mapping_group table<string, FigNvimMapping>
----@param group_name string The name of the mapping group
----@param bufnr? number Optional buffer number to create keymapping for
-function fignvim.config.create_mapping_group(mapping_group, group_name, bufnr)
-  for key, mapping in pairs(mapping_group) do
-    fignvim.config.create_mapping(key, group_name, mapping, bufnr)
-  end
-end
-
 --- Create a mapping based on a FigNvimMapping
----@param id string The unique identifier of the mapping
----@param group_name string The name of the mapping group
 ---@param mapping FigNvimMapping The mapping parameters
 ---@param bufnr? number Optional buffer number to create keymapping for
-function fignvim.config.create_mapping(_, _, mapping, bufnr)
+function fignvim.config.create_mapping(mapping, bufnr)
   local opts = mapping.opts or { silent = true }
 
   if bufnr then
@@ -195,6 +186,14 @@ function fignvim.config.create_mapping(_, _, mapping, bufnr)
   end
 
   vim.keymap.set(mapping.mode, mapping.lhs, mapping.rhs, opts)
+end
+
+function fignvim.config.setup_keymaps()
+  -- Requiring these files will allow legendary to bind keys by calling the
+  -- underlying vim.keymap.set command, and also create records for virtual keybindings
+  -- Whichkey registry sets up groups for certain patterns of keys
+  require("plugin-configs.which-key-register")
+  require("plugin-configs.legendary")
 end
 
 return fignvim.config

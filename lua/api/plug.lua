@@ -114,7 +114,9 @@ end
 function fignvim.plug.gitsigns_on_attach_cb(bufnr)
   local plugin = "gitsigns.nvim"
   local mappings = fignvim.config.get_plugin_mappings(plugin)
-  fignvim.fn.conditional_func(fignvim.config.create_mapping_group, mappings ~= nil, mappings, "Gitsigns", bufnr)
+  for _, map in pairs(mappings) do
+    fignvim.config.create_mapping(map, bufnr)
+  end
 end
 
 return fignvim.plug

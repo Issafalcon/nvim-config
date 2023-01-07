@@ -329,15 +329,12 @@ M.plugins = {
   },
 
   -- Keybindings / Cheatsheets / Help
-  ["lazytanuki/nvim-mapper"] = {
-    requires = {
-      { "nvim-lua/plenary.nvim" },
-      { "nvim-lua/popup.nvim" },
-    },
+  ["mrjones2014/legendary.nvim"] = {},
+  ["folke/which-key.nvim"] = {
+    module = "which-key",
     config = function()
-      require("nvim-mapper").setup({})
+      require("plugin-configs.which-key")
     end,
-    before = "telescope.nvim",
   },
   ["sudormrfbin/cheatsheet.nvim"] = {
     config = function()
