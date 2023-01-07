@@ -36,12 +36,8 @@ if vim.fn.has("wsl") == 1 then
 end
 
 -- 3. Initialise the plugin manager and load all plugins
-fignvim.plug.initialise_packer()
-fignvim.plug.setup_plugins()
-
--- 3.5 Get mapper functions ready to create fignvim keymaps and create plugin mappings
--- fignvim.config.initialize_mapper() -- Need to do this in between loading mapper plugin and setting up any fignvim keymaps
--- fignvim.plug.create_plugin_mappings()
+fignvim.plug.initialise_lazy_nvim()
+fignvim.plug.setup_lazy_plugins()
 
 -- 4. Set up some UI features
 fignvim.ui.set_colourscheme()

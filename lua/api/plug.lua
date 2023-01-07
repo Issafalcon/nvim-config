@@ -30,6 +30,55 @@ function fignvim.plug.load_module_file(module, required)
   return found_module
 end
 
+function fignvim.plug.initialise_lazy_nvim()
+  -- try loading lazy.nvim
+  local lazy_avail, _ = pcall(require, "lazy")
+  -- if packer isn't availble, reinstall it
+  if not lazy_avail then
+    -- set the location to install packer
+    local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+    -- delete the old packer install if one exists
+    vim.fn.delete(lazypath, "rf")
+    if not vim.loop.fs_stat(lazypath) then
+      vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+      })
+    end
+    fignvim.ui.echo({ { "Initializing Lazy.nvim...\n\n" } })
+  end
+end
+
+function fignvim.plug.setup_lazy_plugins()
+  local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+  vim.opt.rtp:prepend(lazypath)
+
+  local status_ok, lazy = pcall(require, "lazy")
+  if status_ok then
+    local plugins = {}
+
+    for key, plugin in pairs(require("user-configs.plugins").plugins) do
+      if type(key) == "string" and not plugin[1] then
+        plugin[1] = key
+      end
+      table.insert(plugins, plugin)
+    end
+    lazy.setup(plugins, {
+      dev = {
+        path = "$PROJECTS",
+        ---@type string[] plugins that match these patterns will use your local versions instead of being fetched from GitHub
+        patterns = {},
+      },
+      diff = {
+        cmd = "diffview.nvim",
+      },
+    })
+  end
+end
 --- Check if packer is installed and loadable, if not then install it and make sure it loads
 function fignvim.plug.initialise_packer()
   -- try loading packer
