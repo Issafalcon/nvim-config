@@ -72,6 +72,7 @@ M.plugin_mappings = {
     toggle_ignore_case   = { isVirtual = true, mode = "n", lhs          = "ti", rhs                                                           = "<cmd>lua require('spectre').change_options('ignore-case')()<CR>", desc = "Spectre: Toggle ignore case", opts                    = {} },
     toggle_ignore_hidden = { isVirtual = true, mode = "n", lhs          = "th", rhs                                                           = "<cmd>lua require('spectre').change_options('hiddne')()<CR>", desc      = "Spectre: Toggle show hidden", opts                    = {} },
   },
+  -- DONE
   ["telescope.nvim"] = {
     git_files          = { mode = "n", lhs = "<C-p>",       rhs  = ":lua require('telescope.builtin').git_files()<CR>",                                            desc = "Search files in git repo"              },
     all_files          = { mode = "n", lhs = "<leader>sf",  rhs  = ":lua require('telescope.builtin').find_files({hidden = true})<CR>",                            desc = "Search files in current directory"     },
@@ -216,6 +217,7 @@ M.plugin_mappings = {
     neoclip_search = { mode = "n", lhs = "<leader>sy", rhs = function() require('telescope').extensions.neoclip.default() end, desc = "Neoclip: Search clipboard history" },
     neoclip_search_macros = { mode = "n", lhs = "<leader>sq", rhs = function() require("telescope").extensions.macroscope.default() end, desc = "Neoclip: Search clipboard history" },
   },
+  -- DONE
   ["vim-cutlass"] = {
     cutlass_cut_char = { mode = { "n", "x" }, lhs = "m", rhs = "d", desc = "Cutlass: Cut char to clipboard" },
     cutlass_cut_line = { mode = "n", lhs = "mm", rhs = "dd", desc = "Cutlass: Cut line to clipboard" },
