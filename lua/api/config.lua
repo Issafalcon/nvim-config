@@ -196,4 +196,54 @@ function fignvim.config.setup_keymaps()
   require("plugin-configs.legendary")
 end
 
+function fignvim.config.register_keymap_group(groupname, mappings, whichkey_prefix)
+  local legendary_maps = {
+    itemgroup = groupname,
+    keymaps = fignvim.config.make_unbound_legendary_keymaps(mappings),
+  }
+
+  require("legendary").keymaps(legendary_maps)
+
+  if whichkey_prefix then
+    fignvim.config.register_whichkey_prefix(whichkey_prefix, groupname)
+  end
+end
+
+function fignvim.config.make_unbound_legendary_keymaps(mappings)
+  local legendary_keys = {}
+  for _, map in ipairs(mappings) do
+    table.insert(legendary_keys, {
+      map[2],
+      mode = map[1],
+      opts = map[4],
+    })
+  end
+
+  return legendary_keys
+end
+
+function fignvim.config.register_whichkey_prefix(prefix, groupname)
+  require("which-key").register({
+    [prefix] = {
+      name = "+" .. groupname,
+    },
+  })
+end
+
+function fignvim.config.make_lazy_keymaps(mappings)
+  local lazy_keys = {}
+  for _, map in ipairs(mappings) do
+    table.insert(
+      lazy_keys,
+      vim.tbl_deep_extend("force", {
+        map[2],
+        map[3],
+        mode = map[1],
+      }, map[4])
+    )
+  end
+
+  return lazy_keys
+end
+
 return fignvim.config
