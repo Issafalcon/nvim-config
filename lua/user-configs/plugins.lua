@@ -2,15 +2,19 @@ M = {}
 
 M.plugins = {
   -- Plugin manager
+  -- NOT NEEDED
   ["wbthomason/packer.nvim"] = {}, -- https://github.com/wbthomason/packer.nvim
 
   -- Optimiser
+  -- DONE
   ["lewis6991/impatient.nvim"] = {}, -- https://github.com/lewis6991/impatient.nvim
 
   -- Lua functions
+  -- DONE
   ["nvim-lua/plenary.nvim"] = {}, -- https://github.com/nvim-lua/plenary.nvim
 
   -- Background compilation / script runnerplugins
+  -- Maybe not needed
   ["tpope/vim-dispatch"] = {},
 
   -- Colorschemes
@@ -44,10 +48,12 @@ M.plugins = {
   },
 
   -- PlantUML
+  -- DONE
   ["aklt/plantuml-syntax"] = {
     opt = true,
     setup = function() table.insert(fignvim.plug.file_plugins, "plantuml-syntax") end,
   },
+  -- DONE
   ["weirongxu/plantuml-previewer.vim"] = {
     opt = true,
     requires = {
@@ -167,6 +173,7 @@ M.plugins = {
   ["hrsh7th/cmp-path"] = {
     after = "nvim-cmp",
   },
+  -- DONE
   ["hrsh7th/cmp-nvim-lsp"] = {
     after = "nvim-cmp",
   },
@@ -191,11 +198,17 @@ M.plugins = {
   },
 
   -- Treesitter (syntax highlighting and more)
+  -- DONE
   ["p00f/nvim-ts-rainbow"] = { after = "nvim-treesitter" },
+  -- DONE
   ["windwp/nvim-ts-autotag"] = { after = "nvim-treesitter" },
+  -- DONE
   ["JoosepAlviste/nvim-ts-context-commentstring"] = { after = "nvim-treesitter" },
+  -- DONE
   ["nvim-treesitter/nvim-treesitter-textobjects"] = { after = "nvim-treesitter" },
+  -- DONE
   ["nvim-treesitter/playground"] = { after = "nvim-treesitter" },
+  -- DONE
   ["nvim-treesitter/nvim-treesitter"] = {
     run = function() require("nvim-treesitter.install").update({ with_sync = true }) end,
     event = "BufEnter",
@@ -215,10 +228,13 @@ M.plugins = {
 
   -- General editing and formatting
   ["junegunn/vim-easy-align"] = {},
+  -- DONE
   ["AckslD/nvim-neoclip.lua"] = {
     config = function() require("plugin-configs.nvim-neoclip") end,
   },
+  -- DONE
   ["tpope/vim-surround"] = {}, -- https://github.com/tpope/vim-surround
+  -- DONE
   ["tpope/vim-unimpaired"] = {}, -- https://github.com/tpope/vim-unimpaired
   -- DONE
   ["windwp/nvim-autopairs"] = {
@@ -241,19 +257,24 @@ M.plugins = {
   ["ThePrimeagen/refactoring.nvim"] = {},
 
   -- Package management
+  -- DONE
   ["williamboman/mason.nvim"] = {
     config = function() require("plugin-configs.mason") end,
   },
+  -- DONE
   ["williamboman/mason-lspconfig.nvim"] = {
     after = "mason.nvim",
     config = function() require("plugin-configs.mason-lspconfig") end,
   },
+  -- DONE
   ["WhoIsSethDaniel/mason-tool-installer.nvim"] = {
     config = function() require("plugin-configs.mason-tool-installer") end,
   },
 
   -- LSP
+  -- DONE
   ["neovim/nvim-lspconfig"] = {},
+  -- DONE
   ["jose-elias-alvarez/null-ls.nvim"] = {
     event = "BufEnter",
     config = function() require("plugin-configs.null-ls") end,
@@ -263,6 +284,7 @@ M.plugins = {
     before = "telescope.nvim",
     config = function() require("plugin-configs.aerial") end,
   },
+  -- DONE
   ["jose-elias-alvarez/nvim-lsp-ts-utils"] = {},
   ["Issafalcon/lsp-overloads.nvim"] = {},
   ["b0o/schemastore.nvim"] = {},

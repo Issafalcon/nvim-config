@@ -1,13 +1,9 @@
 local impatient_ok, impatient = pcall(require, "impatient")
-if impatient_ok then
-  impatient.enable_profile()
-end
+if impatient_ok then impatient.enable_profile() end
 
 -- Check compatible version of Neovim
 if vim.fn.has("nvim-0.8") ~= 1 or vim.version().prerelease then
-  vim.schedule(function()
-    fignvim.ui.notify("Unsupported Neovim Version! Please check the requirements", "error")
-  end)
+  vim.schedule(function() fignvim.ui.notify("Unsupported Neovim Version! Please check the requirements", "error") end)
 end
 
 -- 1. Get all the required Fignvim API functions and commands required for setup
@@ -18,30 +14,20 @@ for _, source in ipairs({
   "commands.usercommands",
 }) do
   local status_ok, fault = pcall(require, source)
-  if not status_ok then
-    vim.api.nvim_err_writeln("Failed to load " .. source .. "\n\n" .. fault)
-  end
+  if not status_ok then vim.api.nvim_err_writeln("Failed to load " .. source .. "\n\n" .. fault) end
 end
 
 -- 2. Load general options
 local options = require("user-configs.options")
 fignvim.config.set_vim_opts(options)
 
-if vim.fn.has("win32") == 1 then
-  fignvim.config.set_shell_as_powershell()
-end
+if vim.fn.has("win32") == 1 then fignvim.config.set_shell_as_powershell() end
 
-if vim.fn.has("wsl") == 1 then
-  fignvim.config.set_win32yank_wsl_as_clip()
-end
+if vim.fn.has("wsl") == 1 then fignvim.config.set_win32yank_wsl_as_clip() end
 
 -- 3. Initialise the plugin manager and load all plugins
 fignvim.plug.initialise_packer()
 fignvim.plug.setup_plugins()
-
--- 3.5 Get mapper functions ready to create fignvim keymaps and create plugin mappings
--- fignvim.config.initialize_mapper() -- Need to do this in between loading mapper plugin and setting up any fignvim keymaps
--- fignvim.plug.create_plugin_mappings()
 
 -- 4. Set up some UI features
 fignvim.ui.set_colourscheme()

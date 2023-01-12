@@ -1,7 +1,5 @@
 local ts_config = fignvim.plug.load_module_file("nvim-treesitter.configs")
-if not ts_config then
-  return
-end
+if not ts_config then return end
 
 ts_config.setup({
   ensure_installed = "all", -- one of "all" or a list of languages

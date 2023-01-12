@@ -10,14 +10,29 @@ local telescope_mappings = {
   { "n", "<leader>th", ":lua require('telescope.builtin').help_tags()<CR>", { desc = "Search help tags" } },
   { "n", "<leader>tc", fignvim.search.dev_config_files, { desc = "Search config files" } },
   { "n", "<leader>tgc", ":lua require('telescope.builtin').git_commits()<CR>", { desc = "Search git commits" } },
-  { "n", "<leader>tbc", ":lua require('telescope.builtin').git_bcommits()<CR>", { desc = "Search git commits on current branch" } },
+  {
+    "n",
+    "<leader>tbc",
+    ":lua require('telescope.builtin').git_bcommits()<CR>",
+    { desc = "Search git commits on current branch" },
+  },
   { "n", "<leader>tgb", ":lua require('telescope.builtin').git_branches()<CR>", { desc = "Search git branches" } },
   { "n", "<leader>tgs", ":lua require('telescope.builtin').git_status()<CR>", { desc = "Search git status" } },
   { "n", "<leader>tt", ":lua require('telescope.builtin').colorscheme()<CR>", { desc = "Search colourschemes" } },
   { "n", "<leader>tm", ":lua require('telescope.builtin').marks()<CR>", { desc = "Search marks" } },
   { "n", "<leader>tr", ":lua require('telescope.builtin').registers()<CR>", { desc = "Search registers" } },
-  { "i", "<A-2>", ":lua require('telescope.builtin').registers()<CR>", { desc = "Search registers while in insert mode" } },
-  { "n", "<leader>tvc", ":lua require('telescope.builtin').command_history()<CR>", { desc = "Search command history" } },
+  {
+    "i",
+    "<A-2>",
+    ":lua require('telescope.builtin').registers()<CR>",
+    { desc = "Search registers while in insert mode" },
+  },
+  {
+    "n",
+    "<leader>tvc",
+    ":lua require('telescope.builtin').command_history()<CR>",
+    { desc = "Search command history" },
+  },
   { "n", "<leader>ta", ":Telescope aerial<CR>", { desc = "Search through Aerial Symbols" } },
 }
 
@@ -118,8 +133,6 @@ local telescope_spec = {
         },
       },
     })
-    fignvim.fn.conditional_func(telescope.load_extension, pcall(require, "notify"), "notify")
-    fignvim.fn.conditional_func(telescope.load_extension, pcall(require, "aerial"), "aerial")
     fignvim.fn.conditional_func(telescope.load_extension, pcall(require, "fzy_native"), "fzy_native")
     fignvim.fn.conditional_func(telescope.load_extension, pcall(require, "fzf"), "fzf")
 

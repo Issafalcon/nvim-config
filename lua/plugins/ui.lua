@@ -41,11 +41,20 @@ local nvim_notify_spec = {
   "rcarriga/nvim-notify",
   event = "UIEnter",
   keys = fignvim.config.make_lazy_keymaps(notify_keys),
+  dependencies = {
+    "telescope.nvim",
+  },
   opts = {
     stages = "fade_in_slide_out",
     max_height = function() return math.floor(vim.o.lines * 0.75) end,
     max_width = function() return math.floor(vim.o.columns * 0.75) end,
   },
+  config = function(_, opts)
+    local notify = fignvim.plug.load_module_file("notify")
+    local telescope = fignvim.plug.load_module_file("telescope")
+    notify.setup(opts)
+    fignvim.fn.conditional_func(telescope.load_extension, pcall(require, "notify"), "notify")
+  end,
 }
 
 -- UI Component Upgrades

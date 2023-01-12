@@ -65,8 +65,21 @@ local autopairs_spec = {
   end,
 }
 
+local nvim_surround_spec = {
+  "kylechui/nvim-surround",
+  event = "BufReadPost",
+}
+
+-- Misc keymaps for navigation, encoding and quickfix / loc lists
+local vim_unimpaired_spec = {
+  "tpope/vim-unimpaired",
+  event = "BufReadPost",
+}
+
 return {
   dial_spec,
   matchup_spec,
   autopairs_spec,
+  nvim_surround_spec,
+  vim_unimpaired_spec,
 }
