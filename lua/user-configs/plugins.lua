@@ -21,6 +21,7 @@ M.plugins = {
   },
 
   -- Notification Enhancer
+  -- DONE
   ["rcarriga/nvim-notify"] = {
     -- https://github.com/rcarriga/nvim-notify
     event = "UIEnter",
@@ -28,11 +29,14 @@ M.plugins = {
   },
 
   -- Neovim UI Enhancements
+  -- DONE
   ["stevearc/dressing.nvim"] = {
     -- https://github.com/stevearc/dressing.nvim
     event = "UIEnter",
     config = function() require("plugin-configs.dressing") end,
   },
+
+  -- DONE
   ["NvChad/nvim-colorizer.lua"] = {
     opt = true,
     setup = function() table.insert(fignvim.plug.file_plugins, "nvim-colorizer.lua") end,
@@ -216,11 +220,13 @@ M.plugins = {
   },
   ["tpope/vim-surround"] = {}, -- https://github.com/tpope/vim-surround
   ["tpope/vim-unimpaired"] = {}, -- https://github.com/tpope/vim-unimpaired
+  -- DONE
   ["windwp/nvim-autopairs"] = {
     event = "InsertEnter",
     config = function() require("plugin-configs.nvim-autopairs") end,
   },
   ["editorconfig/editorconfig-vim"] = {},
+  -- DONE
   ["lukas-reineke/indent-blankline.nvim"] = {
     event = "BufEnter",
     config = function() require("plugin-configs.indent-blankline") end,

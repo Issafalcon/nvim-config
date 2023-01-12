@@ -1,8 +1,6 @@
 local catppuccin = fignvim.plug.load_module_file("catppuccin")
 
-if not catppuccin then
-  return
-end
+if not catppuccin then return end
 
 catppuccin.setup({
   transparent_background = false,
