@@ -182,6 +182,7 @@ M.plugin_mappings = {
   ["vim-maximizer"] = {
     maximize = { mode = "n", lhs = "<leader>m", rhs = ":MaximizerToggle!<CR>", desc = "Toggle maximizer (current window)" }
   },
+  -- DONE
   ["nvim-dap"]= {
     dap_launch_lua               = { mode = "n", lhs = "<F5>", rhs  = ':lua require"osv".launch({port=8086})<CR>', desc                                               = "DAP Continue" },
     dap_continue               = { mode = "n", lhs = "<F9>", rhs  = ':lua require"dap".continue()<CR>', desc                                               = "DAP Continue" },

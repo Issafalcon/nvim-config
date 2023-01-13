@@ -6,7 +6,7 @@ M.plugins = {
   ["wbthomason/packer.nvim"] = {}, -- https://github.com/wbthomason/packer.nvim
 
   -- Optimiser
-  -- DONE
+  -- NOT NEEDED
   ["lewis6991/impatient.nvim"] = {}, -- https://github.com/lewis6991/impatient.nvim
 
   -- Lua functions
@@ -63,12 +63,14 @@ M.plugins = {
   },
 
   -- Icons
+  -- DONE
   ["nvim-tree/nvim-web-devicons"] = {
     -- https://github.com/nvim-tree/nvim-web-devicons
     disable = not vim.g.icons_enabled,
     module = "nvim-web-devicons",
     config = function() require("plugin-configs.nvim-web-devicons") end,
   },
+  -- DONE
   ["onsails/lspkind.nvim"] = {
     disable = not vim.g.icons_enabled,
     module = "lspkind",
@@ -357,14 +359,17 @@ M.plugins = {
   },
 
   -- Debugging
+  -- DONE
   ["mfussenegger/nvim-dap"] = {
     module = "dap",
     config = function() require("plugin-configs.nvim-dap") end,
   },
+  -- DONE
   ["rcarriga/nvim-dap-ui"] = {
     requires = "mfussenegger/nvim-dap",
     config = function() require("plugin-configs.nvim-dap-ui") end,
   },
+  -- DONE
   ["theHamsta/nvim-dap-virtual-text"] = {
     requires = "mfussenegger/nvim-dap",
     config = function() require("plugin-configs.nvim-dap-virtual-text") end,
@@ -373,10 +378,12 @@ M.plugins = {
     run = "bash install.sh",
     config = function() require("plugin-configs.sniprun") end,
   },
+  -- DONE
   ["mxsdev/nvim-dap-vscode-js"] = {
     requires = "mfussenegger/nvim-dap",
     config = function() require("plugin-configs.nvim-dap-vscode-js") end,
   },
+  -- DONE
   ["jbyuki/one-small-step-for-vimkind"] = {},
 
   -- Session management
