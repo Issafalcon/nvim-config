@@ -129,14 +129,21 @@ M.plugins = {
   },
 
   -- Snippets
+  -- DONE
   ["rafamadriz/friendly-snippets"] = {
     opt = true,
   },
+  -- DONE
   ["robole/vscode-markdown-snippets"] = { opt = true },
+  -- DONE
   ["J0rgeSerran0/vscode-csharp-snippets"] = { opt = true },
+  -- DONE
   ["dsznajder/vscode-es7-javascript-react-snippets"] = { opt = true },
+  -- DONE
   ["fivethree-team/vscode-svelte-snippets"] = { opt = true },
+  -- DONE
   ["xabikos/vscode-react"] = { opt = true },
+  -- DONE
   ["L3MON4D3/LuaSnip"] = {
     module = "luasnip",
     wants = "friendly-snippets",
@@ -158,18 +165,23 @@ M.plugins = {
   ["Hoffs/omnisharp-extended-lsp.nvim"] = {},
 
   -- Completion engine and sources
+  -- DONE
   ["hrsh7th/nvim-cmp"] = {
     config = function() require("plugin-configs.nvim-cmp") end,
   },
+  -- DONE
   ["saadparwaiz1/cmp_luasnip"] = {
     after = "nvim-cmp",
   },
+  -- DONE
   ["hrsh7th/cmp-buffer"] = {
     after = "nvim-cmp",
   },
+  -- DONE
   ["hrsh7th/cmp-cmdline"] = {
     after = "nvim-cmp",
   },
+  -- DONE
   ["hrsh7th/cmp-path"] = {
     after = "nvim-cmp",
   },
@@ -177,17 +189,21 @@ M.plugins = {
   ["hrsh7th/cmp-nvim-lsp"] = {
     after = "nvim-cmp",
   },
+  -- DONE
   ["hrsh7th/cmp-nvim-lua"] = {
     after = "nvim-cmp",
   },
+  -- DONE
   ["David-Kunz/cmp-npm"] = {
     after = "nvim-cmp",
   },
+  -- DONE
   ["lukas-reineke/cmp-rg"] = {
     after = "nvim-cmp",
   },
 
   -- Copilot
+  -- DONE
   ["github/copilot.vim"] = {
     commit = "1bfbaf5b027ee4d3d3dbc828c8bfaef2c45d132d",
   },

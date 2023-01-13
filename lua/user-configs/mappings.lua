@@ -115,9 +115,11 @@ M.plugin_mappings = {
     toggleterm        = { mode = {"n", "t"}, lhs = "<F7>", rhs       = "<cmd>ToggleTerm<cr>", desc                                   = "ToggleTerm" },
     toggleterm_alt    = { mode = {"n", "t"}, lhs = "<C-'>", rhs      = "<cmd>ToggleTerm<cr>", desc                                   = "ToggleTerm" }
   },
+  -- DONE
   ["aerial.nvim"] = {
     toggle_aerial    = { mode = "n", lhs        = "<leader>a", rhs = "<cmd>AerialToggle!<CR>", desc = "Toggle LSP symbol outline panel" },
   },
+  -- DONE
   ["nvim-cmp"] = {
     cmp_prev_item     = { isVirtual = true, mode = "i", lhs          = "<C-k>", rhs     = "", desc = "Cmp: Select the previous completion item", opts = {} },
     cmp_next_item     = { isVirtual = true, mode = "i", lhs          = "<C-j>", rhs     = "", desc = "Cmp: Select the next completion item", opts     = {} },
@@ -130,6 +132,7 @@ M.plugin_mappings = {
     cmp_disable       = { isVirtual = true, mode = "n", lhs          = "<C-y>", rhs     = "", desc = "Cmp: Toggle completion on and off", opts        = {} },
     cmp_confirm       = { isVirtual = true, mode = "n", lhs          = "<CR>", rhs      = "", desc = "Cmp: Confirm selection", opts                   = {} },
   },
+  -- DONE
   ["LuaSnip"] = {
     snippet_choice         = { mode = {"i", "s"}, lhs = "<C-l>", rhs             = function() fignvim.luasnip.change_choice() end, desc = "Toggle the next choice in the LuaSnip snippet", opts                           = {} },
     snippet_expand_or_next = { mode = {"i", "s"}, lhs = "<C-k>", rhs             = function() fignvim.luasnip.jump_next() end, desc     = "Expand the snippet under the cursor or jump to next snippet placeholder", opts = {} },
@@ -138,6 +141,7 @@ M.plugin_mappings = {
   },
   ["copilot.vim"] = {
     -- Used in nvim-cmp mappings as fix for copilot key-mapping fallback mechanism issue - https://github.com/hrsh7th/nvim-cmp/blob/b16e5bcf1d8fd466c289eab2472d064bcd7bab5d/doc/cmp.txt#L830-L852
+    -- DONE
     accept_suggestion = { isVirtual = true, mode = "i", lhs = "<C-x>", rhs = "", desc = "Accept the current copilot suggestion", opts = { expr = true, silent = true, script = true} },
     dummy_accept = { mode = "i", lhs = "<Plug>(vimrc:copilot-dummy-map)", rhs = 'copilot#Accept("")', desc = "Copilot dummy accept to workaround fallback issues with nvim-cmp", opts = { expr = true, silent = true } }
   },
