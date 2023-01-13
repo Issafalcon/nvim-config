@@ -1,7 +1,5 @@
 local telescope = fignvim.plug.load_module_file("telescope")
-if not telescope then
-  return
-end
+if not telescope then return end
 local actions = require("telescope.actions")
 
 telescope.setup({
@@ -88,4 +86,3 @@ fignvim.fn.conditional_func(telescope.load_extension, pcall(require, "notify"), 
 fignvim.fn.conditional_func(telescope.load_extension, pcall(require, "aerial"), "aerial")
 fignvim.fn.conditional_func(telescope.load_extension, pcall(require, "fzy_native"), "fzy_native")
 fignvim.fn.conditional_func(telescope.load_extension, pcall(require, "fzf"), "fzf")
-fignvim.fn.conditional_func(telescope.load_extension, pcall(require, "nvim-mapper"), "mapper")
