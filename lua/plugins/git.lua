@@ -152,7 +152,14 @@ local git_messenger_spec = {
   event = "VeryLazy",
 }
 
+local fugitive_spec = {
+  "tpope/vim-fugitive",
+  event = "VeryLazy",
+}
+
 return {
   diffview_spec,
   gitsigns_spec,
+  git_messenger_spec,
+  fugitive_spec,
 }

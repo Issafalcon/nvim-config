@@ -370,12 +370,15 @@ M.plugins = {
   },
   -- DONE
   ["rhysd/git-messenger.vim"] = {},
+  -- DONE
   ["tpope/vim-fugitive"] = {},
 
   -- Note taking
+  -- DONE
   ["lervag/vimtex"] = {},
 
   -- Testing
+  -- DONE
   ["nvim-neotest/neotest"] = {
     config = function() require("plugin-configs.neotest") end,
     requires = {
@@ -406,6 +409,7 @@ M.plugins = {
     requires = "mfussenegger/nvim-dap",
     config = function() require("plugin-configs.nvim-dap-virtual-text") end,
   },
+  -- NOT NEEDED
   ["michaelb/sniprun"] = {
     run = "bash install.sh",
     config = function() require("plugin-configs.sniprun") end,
@@ -419,20 +423,26 @@ M.plugins = {
   ["jbyuki/one-small-step-for-vimkind"] = {},
 
   -- Session management
+  -- DONE
   ["rmagatti/auto-session"] = {
     config = function() require("plugin-configs.auto-session") end,
   },
+  -- DONE
   ["rmagatti/session-lens"] = {
     after = { "auto-session", "telescope.nvim" },
     config = function() require("plugin-configs.session-lens") end,
   },
 
   -- Terraform
+  -- DONE
   ["hashivim/vim-terraform"] = {},
+  -- DONE
   ["juliosueiras/vim-terraform-completion"] = {},
 
   -- Plugin Development
+  -- DONE
   ["folke/neodev.nvim"] = {},
+  -- DONE
   ["rafcamlet/nvim-luapad"] = {},
 }
 

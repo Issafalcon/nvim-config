@@ -183,9 +183,11 @@ M.plugin_mappings = {
     gs_toggle_deleted  = { mode = "n", lhs          = "<leader>gd", rhs = "<cmd>Gitsigns toggle_deleted<CR>", desc                     = "Gitsigns: Toggle deleted lines in buffer", opts                   = { silent = true, buffer = true} },
     gs_select_hunk     = { mode = { "o", "x" }, lhs = "ih", rhs         = ":<C-U>Gitsigns select_hunk<CR>", desc                       = "Gitsigns: Select the current hunk as a text object", opts         = { silent = true, buffer = true} },
   },
+  -- DONE
   ["vimtex"] = {
     tex_custom_launch = { mode = "n", lhs = "\\lg", rhs = ":Start latexmk-custom-launch.sh %:p<CR>", desc = "Run a custom script to launch latex with bibliography", opts = { silent = true, noremap = true }}
   },
+  -- DONE
   ["neotest"] = {
     neotest_toggle_summary = { mode = "n", lhs = "<leader>us", rhs = function () require("neotest").summary.toggle() end, desc            = "Neotest: Open test summary window" },
     neotest_run_file       = { mode = "n", lhs = "<leader>uf", rhs = function () require("neotest").run.run(vim.fn.expand("%")) end, desc = "Neotest: Run tests in file" },

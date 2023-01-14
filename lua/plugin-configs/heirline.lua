@@ -1,58 +1,56 @@
 local heirline = fignvim.plug.load_module_file("heirline")
-if not heirline or not fignvim.status then
-  return
-end
-local C = require("user-configs.ui").colours
+if not heirline or not fignvim.status then return end
+local c = require("user-configs.ui").colours
 
 local function setup_colors()
-  local StatusLine = fignvim.ui.get_hlgroup("StatusLine", { fg = C.fg, bg = C.grey_4 })
-  local WinBar = fignvim.ui.get_hlgroup("WinBar", { fg = C.grey_2, bg = C.bg })
-  local WinBarNC = fignvim.ui.get_hlgroup("WinBarNC", { fg = C.grey, bg = C.bg })
-  local Conditional = fignvim.ui.get_hlgroup("Conditional", { fg = C.purple_1, bg = C.grey_4 })
-  local String = fignvim.ui.get_hlgroup("String", { fg = C.green, bg = C.grey_4 })
-  local TypeDef = fignvim.ui.get_hlgroup("TypeDef", { fg = C.yellow, bg = C.grey_4 })
-  local HeirlineNormal = fignvim.ui.get_hlgroup("HerlineNormal", { fg = C.blue, bg = C.grey_4 })
-  local HeirlineInsert = fignvim.ui.get_hlgroup("HeirlineInsert", { fg = C.green, bg = C.grey_4 })
-  local HeirlineVisual = fignvim.ui.get_hlgroup("HeirlineVisual", { fg = C.purple, bg = C.grey_4 })
-  local HeirlineReplace = fignvim.ui.get_hlgroup("HeirlineReplace", { fg = C.red_1, bg = C.grey_4 })
-  local HeirlineCommand = fignvim.ui.get_hlgroup("HeirlineCommand", { fg = C.yellow_1, bg = C.grey_4 })
-  local HeirlineInactive = fignvim.ui.get_hlgroup("HeirlineInactive", { fg = C.grey_7, bg = C.grey_4 })
-  local GitSignsAdd = fignvim.ui.get_hlgroup("GitSignsAdd", { fg = C.green, bg = C.grey_4 })
-  local GitSignsChange = fignvim.ui.get_hlgroup("GitSignsChange", { fg = C.orange_1, bg = C.grey_4 })
-  local GitSignsDelete = fignvim.ui.get_hlgroup("GitSignsDelete", { fg = C.red_1, bg = C.grey_4 })
-  local DiagnosticError = fignvim.ui.get_hlgroup("DiagnosticError", { fg = C.red_1, bg = C.grey_4 })
-  local DiagnosticWarn = fignvim.ui.get_hlgroup("DiagnosticWarn", { fg = C.orange_1, bg = C.grey_4 })
-  local DiagnosticInfo = fignvim.ui.get_hlgroup("DiagnosticInfo", { fg = C.white_2, bg = C.grey_4 })
-  local DiagnosticHint = fignvim.ui.get_hlgroup("DiagnosticHint", { fg = C.yellow_1, bg = C.grey_4 })
+  local statusline = fignvim.ui.get_hlgroup("statusline", { fg = c.fg, bg = c.grey_4 })
+  local winbar = fignvim.ui.get_hlgroup("winbar", { fg = c.grey_2, bg = c.bg })
+  local winbarnc = fignvim.ui.get_hlgroup("winbarnc", { fg = c.grey, bg = c.bg })
+  local conditional = fignvim.ui.get_hlgroup("conditional", { fg = c.purple_1, bg = c.grey_4 })
+  local string = fignvim.ui.get_hlgroup("string", { fg = c.green, bg = c.grey_4 })
+  local typedef = fignvim.ui.get_hlgroup("typedef", { fg = c.yellow, bg = c.grey_4 })
+  local heirlinenormal = fignvim.ui.get_hlgroup("herlinenormal", { fg = c.blue, bg = c.grey_4 })
+  local heirlineinsert = fignvim.ui.get_hlgroup("heirlineinsert", { fg = c.green, bg = c.grey_4 })
+  local heirlinevisual = fignvim.ui.get_hlgroup("heirlinevisual", { fg = c.purple, bg = c.grey_4 })
+  local heirlinereplace = fignvim.ui.get_hlgroup("heirlinereplace", { fg = c.red_1, bg = c.grey_4 })
+  local heirlinecommand = fignvim.ui.get_hlgroup("heirlinecommand", { fg = c.yellow_1, bg = c.grey_4 })
+  local heirlineinactive = fignvim.ui.get_hlgroup("heirlineinactive", { fg = c.grey_7, bg = c.grey_4 })
+  local gitsignsadd = fignvim.ui.get_hlgroup("gitsignsadd", { fg = c.green, bg = c.grey_4 })
+  local gitsignschange = fignvim.ui.get_hlgroup("gitsignschange", { fg = c.orange_1, bg = c.grey_4 })
+  local gitsignsdelete = fignvim.ui.get_hlgroup("gitsignsdelete", { fg = c.red_1, bg = c.grey_4 })
+  local diagnosticerror = fignvim.ui.get_hlgroup("diagnosticerror", { fg = c.red_1, bg = c.grey_4 })
+  local diagnosticwarn = fignvim.ui.get_hlgroup("diagnosticwarn", { fg = c.orange_1, bg = c.grey_4 })
+  local diagnosticinfo = fignvim.ui.get_hlgroup("diagnosticinfo", { fg = c.white_2, bg = c.grey_4 })
+  local diagnostichint = fignvim.ui.get_hlgroup("diagnostichint", { fg = c.yellow_1, bg = c.grey_4 })
   local colors = {
-    fg = StatusLine.fg,
-    bg = StatusLine.bg,
-    section_fg = StatusLine.fg,
-    section_bg = StatusLine.bg,
-    git_branch_fg = Conditional.fg,
-    treesitter_fg = String.fg,
-    scrollbar = TypeDef.fg,
-    git_added = GitSignsAdd.fg,
-    git_changed = GitSignsChange.fg,
-    git_removed = GitSignsDelete.fg,
-    diag_ERROR = DiagnosticError.fg,
-    diag_WARN = DiagnosticWarn.fg,
-    diag_INFO = DiagnosticInfo.fg,
-    diag_HINT = DiagnosticHint.fg,
-    normal = HeirlineNormal.fg,
-    insert = HeirlineInsert.fg,
-    visual = HeirlineVisual.fg,
-    replace = HeirlineReplace.fg,
-    command = HeirlineCommand.fg,
-    inactive = HeirlineInactive.fg,
-    winbar_fg = WinBar.fg,
-    winbar_bg = WinBar.bg,
-    winbarnc_fg = WinBarNC.fg,
-    winbarnc_bg = WinBarNC.bg,
-    blank_bg = fignvim.ui.get_hlgroup("Folded").fg,
-    file_info_bg = fignvim.ui.get_hlgroup("Visual").bg,
-    nav_icon_bg = fignvim.ui.get_hlgroup("String").fg,
-    folder_icon_bg = fignvim.ui.get_hlgroup("Error").fg,
+    fg = statusline.fg,
+    bg = statusline.bg,
+    section_fg = statusline.fg,
+    section_bg = statusline.bg,
+    git_branch_fg = conditional.fg,
+    treesitter_fg = string.fg,
+    scrollbar = typedef.fg,
+    git_added = gitsignsadd.fg,
+    git_changed = gitsignschange.fg,
+    git_removed = gitsignsdelete.fg,
+    diag_error = diagnosticerror.fg,
+    diag_warn = diagnosticwarn.fg,
+    diag_info = diagnosticinfo.fg,
+    diag_hint = diagnostichint.fg,
+    normal = heirlinenormal.fg,
+    insert = heirlineinsert.fg,
+    visual = heirlinevisual.fg,
+    replace = heirlinereplace.fg,
+    command = heirlinecommand.fg,
+    inactive = heirlineinactive.fg,
+    winbar_fg = winbar.fg,
+    winbar_bg = winbar.bg,
+    winbarnc_fg = winbarnc.fg,
+    winbarnc_bg = winbarnc.bg,
+    blank_bg = fignvim.ui.get_hlgroup("folded").fg,
+    file_info_bg = fignvim.ui.get_hlgroup("visual").bg,
+    nav_icon_bg = fignvim.ui.get_hlgroup("string").fg,
+    folder_icon_bg = fignvim.ui.get_hlgroup("error").fg,
   }
 
   for _, section in ipairs({
@@ -65,23 +63,19 @@ local function setup_colors()
     "treesitter",
     "nav",
   }) do
-    if not colors[section .. "_bg"] then
-      colors[section .. "_bg"] = colors["section_bg"]
-    end
-    if not colors[section .. "_fg"] then
-      colors[section .. "_fg"] = colors["section_fg"]
-    end
+    if not colors[section .. "_bg"] then colors[section .. "_bg"] = colors["section_bg"] end
+    if not colors[section .. "_fg"] then colors[section .. "_fg"] = colors["section_fg"] end
   end
   return colors
 end
 
 heirline.load_colors(setup_colors())
 local heirline_opts = {
-  -- Statusline
+  -- statusline
   {
     hl = { fg = "fg", bg = "bg" },
     fignvim.status.component.mode({
-      mode_text = { icon = { kind = "VimIcon", padding = { right = 1, left = 1 } } },
+      mode_text = { icon = { kind = "vimicon", padding = { right = 1, left = 1 } } },
       -- define the highlight color for the text
       hl = { fg = "bg" },
       -- surround the component with a separators
@@ -89,9 +83,7 @@ local heirline_opts = {
         -- it's a left element, so use the left separator
         separator = "left",
         -- set the color of the surrounding based on the current mode using fignvim.status module
-        color = function()
-          return { main = fignvim.status.hl.mode_bg(), right = "blank_bg" }
-        end,
+        color = function() return { main = fignvim.status.hl.mode_bg(), right = "blank_bg" } end,
       },
     }),
     -- we want an empty space here so we can use the component builder to make a new section with just an empty string
@@ -102,9 +94,7 @@ local heirline_opts = {
     -- add a section for the currently opened file information
     fignvim.status.component.file_info({
       filename = {
-        fname = function()
-          return vim.fn.expand("%")
-        end,
+        fname = function() return vim.fn.expand("%") end,
         modify = ":.",
       },
       -- enable the file_icon and disable the highlighting based on filetype
@@ -125,7 +115,7 @@ local heirline_opts = {
     {
       -- define a simple component where the provider is just a folder icon
       fignvim.status.component.builder({
-        { provider = fignvim.ui.get_icon("FolderClosed") },
+        { provider = fignvim.ui.get_icon("folderclosed") },
         padding = { right = 1 },
         hl = { fg = "bg" },
         surround = { separator = "right", color = "folder_icon_bg" },
@@ -135,9 +125,7 @@ local heirline_opts = {
         -- we only want filename to be used and we can change the fname
         -- function to get the current working directory name
         filename = {
-          fname = function()
-            return vim.fn.getcwd()
-          end,
+          fname = function() return vim.fn.getcwd() end,
           padding = { left = 1 },
         },
         -- disable all other elements of the file_info component
@@ -151,7 +139,7 @@ local heirline_opts = {
     {
       -- define a custom component with just a file icon
       fignvim.status.component.builder({
-        { provider = fignvim.ui.get_icon("DefaultFile") },
+        { provider = fignvim.ui.get_icon("defaultfile") },
         -- add padding after icon
         padding = { right = 1 },
         -- set the icon foreground
@@ -167,19 +155,17 @@ local heirline_opts = {
     },
   },
 
-  --Winbar
+  --winbar
   {
     fallthrough = false,
     {
       condition = function()
         return fignvim.status.condition.buffer_matches({
           buftype = { "terminal", "prompt", "nofile", "help", "ckfix" },
-          filetype = { "NvimTree", "neo-tree", "dashboard", "Outline", "aerial" },
+          filetype = { "nvimtree", "neo-tree", "dashboard", "outline", "aerial" },
         })
       end,
-      init = function()
-        vim.opt_local.winbar = nil
-      end,
+      init = function() vim.opt_local.winbar = nil end,
     },
     {
       condition = fignvim.status.condition.is_active,
@@ -200,10 +186,10 @@ fignvim.fn.conditional_func(table.insert, vim.g.winbar_enabled, heirline_setup, 
 
 heirline.setup(heirline_setup)
 
-vim.api.nvim_create_augroup("Heirline", { clear = true })
-vim.api.nvim_create_autocmd("ColorScheme", {
-  group = "Heirline",
-  desc = "Refresh heirline colors",
+vim.api.nvim_create_augroup("heirline", { clear = true })
+vim.api.nvim_create_autocmd("colorscheme", {
+  group = "heirline",
+  desc = "refresh heirline colors",
   callback = function()
     heirline.reset_highlights()
     heirline.load_colors(setup_colors())
