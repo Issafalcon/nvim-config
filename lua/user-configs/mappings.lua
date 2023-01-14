@@ -49,6 +49,28 @@ M.editing = {
   { "i", "<A-K>", "<Esc>:m .-2<CR>==gi", { desc = "Move current line down" } },
 }
 
+M.navigation = {
+  { "n", "<S-l>", ":bnext<CR>", { desc = "Move to next buffer" } },
+  {
+    "n",
+    "<S-h>",
+    ":bprevious<CR>",
+    { desc = "Move to previous buffer" },
+  },
+  { "n", "<C-x>", ":bdelete<CR>", { desc = "Close current buffer" } },
+  {
+    "n",
+    "<leader>l",
+    function() fignvim.ui.toggle_line_numbers() end,
+    { desc = "Toggle line numbers" },
+  },
+  {
+    "n",
+    "<leader>rn",
+    function() fignvim.ui.toggle_relative_line_numbers() end,
+    { desc = "Toggle relative line numbers" },
+  },
+}
 -- stylua: ignore
 ---@type table<string, table<string, FigNvimMapping>>
 M.general_mappings = {
@@ -64,6 +86,7 @@ M.general_mappings = {
     window_resize_left = { mode = "n", lhs = "<C-Left>", rhs = ":vertical resize +2<CR>", desc = "Resize window vertically to the left" },
     window_resize_right = { mode = "n", lhs = "<C-Right>", rhs = ":vertical resize -2<CR>", desc = "Resize window vertically to the right" },
   },
+  --DONE
   Navigation = {
     buf_next = { mode = "n", lhs = "<S-l>", rhs = ":bnext<CR>", desc = "Move to next buffer" },
     buf_prev = {
@@ -329,7 +352,6 @@ M.plugin_mappings = {
 ---@type table<string, table<string, FigNvimMapping>>
 M.lsp_mappings = {
   LSP = {
-    prev_diagnostic               = { mode = "n", lhs          = "[g", rhs          = function() vim.diagnostic.goto_prev() end, desc                            = "Go to previous diagnostic" },
     next_diagnostic               = { mode = "n", lhs          = "]g", rhs          = function() vim.diagnostic.goto_next() end, desc                            = "Go to next diagnostic" },
     hover_diagnostic              = { mode = "n", lhs          = "<leader>ld", rhs  = function() vim.diagnostic.open_float() end, desc                           = "Hover diagnostics" },
     code_action                   = { mode = "n", lhs          = "<leader>ca", rhs  = function() vim.lsp.buf.code_action() end, desc                             = "Opens the default Code Action Window" },

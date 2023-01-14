@@ -136,8 +136,10 @@ local telescope_spec = {
     fignvim.fn.conditional_func(telescope.load_extension, pcall(require, "fzy_native"), "fzy_native")
     fignvim.fn.conditional_func(telescope.load_extension, pcall(require, "fzf"), "fzf")
 
-    fignvim.config.register_keymap_group("Telescope", telescope_mappings, "<leader>t")
+    fignvim.config.register_keymap_group("Telescope", telescope_mappings, false, "<leader>t")
   end,
 }
 
-return telescope_spec
+return {
+  telescope_spec,
+}

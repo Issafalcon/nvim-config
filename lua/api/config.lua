@@ -188,10 +188,16 @@ function fignvim.config.setup_keymaps()
   require("plugin-configs.legendary")
 end
 
-function fignvim.config.register_keymap_group(groupname, mappings, whichkey_prefix)
+---Registers a keymap grouping in FigNvim (this means grouping all keymaps in a Legendary folder,
+--- and optionally binding them using Legendary)
+---@param groupname
+---@param mappings
+---@param[opt=false] perform_bind boolean
+---@param[opt=nil] whichkey_prefix string Whether or not to also create a prefix grouping in which-key
+function fignvim.config.register_keymap_group(groupname, mappings, perform_bind, whichkey_prefix)
   local legendary_maps = {
     itemgroup = groupname,
-    keymaps = fignvim.config.make_unbound_legendary_keymaps(mappings),
+    keymaps = fignvim.config.make_legendary_keymaps(mappings, perform_bind),
   }
 
   require("legendary").keymaps(legendary_maps)
@@ -199,14 +205,23 @@ function fignvim.config.register_keymap_group(groupname, mappings, whichkey_pref
   if whichkey_prefix then fignvim.config.register_whichkey_prefix(whichkey_prefix, groupname) end
 end
 
-function fignvim.config.make_unbound_legendary_keymaps(mappings)
+function fignvim.config.make_legendary_keymaps(mappings, perform_bind)
   local legendary_keys = {}
   for _, map in ipairs(mappings) do
-    table.insert(legendary_keys, {
-      map[2],
-      mode = map[1],
-      opts = map[4],
-    })
+    if perform_bind then
+      table.insert(legendary_keys, {
+        map[2],
+        map[3],
+        mode = map[1],
+        opts = map[4],
+      })
+    else
+      table.insert(legendary_keys, {
+        map[2],
+        mode = map[1],
+        opts = map[4],
+      })
+    end
   end
 
   return legendary_keys
@@ -222,22 +237,42 @@ end
 
 --- Creates a set of keymaps for lazy.nvim plugin configuration
 ---@param mappings table List of mapping configurations
----@param no_binding boolean opt True if the bindings should not be made by lazy.nvim
+---@param[opt=false] perform_bind boolean True if the bindings should not be made by lazy.nvim
 ---@return table Lazy Compatible keymaps
-function fignvim.config.make_lazy_keymaps(mappings, no_binding)
+function fignvim.config.make_lazy_keymaps(mappings, perform_bind)
   local lazy_keys = {}
   for _, map in ipairs(mappings) do
     table.insert(
       lazy_keys,
       vim.tbl_deep_extend("force", {
         map[2],
-        no_binding and nil or map[3],
+        perform_bind and map[3] or nil,
         mode = map[1],
       }, map[4])
     )
   end
 
   return lazy_keys
+end
+
+--- Registers a keymap in FigNvim (this means registering it with Legendary, with or without making a binding)
+---@param map
+---@param[opt=false] perform_bind
+function fignvim.config.register_keymap(map, perform_bind)
+  if perform_bind then
+    require("legendary").keymap({
+      map[2],
+      map[3],
+      mode = map[1],
+      opts = map[4],
+    })
+  else
+    require("legendary").keymap({
+      map[2],
+      mode = map[1],
+      opts = map[4],
+    })
+  end
 end
 
 return fignvim.config

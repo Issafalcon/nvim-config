@@ -143,7 +143,7 @@ local gitsigns_spec = {
   config = function(_, opts)
     local gitsigns = require("gitsigns")
     gitsigns.setup(opts)
-    fignvim.config.register_keymap_group("GitSigns", gitsigns_keys, "<leader>h")
+    fignvim.config.register_keymap_group("GitSigns", gitsigns_keys, false, "<leader>h")
   end,
 }
 
