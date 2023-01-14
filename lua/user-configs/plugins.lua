@@ -78,14 +78,17 @@ M.plugins = {
   },
 
   -- Windows, Buffers and Tabs
+  -- DONE
   ["szw/vim-maximizer"] = {
     cmd = "MaximizerToggle",
   },
+  -- DONE
   ["akinsho/bufferline.nvim"] = {
     -- https://github.com/akinsho/bufferline.nvim
     event = "UIEnter",
     config = function() require("plugin-configs.bufferline") end,
   },
+  -- DONE
   ["s1n7ax/nvim-window-picker"] = {
     tag = "v1.*",
     module = "window-picker",

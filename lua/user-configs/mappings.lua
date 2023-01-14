@@ -179,6 +179,7 @@ M.plugin_mappings = {
   ["cheatsheet.nvim"] = {
     cheatsheet_toggle = { mode = "n", lhs = "<leader>?", rhs = ":Cheatsheet<CR>", desc = "Toggles Cheatsheet help window in Telescope"}
   },
+  -- DONE
   ["vim-maximizer"] = {
     maximize = { mode = "n", lhs = "<leader>m", rhs = ":MaximizerToggle!<CR>", desc = "Toggle maximizer (current window)" }
   },
