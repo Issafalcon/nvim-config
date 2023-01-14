@@ -20,47 +20,95 @@ M.lists = {
   },
 }
 
+M.window = {
+  { "n", "<C-h>", "<C-w>h", { desc = "Move to next window to the left" } },
+  { "n", "<C-l>", "<C-w>l", { desc = "Move to next window to the right" } },
+  { "n", "<C-j>", "<C-w>j", { desc = "Move to next window down" } },
+  { "n", "<C-k>", "<C-w>k", { desc = "Move to next window up" } },
+  { "n", "<C-Up>", ":resize +2<CR>", { desc = "Resize window horizontally up" } },
+  { "n", "<C-Down>", ":resize -2<CR>", { desc = "Resize window horizontally down" } },
+  { "n", "<C-Left>", ":vertical resize +2<CR>", { desc = "Resize window vertically to the left" } },
+  { "n", "<C-Right>", ":vertical resize -2<CR>", { desc = "Resize window vertically to the right" } },
+}
+
+M.terminal = {
+  { "t", "<esc>", [[<C-\><C-n>]], { desc = "Enter normal mode in terminal" } },
+}
+
+M.editing = {
+  { "i", "jk", "<ESC>", { desc = "Escape insert mode" } },
+  { "v", "<", "<gv", { desc = "Indent selection left" } },
+  { "v", ">", ">gv", { desc = "Indent selection right" } },
+  { { "n", "v" }, "<A-j>", ":m .+1<CR>==", { desc = "Move selected lines up" } },
+  { { "n", "v" }, "<A-k>", ":m .-2<CR>==", { desc = "Move selected lines down" } },
+  { "x", "J", ":move '>+1<CR>gv-gv", { desc = "Move current line up" } },
+  { "x", "K", ":move '<-2<CR>gv-gv", { desc = "Move current line down" } },
+  { "x", "<A-j>", ":move '>+1<CR>gv-gv", { desc = "Move current line up" } },
+  { "x", "<A-K>", ":move '<-2<CR>gv-gv", { desc = "Move current line down" } },
+  { "i", "<A-j>", "<Esc>:m .+1<CR>==gi", { desc = "Move current line up" } },
+  { "i", "<A-K>", "<Esc>:m .-2<CR>==gi", { desc = "Move current line down" } },
+}
+
 -- stylua: ignore
 ---@type table<string, table<string, FigNvimMapping>>
 M.general_mappings = {
   -- Navigate between windows in normal mode
+  -- DONE
   Window = {
-    window_left         = { mode = "n", lhs = "<C-h>", rhs     = "<C-w>h", desc                  = "Move to next window to the left", },
-    window_right        = { mode = "n", lhs = "<C-l>", rhs     = "<C-w>l", desc                  = "Move to next window to the right" },
-    window_down         = { mode = "n", lhs = "<C-j>", rhs     = "<C-w>j", desc                  = "Move to next window down" },
-    window_up           = { mode = "n", lhs = "<C-k>", rhs     = "<C-w>k", desc                  = "Move to next window up" },
-    window_resize_up    = { mode = "n", lhs = "<C-Up>", rhs    = ":resize +2<CR>", desc          = "Resize window horizontally up", },
-    window_resize_down  = { mode = "n", lhs = "<C-Down>", rhs  = ":resize -2<CR>", desc          = "Resize window horizontally down", },
-    window_resize_left  = { mode = "n", lhs = "<C-Left>", rhs  = ":vertical resize +2<CR>", desc = "Resize window vertically to the left", },
-    window_resize_right = { mode = "n", lhs = "<C-Right>", rhs = ":vertical resize -2<CR>", desc = "Resize window vertically to the right", },
+    window_left = { mode = "n", lhs = "<C-h>", rhs = "<C-w>h", desc = "Move to next window to the left" },
+    window_right = { mode = "n", lhs = "<C-l>", rhs = "<C-w>l", desc = "Move to next window to the right" },
+    window_down = { mode = "n", lhs = "<C-j>", rhs = "<C-w>j", desc = "Move to next window down" },
+    window_up = { mode = "n", lhs = "<C-k>", rhs = "<C-w>k", desc = "Move to next window up" },
+    window_resize_up = { mode = "n", lhs = "<C-Up>", rhs = ":resize +2<CR>", desc = "Resize window horizontally up" },
+    window_resize_down = { mode = "n", lhs = "<C-Down>", rhs = ":resize -2<CR>", desc = "Resize window horizontally down" },
+    window_resize_left = { mode = "n", lhs = "<C-Left>", rhs = ":vertical resize +2<CR>", desc = "Resize window vertically to the left" },
+    window_resize_right = { mode = "n", lhs = "<C-Right>", rhs = ":vertical resize -2<CR>", desc = "Resize window vertically to the right" },
   },
   Navigation = {
-    buf_next                  = { mode = "n", lhs = "<S-l>", rhs      = ":bnext<CR>", desc                                                 = "Move to next buffer", },
-    buf_prev                  = { mode = "n", lhs = "<S-h>", rhs      = ":bprevious<CR>", desc                                             = "Move to previous buffer", },
-    buf_close                 = { mode = "n", lhs = "<C-x>", rhs      = ":bdelete<CR>", desc                                               = "Close current buffer", },
-    toggle_line_nums          = { mode = "n", lhs = "<leader>l", rhs  = function () fignvim.ui.toggle_line_numbers() end, desc             = "Toggle line numbers", },
-    toggle_relative_line_nums = { mode = "n", lhs = "<leader>rn", rhs = function () fignvim.ui.toggle_relative_line_numbers() end, desc = "Toggle relative line numbers", },
+    buf_next = { mode = "n", lhs = "<S-l>", rhs = ":bnext<CR>", desc = "Move to next buffer" },
+    buf_prev = {
+      mode = "n",
+      lhs = "<S-h>",
+      rhs = ":bprevious<CR>",
+      desc = "Move to previous buffer",
+    },
+    buf_close = { mode = "n", lhs = "<C-x>", rhs = ":bdelete<CR>", desc = "Close current buffer" },
+    toggle_line_nums = {
+      mode = "n",
+      lhs = "<leader>l",
+      rhs = function() fignvim.ui.toggle_line_numbers() end,
+      desc = "Toggle line numbers",
+    },
+    toggle_relative_line_nums = {
+      mode = "n",
+      lhs = "<leader>rn",
+      rhs = function() fignvim.ui.toggle_relative_line_numbers() end,
+      desc = "Toggle relative line numbers",
+    },
   },
+  -- DONE
   Lists = {
-    toggle_qf      = { mode = "n", lhs = "<C-q>", rhs     = function () fignvim.ui.toggle_fix_list(true) end, desc  = "Toggle quickfix window", },
-    toggle_loclist = { mode = "n", lhs = "<leader>q", rhs = function () fignvim.ui.toggle_fix_list(false) end, desc = "Toggle location list window", },
+    toggle_qf = { mode = "n", lhs = "<C-q>", rhs = function() fignvim.ui.toggle_fix_list(true) end, desc = "Toggle quickfix window" },
+    toggle_loclist = { mode = "n", lhs = "<leader>q", rhs = function() fignvim.ui.toggle_fix_list(false) end, desc = "Toggle location list window" },
   },
+  -- DONE
   Editing = {
-    escape_insert           = { mode = "i", lhs          = "jk", rhs    = "<ESC>", desc               = "Escape insert mode" },
-    indent_left             = { mode = "v", lhs          = "<", rhs     = "<gv", desc                 = "Indent selection left" },
-    indent_right            = { mode = "v", lhs          = ">", rhs     = ">gv", desc                 = "Indent selection right" },
-    move_selection_up       = { mode = { "n", "v" }, lhs = "<A-j>", rhs = ":m .+1<CR>==", desc        = "Move selected lines up" },
-    move_selection_down     = { mode = { "n", "v" }, lhs = "<A-k>", rhs = ":m .-2<CR>==", desc        = "Move selected lines down" },
-    move_selection_up_alt   = { mode = "x", lhs          = "J", rhs     = ":move '>+1<CR>gv-gv", desc = "Move current line up" },
-    move_selection_down_alt = { mode = "x", lhs          = "K", rhs     = ":move '<-2<CR>gv-gv", desc = "Move current line down" },
-    move_selection_up_x     = { mode = "x", lhs          = "<A-j>", rhs = ":move '>+1<CR>gv-gv", desc = "Move current line up" },
-    move_selection_down_x   = { mode = "x", lhs          = "<A-K>", rhs = ":move '<-2<CR>gv-gv", desc = "Move current line down" },
-    move_line_up            = { mode = "i", lhs          = "<A-j>", rhs = "<Esc>:m .+1<CR>==gi", desc = "Move current line up" },
-    move_line_down          = { mode = "i", lhs          = "<A-K>", rhs = "<Esc>:m .-2<CR>==gi", desc = "Move current line down" },
+    escape_insert = { mode = "i", lhs = "jk", rhs = "<ESC>", desc = "Escape insert mode" },
+    indent_left = { mode = "v", lhs = "<", rhs = "<gv", desc = "Indent selection left" },
+    indent_right = { mode = "v", lhs = ">", rhs = ">gv", desc = "Indent selection right" },
+    move_selection_up = { mode = { "n", "v" }, lhs = "<A-j>", rhs = ":m .+1<CR>==", desc = "Move selected lines up" },
+    move_selection_down = { mode = { "n", "v" }, lhs = "<A-k>", rhs = ":m .-2<CR>==", desc = "Move selected lines down" },
+    move_selection_up_alt = { mode = "x", lhs = "J", rhs = ":move '>+1<CR>gv-gv", desc = "Move current line up" },
+    move_selection_down_alt = { mode = "x", lhs = "K", rhs = ":move '<-2<CR>gv-gv", desc = "Move current line down" },
+    move_selection_up_x = { mode = "x", lhs = "<A-j>", rhs = ":move '>+1<CR>gv-gv", desc = "Move current line up" },
+    move_selection_down_x = { mode = "x", lhs = "<A-K>", rhs = ":move '<-2<CR>gv-gv", desc = "Move current line down" },
+    move_line_up = { mode = "i", lhs = "<A-j>", rhs = "<Esc>:m .+1<CR>==gi", desc = "Move current line up" },
+    move_line_down = { mode = "i", lhs = "<A-K>", rhs = "<Esc>:m .-2<CR>==gi", desc = "Move current line down" },
   },
+  -- DONE
   Terminal = {
     terminal_escape = { mode = "t", lhs = "<esc>", rhs = [[<C-\><C-n>]], desc = "Enter normal mode in terminal" },
-  }
+  },
 }
 
 --stylua: ignore
@@ -111,6 +159,7 @@ M.plugin_mappings = {
     comment_below        = { isVirtual = true, mode = "n", lhs = "gco", rhs = "", desc = "Add a comment on the line above", opts                                         = {} },
     comment_eol          = { isVirtual = true, mode = "n", lhs = "gcA", rhs = "", desc = "Add a comment at the end of a line", opts                                      = {} }
   },
+  -- DONE
   ["vim-easy-align"] = {
     easy_align = { mode = {"n", "x"}, lhs = "ga", rhs = "<Plug>(EasyAlign)", desc = "Easy align in visual mode, or for a motion" }
   },
@@ -153,6 +202,7 @@ M.plugin_mappings = {
     snippet_prev           = { mode = {"i", "s"}, lhs = "<C-j>", rhs             = function() fignvim.luasnip.jump_prev() end, desc = "Jump to the previous snippet placeholder", opts                                = {} },
     edit_snippets          = { mode = "n", lhs        = "<leader><leader>s", rhs = ":LuaSnipEdit<CR>", desc                             = "Edit the snippet files for the filetype of the current buffer", opts           = {} }
   },
+  -- DONE
   ["copilot.vim"] = {
     -- Used in nvim-cmp mappings as fix for copilot key-mapping fallback mechanism issue - https://github.com/hrsh7th/nvim-cmp/blob/b16e5bcf1d8fd466c289eab2472d064bcd7bab5d/doc/cmp.txt#L830-L852
     -- DONE
@@ -194,6 +244,7 @@ M.plugin_mappings = {
     neotest_run_nearest    = { mode = "n", lhs = "<leader>un", rhs = function () require("neotest").run.run() end, desc                   = "Neotest: Run nearest test" },
     neotest_debug_nearest  = { mode = "n", lhs = "<leader>ud", rhs = function () require("neotest").run.run({strategy                     = "dap"}) end, desc = "Neotest: Debug nearest test" }
   },
+  -- DONE
   ["cheatsheet.nvim"] = {
     cheatsheet_toggle = { mode = "n", lhs = "<leader>?", rhs = ":Cheatsheet<CR>", desc = "Toggles Cheatsheet help window in Telescope"}
   },
@@ -252,6 +303,7 @@ M.plugin_mappings = {
     cutlass_cut_from_cursor = { mode = "n", lhs = "M", rhs = "D", desc = "Cutlass: Cut from cursor to end of line, to clipboard" },
     cutlass_remap_marks = { mode = "n", lhs = "\\m", rhs = "m", desc = "Cutlass: Remap create mark key so it isn't shadowed" }
   },
+  -- DONE
   ["session-lens"] = {
     session_lens = { mode = "n", lhs = "<leader>sl", rhs = function() require("session-lens").search_session() end, desc = "Session Lens: Search for sessions using telescope" },
   },

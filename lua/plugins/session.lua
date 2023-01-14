@@ -1,6 +1,16 @@
+local session_lens_keys = {
+  {
+    "n",
+    "<leader>sl",
+    function() require("session-lens").search_session() end,
+    { desc = "Session Lens: Search for sessions using telescope" },
+  },
+}
+
 local session_lens_spec = {
   "rmagatti/auto-session",
   event = "VeryLazy",
+  keys = fignvim.config.make_lazy_keymaps(session_lens_keys, false),
   dependencies = {
     {
       "rmagatti/session-lens",

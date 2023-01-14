@@ -1,3 +1,6 @@
+local easy_align_keys = {
+  { { "n", "x" }, "ga", "<Plug>(EasyAlign)", { desc = "Easy align in visual mode, or for a motion" } },
+}
 local ssr_keys = {
   { { "n", "x" }, "<leader>sR", function() require("ssr").open() end, { desc = "Structural Replace" } },
 }
@@ -88,12 +91,7 @@ local autopairs_spec = {
   config = function(_, opts)
     require("nvim-autopairs").setup(opts)
     local cmp = fignvim.plug.load_module_file("cmp")
-    if cmp then
-      cmp.event:on(
-        "confirm_done",
-        require("nvim-autopairs.completion.cmp").on_confirm_done({ map_char = { tex = "" } })
-      )
-    end
+    if cmp then cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done({ map_char = { tex = "" } })) end
   end,
 }
 
@@ -129,6 +127,11 @@ local trouble_spec = {
   },
 }
 
+local easy_align_spec = {
+  "junegunn/vim-easy-align",
+  keys = fignvim.config.make_lazy_keymaps(easy_align_keys, false),
+}
+
 return {
   dial_spec,
   matchup_spec,
@@ -139,6 +142,7 @@ return {
   ssr_spec,
   treesj_spec,
   refactoring_spec,
-  trouble_spec("junegunn/vim-easy-align"),
+  trouble_spec,
+  easy_align_spec,
   "editorconfig/editorconfig-vim",
 }

@@ -1,3 +1,13 @@
+local copilot_keys = {
+
+  {
+    "i",
+    "<Plug>(vimrc:copilot-dummy-map)",
+    'copilot#Accept("")',
+    { desc = "Copilot dummy accept to workaround fallback issues with nvim-cmp", expr = true, silent = true },
+  },
+}
+
 local cmp_spec = {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
@@ -29,8 +39,7 @@ local cmp_spec = {
       path = { name = "path", priority = 250, keyword_length = 3 },
     }
 
-    local common_sources =
-      { sources.nvim_lsp, sources.luasnip, sources.rg, sources.emoji, sources.buffer, sources.path }
+    local common_sources = { sources.nvim_lsp, sources.luasnip, sources.rg, sources.emoji, sources.buffer, sources.path }
 
     cmp.setup({
       enabled = function()
@@ -94,13 +103,7 @@ local cmp_spec = {
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
         -- Fix for copilot key-mapping fallback mechanism issue - https://github.com/hrsh7th/nvim-cmp/blob/b16e5bcf1d8fd466c289eab2472d064bcd7bab5d/doc/cmp.txt#L830-L852
         ["<C-x>"] = cmp.mapping(
-          function(fallback)
-            vim.api.nvim_feedkeys(
-              vim.fn["copilot#Accept"](vim.api.nvim_replace_termcodes("<Tab>", true, true, true)),
-              "n",
-              true
-            )
-          end
+          function(fallback) vim.api.nvim_feedkeys(vim.fn["copilot#Accept"](vim.api.nvim_replace_termcodes("<Tab>", true, true, true)), "n", true) end
         ),
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
@@ -162,10 +165,13 @@ local cmp_spec = {
   end,
 }
 
+local copilot_spec = {
+  "github/copilot.vim",
+  event = "InsertEnter",
+  keys = fignvim.config.make_lazy_keymaps(copilot_keys, false),
+}
+
 return {
-  {
-    "github/copilot.vim",
-    event = "InsertEnter",
-  },
   cmp_spec,
+  copilot_spec,
 }

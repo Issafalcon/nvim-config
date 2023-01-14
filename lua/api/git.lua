@@ -1,4 +1,5 @@
 fignvim.git = {}
+fignvim.git.gitsigns = {}
 
 function fignvim.git.gitsigns.next_hunk()
   local gs = package.loaded.gitsigns
