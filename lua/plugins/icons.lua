@@ -36,7 +36,16 @@ local lsp_kind_spec = {
   end,
 }
 
+local icon_picker_spec = {
+  "ziontee113/icon-picker.nvim",
+  cmd = { "IconPickerYank", "IconPickerNormal", "IconPickerInsert" },
+  opts = {
+    disable_legacy_commands = true,
+  },
+}
+
 return {
   web_devicons_spec,
   lsp_kind_spec,
+  icon_picker_spec,
 }

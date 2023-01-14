@@ -105,8 +105,13 @@ local mason_spec = {
   },
 }
 
+local lsp_overloads_spec = {
+  "Issafalcon/lsp-overloads.nvim",
+  event = "VeryLazy",
+}
 return {
   lsp_config_spec,
   null_ls_spec,
   mason_spec,
+  lsp_overloads_spec,
 }

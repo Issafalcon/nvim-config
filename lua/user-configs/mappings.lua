@@ -101,6 +101,7 @@ M.plugin_mappings = {
     command_history    = { mode = "n", lhs = "<leader>svc",  rhs = ":lua require('telescope.builtin').command_history()<CR>",                                      desc = "Search command history"                },
     aerial_symbols     = { mode = "n", lhs = "<leader>sa",  rhs  = ":Telescope aerial<CR>",                                      desc                                   = "Search through Aerial Symbols"         },
   },
+  -- TODO - Make virtual legendary maps
   ["Comment.nvim"] = {
     opleader_line        = { isVirtual = true, mode = "o", lhs = "gc", rhs  = "", desc = "Operator pending prefix for line commenting in Normal and Visual modes", opts  = {} },
     opleader_block       = { isVirtual = true, mode = "o", lhs = "gb", rhs  = "", desc = "Operator pending prefix for block commenting in Normal and Visual modes", opts = {} },
@@ -117,6 +118,7 @@ M.plugin_mappings = {
   ["neo-tree.nvim"] = {
     open_browser = { mode = "n", lhs = "<leader>e", rhs = ":Neotree toggle<CR>", desc = "Open Neotree" }
   },
+  -- DONE
   ["toggleterm.nvim"] = {
     toggle_lazygit    = { mode = "n", lhs        = "<leader>lg", rhs = function () fignvim.term.toggle_term_cmd("lazygit") end, desc = "ToggleTerm with lazygit" },
     toggle_node       = { mode = "n", lhs        = "<leader>tn", rhs = function () fignvim.term.toggle_term_cmd("node") end, desc    = "ToggleTerm with Node" },
@@ -157,12 +159,14 @@ M.plugin_mappings = {
     accept_suggestion = { isVirtual = true, mode = "i", lhs = "<C-x>", rhs = "", desc = "Accept the current copilot suggestion", opts = { expr = true, silent = true, script = true} },
     dummy_accept = { mode = "i", lhs = "<Plug>(vimrc:copilot-dummy-map)", rhs = 'copilot#Accept("")', desc = "Copilot dummy accept to workaround fallback issues with nvim-cmp", opts = { expr = true, silent = true } }
   },
+  -- DONE
   ["diffview.nvim"] = {
     dv_select_next_entry = { isVirtual = true, mode = "n", lhs = "<tab>", rhs     = "", desc = "Diffview: Open diff for the next file in view and file panel", opts     = {} },
     dv_select_prev_entry = { isVirtual = true, mode = "n", lhs = "<s-tab>", rhs   = "", desc = "Diffview: Open diff for the previous file in view and file panel", opts = {} },
     dv_focus_files       = { isVirtual = true, mode = "n", lhs = "<leader>e", rhs = "", desc = "Diffview: Bring focus to files panel", opts                             = {} },
     dv_toggle_files      = { isVirtual = true, mode = "n", lhs = "<leader>b", rhs = "", desc = "Diffview: Toggle the files panel", opts                                 = {} },
   },
+  -- DONE
   ["gitsigns.nvim"] = {
     gs_next_hunk       = { mode = "n", lhs          = "]c", rhs         = function () fignvim.gitsigns.next_hunk() end, desc         = "Gitsigns: Next hunk", opts                                        = { noremap = true, silent = true, buffer = true, expr = true} },
     gs_prev_hunk       = { mode = "n", lhs          = "[c", rhs         = function () fignvim.gitsigns.prev_hunk() end, desc         = "Gitsigns: Previous hunk", opts                                    = { silent = true, buffer = true, expr = true} },
@@ -214,6 +218,7 @@ M.plugin_mappings = {
     dap_scopes                 = { mode = "n", lhs = "<leader>d?", rhs  = ':lua local widgets                                                                    = require"dap.ui.widgets";widgets.centered_float(widgets.scopes)<CR>', desc = "DAP Show scopes in sidebar" },
     dap_repl                   = { mode = "n", lhs = "<leader>dr", rhs  = ':lua require"dap".repl.open({}, "vsplit")<CR><C-w>l', desc                            = "DAP Opens repl in vsplit" }
   },
+  -- DONE
   ["neogen"] = {
     neogen_file = { mode = "n", lhs = "<leader>/F", rhs = function() require('neogen').generate({type="file"}) end, desc = "Generates filetype specific annotations for the nearest file" },
     neogen_function = { mode = "n", lhs = "<leader>/f", rhs = function() require('neogen').generate({type="func"}) end, desc = "Generates filetype specific annotations for the nearest function" },
@@ -233,6 +238,7 @@ M.plugin_mappings = {
   ["undotree"] = {
     undotree_toggle = { mode = "n", lhs = "<A-u>", rhs = ":UndotreeToggle<CR>", desc = "Undotree: Toggle undotree" },
   },
+  -- NOT NEEDED
   ["nvim-neoclip.lua"] = {
     neoclip_search = { mode = "n", lhs = "<leader>sy", rhs = function() require('telescope').extensions.neoclip.default() end, desc = "Neoclip: Search clipboard history" },
     neoclip_search_macros = { mode = "n", lhs = "<leader>sq", rhs = function() require("telescope").extensions.macroscope.default() end, desc = "Neoclip: Search clipboard history" },
@@ -253,6 +259,7 @@ M.plugin_mappings = {
     leap_backward = { mode = "n", lhs = "<C-n>", rhs = "<plug>(leap-backward-to)", desc = "Leap: Backward to" },
     leap_cross_window = { mode = "n", lhs = "gs", rhs = "<plug>(leap-cross-window)", desc = "Leap: Across all windows" },
   },
+  -- DONE
   ["vim-subversive"] = {
     sub_motion                 = { mode = "n", lhs          = "s", rhs         = "<plug>(SubversiveSubstitute)", desc            = "Subversive: Substitute the motion specified with whatever is in default yank register" },
     sub_line                   = { mode = "n", lhs          = "ss", rhs        = "<plug>(SubversiveSubstituteLine)", desc        = "Subversive: Substitute the line with whatever is in default yank register" },

@@ -174,6 +174,7 @@ M.plugins = {
   --   end,
   -- },
 
+  -- DONE
   ["Hoffs/omnisharp-extended-lsp.nvim"] = {},
 
   -- Completion engine and sources
@@ -221,6 +222,7 @@ M.plugins = {
   },
 
   -- Statusline
+  -- DONE
   ["rebelot/heirline.nvim"] = {
     config = function() require("plugin-configs.heirline") end,
   },
@@ -244,19 +246,22 @@ M.plugins = {
   },
 
   -- Commenting
+  -- DONE
   ["numToStr/Comment.nvim"] = {
     module = { "Comment", "Comment.api" },
     keys = { "gc", "gb", "g<", "g>" },
     config = function() require("plugin-configs.Comment") end,
   },
+  -- DONE
   ["danymat/neogen"] = {
     module = "neogen",
     config = function() require("plugin-configs.neogen") end,
   },
 
   -- General editing and formatting
-  ["junegunn/vim-easy-align"] = {},
   -- DONE
+  ["junegunn/vim-easy-align"] = {},
+  -- NOT NEEDED
   ["AckslD/nvim-neoclip.lua"] = {
     config = function() require("plugin-configs.nvim-neoclip") end,
   },
@@ -269,19 +274,25 @@ M.plugins = {
     event = "InsertEnter",
     config = function() require("plugin-configs.nvim-autopairs") end,
   },
+  -- DONE
   ["editorconfig/editorconfig-vim"] = {},
   -- DONE
   ["lukas-reineke/indent-blankline.nvim"] = {
     event = "BufEnter",
     config = function() require("plugin-configs.indent-blankline") end,
   },
+
+  -- DONE
   ["ziontee113/icon-picker.nvim"] = {
     config = function() require("plugin-configs.icon-picker") end,
   },
   -- DONE
   ["svermeulen/vim-cutlass"] = {},
+  -- DONE
   ["svermeulen/vim-subversive"] = {},
+  -- DONE
   ["tpope/vim-abolish"] = {},
+  -- DONE
   ["ThePrimeagen/refactoring.nvim"] = {},
 
   -- Package management
@@ -307,6 +318,7 @@ M.plugins = {
     event = "BufEnter",
     config = function() require("plugin-configs.null-ls") end,
   },
+  -- DONE
   ["stevearc/aerial.nvim"] = {
     module = "aerial",
     before = "telescope.nvim",
@@ -314,25 +326,32 @@ M.plugins = {
   },
   -- DONE
   ["jose-elias-alvarez/nvim-lsp-ts-utils"] = {},
+  -- DONE
   ["Issafalcon/lsp-overloads.nvim"] = {},
+  -- DONE
   ["b0o/schemastore.nvim"] = {},
 
   -- Diagnostics
+  -- DONE
   ["folke/trouble.nvim"] = {
     config = function() require("plugin-configs.trouble") end,
   },
 
   -- Keybindings / Cheatsheets / Help
+  -- DONE
   ["mrjones2014/legendary.nvim"] = {},
+  -- DONE
   ["folke/which-key.nvim"] = {
     module = "which-key",
     config = function() require("plugin-configs.which-key") end,
   },
+  -- DONE
   ["sudormrfbin/cheatsheet.nvim"] = {
     config = function() require("plugin-configs.cheatsheet") end,
   },
 
   -- Terminal
+  -- DONE
   ["akinsho/toggleterm.nvim"] = {
     cmd = "ToggleTerm",
     module = { "toggleterm", "toggleterm.terminal" },
@@ -340,13 +359,16 @@ M.plugins = {
   },
 
   -- Git integrations
+  -- DONE
   ["sindrets/diffview.nvim"] = {
     after = "plenary.nvim",
     config = function() require("plugin-configs.diffview") end,
   },
+  -- DONE
   ["lewis6991/gitsigns.nvim"] = {
     config = function() require("plugin-configs.gitsigns") end,
   },
+  -- DONE
   ["rhysd/git-messenger.vim"] = {},
   ["tpope/vim-fugitive"] = {},
 

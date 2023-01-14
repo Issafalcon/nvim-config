@@ -61,9 +61,7 @@ local cutlass_spec = {
   keys = fignvim.config.make_lazy_keymaps(cutlass_mappings),
 }
 
-local spec = {
+return {
   yanky_spec,
   cutlass_spec,
 }
-
-return spec

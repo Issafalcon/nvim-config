@@ -1,3 +1,11 @@
+local ssr_keys = {
+  { { "n", "x" }, "<leader>sR", function() require("ssr").open() end, { desc = "Structural Replace" } },
+}
+
+local treesj_keys = {
+  { "n", "J", "<cmd>TSJToggle<cr>", { desc = "Join Toggle" } },
+}
+
 local dial_keys = {
   { "n", "<C-a>", function() return require("dial.map").inc_normal() end, { expr = true, desc = "Increment" } },
   { "n", "<C-x>", function() return require("dial.map").dec_normal() end, { expr = true, desc = "Decrement" } },
@@ -5,6 +13,26 @@ local dial_keys = {
 
 local undotree_keys = {
   { "n", "<A-u>", ":UndotreeToggle<CR>", { desc = "Undotree: Toggle undotree" } },
+}
+
+local trouble_keys = {
+  { "n", "<leader>xx", "<cmd>Trouble<cr>", { silent = true, noremap = true } },
+  { "n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", { silent = true, noremap = true } },
+  { "n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", { silent = true, noremap = true } },
+  { "n", "<leader>xl", "<cmd>Trouble loclist<cr>", { silent = true, noremap = true } },
+  { "n", "<leader>xq", "<cmd>Trouble quickfix<cr>", { silent = true, noremap = true } },
+}
+-- Treesitter based structural search and replace
+local ssr_spec = {
+  "cshuaimin/ssr.nvim",
+  keys = fignvim.config.make_lazy_keymaps(ssr_keys),
+}
+
+-- Enhanced join / split functionality
+local treesj_spec = {
+  "Wansmer/treesj",
+  keys = fignvim.config.make_lazy_keymaps(treesj_keys),
+  opts = { use_default_keymaps = false, max_join_length = 150 },
 }
 
 -- Better increment / decrement
@@ -86,6 +114,21 @@ local undotree_spec = {
   keys = fignvim.config.make_lazy_keymaps(undotree_keys),
 }
 
+local refactoring_spec = {
+  "ThePrimeagen/refactoring.nvim",
+  config = true,
+}
+
+local trouble_spec = {
+  "folke/trouble.nvim",
+  cmd = { "TroubleToggle", "Trouble" },
+  keys = fignvim.config.make_lazy_keymaps(trouble_keys, false),
+  opts = {
+    use_diagnostic_signs = true,
+    mode = "workspace_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
+  },
+}
+
 return {
   dial_spec,
   matchup_spec,
@@ -93,4 +136,9 @@ return {
   nvim_surround_spec,
   vim_unimpaired_spec,
   undotree_spec,
+  ssr_spec,
+  treesj_spec,
+  refactoring_spec,
+  trouble_spec("junegunn/vim-easy-align"),
+  "editorconfig/editorconfig-vim",
 }

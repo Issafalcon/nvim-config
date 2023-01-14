@@ -3,3 +3,7 @@ local markdown_preview_spec = {
   build = "cd app && npm install",
   ft = "markdown",
 }
+
+return {
+  markdown_preview_spec,
+}

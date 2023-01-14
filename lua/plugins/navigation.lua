@@ -91,4 +91,5 @@ return {
   neo_tree_spec,
   rnvimr_spec,
   leap_spec,
+  aerial_spec,
 }
