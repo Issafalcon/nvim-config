@@ -96,6 +96,7 @@ M.plugins = {
   },
 
   -- Navigation
+  -- DONE
   ["nvim-neo-tree/neo-tree.nvim"] = {
     -- https://github.com/nvim-neo-tree/neo-tree.nvim/tree/v2.x
     branch = "v2.x",
@@ -103,18 +104,22 @@ M.plugins = {
     setup = function() vim.g.neo_tree_remove_legacy_commands = true end,
     config = function() require("plugin-configs.neo-tree") end,
   },
+  -- DONE
   ["kevinhwang91/rnvimr"] = {
     cmd = "RnvimrToggle",
     cond = function() return vim.fn.executable("ranger") == 1 end,
   },
+  -- DONE
   ["ggandor/leap.nvim"] = {
     config = function() require("plugin-configs.leap") end,
   },
+  -- DONE
   ["mbbill/undotree"] = {
     cmd = "UndotreeToggle",
   },
 
   -- Quickfix / Location List
+  -- DONE
   ["kevinhwang91/nvim-bqf"] = {},
 
   -- Fuzzy finding / searching
@@ -129,6 +134,7 @@ M.plugins = {
   ["nvim-telescope/telescope-fzf-native.nvim"] = { before = "telescope.nvim" },
   --DONE
   ["junegunn/fzf"] = { before = "telescope.nvim" },
+  -- DONE
   ["windwp/nvim-spectre"] = {
     config = function() require("plugin-configs.spectre") end,
   },
@@ -156,6 +162,7 @@ M.plugins = {
   },
 
   -- Markdown editing
+  -- DONE
   ["iamcco/markdown-preview.nvim"] = {
     run = "cd app && npm install",
   },

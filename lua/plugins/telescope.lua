@@ -139,3 +139,5 @@ local telescope_spec = {
     fignvim.config.register_keymap_group("Telescope", telescope_mappings, "<leader>t")
   end,
 }
+
+return telescope_spec

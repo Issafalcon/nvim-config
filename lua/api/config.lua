@@ -24,9 +24,7 @@ function fignvim.config.get_plugin_mappings(plugin_name, required)
   local mappings = fignvim.plug.load_module_file("user-configs.mappings", required)
   local plug_maps = mappings["plugin_mappings"][plugin_name]
 
-  if not plug_maps then
-    fignvim.ui.notify("No plugin mappings found for " .. plugin_name, "warn")
-  end
+  if not plug_maps then fignvim.ui.notify("No plugin mappings found for " .. plugin_name, "warn") end
   return plug_maps
 end
 
@@ -61,9 +59,7 @@ end
 -- @param opts table of which-key options when setting the mappings (see which-key documentation for possible values)
 function fignvim.config.which_key_register(mappings, opts)
   local status_ok, which_key = pcall(require, "which-key")
-  if not status_ok then
-    return
-  end
+  if not status_ok then return end
   for mode, prefixes in pairs(mappings) do
     for prefix, mapping_table in pairs(prefixes) do
       which_key.register(
@@ -95,9 +91,7 @@ function fignvim.config.get_legendary_keymaps()
 
     -- Virtual keymaps (i.e. Ones set by plugins, but included in mappings config to register them as non-bound maps)
     --  need to omit the handler element (i.e. the 'rhs' option)
-    if map_config.isVirtual or as_virtual then
-      table.remove(legendary_map, 2)
-    end
+    if map_config.isVirtual or as_virtual then table.remove(legendary_map, 2) end
 
     return legendary_map
   end
@@ -181,9 +175,7 @@ end
 function fignvim.config.create_mapping(mapping, bufnr)
   local opts = mapping.opts or { silent = true }
 
-  if bufnr then
-    opts.buffer = bufnr
-  end
+  if bufnr then opts.buffer = bufnr end
 
   vim.keymap.set(mapping.mode, mapping.lhs, mapping.rhs, opts)
 end
@@ -204,9 +196,7 @@ function fignvim.config.register_keymap_group(groupname, mappings, whichkey_pref
 
   require("legendary").keymaps(legendary_maps)
 
-  if whichkey_prefix then
-    fignvim.config.register_whichkey_prefix(whichkey_prefix, groupname)
-  end
+  if whichkey_prefix then fignvim.config.register_whichkey_prefix(whichkey_prefix, groupname) end
 end
 
 function fignvim.config.make_unbound_legendary_keymaps(mappings)
@@ -230,14 +220,18 @@ function fignvim.config.register_whichkey_prefix(prefix, groupname)
   })
 end
 
-function fignvim.config.make_lazy_keymaps(mappings)
+--- Creates a set of keymaps for lazy.nvim plugin configuration
+---@param mappings table List of mapping configurations
+---@param no_binding boolean opt True if the bindings should not be made by lazy.nvim
+---@return table Lazy Compatible keymaps
+function fignvim.config.make_lazy_keymaps(mappings, no_binding)
   local lazy_keys = {}
   for _, map in ipairs(mappings) do
     table.insert(
       lazy_keys,
       vim.tbl_deep_extend("force", {
         map[2],
-        map[3],
+        no_binding and nil or map[3],
         mode = map[1],
       }, map[4])
     )

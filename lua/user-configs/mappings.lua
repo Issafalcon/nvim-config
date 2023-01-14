@@ -10,6 +10,16 @@ local M = {}
 ---@field isVirtual? boolean Whether the keymap should only be virtual (i.e. Displayed in nvim-mapper) rather than being created - default = false
 ---@field opts? table Options for the Mapping (default = { silent = true })
 
+M.lists = {
+  { "n", "<C-q>", function() fignvim.ui.toggle_fix_list(true) end, { desc = "Toggle quickfix window" } },
+  {
+    "n",
+    "<leader>q",
+    function() fignvim.ui.toggle_fix_list(false) end,
+    { desc = "Toggle location list window" },
+  },
+}
+
 -- stylua: ignore
 ---@type table<string, table<string, FigNvimMapping>>
 M.general_mappings = {
@@ -56,6 +66,7 @@ M.general_mappings = {
 --stylua: ignore
 ---@type table<string, table<string, FigNvimMapping>>
 M.plugin_mappings = {
+  -- DONE
   ["nvim-spectre"] = {
     open_panel           = { mode      = "n", lhs   = "<leader>S",  rhs = ":lua require('spectre').open()<CR>",                          desc = "Open Spectre Panel"    },
     current_word         = { mode      = "n", lhs   = "<leader>sw", rhs = ":lua require('spectre').open_visual({select_word=true})<CR>", desc = "Search for current word under cursor"           },
@@ -102,6 +113,7 @@ M.plugin_mappings = {
   ["vim-easy-align"] = {
     easy_align = { mode = {"n", "x"}, lhs = "ga", rhs = "<Plug>(EasyAlign)", desc = "Easy align in visual mode, or for a motion" }
   },
+  -- DONE
   ["neo-tree.nvim"] = {
     open_browser = { mode = "n", lhs = "<leader>e", rhs = ":Neotree toggle<CR>", desc = "Open Neotree" }
   },
@@ -208,6 +220,7 @@ M.plugin_mappings = {
     neogen_class = { mode = "n", lhs = "<leader>/c", rhs = function() require('neogen').generate({type="class"}) end, desc = "Generates filetype specific annotations for the nearest class" },
     neogen_type = { mode = "n", lhs = "<leader>/t", rhs = function() require('neogen').generate({type="type"}) end, desc = "Generates filetype specific annotations for the nearest type" },
   },
+  -- DONE
   ["rnvimr"] = {
     rnvimr_tabedit    = { isVirtual = true, mode = "n", lhs = "<C-i>", rhs = "", desc = "Rnvimr: Open file in new tab"},
     rnvimr_split      = { isVirtual = true, mode = "n", lhs = "<C-x>", rhs = "", desc = "Rnvimr: Open file in horizontal split"},
@@ -216,6 +229,7 @@ M.plugin_mappings = {
     rnvimr_yank_dir   = { isVirtual = true, mode = "n", lhs = "yw", rhs    = "", desc = "Rnvimr: Yank the current directory path"},
     rnvimr_open = { mode = "n", lhs = "-", rhs = ":RnvimrToggle<CR>", desc = "Rnvimr: Toggle Rnvimr" },
   },
+  -- DONE
   ["undotree"] = {
     undotree_toggle = { mode = "n", lhs = "<A-u>", rhs = ":UndotreeToggle<CR>", desc = "Undotree: Toggle undotree" },
   },
@@ -233,6 +247,7 @@ M.plugin_mappings = {
   ["session-lens"] = {
     session_lens = { mode = "n", lhs = "<leader>sl", rhs = function() require("session-lens").search_session() end, desc = "Session Lens: Search for sessions using telescope" },
   },
+  -- DONE
   ["leap.nvim"] = {
     leap_forward = { mode = "n", lhs = "<C-m>", rhs = "<plug>(leap-forward-to)", desc = "Leap: Forward to" },
     leap_backward = { mode = "n", lhs = "<C-n>", rhs = "<plug>(leap-backward-to)", desc = "Leap: Backward to" },

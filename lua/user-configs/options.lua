@@ -33,6 +33,8 @@ M = {
     number = true, -- Show numberline
     preserveindent = true, -- Preserve indent structure as much as possible
     pumheight = 10, -- Height of the pop up menu
+    -- Better QF list UI (from https://github.com/kevinhwang91/nvim-bqf#format-new-quickfix)
+    qftf = "{info -> v:lua.fignvim.ui.qftf(info)}",
     relativenumber = false, -- Show relative numberline
     scrolloff = 8, -- Number of lines to keep above and below the cursor
     sessionoptions = { "blank", "buffers", "curdir", "folds", "help", "tabpages", "winpos", "terminal" },

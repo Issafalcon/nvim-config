@@ -116,6 +116,8 @@ M.theme = {
     CmpItemKindProperty = { link = "CmpItemKindKeyword" },
     CmpItemKindUnit = { link = "CmpItemKindKeyword" },
     GitSignsCurrentLineBlame = { link = "Comment" },
+    BqfPreviewBorder = { fg = M.colours.vue },
+    BqfPreviewRange = { link = "Search" },
   },
 }
 

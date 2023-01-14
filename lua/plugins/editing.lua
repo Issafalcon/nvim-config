@@ -3,6 +3,10 @@ local dial_keys = {
   { "n", "<C-x>", function() return require("dial.map").dec_normal() end, { expr = true, desc = "Decrement" } },
 }
 
+local undotree_keys = {
+  { "n", "<A-u>", ":UndotreeToggle<CR>", { desc = "Undotree: Toggle undotree" } },
+}
+
 -- Better increment / decrement
 local dial_spec = {
   "monaqa/dial.nvim",
@@ -76,10 +80,17 @@ local vim_unimpaired_spec = {
   event = "BufReadPost",
 }
 
+local undotree_spec = {
+  "mbbill/undotree",
+  cmd = "UndoTreeToggle",
+  keys = fignvim.config.make_lazy_keymaps(undotree_keys),
+}
+
 return {
   dial_spec,
   matchup_spec,
   autopairs_spec,
   nvim_surround_spec,
   vim_unimpaired_spec,
+  undotree_spec,
 }
