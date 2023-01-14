@@ -152,20 +152,6 @@ function fignvim.config.get_legendary_keymaps()
     end
   end
 
-  -- Then add the LSP mappings as virtual mappings (they are mapped per buffer during the LSP setup)
-  -- First create the general mappings groups
-  local lsp_mappings = require("user-configs.mappings").lsp_mappings
-  for group, lsp_maps in pairs(lsp_mappings) do
-    local legendary_maps = {}
-    for _, map in pairs(lsp_maps) do
-      table.insert(legendary_maps, create_legendary_map_table(map, true))
-    end
-    table.insert(legendary_map_table, {
-      itemgroup = group,
-      keymaps = legendary_maps,
-    })
-  end
-
   return legendary_map_table
 end
 
