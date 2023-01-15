@@ -6,9 +6,6 @@ local yanky_mappings = {
   { { "n", "x" }, "gp", "<Plug>(YankyGPutAfter)" },
   { { "n", "x" }, "gP", "<Plug>(YankyGPutBefore)" },
 
-  { "n", "<c-n>", "<Plug>(YankyCycleForward)" },
-  { "n", "<c-p>", "<Plug>(YankyCycleBackward)" },
-
   { "n", "]p", "<Plug>(YankyPutIndentAfterLinewise)" },
   { "n", "[p", "<Plug>(YankyPutIndentBeforeLinewise)" },
   { "n", "]P", "<Plug>(YankyPutIndentAfterLinewise)" },

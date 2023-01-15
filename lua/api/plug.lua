@@ -38,26 +38,18 @@ function fignvim.plug.gitsigns_on_attach_cb(bufnr)
 end
 
 function fignvim.plug.initialise_lazy_nvim()
-  -- try loading lazy.nvim
-  local lazy_avail, _ = pcall(require, "lazy")
-  -- if packer isn't availble, reinstall it
-  if not lazy_avail then
-    -- set the location to install packer
-    local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-    -- delete the old packer install if one exists
-    vim.fn.delete(lazypath, "rf")
-    if not vim.loop.fs_stat(lazypath) then
-      vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-      })
-    end
-    fignvim.ui.echo({ { "Initializing Lazy.nvim...\n\n" } })
-  end
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=v7.9.0",
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 end
 
 function fignvim.plug.setup_lazy_plugins()

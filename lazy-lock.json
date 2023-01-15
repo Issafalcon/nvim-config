@@ -25,7 +25,7 @@
   "heirline.nvim": { "branch": "master", "commit": "b07ae7e499fecc263f38d1db7feeb2da227df370" },
   "icon-picker.nvim": { "branch": "master", "commit": "0f3b2648f6f8e788bc8dfe37bc9bb18b565cfc3c" },
   "indent-blankline.nvim": { "branch": "master", "commit": "c4c203c3e8a595bc333abaf168fcb10c13ed5fb7" },
-  "lazy.nvim": { "branch": "main", "commit": "6ac67d46dc19aa4c9b72c0e9d716bcae9e122204" },
+  "lazy.nvim": { "branch": "main", "commit": "0d0d5870a3265f1c92a89dccef4a592c44e70179" },
   "leap.nvim": { "branch": "main", "commit": "a968ab4250840dc879e805f918b4f3b892310a12" },
   "legendary.nvim": { "branch": "master", "commit": "3008ed68c8f309ced07587684c8af53884791d35" },
   "lsp-overloads.nvim": { "branch": "main", "commit": "12f5468781d2d1d3feb6ad7459de764fc33898fe" },
