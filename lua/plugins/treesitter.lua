@@ -93,7 +93,7 @@ local aerial_keys = {
 local aerial_spec = {
   "stevearc/aerial.nvim",
   cmd = { "AerialOpen", "AerialToggle" },
-  keys = fignvim.config.make_lazy_keymaps(aerial_keys),
+  keys = fignvim.config.make_lazy_keymaps(aerial_keys, true),
   dependencies = {
     "telescope.nvim",
   },

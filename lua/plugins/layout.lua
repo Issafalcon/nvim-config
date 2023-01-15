@@ -5,7 +5,7 @@ local maximizer_keys = {
 local maximizer_spec = {
   "szw/vim-maximizer",
   cmd = "MaximizerToggle",
-  keys = fignvim.config.make_lazy_keymaps(maximizer_keys),
+  keys = fignvim.config.make_lazy_keymaps(maximizer_keys, true),
 }
 
 local bufferline_spec = {
@@ -36,7 +36,7 @@ local bufferline_spec = {
 }
 
 local window_picker_spec = {
-  "s1n7ax/nvim-window-pickerh",
+  "s1n7ax/nvim-window-picker",
   event = "BufReadPost",
   opts = function()
     local colours = require("user-configs.ui").colours
@@ -49,7 +49,7 @@ local window_picker_spec = {
 
 local heirline_spec = {
   "rebelot/heirline.nvim",
-  event = "BufEnterPre",
+  event = "BufReadPre",
   config = function()
     local heirline = require("heirline")
     local c = require("user-configs.ui").colours

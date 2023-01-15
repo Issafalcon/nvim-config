@@ -10,7 +10,8 @@ local cheatsheet_spec = {
 
 local whichkey_spec = {
   "folke/which-key.nvim",
-  event = "VeryLazy",
+  lazy = false,
+  priority = 950,
   opts = {
     plugins = {
       spelling = { enabled = true },
@@ -27,6 +28,8 @@ local whichkey_spec = {
 local legendary_spec = {
   "mrjones2014/legendary.nvim",
   cmd = "Legendary",
+  lazy = false,
+  priority = 900,
 }
 
 return {

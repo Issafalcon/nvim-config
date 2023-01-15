@@ -95,7 +95,7 @@ local diffview_spec = {
 local gitsigns_spec = {
   "lewis6991/gitsigns.nvim",
   event = "BufReadPre",
-  keys = fignvim.config.make_lazy_keymaps(gitsigns_keys, false),
+  keys = fignvim.config.make_lazy_keymaps(gitsigns_keys, true),
   opts = {
     signs = {
       add = { text = "▎" },

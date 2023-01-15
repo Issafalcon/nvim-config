@@ -242,7 +242,7 @@ function fignvim.config.make_lazy_keymaps(mappings, perform_bind)
         map[2],
         perform_bind and map[3] or nil,
         mode = map[1],
-      }, map[4])
+      }, map[4] or {})
     )
   end
 

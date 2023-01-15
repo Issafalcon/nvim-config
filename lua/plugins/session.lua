@@ -10,7 +10,7 @@ local session_lens_keys = {
 local session_lens_spec = {
   "rmagatti/auto-session",
   event = "VeryLazy",
-  keys = fignvim.config.make_lazy_keymaps(session_lens_keys, false),
+  keys = fignvim.config.make_lazy_keymaps(session_lens_keys, true),
   dependencies = {
     {
       "rmagatti/session-lens",

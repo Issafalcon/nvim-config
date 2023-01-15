@@ -15,7 +15,7 @@ local leap_keys = {
 local neo_tree_spec = {
   "nvim-neo-tree/neo-tree.nvim",
   cmd = "NeoTree",
-  keys = fignvim.config.make_lazy_keymaps(neo_tree_keys),
+  keys = fignvim.config.make_lazy_keymaps(neo_tree_keys, true),
   init = function() vim.g.neo_tree_remove_legacy_commands = 1 end,
   opts = {
     close_if_last_window = true,
@@ -78,18 +78,17 @@ local rnvimr_spec = {
   "kevinhwang91/rnvimr",
   cmd = "RnvimrToggle",
   enabled = function() return vim.fn.executable("ranger") == 1 end,
-  keys = fignvim.config.make_lazy_keymaps(rnvimr_keys),
+  keys = fignvim.config.make_lazy_keymaps(rnvimr_keys, true),
 }
 
 local leap_spec = {
   "ggandor/leap.nvim",
   event = "VeryLazy",
-  keys = fignvim.config.make_lazy_keymaps(leap_keys),
+  keys = fignvim.config.make_lazy_keymaps(leap_keys, true),
 }
 
 return {
   neo_tree_spec,
   rnvimr_spec,
   leap_spec,
-  aerial_spec,
 }

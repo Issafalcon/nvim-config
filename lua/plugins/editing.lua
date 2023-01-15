@@ -120,7 +120,7 @@ local refactoring_spec = {
 local trouble_spec = {
   "folke/trouble.nvim",
   cmd = { "TroubleToggle", "Trouble" },
-  keys = fignvim.config.make_lazy_keymaps(trouble_keys, false),
+  keys = fignvim.config.make_lazy_keymaps(trouble_keys, true),
   opts = {
     use_diagnostic_signs = true,
     mode = "workspace_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
@@ -129,7 +129,7 @@ local trouble_spec = {
 
 local easy_align_spec = {
   "junegunn/vim-easy-align",
-  keys = fignvim.config.make_lazy_keymaps(easy_align_keys, false),
+  keys = fignvim.config.make_lazy_keymaps(easy_align_keys, true),
 }
 
 return {

@@ -26,8 +26,8 @@ if vim.fn.has("win32") == 1 then fignvim.config.set_shell_as_powershell() end
 if vim.fn.has("wsl") == 1 then fignvim.config.set_win32yank_wsl_as_clip() end
 
 -- 3. Initialise the plugin manager and load all plugins
-fignvim.plug.initialise_packer()
-fignvim.plug.setup_plugins()
+fignvim.plug.initialise_lazy_nvim()
+fignvim.plug.setup_lazy_plugins()
 
 -- 4. Set up some UI features
 fignvim.ui.set_colourscheme()

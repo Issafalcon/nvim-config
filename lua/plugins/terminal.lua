@@ -52,7 +52,7 @@ local toggleterm_keys = {
 local toggleterm_spec = {
   "akinsho/toggleterm.nvim",
   cmd = "ToggleTerm",
-  keys = fignvim.config.make_lazy_keymaps(toggleterm_keys, false),
+  keys = fignvim.config.make_lazy_keymaps(toggleterm_keys, true),
   opts = {
     size = 10,
     open_mapping = [[<F7><F7>]],

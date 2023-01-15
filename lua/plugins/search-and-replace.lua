@@ -112,14 +112,14 @@ local bqf_spec = {
 
 local spectre_spec = {
   "windwp/nvim-spectre",
-  keys = fignvim.config.make_lazy_keymaps(spectre_keys),
+  keys = fignvim.config.make_lazy_keymaps(spectre_keys, true),
   config = true,
 }
 
 local subversive_spec = {
   "svermeulen/vim-subversive",
   event = "BufEnter",
-  keys = fignvim.config.make_lazy_keymaps(subversive_keys),
+  keys = fignvim.config.make_lazy_keymaps(subversive_keys, true),
 }
 
 local vim_abolish_spec = {

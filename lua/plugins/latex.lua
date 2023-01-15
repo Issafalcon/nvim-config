@@ -10,7 +10,7 @@ local vimtex_keys = {
 local vimtex_spec = {
   "lervag/vimtex",
   ft = "tex",
-  keys = fignvim.config.make_lazy_keymaps(vimtex_keys, false),
+  keys = fignvim.config.make_lazy_keymaps(vimtex_keys, true),
 }
 
 return {

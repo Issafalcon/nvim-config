@@ -8,9 +8,7 @@ fignvim.plug.file_plugins = {}
 --- Check if a plugin is defined in packer. Useful with lazy loading when a plugin is not necessarily loaded yet
 ---@param plugin string the plugin string to search for
 ---@return boolean value if the plugin is available
-function fignvim.plug.is_available(plugin)
-  return packer_plugins ~= nil and packer_plugins[plugin] ~= nil
-end
+function fignvim.plug.is_available(plugin) return packer_plugins ~= nil and packer_plugins[plugin] ~= nil end
 
 --- Looks to see if a module path references a lua file in a configuration folder and tries to load it. If there is an error loading the file, write an error and continue
 ---@param module string the module path to try and load
@@ -68,17 +66,8 @@ function fignvim.plug.setup_lazy_plugins()
 
   local status_ok, lazy = pcall(require, "lazy")
   if status_ok then
-    local plugins = {}
-
-    for key, plugin in pairs(require("user-configs.plugins").plugins) do
-      if type(key) == "string" and not plugin[1] then
-        plugin[1] = key
-      end
-      table.insert(plugins, plugin)
-    end
     lazy.setup({
       spec = {
-        plugins,
         { import = "plugins" },
       },
       defaults = {
@@ -141,9 +130,7 @@ function fignvim.plug.initialise_packer()
     vim.cmd.packadd("packer.nvim")
     packer_avail, _ = pcall(require, "packer")
     -- if packer didn't load, print error
-    if not packer_avail then
-      vim.api.nvim_err_writeln("Failed to load packer at:" .. packer_path)
-    end
+    if not packer_avail then vim.api.nvim_err_writeln("Failed to load packer at:" .. packer_path) end
   end
   -- if packer is available, check if there is a compiled packer file
   if packer_avail then
@@ -165,9 +152,7 @@ function fignvim.plug.setup_plugins()
     packer.startup({
       function(use)
         for key, plugin in pairs(require("user-configs.plugins").plugins) do
-          if type(key) == "string" and not plugin[1] then
-            plugin[1] = key
-          end
+          if type(key) == "string" and not plugin[1] then plugin[1] = key end
           use(plugin)
         end
       end,
@@ -175,9 +160,7 @@ function fignvim.plug.setup_plugins()
         compile_path = fignvim.plug.default_compile_path,
         snapshot_path = fignvim.plug.default_snapshot_path,
         display = {
-          open_fn = function()
-            return require("packer.util").float({ border = "rounded" })
-          end,
+          open_fn = function() return require("packer.util").float({ border = "rounded" }) end,
         },
         profile = {
           enable = true,

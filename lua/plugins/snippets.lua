@@ -45,7 +45,7 @@ local luasnip_spec = {
     "fivethree-team/vscode-svelte-snippets",
     "xabikos/vscode-react",
   },
-  keys = fignvim.config.make_lazy_keymaps(luasnip_keys),
+  keys = fignvim.config.make_lazy_keymaps(luasnip_keys, true),
   config = function()
     local ls = require("luasnip")
 

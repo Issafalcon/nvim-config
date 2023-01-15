@@ -27,7 +27,7 @@ local neotest_spec = {
     "haydenmeade/neotest-jest",
     "antoinemadec/FixCursorHold.nvim",
   },
-  keys = fignvim.config.make_lazy_keymaps(neotest_keys, false),
+  keys = fignvim.config.make_lazy_keymaps(neotest_keys, true),
   config = function()
     local neotest = require("neotest")
     neotest.setup({

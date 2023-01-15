@@ -37,6 +37,7 @@ local telescope_mappings = {
 }
 
 local telescope_spec = {
+  "nvim-telescope/telescope.nvim",
   dependencies = {
     {
       "nvim-telescope/telescope-fzf-native.nvim",
@@ -49,7 +50,7 @@ local telescope_spec = {
       "junegunn/fzf",
     },
   },
-  keys = fignvim.config.make_lazy_keymaps(telescope_mappings),
+  keys = fignvim.config.make_lazy_keymaps(telescope_mappings, true),
   config = function()
     local telescope = fignvim.plug.load_module_file("telescope")
     local actions = require("telescope.actions")

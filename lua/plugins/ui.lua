@@ -40,7 +40,7 @@ local colourschemes_spec = {
 local nvim_notify_spec = {
   "rcarriga/nvim-notify",
   event = "UIEnter",
-  keys = fignvim.config.make_lazy_keymaps(notify_keys),
+  keys = fignvim.config.make_lazy_keymaps(notify_keys, true),
   dependencies = {
     "telescope.nvim",
   },
@@ -116,16 +116,16 @@ local colorizer_spec = {
 }
 
 -- LSP winbar / statusbar symbol breadcrumbs
-local navic_spec = {
-  "SmiteshP/nvim-navic",
-  init = function()
-    vim.g.navic_silence = true
-    require("lazyvim.util").on_attach(function(client, buffer)
-      if client.server_capabilities.documentSymbolProvider then require("nvim-navic").attach(client, buffer) end
-    end)
-  end,
-  opts = { separator = " ", highlight = true, depth_limit = 5 },
-}
+--local navic_spec = {
+--  "SmiteshP/nvim-navic",
+--  init = function()
+--    vim.g.navic_silence = true
+--    require("lazyvim.util").on_attach(function(client, buffer)
+--      if client.server_capabilities.documentSymbolProvider then require("nvim-navic").attach(client, buffer) end
+--    end)
+--  end,
+--  opts = { separator = " ", highlight = true, depth_limit = 5 },
+--}
 
 local indent_blankline_spec = {
   "lukas-reineke/indent-blankline.nvim",
@@ -141,6 +141,5 @@ return {
   nvim_notify_spec,
   dressing_spec,
   colorizer_spec,
-  navic_spec,
   indent_blankline_spec,
 }
