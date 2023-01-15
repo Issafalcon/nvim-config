@@ -4,7 +4,7 @@ local cheatsheet_keys = {
 
 local cheatsheet_spec = {
   "sudormrfbin/cheatsheet.nvim",
-  keys = fignvim.config.make_lazy_keymaps(cheatsheet_keys, false),
+  keys = fignvim.config.make_lazy_keymaps(cheatsheet_keys, true),
   config = true,
 }
 

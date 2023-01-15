@@ -38,7 +38,7 @@ fignvim.lsp.setup_all_lsp_servers()
 
 -- 6. Create mappings
 vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { silent = true }) -- Prep for space to be leader key
-fignvim.config.setup_keymaps()
+fignvim.config.create_general_keymaps()
 
 -- 7. Setup debug config
 fignvim.debug.setup_debug_configs()

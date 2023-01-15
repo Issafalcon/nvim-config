@@ -48,7 +48,7 @@ local comment_spec = {
 
 local neogen_spec = {
   "danymat/neogen",
-  keys = fignvim.config.make_lazy_keymaps(neogen_keys, false),
+  keys = fignvim.config.make_lazy_keymaps(neogen_keys, true),
   opts = {
     snippet_support = "luasnip",
     languages = {

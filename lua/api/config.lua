@@ -174,6 +174,14 @@ function fignvim.config.setup_keymaps()
   require("plugin-configs.legendary")
 end
 
+function fignvim.config.create_general_keymaps()
+  local general_mappings = require("user-configs.mappings")
+  fignvim.config.register_keymap_group("Windows", general_mappings.window, true)
+  fignvim.config.register_keymap_group("Terminal", general_mappings.terminal, true)
+  fignvim.config.register_keymap_group("Editing", general_mappings.editing, true)
+  fignvim.config.register_keymap_group("Navigation", general_mappings.navigation, true)
+end
+
 ---Registers a keymap grouping in FigNvim (this means grouping all keymaps in a Legendary folder,
 --- and optionally binding them using Legendary)
 ---@param groupname

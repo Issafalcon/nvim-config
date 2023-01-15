@@ -103,7 +103,9 @@ local cmp_spec = {
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
         -- Fix for copilot key-mapping fallback mechanism issue - https://github.com/hrsh7th/nvim-cmp/blob/b16e5bcf1d8fd466c289eab2472d064bcd7bab5d/doc/cmp.txt#L830-L852
         ["<C-x>"] = cmp.mapping(
-          function(fallback) vim.api.nvim_feedkeys(vim.fn["copilot#Accept"](vim.api.nvim_replace_termcodes("<Tab>", true, true, true)), "n", true) end
+          function(fallback)
+            vim.api.nvim_feedkeys(vim.fn["copilot#Accept"](vim.api.nvim_replace_termcodes("<Tab>", true, true, true)), "n", true)
+          end
         ),
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
@@ -168,7 +170,7 @@ local cmp_spec = {
 local copilot_spec = {
   "github/copilot.vim",
   event = "InsertEnter",
-  keys = fignvim.config.make_lazy_keymaps(copilot_keys, false),
+  keys = fignvim.config.make_lazy_keymaps(copilot_keys, true),
 }
 
 return {

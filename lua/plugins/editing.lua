@@ -28,20 +28,20 @@ local trouble_keys = {
 -- Treesitter based structural search and replace
 local ssr_spec = {
   "cshuaimin/ssr.nvim",
-  keys = fignvim.config.make_lazy_keymaps(ssr_keys),
+  keys = fignvim.config.make_lazy_keymaps(ssr_keys, true),
 }
 
 -- Enhanced join / split functionality
 local treesj_spec = {
   "Wansmer/treesj",
-  keys = fignvim.config.make_lazy_keymaps(treesj_keys),
+  keys = fignvim.config.make_lazy_keymaps(treesj_keys, true),
   opts = { use_default_keymaps = false, max_join_length = 150 },
 }
 
 -- Better increment / decrement
 local dial_spec = {
   "monaqa/dial.nvim",
-  keys = fignvim.config.make_lazy_keymaps(dial_keys),
+  keys = fignvim.config.make_lazy_keymaps(dial_keys, true),
   config = function()
     local augend = require("dial.augend")
     require("dial.config").augends:register_group({
@@ -109,7 +109,7 @@ local vim_unimpaired_spec = {
 local undotree_spec = {
   "mbbill/undotree",
   cmd = "UndoTreeToggle",
-  keys = fignvim.config.make_lazy_keymaps(undotree_keys),
+  keys = fignvim.config.make_lazy_keymaps(undotree_keys, true),
 }
 
 local refactoring_spec = {
