@@ -6,20 +6,21 @@ end
 
 --- Initialize icons used throughout the user interface
 function fignvim.ui.initialize_icons()
-  fignvim.ui.icons = require("icons.nerd_font")
-  fignvim.ui.text_icons = require("icons.text")
-  fignvim.ui.lspkind_icons = require("icons.lspkind")
+  fignvim.ui.icons = require("core.icons.nerd_font")
+  fignvim.ui.text_icons = require("core.icons.text")
+  fignvim.ui.lspkind_icons = require("core.icons.lspkind")
 end
 
 function fignvim.ui.set_colourscheme()
-  local ui_settings = require("user-configs.ui")
+  local ui_settings = require("core.colourscheme")
   vim.cmd.colorscheme(ui_settings.theme.colourscheme)
 end
+
 --- Get an icon from `lspkind` if it is available and return it
 ---@param kind string the kind of icon in `lspkind` to retrieve
 ---@return string the icon
 function fignvim.ui.get_icon(kind)
-  local icon_pack = vim.g.icons_enabled and "icons" or "text_icons"
+  local icon_pack = "icons"
   if not fignvim.ui[icon_pack] then
     fignvim.ui.initialize_icons()
   end
@@ -114,36 +115,10 @@ function fignvim.ui.toggle_fix_list(global)
   end
 end
 
-function fignvim.ui.configure_diagnostics()
-  local diagnostic_settings = require("user-configs.diagnostics").config
-  vim.diagnostic.config(diagnostic_settings[bool2str(vim.g.diagnostics_enabled)])
-end
-
---- Toggle diagnostics
-function fignvim.ui.toggle_diagnostics()
-  local status = "on"
-  if vim.g.status_diagnostics_enabled then
-    if vim.g.diagnostics_enabled then
-      vim.g.diagnostics_enabled = false
-      status = "virtual text off"
-    else
-      vim.g.status_diagnostics_enabled = false
-      status = "fully off"
-    end
-  else
-    vim.g.diagnostics_enabled = true
-    vim.g.status_diagnostics_enabled = true
-  end
-
-  local on_off = vim.g.diagnostics_enabled and "on" or "off"
-  vim.diagnostic.config(require("user-configs.diagnostics")[on_off])
-  fignvim.ui.notify(string.format("diagnostics %s", status))
-end
-
 --- Toggle auto format
 function fignvim.ui.toggle_autoformat()
   vim.g.autoformat_enabled = not vim.g.autoformat_enabled
-  fignvim.notify(string.format("Autoformatting %s", bool2str(vim.g.autoformat_enabled)))
+  fignvim.ui.notify(string.format("Autoformatting %s", bool2str(vim.g.autoformat_enabled)))
 end
 
 --- Get highlight properties for a given highlight name

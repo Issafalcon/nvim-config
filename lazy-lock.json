@@ -1,0 +1,6 @@
+{
+  "cheatsheet.nvim": { "branch": "master", "commit": "9716f9aaa94dd1fd6ce59b5aae0e5f25e2a463ef" },
+  "lazy.nvim": { "branch": "main", "commit": "6ac67d46dc19aa4c9b72c0e9d716bcae9e122204" },
+  "legendary.nvim": { "branch": "master", "commit": "3008ed68c8f309ced07587684c8af53884791d35" },
+  "which-key.nvim": { "branch": "main", "commit": "e4fa445065a2bb0bbc3cca85346b67817f28e83e" }
+}
