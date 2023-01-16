@@ -24,17 +24,12 @@ function fignvim.plug.initialise_lazy_nvim()
       table.insert(import_list, { import = "modules." .. module_name})
     end
     
-    fignvim.fn.put("Modules list: ")
-    fignvim.fn.put(vim.g.fignvim_modules)
-
-    fignvim.fn.put("Import list: ")
-    fignvim.fn.put(import_list)
     local status_ok, lazy = pcall(require, "lazy")
     if status_ok then
       lazy.setup({
         spec = import_list,
         defaults = {
-          lazy = false,
+          lazy = true,
         },
         dev = {
           path = "$PROJECTS",
@@ -58,7 +53,6 @@ function fignvim.plug.initialise_lazy_nvim()
               "gzip",
               "matchit",
               "matchparen",
-              "netrwPlugin",
               "tarPlugin",
               "tohtml",
               "tutor",

@@ -11,11 +11,6 @@ function fignvim.ui.initialize_icons()
   fignvim.ui.lspkind_icons = require("core.icons.lspkind")
 end
 
-function fignvim.ui.set_colourscheme()
-  local ui_settings = require("core.colourscheme")
-  vim.cmd.colorscheme(ui_settings.theme.colourscheme)
-end
-
 --- Get an icon from `lspkind` if it is available and return it
 ---@param kind string the kind of icon in `lspkind` to retrieve
 ---@return string the icon

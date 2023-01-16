@@ -22,7 +22,8 @@ end
 ---         The list is the set of named plugins that will match the indexes of 
 ---         the returned specs from the module's "spec.lua" file
 fignvim.module.register_modules({
-  ["cheatsheets"] = { "cheatsheet", "legendary", "whichkey" }
+  ["cheatsheets"] = { "cheatsheet", "legendary", "whichkey" },
+  ["ui"] = { "notify", "colourschemes", "dressing", "colorizer" }
 })
 
 if vim.fn.has("win32") == 1 then
