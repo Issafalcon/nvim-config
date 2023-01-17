@@ -1,8 +1,14 @@
 M = {}
+
+local function load_schemas()
+  local schemastore_ok, schemastore = pcall(require, "schemastore")
+  return schemastore_ok and schemastore.json.schemas() or {}
+end
+
 M.opts = {
   settings = {
     json = {
-      schemas = require("schemastore").json.schemas(),
+      schemas = load_schemas()
     },
   },
   setup = {

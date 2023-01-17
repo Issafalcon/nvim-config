@@ -6,7 +6,7 @@ M.opts = {
   },
 }
 
-local extended_definitions = fignvim.plug.load_module_file("omnisharp_extended")
+local extended_definitions_ok, extended_definitions = pcall(require, "omnisharp_extended")
 -- local neosharper = fignvim.plug.load_module_file("neosharper")
 
 if extended_definitions then

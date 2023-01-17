@@ -6,7 +6,7 @@ fignvim.lsp.null_ls = {}
 function fignvim.lsp.null_ls.providers(filetype)
   local registered = {}
   -- try to load null-ls
-  local sources = fignvim.plug.load_module_file("null-ls.sources")
+  local sources = require("null-ls.sources")
   if sources then
     -- get the available sources of a given filetype
     for _, source in ipairs(sources.get_available(filetype)) do

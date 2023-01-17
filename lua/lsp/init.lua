@@ -10,21 +10,23 @@ require("lsp.handlers")
 fignvim.lsp.setup = function(server)
   local opts = fignvim.lsp.server_settings(server)
 
-  if server == "sumneko_lua" and fignvim.plug.is_available("neodev.nvim") then
-    local neodev = fignvim.plug.load_module_file("neodev")
+  if server == "sumneko_lua" then
+    local neodev_ok, neodev = pcall(require, "neodev")
     -- For developing Lua plugins for Neovim Only
     -- Comment out below lines so lua_dev is not used when working on other Lua projects
-    neodev.setup({
-      library = {
-        enabled = false,
-        types = true,
-        -- you can also specify the list of plugins to make available as a workspace library
-        -- plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
-        plugins = false,
-        runtime = true,
-      },
-      setup_jsonls = true,
-    })
+    if neodev_ok then
+      neodev.setup({
+        library = {
+          enabled = false,
+          types = true,
+          -- you can also specify the list of plugins to make available as a workspace library
+          -- plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
+          plugins = false,
+          runtime = true,
+        },
+        setup_jsonls = true,
+      })
+    end
   end
 
   require("lspconfig")[server].setup(opts)
@@ -47,8 +49,8 @@ function fignvim.lsp.on_attach(client, bufnr)
   end
 
   if client.server_capabilities.signatureHelpProvider then
-    local lsp_overloads = fignvim.plug.load_module_file("lsp-overloads")
-    if lsp_overloads then
+    local lsp_overloads_ok, lsp_overloads = pcall(require, "lsp-overloads")
+    if lsp_overloads_ok then
       lsp_overloads.setup(client, {
         ui = {
           close_events = { "CursorMoved", "CursorMovedI", "InsertCharPre" },
@@ -64,7 +66,7 @@ end
 function fignvim.lsp.server_settings(server_name)
   local fignvim_capabilities = require("lsp.capabilities")
   local server = require("lspconfig")[server_name]
-  local server_config = fignvim.plug.load_module_file("lsp.lsp_servers." .. server_name)
+  local _, server_config = pcall(require, "lsp.lsp_servers." .. server_name)
 
   local server_on_attach = server.on_attach
   local custom_on_attach = server_config and server_config.on_attach

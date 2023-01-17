@@ -20,7 +20,7 @@ function fignvim.term.toggle_term_cmd(term_details)
   -- if terminal doesn't exist yet, create it
   if fignvim.term.user_terminals[term_key] == nil then
     fignvim.term.user_terminals[term_key] =
-      fignvim.plug.load_module_file("toggleterm.terminal", true).Terminal:new(term_details)
+      require("toggleterm.terminal").Terminal:new(term_details)
   end
   -- toggle the terminal
   fignvim.term.user_terminals[term_key]:toggle()

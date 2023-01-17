@@ -21,9 +21,9 @@ M.opts = {
 M.on_attach = function(client, bufnr)
   client.server_capabilities.document_formatting = false
 
-  local ts_utils = fignvim.plug.load_module_file("nvim-lsp-ts-utils")
-  fignvim.fn.conditional_func(ts_utils.setup, ts_utils ~= nil, {})
-  fignvim.fn.conditional_func(ts_utils.setup_client, ts_utils ~= nil, client)
+  local ts_utils_ok, ts_utils = pcall(require, "nvim-lsp-ts-utils")
+  fignvim.fn.conditional_func(ts_utils.setup, ts_utils_ok ~= nil, {})
+  fignvim.fn.conditional_func(ts_utils.setup_client, ts_utils_ok ~= nil, client)
 
   local clients = vim.lsp.buf_get_clients(bufnr)
   for _, other_client in pairs(clients) do

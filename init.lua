@@ -23,7 +23,8 @@ end
 ---         the returned specs from the module's "spec.lua" file
 fignvim.module.register_modules({
   ["cheatsheets"] = { "cheatsheet", "legendary", "whichkey" },
-  ["ui"] = { "notify", "colourschemes", "dressing", "colorizer" }
+  ["ui"] = { "notify", "colourschemes", "dressing", "colorizer" },
+  ["lsp"] = { "lsp_config", "mason", "null-ls", "lsp-overloads", "schemastore"}
 })
 
 if vim.fn.has("win32") == 1 then
