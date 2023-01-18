@@ -13,56 +13,56 @@ function fignvim.plug.initialise_lazy_nvim()
     })
   end
   vim.opt.rtp:prepend(lazypath)
+end
+
+function fignvim.plug.setup_lazy_plugins()
+  local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+  vim.opt.rtp:prepend(lazypath)
+
+  local import_list = {}
+  for module_name, _ in pairs(vim.g.fignvim_modules) do
+    table.insert(import_list, { import = "modules." .. module_name })
   end
-  
-  function fignvim.plug.setup_lazy_plugins()
-    local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-    vim.opt.rtp:prepend(lazypath)
-  
-    local import_list = {}
-    for module_name, _ in pairs(vim.g.fignvim_modules) do
-      table.insert(import_list, { import = "modules." .. module_name})
-    end
-    
-    local status_ok, lazy = pcall(require, "lazy")
-    if status_ok then
-      lazy.setup({
-        spec = import_list,
-        defaults = {
-          lazy = true,
-        },
-        dev = {
-          path = "$PROJECTS",
-          ---@type string[] plugins that match these patterns will use your local versions instead of being fetched from GitHub
-          patterns = {},
-        },
-        checker = {
+
+  local status_ok, lazy = pcall(require, "lazy")
+  if status_ok then
+    lazy.setup({
+      spec = import_list,
+      defaults = {
+        lazy = true,
+      },
+      dev = {
+        path = "$PROJECTS",
+        ---@type string[] plugins that match these patterns will use your local versions instead of being fetched from GitHub
+        patterns = {},
+      },
+      checker = {
+        enabled = true,
+      },
+      install = { colorscheme = { "catppuccin" }, missing = true },
+      diff = {
+        cmd = "diffview.nvim",
+      },
+      performance = {
+        cache = {
           enabled = true,
+          -- disable_events = {},
         },
-        install = { colorscheme = { "catppuccin" } },
-        diff = {
-          cmd = "diffview.nvim",
-        },
-        performance = {
-          cache = {
-            enabled = true,
-            -- disable_events = {},
-          },
-          rtp = {
-            disabled_plugins = {
-              "gzip",
-              "matchit",
-              "matchparen",
-              "tarPlugin",
-              "tohtml",
-              "tutor",
-              "zipPlugin",
-            },
+        rtp = {
+          disabled_plugins = {
+            "gzip",
+            "matchit",
+            "matchparen",
+            "tarPlugin",
+            "tohtml",
+            "tutor",
+            "zipPlugin",
           },
         },
-      })
-    end
+      },
+    })
   end
+end
 
 --- Special mapping callback for git_signs so mappings are created per buffer during the on_attach callback
 ---@param bufnr number The buffer number to create mappings for

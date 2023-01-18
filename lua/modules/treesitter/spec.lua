@@ -1,5 +1,6 @@
 local treesitter_spec = {
   "nvim-treesitter/nvim-treesitter",
+  version = false,
   build = ":TSUpdate",
   event = "BufReadPost",
   opts = {
@@ -15,8 +16,9 @@ local treesitter_spec = {
       extended_mode = true,
       max_file_lines = nil,
     },
-    indent = { enable = false },
+    indent = { enable = true },
     incremental_selection = { enable = true },
+    context_commentstring = { enable = true, enable_autocmd = false },
     autotag = { enable = true },
     textobjects = {
       select = {
@@ -76,6 +78,9 @@ local treesitter_spec = {
     -- Enable treesitter playground
     "nvim-treesitter/playground",
   },
+  config = function(_, opts)
+    require("nvim-treesitter.configs").setup(opts)
+  end,
 }
 
 local aerial_keys = {
@@ -122,26 +127,31 @@ local aerial_spec = {
 }
 
 return fignvim.module.enable_registered_plugins({
-    ["treesitter"] = treesitter_spec,
-    ["aerial"] = aerial_spec,
-    -- Easier configuration of TS text objects
-    ["treesitter-textobjects"] = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      events = "bufreadpost"
-    },
-    -- Auto-close HTML tags in various filetypes
-    ["ts-autotag"] ={
-      "windwp/nvim-ts-autotag",
-      events = "BufReadPost"
-    },
-    -- Provide context based commentstring
-    ["ts-context-commentstring"] = {
-       "JoosepAlviste/nvim-ts-context-commentstring",
-       events = "BufReadPost"
-      },
-    -- Rainbow parentheses using treesitter (TODO: Find alternative - this is no longer maintained)
-    ["ts-rainbow"] = { 
-      "p00f/nvim-ts-rainbow", 
-       events = "BufReadPost"
-    },
+  ["treesitter"] = treesitter_spec,
+  ["aerial"] = aerial_spec,
+  -- Easier configuration of TS text objects
+  ["treesitter-textobjects"] = {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    event = "BufReadPost",
+  },
+  ["treesitter-context"] = {
+    "nvim-treesitter/nvim-treesitter-context",
+    event = "BufReadPre",
+    config = true,
+  },
+  -- Auto-close HTML tags in various filetypes
+  ["ts-autotag"] = {
+    "windwp/nvim-ts-autotag",
+    event = "BufReadPost",
+  },
+  -- Provide context based commentstring
+  ["ts-context-commentstring"] = {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    event = "BufReadPost",
+  },
+  -- Rainbow parentheses using treesitter (TODO: Find alternative - this is no longer maintained)
+  ["ts-rainbow"] = {
+    "p00f/nvim-ts-rainbow",
+    event = "BufReadPost",
+  },
 }, "treesitter")

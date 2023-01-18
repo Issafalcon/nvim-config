@@ -13,6 +13,11 @@ local copilot_spec = {
   keys = fignvim.mappings.make_lazy_keymaps(copilot_keys, true),
   config = function()
     fignvim.mappings.make_legendary_keymaps(copilot_keys, false)
+    fignvim.config.set_vim_opts({
+      g = {
+        copilot_no_tab_map = true, -- Disable tab mapping in insert mode when using copilot (so you can override the default mapping)
+      }
+    })
   end
 }
 

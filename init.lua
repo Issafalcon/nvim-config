@@ -19,16 +19,24 @@ end
 
 -- Register modules
 ---@summary Takes a table of lists, indexed by module name
----         The list is the set of named plugins that will match the indexes of 
+---         The list is the set of named plugins that will match the indexes of
 ---         the returned specs from the module's "spec.lua" file
 fignvim.module.register_modules({
   ["plugins"] = { "sqlite", "neodev", "luapad" },
   ["cheatsheets"] = { "cheatsheet", "legendary", "whichkey" },
   ["ui"] = { "notify", "colourschemes", "dressing", "colorizer" },
-  ["lsp"] = { "lsp_config", "mason", "null-ls", "lsp-overloads", "schemastore"},
+  ["lsp"] = { "lsp_config", "mason", "null-ls", "lsp-overloads", "schemastore" },
   ["completion"] = { "cmp", "copilot" },
-  ["treesitter"] = { "treesitter", "treesitter-textobjects", "ts-autotag", "ts-context-commentstring", "ts-rainbow", "aerial" },
-  ["navigation"] = { "telescope", "neo_tree", "leap", "rnvimr" }
+  ["treesitter"] = {
+    "treesitter",
+    "treesitter-context",
+    "treesitter-textobjects",
+    "ts-autotag",
+    "ts-context-commentstring",
+    "ts-rainbow",
+    "aerial",
+  },
+  ["navigation"] = { "telescope", "neo_tree", "leap", "rnvimr" },
 })
 
 if vim.fn.has("win32") == 1 then

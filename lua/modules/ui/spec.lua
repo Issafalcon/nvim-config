@@ -2,7 +2,9 @@ local notify_keys = {
   {
     "n",
     "<leader>un",
-    function() require("notify").dismiss({ silent = true, pending = true }) end,
+    function()
+      require("notify").dismiss({ silent = true, pending = true })
+    end,
     { desc = "Dismiss all notifications" },
   },
 }
@@ -13,8 +15,12 @@ local nvim_notify_spec = {
   keys = fignvim.mappings.make_lazy_keymaps(notify_keys, true),
   opts = {
     stages = "fade_in_slide_out",
-    max_height = function() return math.floor(vim.o.lines * 0.75) end,
-    max_width = function() return math.floor(vim.o.columns * 0.75) end,
+    max_height = function()
+      return math.floor(vim.o.lines * 0.75)
+    end,
+    max_width = function()
+      return math.floor(vim.o.columns * 0.75)
+    end,
   },
   config = function(_, opts)
     vim.notify = require("notify")
@@ -29,25 +35,28 @@ local colourschemes_spec = {
     lazy = false,
     priority = 1000,
     opts = {
-        flavour = "mocha",
-        transparent_background = false,
-        term_colors = true,
-        integrations = {
-          telescope = true,
-          aerial = true,
-          gitsigns = true,
-          cmp = true,
-          nvimtree = true,
-          mason = true,
-        },
-        dim_inactive = {
-          enabled = true,
-          shade = "dark",
-          percentage = 0.10,
-        },
-      }
+      flavour = "mocha",
+      transparent_background = false,
+      term_colors = true,
+      integrations = {
+        telescope = true,
+        aerial = true,
+        gitsigns = true,
+        cmp = true,
+        nvimtree = true,
+        mason = true,
+      },
+      dim_inactive = {
+        enabled = true,
+        shade = "dark",
+        percentage = 0.10,
+      },
+    },
+    config = function()
+      vim.cmd.colorscheme("catppuccin")
+    end,
   },
-  { "shaunsingh/oxocarbon.nvim" },
+  { "shaunsingh/oxocarbon.nvim", lazy = false },
 }
 
 -- UI Component Upgrades
@@ -112,5 +121,5 @@ return fignvim.module.enable_registered_plugins({
   ["notify"] = nvim_notify_spec,
   ["colourschemes"] = colourschemes_spec,
   ["dressing"] = dressing_spec,
-  ["colorizer"] = colorizer_spec
+  ["colorizer"] = colorizer_spec,
 }, "ui")

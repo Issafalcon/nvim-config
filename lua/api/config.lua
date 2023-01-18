@@ -2,7 +2,7 @@ fignvim.config = {}
 
 --- Set vim options with a nested table like API with the format vim.<first_key>.<second_key>.<value>
 ---@param options table the nested table of vim options
-fignvim.config.set_vim_opts = function(options)
+function fignvim.config.set_vim_opts(options)
   for scope, table in pairs(options) do
     for setting, value in pairs(table) do
       vim[scope][setting] = value
@@ -59,27 +59,6 @@ function fignvim.config.which_key_register(mappings, opts)
       )
     end
   end
-end
-
---- Create a mapping based on a FigNvimMapping
----@param mapping FigNvimMapping The mapping parameters
----@param bufnr? number Optional buffer number to create keymapping for
-function fignvim.config.create_mapping(mapping, bufnr)
-  local opts = mapping.opts or { silent = true }
-
-  if bufnr then
-    opts.buffer = bufnr
-  end
-
-  vim.keymap.set(mapping.mode, mapping.lhs, mapping.rhs, opts)
-end
-
-function fignvim.config.setup_keymaps()
-  -- Requiring these files will allow legendary to bind keys by calling the
-  -- underlying vim.keymap.set command, and also create records for virtual keybindings
-  -- Whichkey registry sets up groups for certain patterns of keys
-  require("plugin-configs.which-key-register")
-  require("plugin-configs.legendary")
 end
 
 return fignvim.config

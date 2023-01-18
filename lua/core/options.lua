@@ -56,6 +56,8 @@ local options = {
     mapleader = " ", -- set leader key
     maplocalleader = " ", -- set local leader key
     diagnostics_enabled = true, -- enable diagnostics at start
+    autoformat_enabled = true, -- enable or disable auto formatting at start (lsp.formatting.format_on_save must be enabled)
+    autopairs_enabled = true, -- enable autopairs at start
     status_diagnostics_enabled = true, -- enable diagnostics in statusline
     fignvim_modules = {}, -- Track modules
   },

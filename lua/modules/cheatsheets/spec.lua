@@ -11,7 +11,6 @@ local cheatsheet_spec = {
 local whichkey_spec = {
   "folke/which-key.nvim",
   lazy = false,
-  priority = 950,
   opts = {
     plugins = {
       spelling = { enabled = true },
@@ -29,11 +28,10 @@ local legendary_spec = {
   "mrjones2014/legendary.nvim",
   cmd = "Legendary",
   lazy = false,
-  priority = 900,
 }
 
 return fignvim.module.enable_registered_plugins({
   ["cheatsheet"] = cheatsheet_spec,
   ["whichkey"] = whichkey_spec,
-  ["legendary"] = legendary_spec
+  ["legendary"] = legendary_spec,
 }, "cheatsheets")
