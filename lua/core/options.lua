@@ -55,6 +55,8 @@ local options = {
   g = {
     mapleader = " ", -- set leader key
     maplocalleader = " ", -- set local leader key
+    diagnostics_enabled = true, -- enable diagnostics at start
+    status_diagnostics_enabled = true, -- enable diagnostics in statusline
     fignvim_modules = {}, -- Track modules
   },
 }

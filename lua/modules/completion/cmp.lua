@@ -9,6 +9,19 @@ local cmp_spec = {
     "hrsh7th/cmp-nvim-lsp",
     "David-Kunz/cmp-npm",
     "lukas-reineke/cmp-rg",
+    {
+        "onsails/lspkind.nvim",
+        event = "BufReadPre",
+        config = function()
+          local lspkind = require("lspkind")
+          fignvim.lspkind = {
+            mode = "symbol",
+            symbol_map = fignvim.ui.lspkind_icons,
+          }
+      
+          lspkind.init(fignvim.lspkind)
+        end,
+    }
   },
   config = function()
     -- code
@@ -34,7 +47,7 @@ local cmp_spec = {
     cmp.setup({
       enabled = function()
         if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
-        return vim.g.cmp_enabled
+        return true
       end,
       preselect = cmp.PreselectMode.None,
       formatting = {

@@ -27,7 +27,8 @@ fignvim.module.register_modules({
   ["ui"] = { "notify", "colourschemes", "dressing", "colorizer" },
   ["lsp"] = { "lsp_config", "mason", "null-ls", "lsp-overloads", "schemastore"},
   ["completion"] = { "cmp", "copilot" },
-  ["treesitter"] = { "treesitter", "treesitter-textobjects", "ts-autotag", "ts-context-commentstring", "ts-rainbow", "aerial" }
+  ["treesitter"] = { "treesitter", "treesitter-textobjects", "ts-autotag", "ts-context-commentstring", "ts-rainbow", "aerial" },
+  ["navigation"] = { "telescope", "neo_tree", "leap", "rnvimr" }
 })
 
 if vim.fn.has("win32") == 1 then
