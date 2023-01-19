@@ -21,7 +21,7 @@ function fignvim.plug.setup_lazy_plugins()
 
   local import_list = {}
   for module_name, _ in pairs(vim.g.fignvim_modules) do
-    table.insert(import_list, { import = "modules." .. module_name })
+    table.insert(import_list, { import = "modules." .. module_name .. ".spec" })
   end
 
   local status_ok, lazy = pcall(require, "lazy")

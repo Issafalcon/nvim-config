@@ -16,12 +16,12 @@ local copilot_spec = {
     fignvim.config.set_vim_opts({
       g = {
         copilot_no_tab_map = true, -- Disable tab mapping in insert mode when using copilot (so you can override the default mapping)
-      }
+      },
     })
-  end
+  end,
 }
 
 return fignvim.module.enable_registered_plugins({
   ["cmp"] = require("modules.completion.cmp"),
-  ["copilot"] = copilot_spec
-}, "lsp")
+  ["copilot"] = copilot_spec,
+}, "completion")
