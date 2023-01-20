@@ -2,9 +2,7 @@ local notify_keys = {
   {
     "n",
     "<leader>un",
-    function()
-      require("notify").dismiss({ silent = true, pending = true })
-    end,
+    function() require("notify").dismiss({ silent = true, pending = true }) end,
     { desc = "Dismiss all notifications" },
   },
 }
@@ -15,16 +13,10 @@ local nvim_notify_spec = {
   keys = fignvim.mappings.make_lazy_keymaps(notify_keys, true),
   opts = {
     stages = "fade_in_slide_out",
-    max_height = function()
-      return math.floor(vim.o.lines * 0.75)
-    end,
-    max_width = function()
-      return math.floor(vim.o.columns * 0.75)
-    end,
+    max_height = function() return math.floor(vim.o.lines * 0.75) end,
+    max_width = function() return math.floor(vim.o.columns * 0.75) end,
   },
-  config = function(_, opts)
-    vim.notify = require("notify")
-  end,
+  config = function(_, opts) vim.notify = require("notify") end,
 }
 
 -- Colourschemes
@@ -52,9 +44,7 @@ local colourschemes_spec = {
         percentage = 0.10,
       },
     },
-    config = function()
-      vim.cmd.colorscheme("catppuccin")
-    end,
+    config = function() vim.cmd.colorscheme("catppuccin") end,
   },
   { "shaunsingh/oxocarbon.nvim", lazy = false },
 }
@@ -122,4 +112,5 @@ return fignvim.module.enable_registered_plugins({
   ["colourschemes"] = colourschemes_spec,
   ["dressing"] = dressing_spec,
   ["colorizer"] = colorizer_spec,
+  ["heirline"] = require("modules.ui.heirline"),
 }, "ui")

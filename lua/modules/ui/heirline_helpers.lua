@@ -39,10 +39,10 @@ fignvim.status.env.modes = {
 
 fignvim.status.env.separators = {
   none = { "", "" },
-  left = { "", "  " },
-  right = { "  ", "" },
+  left = { "", " " },
+  right = { " ", "" },
   center = { "  ", "  " },
-  tab = { "", " " },
+  tab = { "", "" },
 }
 
 fignvim.status.env.attributes = {
@@ -166,10 +166,10 @@ function fignvim.status.init.breadcrumbs(opts)
       table.insert(children, child)
     end
     if opts.padding.left > 0 then -- add left padding
-      table.insert(children, 1, { provider = fignvim.pad_string(" ", { left = opts.padding.left - 1 }) })
+      table.insert(children, 1, { provider = fignvim.string.pad_string(" ", { left = opts.padding.left - 1 }) })
     end
     if opts.padding.right > 0 then -- add right padding
-      table.insert(children, { provider = fignvim.pad_string(" ", { right = opts.padding.right - 1 }) })
+      table.insert(children, { provider = fignvim.string.pad_string(" ", { right = opts.padding.right - 1 }) })
     end
     -- instantiate the new child
     self[1] = self:new(children, 1)
@@ -516,7 +516,7 @@ function fignvim.status.provider.lsp_progress(opts)
       Lsp
           and string.format(
             " %%<%s %s %s (%s%%%%) ",
-            fignvim.get_icon("LSP" .. ((Lsp.percentage or 0) >= 70 and { "Loaded", "Loaded", "Loaded" } or {
+            fignvim.ui.get_icon("LSP" .. ((Lsp.percentage or 0) >= 70 and { "Loaded", "Loaded", "Loaded" } or {
               "Loading1",
               "Loading2",
               "Loading3",
@@ -544,7 +544,7 @@ function fignvim.status.provider.lsp_client_names(opts)
       if client.name == "null-ls" and opts.expand_null_ls then
         local null_ls_sources = {}
         for _, type in ipairs({ "FORMATTING", "DIAGNOSTICS" }) do
-          for _, source in ipairs(fignvim.null_ls_sources(vim.bo.filetype, type)) do
+          for _, source in ipairs(fignvim.ui.null_ls_sources(vim.bo.filetype, type)) do
             null_ls_sources[source] = true
           end
         end
@@ -728,8 +728,11 @@ function fignvim.status.component.file_info(opts)
     file_icon = {
       hl = fignvim.status.hl.file_icon("statusline"),
       padding = { left = 1, right = 1 },
-    }, -- TODO: REWORK THIS
-    filename = {},
+    },
+    filename = {
+      fname = function() return vim.fn.expand("%") end,
+      modify = ":.",
+    },
     file_modified = { padding = { left = 1 } },
     file_read_only = { padding = { left = 1 } },
     surround = { separator = "left", color = "file_info_bg", condition = fignvim.status.condition.has_filetype },
@@ -845,7 +848,7 @@ end
 -- @return The Heirline component table
 -- @usage local heirline_component = fignvim.status.component.mode { mode_text = true }
 function fignvim.status.component.mode(opts)
-  opts = fignvim.default_tbl(opts, {
+  opts = fignvim.table.default_tbl(opts, {
     mode_text = false,
     paste = false,
     spell = false,

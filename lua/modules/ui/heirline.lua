@@ -1,4 +1,4 @@
-local C = require("core.colourscheme.colours")
+local C = require("core.colourscheme").colours
 
 local function setup_colors()
   local Normal = fignvim.ui.get_hlgroup("Normal", { fg = C.fg, bg = C.bg })
@@ -19,14 +19,13 @@ local function setup_colors()
   local DiagnosticWarn = fignvim.ui.get_hlgroup("DiagnosticWarn", { fg = C.orange_1, bg = C.grey_4 })
   local DiagnosticInfo = fignvim.ui.get_hlgroup("DiagnosticInfo", { fg = C.white_2, bg = C.grey_4 })
   local DiagnosticHint = fignvim.ui.get_hlgroup("DiagnosticHint", { fg = C.yellow_1, bg = C.grey_4 })
-  local HeirlineInactive = fignvim.ui.get_hlgroup("HeirlineInactive", { fg = nil }).fg or fignvim.ui.status.hl.lualine_mode("inactive", C.grey_7)
-  local HeirlineNormal = fignvim.ui.get_hlgroup("HeirlineNormal", { fg = nil }).fg or fignvim.ui.status.hl.lualine_mode("normal", C.blue)
-  local HeirlineInsert = fignvim.ui.get_hlgroup("HeirlineInsert", { fg = nil }).fg or fignvim.ui.status.hl.lualine_mode("insert", C.green)
-  local HeirlineVisual = fignvim.ui.get_hlgroup("HeirlineVisual", { fg = nil }).fg or fignvim.ui.status.hl.lualine_mode("visual", C.purple)
-  local HeirlineReplace = fignvim.ui.get_hlgroup("HeirlineReplace", { fg = nil }).fg or fignvim.ui.status.hl.lualine_mode("replace", C.red_1)
-  local HeirlineCommand = fignvim.ui.get_hlgroup("HeirlineCommand", { fg = nil }).fg or fignvim.ui.status.hl.lualine_mode("command", C.yellow_1)
-  local HeirlineTerminal = fignvim.ui.get_hlgroup("HeirlineTerminal", { fg = nil }).fg
-    or fignvim.ui.status.hl.lualine_mode("inactive", HeirlineInsert)
+  local HeirlineInactive = fignvim.ui.get_hlgroup("HeirlineInactive", { fg = nil }).fg or fignvim.status.hl.lualine_mode("inactive", C.grey_7)
+  local HeirlineNormal = fignvim.ui.get_hlgroup("HeirlineNormal", { fg = nil }).fg or fignvim.status.hl.lualine_mode("normal", C.blue)
+  local HeirlineInsert = fignvim.ui.get_hlgroup("HeirlineInsert", { fg = nil }).fg or fignvim.status.hl.lualine_mode("insert", C.green)
+  local HeirlineVisual = fignvim.ui.get_hlgroup("HeirlineVisual", { fg = nil }).fg or fignvim.status.hl.lualine_mode("visual", C.purple)
+  local HeirlineReplace = fignvim.ui.get_hlgroup("HeirlineReplace", { fg = nil }).fg or fignvim.status.hl.lualine_mode("replace", C.red_1)
+  local HeirlineCommand = fignvim.ui.get_hlgroup("HeirlineCommand", { fg = nil }).fg or fignvim.status.hl.lualine_mode("command", C.yellow_1)
+  local HeirlineTerminal = fignvim.ui.get_hlgroup("HeirlineTerminal", { fg = nil }).fg or fignvim.status.hl.lualine_mode("inactive", HeirlineInsert)
 
   local colors = {
     close_fg = Error.fg,
@@ -79,6 +78,7 @@ local function setup_colors()
     replace = HeirlineReplace,
     command = HeirlineCommand,
     terminal = HeirlineTerminal,
+    blank_bg = HeirlineInactive.bg,
   }
 
   for _, section in ipairs({
@@ -107,6 +107,7 @@ local heirline_spec = {
 
     -- Load helper functions API
     require("modules.ui.heirline_helpers")
+
     if not fignvim.status then return end
 
     heirline.load_colors(setup_colors())
@@ -116,10 +117,7 @@ local heirline_spec = {
         hl = { fg = "fg", bg = "bg" },
         fignvim.status.component.mode(),
         fignvim.status.component.git_branch(),
-        -- TODO: REMOVE THIS WITH v3
-        fignvim.status.component.file_info(
-          (fignvim.is_available("bufferline.nvim") or vim.g.heirline_bufferline) and { filetype = {}, filename = false, file_modified = false } or nil
-        ),
+        fignvim.status.component.file_info(),
         -- fignvim.status.component.file_info { filetype = {}, filename = false, file_modified = false },
         fignvim.status.component.git_diff(),
         fignvim.status.component.diagnostics(),
@@ -158,7 +156,7 @@ local heirline_spec = {
       },
     }
 
-    heirline.setup(heirline_opts[1], heirline_opts[2], nil)
+    heirline.setup({ statusline = heirline_opts[1], winbar = heirline_opts[2] })
 
     local augroup = vim.api.nvim_create_augroup("Heirline", { clear = true })
     vim.api.nvim_create_autocmd("User", {

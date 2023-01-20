@@ -1,8 +1,6 @@
 -- Check compatible version of Neovim
 if vim.fn.has("nvim-0.8") ~= 1 or vim.version().prerelease then
-  vim.schedule(function()
-    fignvim.ui.notify("Unsupported Neovim Version! Please check the requirements", "error")
-  end)
+  vim.schedule(function() fignvim.ui.notify("Unsupported Neovim Version! Please check the requirements", "error") end)
 end
 
 -- Get all the required Fignvim API functions and commands required for setup
@@ -12,9 +10,7 @@ for _, source in ipairs({
   "core",
 }) do
   local status_ok, fault = pcall(require, source)
-  if not status_ok then
-    vim.api.nvim_err_writeln("Failed to load " .. source .. "\n\n" .. fault)
-  end
+  if not status_ok then vim.api.nvim_err_writeln("Failed to load " .. source .. "\n\n" .. fault) end
 end
 
 -- Register modules
@@ -24,7 +20,7 @@ end
 fignvim.module.register_modules({
   ["plugins"] = { "sqlite", "neodev", "luapad" },
   ["cheatsheets"] = { "cheatsheet", "legendary", "whichkey" },
-  ["ui"] = { "notify", "colourschemes", "dressing", "colorizer" },
+  ["ui"] = { "notify", "colourschemes", "dressing", "colorizer", "heirline" },
   ["lsp"] = { "lsp_config", "mason", "null-ls", "lsp-overloads", "schemastore" },
   ["completion"] = { "cmp", "copilot" },
   ["treesitter"] = {
@@ -39,13 +35,9 @@ fignvim.module.register_modules({
   ["navigation"] = { "telescope", "neo_tree", "leap", "rnvimr" },
 })
 
-if vim.fn.has("win32") == 1 then
-  fignvim.config.set_shell_as_powershell()
-end
+if vim.fn.has("win32") == 1 then fignvim.config.set_shell_as_powershell() end
 
-if vim.fn.has("wsl") == 1 then
-  fignvim.config.set_win32yank_wsl_as_clip()
-end
+if vim.fn.has("wsl") == 1 then fignvim.config.set_win32yank_wsl_as_clip() end
 
 fignvim.plug.initialise_lazy_nvim()
 fignvim.plug.setup_lazy_plugins()
