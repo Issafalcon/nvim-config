@@ -33,6 +33,19 @@ fignvim.module.register_modules({
     "aerial",
   },
   ["navigation"] = { "telescope", "neo_tree", "leap", "rnvimr" },
+  ["editing"] = {
+    "undotree",
+    "refactoring",
+    "easyalign",
+    "ssr",
+    "treesj",
+    "dial",
+    "matchup",
+    "autopairs",
+    "nvim-surround",
+    "vim-unimpaired",
+  },
+  ["diagnostics"] = { "trouble" },
 })
 
 if vim.fn.has("win32") == 1 then fignvim.config.set_shell_as_powershell() end

@@ -107,10 +107,20 @@ local colorizer_spec = {
   },
 }
 
+local indent_blankline_spec = {
+  "lukas-reineke/indent-blankline.nvim",
+  event = "BufReadPre",
+  opts = {
+    show_end_of_line = true,
+    space_char_blankline = " ",
+  },
+}
+
 return fignvim.module.enable_registered_plugins({
   ["notify"] = nvim_notify_spec,
   ["colourschemes"] = colourschemes_spec,
   ["dressing"] = dressing_spec,
   ["colorizer"] = colorizer_spec,
   ["heirline"] = require("modules.ui.heirline"),
+  ["indent-blankline"] = indent_blankline_spec,
 }, "ui")

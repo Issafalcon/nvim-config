@@ -33,7 +33,7 @@ local telescope_mappings = {
     ":lua require('telescope.builtin').command_history()<CR>",
     { desc = "Search command history" },
   },
-  { "n", "<leader>ta", ":Telescope aerial<CR>", { desc = "Search through Aerial Symbols" } },
+  { "n", "<leader>ts", ":Telescope aerial<CR>", { desc = "Search through Aerial Symbols" } },
 }
 
 local telescope_spec = {
@@ -137,7 +137,7 @@ local telescope_spec = {
     fignvim.fn.conditional_func(telescope.load_extension, pcall(require, "fzf"), "fzf")
 
     fignvim.mappings.register_keymap_group("Navigation", telescope_mappings, false, "<leader>t")
-  end
+  end,
 }
 
 return telescope_spec
