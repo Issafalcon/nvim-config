@@ -90,7 +90,7 @@ local subversive_spec = {
 
 local bqf_spec = {
   "kevinhwang91/nvim-bqf",
-  event = "QuickFixCmdPre",
+  lazy = false,
   init = function()
     local opt = {
       g = {

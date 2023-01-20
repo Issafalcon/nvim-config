@@ -10,18 +10,18 @@ local cmp_spec = {
     "David-Kunz/cmp-npm",
     "lukas-reineke/cmp-rg",
     {
-        "onsails/lspkind.nvim",
-        event = "BufReadPre",
-        config = function()
-          local lspkind = require("lspkind")
-          fignvim.lspkind = {
-            mode = "symbol",
-            symbol_map = fignvim.ui.lspkind_icons,
-          }
-      
-          lspkind.init(fignvim.lspkind)
-        end,
-    }
+      "onsails/lspkind.nvim",
+      event = "BufReadPre",
+      config = function()
+        local lspkind = require("lspkind")
+        fignvim.lspkind = {
+          mode = "symbol",
+          symbol_map = fignvim.ui.lspkind_icons,
+        }
+
+        lspkind.init(fignvim.lspkind)
+      end,
+    },
   },
   config = function()
     -- code
@@ -66,9 +66,9 @@ local cmp_spec = {
         end,
       },
       snippet = {
-        expand = function(args) 
+        expand = function(args)
           local luasnip_ok, luasnip = pcall(require, "luasnip")
-          fignvim.fn.conditional_func(luasnip.lsp_expand, luasnip_ok, args.body) 
+          fignvim.fn.conditional_func(luasnip.lsp_expand, luasnip_ok, args.body)
         end,
       },
       sources = cmp.config.sources(common_sources),
