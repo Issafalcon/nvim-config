@@ -45,6 +45,8 @@ fignvim.module.register_modules({
     "nvim-surround",
     "vim-unimpaired",
   },
+  ["cut-and-paste"] = { "cutlass", "yanky" },
+  ["search-and-replace"] = { "vim-abolish", "spectre", "subversive", "bqf" },
   ["diagnostics"] = { "trouble" },
 })
 

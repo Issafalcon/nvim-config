@@ -37,7 +37,7 @@ local cutlass_mappings = {
 local yanky_spec = {
   "gbprod/yanky.nvim",
   event = "BufReadPost",
-  keys = fignvim.config.make_lazy_keymaps(yanky_mappings, true),
+  keys = fignvim.mappings.make_lazy_keymaps(yanky_mappings, true),
   config = function()
     require("yanky").setup({
       highlight = {
@@ -48,16 +48,18 @@ local yanky_spec = {
       },
     })
 
-    fignvim.config.register_keymap_group("Yanky", yanky_mappings)
+    fignvim.mappings.register_keymap_group("Cut & Paste", yanky_mappings, false)
   end,
 }
 
 local cutlass_spec = {
   "svermeulen/vim-cutlass",
   event = "BufReadPost",
-  keys = fignvim.config.make_lazy_keymaps(cutlass_mappings, true),
+  init = function() fignvim.mappings.register_keymap_group("Cut & Paste", cutlass_mappings, false) end,
+  keys = fignvim.mappings.make_lazy_keymaps(cutlass_mappings, true),
 }
 
 return fignvim.module.enable_registered_plugins({
-  ["cutlass"] = cutlass_spec
-})
+  ["cutlass"] = cutlass_spec,
+  ["yanky"] = yanky_spec,
+}, "cut-and-paste")
