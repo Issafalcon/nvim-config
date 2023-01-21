@@ -20,7 +20,7 @@ end
 fignvim.module.register_modules({
   ["plugins"] = { "sqlite", "neodev", "luapad" },
   ["cheatsheets"] = { "cheatsheet", "legendary", "whichkey" },
-  ["ui"] = { "notify", "colourschemes", "dressing", "colorizer", "heirline" },
+  ["ui"] = { "indent-blankline", "notify", "colourschemes", "dressing", "colorizer", "heirline", "bufferline", "maximizer" },
   ["lsp"] = { "lsp_config", "mason", "null-ls", "lsp-overloads", "schemastore" },
   ["completion"] = { "cmp", "copilot" },
   ["treesitter"] = {
@@ -49,6 +49,10 @@ fignvim.module.register_modules({
   ["search-and-replace"] = { "vim-abolish", "spectre", "subversive", "bqf" },
   ["diagnostics"] = { "trouble" },
   ["git"] = { "gitsigns", "diffview", "vim-fugitive", "git-messenger" },
+  ["session"] = { "auto-session" },
+  ["snippets"] = { "luasnip" },
+  ["terminal"] = { "toggleterm" },
+  ["debugging"] = { "dap", "dap-ui", "dap-virtual-text", "dap-vscode-js" },
 })
 
 if vim.fn.has("win32") == 1 then fignvim.config.set_shell_as_powershell() end

@@ -19,13 +19,16 @@ local function setup_colors()
   local DiagnosticWarn = fignvim.ui.get_hlgroup("DiagnosticWarn", { fg = C.orange_1, bg = C.grey_4 })
   local DiagnosticInfo = fignvim.ui.get_hlgroup("DiagnosticInfo", { fg = C.white_2, bg = C.grey_4 })
   local DiagnosticHint = fignvim.ui.get_hlgroup("DiagnosticHint", { fg = C.yellow_1, bg = C.grey_4 })
-  local HeirlineInactive = fignvim.ui.get_hlgroup("HeirlineInactive", { fg = nil }).fg or fignvim.status.hl.lualine_mode("inactive", C.grey_7)
+  local HeirlineInactive = fignvim.ui.get_hlgroup("HeirlineInactive", { fg = nil }).fg
+    or fignvim.status.hl.lualine_mode("inactive", C.grey_7)
   local HeirlineNormal = fignvim.ui.get_hlgroup("HeirlineNormal", { fg = nil }).fg or fignvim.status.hl.lualine_mode("normal", C.blue)
   local HeirlineInsert = fignvim.ui.get_hlgroup("HeirlineInsert", { fg = nil }).fg or fignvim.status.hl.lualine_mode("insert", C.green)
   local HeirlineVisual = fignvim.ui.get_hlgroup("HeirlineVisual", { fg = nil }).fg or fignvim.status.hl.lualine_mode("visual", C.purple)
   local HeirlineReplace = fignvim.ui.get_hlgroup("HeirlineReplace", { fg = nil }).fg or fignvim.status.hl.lualine_mode("replace", C.red_1)
-  local HeirlineCommand = fignvim.ui.get_hlgroup("HeirlineCommand", { fg = nil }).fg or fignvim.status.hl.lualine_mode("command", C.yellow_1)
-  local HeirlineTerminal = fignvim.ui.get_hlgroup("HeirlineTerminal", { fg = nil }).fg or fignvim.status.hl.lualine_mode("inactive", HeirlineInsert)
+  local HeirlineCommand = fignvim.ui.get_hlgroup("HeirlineCommand", { fg = nil }).fg
+    or fignvim.status.hl.lualine_mode("command", C.yellow_1)
+  local HeirlineTerminal = fignvim.ui.get_hlgroup("HeirlineTerminal", { fg = nil }).fg
+    or fignvim.status.hl.lualine_mode("inactive", HeirlineInsert)
 
   local colors = {
     close_fg = Error.fg,
@@ -133,7 +136,7 @@ local heirline_spec = {
         static = {
           disabled = {
             buftype = { "terminal", "prompt", "nofile", "help", "quickfix" },
-            filetype = { "NvimTree", "neo%-tree", "dashboard", "Outline", "aerial" },
+            filetype = { "rnvimr", "NvimTree", "neo%-tree", "dashboard", "Outline", "aerial" },
           },
         },
         init = function(self) self.bufnr = vim.api.nvim_get_current_buf() end,
@@ -156,11 +159,10 @@ local heirline_spec = {
       },
     }
 
-    heirline.setup({ statusline = heirline_opts[1], winbar = heirline_opts[2] })
+    heirline.setup({ statusline = heirline_opts[1] })
 
     local augroup = vim.api.nvim_create_augroup("Heirline", { clear = true })
-    vim.api.nvim_create_autocmd("User", {
-      pattern = "FigNvimColorScheme",
+    vim.api.nvim_create_autocmd("ColorScheme", {
       group = augroup,
       desc = "Refresh heirline colors",
       callback = function() require("heirline.utils").on_colorscheme(setup_colors()) end,
@@ -174,8 +176,8 @@ local heirline_spec = {
           vim.opt.diff:get()
           or fignvim.status.condition.buffer_matches(require("heirline").winbar.disabled or {
             buftype = { "terminal", "prompt", "nofile", "help", "quickfix" },
-            filetype = { "NvimTree", "neo%-tree", "dashboard", "Outline", "aerial" },
-          }) -- TODO v3: remove the default fallback here
+            filetype = { "rnvimr", "NvimTree", "neo%-tree", "dashboard", "Outline", "aerial" },
+          })
         then
           vim.opt_local.winbar = nil
         end

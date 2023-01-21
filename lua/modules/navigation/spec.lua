@@ -10,7 +10,7 @@ local neo_tree_spec = {
   dependencies = {
     "plenary.nvim",
     "nvim-tree/nvim-web-devicons",
-    "MunifTanjim/nui.nvim"
+    "MunifTanjim/nui.nvim",
   },
   opts = {
     close_if_last_window = true,
@@ -70,7 +70,7 @@ local neo_tree_spec = {
   config = function(_, opts)
     local neotree = require("neo-tree").setup(opts)
     fignvim.mappings.register_keymap_group("Navigation", neo_tree_keys, false)
-  end
+  end,
 }
 
 local rnvimr_keys = {
@@ -81,30 +81,28 @@ local rnvimr_spec = {
   "kevinhwang91/rnvimr",
   cmd = "RnvimrToggle",
   init = function()
-        fignvim.config.set_vim_opts({
-          g = {
-            rnvimr_enable_ex = 1, -- Replace netrw with ranger
-            rnvimr_draw_border = 1, -- Draw border for ranger
-            rnvimr_enable_picker = 1, -- Keep showing ranger after choosing a file
-            rnvimr_edit_cmd = "edit", -- Edit file in current window
-            rnvimr_enable_bw = 1, -- Make nvim wipe buffers corresponding to files deleted in Ranger
-            rnvimr_border_attr = { fg = 14, bg = -1 }, -- Ranger border colour
-            rnvimr_ranger_cmd = { "ranger", "--cmd=set draw_borders both" },
-            rnvimr_action = {
-              ["<C-i>"] = "NvimEdit tabedit",
-              ["<C-x>"] = "NvimEdit split",
-              ["<C-v>"] = "NvimEdit vsplit",
-              ["gw"] = "JumpNvimCwd",
-              ["yw"] = "EmitRangerCwd",
-            }, -- Ranger keybindings
-          }
-        })
-    end,
+    fignvim.config.set_vim_opts({
+      g = {
+        rnvimr_enable_ex = 0, -- Replace netrw with ranger
+        rnvimr_draw_border = 1, -- Draw border for ranger
+        rnvimr_enable_picker = 1, -- Keep showing ranger after choosing a file
+        rnvimr_edit_cmd = "edit", -- Edit file in current window
+        rnvimr_enable_bw = 1, -- Make nvim wipe buffers corresponding to files deleted in Ranger
+        rnvimr_border_attr = { fg = 14, bg = -1 }, -- Ranger border colour
+        rnvimr_ranger_cmd = { "ranger", "--cmd=set draw_borders both" },
+        rnvimr_action = {
+          ["<C-i>"] = "NvimEdit tabedit",
+          ["<C-x>"] = "NvimEdit split",
+          ["<C-v>"] = "NvimEdit vsplit",
+          ["gw"] = "JumpNvimCwd",
+          ["yw"] = "EmitRangerCwd",
+        }, -- Ranger keybindings
+      },
+    })
+  end,
   enabled = function() return vim.fn.executable("ranger") == 1 end,
   keys = fignvim.mappings.make_lazy_keymaps(rnvimr_keys, true),
-  config = function(_, opts)
-    fignvim.mappings.register_keymap_group("Navigation", rnvimr_keys, false)
-  end
+  config = function(_, opts) fignvim.mappings.register_keymap_group("Navigation", rnvimr_keys, false) end,
 }
 
 local leap_keys = {
@@ -117,14 +115,12 @@ local leap_spec = {
   "ggandor/leap.nvim",
   event = "VeryLazy",
   keys = fignvim.mappings.make_lazy_keymaps(leap_keys, true),
-  config = function()
-    fignvim.mappings.register_keymap_group("Navigation", leap_keys, false)
-  end
+  config = function() fignvim.mappings.register_keymap_group("Navigation", leap_keys, false) end,
 }
 
 return fignvim.module.enable_registered_plugins({
   ["neo_tree"] = neo_tree_spec,
   ["rnvimr"] = rnvimr_spec,
   ["leap"] = leap_spec,
-  ["telescope"] = require("modules.navigation.telescope")
+  ["telescope"] = require("modules.navigation.telescope"),
 }, "navigation")

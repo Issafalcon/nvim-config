@@ -2,6 +2,7 @@ _G.fignvim = {}
 
 require("api.ui")
 require("api.plug")
+require("api.git")
 require("api.config")
 require("api.vars")
 require("api.functions")

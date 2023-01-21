@@ -47,7 +47,6 @@ local gitsigns_spec = {
     on_attach = function(bufnr)
       for _, keymap in ipairs(require("modules.git.git_signs_keymaps")) do
         local buf_specific_opts = fignvim.table.default_tbl({ buffer = bufnr }, keymap[4])
-        fignvim.fn.put(buf_specific_opts)
         vim.keymap.set(keymap[1], keymap[2], keymap[3], buf_specific_opts)
       end
     end,

@@ -39,7 +39,7 @@ function fignvim.plug.setup_lazy_plugins()
       checker = {
         enabled = true,
       },
-      install = { colorscheme = { "catppuccin" }, missing = false },
+      install = { colorscheme = { "catppuccin" }, missing = true },
       diff = {
         cmd = "diffview.nvim",
       },
