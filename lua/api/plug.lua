@@ -39,7 +39,7 @@ function fignvim.plug.setup_lazy_plugins()
       checker = {
         enabled = true,
       },
-      install = { colorscheme = { "catppuccin" }, missing = true },
+      install = { colorscheme = { "catppuccin" }, missing = false },
       diff = {
         cmd = "diffview.nvim",
       },
@@ -61,16 +61,6 @@ function fignvim.plug.setup_lazy_plugins()
         },
       },
     })
-  end
-end
-
---- Special mapping callback for git_signs so mappings are created per buffer during the on_attach callback
----@param bufnr number The buffer number to create mappings for
-function fignvim.plug.gitsigns_on_attach_cb(bufnr)
-  local plugin = "gitsigns.nvim"
-  local mappings = fignvim.config.get_plugin_mappings(plugin)
-  for _, map in pairs(mappings) do
-    fignvim.config.create_mapping(map, bufnr)
   end
 end
 

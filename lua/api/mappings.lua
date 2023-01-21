@@ -4,7 +4,7 @@ function fignvim.mappings.create_core_mappings()
   local core_map_groups = require("core.mappings")
 
   for groupname, maps in pairs(core_map_groups) do
-          fignvim.mappings.register_keymap_group(groupname, maps, true)
+    fignvim.mappings.register_keymap_group(groupname, maps, true)
   end
 end
 
@@ -22,9 +22,7 @@ function fignvim.mappings.register_keymap_group(groupname, mappings, perform_bin
 
   require("legendary").keymaps(legendary_maps)
 
-  if whichkey_prefix then
-    fignvim.mappings.register_whichkey_prefix(whichkey_prefix, groupname)
-  end
+  if whichkey_prefix then fignvim.mappings.register_whichkey_prefix(whichkey_prefix, groupname) end
 end
 
 function fignvim.mappings.make_legendary_keymaps(mappings, perform_bind)

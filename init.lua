@@ -48,6 +48,7 @@ fignvim.module.register_modules({
   ["cut-and-paste"] = { "cutlass", "yanky" },
   ["search-and-replace"] = { "vim-abolish", "spectre", "subversive", "bqf" },
   ["diagnostics"] = { "trouble" },
+  ["git"] = { "gitsigns", "diffview", "vim-fugitive", "git-messenger" },
 })
 
 if vim.fn.has("win32") == 1 then fignvim.config.set_shell_as_powershell() end
