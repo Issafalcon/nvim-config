@@ -44,6 +44,8 @@ fignvim.module.register_modules({
     "autopairs",
     "nvim-surround",
     "vim-unimpaired",
+    "comment",
+    "editorconfig",
   },
   ["cut-and-paste"] = { "cutlass", "yanky" },
   ["search-and-replace"] = { "vim-abolish", "spectre", "subversive", "bqf" },
@@ -53,6 +55,12 @@ fignvim.module.register_modules({
   ["snippets"] = { "luasnip" },
   ["terminal"] = { "toggleterm" },
   ["debugging"] = { "dap", "dap-ui", "dap-virtual-text", "dap-vscode-js" },
+  ["documenting"] = { "neogen", "plantuml", "markdown-preview" },
+  ["icons"] = { "devicons", "icon-picker" },
+  ["testing"] = { "neotest" },
+  ["terraform"] = { "vim-terraform" },
+  ["tex"] = { "vimtex" },
+  ["dotnet"] = { "omnisharp-extended-lsp" },
 })
 
 if vim.fn.has("win32") == 1 then fignvim.config.set_shell_as_powershell() end

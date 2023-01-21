@@ -120,6 +120,39 @@ local undotree_spec = {
   keys = fignvim.mappings.make_lazy_keymaps(undotree_keys, true),
 }
 
+local comment_spec = {
+  "numToStr/Comment.nvim",
+  keys = { "gc", "gb", "g<", "g>" },
+  dependencies = {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+  },
+  config = function()
+    -- code
+    local comment = require("Comment")
+    comment.setup({
+      opleader = {
+        line = "gc",
+        block = "gb",
+      },
+      toggler = {
+        line = "gcc",
+        block = "gbc",
+      },
+      extra = {
+        above = "gcO",
+        below = "gco",
+        eol = "gcA",
+      },
+      pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+    })
+  end,
+}
+
+local editorconfig_spec = {
+  "editorconfig/editorconfig-vim",
+  event = "VeryLazy",
+}
+
 return fignvim.module.enable_registered_plugins({
   ["easyalign"] = easy_align_spec,
   ["ssr"] = ssr_spec,
@@ -131,4 +164,6 @@ return fignvim.module.enable_registered_plugins({
   ["vim-unimpaired"] = vim_unimpaired_spec,
   ["refactoring"] = refactoring_spec,
   ["undotree"] = undotree_spec,
+  ["comment"] = comment_spec,
+  ["editorconfig"] = editorconfig_spec,
 }, "editing")
