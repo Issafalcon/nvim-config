@@ -20,12 +20,4 @@ function fignvim.fn.put(...)
   return ...
 end
 
---- Check if a buffer is valid
--- @param bufnr the buffer to check
--- @return true if the buffer is valid or false
-function fignvim.fn.is_valid_buffer(bufnr)
-  if not bufnr or bufnr < 1 then return false end
-  return vim.bo[bufnr].buflisted and vim.api.nvim_buf_is_valid(bufnr)
-end
-
 return fignvim.fn

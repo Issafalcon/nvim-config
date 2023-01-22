@@ -1,5 +1,6 @@
 fignvim.mappings = {}
 
+--- Registers all core mappings in FigNvim
 function fignvim.mappings.create_core_mappings()
   local core_map_groups = require("core.mappings")
 
@@ -25,6 +26,10 @@ function fignvim.mappings.register_keymap_group(groupname, mappings, perform_bin
   if whichkey_prefix then fignvim.mappings.register_whichkey_prefix(whichkey_prefix, groupname) end
 end
 
+--- Creates a set of keymaps for Legendary
+---@param mappings table List of mapping configurations
+---@param perform_bind boolean True if the bindings should be made by Legendary
+---@return
 function fignvim.mappings.make_legendary_keymaps(mappings, perform_bind)
   local legendary_keys = {}
   for _, map in ipairs(mappings) do
@@ -47,6 +52,9 @@ function fignvim.mappings.make_legendary_keymaps(mappings, perform_bind)
   return legendary_keys
 end
 
+--- Registers a prefix in which-key without binding any keymaps
+---@param prefix string The keymap prefix to register
+---@param groupname string The name of the group
 function fignvim.mappings.register_whichkey_prefix(prefix, groupname)
   require("which-key").register({
     [prefix] = {

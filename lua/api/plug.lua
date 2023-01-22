@@ -1,5 +1,6 @@
 fignvim.plug = {}
 
+--- Bootstraops Lazy.nvim
 function fignvim.plug.initialise_lazy_nvim()
   local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
   if not vim.loop.fs_stat(lazypath) then
@@ -15,6 +16,7 @@ function fignvim.plug.initialise_lazy_nvim()
   vim.opt.rtp:prepend(lazypath)
 end
 
+--- Sets up Lazy.nvim and loads all the plugin specs that have been registered in init.lua
 function fignvim.plug.setup_lazy_plugins()
   local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
   vim.opt.rtp:prepend(lazypath)

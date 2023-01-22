@@ -18,25 +18,6 @@ function fignvim.ui.get_icon(kind)
   return fignvim.ui[icon_pack] and fignvim.ui[icon_pack][kind] or ""
 end
 
---- A utility function to stylize a string with an icon from lspkind, separators, and left/right padding
----@param str string | boolean string the string to stylize
----@param opts table options of `{ padding = { left = 0, right = 0 }, separator = { left = "|", right = "|" }, show_empty = false, icon = { kind = "NONE", padding = { left = 0, right = 0 } } }`
----@return string the stylized string
----@usage local string = fignvim.status.utils.stylize("Hello", { padding = { left = 1, right = 1 }, icon = { kind = "String" } })
-function fignvim.ui.stylize(str, opts)
-  opts = fignvim.table.default_tbl(opts, {
-    padding = { left = 0, right = 0 },
-    separator = { left = "", right = "" },
-    show_empty = false,
-    icon = { kind = "NONE", padding = { left = 0, right = 0 } },
-  })
-  local icon = fignvim.string.pad_string(fignvim.ui.get_icon(opts.icon.kind), opts.icon.padding)
-  return str
-      and (str ~= "" or opts.show_empty)
-      and opts.separator.left .. fignvim.string.pad_string(icon .. str, opts.padding) .. opts.separator.right
-    or ""
-end
-
 --- Wrapper function for neovim echo API
 -- @param messages table<string, table> an array like table where each item is an array like table of strings to echo
 function fignvim.ui.echo(messages)
@@ -47,8 +28,8 @@ end
 
 --- Serve a notification with a title of AstroNvim
 ---@param msg string the notification body
----@param type? string the type of the notification (:help vim.log.levels)
----@param opts? table of nvim-notify options to use (:help notify-options)
+---@param type number|nil the type of the notification (:help vim.log.levels)
+---@param opts table|nil of nvim-notify options to use (:help notify-options)
 function fignvim.ui.notify(msg, type, opts) vim.notify(msg, type, fignvim.table.default_tbl(opts or {}, { title = "FigNvim" })) end
 
 --- Delete the syntax matching rules for URLs/URIs if set

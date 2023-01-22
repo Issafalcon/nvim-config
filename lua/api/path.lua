@@ -15,10 +15,9 @@ local sep = (function()
   end
 end)()
 
+--- Joins a list of path components into a single path, using the correct separator for the current OS
 ---@param path_components string[]
 ---@return string
-function fignvim.path.concat(path_components)
-  return table.concat(path_components, sep)
-end
+function fignvim.path.concat(path_components) return table.concat(path_components, sep) end
 
 return fignvim.path

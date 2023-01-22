@@ -1,4 +1,3 @@
-
 fignvim.search = {}
 
 --- Search for a file in Neovim Config files
