@@ -1,0 +1,86 @@
+return {
+  {
+    "n",
+    "]c",
+    function() fignvim.git.gitsigns.next_hunk() end,
+    { desc = "Gitsigns: Next hunk", noremap = true, silent = true, buffer = true, expr = true },
+  },
+  {
+    "n",
+    "[c",
+    function() fignvim.git.gitsigns.prev_hunk() end,
+    { desc = "Gitsigns: Previous hunk", silent = true, buffer = true, expr = true },
+  },
+  {
+    { "v", "n" },
+    "<leader>hs",
+    ":Gitsigns stage_hunk<CR>",
+    { desc = "Gitsigns: Stage hunk", silent = true, buffer = true },
+  },
+  {
+    { "v", "n" },
+    "<leader>hr",
+    ":Gitsigns reset_hunk<CR>",
+    { desc = "Gitsigns: Reset hunk", silent = true, buffer = true },
+  },
+  {
+    "n",
+    "<leader>hS",
+    "<cmd>Gitsigns stage_buffer<CR>",
+    { desc = "Gitsigns: Stage buffer", silent = true, buffer = true },
+  },
+  {
+    "n",
+    "<leader>hu",
+    "<cmd>Gitsigns undo_stage_hunk<CR>",
+    { desc = "Gitsigns: Undo the last hunk or buffer staging command", silent = true, buffer = true },
+  },
+  {
+    "n",
+    "<leader>hR",
+    "<cmd>Gitsigns reset_buffer<CR>",
+    { desc = "Gitsigns: Reset the buffer", silent = true, buffer = true },
+  },
+  {
+    "n",
+    "<leader>hp",
+    "<cmd>Gitsigns preview_hunk<CR>",
+    { desc = "Gitsigns: Preview the hunk in floating window", silent = true, buffer = true },
+  },
+  {
+    "n",
+    "<leader>hb",
+    "<cmd>lua require'gitsigns'.blame_line{full=true}<CR>",
+    { desc = "Gitsigns: Show git blame of full change in floating window", silent = true, buffer = true },
+  },
+  {
+    "n",
+    "<leader>gB",
+    "<cmd>Gitsigns toggle_current_line_blame<CR>",
+    { desc = "Gitsigns: Toggle virtual text line blame", silent = true, buffer = true },
+  },
+  {
+    "n",
+    "<leader>hd",
+    "<cmd>Gitsigns diffthis<CR>",
+    { desc = "Gitsigns: Diff the current file against index", silent = true, buffer = true },
+  },
+  {
+    "n",
+    "<leader>hD",
+    "<cmd>Gitsigns diffthis('main')<CR>",
+    { desc = "Gitsigns: Diff the current file against main", silent = true, buffer = true },
+  },
+  {
+    "n",
+    "<leader>gd",
+    "<cmd>Gitsigns toggle_deleted<CR>",
+    { desc = "Gitsigns: Toggle deleted lines in buffer", silent = true, buffer = true },
+  },
+  {
+    { "o", "x" },
+    "ih",
+    ":<C-U>Gitsigns select_hunk<CR>",
+    { desc = "Gitsigns: Select the current hunk as a text object", silent = true, buffer = true },
+  },
+}

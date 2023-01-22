@@ -1,40 +1,59 @@
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/19861614/213907796-edbb5f52-90b9-438a-bc87-2eb45a3756eb.PNG" width="50%" height="50%" alt="Issafalcon Richaaard" /> 
+</p>
+
+<hr>
+
 # Issafalcon Neovim Configuration
 
-[TOC]
+## 🚀 Highlights
 
-## Highlights
-
-- Simplified port of [AstroNvim](https://github.com/AstroNvim/AstroNvim) tailored for my own specific tastes
+- Modular Neovim Configuration
 - API convenience functions (many of which are courtesy of the AstroNvim codebase) under the `api` folder
-- Centralised configuration under the `user-configs` folder
-  - Allowing for easier visualisation and modification of keymaps
-  - LSP Server configurations
-  - Custom options to control / toggle behaviour of plugins
+- Core Neovim Configuration in the `core` folder
+- LSP area with self contained API and LSP-Server configurations
+- Plugin modules loaded with [Lazy.nvim](https://github.com/folke/lazy.nvim) for optimized lazy loaded plugins 
 
-## Functionality
+## Modules
 
-### Package Installation
+All plugins are installed and configured via the `modules` folders. Each one contains a `spec.lua` file which brings together all the plugin specs for `Lazy.nvim` to load. 
 
-- Uses [Packer.nvim](https://github.com/wbthomason/packer.nvim) for plugin management
-- Plugin configuration is kept in `lua/user-configs/plugins.lua`
+All modules and their plugins are registered in the `init.lua` root file, so modules and plugins can be disabled by removing / commenting out from the registration function.
 
-Additional package management for third party dependencies is done via [Mason](https://github.com/williamboman/mason.nvim)
+### Plugins
 
-### Copy - Paste workflow
+- Module containing all the supporting plugins for Neovim plugin development, or other plugins required as a dependency by multiple other plugins
+- `plenary` is currently the only plugin installed as a default with this module. Others are explicitly registered
 
-- Use [vim-cutlass](https://github.com/svermeulen/vim-cutlass) to prevent deletions from overriding the yank registers
- - Combined with a remap of the `create marks` mapping to use `\m` instead so it isn't shadowed by the new cutlass move command
-- Uses a combination of [nvim-neoclip](https://github.com/AckslD/nvim-neoclip.lua) to cycle through yanks in the session,
-[vim-subversive](https://github.com/svermeulen/vim-subversive) to easily substitute using motions, and [vim-abolish](https://github.com/tpope/vim-abolish) to find and replace
-while preserving case and plurality.
+### Editing
+### Cheatsheets
 
-### Searching workflow
+- Contains plugins to enable keymaps and commands to be added to cheatsheets like `Legendary` 
+- Currently essential to keep in as mappigns cannot be created without the plugins in this module (except `cheatsheet`)
+
+### Cut And Paste
+### Search And Replace
+### Navigation
+### UI
+### LSP
+### Completion
+### Snippets
+### Treesitter
+### Diagnostics
+### Git
+### Terminal
+### Debugging
+### Session
+### Documenting
+### Icons
+### Testing
+### Terraform
+### .NET (dotnet)
 
 ## Roadmap / TODO
 
 - Investigate [vim-dadbod](https://github.com/tpope/vim-dadbod)
  - Look into setting up additional related plugins [vim-dadbod-ui](https://github.com/kristijanhusak/vim-dadbod-ui) and [vim-dadbod-completion](https://github.com/kristijanhusak/vim-dadbod-completion)
 - Provide smarter way for reloading neovim configuration without leaving neovim
-- Create a package management snapshot and provide helper function to manage snapshots
 - Create toggle commands for certain neovim / plugin functionality
-- Organize the options

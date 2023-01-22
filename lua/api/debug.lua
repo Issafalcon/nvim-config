@@ -1,18 +1,14 @@
 fignvim.debug = {}
 
-local function check_and_close_existing_session(dap)
-  if dap.session() then
-    dap.terminate()
-    dap.close()
-  end
-end
-
 function fignvim.debug.setup_debug_configs()
-  local dap = fignvim.plug.load_module_file("dap", true)
-  local config = require("user-configs.dap")
+  local dap_ok, dap = pcall(require, "dap")
+  local config = require("modules.debugging.dap_configs")
 
-  for language, dap_settings in pairs(config) do
-    dap.configurations[language] = dap_settings
+  if dap_ok then
+    for language, dap_settings in pairs(config) do
+      dap.configurations[language] = dap_settings
+    end
   end
 end
+
 return fignvim.debug
