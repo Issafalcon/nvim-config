@@ -9,7 +9,7 @@ function fignvim.plug.initialise_lazy_nvim()
       "clone",
       "--filter=blob:none",
       "https://github.com/folke/lazy.nvim.git",
-      "--branch=v7.9.0",
+      "--branch=stable",
       lazypath,
     })
   end
