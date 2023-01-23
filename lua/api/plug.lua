@@ -28,15 +28,16 @@ function fignvim.plug.setup_lazy_plugins()
 
   local status_ok, lazy = pcall(require, "lazy")
   if status_ok then
+    local project_path = os.getenv("PROJECTS")
     lazy.setup({
       spec = import_list,
       defaults = {
         lazy = true,
       },
       dev = {
-        path = "$PROJECTS",
+        path = project_path,
         ---@type string[] plugins that match these patterns will use your local versions instead of being fetched from GitHub
-        patterns = {},
+        patterns = { "Issafalcon" },
       },
       checker = {
         enabled = true,
