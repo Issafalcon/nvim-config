@@ -96,6 +96,7 @@ local autopairs_spec = {
 local nvim_surround_spec = {
   "kylechui/nvim-surround",
   event = "BufReadPost",
+  config = true,
 }
 
 -- Misc keymaps for navigation, encoding and quickfix / loc lists
@@ -122,7 +123,7 @@ local undotree_spec = {
 
 local comment_spec = {
   "numToStr/Comment.nvim",
-  keys = { "gc", "gb", "g<", "g>" },
+  event = "BufReadPost",
   dependencies = {
     "JoosepAlviste/nvim-ts-context-commentstring",
   },
