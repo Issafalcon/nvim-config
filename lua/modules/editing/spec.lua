@@ -123,7 +123,7 @@ local undotree_spec = {
 
 local comment_spec = {
   "numToStr/Comment.nvim",
-  keys = { "gc", "gb", "g<", "g>" },
+  event = "BufReadPost",
   dependencies = {
     "JoosepAlviste/nvim-ts-context-commentstring",
   },
