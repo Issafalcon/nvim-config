@@ -96,6 +96,7 @@ local autopairs_spec = {
 local nvim_surround_spec = {
   "kylechui/nvim-surround",
   event = "BufReadPost",
+  config = true,
 }
 
 -- Misc keymaps for navigation, encoding and quickfix / loc lists

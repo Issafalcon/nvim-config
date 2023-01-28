@@ -17,11 +17,11 @@ fignvim.lsp.setup = function(server)
     if neodev_ok then
       neodev.setup({
         library = {
-          enabled = false,
+          enabled = true,
           types = true,
           -- you can also specify the list of plugins to make available as a workspace library
           -- plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
-          plugins = false,
+          plugins = true,
           runtime = true,
         },
         setup_jsonls = true,
@@ -40,13 +40,9 @@ function fignvim.lsp.on_attach(client, bufnr)
 
   fignvim.lsp.mappings.set_buf_mappings(capabilities, client.name, bufnr)
 
-  if capabilities.documentFormattingProvider then
-    fignvim.lsp.formatting.create_buf_autocmds(bufnr)
-  end
+  if capabilities.documentFormattingProvider then fignvim.lsp.formatting.create_buf_autocmds(bufnr) end
 
-  if capabilities.documentHighlightProvider then
-    fignvim.lsp.handlers.handle_document_highlighting(bufnr)
-  end
+  if capabilities.documentHighlightProvider then fignvim.lsp.handlers.handle_document_highlighting(bufnr) end
 
   if client.server_capabilities.signatureHelpProvider then
     local lsp_overloads_ok, lsp_overloads = pcall(require, "lsp-overloads")
@@ -81,9 +77,7 @@ function fignvim.lsp.server_settings(server_name)
     end,
   }
 
-  if server_config and server_config.opts then
-    opts = vim.tbl_deep_extend("force", opts, server_config.opts)
-  end
+  if server_config and server_config.opts then opts = vim.tbl_deep_extend("force", opts, server_config.opts) end
 
   return opts
 end
