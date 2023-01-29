@@ -13,6 +13,12 @@ local neotest_keys = {
     function() require("neotest").run.run({ strategy = "dap" }) end,
     { desc = "Neotest: Debug nearest test" },
   },
+  {
+    "n",
+    "<leader>ua",
+    function() require("neotest").run.run({ suite = true }) end,
+    { desc = "Neotest: Run all tests in suite" },
+  },
 }
 
 local neotest_spec = {

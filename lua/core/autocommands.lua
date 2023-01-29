@@ -22,17 +22,13 @@ cmd("BufEnter", {
   callback = function()
     local wins = vim.api.nvim_tabpage_list_wins(0)
     -- Both neo-tree and aerial will auto-quit if there is only a single window left
-    if #wins <= 1 then
-      return
-    end
+    if #wins <= 1 then return end
     local sidebar_fts = { aerial = true, ["neo-tree"] = true }
     for _, winid in ipairs(wins) do
       if vim.api.nvim_win_is_valid(winid) then
         local bufnr = vim.api.nvim_win_get_buf(winid)
         -- If any visible windows are not sidebars, early return
-        if not sidebar_fts[vim.api.nvim_buf_get_option(bufnr, "filetype")] then
-          return
-        end
+        if not sidebar_fts[vim.api.nvim_buf_get_option(bufnr, "filetype")] then return end
       end
     end
     if #vim.api.nvim_list_tabpages() > 1 then
@@ -61,7 +57,5 @@ cmd("FileType", {
   desc = "Enable spell checking for certain filetypes",
   group = "enable_spelling",
   pattern = { "markdown", "text", "tex", "org" },
-  callback = function()
-    vim.api.nvim_set_option_value("spell", true, { scope = "local" })
-  end,
+  callback = function() vim.api.nvim_set_option_value("spell", true, { scope = "local" }) end,
 })

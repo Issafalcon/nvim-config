@@ -1,7 +1,7 @@
 local notify_keys = {
   {
     "n",
-    "<leader>un",
+    "<leader>nd",
     function() require("notify").dismiss({ silent = true, pending = true }) end,
     { desc = "Dismiss all notifications" },
   },
