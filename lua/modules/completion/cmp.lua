@@ -34,12 +34,12 @@ local cmp_spec = {
     local sources = {
       nvim_lsp = { name = "nvim_lsp", priority = 1000, keyword_length = 2 },
       nvim_lua = { name = "nvim_lua", priority = 800, keyword_length = 2 },
-      luasnip = { name = "luasnip", priority = 750, keyword_length = 1 },
-      npm = { name = "npm", priority = 725, keyword_length = 4 },
+      luasnip = { name = "luasnip", priority = 750, keyword_length = 2 },
+      npm = { name = "npm", priority = 725, keyword_length = 2 },
       emoji = { name = "emoji", priority = 700, keyword_length = 2 },
-      rg = { name = "rg", priority = 600, keyword_length = 4 },
-      buffer = { name = "buffer", priority = 500, keyword_length = 3 },
-      path = { name = "path", priority = 250, keyword_length = 3 },
+      buffer = { name = "buffer", priority = 500, keyword_length = 2 },
+      path = { name = "path", priority = 250, keyword_length = 2 },
+      rg = { name = "rg", priority = 200, keyword_length = 2 },
     }
 
     local common_sources = { sources.nvim_lsp, sources.luasnip, sources.rg, sources.emoji, sources.buffer, sources.path }
