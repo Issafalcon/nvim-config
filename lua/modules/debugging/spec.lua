@@ -130,9 +130,12 @@ local dap_spec = {
         args = { install_dir .. "/packages/chrome-debug-adapter/out/src/chromeDebug.js" },
       }
 
+      local netcoredbg_install_dir = vim.fn.has("win32") and install_dir .. "/packages/netcoredbg/netcoredbg/netcoredbg.exe"
+        or install_dir .. "/packages/netcoredbg/netcoredbg/netcoredbg"
+
       dap.adapters.netcoredbg = {
         type = "executable",
-        command = install_dir .. "/packages/netcoredbg/netcoredbg",
+        command = netcoredbg_install_dir,
         args = { "--interpreter=vscode" },
       }
 
