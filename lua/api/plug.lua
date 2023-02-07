@@ -37,7 +37,7 @@ function fignvim.plug.setup_lazy_plugins()
       dev = {
         path = project_path,
         ---@type string[] plugins that match these patterns will use your local versions instead of being fetched from GitHub
-        patterns = vim.g.plugin_dev and { "Issafalcon" } or {},
+        patterns = { "Issafalcon" },
       },
       checker = {
         enabled = true,
