@@ -43,7 +43,9 @@ local neotest_spec = {
           dap = { justMyCode = false },
         }),
         require("neotest-plenary"),
-        require("neotest-dotnet"),
+        require("neotest-dotnet")({
+          discovery_root = "solution",
+        }),
         require("neotest-vim-test")({
           ignore_file_types = { "python", "vim", "lua", "cs" },
         }),
