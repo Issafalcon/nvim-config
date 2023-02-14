@@ -84,7 +84,17 @@ local subversive_keys = {
 local subversive_spec = {
   "svermeulen/vim-subversive",
   event = "BufEnter",
-  init = function() fignvim.mappings.register_keymap_group("Search & Replace", subversive_keys, false) end,
+  init = function()
+    local opt = {
+      g = {
+        subversivePromptWithCurrent = 0,
+        subversivePromptWithActualCommand = 1,
+      },
+    }
+
+    fignvim.config.set_vim_opts(opt)
+    fignvim.mappings.register_keymap_group("Search & Replace", subversive_keys, false)
+  end,
   keys = fignvim.mappings.make_lazy_keymaps(subversive_keys, true),
 }
 

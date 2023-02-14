@@ -4,17 +4,13 @@ M.Lists = {
   {
     "n",
     "<C-q>",
-    function()
-      fignvim.ui.toggle_fix_list(true)
-    end,
+    function() fignvim.ui.toggle_fix_list(true) end,
     { desc = "Toggle quickfix window" },
   },
   {
     "n",
     "<leader>q",
-    function()
-      fignvim.ui.toggle_fix_list(false)
-    end,
+    function() fignvim.ui.toggle_fix_list(false) end,
     { desc = "Toggle location list window" },
   },
 }
@@ -46,6 +42,9 @@ M.Editing = {
   { "x", "<A-K>", ":move '<-2<CR>gv-gv", { desc = "Move current line down" } },
   { "i", "<A-j>", "<Esc>:m .+1<CR>==gi", { desc = "Move current line up" } },
   { "i", "<A-K>", "<Esc>:m .-2<CR>==gi", { desc = "Move current line down" } },
+  -- This relies on the fact that cutlass is installed to work
+  { "o", "ie", ":exec 'normal! ggVG'<cr>", { desc = "Creates new text object to operate on entire buffer" } },
+  { "o", "iv", ":exec 'normal! HVL'<cr>", { desc = "Creates new text object to operate on all text in view" } },
 }
 
 M.Navigation = {
@@ -60,17 +59,13 @@ M.Navigation = {
   {
     "n",
     "<leader>l",
-    function()
-      fignvim.ui.toggle_line_numbers()
-    end,
+    function() fignvim.ui.toggle_line_numbers() end,
     { desc = "Toggle line numbers" },
   },
   {
     "n",
     "<leader>rn",
-    function()
-      fignvim.ui.toggle_relative_line_numbers()
-    end,
+    function() fignvim.ui.toggle_relative_line_numbers() end,
     { desc = "Toggle relative line numbers" },
   },
 }
