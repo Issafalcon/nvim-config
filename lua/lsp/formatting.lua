@@ -18,7 +18,7 @@ local formatting_config = {
   },
   -- Disable formatting capabilities for listed language servers
   disabled = {
-    "sumneko_lua",
+    "lua_ls",
     "tsserver",
   },
   -- Formatting timeout
@@ -37,23 +37,22 @@ formatting_opts.filter = function(client)
   return not (vim.tbl_contains(disabled, client.name) or (type(filter) == "function" and not filter(client)))
 end
 
-function fignvim.lsp.formatting.format()
-  vim.lsp.buf.format(formatting_opts)
-end
+function fignvim.lsp.formatting.format() vim.lsp.buf.format(formatting_opts) end
 
 function fignvim.lsp.formatting.create_buf_autocmds(bufnr)
-  vim.api.nvim_buf_create_user_command(bufnr, "Format", function()
-    vim.lsp.buf.format(formatting_opts)
-  end, { desc = "Format file with LSP" })
+  vim.api.nvim_buf_create_user_command(
+    bufnr,
+    "Format",
+    function() vim.lsp.buf.format(formatting_opts) end,
+    { desc = "Format file with LSP" }
+  )
 
   local autoformat = fignvim.lsp.formatting.format_on_save
   local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
   if
     autoformat.enabled
     and (vim.tbl_isempty(autoformat.allow_filetypes or {}) or vim.tbl_contains(autoformat.allow_filetypes, filetype))
-    and (
-      vim.tbl_isempty(autoformat.ignore_filetypes or {}) or not vim.tbl_contains(autoformat.ignore_filetypes, filetype)
-    )
+    and (vim.tbl_isempty(autoformat.ignore_filetypes or {}) or not vim.tbl_contains(autoformat.ignore_filetypes, filetype))
   then
     local autocmd_group = "auto_format_" .. bufnr
     vim.api.nvim_create_augroup(autocmd_group, { clear = true })
@@ -62,9 +61,7 @@ function fignvim.lsp.formatting.create_buf_autocmds(bufnr)
       buffer = bufnr,
       desc = "Auto format buffer " .. bufnr .. " before save",
       callback = function()
-        if vim.g.autoformat_enabled then
-          vim.lsp.buf.format(fignvim.table.default_tbl({ bufnr = bufnr }, formatting_opts))
-        end
+        if vim.g.autoformat_enabled then vim.lsp.buf.format(fignvim.table.default_tbl({ bufnr = bufnr }, formatting_opts)) end
       end,
     })
   end

@@ -10,7 +10,7 @@ require("lsp.handlers")
 fignvim.lsp.setup = function(server)
   local opts = fignvim.lsp.server_settings(server)
 
-  if server == "sumneko_lua" then
+  if server == "lua_ls" then
     local neodev_ok, neodev = pcall(require, "neodev")
     -- For developing Lua plugins for Neovim Only
     -- Comment out below lines so lua_dev is not used when working on other Lua projects

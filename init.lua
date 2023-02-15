@@ -75,7 +75,7 @@ fignvim.lsp.setup_lsp_servers({
   "jsonls",
   "cucumber_language_server",
   "tsserver",
-  "sumneko_lua",
+  "lua_ls",
   "texlab",
   "omnisharp",
   "terraformls",
