@@ -42,7 +42,9 @@ M.Editing = {
   { "x", "<A-K>", ":move '<-2<CR>gv-gv", { desc = "Move current line down" } },
   { "i", "<A-j>", "<Esc>:m .+1<CR>==gi", { desc = "Move current line up" } },
   { "i", "<A-K>", "<Esc>:m .-2<CR>==gi", { desc = "Move current line down" } },
-  -- This relies on the fact that cutlass is installed to work
+  { "n", "<leader>bo", "<cmd>%bd|e#<cr>", { desc = "Close all buffers except the current one" } },
+
+  -- Create new text objects
   { "o", "ie", ":exec 'normal! ggVG'<cr>", { desc = "Creates new text object to operate on entire buffer" } },
   { "o", "iv", ":exec 'normal! HVL'<cr>", { desc = "Creates new text object to operate on all text in view" } },
 }
