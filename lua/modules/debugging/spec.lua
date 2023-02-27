@@ -104,6 +104,7 @@ local dap_spec = {
     dependencies = {
       "mason.nvim",
       "jbyuki/one-small-step-for-vimkind",
+      "rcarriga/nvim-dap-ui",
     },
     config = function()
       local dap = require("dap")
@@ -130,8 +131,13 @@ local dap_spec = {
         args = { install_dir .. "/packages/chrome-debug-adapter/out/src/chromeDebug.js" },
       }
 
-      local netcoredbg_install_dir = vim.fn.has("win32") and install_dir .. "/packages/netcoredbg/netcoredbg/netcoredbg.exe"
-        or install_dir .. "/packages/netcoredbg/netcoredbg/netcoredbg"
+      local netcoredbg_install_dir
+
+      if vim.fn.has("win32") == 1 then
+        netcoredbg_install_dir = install_dir .. "/packages/netcoredbg/netcoredbg/netcoredbg.exe"
+      else
+        netcoredbg_install_dir = install_dir .. "/packages/netcoredbg/netcoredbg"
+      end
 
       dap.adapters.netcoredbg = {
         type = "executable",
