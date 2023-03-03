@@ -22,7 +22,7 @@ local formatting_config = {
     "tsserver",
   },
   -- Formatting timeout
-  timeout_ms = 1000,
+  timeout_ms = 4000,
 }
 
 local formatting_opts = {}
