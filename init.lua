@@ -47,7 +47,10 @@ fignvim.module.register_modules({
     "aerial",
   },
   ["navigation"] = { "telescope", "neo_tree", "leap", "rnvimr" },
-  ["cut-and-paste"] = { "cutlass", "yanky" },
+  ["cut-and-paste"] = {
+    "cutlass",
+    -- "yanky"  - Performance is an issue when using this plugin. Pastes / yanks are slow
+  },
   ["search-and-replace"] = { "vim-abolish", "spectre", "subversive", "bqf" },
   ["diagnostics"] = { "trouble" },
   ["git"] = { "gitsigns", "diffview", "vim-fugitive", "git-messenger" },

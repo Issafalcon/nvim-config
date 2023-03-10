@@ -126,7 +126,8 @@ function fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr)
     table.insert(lsp_keymaps, {
       "i",
       "<A-s>",
-      function() vim.lsp.buf.signature_help() end,
+      "<cmd>LspOverloadsSignature<CR>",
+      -- function() vim.lsp.buf.signature_help() end,
       { desc = "Show signature help in insert mode", buffer = bufnr },
     })
   end
