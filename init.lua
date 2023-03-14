@@ -18,7 +18,11 @@ end
 ---         The list is the set of named plugins that will match the indexes of
 ---         the returned specs from the module's "spec.lua" file
 fignvim.module.register_modules({
-  ["plugins"] = { "sqlite", "neodev", "luapad" },
+  ["plugins"] = {
+    -- "sqlite",
+    "neodev",
+    "luapad",
+  },
   ["cheatsheets"] = { "cheatsheet", "legendary", "whichkey" },
   ["editing"] = {
     "undotree",
