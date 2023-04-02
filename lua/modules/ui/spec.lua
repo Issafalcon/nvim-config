@@ -13,6 +13,7 @@ local nvim_notify_spec = {
   keys = fignvim.mappings.make_lazy_keymaps(notify_keys, true),
   opts = {
     stages = "fade_in_slide_out",
+    background_color = "#000000",
     max_height = function() return math.floor(vim.o.lines * 0.75) end,
     max_width = function() return math.floor(vim.o.columns * 0.75) end,
   },
@@ -153,6 +154,39 @@ local maximizer_spec = {
   keys = fignvim.mappings.make_lazy_keymaps(maximizer_keys, true),
 }
 
+local transparent_spec = {
+  "xiyaowong/transparent.nvim",
+  lazy = false,
+  opts = {
+    groups = { -- table: default groups
+      "Normal",
+      "NormalNC",
+      "Comment",
+      "Constant",
+      "Special",
+      "Identifier",
+      "Statement",
+      "PreProc",
+      "Type",
+      "Underlined",
+      "Todo",
+      "String",
+      "Function",
+      "Conditional",
+      "Repeat",
+      "Operator",
+      "Structure",
+      "LineNr",
+      "NonText",
+      "SignColumn",
+      "CursorLineNr",
+      "EndOfBuffer",
+    },
+    extra_groups = {}, -- table: additional groups that should be cleared
+    exclude_groups = { "NotifyBackground" }, -- table: groups you don't want to clear
+  },
+}
+
 return fignvim.module.enable_registered_plugins({
   ["notify"] = nvim_notify_spec,
   ["colourschemes"] = colourschemes_spec,
@@ -162,4 +196,5 @@ return fignvim.module.enable_registered_plugins({
   ["indent-blankline"] = indent_blankline_spec,
   ["bufferline"] = bufferline_spec,
   ["maximizer"] = maximizer_spec,
+  ["transparent"] = transparent_spec,
 }, "ui")

@@ -38,7 +38,17 @@ fignvim.module.register_modules({
     "comment",
     "editorconfig",
   },
-  ["ui"] = { "indent-blankline", "notify", "colourschemes", "dressing", "colorizer", "heirline", "bufferline", "maximizer" },
+  ["ui"] = {
+    "indent-blankline",
+    "notify",
+    "colourschemes",
+    "dressing",
+    "colorizer",
+    "heirline",
+    "bufferline",
+    "maximizer",
+    "transparent",
+  },
   ["lsp"] = { "lsp_config", "mason", "null-ls", "lsp-overloads", "schemastore" },
   ["completion"] = { "cmp", "copilot" },
   ["treesitter"] = {
