@@ -13,11 +13,15 @@ local nvim_notify_spec = {
   keys = fignvim.mappings.make_lazy_keymaps(notify_keys, true),
   opts = {
     stages = "fade_in_slide_out",
-    background_color = "#000000",
+    background_colour = "#000000",
     max_height = function() return math.floor(vim.o.lines * 0.75) end,
     max_width = function() return math.floor(vim.o.columns * 0.75) end,
   },
-  config = function(_, opts) vim.notify = require("notify") end,
+  config = function(_, opts)
+    local notify_plugin = require("notify")
+    notify_plugin.setup(opts)
+    vim.notify = notify_plugin
+  end,
 }
 
 -- Colourschemes
@@ -81,7 +85,7 @@ local dressing_spec = {
 -- Add colour to colour names
 local colorizer_spec = {
   "NvChad/nvim-colorizer.lua",
-  event = { "BufRead", "BufWinEnter", "BufNewFile" },
+  event = "VeryLazy",
   opts = {
     filetypes = {
       css = {
@@ -183,7 +187,7 @@ local transparent_spec = {
       "EndOfBuffer",
     },
     extra_groups = {}, -- table: additional groups that should be cleared
-    exclude_groups = { "NotifyBackground" }, -- table: groups you don't want to clear
+    exclude_groups = {}, -- table: groups you don't want to clear
   },
 }
 
