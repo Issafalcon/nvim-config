@@ -106,7 +106,7 @@ fignvim.lsp.setup_lsp_servers({
   "angularls",
   "cssls",
   "tflint",
-  "sqls",
+  "powershell_es",
 })
 
 -- 6. Create mappings
