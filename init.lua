@@ -60,7 +60,13 @@ fignvim.module.register_modules({
     "ts-rainbow",
     "aerial",
   },
-  ["navigation"] = { "telescope", "neo_tree", "leap", "rnvimr" },
+  ["navigation"] = {
+    "telescope",
+    -- "neo_tree",
+    "netrw_nvim",
+    "leap",
+    "rnvimr",
+  },
   ["cut-and-paste"] = {
     "cutlass",
     -- "yanky"  - Performance is an issue when using this plugin. Pastes / yanks are slow

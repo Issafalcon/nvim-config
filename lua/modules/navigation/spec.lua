@@ -2,6 +2,43 @@ local neo_tree_keys = {
   { "n", "<leader>e", ":Neotree toggle<CR>", { desc = "Open Neotree" } },
 }
 
+local netrw_nvim_keys = {
+  { "n", "<leader>e", ":Lexplore %:p:h<CR>", { desc = "Open Netrw in dir of current file" } },
+  { "n", "<leader>E", ":Lexplore<CR>", { desc = "Open Netrw in current working dir" } },
+}
+
+local netrw_nvim_spec = {
+  -- Temp until this gets merged in base repo
+  "Issafalcon/netrw.nvim",
+  branch = "allow-special-chars-in-mapping-keys",
+  keys = fignvim.mappings.make_lazy_keymaps(netrw_nvim_keys, true),
+  init = function()
+    fignvim.config.set_vim_opts({
+      g = {
+        netrw_keepdir = 0,
+        netrw_winsize = 30,
+        netrw_banner = 0,
+        netrw_localcopydircmd = "cp -r",
+      },
+    })
+  end,
+  opts = {
+    mappings = {
+      ["<leader>e"] = function(_) vim.cmd("bdelete") end,
+      ["p"] = function(payload) print(vim.inspect(payload)) end,
+
+      -- Better file marking
+      ["<TAB>"] = function(_) vim.cmd("normal mf") end, -- Mark file / dir
+      ["<S-TAB>"] = function(_) vim.cmd("normal mF") end, -- Unmark all files in current buffer
+      ["<Leader><TAB>"] = function(_) vim.cmd("normal mu") end, -- Remove marks on all files
+    },
+  },
+  config = function(_, opts)
+    require("netrw").setup(opts)
+    fignvim.mappings.register_keymap_group("Navigation", netrw_nvim_keys, false)
+  end,
+}
+
 local neo_tree_spec = {
   "nvim-neo-tree/neo-tree.nvim",
   cmd = "NeoTree",
@@ -120,6 +157,7 @@ local leap_spec = {
 
 return fignvim.module.enable_registered_plugins({
   ["neo_tree"] = neo_tree_spec,
+  ["netrw_nvim"] = netrw_nvim_spec,
   ["rnvimr"] = rnvimr_spec,
   ["leap"] = leap_spec,
   ["telescope"] = require("modules.navigation.telescope"),

@@ -2,7 +2,7 @@ local options = {
   opt = {
     backspace = vim.opt.backspace + { "nostop" }, -- Don't stop backspace at insert
     clipboard = "unnamedplus", -- Connection to the system clipboard
-    cmdheight = 0, -- hide command line unless needed
+    cmdheight = 1, -- hide command line unless needed
     completeopt = { "menu", "menuone", "noselect" }, -- Options for insert mode completion
     copyindent = true, -- Copy the previous indentation on autoindenting
     cursorline = true, -- Highlight the text line of the cursor
@@ -66,11 +66,10 @@ local options = {
   },
 }
 
-if vim.fn.has("win32") == 1 then 
-  options.g.python3_host_prog = "~/AppData/Local/python3/Envs/neovim/Scripts/python.exe" 
+if vim.fn.has("win32") == 1 then
+  options.g.python3_host_prog = "~/AppData/Local/python3/Envs/neovim/Scripts/python.exe"
 else
-  options.g.python3_host_prog = "~/python3/envs/neovim/bin/python3" 
+  options.g.python3_host_prog = "~/python3/envs/neovim/bin/python3"
 end
-
 
 fignvim.config.set_vim_opts(options)
