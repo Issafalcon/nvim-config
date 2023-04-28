@@ -66,6 +66,11 @@ local options = {
   },
 }
 
-if vim.fn.has("win32") == 1 then options.g.python3_host_prog = "~/AppData/Local/python3/Envs/neovim/Scripts/python.exe" end
+if vim.fn.has("win32") == 1 then 
+  options.g.python3_host_prog = "~/AppData/Local/python3/Envs/neovim/Scripts/python.exe" 
+else
+  options.g.python3_host_prog = "~/python3/envs/neovim/bin/python3" 
+end
+
 
 fignvim.config.set_vim_opts(options)
