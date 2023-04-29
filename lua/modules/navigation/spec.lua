@@ -68,6 +68,21 @@ local netrw_nvim_spec = {
         -- Refresh netrw list
         vim.cmd("edit .")
       end,
+      ["D"] = function(payload)
+        if payload.type == 0 then
+          -- We are deleting a dir. Do it recursively with warning
+          local dir = payload.dir .. "/" .. payload.node
+          local delete_dir = vim.fn.input({ prompt = "Delete directory " .. payload.node .. " recursively? (y/n): ", default = "n" })
+          if delete_dir == "y" then vim.fn.delete(dir, "rf") end
+        else
+          -- We are deleting a file. Do it with warning
+          local file = payload.dir .. "/" .. payload.node
+          local delete_file = vim.fn.input({ prompt = "Delete file " .. payload.node .. "? (y/n): ", default = "n" })
+          if delete_file == "y" then vim.fn.delete(file) end
+        end
+
+        vim.cmd("edit .")
+      end,
     },
   },
   config = function(_, opts)
