@@ -25,14 +25,15 @@ local netrw_nvim_keys = {
 
 local netrw_nvim_spec = {
   -- Temp until this gets merged in base repo
-  "Issafalcon/netrw.nvim",
-  branch = "allow-special-chars-in-mapping-keys",
+  -- "Issafalcon/netrw.nvim",
+  -- branch = "allow-special-chars-in-mapping-keys",
+  dir = "~/repos/netrw.nvim",
   keys = fignvim.mappings.make_lazy_keymaps(netrw_nvim_keys, true),
   init = function()
     fignvim.config.set_vim_opts({
       g = {
         netrw_keepdir = 0,
-        netrw_winsize = 30,
+        netrw_winsize = 20,
         netrw_banner = 0,
         netrw_localcopydircmd = "cp -r",
       },
@@ -40,16 +41,33 @@ local netrw_nvim_spec = {
   end,
   opts = {
     mappings = {
-      ["<leader>e"] = function(_) vim.cmd("bdelete") end,
+      ["<leader>e"] = ":bdelete<CR>",
       ["p"] = function(payload) print(vim.inspect(payload)) end,
 
       -- Better file marking
-      ["<TAB>"] = function(_) vim.cmd("normal mf") end, -- Mark file / dir
-      ["<S-TAB>"] = function(_) vim.cmd("normal mF") end, -- Unmark all files in current buffer
-      ["<Leader><TAB>"] = function(_) vim.cmd("normal mu") end, -- Remove marks on all files
+      ["<TAB>"] = ":normal mf<CR>", -- Mark file / dir
+      ["<S-TAB>"] = ":normal mF<CR>", -- Unmark all files in current buffer
+      ["<Leader><TAB>"] = ":normal mu<CR>", -- Remove marks on all files
+
+      -- Navigation
+      ["<C-l>"] = "<C-w>l",
 
       -- File management
-      ["n"] = function() end,
+      ["n"] = function(payload)
+        local file_dir = payload.dir
+        local file_name =
+          vim.fn.input({ prompt = "Enter new file name (end with '/' for directories): ", default = "", completion = "file" })
+
+        -- Check if user is creating directory or file
+        if file_name:sub(-1) == "/" then
+          vim.fn.mkdir(file_dir .. "/" .. file_name, "p")
+        else
+          vim.fn.writefile({}, file_dir .. "/" .. file_name)
+        end
+
+        -- Refresh netrw list
+        vim.cmd("edit .")
+      end,
     },
   },
   config = function(_, opts)
