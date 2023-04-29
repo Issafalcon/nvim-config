@@ -13,19 +13,16 @@ local autosession_spec = {
   init = function() fignvim.mappings.register_keymap_group("Navigation", session_lens_keys, false, "<leader>t") end,
   keys = fignvim.mappings.make_lazy_keymaps(session_lens_keys, true),
   dependencies = {
-    {
-      "rmagatti/session-lens",
-      opts = {
-        path_display = { "shorten" },
-        previewer = false,
-      },
-    },
     "telescope.nvim",
   },
   opts = {
     auto_save_enabled = false,
     auto_session_use_git_branch = false,
     cwd_change_handling = false,
+    session_lens = {
+      path_display = { "shorten" },
+      previewer = false,
+    },
   },
 }
 
