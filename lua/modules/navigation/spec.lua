@@ -3,7 +3,23 @@ local neo_tree_keys = {
 }
 
 local netrw_nvim_keys = {
-  { "n", "<leader>e", ":Lexplore %:p:h<CR>", { desc = "Open Netrw in dir of current file" } },
+  {
+    "n",
+    "<leader>e",
+    function()
+      -- get all netrw buffer numbers and close them
+      local netrw_buffers = vim.tbl_filter(function(buf) return vim.bo[buf].filetype == "netrw" end, vim.api.nvim_list_bufs())
+      if #netrw_buffers > 0 then
+        for _, buf in ipairs(netrw_buffers) do
+          vim.cmd("bdelete " .. buf)
+        end
+      else
+        vim.cmd("Lexplore %:p:h")
+      end
+    end,
+    { desc = "Open Netrw in dir of current file" },
+  },
+  -- No need to check if existing netrw buffers open as this command will toggle by default
   { "n", "<leader>E", ":Lexplore<CR>", { desc = "Open Netrw in current working dir" } },
 }
 
@@ -31,6 +47,9 @@ local netrw_nvim_spec = {
       ["<TAB>"] = function(_) vim.cmd("normal mf") end, -- Mark file / dir
       ["<S-TAB>"] = function(_) vim.cmd("normal mF") end, -- Unmark all files in current buffer
       ["<Leader><TAB>"] = function(_) vim.cmd("normal mu") end, -- Remove marks on all files
+
+      -- File management
+      ["n"] = function() end,
     },
   },
   config = function(_, opts)
