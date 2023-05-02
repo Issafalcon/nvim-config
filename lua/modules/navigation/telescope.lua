@@ -38,6 +38,7 @@ local telescope_mappings = {
 
 local telescope_spec = {
   "nvim-telescope/telescope.nvim",
+  lazy = false,
   dependencies = {
     {
       "nvim-telescope/telescope-fzf-native.nvim",
