@@ -168,6 +168,8 @@ local rnvimr_keys = {
 local rnvimr_spec = {
   "kevinhwang91/rnvimr",
   cmd = "RnvimrToggle",
+  -- TODO: Remove commit pin once issue with mouse support fixed
+  commit = "5edff6189cb0f4fae77ee751de5109a8f87cb9c7",
   init = function()
     fignvim.config.set_vim_opts({
       g = {
