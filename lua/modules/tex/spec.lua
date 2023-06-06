@@ -2,7 +2,7 @@ local vimtex_keys = {
   {
     "n",
     "\\lg",
-    ":Start latexmk-custom-launch.sh %:p<CR>",
+    ":term latexmk-custom-launch.sh %:p<CR>",
     { desc = "Run a custom script to launch latex with bibliography", silent = true, noremap = true },
   },
 }
