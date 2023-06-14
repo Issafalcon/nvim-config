@@ -5,6 +5,16 @@ local vimtex_keys = {
     ":term latexmk-custom-launch.sh %:p<CR>",
     { desc = "Run a custom script to launch latex with bibliography", silent = true, noremap = true },
   },
+  {
+    "n",
+    "\\lm",
+    ":term pandoc-tex-to-mediawiki.sh %:p<CR>",
+    {
+      desc = "Run a custom script to convert a LaTeX file to mediawiki markdown, using elsevier citation styles for the bibliography",
+      silent = true,
+      noremap = true,
+    },
+  },
 }
 
 local vimtex_spec = {
