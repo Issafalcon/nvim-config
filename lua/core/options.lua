@@ -61,7 +61,6 @@ local options = {
     autoformat_enabled = true, -- enable or disable auto formatting at start (lsp.formatting.format_on_save must be enabled)
     autopairs_enabled = true, -- enable autopairs at start
     status_diagnostics_enabled = true, -- enable diagnostics in statusline
-    plugin_dev = false, -- enable plugin development mode (adds plugins, types etc to runtimepath via neodev plugin)
     fignvim_modules = {}, -- Track modules
   },
 }

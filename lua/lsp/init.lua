@@ -12,19 +12,22 @@ fignvim.lsp.setup = function(server)
 
   if server == "lua_ls" then
     local neodev_ok, neodev = pcall(require, "neodev")
+
     -- For developing Lua plugins for Neovim Only
     -- Comment out below lines so lua_dev is not used when working on other Lua projects
     if neodev_ok then
       neodev.setup({
         library = {
-          enabled = vim.g.plugin_dev,
+          enabled = true,
           types = true,
           -- you can also specify the list of plugins to make available as a workspace library
           -- plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
-          plugins = vim.g.plugin_dev,
+          plugins = true,
           runtime = true,
         },
         setup_jsonls = true,
+        lspconfig = true,
+        pathStrict = true,
       })
     end
   end

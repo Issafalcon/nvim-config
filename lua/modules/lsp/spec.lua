@@ -2,6 +2,7 @@ local lsp_config_spec = {
   "neovim/nvim-lspconfig",
   event = "BufReadPre",
   dependencies = {
+    "folke/neodev.nvim",
     "lsp-overloads.nvim",
     "mason.nvim",
     -- LSP Completion sources
