@@ -147,6 +147,7 @@ local treesitter_spec = {
       updatetime = 25,
       persist_queries = false,
     },
+    matchup = { enable = true },
   },
   dependencies = {
     -- Enable treesitter playground

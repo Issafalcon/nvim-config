@@ -60,7 +60,7 @@ local dial_spec = {
 local matchup_spec = {
   "andymass/vim-matchup",
   event = "BufReadPost",
-  config = function() vim.g.matchup_matchparen_offscreen = { method = "status_manual" } end,
+  config = function() vim.g.matchup_matchparen_offscreen = { method = "popup" } end,
 }
 
 local autopairs_spec = {
