@@ -10,13 +10,7 @@ local neotest_keys = {
   {
     "n",
     "<leader>ud",
-    function()
-      if vim.bo.filetype == "cs" then
-        require("neotest").run.run({ strategy = require("neotest-dotnet.strategies.netcoredbg"), is_custom_dotnet_debug = true })
-      else
-        require("neotest").run.run({ strategy = "dap" })
-      end
-    end,
+    function() require("neotest").run.run({ strategy = "dap" }) end,
     { desc = "Neotest: Debug nearest test" },
   },
   {
