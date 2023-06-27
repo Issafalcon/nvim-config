@@ -5,8 +5,7 @@ if vim.fn.has("win32") == 1 then
   cmd = { "cmd.exe", "/C", "omnisharp" }
 else
   cmd = {
-    "dotnet",
-    fignvim.path.concat({ vim.fn.stdpath("data"), "mason", "packages", "omnisharp", "omnisharp.cmd" }),
+    fignvim.path.concat({ vim.fn.stdpath("data"), "mason", "packages", "omnisharp", "omnisharp" }),
   }
 end
 
