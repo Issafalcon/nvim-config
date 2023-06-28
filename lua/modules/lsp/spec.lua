@@ -26,7 +26,24 @@ local null_ls_spec = {
     return {
       debug = true,
       sources = {
-        formatting.prettier.with({ extra_args = { "--single-quote", "--jsx-single-quote" } }),
+        formatting.prettier.with({
+          extra_args = { "--single-quote", "--jsx-single-quote" },
+          condition = function(utils)
+            return utils.root_has_file({
+              -- https://prettier.io/docs/en/configuration.html
+              ".prettierrc",
+              ".prettierrc.json",
+              ".prettierrc.yml",
+              ".prettierrc.yaml",
+              ".prettierrc.json5",
+              ".prettierrc.js",
+              ".prettierrc.cjs",
+              ".prettierrc.toml",
+              "prettier.config.js",
+              "prettier.config.cjs",
+            })
+          end,
+        }),
         formatting.black.with({ extra_args = { "--fast" } }),
         formatting.stylua,
         -- Use project-local exe only
