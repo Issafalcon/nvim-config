@@ -1,6 +1,6 @@
-M ={}
+M = {}
 M.opts = {
-  cmd = {"emmet-ls", "--stdio"},
+  cmd = { "emmet-ls", "--stdio" },
   filetypes = {
     "html",
     "typescriptreact",
@@ -9,12 +9,10 @@ M.opts = {
     "typescript",
     "javascript.jsx",
     "typescript.tsx",
-    "css"
+    "css",
   },
-  root_dir = function(fname)
-    return vim.loop.cwd()
-  end,
-  settings = {}
+  root_dir = function(fname) return vim.loop.cwd() end,
+  settings = {},
 }
 
 return M

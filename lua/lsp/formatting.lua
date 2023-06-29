@@ -10,6 +10,8 @@ local formatting_config = {
       "javascript",
       "javascriptreact",
       "typescriptreact",
+      "javascript.tsx",
+      "typescript.tsx",
       "cs",
       "lua",
     },
@@ -39,7 +41,7 @@ end
 
 function fignvim.lsp.formatting.format() vim.lsp.buf.format(formatting_opts) end
 
-function fignvim.lsp.formatting.create_buf_autocmds(bufnr)
+function fignvim.lsp.formatting.create_buf_autocmds(bufnr, client_name)
   vim.api.nvim_buf_create_user_command(
     bufnr,
     "Format",
@@ -56,14 +58,21 @@ function fignvim.lsp.formatting.create_buf_autocmds(bufnr)
   then
     local autocmd_group = "auto_format_" .. bufnr
     vim.api.nvim_create_augroup(autocmd_group, { clear = true })
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      group = autocmd_group,
-      buffer = bufnr,
-      desc = "Auto format buffer " .. bufnr .. " before save",
-      callback = function()
-        if vim.g.autoformat_enabled then vim.lsp.buf.format(fignvim.table.default_tbl({ bufnr = bufnr }, formatting_opts)) end
-      end,
-    })
+    if client_name == "eslint" then
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = bufnr,
+        command = "EslintFixAll",
+      })
+    else
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = autocmd_group,
+        buffer = bufnr,
+        desc = "Auto format buffer " .. bufnr .. " before save",
+        callback = function()
+          if vim.g.autoformat_enabled then vim.lsp.buf.format(fignvim.table.default_tbl({ bufnr = bufnr }, formatting_opts)) end
+        end,
+      })
+    end
   end
 end
 

@@ -46,23 +46,12 @@ local null_ls_spec = {
         }),
         formatting.black.with({ extra_args = { "--fast" } }),
         formatting.stylua,
-        -- Use project-local exe only
-        -- https://github.com/jose-elias-alvarez/nvim-lsp-ts-utils#configuring-sources
-        formatting.eslint_d.with({
-          only_local = "node_modules/.bin",
-        }),
         formatting.shfmt,
         formatting.markdownlint,
         diagnostics.yamllint,
         diagnostics.shellcheck,
         diagnostics.vint,
-        diagnostics.eslint_d.with({
-          only_local = "node_modules/.bin",
-        }),
         diagnostics.chktex,
-        code_actions.eslint.with({
-          prefer_local = "node_modules/.bin",
-        }),
         code_actions.refactoring,
       },
       on_attach = fignvim.lsp.on_attach,

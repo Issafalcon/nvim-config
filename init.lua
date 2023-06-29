@@ -113,6 +113,7 @@ fignvim.lsp.setup_lsp_servers({
   "cssls",
   "tflint",
   "powershell_es",
+  "eslint",
 })
 
 -- 6. Create mappings

@@ -43,7 +43,9 @@ function fignvim.lsp.on_attach(client, bufnr)
 
   fignvim.lsp.mappings.set_buf_mappings(capabilities, client.name, bufnr)
 
-  if capabilities.documentFormattingProvider then fignvim.lsp.formatting.create_buf_autocmds(bufnr) end
+  if capabilities.documentFormattingProvider or client.name == "eslint" then
+    fignvim.lsp.formatting.create_buf_autocmds(bufnr, client.name)
+  end
 
   if capabilities.documentHighlightProvider then fignvim.lsp.handlers.handle_document_highlighting(bufnr) end
 
