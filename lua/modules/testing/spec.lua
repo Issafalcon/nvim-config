@@ -28,7 +28,6 @@ local neotest_spec = {
     "nvim-lua/plenary.nvim",
     "nvim-neotest/neotest-python",
     "nvim-neotest/neotest-plenary",
-    "nvim-neotest/neotest-vim-test",
     "Issafalcon/neotest-dotnet",
     "haydenmeade/neotest-jest",
     "antoinemadec/FixCursorHold.nvim",
@@ -46,11 +45,9 @@ local neotest_spec = {
         require("neotest-dotnet")({
           discovery_root = "solution",
         }),
-        require("neotest-vim-test")({
-          ignore_file_types = { "python", "vim", "lua", "cs" },
-        }),
         require("neotest-jest")({
           jestCommand = "npm test --",
+          cwd = function(path) return vim.fn.getcwd() end,
         }),
       },
       icons = {

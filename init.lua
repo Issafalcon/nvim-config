@@ -77,7 +77,11 @@ fignvim.module.register_modules({
   ["session"] = { "auto-session" },
   ["snippets"] = { "luasnip" },
   ["terminal"] = { "toggleterm" },
-  ["debugging"] = { "dap", "dap-ui", "dap-virtual-text", "dap-vscode-js" },
+  ["debugging"] = {
+    "dap",
+    "dap-ui",
+    "dap-virtual-text",
+  },
   ["documenting"] = { "neogen", "plantuml", "markdown-preview" },
   ["icons"] = { "devicons", "icon-picker" },
   ["testing"] = { "neotest" },

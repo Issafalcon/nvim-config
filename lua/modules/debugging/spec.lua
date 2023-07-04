@@ -105,9 +105,11 @@ local dap_spec = {
       "mason.nvim",
       "jbyuki/one-small-step-for-vimkind",
       "rcarriga/nvim-dap-ui",
+      "mxsdev/nvim-dap-vscode-js",
     },
     config = function()
       local dap = require("dap")
+      local dap_vscode_js = require("dap-vscode-js")
       local install_dir = fignvim.path.concat({ vim.fn.stdpath("data"), "mason" })
 
       -- Settings
@@ -121,6 +123,7 @@ local dap_spec = {
       -- Adapters
       dap.adapters.node2 = {
         type = "executable",
+        name = "node-debug",
         command = "node",
         args = { install_dir .. "/packages/node-debug2-adapter/out/src/nodeDebug.js" },
       }
@@ -129,6 +132,17 @@ local dap_spec = {
         type = "executable",
         command = "node",
         args = { install_dir .. "/packages/chrome-debug-adapter/out/src/chromeDebug.js" },
+      }
+
+      dap.adapters["pwa-node"] = {
+        type = "server",
+        host = "localhost",
+        port = "${port}",
+        executable = {
+          command = "node",
+          -- 💀 Make sure to update this path to point to your installation
+          args = { install_dir .. "/packages/js-debug-adapter/js-debug/src/dapDebugServer.js", "${port}" },
+        },
       }
 
       local netcoredbg_install_dir
@@ -259,25 +273,8 @@ local dap_virtual_text_spec = {
   },
 }
 
-local dap_vscode_js_spec = {
-  "mxsdev/nvim-dap-vscode-js",
-  config = function()
-    local dap_vscode = require("dap-vscode-js")
-    local install_dir = fignvim.path.concat({ vim.fn.stdpath("data"), "mason" })
-
-    dap_vscode.setup({
-      adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
-      debugger_path = install_dir .. "/packages/js-debug-adapter",
-      -- log_file_path = "(stdpath cache)/dap_vscode_js.log" -- Path for file logging
-      log_file_level = 1, -- Logging level for output to file. Set to false to disable file logging.
-      -- log_console_level = vim.log.levels.ERROR -- Logging level for output to console. Set to false to disable console output.
-    })
-  end,
-}
-
 return fignvim.module.enable_registered_plugins({
   ["dap"] = dap_spec,
   ["dap-ui"] = dap_ui_spec,
   ["dap-virtual-text"] = dap_virtual_text_spec,
-  ["dap-vscode-js"] = dap_vscode_js_spec,
 }, "debugging")
