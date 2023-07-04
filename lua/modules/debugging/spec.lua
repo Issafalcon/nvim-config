@@ -105,11 +105,9 @@ local dap_spec = {
       "mason.nvim",
       "jbyuki/one-small-step-for-vimkind",
       "rcarriga/nvim-dap-ui",
-      "mxsdev/nvim-dap-vscode-js",
     },
     config = function()
       local dap = require("dap")
-      local dap_vscode_js = require("dap-vscode-js")
       local install_dir = fignvim.path.concat({ vim.fn.stdpath("data"), "mason" })
 
       -- Settings
