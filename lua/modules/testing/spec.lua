@@ -46,7 +46,8 @@ local neotest_spec = {
           discovery_root = "solution",
         }),
         require("neotest-jest")({
-          jestCommand = "npm test --",
+          jestCommand = "npm test -- --runInBand --no-cache --watchAll=false",
+          env = { CI = "true" },
           cwd = function(path) return vim.fn.getcwd() end,
         }),
       },
