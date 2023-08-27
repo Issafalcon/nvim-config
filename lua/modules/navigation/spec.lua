@@ -24,9 +24,7 @@ local netrw_nvim_keys = {
 }
 
 local netrw_nvim_spec = {
-  -- Temp until this gets merged in base repo
-  "Issafalcon/netrw.nvim",
-  branch = "allow-special-chars-in-mapping-keys",
+  "prichrd/netrw.nvim",
   keys = fignvim.mappings.make_lazy_keymaps(netrw_nvim_keys, true),
   init = function()
     fignvim.config.set_vim_opts({

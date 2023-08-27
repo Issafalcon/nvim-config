@@ -74,7 +74,9 @@ fignvim.module.register_modules({
   ["search-and-replace"] = { "vim-abolish", "spectre", "subversive", "bqf" },
   ["diagnostics"] = { "trouble" },
   ["git"] = { "gitsigns", "diffview", "vim-fugitive", "git-messenger" },
-  ["session"] = { "auto-session" },
+  ["session"] = {
+    "auto-session",
+  },
   ["snippets"] = { "luasnip" },
   ["terminal"] = { "toggleterm" },
   ["debugging"] = {
