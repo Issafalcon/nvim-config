@@ -47,6 +47,7 @@ local null_ls_spec = {
         formatting.black.with({ extra_args = { "--fast" } }),
         formatting.stylua,
         formatting.shfmt,
+        formatting.clang_format,
         formatting.markdownlint,
         diagnostics.yamllint,
         diagnostics.shellcheck,
@@ -84,6 +85,7 @@ local mason_spec = {
           "shfmt",
           "sql-formatter",
           "stylua",
+          "clang-format",
 
           -- Linters
           "tflint",
