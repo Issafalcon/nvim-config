@@ -1,5 +1,5 @@
 -- Check compatible version of Neovim
-if vim.fn.has("nvim-0.8") ~= 1 or vim.version().prerelease then
+if vim.fn.has("nvim-0.9") ~= 1 or vim.version().prerelease then
   vim.schedule(function() fignvim.ui.notify("Unsupported Neovim Version! Please check the requirements", "error") end)
 end
 
@@ -90,6 +90,7 @@ fignvim.module.register_modules({
   ["terraform"] = { "vim-terraform" },
   ["tex"] = { "vimtex" },
   ["dotnet"] = { "omnisharp-extended-lsp" },
+  ["cpp"] = { "vim-cmake" },
 })
 
 if vim.fn.has("win32") == 1 then fignvim.config.set_shell_as_powershell() end
@@ -121,6 +122,7 @@ fignvim.lsp.setup_lsp_servers({
   "powershell_es",
   "eslint",
   "clangd",
+  "cmake",
 })
 
 -- 6. Create mappings

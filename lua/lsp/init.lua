@@ -56,6 +56,7 @@ function fignvim.lsp.on_attach(client, bufnr)
         ui = {
           close_events = { "CursorMoved", "CursorMovedI", "InsertCharPre" },
           floating_window_above_cur_line = true,
+          silent = true,
         },
       })
     end
