@@ -115,9 +115,19 @@ local colorizer_spec = {
 local indent_blankline_spec = {
   "lukas-reineke/indent-blankline.nvim",
   event = "BufReadPre",
+  main = "ibl",
   opts = {
-    show_end_of_line = true,
-    space_char_blankline = " ",
+    indent = {
+      char = "│",
+    },
+    scope = {
+      enabled = true,
+      show_start = true,
+      show_end = false,
+      injected_languages = false,
+      highlight = { "Function", "Label"},
+      priority = 500,
+    },
   },
 }
 
