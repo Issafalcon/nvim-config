@@ -47,7 +47,9 @@ local null_ls_spec = {
         formatting.black.with({ extra_args = { "--fast" } }),
         formatting.stylua,
         formatting.shfmt,
-        formatting.clang_format,
+        formatting.clang_format.with({
+          filetypes = { "c", "cpp", "objc", "objcpp", "h" },
+        }),
         formatting.markdownlint,
         diagnostics.yamllint,
         diagnostics.shellcheck,
