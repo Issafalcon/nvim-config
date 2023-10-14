@@ -122,10 +122,10 @@ local indent_blankline_spec = {
     },
     scope = {
       enabled = true,
-      show_start = true,
+      show_start = false,
       show_end = false,
       injected_languages = false,
-      highlight = { "Function", "Label"},
+      highlight = { "Function", "Label" },
       priority = 500,
     },
   },
