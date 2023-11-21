@@ -221,6 +221,13 @@ return fignvim.module.enable_registered_plugins({
   ["ts-context-commentstring"] = {
     "JoosepAlviste/nvim-ts-context-commentstring",
     event = "BufReadPost",
+    init = function()
+      fignvim.config.set_vim_opts({
+        g = {
+          skip_ts_context_commentstring_module = true,
+        },
+      })
+    end,
   },
   -- Rainbow parentheses using treesitter (TODO: Find alternative - this is no longer maintained)
   ["ts-rainbow"] = {
