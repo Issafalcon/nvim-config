@@ -10,7 +10,6 @@ local session_lens_keys = {
 local autosession_spec = {
   "rmagatti/auto-session",
   lazy = false,
-  init = function() fignvim.mappings.register_keymap_group("Navigation", session_lens_keys, false, "<leader>t") end,
   keys = fignvim.mappings.make_lazy_keymaps(session_lens_keys, true),
   dependencies = {
     "telescope.nvim",

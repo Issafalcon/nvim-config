@@ -4,7 +4,6 @@ local easy_align_keys = {
 
 local easy_align_spec = {
   "junegunn/vim-easy-align",
-  init = function() fignvim.mappings.register_keymap_group("Editing", easy_align_keys, false) end,
   keys = fignvim.mappings.make_lazy_keymaps(easy_align_keys, true),
 }
 
@@ -15,7 +14,6 @@ local ssr_keys = {
 
 local ssr_spec = {
   "cshuaimin/ssr.nvim",
-  init = function() fignvim.mappings.register_keymap_group("Editing", ssr_keys, false) end,
   keys = fignvim.mappings.make_lazy_keymaps(ssr_keys, true),
 }
 
@@ -27,7 +25,6 @@ local treesj_keys = {
 local treesj_spec = {
   "Wansmer/treesj",
   keys = fignvim.mappings.make_lazy_keymaps(treesj_keys, true),
-  init = function() fignvim.mappings.register_keymap_group("Editing", treesj_keys, false) end,
   opts = { use_default_keymaps = false, max_join_length = 140 },
 }
 
@@ -51,8 +48,6 @@ local dial_spec = {
         augend.semver.alias.semver,
       },
     })
-
-    fignvim.mappings.register_keymap_group("Editing", dial_keys, false)
   end,
 }
 
@@ -117,7 +112,6 @@ local undotree_keys = {
 local undotree_spec = {
   "mbbill/undotree",
   cmd = "UndoTreeToggle",
-  init = function() fignvim.mappings.register_keymap_group("Editing", undotree_keys, false) end,
   keys = fignvim.mappings.make_lazy_keymaps(undotree_keys, true),
 }
 

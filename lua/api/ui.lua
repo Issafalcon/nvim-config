@@ -26,7 +26,7 @@ function fignvim.ui.echo(messages)
   if type(messages) == "table" then vim.api.nvim_echo(messages, false, {}) end
 end
 
---- Serve a notification with a title of AstroNvim
+--- Serve a notification with a title of FigNvim
 ---@param msg string the notification body
 ---@param type number|nil the type of the notification (:help vim.log.levels)
 ---@param opts table|nil of nvim-notify options to use (:help notify-options)

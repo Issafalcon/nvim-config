@@ -55,7 +55,8 @@ local gitsigns_spec = {
     local gitsigns = require("gitsigns")
     local keymaps = require("modules.git.git_signs_keymaps")
     gitsigns.setup(opts)
-    fignvim.mappings.register_keymap_group("GitSigns", keymaps, false, "<leader>h")
+    fignvim.mappings.register_whichkey_prefix("<leader>h", "Git Signs Hunk")
+    fignvim.mappings.create_keymaps(keymaps)
   end,
 }
 

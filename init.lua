@@ -13,6 +13,121 @@ for _, source in ipairs({
   if not status_ok then vim.api.nvim_err_writeln("Failed to load " .. source .. "\n\n" .. fault) end
 end
 
+fignvim.module.register_plugins({
+  -- Plugin Development
+  -- "sqlite",
+  "neodev",
+  "luapad",
+
+  -- Keybinds and Cheatsheets
+  "cheatsheet",
+  "whichkey",
+
+  -- General Editing
+  "undotree",
+  "refactoring",
+  "easyalign",
+  "ssr",
+  "treesj",
+  "dial",
+  "matchup",
+  "autopairs",
+  "nvim-surround",
+  "vim-unimpaired",
+  "comment",
+  "editorconfig",
+  "indent-blankline",
+
+  -- UI
+  "notify",
+  "colourschemes",
+  "dressing",
+  "colorizer",
+  "heirline",
+  "bufferline",
+  "maximizer",
+  "transparent",
+
+  -- LSP
+  "lsp_config",
+  "mason",
+  "null-ls",
+  "lsp-overloads",
+  "schemastore",
+
+  -- Completions and Snippets
+  "cmp",
+  "copilot",
+  "luasnip",
+
+  -- Treesitter
+  "treesitter",
+  "treesitter-context",
+  "treesitter-textobjects",
+  "ts-autotag",
+  "ts-context-commentstring",
+  "ts-rainbow",
+  "aerial",
+
+  -- Navigation
+  "telescope",
+  -- "neo_tree",
+  "netrw_nvim",
+  "leap",
+  "rnvimr",
+  -- Cut and paste
+  "cutlass",
+  -- "yanky"  - Performance is an issue when using this plugin. Pastes / yanks are slow
+
+  -- Search and replace
+  "vim-abolish",
+  "spectre",
+  "subversive",
+  "bqf",
+
+  -- Diagnostics
+  "trouble",
+
+  -- Git
+  "gitsigns",
+  "diffview",
+  "vim-fugitive",
+  "git-messenger",
+
+  -- Session management
+  "auto-session",
+
+  -- Terminal
+  "toggleterm",
+
+  -- Debugging
+  "dap",
+  "dap-ui",
+  "dap-virtual-text",
+
+  -- Documenting
+  "neogen",
+  "plantuml",
+  "markdown-preview",
+
+  -- Icons
+  "devicons",
+  "icon-picker",
+
+  -- Testing
+  "neotest",
+
+  -- Terraform
+  "vim-terraform",
+  -- LaTeX
+  "vimtex",
+
+  -- .NET
+  "omnisharp-extended-lsp",
+
+  -- C++
+  "vim-cmake",
+})
 -- Register modules
 ---@summary Takes a table of lists, indexed by module name
 ---         The list is the set of named plugins that will match the indexes of

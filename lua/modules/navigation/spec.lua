@@ -82,10 +82,7 @@ local netrw_nvim_spec = {
       end,
     },
   },
-  config = function(_, opts)
-    require("netrw").setup(opts)
-    fignvim.mappings.register_keymap_group("Navigation", netrw_nvim_keys, false)
-  end,
+  config = function(_, opts) require("netrw").setup(opts) end,
 }
 
 local neo_tree_spec = {
@@ -153,10 +150,7 @@ local neo_tree_spec = {
       },
     },
   },
-  config = function(_, opts)
-    local neotree = require("neo-tree").setup(opts)
-    fignvim.mappings.register_keymap_group("Navigation", neo_tree_keys, false)
-  end,
+  config = function(_, opts) require("neo-tree").setup(opts) end,
 }
 
 local rnvimr_keys = {
@@ -190,7 +184,6 @@ local rnvimr_spec = {
   end,
   enabled = function() return vim.fn.executable("ranger") == 1 end,
   keys = fignvim.mappings.make_lazy_keymaps(rnvimr_keys, true),
-  config = function(_, opts) fignvim.mappings.register_keymap_group("Navigation", rnvimr_keys, false) end,
 }
 
 local leap_keys = {
@@ -203,7 +196,6 @@ local leap_spec = {
   "ggandor/leap.nvim",
   event = "VeryLazy",
   keys = fignvim.mappings.make_lazy_keymaps(leap_keys, true),
-  config = function() fignvim.mappings.register_keymap_group("Navigation", leap_keys, false) end,
 }
 
 return fignvim.module.enable_registered_plugins({

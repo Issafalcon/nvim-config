@@ -65,7 +65,6 @@ local neotest_spec = {
         skipped = "",
       },
     })
-    fignvim.mappings.register_keymap_group("Testing", neotest_keys, false)
   end,
 }
 

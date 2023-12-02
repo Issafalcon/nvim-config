@@ -167,8 +167,6 @@ local dap_spec = {
         callback({ type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 })
       end
 
-      fignvim.mappings.register_keymap_group("Debug", dap_keys, false)
-
       fignvim.debug.setup_debug_configs()
     end,
   },

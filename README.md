@@ -14,7 +14,7 @@
 - LSP area with self contained API and LSP-Server configurations
 - Plugin modules loaded with [Lazy.nvim](https://github.com/folke/lazy.nvim) for optimized lazy loaded plugins
 
-## Modules
+## Plugins
 
 All plugins are installed and configured via the `modules` folders. Each one contains a `spec.lua` file which brings together all the plugin specs for `Lazy.nvim` to load.
 
@@ -22,7 +22,7 @@ All modules and their plugins are registered in the `init.lua` root file, so mod
 
 In each module, I've documented some notes about each plugin and how frequently I use that plugin on a 1-5 scale (5 = most frequent use). This helps me to work out which plugins I actually use / need.
 
-### Plugins
+### Plugins for plugins
 
 - Module containing all the supporting plugins for Neovim plugin development, or other plugins required as a dependency by multiple other plugins
 - `plenary` is currently the only plugin installed as a default with this module. Others are explicitly registered

@@ -27,7 +27,6 @@ local spectre_keys = {
 
 local spectre_spec = {
   "windwp/nvim-spectre",
-  init = function() fignvim.mappings.register_keymap_group("Search & Replace", spectre_keys, false) end,
   keys = fignvim.mappings.make_lazy_keymaps(spectre_keys, true),
   config = true,
 }
@@ -93,7 +92,6 @@ local subversive_spec = {
     }
 
     fignvim.config.set_vim_opts(opt)
-    fignvim.mappings.register_keymap_group("Search & Replace", subversive_keys, false)
   end,
   keys = fignvim.mappings.make_lazy_keymaps(subversive_keys, true),
 }

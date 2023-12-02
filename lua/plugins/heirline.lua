@@ -102,88 +102,88 @@ local function setup_colors()
   return colors
 end
 
-local heirline_spec = {
-  "rebelot/heirline.nvim",
-  event = "UIEnter",
-  config = function()
-    local heirline = require("heirline")
+return {
+  {
+    "rebelot/heirline.nvim",
+    event = "UIEnter",
+    config = function()
+      local heirline = require("heirline")
 
-    -- Load helper functions API
-    require("modules.ui.heirline_helpers")
+      -- Load helper functions API
+      require("api.status")
 
-    if not fignvim.status then return end
+      if not fignvim.status then return end
 
-    heirline.load_colors(setup_colors())
+      heirline.load_colors(setup_colors())
 
-    local heirline_opts = {
-      { -- statusline
-        hl = { fg = "fg", bg = "bg" },
-        fignvim.status.component.mode(),
-        fignvim.status.component.git_branch(),
-        fignvim.status.component.file_info(),
-        -- fignvim.status.component.file_info { filetype = {}, filename = false, file_modified = false },
-        fignvim.status.component.git_diff(),
-        fignvim.status.component.diagnostics(),
-        fignvim.status.component.fill(),
-        fignvim.status.component.cmd_info(),
-        fignvim.status.component.fill(),
-        fignvim.status.component.lsp(),
-        fignvim.status.component.treesitter(),
-        fignvim.status.component.nav(),
-        fignvim.status.component.mode({ surround = { separator = "right" } }),
-      },
-      { -- winbar
-        static = {
-          disabled = {
-            buftype = { "terminal", "prompt", "nofile", "help", "quickfix" },
-            filetype = { "rnvimr", "NvimTree", "neo%-tree", "dashboard", "Outline", "aerial" },
+      local heirline_opts = {
+        { -- statusline
+          hl = { fg = "fg", bg = "bg" },
+          fignvim.status.component.mode(),
+          fignvim.status.component.git_branch(),
+          fignvim.status.component.file_info(),
+          -- fignvim.status.component.file_info { filetype = {}, filename = false, file_modified = false },
+          fignvim.status.component.git_diff(),
+          fignvim.status.component.diagnostics(),
+          fignvim.status.component.fill(),
+          fignvim.status.component.cmd_info(),
+          fignvim.status.component.fill(),
+          fignvim.status.component.lsp(),
+          fignvim.status.component.treesitter(),
+          fignvim.status.component.nav(),
+          fignvim.status.component.mode({ surround = { separator = "right" } }),
+        },
+        { -- winbar
+          static = {
+            disabled = {
+              buftype = { "terminal", "prompt", "nofile", "help", "quickfix" },
+              filetype = { "rnvimr", "NvimTree", "neo%-tree", "dashboard", "Outline", "aerial" },
+            },
           },
+          init = function(self) self.bufnr = vim.api.nvim_get_current_buf() end,
+          fallthrough = false,
+          {
+            condition = function(self) return vim.opt.diff:get() or fignvim.status.condition.buffer_matches(self.disabled or {}) end,
+            init = function() vim.opt_local.winbar = nil end,
+          },
+          fignvim.status.component.file_info({
+            condition = function() return not fignvim.status.condition.is_active() end,
+            unique_path = {},
+            file_icon = { hl = fignvim.status.hl.file_icon("winbar") },
+            file_modified = false,
+            file_read_only = false,
+            hl = fignvim.status.hl.get_attributes("winbarnc", true),
+            surround = false,
+            update = "BufEnter",
+          }),
+          fignvim.status.component.breadcrumbs({ hl = fignvim.status.hl.get_attributes("winbar", true) }),
         },
-        init = function(self) self.bufnr = vim.api.nvim_get_current_buf() end,
-        fallthrough = false,
-        {
-          condition = function(self) return vim.opt.diff:get() or fignvim.status.condition.buffer_matches(self.disabled or {}) end,
-          init = function() vim.opt_local.winbar = nil end,
-        },
-        fignvim.status.component.file_info({
-          condition = function() return not fignvim.status.condition.is_active() end,
-          unique_path = {},
-          file_icon = { hl = fignvim.status.hl.file_icon("winbar") },
-          file_modified = false,
-          file_read_only = false,
-          hl = fignvim.status.hl.get_attributes("winbarnc", true),
-          surround = false,
-          update = "BufEnter",
-        }),
-        fignvim.status.component.breadcrumbs({ hl = fignvim.status.hl.get_attributes("winbar", true) }),
-      },
-    }
+      }
 
-    heirline.setup({ statusline = heirline_opts[1] })
+      heirline.setup({ statusline = heirline_opts[1] })
 
-    local augroup = vim.api.nvim_create_augroup("Heirline", { clear = true })
-    vim.api.nvim_create_autocmd("ColorScheme", {
-      group = augroup,
-      desc = "Refresh heirline colors",
-      callback = function() require("heirline.utils").on_colorscheme(setup_colors()) end,
-    })
-    vim.api.nvim_create_autocmd("User", {
-      pattern = "HeirlineInitWinbar",
-      group = augroup,
-      desc = "Disable winbar for some filetypes",
-      callback = function()
-        if
-          vim.opt.diff:get()
-          or fignvim.status.condition.buffer_matches(require("heirline").winbar.disabled or {
-            buftype = { "terminal", "prompt", "nofile", "help", "quickfix" },
-            filetype = { "rnvimr", "NvimTree", "neo%-tree", "dashboard", "Outline", "aerial" },
-          })
-        then
-          vim.opt_local.winbar = nil
-        end
-      end,
-    })
-  end,
+      local augroup = vim.api.nvim_create_augroup("Heirline", { clear = true })
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        group = augroup,
+        desc = "Refresh heirline colors",
+        callback = function() require("heirline.utils").on_colorscheme(setup_colors()) end,
+      })
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "HeirlineInitWinbar",
+        group = augroup,
+        desc = "Disable winbar for some filetypes",
+        callback = function()
+          if
+            vim.opt.diff:get()
+            or fignvim.status.condition.buffer_matches(require("heirline").winbar.disabled or {
+              buftype = { "terminal", "prompt", "nofile", "help", "quickfix" },
+              filetype = { "rnvimr", "NvimTree", "neo%-tree", "dashboard", "Outline", "aerial" },
+            })
+          then
+            vim.opt_local.winbar = nil
+          end
+        end,
+      })
+    end,
+  },
 }
-
-return heirline_spec

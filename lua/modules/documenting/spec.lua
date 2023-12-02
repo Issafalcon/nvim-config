@@ -28,7 +28,6 @@ local neogen_keys = {
 local neogen_spec = {
   "danymat/neogen",
   keys = fignvim.mappings.make_lazy_keymaps(neogen_keys, true),
-  init = function() fignvim.mappings.register_keymap_group("Documenting", neogen_keys, false) end,
   opts = {
     snippet_support = "luasnip",
     languages = {
@@ -59,8 +58,10 @@ local plantuml_spec = {
 
 local markdown_preview_spec = {
   "iamcco/markdown-preview.nvim",
+  cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
   build = "cd app && npm install",
-  ft = "markdown",
+  init = function() vim.g.mkdp_filetypes = { "markdown" } end,
+  ft = { "markdown" },
 }
 
 return fignvim.module.enable_registered_plugins({

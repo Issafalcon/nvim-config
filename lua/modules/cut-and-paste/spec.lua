@@ -47,15 +47,12 @@ local yanky_spec = {
         storage = jit.os:find("Windows") and "shada" or "sqlite",
       },
     })
-
-    fignvim.mappings.register_keymap_group("Cut & Paste", yanky_mappings, false)
   end,
 }
 
 local cutlass_spec = {
   "svermeulen/vim-cutlass",
   event = "BufReadPost",
-  init = function() fignvim.mappings.register_keymap_group("Cut & Paste", cutlass_mappings, false) end,
   keys = fignvim.mappings.make_lazy_keymaps(cutlass_mappings, true),
 }
 
