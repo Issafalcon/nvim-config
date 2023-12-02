@@ -60,12 +60,7 @@ fignvim.module.register_plugins({
   "luasnip",
 
   -- Treesitter
-  "treesitter",
-  "treesitter-context",
-  "treesitter-textobjects",
-  "ts-autotag",
-  "ts-context-commentstring",
-  "ts-rainbow",
+  "treesitter", -- Loads treesitter-related plugins as well
   "aerial",
 
   -- Navigation

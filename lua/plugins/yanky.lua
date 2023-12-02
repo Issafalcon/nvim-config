@@ -27,36 +27,20 @@ local yanky_mappings = {
   },
 }
 
-local cutlass_mappings = {
-  { { "n", "x" }, "m", "d", { desc = "Cutlass: Cut char to clipboard" } },
-  { "n", "mm", "dd", { desc = "Cutlass: Cut line to clipboard" } },
-  { "n", "M", "D", { desc = "Cutlass: Cut from cursor to end of line, to clipboard" } },
-  { "n", "\\m", "m", { desc = "Cutlass: Remap create mark key so it isn't shadowed" } },
+return {
+  {
+    "gbprod/yanky.nvim",
+    event = "BufReadPost",
+    keys = fignvim.mappings.make_lazy_keymaps(yanky_mappings, true),
+    config = function()
+      require("yanky").setup({
+        highlight = {
+          timer = 150,
+        },
+        ring = {
+          storage = jit.os:find("Windows") and "shada" or "sqlite",
+        },
+      })
+    end,
+  },
 }
-
-local yanky_spec = {
-  "gbprod/yanky.nvim",
-  event = "BufReadPost",
-  keys = fignvim.mappings.make_lazy_keymaps(yanky_mappings, true),
-  config = function()
-    require("yanky").setup({
-      highlight = {
-        timer = 150,
-      },
-      ring = {
-        storage = jit.os:find("Windows") and "shada" or "sqlite",
-      },
-    })
-  end,
-}
-
-local cutlass_spec = {
-  "svermeulen/vim-cutlass",
-  event = "BufReadPost",
-  keys = fignvim.mappings.make_lazy_keymaps(cutlass_mappings, true),
-}
-
-return fignvim.module.enable_registered_plugins({
-  ["cutlass"] = cutlass_spec,
-  ["yanky"] = yanky_spec,
-}, "cut-and-paste")
