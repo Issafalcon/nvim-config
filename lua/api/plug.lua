@@ -24,7 +24,7 @@ function fignvim.plug.setup_lazy_plugins()
   local import_list = {}
 
   -- Essential Plugins first
-  table.insert(import_list, { "nvim-luia/plenary.nvim" })
+  table.insert(import_list, { "nvim-lua/plenary.nvim" })
 
   for _, plugin_name in ipairs(vim.g.fignvim_plugins) do
     table.insert(import_list, { import = "plugins." .. plugin_name })

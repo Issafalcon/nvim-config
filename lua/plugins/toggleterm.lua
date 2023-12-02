@@ -49,26 +49,24 @@ local toggleterm_keys = {
   },
 }
 
-local toggleterm_spec = {
-  "akinsho/toggleterm.nvim",
-  cmd = "ToggleTerm",
-  init = function() fignvim.mappings.register_whichkey_prefix("<F7>", "Terminal") end,
-  keys = fignvim.mappings.make_lazy_keymaps(toggleterm_keys, true),
-  opts = {
-    size = 10,
-    open_mapping = [[<F7><F7>]],
-    shading_factor = 2,
-    direction = "float",
-    float_opts = {
-      border = "curved",
-      highlights = {
-        border = "Normal",
-        background = "Normal",
+return {
+  {
+    "akinsho/toggleterm.nvim",
+    cmd = "ToggleTerm",
+    init = function() fignvim.mappings.register_whichkey_prefix("<F7>", "Terminal") end,
+    keys = fignvim.mappings.make_lazy_keymaps(toggleterm_keys, true),
+    opts = {
+      size = 10,
+      open_mapping = [[<F7><F7>]],
+      shading_factor = 2,
+      direction = "float",
+      float_opts = {
+        border = "curved",
+        highlights = {
+          border = "Normal",
+          background = "Normal",
+        },
       },
     },
   },
 }
-
-return fignvim.module.enable_registered_plugins({
-  ["toggleterm"] = toggleterm_spec,
-}, "terminal")

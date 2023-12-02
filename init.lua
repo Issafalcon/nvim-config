@@ -50,7 +50,7 @@ fignvim.module.register_plugins({
   -- LSP
   "lsp_config",
   "mason",
-  "null-ls",
+  "none-ls",
   "lsp-overloads",
   "schemastore",
 
