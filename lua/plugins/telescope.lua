@@ -36,7 +36,7 @@ local telescope_mappings = {
   { "n", "<leader>ts", ":Telescope aerial<CR>", { desc = "Search through Aerial Symbols" } },
 }
 
-local telescope_spec = {
+return {{
   "nvim-telescope/telescope.nvim",
   lazy = false,
   dependencies = {
@@ -140,5 +140,4 @@ local telescope_spec = {
     fignvim.mappings.register_whichkey_prefix("<leader>t", "Navigation")
   end,
 }
-
-return telescope_spec
+}

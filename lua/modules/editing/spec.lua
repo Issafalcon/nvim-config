@@ -143,10 +143,6 @@ local comment_spec = {
   end,
 }
 
-local editorconfig_spec = {
-  "editorconfig/editorconfig-vim",
-  event = "VeryLazy",
-}
 
 return fignvim.module.enable_registered_plugins({
   ["easyalign"] = easy_align_spec,
@@ -160,5 +156,4 @@ return fignvim.module.enable_registered_plugins({
   ["refactoring"] = refactoring_spec,
   ["undotree"] = undotree_spec,
   ["comment"] = comment_spec,
-  ["editorconfig"] = editorconfig_spec,
 }, "editing")

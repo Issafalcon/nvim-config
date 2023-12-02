@@ -13,7 +13,7 @@ end
 ---@param mappings
 function fignvim.mappings.create_keymaps(mappings)
   for _, map in ipairs(mappings) do
-    vim.api.nvim_set_keymap(unpack(map))
+    vim.keymap.set(unpack(map))
   end
 end
 

@@ -19,6 +19,5 @@ return {
         },
       })
     end,
-    config = function() fignvim.mappings.make_legendary_keymaps(copilot_keys, false) end,
   },
 }

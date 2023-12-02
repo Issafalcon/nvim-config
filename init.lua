@@ -35,7 +35,6 @@ fignvim.module.register_plugins({
   "nvim-surround",
   "vim-unimpaired",
   "comment",
-  "editorconfig",
   "indent-blankline",
 
   -- UI
@@ -127,85 +126,6 @@ fignvim.module.register_plugins({
 
   -- C++
   "vim-cmake",
-})
--- Register modules
----@summary Takes a table of lists, indexed by module name
----         The list is the set of named plugins that will match the indexes of
----         the returned specs from the module's "spec.lua" file
-fignvim.module.register_modules({
-  ["plugins"] = {
-    -- "sqlite",
-    "neodev",
-    "luapad",
-  },
-  ["cheatsheets"] = { "cheatsheet", "legendary", "whichkey" },
-  ["editing"] = {
-    "undotree",
-    "refactoring",
-    "easyalign",
-    "ssr",
-    "treesj",
-    "dial",
-    "matchup",
-    "autopairs",
-    "nvim-surround",
-    "vim-unimpaired",
-    "comment",
-    "editorconfig",
-  },
-  ["ui"] = {
-    "indent-blankline",
-    "notify",
-    "colourschemes",
-    "dressing",
-    "colorizer",
-    "heirline",
-    "bufferline",
-    "maximizer",
-    "transparent",
-  },
-  ["lsp"] = { "lsp_config", "mason", "null-ls", "lsp-overloads", "schemastore" },
-  ["completion"] = { "cmp", "copilot" },
-  ["treesitter"] = {
-    "treesitter",
-    "treesitter-context",
-    "treesitter-textobjects",
-    "ts-autotag",
-    "ts-context-commentstring",
-    "ts-rainbow",
-    "aerial",
-  },
-  ["navigation"] = {
-    "telescope",
-    -- "neo_tree",
-    "netrw_nvim",
-    "leap",
-    "rnvimr",
-  },
-  ["cut-and-paste"] = {
-    "cutlass",
-    -- "yanky"  - Performance is an issue when using this plugin. Pastes / yanks are slow
-  },
-  ["search-and-replace"] = { "vim-abolish", "spectre", "subversive", "bqf" },
-  ["diagnostics"] = { "trouble" },
-  ["git"] = { "gitsigns", "diffview", "vim-fugitive", "git-messenger" },
-  ["session"] = {
-    "auto-session",
-  },
-  ["snippets"] = { "luasnip" },
-  ["terminal"] = { "toggleterm" },
-  ["debugging"] = {
-    "dap",
-    "dap-ui",
-    "dap-virtual-text",
-  },
-  ["documenting"] = { "neogen", "plantuml", "markdown-preview" },
-  ["icons"] = { "devicons", "icon-picker" },
-  ["testing"] = { "neotest" },
-  ["terraform"] = { "vim-terraform" },
-  ["tex"] = { "vimtex" },
-  ["dotnet"] = { "omnisharp-extended-lsp" },
-  ["cpp"] = { "vim-cmake" },
 })
 
 if vim.fn.has("win32") == 1 then fignvim.config.set_shell_as_powershell() end
