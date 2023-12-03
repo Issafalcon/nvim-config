@@ -1,0 +1,56 @@
+return {
+  {
+  "williamboman/mason.nvim",
+  cmd = "Mason",
+  dependencies = {
+    -- Enhancements for Mason for autoinstallation of LSP servers
+    {
+      "williamboman/mason-lspconfig.nvim",
+      opts = {
+        -- Automatically install all servers setup via lsp-config
+        automatic_installation = true,
+      },
+    },
+    -- Mason tools installer enhancements
+    {
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+      opts = {
+        ensure_installed = {
+          -- Formatters
+          "black",
+          "jq",
+          "prettier",
+          "prettierd",
+          "shfmt",
+          "sql-formatter",
+          "stylua",
+          "clang-format",
+
+          -- Linters
+          "tflint",
+          "editorconfig-checker",
+          "eslint_d",
+          "flake8",
+          "markdownlint",
+          "shellcheck",
+          "vint",
+          "yamllint",
+        },
+      },
+    },
+  },
+  opts = {
+    providers = {
+      "mason.providers.registry-api",
+      "mason.providers.client",
+    },
+    ui = {
+      icons = {
+        package_installed = "✓",
+        package_uninstalled = "✗",
+        package_pending = "⟳",
+      },
+    },
+  },
+}
+}

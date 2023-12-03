@@ -13,84 +13,113 @@ for _, source in ipairs({
   if not status_ok then vim.api.nvim_err_writeln("Failed to load " .. source .. "\n\n" .. fault) end
 end
 
--- Register modules
----@summary Takes a table of lists, indexed by module name
----         The list is the set of named plugins that will match the indexes of
----         the returned specs from the module's "spec.lua" file
-fignvim.module.register_modules({
-  ["plugins"] = {
-    -- "sqlite",
-    "neodev",
-    "luapad",
-  },
-  ["cheatsheets"] = { "cheatsheet", "legendary", "whichkey" },
-  ["editing"] = {
-    "undotree",
-    "refactoring",
-    "easyalign",
-    "ssr",
-    "treesj",
-    "dial",
-    "matchup",
-    "autopairs",
-    "nvim-surround",
-    "vim-unimpaired",
-    "comment",
-    "editorconfig",
-  },
-  ["ui"] = {
-    "indent-blankline",
-    "notify",
-    "colourschemes",
-    "dressing",
-    "colorizer",
-    "heirline",
-    "bufferline",
-    "maximizer",
-    "transparent",
-  },
-  ["lsp"] = { "lsp_config", "mason", "null-ls", "lsp-overloads", "schemastore" },
-  ["completion"] = { "cmp", "copilot" },
-  ["treesitter"] = {
-    "treesitter",
-    "treesitter-context",
-    "treesitter-textobjects",
-    "ts-autotag",
-    "ts-context-commentstring",
-    "ts-rainbow",
-    "aerial",
-  },
-  ["navigation"] = {
-    "telescope",
-    -- "neo_tree",
-    "netrw_nvim",
-    "leap",
-    "rnvimr",
-  },
-  ["cut-and-paste"] = {
-    "cutlass",
-    -- "yanky"  - Performance is an issue when using this plugin. Pastes / yanks are slow
-  },
-  ["search-and-replace"] = { "vim-abolish", "spectre", "subversive", "bqf" },
-  ["diagnostics"] = { "trouble" },
-  ["git"] = { "gitsigns", "diffview", "vim-fugitive", "git-messenger" },
-  ["session"] = {
-    "auto-session",
-  },
-  ["snippets"] = { "luasnip" },
-  ["terminal"] = { "toggleterm" },
-  ["debugging"] = {
-    "dap",
-    "dap-ui",
-    "dap-virtual-text",
-  },
-  ["documenting"] = { "neogen", "plantuml", "markdown-preview" },
-  ["icons"] = { "devicons", "icon-picker" },
-  ["testing"] = { "neotest" },
-  ["terraform"] = { "vim-terraform" },
-  ["tex"] = { "vimtex" },
-  ["dotnet"] = { "omnisharp-extended-lsp" },
-  ["cpp"] = { "vim-cmake" },
+fignvim.module.register_plugins({
+  -- Plugin Development
+  -- "sqlite",
+  "neodev",
+  "luapad",
+
+  -- Keybinds and Cheatsheets
+  "cheatsheet",
+  "whichkey",
+
+  -- General Editing
+  "undotree",
+  "refactoring",
+  "easyalign",
+  "ssr",
+  "treesj",
+  "dial",
+  "matchup",
+  "autopairs",
+  "nvim-surround",
+  "vim-unimpaired",
+  "comment",
+  "indent-blankline",
+
+  -- UI
+  "notify",
+  "colourschemes",
+  "dressing",
+  "colorizer",
+  "heirline",
+  "bufferline",
+  "maximizer",
+  "transparent",
+
+  -- LSP
+  "lsp_config",
+  "mason",
+  "none-ls",
+  "lsp-overloads",
+  "schemastore",
+
+  -- Completions and Snippets
+  "cmp",
+  "copilot",
+  "luasnip",
+
+  -- Treesitter
+  "treesitter", -- Loads treesitter-related plugins as well
+  "aerial",
+
+  -- Navigation
+  "telescope",
+  -- "neo_tree",
+  "netrw_nvim",
+  "leap",
+  "rnvimr",
+  -- Cut and paste
+  "cutlass",
+  -- "yanky"  - Performance is an issue when using this plugin. Pastes / yanks are slow
+
+  -- Search and replace
+  "vim-abolish",
+  "spectre",
+  "substitute",
+  "bqf",
+
+  -- Diagnostics
+  "trouble",
+
+  -- Git
+  "gitsigns",
+  "diffview",
+  "git-messenger",
+
+  -- Session management
+  "auto-session",
+
+  -- Terminal
+  "toggleterm",
+
+  -- Debugging
+  "dap",
+  "dap-ui",
+  "dap-virtual-text",
+
+  -- Documenting
+  "neogen",
+  "plantuml",
+  "markdown-preview",
+
+  -- Icons
+  "nvim-web-devicons",
+  "icon-picker",
+
+  -- Testing
+  "neotest",
+
+  -- Terraform
+  "vim-terraform",
+  -- LaTeX
+  "vimtex",
+
+  -- .NET
+  "omnisharp-extended-lsp",
+
+  -- C++
+  "vim-cmake",
 })
 
 if vim.fn.has("win32") == 1 then fignvim.config.set_shell_as_powershell() end

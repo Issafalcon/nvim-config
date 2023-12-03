@@ -62,6 +62,7 @@ local options = {
     autopairs_enabled = true, -- enable autopairs at start
     status_diagnostics_enabled = true, -- enable diagnostics in statusline
     fignvim_modules = {}, -- Track modules
+    fignvim_plugins = {}, -- Track modules
   },
 }
 

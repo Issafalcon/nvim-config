@@ -153,7 +153,7 @@ function fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr)
     })
   end
 
-  fignvim.mappings.register_keymap_group("LSP", lsp_keymaps, true)
+  fignvim.mappings.create_keymaps(lsp_keymaps)
 end
 
 return fignvim.lsp.mappings

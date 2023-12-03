@@ -22,8 +22,12 @@ function fignvim.plug.setup_lazy_plugins()
   vim.opt.rtp:prepend(lazypath)
 
   local import_list = {}
-  for module_name, _ in pairs(vim.g.fignvim_modules) do
-    table.insert(import_list, { import = "modules." .. module_name .. ".spec" })
+
+  -- Essential Plugins first
+  table.insert(import_list, { "nvim-lua/plenary.nvim" })
+
+  for _, plugin_name in ipairs(vim.g.fignvim_plugins) do
+    table.insert(import_list, { import = "plugins." .. plugin_name })
   end
 
   local status_ok, lazy = pcall(require, "lazy")
