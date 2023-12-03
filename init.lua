@@ -85,7 +85,6 @@ fignvim.module.register_plugins({
   -- Git
   "gitsigns",
   "diffview",
-  "vim-fugitive",
   "git-messenger",
 
   -- Session management
@@ -105,7 +104,7 @@ fignvim.module.register_plugins({
   "markdown-preview",
 
   -- Icons
-  "devicons",
+  "nvim-web-devicons",
   "icon-picker",
 
   -- Testing
