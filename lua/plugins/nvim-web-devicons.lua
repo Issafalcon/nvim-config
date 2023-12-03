@@ -3,7 +3,7 @@ return {
     "nvim-tree/nvim-web-devicons",
     event = "BufReadPre",
     enabled = vim.g.icons_enabled,
-    configs = function()
+    config = function()
       local icons = require("nvim-web-devicons")
       icons.set_icon({
         deb = { icon = "", name = "Deb" },

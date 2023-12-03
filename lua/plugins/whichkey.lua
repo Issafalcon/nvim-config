@@ -1,11 +1,11 @@
 return {
   {
     "folke/which-key.nvim",
-    lazy = false,
+    event = "VeryLazy",
     opts = {
       plugins = {
         spelling = { enabled = true },
-        presets = { operators = false },
+        presets = { operators = true },
       },
       window = {
         border = "rounded",

@@ -76,7 +76,7 @@ fignvim.module.register_plugins({
   -- Search and replace
   "vim-abolish",
   "spectre",
-  "subversive",
+  "substitute",
   "bqf",
 
   -- Diagnostics
