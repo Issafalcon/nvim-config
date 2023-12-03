@@ -6,17 +6,15 @@ local trouble_keys = {
   { "n", "<leader>xq", "<cmd>Trouble quickfix<cr>", { desc = "Open workspace diagnostics into quickfix" } },
 }
 
-local trouble_spec = {
-  "folke/trouble.nvim",
-  cmd = { "TroubleToggle", "Trouble" },
-  init = function() fignvim.mappings.register_whichkey_prefix("<leader>x", "Diagnostics") end,
-  keys = fignvim.mappings.make_lazy_keymaps(trouble_keys, true),
-  opts = {
-    use_diagnostic_signs = true,
-    mode = "workspace_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
+return {
+  {
+    "folke/trouble.nvim",
+    cmd = { "TroubleToggle", "Trouble" },
+    init = function() fignvim.mappings.register_whichkey_prefix("<leader>x", "Diagnostics") end,
+    keys = fignvim.mappings.make_lazy_keymaps(trouble_keys, true),
+    opts = {
+      use_diagnostic_signs = true,
+      mode = "workspace_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
+    },
   },
 }
-
-return fignvim.module.enable_registered_plugins({
-  ["trouble"] = trouble_spec,
-}, "diagnostics")
