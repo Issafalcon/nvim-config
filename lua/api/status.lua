@@ -532,23 +532,23 @@ function fignvim.status.provider.lsp_progress(opts)
 end
 
 --- A provider function for showing the connected LSP client names
--- @param opts options for explanding null_ls clients, max width percentage, and options passed to the stylize function
+-- @param opts options for explanding none_ls clients, max width percentage, and options passed to the stylize function
 -- @return the function for outputting the LSP client names
--- @usage local heirline_component = { provider = fignvim.status.provider.lsp_client_names({ expand_null_ls = true, truncate = 0.25 }) }
+-- @usage local heirline_component = { provider = fignvim.status.provider.lsp_client_names({ expand_none_ls = true, truncate = 0.25 }) }
 -- @see fignvim.status.utils.stylize
 function fignvim.status.provider.lsp_client_names(opts)
-  opts = fignvim.table.default_tbl(opts, { expand_null_ls = true, truncate = 0.25 })
+  opts = fignvim.table.default_tbl(opts, { expand_none_ls = true, truncate = 0.25 })
   return function(self)
     local buf_client_names = {}
     for _, client in pairs(vim.lsp.get_active_clients({ bufnr = self and self.bufnr or 0 })) do
-      if client.name == "null-ls" and opts.expand_null_ls then
-        local null_ls_sources = {}
+      if client.name == "null-ls" and opts.expand_none_ls then
+        local none_ls_sources = {}
         for _, type in ipairs({ "FORMATTING", "DIAGNOSTICS" }) do
-          for _, source in ipairs(fignvim.ui.null_ls_sources(vim.bo.filetype, type)) do
-            null_ls_sources[source] = true
+          for _, source in ipairs(fignvim.ui.none_ls_sources(vim.bo.filetype, type)) do
+            none_ls_sources[source] = true
           end
         end
-        vim.list_extend(buf_client_names, vim.tbl_keys(null_ls_sources))
+        vim.list_extend(buf_client_names, vim.tbl_keys(none_ls_sources))
       else
         table.insert(buf_client_names, client.name)
       end

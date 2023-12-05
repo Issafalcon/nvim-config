@@ -1,9 +1,9 @@
-fignvim.lsp.null_ls = {}
+fignvim.lsp.none_ls = {}
 
 --- Get a list of registered null-ls providers for a given filetype
 ---@param filetype string the filetype to search null-ls for
 ---@return table a list of null-ls sources
-function fignvim.lsp.null_ls.providers(filetype)
+function fignvim.lsp.none_ls.providers(filetype)
   local registered = {}
   -- try to load null-ls
   local sources = require("null-ls.sources")
@@ -25,9 +25,9 @@ end
 ---@param filetype string The filetype to search null-ls for
 ---@param method string the null-ls method (check null-ls documentation for available methods)
 ---@return table the available sources for the given filetype and method
-function fignvim.lsp.null_ls.sources(filetype, method)
+function fignvim.lsp.none_ls.sources(filetype, method)
   local methods_avail, methods = pcall(require, "null-ls.methods")
-  return methods_avail and fignvim.lsp.null_ls.providers(filetype)[methods.internal[method]] or {}
+  return methods_avail and fignvim.lsp.none_ls.providers(filetype)[methods.internal[method]] or {}
 end
 
-return fignvim.lsp.null_ls
+return fignvim.lsp.none_ls

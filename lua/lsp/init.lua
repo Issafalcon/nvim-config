@@ -2,7 +2,7 @@ fignvim.lsp = {}
 
 require("lsp.mappings")
 require("lsp.formatting")
-require("lsp.null_ls")
+require("lsp.none_ls")
 require("lsp.handlers")
 
 --- Helper function to set up a given server with the Neovim LSP client

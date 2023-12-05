@@ -95,7 +95,7 @@ end
 --- Get a list of registered null-ls providers for a given filetype
 -- @param filetype the filetype to search null-ls for
 -- @return a list of null-ls sources
-function fignvim.ui.null_ls_providers(filetype)
+function fignvim.ui.none_ls_providers(filetype)
   local registered = {}
   -- try to load null-ls
   local sources_avail, sources = pcall(require, "null-ls.sources")
@@ -117,9 +117,9 @@ end
 -- @param filetype the filetype to search null-ls for
 -- @param method the null-ls method (check null-ls documentation for available methods)
 -- @return the available sources for the given filetype and method
-function fignvim.ui.null_ls_sources(filetype, method)
+function fignvim.ui.none_ls_sources(filetype, method)
   local methods_avail, methods = pcall(require, "null-ls.methods")
-  return methods_avail and fignvim.ui.null_ls_providers(filetype)[methods.internal[method]] or {}
+  return methods_avail and fignvim.ui.none_ls_providers(filetype)[methods.internal[method]] or {}
 end
 
 --- Taken from https://github.com/kevinhwang91/nvim-bqf#format-new-quickfix
