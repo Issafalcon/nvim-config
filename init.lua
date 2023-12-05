@@ -152,6 +152,7 @@ fignvim.lsp.setup_lsp_servers({
   "eslint",
   "clangd",
   "cmake",
+  "pyright",
 })
 
 -- 6. Create mappings
