@@ -31,6 +31,7 @@ return {
       "nvim-neotest/neotest-plenary",
       "nvim-neotest/neotest-jest",
       "Issafalcon/neotest-dotnet",
+      -- { dir = "~/repos/neotest-dotnet" },
     },
     keys = fignvim.mappings.make_lazy_keymaps(neotest_keys, true),
     config = function()
