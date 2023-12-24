@@ -35,6 +35,9 @@ return {
             "shellcheck",
             "vint",
             "yamllint",
+
+            -- Debuggers
+            "debugpy",
           },
         },
       },

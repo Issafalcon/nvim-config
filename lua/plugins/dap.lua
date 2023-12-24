@@ -97,6 +97,8 @@ local dap_keys = {
   },
 }
 
+local install_dir = fignvim.path.concat({ vim.fn.stdpath("data"), "mason" })
+
 return {
   {
     {
@@ -109,7 +111,6 @@ return {
       },
       config = function()
         local dap = require("dap")
-        local install_dir = fignvim.path.concat({ vim.fn.stdpath("data"), "mason" })
 
         -- Settings
         dap.defaults.fallback.terminal_win_cmd = "80vsplit new"
@@ -169,6 +170,14 @@ return {
         end
 
         fignvim.debug.setup_debug_configs()
+      end,
+    },
+    {
+      "mfussenegger/nvim-dap-python",
+      ft = { "python" },
+      config = function(_, opts)
+        local path = install_dir .. "/packages/debugpy/venv/bin/python"
+        require("dap-python").setup(path)
       end,
     },
   },
