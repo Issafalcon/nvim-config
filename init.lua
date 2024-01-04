@@ -102,6 +102,7 @@ fignvim.module.register_plugins({
   "neogen",
   "plantuml",
   "markdown-preview",
+  "obsidian",
 
   -- Icons
   "nvim-web-devicons",
@@ -112,6 +113,7 @@ fignvim.module.register_plugins({
 
   -- Terraform
   "vim-terraform",
+
   -- LaTeX
   "vimtex",
 
