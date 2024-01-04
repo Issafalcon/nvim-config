@@ -17,11 +17,20 @@ return {
   opts = {
     workspaces = {
       {
-        name = "personal",
-        path = "~/repos/wiki-md",
+        name = "wiki-md",
+        path = vim.fn.expand("~") .. "/repos/wiki-md",
       },
     },
 
     log_level = vim.log.levels.INFO,
+
+    -- Optional, for templates (see below).
+    templates = {
+      subdir = "templates",
+      date_format = "%Y-%m-%d",
+      time_format = "%H:%M",
+      -- A map for custom variables, the key should be the variable and the value a function
+      substitutions = {},
+    },
   },
 }
