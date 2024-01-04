@@ -21,7 +21,7 @@ return {
         path = vim.fn.expand("~") .. "/repos/wiki-md",
       },
     },
-
+    disable_frontmatter = true,
     log_level = vim.log.levels.INFO,
 
     -- Optional, for templates (see below).
