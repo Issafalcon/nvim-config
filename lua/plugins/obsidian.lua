@@ -6,7 +6,7 @@ return {
     -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
     "BufReadPre "
       .. vim.fn.expand("~")
-      .. "/repos/wiki-md/**.md",
+      .. "/repos/obsidian-notes/**.md",
   },
   dependencies = {
     -- Required.
@@ -17,8 +17,8 @@ return {
   opts = {
     workspaces = {
       {
-        name = "wiki-md",
-        path = vim.fn.expand("~") .. "/repos/wiki-md",
+        name = "obsidian-notes",
+        path = vim.fn.expand("~") .. "/repos/obsidian-notes",
       },
     },
     disable_frontmatter = true,
@@ -30,7 +30,13 @@ return {
       date_format = "%Y-%m-%d",
       time_format = "%H:%M",
       -- A map for custom variables, the key should be the variable and the value a function
-      substitutions = {},
+      substitutions = {
+        project = function()
+          -- Return the name of the current folder that the file is in
+          return vim.fn.fnamemodify(vim.fn.expand("%"), ":h:t")
+        end,
+        dir = function() return vim.fn.fnamemodify(vim.fn.expand("%"), ":h:t") end,
+      },
     },
   },
 }
