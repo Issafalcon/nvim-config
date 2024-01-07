@@ -1,6 +1,6 @@
 return {
   {
-  "Issafalcon/lsp-overloads.nvim",
-  event = "VeryLazy",
-  }
+    "Issafalcon/lsp-overloads.nvim",
+    event = "BufReadPre",
+  },
 }

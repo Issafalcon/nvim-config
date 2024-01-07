@@ -86,11 +86,6 @@ return {
         disable = { "latex" },
         additional_vim_regex_highlighting = false,
       },
-      rainbow = {
-        enable = true,
-        extended_mode = true,
-        max_file_lines = nil,
-      },
       indent = { enable = true },
       incremental_selection = { enable = true },
       context_commentstring = { enable = true, enable_autocmd = false },
@@ -153,6 +148,7 @@ return {
     dependencies = {
       -- Enable treesitter playground
       "nvim-treesitter/playground",
+      "vim-matchup",
     },
     config = function(_, opts) require("nvim-treesitter.configs").setup(opts) end,
   },
@@ -182,10 +178,5 @@ return {
         },
       })
     end,
-  },
-  -- Rainbow parentheses using treesitter (TODO: Find alternative - this is no longer maintained)
-  {
-    "p00f/nvim-ts-rainbow",
-    event = "BufReadPost",
   },
 }
