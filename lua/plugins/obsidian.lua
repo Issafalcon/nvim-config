@@ -24,6 +24,9 @@ return {
     disable_frontmatter = true,
     log_level = vim.log.levels.INFO,
 
+    -- Optional, customize how names/IDs for new notes are created.
+    note_id_func = function(title) return title end,
+
     -- Optional, for templates (see below).
     templates = {
       subdir = "templates",

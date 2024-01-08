@@ -45,6 +45,7 @@ return {
       "dsznajder/vscode-es7-javascript-react-snippets",
       "fivethree-team/vscode-svelte-snippets",
       "xabikos/vscode-react",
+      "thomanq/math-snippets",
     },
     keys = fignvim.mappings.make_lazy_keymaps(luasnip_keys, true),
     event = "InsertEnter",
