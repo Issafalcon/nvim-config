@@ -41,5 +41,10 @@ return {
         dir = function() return vim.fn.fnamemodify(vim.fn.expand("%"), ":h:t") end,
       },
     },
+
+    daily_notes = {
+      folder = "Daily",
+      template = "DailyTemplate.md",
+    },
   },
 }
