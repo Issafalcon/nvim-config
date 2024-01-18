@@ -97,7 +97,7 @@ return {
             max_height = 50,
           },
         },
-        mapping = {
+        mapping = cmp.mapping.preset.insert({
           ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
           ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
           ["<Up>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
@@ -132,7 +132,7 @@ return {
               fallback()
             end
           end, { "i", "s" }),
-        },
+        }),
       })
 
       -- Set configuration for specific filetype.
@@ -159,6 +159,12 @@ return {
           { name = "path" },
         }, {
           { name = "cmdline", keyword_pattern = "[^!]\\k\\+" },
+        }),
+      })
+
+      cmp.setup.filetype("mysql", {
+        sources = cmp.config.sources({
+          { name = "vim-dadbod-completion" },
         }),
       })
     end,

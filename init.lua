@@ -122,6 +122,9 @@ fignvim.module.register_plugins({
 
   -- C++
   "vim-cmake",
+
+  -- Databases
+  "dadbod",
 })
 
 if vim.fn.has("win32") == 1 then fignvim.config.set_shell_as_powershell() end
