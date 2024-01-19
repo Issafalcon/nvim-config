@@ -22,6 +22,7 @@ return {
             "prettierd",
             "shfmt",
             "sql-formatter",
+            "sqlfluff",
             "stylua",
             "clang-format",
             "black",

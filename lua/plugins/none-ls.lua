@@ -1,3 +1,5 @@
+-- Get the local filetype
+local filetype = vim.api.nvim_buf_get_option(0, "filetype")
 return {
   {
     "nvimtools/none-ls.nvim",
@@ -34,8 +36,11 @@ return {
           formatting.black.with({ extra_args = { "--fast" } }),
           formatting.stylua,
           formatting.shfmt,
-          formatting.sql_formatter.with({
-            extra_args = { "--indent_width", "2" },
+          -- formatting.sql_formatter.with({
+          --   filetypes = { "sql", "mysql", "mariadb", "pgsql" },
+          -- }),
+          formatting.sqlfluff.with({
+            extra_args = { "--dialect", "mysql" },
             filetypes = { "sql", "mysql", "mariadb", "pgsql" },
           }),
           formatting.clang_format.with({
