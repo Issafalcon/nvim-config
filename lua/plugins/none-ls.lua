@@ -34,6 +34,10 @@ return {
           formatting.black.with({ extra_args = { "--fast" } }),
           formatting.stylua,
           formatting.shfmt,
+          formatting.sql_formatter.with({
+            extra_args = { "--indent_width", "2" },
+            filetypes = { "sql", "mysql", "mariadb", "pgsql" },
+          }),
           formatting.clang_format.with({
             filetypes = { "c", "cpp", "objc", "objcpp", "h" },
           }),
