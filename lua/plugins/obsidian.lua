@@ -36,7 +36,7 @@ return {
       substitutions = {
         project = function()
           -- Return the name of the current folder that the file is in
-          return vim.fn.fnamemodify(vim.fn.expand("%"), ":h:t")
+          return string.gsub(vim.fn.fnamemodify(vim.fn.expand("%"), ":h:t"), " ", "-")
         end,
         dir = function() return vim.fn.fnamemodify(vim.fn.expand("%"), ":h:t") end,
       },
