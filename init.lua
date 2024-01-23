@@ -158,6 +158,7 @@ fignvim.lsp.setup_lsp_servers({
   "clangd",
   "cmake",
   "pyright",
+  "lemminx",
 })
 
 -- 6. Create mappings
