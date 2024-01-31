@@ -89,7 +89,7 @@ M.theme = {
   colourscheme = "catppuccin",
   highlights = {
     Whitespace = { fg = "#4b5263" },
-    VertSplit = { fg = "#CBA6F7" },
+    WinSeparator = { fg = "#CBA6F7" },
     PmenuSel = { bg = M.colours.grey_7, fg = "NONE" },
     TelescopeBorder = { fg = fg, bg = M.colours.bg_1 },
     TelescopeNormal = { bg = M.colours.orange_2 },

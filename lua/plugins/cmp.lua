@@ -17,9 +17,8 @@ return {
           local lspkind = require("lspkind")
           fignvim.lspkind = {
             mode = "symbol",
-            symbol_map = fignvim.ui.lspkind_icons,
+            preset = "codicons",
           }
-
           lspkind.init(fignvim.lspkind)
         end,
       },
