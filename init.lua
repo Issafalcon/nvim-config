@@ -159,6 +159,7 @@ fignvim.lsp.setup_lsp_servers({
   "cmake",
   "pyright",
   "lemminx",
+  "tailwindcss",
 })
 
 -- 6. Create mappings
