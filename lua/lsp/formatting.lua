@@ -21,7 +21,6 @@ local formatting_config = {
   -- Disable formatting capabilities for listed language servers
   disabled = {
     "lua_ls",
-    "tsserver",
   },
   -- Formatting timeout
   timeout_ms = 4000,
