@@ -85,7 +85,7 @@ end
 ---@param name string highlight group name
 ---@return table of highlight group properties
 function fignvim.ui.get_hlgroup(name, fallback)
-  local hl = vim.fn.hlexists(name) == 1 and vim.api.nvim_get_hl_by_name(name, vim.o.termguicolors) or {}
+  local hl = vim.fn.hlexists(name) == 1 and vim.api.nvim_get_hl(0, { name = name }) or {}
   return fignvim.table.default_tbl(
     vim.o.termguicolors and { fg = hl.foreground, bg = hl.background, sp = hl.special }
       or { cterfm = hl.foreground, ctermbg = hl.background },
