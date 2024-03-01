@@ -173,7 +173,14 @@ function fignvim.lsp.setup_lsp_servers(server_list)
   if status_ok then
     fignvim.lsp.handlers.add_global_handlers()
     for _, server in ipairs(server_list) do
-      fignvim.lsp.setup(server)
+      if server == "roslyn.nvim" then
+        require("roslyn").setup({
+          on_attach = fignvim.lsp.on_attach,
+          capabilities = fignvim.lsp.capabilities,
+        })
+      else
+        fignvim.lsp.setup(server)
+      end
     end
   else
     return

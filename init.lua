@@ -119,6 +119,7 @@ fignvim.module.register_plugins({
 
   -- .NET
   "omnisharp-extended-lsp",
+  -- "roslyn", -- Not yet ready to use. Initialization takes WAY too long
 
   -- C++
   "vim-cmake",
@@ -161,6 +162,7 @@ fignvim.lsp.setup_lsp_servers({
   "lemminx",
   "tailwindcss",
   "ruff_lsp",
+  -- "roslyn.nvim", -- Not directly language server - See https://github.com/jmederosalvarado/roslyn.nvim
 })
 
 -- 6. Create mappings
