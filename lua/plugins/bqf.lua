@@ -1,3 +1,5 @@
+local colourscheme = require("core.colourscheme")
+
 return {
   {
     "kevinhwang91/nvim-bqf",
@@ -5,7 +7,7 @@ return {
     init = function()
       local opt = {
         g = {
-          BqfPreviewBorder = { fg = M.colours.vue },
+          BqfPreviewBorder = { fg = colourscheme.colours.vue },
           BqfPreviewRange = { link = "Search" },
         },
       }

@@ -168,6 +168,7 @@ return {
         desc = "Refresh heirline colors",
         callback = function() require("heirline.utils").on_colorscheme(setup_colors()) end,
       })
+
       vim.api.nvim_create_autocmd("User", {
         pattern = "HeirlineInitWinbar",
         group = augroup,
