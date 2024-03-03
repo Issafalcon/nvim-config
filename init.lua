@@ -34,7 +34,7 @@ fignvim.module.register_plugins({
 
   -- UI
   "notify",
-  "heirline_v2",
+  "heirline",
   "colourschemes",
   "dressing",
   "colorizer",
