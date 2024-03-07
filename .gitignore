@@ -46,3 +46,6 @@ lua/packer_compiled.lua
 
 # lua-ls output
 .luarc.json
+
+# DadBod UI connections
+db_ui/connections.json
