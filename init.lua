@@ -154,7 +154,6 @@ fignvim.lsp.setup_lsp_servers({
   "clangd",
   "cmake",
   "pyright",
-  "lemminx",
   "tailwindcss",
   "ruff_lsp",
   -- "roslyn.nvim", -- Not directly language server - See https://github.com/jmederosalvarado/roslyn.nvim
