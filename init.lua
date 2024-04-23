@@ -103,6 +103,9 @@ fignvim.module.register_plugins({
   "nvim-web-devicons",
   "icon-picker",
 
+  -- Colours
+  "colorutils",
+
   -- Testing
   "neotest",
 
