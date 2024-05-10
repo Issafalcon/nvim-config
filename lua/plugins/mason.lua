@@ -26,7 +26,7 @@ return {
             "stylua",
             "clang-format",
             "black",
-            "ruff",
+            -- "ruff",
 
             -- Linters
             "tflint",
