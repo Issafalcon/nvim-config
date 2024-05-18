@@ -70,7 +70,9 @@ end
 fignvim.status.env.buf_matchers = {
   filetype = function(pattern_list, bufnr) return pattern_match(vim.bo[bufnr or 0].filetype, pattern_list) end,
   buftype = function(pattern_list, bufnr) return pattern_match(vim.bo[bufnr or 0].buftype, pattern_list) end,
-  bufname = function(pattern_list, bufnr) return pattern_match(vim.fn.fnamemodify(vim.api.nvim_buf_get_name(bufnr or 0), ":t"), pattern_list) end,
+  bufname = function(pattern_list, bufnr)
+    return pattern_match(vim.fn.fnamemodify(vim.api.nvim_buf_get_name(bufnr or 0), ":t"), pattern_list)
+  end,
 }
 
 --- Get the highlight background color of the lualine theme for the current colorscheme
@@ -99,7 +101,8 @@ function fignvim.status.hl.mode_bg() return fignvim.status.env.modes[vim.fn.mode
 function fignvim.status.hl.filetype_color(self)
   local devicons_avail, devicons = pcall(require, "nvim-web-devicons")
   if not devicons_avail then return {} end
-  local _, color = devicons.get_icon_color(vim.fn.fnamemodify(vim.api.nvim_buf_get_name(self and self.bufnr or 0), ":t"), nil, { default = true })
+  local _, color =
+    devicons.get_icon_color(vim.fn.fnamemodify(vim.api.nvim_buf_get_name(self and self.bufnr or 0), ":t"), nil, { default = true })
   return { fg = color }
 end
 
@@ -252,7 +255,8 @@ end
 -- @usage local heirline_component = { provider = fignvim.status.provider.search_count() }
 -- @see fignvim.status.utils.stylize
 function fignvim.status.provider.search_count(opts)
-  local search_func = vim.tbl_isempty(opts or {}) and function() return vim.fn.searchcount() end or function() return vim.fn.searchcount(opts) end
+  local search_func = vim.tbl_isempty(opts or {}) and function() return vim.fn.searchcount() end
+    or function() return vim.fn.searchcount(opts) end
   return function()
     local search_ok, search = pcall(search_func)
     if search_ok and type(search) == "table" and search.total then
@@ -372,7 +376,10 @@ end
 -- @usage local heirline_component = { provider = fignvim.status.provider.filename() }
 -- @see fignvim.status.utils.stylize
 function fignvim.status.provider.filename(opts)
-  opts = fignvim.table.default_tbl(opts, { fallback = "[No Name]", fname = function(nr) return vim.api.nvim_buf_get_name(nr) end, modify = ":t" })
+  opts = fignvim.table.default_tbl(
+    opts,
+    { fallback = "[No Name]", fname = function(nr) return vim.api.nvim_buf_get_name(nr) end, modify = ":t" }
+  )
   return function(self)
     local filename = vim.fn.fnamemodify(opts.fname(self and self.bufnr or 0), opts.modify)
     return fignvim.status.utils.stylize((filename == "" and opts.fallback or filename), opts)
@@ -462,7 +469,8 @@ function fignvim.status.provider.file_icon(opts)
   return function(self)
     local devicons_avail, devicons = pcall(require, "nvim-web-devicons")
     if not devicons_avail then return "" end
-    local ft_icon, _ = devicons.get_icon(vim.fn.fnamemodify(vim.api.nvim_buf_get_name(self and self.bufnr or 0), ":t"), nil, { default = true })
+    local ft_icon, _ =
+      devicons.get_icon(vim.fn.fnamemodify(vim.api.nvim_buf_get_name(self and self.bufnr or 0), ":t"), nil, { default = true })
     return fignvim.status.utils.stylize(ft_icon, opts)
   end
 end
@@ -510,7 +518,7 @@ end
 -- @see fignvim.status.utils.stylize
 function fignvim.status.provider.lsp_progress(opts)
   return function()
-    local Lsp = vim.lsp.util.get_progress_messages()[1]
+    local Lsp = vim.lsp.status()[1]
     local function escape(str) return string.gsub(str, "%%2F", "/") end
     return fignvim.status.utils.stylize(
       Lsp
@@ -865,7 +873,10 @@ end
 -- @return The Heirline component table
 -- @usage local heirline_component = fignvim.status.component.breadcumbs()
 function fignvim.status.component.breadcrumbs(opts)
-  opts = fignvim.table.default_tbl(opts, { padding = { left = 1 }, condition = fignvim.status.condition.aerial_available, update = "CursorMoved" })
+  opts = fignvim.table.default_tbl(
+    opts,
+    { padding = { left = 1 }, condition = fignvim.status.condition.aerial_available, update = "CursorMoved" }
+  )
   opts.init = fignvim.status.init.breadcrumbs(opts)
   return opts
 end
@@ -913,15 +924,17 @@ function fignvim.status.component.git_diff(opts)
     update = { "User", pattern = "GitSignsUpdate" },
     init = fignvim.status.init.update_events({ "BufEnter" }),
   })
-  return fignvim.status.component.builder(fignvim.status.utils.setup_providers(opts, { "added", "changed", "removed" }, function(p_opts, provider)
-    local out = fignvim.status.utils.build_provider(p_opts, provider)
-    if out then
-      out.provider = "git_diff"
-      out.opts.type = provider
-      if out.hl == nil then out.hl = { fg = "git_" .. provider } end
-    end
-    return out
-  end))
+  return fignvim.status.component.builder(
+    fignvim.status.utils.setup_providers(opts, { "added", "changed", "removed" }, function(p_opts, provider)
+      local out = fignvim.status.utils.build_provider(p_opts, provider)
+      if out then
+        out.provider = "git_diff"
+        out.opts.type = provider
+        if out.hl == nil then out.hl = { fg = "git_" .. provider } end
+      end
+      return out
+    end)
+  )
 end
 
 --- A function to build a set of children components for a diagnostics section
@@ -945,15 +958,17 @@ function fignvim.status.component.diagnostics(opts)
     },
     update = { "DiagnosticChanged", "BufEnter" },
   })
-  return fignvim.status.component.builder(fignvim.status.utils.setup_providers(opts, { "ERROR", "WARN", "INFO", "HINT" }, function(p_opts, provider)
-    local out = fignvim.status.utils.build_provider(p_opts, provider)
-    if out then
-      out.provider = "diagnostics"
-      out.opts.severity = provider
-      if out.hl == nil then out.hl = { fg = "diag_" .. provider } end
-    end
-    return out
-  end))
+  return fignvim.status.component.builder(
+    fignvim.status.utils.setup_providers(opts, { "ERROR", "WARN", "INFO", "HINT" }, function(p_opts, provider)
+      local out = fignvim.status.utils.build_provider(p_opts, provider)
+      if out then
+        out.provider = "diagnostics"
+        out.opts.severity = provider
+        if out.hl == nil then out.hl = { fg = "diag_" .. provider } end
+      end
+      return out
+    end)
+  )
 end
 
 --- A function to build a set of children components for a Treesitter section
@@ -1041,7 +1056,8 @@ function fignvim.status.component.builder(opts)
   if opts.padding.right > 0 then -- add right padding
     table.insert(children, { provider = fignvim.string.pad_string(" ", { right = opts.padding.right - 1 }) })
   end
-  return opts.surround and fignvim.status.utils.surround(opts.surround.separator, opts.surround.color, children, opts.surround.condition) or children
+  return opts.surround and fignvim.status.utils.surround(opts.surround.separator, opts.surround.color, children, opts.surround.condition)
+    or children
 end
 
 --- Convert a component parameter table to a table that can be used with the component builder
@@ -1077,7 +1093,9 @@ end
 --- A utility function to get the width of the bar
 -- @param is_winbar boolean true if you want the width of the winbar, false if you want the statusline width
 -- @return the width of the specified bar
-function fignvim.status.utils.width(is_winbar) return vim.o.laststatus == 3 and not is_winbar and vim.o.columns or vim.api.nvim_win_get_width(0) end
+function fignvim.status.utils.width(is_winbar)
+  return vim.o.laststatus == 3 and not is_winbar and vim.o.columns or vim.api.nvim_win_get_width(0)
+end
 
 --- Surround component with separator and color adjustment
 -- @param separator the separator index to use in `fignvim.status.env.separators`
