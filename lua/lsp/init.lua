@@ -41,7 +41,10 @@ end
 function fignvim.lsp.on_attach(client, bufnr)
   local capabilities = client.server_capabilities
 
-  fignvim.lsp.mappings.set_buf_mappings(capabilities, client.name, bufnr)
+  -- For some reason, in nvim v0.10.0, the server_capabilities for omnisharp are not being passed correctly
+  local force_mappings = client.name == "omnisharp"
+
+  fignvim.lsp.mappings.set_buf_mappings(capabilities, client.name, bufnr, force_mappings)
 
   if capabilities.documentFormattingProvider or client.name == "eslint" then
     fignvim.lsp.formatting.create_buf_autocmds(bufnr, client.name)

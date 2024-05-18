@@ -4,8 +4,9 @@ fignvim.lsp.mappings = {}
 --- Sets buffer mappings for the given client, if the client supports them.
 ---@param capabilities table The current server capabilities for the language server
 ---@param client_name string Name of the current language server client
----@param buffer number the buffer number to set mappings for
-function fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr)
+---@param bufnr number the buffer number to set mappings for
+---@param force_mappings boolean Whether to force the mappings to be set, regardless of client capabilities
+function fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr, force_mappings)
   local lsp_keymaps = {}
   table.insert(lsp_keymaps, {
     "n",
@@ -38,7 +39,7 @@ function fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr)
     { desc = "List workspace symbols in Telescope", buffer = bufnr },
   })
 
-  if capabilities.codeActionProvider then
+  if capabilities.codeActionProvider or force_mappings then
     table.insert(lsp_keymaps, {
       "n",
       "<leader>ca",
@@ -47,7 +48,7 @@ function fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr)
     })
   end
 
-  if capabilities.declarationProvider then
+  if capabilities.declarationProvider or force_mappings then
     table.insert(lsp_keymaps, {
       "n",
       "gD",
@@ -56,7 +57,7 @@ function fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr)
     })
   end
 
-  if capabilities.definitionProvider or capabilities.typeDefinitionProvider then
+  if capabilities.definitionProvider or capabilities.typeDefinitionProvider or force_mappings then
     table.insert(lsp_keymaps, {
       "n",
       "gd",
@@ -65,7 +66,7 @@ function fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr)
     })
   end
 
-  if capabilities.documentFormattingProvider then
+  if capabilities.documentFormattingProvider or force_mappings then
     table.insert(lsp_keymaps, {
       { "n", "v" },
       "<leader>f",
@@ -80,7 +81,7 @@ function fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr)
     })
   end
 
-  if capabilities.hoverProvider then
+  if capabilities.hoverProvider or force_mappings then
     table.insert(lsp_keymaps, {
       "n",
       "K",
@@ -89,7 +90,7 @@ function fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr)
     })
   end
 
-  if capabilities.implementationProvider then
+  if capabilities.implementationProvider or force_mappings then
     table.insert(lsp_keymaps, {
       "n",
       "gI",
@@ -98,7 +99,7 @@ function fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr)
     })
   end
 
-  if capabilities.referencesProvider then
+  if capabilities.referencesProvider or force_mappings then
     table.insert(lsp_keymaps, {
       "n",
       "gr",
@@ -107,7 +108,7 @@ function fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr)
     })
   end
 
-  if capabilities.renameProvider then
+  if capabilities.renameProvider or force_mappings then
     table.insert(lsp_keymaps, {
       "n",
       "rn",
@@ -116,7 +117,7 @@ function fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr)
     })
   end
 
-  if capabilities.signatureHelpProvider then
+  if capabilities.signatureHelpProvider or force_mappings then
     table.insert(lsp_keymaps, {
       "n",
       "<A-s>",
