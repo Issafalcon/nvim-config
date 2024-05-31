@@ -42,7 +42,7 @@ function fignvim.lsp.on_attach(client, bufnr)
   local capabilities = client.server_capabilities
 
   -- For some reason, in nvim v0.10.0, the server_capabilities for omnisharp are not being passed correctly
-  local force_mappings = client.name == "omnisharp"
+  local force_mappings = client.name == "omnisharp" or client.name == "csharp_ls"
 
   fignvim.lsp.mappings.set_buf_mappings(capabilities, client.name, bufnr, force_mappings)
 

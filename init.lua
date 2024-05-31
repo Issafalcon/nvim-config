@@ -140,7 +140,9 @@ fignvim.lsp.setup_lsp_servers({
   "tsserver",
   "lua_ls",
   "texlab",
-  "omnisharp",
+  -- "omnisharp",
+  -- "roslyn.nvim", -- Not directly language server - See https://github.com/jmederosalvarado/roslyn.nvim
+  "csharp_ls",
   "terraformls",
   "stylelint_lsp",
   "emmet_ls",
@@ -159,7 +161,6 @@ fignvim.lsp.setup_lsp_servers({
   "pyright",
   "tailwindcss",
   -- "ruff_lsp",
-  -- "roslyn.nvim", -- Not directly language server - See https://github.com/jmederosalvarado/roslyn.nvim
 })
 
 -- 6. Create mappings
