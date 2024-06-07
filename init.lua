@@ -117,7 +117,7 @@ fignvim.module.register_plugins({
 
   -- .NET
   "omnisharp-extended-lsp",
-  -- "roslyn", -- Not yet ready to use. Initialization takes WAY too long
+  "roslyn", -- Not yet ready to use. Initialization takes WAY too long
 
   -- C++
   "vim-cmake",
@@ -141,8 +141,8 @@ fignvim.lsp.setup_lsp_servers({
   "lua_ls",
   "texlab",
   -- "omnisharp",
-  -- "roslyn.nvim", -- Not directly language server - See https://github.com/jmederosalvarado/roslyn.nvim
-  "csharp_ls",
+  "roslyn.nvim", -- Not directly language server - See https://github.com/jmederosalvarado/roslyn.nvim
+  -- "csharp_ls",
   "terraformls",
   "stylelint_lsp",
   "emmet_ls",
