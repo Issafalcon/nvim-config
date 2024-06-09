@@ -5,7 +5,9 @@ for _, source in ipairs({
   "core",
 }) do
   local status_ok, fault = pcall(require, source)
-  if not status_ok then vim.api.nvim_err_writeln("Failed to load " .. source .. "\n\n" .. fault) end
+  if not status_ok then
+    vim.api.nvim_err_writeln("Failed to load " .. source .. "\n\n" .. fault)
+  end
 end
 
 fignvim.module.register_plugins({
@@ -34,11 +36,11 @@ fignvim.module.register_plugins({
 
   -- UI
   "notify",
-  "heirline",
+  "heirline_v2",
   "colourschemes",
   "dressing",
   "colorizer",
-  "bufferline",
+  -- "bufferline",
   "maximizer",
   "transparent",
 
@@ -126,9 +128,13 @@ fignvim.module.register_plugins({
   "dadbod",
 })
 
-if vim.fn.has("win32") == 1 then fignvim.config.set_shell_as_powershell() end
+if vim.fn.has("win32") == 1 then
+  fignvim.config.set_shell_as_powershell()
+end
 
-if vim.fn.has("wsl") == 1 then fignvim.config.set_win32yank_wsl_as_clip() end
+if vim.fn.has("wsl") == 1 then
+  fignvim.config.set_win32yank_wsl_as_clip()
+end
 
 fignvim.plug.initialise_lazy_nvim()
 fignvim.plug.setup_lazy_plugins()

@@ -1,6 +1,8 @@
 -- Theming
 -- https://github.com/rebelot/heirline.nvim/blob/master/cookbook.md#theming
-local function setup_colors() return require("catppuccin.palettes").get_palette("mocha") end
+local function setup_colors()
+  return require("catppuccin.palettes").get_palette("mocha")
+end
 
 return {
   {
@@ -15,6 +17,10 @@ return {
       local workdir_component = require("plugins.heirline_components.workdir")
       local filename_component = require("plugins.heirline_components.filename")
 
+      local bufferline = require("plugins.heirline_components.bufferline")
+      local tabline_offet =
+        require("plugins.heirline_components.tabline_offset")
+
       heirline.load_colors(setup_colors())
 
       heirline.setup({
@@ -23,8 +29,8 @@ return {
           workdir_component,
           filename_component,
         },
-        winbar = {},
-        tabline = {},
+        winbar = nil,
+        tabline = { tabline_offet, bufferline },
         statuscolumn = {},
         -- opts = { ... }, -- other config parameters, see below
       })
@@ -34,7 +40,9 @@ return {
       vim.api.nvim_create_autocmd("ColorScheme", {
         group = augroup,
         desc = "Refresh heirline colors",
-        callback = function() utils.on_colorscheme(setup_colors()) end,
+        callback = function()
+          utils.on_colorscheme(setup_colors())
+        end,
       })
     end,
   },
