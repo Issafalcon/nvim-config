@@ -31,7 +31,7 @@ return {
         },
         winbar = nil,
         tabline = { tabline_offet, bufferline },
-        statuscolumn = {},
+        statuscolumn = nil,
         -- opts = { ... }, -- other config parameters, see below
       })
 
