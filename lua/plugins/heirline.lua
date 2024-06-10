@@ -122,7 +122,7 @@ return {
           fignvim.status.component.mode(),
           fignvim.status.component.git_branch(),
           fignvim.status.component.file_info(),
-          require("plugins.heirline_components.filename"),
+          require("plugins.heirline-components.filename"),
           -- fignvim.status.component.file_info { filetype = {}, filename = false, file_modified = false },
           fignvim.status.component.git_diff(),
           fignvim.status.component.diagnostics(),

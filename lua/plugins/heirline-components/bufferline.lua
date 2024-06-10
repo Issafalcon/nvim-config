@@ -12,8 +12,7 @@ local TablineFileName = {
   provider = function(self)
     -- self.filename will be defined later, just keep looking at the example!
     local filename = self.filename
-    filename = filename == "" and "[No Name]"
-      or vim.fn.fnamemodify(filename, ":t")
+    filename = filename == "" and "[No Name]" or vim.fn.fnamemodify(filename, ":t")
     return filename
   end,
   hl = function(self)
@@ -34,16 +33,11 @@ local TablineFileFlags = {
   },
   {
     condition = function(self)
-      return not vim.api.nvim_get_option_value(
-        "modifiable",
-        { buf = self.bufnr }
-      ) or vim.api.nvim_get_option_value("readonly", { buf = self.bufnr })
+      return not vim.api.nvim_get_option_value("modifiable", { buf = self.bufnr })
+        or vim.api.nvim_get_option_value("readonly", { buf = self.bufnr })
     end,
     provider = function(self)
-      if
-        vim.api.nvim_get_option_value("buftype", { buf = self.bufnr })
-        == "terminal"
-      then
+      if vim.api.nvim_get_option_value("buftype", { buf = self.bufnr }) == "terminal" then
         return "  "
       else
         return ""
@@ -84,7 +78,7 @@ local TablineFileNameBlock = {
     name = "heirline_tabline_buffer_callback",
   },
   TablineBufnr,
-  require("plugins.heirline_components.file_icon"), -- turns out the version defined in #crash-course-part-ii-filename-and-friends can be reutilized as is here!
+  require("plugins.heirline-components.file_icon"), -- turns out the version defined in #crash-course-part-ii-filename-and-friends can be reutilized as is here!
   TablineFileName,
   TablineFileFlags,
 }

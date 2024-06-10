@@ -36,12 +36,12 @@ fignvim.module.register_plugins({
 
   -- UI
   "notify",
-  "heirline",
-  -- "heirline_v2",
+  -- "heirline",
+  "heirline_v2",
   "colourschemes",
   "dressing",
   "colorizer",
-  "bufferline",
+  -- "bufferline",
   "maximizer",
   "transparent",
 
