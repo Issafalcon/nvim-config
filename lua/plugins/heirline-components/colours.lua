@@ -29,13 +29,6 @@ function M.setup_colors()
     fignvim.ui.get_hlgroup("DiagnosticInfo", { fg = C.white_2, bg = C.grey_4 })
   local DiagnosticHint =
     fignvim.ui.get_hlgroup("DiagnosticHint", { fg = C.yellow_1, bg = C.grey_4 })
-  local HeirlineInactive = fignvim.ui.get_hlgroup("HeirlineInactive", { fg = nil }).fg
-  local HeirlineNormal = fignvim.ui.get_hlgroup("HeirlineNormal", { fg = nil }).fg
-  local HeirlineInsert = fignvim.ui.get_hlgroup("HeirlineInsert", { fg = nil }).fg
-  local HeirlineVisual = fignvim.ui.get_hlgroup("HeirlineVisual", { fg = nil }).fg
-  local HeirlineReplace = fignvim.ui.get_hlgroup("HeirlineReplace", { fg = nil }).fg
-  local HeirlineCommand = fignvim.ui.get_hlgroup("HeirlineCommand", { fg = nil }).fg
-  local HeirlineTerminal = fignvim.ui.get_hlgroup("HeirlineTerminal", { fg = nil }).fg
 
   local colors = {
     close_fg = Error.fg,
