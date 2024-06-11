@@ -67,6 +67,7 @@ fignvim.module.register_plugins({
   "netrw_nvim",
   "leap",
   "rnvimr",
+
   -- Cut and paste
   "cutlass",
   -- "yanky"  - Performance is an issue when using this plugin. Pastes / yanks are slow
@@ -127,6 +128,9 @@ fignvim.module.register_plugins({
 
   -- Databases
   "dadbod",
+
+  -- Nx
+  "nx",
 })
 
 if vim.fn.has("win32") == 1 then
