@@ -7,6 +7,7 @@ function M.setup_colors()
   local Comment = fignvim.ui.get_hlgroup("Comment", { fg = C.grey_2, bg = C.bg })
   local Error = fignvim.ui.get_hlgroup("Error", { fg = C.red, bg = C.bg })
   local StatusLine = fignvim.ui.get_hlgroup("StatusLine", { fg = C.fg, bg = C.grey_4 })
+  local Surround = { fg = C.grey_2, bg = C.none }
   local TabLine = fignvim.ui.get_hlgroup("TabLine", { fg = C.grey, bg = C.none })
   local TabLineSel = fignvim.ui.get_hlgroup("TabLineSel", { fg = C.fg, bg = C.none })
   local WinBar = fignvim.ui.get_hlgroup("WinBar", { fg = C.grey_2, bg = C.bg })
@@ -74,15 +75,8 @@ function M.setup_colors()
     tab_bg = TabLine.bg,
     tab_active_fg = TabLineSel.fg,
     tab_active_bg = TabLineSel.bg,
-    inactive = HeirlineInactive,
-    normal = HeirlineNormal,
-    insert = HeirlineInsert,
-    visual = HeirlineVisual,
-    replace = HeirlineReplace,
-    command = HeirlineCommand,
-    terminal = HeirlineTerminal,
-    blank_bg = HeirlineInactive,
   }
+
   return colors
 end
 

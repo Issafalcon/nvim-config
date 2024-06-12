@@ -1,6 +1,6 @@
 local WorkDir = {
   init = function(self)
-    self.icon = (vim.fn.haslocaldir(0) == 1 and "l" or "g") .. " " .. " "
+    self.icon = " " .. " "
     local cwd = vim.fn.getcwd(0)
     self.cwd = vim.fn.fnamemodify(cwd, ":~")
   end,
