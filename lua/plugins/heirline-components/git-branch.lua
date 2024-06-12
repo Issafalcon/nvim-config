@@ -11,7 +11,7 @@ local Git = {
       or self.status_dict.changed ~= 0
   end,
 
-  hl = { fg = "git_branch_fg" },
+  hl = { fg = "git_branch_fg", bg = "bg" },
 
   surrounds.LeftSlantStart,
   { -- git branch name
@@ -32,7 +32,7 @@ local Git = {
       local count = self.status_dict.added or 0
       return count > 0 and (fignvim.ui.get_icon("GitAdd") .. " " .. count)
     end,
-    hl = { fg = "git_added", bg = "section_bg" },
+    hl = { fg = "git_added", bg = "bg" },
   },
   {
     provider = function(self)

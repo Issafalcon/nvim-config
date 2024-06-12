@@ -35,7 +35,16 @@ local options = {
     qftf = "{info -> v:lua.fignvim.ui.qftf(info)}",
     relativenumber = false, -- Show relative numberline
     scrolloff = 8, -- Number of lines to keep above and below the cursor
-    sessionoptions = { "blank", "buffers", "curdir", "folds", "help", "tabpages", "winpos", "terminal" },
+    sessionoptions = {
+      "blank",
+      "buffers",
+      "curdir",
+      "folds",
+      "help",
+      "tabpages",
+      "winpos",
+      "terminal",
+    },
     shiftwidth = 2, -- Number of space inserted for indentation
     showmode = false, -- Disable showing modes in command line
     showtabline = 2, -- always display tabline
