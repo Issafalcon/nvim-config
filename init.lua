@@ -36,12 +36,10 @@ fignvim.module.register_plugins({
 
   -- UI
   "notify",
-  -- "heirline",
   "heirline_v2",
   "colourschemes",
   "dressing",
   "colorizer",
-  -- "bufferline",
   "maximizer",
   "transparent",
 
@@ -50,6 +48,7 @@ fignvim.module.register_plugins({
   "mason",
   "none-ls",
   "lsp-overloads",
+  "lsp-progress",
   "schemastore",
 
   -- Completions and Snippets

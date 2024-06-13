@@ -19,6 +19,8 @@ return {
       local ruler_component = require("plugins.heirline-components.ruler-component")
       local scrollbar_component =
         require("plugins.heirline-components.scrollbar-component")
+      local lspstatus_component =
+        require("plugins.heirline-components.lspstatus-component")
 
       local align_component = require("plugins.heirline-components.align-component")
 
@@ -32,8 +34,8 @@ return {
           workdir_component,
           filename_component,
           align_component,
+          lspstatus_component,
           diagnostics_component,
-          align_component,
           ruler_component,
           scrollbar_component,
         },

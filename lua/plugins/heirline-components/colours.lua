@@ -48,6 +48,7 @@ function M.setup_colors()
 
     scrollbar = TypeDef.fg,
 
+    lsp_status_fg = Conditional.fg,
     -- Unused so far
     treesitter_fg = String.fg,
 

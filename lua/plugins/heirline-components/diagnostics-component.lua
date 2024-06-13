@@ -24,7 +24,7 @@ local Diagnostics = {
 
   hl = { bg = "component_bg" },
 
-  surrounds.LeftSlantStart,
+  surrounds.RightSlantStart,
   space_component,
   {
     provider = function(self)
@@ -53,7 +53,7 @@ local Diagnostics = {
   },
 
   space_component,
-  surrounds.LeftSlantEnd,
+  surrounds.RightSlantEnd,
 }
 
 return Diagnostics

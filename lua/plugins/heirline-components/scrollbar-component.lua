@@ -10,7 +10,7 @@ local ScrollBar = {
     bg = "component_bg",
   },
 
-  surrounds.LeftSlantStart,
+  surrounds.RightSlantStart,
   space_component,
   {
     provider = function(self)
@@ -21,7 +21,6 @@ local ScrollBar = {
     end,
   },
   space_component,
-  surrounds.LeftSlantEnd,
 }
 
 return ScrollBar

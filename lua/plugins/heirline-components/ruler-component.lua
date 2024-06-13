@@ -6,11 +6,11 @@ local Ruler = {
   -- %c = column number
   -- %P = percentage through file of displayed window
   hl = { fg = "component_fg", bg = "component_bg", italic = true },
-  surrounds.LeftSlantStart,
+  surrounds.RightSlantStart,
   {
     provider = " %7(%l/%3L%):%2c %P ",
   },
-  surrounds.LeftSlantEnd,
+  surrounds.RightSlantEnd,
 }
 
 return Ruler
