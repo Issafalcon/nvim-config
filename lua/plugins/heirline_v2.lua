@@ -12,21 +12,30 @@ return {
       local workdir_component = require("plugins.heirline-components.workdir")
       local filename_component = require("plugins.heirline-components.filename")
       local git_branch = require("plugins.heirline-components.git-branch")
-
+      local diagnostics_component =
+        require("plugins.heirline-components.diagnostics-component")
       local tabline_offet = require("plugins.heirline-components.tabline_offset")
       local bufferline = require("plugins.heirline-components.bufferline")
+      local ruler_component = require("plugins.heirline-components.ruler-component")
+      local scrollbar_component =
+        require("plugins.heirline-components.scrollbar-component")
 
-      local align = { provider = "%=" }
-      local space = { provider = " " }
+      local align_component = require("plugins.heirline-components.align-component")
 
       heirline.load_colors(colours.setup_colors())
 
       heirline.setup({
+        ---@diagnostic disable-next-line: missing-fields
         statusline = {
           vimode_component,
           git_branch,
           workdir_component,
           filename_component,
+          align_component,
+          diagnostics_component,
+          align_component,
+          ruler_component,
+          scrollbar_component,
         },
         winbar = nil,
         tabline = { tabline_offet, bufferline },

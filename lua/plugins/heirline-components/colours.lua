@@ -24,7 +24,7 @@ function M.setup_colors()
   local DiagnosticInfo =
     fignvim.ui.get_hlgroup("DiagnosticInfo", { fg = C.white_2, bg = C.grey_4 })
   local DiagnosticHint =
-    fignvim.ui.get_hlgroup("DiagnosticHint", { fg = C.yellow_1, bg = C.grey_4 })
+    fignvim.ui.get_hlgroup("DiagnosticHint", { fg = C.blue_4, bg = C.grey_4 })
 
   local colors = {
     close_fg = Error.fg,
@@ -40,19 +40,20 @@ function M.setup_colors()
     mode_fg = StatusLineComponent.bg,
 
     filename_fg = String.fg,
-    -- Unused so far
-    treesitter_fg = String.fg,
+
+    diag_error = DiagnosticError.fg,
+    diag_warn = DiagnosticWarn.fg,
+    diag_info = DiagnosticInfo.fg,
+    diag_hint = DiagnosticHint.fg,
 
     scrollbar = TypeDef.fg,
+
+    -- Unused so far
+    treesitter_fg = String.fg,
 
     git_added = GitSignsAdd.fg,
     git_changed = GitSignsChange.fg,
     git_removed = GitSignsDelete.fg,
-
-    diag_ERROR = DiagnosticError.fg,
-    diag_WARN = DiagnosticWarn.fg,
-    diag_INFO = DiagnosticInfo.fg,
-    diag_HINT = DiagnosticHint.fg,
   }
 
   return colors
