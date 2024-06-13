@@ -2,9 +2,9 @@ local utils = require("heirline.utils")
 
 local TablineBufnr = {
   provider = function(self)
-    return tostring(self.bufnr) .. ". "
+    return tostring(self.bufnr) .. "."
   end,
-  hl = "Comment",
+  hl = { fg = "" },
 }
 
 -- we redefine the filename component, as we probably only want the tail and not the relative path
@@ -28,8 +28,9 @@ local TablineFileFlags = {
     condition = function(self)
       return vim.api.nvim_get_option_value("modified", { buf = self.bufnr })
     end,
-    provider = "[+]",
-    hl = { fg = "green" },
+    provider = fignvim.ui.get_icon("FileModified") .. " ",
+
+    hl = { fg = "filename_fg" },
   },
   {
     condition = function(self)
@@ -43,7 +44,7 @@ local TablineFileFlags = {
         return ""
       end
     end,
-    hl = { fg = "orange" },
+    hl = { fg = "orange", bg = "component_bg" },
   },
 }
 
@@ -55,9 +56,6 @@ local TablineFileNameBlock = {
   hl = function(self)
     if self.is_active then
       return "TabLineSel"
-      -- why not?
-      -- elseif not vim.api.nvim_buf_is_loaded(self.bufnr) then
-      --     return { fg = "gray" }
     else
       return "TabLine"
     end

@@ -1,10 +1,12 @@
+local surrounds = require("plugins.heirline-components.surrounds")
 local utils = require("heirline.utils")
 
-local FileNameBlock = {
+local FileNameInit = {
   -- let's first set up some attributes needed by this component and it's children
   init = function(self)
     self.filename = vim.api.nvim_buf_get_name(0)
   end,
+  hl = { fg = "filename_fg", bg = "component_bg" },
 }
 
 local FileName = {
@@ -14,9 +16,8 @@ local FileName = {
       self.lfilename = "[No Name]"
     end
   end,
-  hl = { fg = utils.get_highlight("Directory").fg },
 
-  flexible = 2,
+  flexible = 10,
 
   {
     provider = function(self)
@@ -35,8 +36,8 @@ local FileFlags = {
     condition = function()
       return vim.bo.modified
     end,
-    provider = "[+]",
-    hl = { fg = "green" },
+    provider = fignvim.ui.get_icon("FileModified") .. " ",
+    hl = { fg = "filename_fg", bg = "component_bg" },
   },
   {
     condition = function()
@@ -56,17 +57,19 @@ local FileNameModifer = {
   hl = function()
     if vim.bo.modified then
       -- use `force` because we need to override the child's hl foreground
-      return { fg = "cyan", bold = true, force = true }
+      return { fg = "filename_fg", bold = true, force = true }
     end
   end,
 }
 
 -- let's add the children to our FileNameBlock component
 FileNameBlock = utils.insert(
-  FileNameBlock,
+  FileNameInit,
+  surrounds.LeftSlantStart,
   require("plugins.heirline-components.file_icon"),
   utils.insert(FileNameModifer, FileName), -- a new table where FileName is a child of FileNameModifier
   FileFlags,
+  surrounds.LeftSlantEnd,
   { provider = "%<" } -- this means that the statusline is cut here when there's not enough space
 )
 

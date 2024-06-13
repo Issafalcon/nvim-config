@@ -16,6 +16,9 @@ return {
       local tabline_offet = require("plugins.heirline-components.tabline_offset")
       local bufferline = require("plugins.heirline-components.bufferline")
 
+      local align = { provider = "%=" }
+      local space = { provider = " " }
+
       heirline.load_colors(colours.setup_colors())
 
       heirline.setup({

@@ -3,11 +3,10 @@ local M = {}
 local C = require("core.colourscheme").colours
 
 function M.setup_colors()
-  local Normal = fignvim.ui.get_hlgroup("Normal", { fg = C.fg, bg = C.bg })
-  local Comment = fignvim.ui.get_hlgroup("Comment", { fg = C.grey_2, bg = C.bg })
   local Error = fignvim.ui.get_hlgroup("Error", { fg = C.red, bg = C.bg })
-  local StatusLine = fignvim.ui.get_hlgroup("StatusLine", { fg = C.fg, bg = C.grey_8 })
-  local Surround = { fg = C.grey_8, bg = C.none }
+  local StatusLineComponent =
+    fignvim.ui.get_hlgroup("StatusLine", { fg = C.fg, bg = C.grey_4 })
+  local Surround = { fg = C.grey_4, bg = C.black_1 }
   local Conditional =
     fignvim.ui.get_hlgroup("Conditional", { fg = C.purple_1, bg = C.grey_4 })
   local String = fignvim.ui.get_hlgroup("String", { fg = C.green, bg = C.grey_4 })
@@ -30,16 +29,18 @@ function M.setup_colors()
   local colors = {
     close_fg = Error.fg,
 
-    fg = StatusLine.fg,
-    bg = StatusLine.bg,
+    component_fg = StatusLineComponent.fg,
+    component_bg = StatusLineComponent.bg,
 
     surround_fg = Surround.fg,
     surround_bg = Surround.bg,
 
     git_branch_fg = Conditional.fg,
 
-    mode_fg = StatusLine.bg,
+    mode_fg = StatusLineComponent.bg,
 
+    filename_fg = String.fg,
+    -- Unused so far
     treesitter_fg = String.fg,
 
     scrollbar = TypeDef.fg,

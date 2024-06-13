@@ -70,13 +70,13 @@ local ViMode = {
       return " %2(" .. self.mode_names[self.mode] .. "%) "
     end,
     hl = function(self)
-      return { fg = "bg", bg = self.mode_color }
+      return { fg = "component_bg", bg = self.mode_color }
     end,
   },
   {
     provider = "",
     hl = function(self)
-      return { fg = self.mode_color, bg = "bg" }
+      return { fg = self.mode_color, bg = "surround_bg" }
     end,
   },
 }

@@ -1,6 +1,8 @@
 fignvim.ui = {}
 
-local bool2str = function(bool) return bool and "on" or "off" end
+local bool2str = function(bool)
+  return bool and "on" or "off"
+end
 
 --- Initialize icons used throughout the user interface
 function fignvim.ui.initialize_icons()
@@ -14,7 +16,9 @@ end
 ---@return string the icon
 function fignvim.ui.get_icon(kind)
   local icon_pack = "icons"
-  if not fignvim.ui[icon_pack] then fignvim.ui.initialize_icons() end
+  if not fignvim.ui[icon_pack] then
+    fignvim.ui.initialize_icons()
+  end
   return fignvim.ui[icon_pack] and fignvim.ui[icon_pack][kind] or ""
 end
 
@@ -23,26 +27,34 @@ end
 function fignvim.ui.echo(messages)
   -- if no parameter provided, echo a new line
   messages = messages or { { "\n" } }
-  if type(messages) == "table" then vim.api.nvim_echo(messages, false, {}) end
+  if type(messages) == "table" then
+    vim.api.nvim_echo(messages, false, {})
+  end
 end
 
 --- Serve a notification with a title of FigNvim
 ---@param msg string the notification body
 ---@param type number|nil the type of the notification (:help vim.log.levels)
 ---@param opts table|nil of nvim-notify options to use (:help notify-options)
-function fignvim.ui.notify(msg, type, opts) vim.notify(msg, type, fignvim.table.default_tbl(opts or {}, { title = "FigNvim" })) end
+function fignvim.ui.notify(msg, type, opts)
+  vim.notify(msg, type, fignvim.table.default_tbl(opts or {}, { title = "FigNvim" }))
+end
 
 --- Delete the syntax matching rules for URLs/URIs if set
 function fignvim.ui.delete_url_match()
   for _, match in ipairs(vim.fn.getmatches()) do
-    if match.group == "HighlightURL" then vim.fn.matchdelete(match.id) end
+    if match.group == "HighlightURL" then
+      vim.fn.matchdelete(match.id)
+    end
   end
 end
 
 --- Add syntax matching rules for highlighting URLs/URIs
 function fignvim.ui.set_url_match()
   fignvim.ui.delete_url_match()
-  if vim.g.highlighturl_enabled then vim.fn.matchadd("HighlightURL", fignvim.vars.url_matcher, 15) end
+  if vim.g.highlighturl_enabled then
+    vim.fn.matchadd("HighlightURL", fignvim.vars.url_matcher, 15)
+  end
 end
 
 --- Toggle URL/URI syntax highlighting rules
@@ -51,9 +63,13 @@ function fignvim.ui.toggle_url_match()
   fignvim.ui.set_url_match()
 end
 
-function fignvim.ui.toggle_line_numbers() vim.wo.number = not vim.wo.number end
+function fignvim.ui.toggle_line_numbers()
+  vim.wo.number = not vim.wo.number
+end
 
-function fignvim.ui.toggle_relative_line_numbers() vim.wo.relativenumber = not vim.wo.relativenumber end
+function fignvim.ui.toggle_relative_line_numbers()
+  vim.wo.relativenumber = not vim.wo.relativenumber
+end
 
 function fignvim.ui.toggle_fix_list(global)
   if global then
@@ -78,7 +94,9 @@ end
 --- Toggle auto format
 function fignvim.ui.toggle_autoformat()
   vim.g.autoformat_enabled = not vim.g.autoformat_enabled
-  fignvim.ui.notify(string.format("Autoformatting %s", bool2str(vim.g.autoformat_enabled)))
+  fignvim.ui.notify(
+    string.format("Autoformatting %s", bool2str(vim.g.autoformat_enabled))
+  )
 end
 
 --- Get highlight properties for a given highlight name
@@ -119,7 +137,9 @@ end
 -- @return the available sources for the given filetype and method
 function fignvim.ui.none_ls_sources(filetype, method)
   local methods_avail, methods = pcall(require, "null-ls.methods")
-  return methods_avail and fignvim.ui.none_ls_providers(filetype)[methods.internal[method]] or {}
+  return methods_avail
+      and fignvim.ui.none_ls_providers(filetype)[methods.internal[method]]
+    or {}
 end
 
 --- Taken from https://github.com/kevinhwang91/nvim-bqf#format-new-quickfix
