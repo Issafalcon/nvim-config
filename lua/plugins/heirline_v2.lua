@@ -4,9 +4,9 @@ return {
     event = "UIEnter",
     config = function()
       local heirline = require("heirline")
-      local conditions = require("heirline.conditions")
       local utils = require("heirline.utils")
       local colours = require("plugins.heirline-components.colours")
+      local surrounds = require("plugins.heirline-components.surrounds")
 
       local vimode_component = require("plugins.heirline-components.mode")
       local workdir_component = require("plugins.heirline-components.workdir")
@@ -21,6 +21,8 @@ return {
         require("plugins.heirline-components.scrollbar-component")
       local lspstatus_component =
         require("plugins.heirline-components.lspstatus-component")
+      local lspserver_component =
+        require("plugins.heirline-components.lspservers-component")
 
       local align_component = require("plugins.heirline-components.align-component")
 
@@ -34,8 +36,11 @@ return {
           workdir_component,
           filename_component,
           align_component,
-          lspstatus_component,
           diagnostics_component,
+          surrounds.RightSlantStart,
+          lspstatus_component,
+          lspserver_component,
+          surrounds.RightSlantEnd,
           ruler_component,
           scrollbar_component,
         },

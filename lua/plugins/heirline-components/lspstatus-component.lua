@@ -1,7 +1,8 @@
-local surrounds = require("plugins.heirline-components.surrounds")
+local conditions = require("heirline.conditions")
 
 local LSPMessages = {
   hl = { fg = "lsp_status_fg", bg = "component_bg" },
+  condition = conditions.lsp_attached,
 
   update = {
     "User",
@@ -13,19 +14,23 @@ local LSPMessages = {
     end,
   },
 
-  surrounds.RightSlantStart,
+  on_click = {
+    callback = function()
+      vim.defer_fn(function()
+        vim.cmd("LspInfo")
+      end, 100)
+    end,
+    name = "heirline_LSP",
+  },
+
   {
     provider = function()
       local result = require("lsp-progress").progress({
         max_size = math.max(math.floor(vim.o.columns / 2) - 5, 3),
       })
-      if result ~= "" then
-        return " " .. result
-      end
-      return ""
+      return result
     end,
   },
-  surrounds.RightSlantEnd,
 }
 
 return LSPMessages

@@ -13,6 +13,22 @@ local Git = {
 
   hl = { fg = "git_branch_fg", bg = "component_bg", bold = true },
 
+  on_click = {
+    callback = function()
+      -- If you want to use Fugitive:
+      -- vim.cmd("G")
+
+      -- If you prefer Lazygit
+      -- use vim.defer_fn() if the callback requires
+      -- opening of a floating window
+      -- (this also applies to telescope)
+      vim.defer_fn(function()
+        fignvim.term.toggle_term_cmd("lazygit")
+      end, 100)
+    end,
+    name = "heirline_git",
+  },
+
   surrounds.LeftSlantStart,
   { -- git branch name
     provider = function(self)
