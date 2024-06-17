@@ -26,6 +26,55 @@ local TablineFileName = {
 local TablineFileFlags = {
   {
     condition = function(self)
+      return #vim.diagnostic.get(self.bufnr) > 0
+    end,
+    static = {
+      error_icon = fignvim.ui.get_icon("DiagnosticError"),
+      warn_icon = fignvim.ui.get_icon("DiagnosticWarn"),
+      info_icon = fignvim.ui.get_icon("DiagnosticInfo"),
+      hint_icon = fignvim.ui.get_icon("DiagnosticHint"),
+    },
+
+    update = { "DiagnosticChanged", "BufEnter" },
+
+    {
+      provider = " ",
+    },
+    {
+      provider = function(self)
+        -- 0 is just another output, we can decide to print it or not!
+        return self.errors > 0 and self.error_icon
+      end,
+      hl = { fg = "diag_error" },
+    },
+    {
+      provider = function(self)
+        return self.errors == 0 and self.warnings > 0 and self.warn_icon
+      end,
+      hl = { fg = "diag_warn" },
+    },
+    {
+      provider = function(self)
+        return self.errors == 0
+          and self.warnings == 0
+          and self.info > 0
+          and self.info_icon
+      end,
+      hl = { fg = "diag_info" },
+    },
+    {
+      provider = function(self)
+        return self.errors == 0
+          and self.warnings == 0
+          and self.info == 0
+          and self.hints > 0
+          and self.hint_icon
+      end,
+      hl = { fg = "diag_hint" },
+    },
+  },
+  {
+    condition = function(self)
       return vim.api.nvim_get_option_value("modified", { buf = self.bufnr })
     end,
     provider = fignvim.ui.get_icon("FileModified") .. " ",
@@ -44,7 +93,7 @@ local TablineFileFlags = {
         return ""
       end
     end,
-    hl = { fg = "orange", bg = "component_bg" },
+    hl = { fg = "orange" },
   },
 }
 
@@ -52,6 +101,14 @@ local TablineFileFlags = {
 local TablineFileNameBlock = {
   init = function(self)
     self.filename = vim.api.nvim_buf_get_name(self.bufnr)
+    self.errors =
+      #vim.diagnostic.get(self.bufnr, { severity = vim.diagnostic.severity.ERROR })
+    self.warnings =
+      #vim.diagnostic.get(self.bufnr, { severity = vim.diagnostic.severity.WARN })
+    self.hints =
+      #vim.diagnostic.get(self.bufnr, { severity = vim.diagnostic.severity.HINT })
+    self.info =
+      #vim.diagnostic.get(self.bufnr, { severity = vim.diagnostic.severity.INFO })
   end,
   hl = function(self)
     if self.is_active then
