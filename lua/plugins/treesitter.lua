@@ -150,17 +150,14 @@ return {
       "nvim-treesitter/playground",
       "vim-matchup",
     },
-    config = function(_, opts) require("nvim-treesitter.configs").setup(opts) end,
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
+    end,
   },
   -- Easier configuration of TS text objects
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
     event = "BufReadPost",
-  },
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    event = "BufReadPre",
-    config = true,
   },
   -- Auto-close HTML tags in various filetypes
   {

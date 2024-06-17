@@ -27,7 +27,7 @@ fignvim.module.register_plugins({
   "ssr",
   "treesj",
   "dial",
-  "matchup",
+  "matchup", -- https://github.com/andymass/vim-matchup
   "autopairs",
   "nvim-surround",
   "vim-unimpaired",
@@ -36,7 +36,7 @@ fignvim.module.register_plugins({
 
   -- UI
   "notify",
-  "heirline_v2",
+  "heirline",
   "colourschemes",
   "dressing",
   "colorizer",
@@ -66,6 +66,7 @@ fignvim.module.register_plugins({
   "netrw_nvim",
   "leap",
   "rnvimr",
+  "nvim-navic", -- https://github.com/SmiteshP/nvim-navic
 
   -- Cut and paste
   "cutlass",
@@ -120,7 +121,7 @@ fignvim.module.register_plugins({
 
   -- .NET
   "omnisharp-extended-lsp",
-  "roslyn", -- Not yet ready to use. Initialization takes WAY too long
+  "roslyn",
 
   -- C++
   "vim-cmake",

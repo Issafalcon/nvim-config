@@ -49,7 +49,7 @@ function M.setup_colors()
     scrollbar = TypeDef.fg,
 
     lsp_status_fg = Conditional.fg,
-    -- Unused so far
+    breadcrumb_separator_fg = C.grey_2,
     treesitter_fg = String.fg,
 
     git_added = GitSignsAdd.fg,
