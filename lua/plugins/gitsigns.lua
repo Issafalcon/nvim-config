@@ -2,13 +2,23 @@ local gitsigns_mappings = {
   {
     "n",
     "]c",
-    function() fignvim.git.gitsigns.next_hunk() end,
-    { desc = "Gitsigns: Next hunk", noremap = true, silent = true, buffer = true, expr = true },
+    function()
+      fignvim.git.gitsigns.next_hunk()
+    end,
+    {
+      desc = "Gitsigns: Next hunk",
+      noremap = true,
+      silent = true,
+      buffer = true,
+      expr = true,
+    },
   },
   {
     "n",
     "[c",
-    function() fignvim.git.gitsigns.prev_hunk() end,
+    function()
+      fignvim.git.gitsigns.prev_hunk()
+    end,
     { desc = "Gitsigns: Previous hunk", silent = true, buffer = true, expr = true },
   },
   {
@@ -33,7 +43,11 @@ local gitsigns_mappings = {
     "n",
     "<leader>hu",
     "<cmd>Gitsigns undo_stage_hunk<CR>",
-    { desc = "Gitsigns: Undo the last hunk or buffer staging command", silent = true, buffer = true },
+    {
+      desc = "Gitsigns: Undo the last hunk or buffer staging command",
+      silent = true,
+      buffer = true,
+    },
   },
   {
     "n",
@@ -45,13 +59,21 @@ local gitsigns_mappings = {
     "n",
     "<leader>hp",
     "<cmd>Gitsigns preview_hunk<CR>",
-    { desc = "Gitsigns: Preview the hunk in floating window", silent = true, buffer = true },
+    {
+      desc = "Gitsigns: Preview the hunk in floating window",
+      silent = true,
+      buffer = true,
+    },
   },
   {
     "n",
     "<leader>hb",
     "<cmd>lua require'gitsigns'.blame_line{full=true}<CR>",
-    { desc = "Gitsigns: Show git blame of full change in floating window", silent = true, buffer = true },
+    {
+      desc = "Gitsigns: Show git blame of full change in floating window",
+      silent = true,
+      buffer = true,
+    },
   },
   {
     "n",
@@ -63,13 +85,21 @@ local gitsigns_mappings = {
     "n",
     "<leader>hd",
     "<cmd>Gitsigns diffthis<CR>",
-    { desc = "Gitsigns: Diff the current file against index", silent = true, buffer = true },
+    {
+      desc = "Gitsigns: Diff the current file against index",
+      silent = true,
+      buffer = true,
+    },
   },
   {
     "n",
     "<leader>hD",
     "<cmd>Gitsigns diffthis('main')<CR>",
-    { desc = "Gitsigns: Diff the current file against main", silent = true, buffer = true },
+    {
+      desc = "Gitsigns: Diff the current file against main",
+      silent = true,
+      buffer = true,
+    },
   },
   {
     "n",
@@ -81,7 +111,11 @@ local gitsigns_mappings = {
     { "o", "x" },
     "ih",
     ":<C-U>Gitsigns select_hunk<CR>",
-    { desc = "Gitsigns: Select the current hunk as a text object", silent = true, buffer = true },
+    {
+      desc = "Gitsigns: Select the current hunk as a text object",
+      silent = true,
+      buffer = true,
+    },
   },
 }
 
@@ -114,9 +148,6 @@ return {
         delay = 500,
         ignore_whitespace = false,
       },
-      current_line_blame_formatter_opts = {
-        relative_time = false,
-      },
       sign_priority = 6,
       update_debounce = 100,
       status_formatter = nil, -- Use default
@@ -129,12 +160,10 @@ return {
         row = 0,
         col = 1,
       },
-      yadm = {
-        enable = false,
-      },
       on_attach = function(bufnr)
         for _, keymap in ipairs(gitsigns_mappings) do
-          local buf_specific_opts = fignvim.table.default_tbl({ buffer = bufnr }, keymap[4])
+          local buf_specific_opts =
+            fignvim.table.default_tbl({ buffer = bufnr }, keymap[4])
           vim.keymap.set(keymap[1], keymap[2], keymap[3], buf_specific_opts)
         end
       end,
