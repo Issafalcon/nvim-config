@@ -1,4 +1,4 @@
-local surrounds = require("plugins.heirline-components.surrounds")
+local surrounds = require("heirline-components.surrounds")
 local utils = require("heirline.utils")
 
 local FileNameInit = {
@@ -63,10 +63,10 @@ local FileNameModifer = {
 }
 
 -- let's add the children to our FileNameBlock component
-FileNameBlock = utils.insert(
+local FileNameBlock = utils.insert(
   FileNameInit,
   surrounds.LeftSlantStart,
-  require("plugins.heirline-components.file_icon"),
+  require("heirline-components.file_icon"),
   utils.insert(FileNameModifer, FileName), -- a new table where FileName is a child of FileNameModifier
   FileFlags,
   surrounds.LeftSlantEnd,

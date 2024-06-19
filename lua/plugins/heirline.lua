@@ -6,29 +6,29 @@ return {
       local heirline = require("heirline")
       local utils = require("heirline.utils")
       local conditions = require("heirline.conditions")
-      local colours = require("plugins.heirline-components.colours")
-      local surrounds = require("plugins.heirline-components.surrounds")
+      local colours = require("heirline-components.colours")
+      local surrounds = require("heirline-components.surrounds")
 
-      local vimode_component = require("plugins.heirline-components.mode")
-      local workdir_component = require("plugins.heirline-components.workdir")
-      local filename_component = require("plugins.heirline-components.filename")
-      local git_branch = require("plugins.heirline-components.git-branch")
+      local vimode_component = require("heirline-components.mode")
+      local workdir_component = require("heirline-components.workdir")
+      local filename_component = require("heirline-components.filename")
+      local git_branch = require("heirline-components.git-branch")
       local diagnostics_component =
-        require("plugins.heirline-components.diagnostics-component")
-      local tabline_offet = require("plugins.heirline-components.tabline_offset")
-      local bufferline = require("plugins.heirline-components.bufferline")
-      local ruler_component = require("plugins.heirline-components.ruler-component")
+        require("heirline-components.diagnostics-component")
+      local tabline_offet = require("heirline-components.tabline_offset")
+      local bufferline = require("heirline-components.bufferline")
+      local ruler_component = require("heirline-components.ruler-component")
       local scrollbar_component =
-        require("plugins.heirline-components.scrollbar-component")
+        require("heirline-components.scrollbar-component")
       local lspstatus_component =
-        require("plugins.heirline-components.lspstatus-component")
+        require("heirline-components.lspstatus-component")
       local lspserver_component =
-        require("plugins.heirline-components.lspservers-component")
+        require("heirline-components.lspservers-component")
 
-      local align_component = require("plugins.heirline-components.align-component")
+      local align_component = require("heirline-components.align-component")
       local breadcrumb_component =
-        require("plugins.heirline-components.breadcrumb-component")
-      local winbars = require("plugins.heirline-components.winbar")
+        require("heirline-components.breadcrumb-component")
+      local winbars = require("heirline-components.winbar")
 
       heirline.load_colors(colours.setup_colors())
 

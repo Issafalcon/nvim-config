@@ -1,5 +1,5 @@
 local conditions = require("heirline.conditions")
-local surrounds = require("plugins.heirline-components.surrounds")
+local surrounds = require("heirline-components.surrounds")
 
 local Git = {
   condition = conditions.is_git_repo,
