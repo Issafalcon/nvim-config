@@ -5,6 +5,7 @@ return {
     config = function()
       local heirline = require("heirline")
       local utils = require("heirline.utils")
+      local conditions = require("heirline.conditions")
       local colours = require("plugins.heirline-components.colours")
       local surrounds = require("plugins.heirline-components.surrounds")
 
@@ -27,6 +28,7 @@ return {
       local align_component = require("plugins.heirline-components.align-component")
       local breadcrumb_component =
         require("plugins.heirline-components.breadcrumb-component")
+      local winbars = require("plugins.heirline-components.winbar")
 
       heirline.load_colors(colours.setup_colors())
 
@@ -48,10 +50,19 @@ return {
           ruler_component,
           scrollbar_component,
         },
-        winbar = nil,
+        winbar = winbars,
         tabline = { tabline_offet, bufferline },
         statuscolumn = nil,
-        -- opts = { ... }, -- other config parameters, see below
+        opts = {
+          -- if the callback returns true, the winbar will be disabled for that window
+          -- the args parameter corresponds to the table argument passed to autocommand callbacks. :h nvim_lua_create_autocmd()
+          disable_winbar_cb = function(args)
+            return conditions.buffer_matches({
+              buftype = { "nofile", "prompt", "help", "quickfix" },
+              filetype = { "^git.*", "fugitive", "Trouble", "dashboard" },
+            }, args.buf)
+          end,
+        },
       })
 
       -- Set up the colors
