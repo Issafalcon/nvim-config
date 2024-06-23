@@ -1,4 +1,3 @@
-local surrounds = require("heirline-components.surrounds")
 local utils = require("heirline.utils")
 
 local FileNameInit = {
@@ -65,11 +64,9 @@ local FileNameModifer = {
 -- let's add the children to our FileNameBlock component
 local FileNameBlock = utils.insert(
   FileNameInit,
-  surrounds.LeftSlantStart,
   require("heirline-components.file_icon"),
   utils.insert(FileNameModifer, FileName), -- a new table where FileName is a child of FileNameModifier
   FileFlags,
-  surrounds.LeftSlantEnd,
   { provider = "%<" } -- this means that the statusline is cut here when there's not enough space
 )
 

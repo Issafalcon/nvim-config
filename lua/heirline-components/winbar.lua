@@ -1,5 +1,4 @@
 local conditions = require("heirline.conditions")
-local utils = require("heirline.utils")
 local space_component = require("heirline-components.space-component")
 local terminal_name_component = require("heirline-components.terminal-name-component")
 local filename_component = require("heirline-components.filename")

@@ -11,23 +11,17 @@ return {
 
       local vimode_component = require("heirline-components.mode")
       local workdir_component = require("heirline-components.workdir")
-      local filename_component = require("heirline-components.filename")
       local git_branch = require("heirline-components.git-branch")
-      local diagnostics_component =
-        require("heirline-components.diagnostics-component")
+      local diagnostics_component = require("heirline-components.diagnostics-component")
       local tabline_offet = require("heirline-components.tabline_offset")
       local bufferline = require("heirline-components.bufferline")
       local ruler_component = require("heirline-components.ruler-component")
-      local scrollbar_component =
-        require("heirline-components.scrollbar-component")
-      local lspstatus_component =
-        require("heirline-components.lspstatus-component")
-      local lspserver_component =
-        require("heirline-components.lspservers-component")
+      local scrollbar_component = require("heirline-components.scrollbar-component")
+      local lspstatus_component = require("heirline-components.lspstatus-component")
+      local lspserver_component = require("heirline-components.lspservers-component")
 
       local align_component = require("heirline-components.align-component")
-      local breadcrumb_component =
-        require("heirline-components.breadcrumb-component")
+      local breadcrumb_component = require("heirline-components.breadcrumb-component")
       local winbars = require("heirline-components.winbar")
 
       heirline.load_colors(colours.setup_colors())
@@ -38,7 +32,6 @@ return {
           vimode_component,
           git_branch,
           workdir_component,
-          filename_component,
           align_component,
           breadcrumb_component,
           align_component,
