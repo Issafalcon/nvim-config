@@ -1,11 +1,4 @@
-local conditions = require("heirline.conditions")
-local space_component = require("heirline-components.space-component")
-local surrounds = require("heirline-components.surrounds")
-
 local Diagnostics = {
-
-  condition = conditions.has_diagnostics,
-
   static = {
     error_icon = fignvim.ui.get_icon("DiagnosticError"),
     warn_icon = fignvim.ui.get_icon("DiagnosticWarn"),
@@ -24,8 +17,6 @@ local Diagnostics = {
 
   hl = { bg = "component_bg" },
 
-  surrounds.RightSlantStart,
-  space_component,
   {
     provider = function(self)
       -- 0 is just another output, we can decide to print it or not!
@@ -47,13 +38,10 @@ local Diagnostics = {
   },
   {
     provider = function(self)
-      return self.hints > 0 and (self.hint_icon .. " " .. self.hints)
+      return self.hints > 0 and (self.hint_icon .. " " .. self.hints .. " ")
     end,
     hl = { fg = "diag_hint" },
   },
-
-  space_component,
-  surrounds.RightSlantEnd,
 }
 
 return Diagnostics

@@ -8,11 +8,12 @@ return {
       local conditions = require("heirline.conditions")
       local colours = require("heirline-components.colours")
       local surrounds = require("heirline-components.surrounds")
+      local space_component = require("heirline-components.space-component")
 
       local vimode_component = require("heirline-components.mode-component")
       local git_component = require("heirline-components.git-component")
 
-      local workdir_component = require("heirline-components.workdir")
+      local workdir_component = require("heirline-components.workdir-component")
       local diagnostics_component = require("heirline-components.diagnostics-component")
       local tabline_offet = require("heirline-components.tabline_offset")
       local bufferline = require("heirline-components.bufferline")
@@ -36,15 +37,27 @@ return {
           git_component,
           surrounds.LeftSlantEnd,
 
+          surrounds.LeftSlantStart,
           workdir_component,
+          surrounds.LeftSlantEnd,
+
           align_component,
           breadcrumb_component,
           align_component,
-          diagnostics_component,
+
+          {
+            condition = conditions.has_diagnostics,
+            surrounds.RightSlantStart,
+            diagnostics_component,
+            surrounds.RightSlantEnd,
+          },
+
           surrounds.RightSlantStart,
+          space_component,
           lspstatus_component,
           lspserver_component,
           surrounds.RightSlantEnd,
+
           ruler_component,
           scrollbar_component,
         },

@@ -1,5 +1,3 @@
-local surrounds = require("heirline-components.surrounds")
-
 local WorkDir = {
   init = function(self)
     self.icon = "  "
@@ -10,7 +8,6 @@ local WorkDir = {
   flexible = 1,
 
   {
-    surrounds.LeftSlantStart,
     {
       hl = { fg = "component_fg", bg = "component_bg", bold = true },
       -- evaluates to the full-lenth path
@@ -19,11 +16,9 @@ local WorkDir = {
         return self.icon .. self.cwd .. trail .. " "
       end,
     },
-    surrounds.LeftSlantEnd,
   },
   {
     -- evaluates to the shortened path
-    surrounds.LeftSlantStart,
     {
       hl = { fg = "component_fg", bg = "component_bg", bold = true },
       provider = function(self)
@@ -32,7 +27,6 @@ local WorkDir = {
         return self.icon .. cwd .. trail .. " "
       end,
     },
-    surrounds.LeftSlantEnd,
   },
   {
     -- evaluates to "", hiding the component
