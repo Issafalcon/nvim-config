@@ -1,5 +1,5 @@
 local conditions = require("heirline.conditions")
-local surrounds = require("heirline-components.surrounds")
+local space_component = require("heirline-components.space-component")
 
 local Git = {
   condition = conditions.is_git_repo,
@@ -30,7 +30,6 @@ local Git = {
     name = "heirline_git",
   },
 
-  surrounds.LeftSlantStart,
   { -- git branch name
     provider = function(self)
       return "  " .. self.status_dict.head
@@ -58,7 +57,7 @@ local Git = {
     end,
     hl = { fg = "git_changed" },
   },
-  surrounds.LeftSlantEnd,
+  space_component,
 }
 
 return Git

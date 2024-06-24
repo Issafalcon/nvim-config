@@ -9,9 +9,10 @@ return {
       local colours = require("heirline-components.colours")
       local surrounds = require("heirline-components.surrounds")
 
-      local vimode_component = require("heirline-components.mode")
+      local vimode_component = require("heirline-components.mode-component")
+      local git_component = require("heirline-components.git-component")
+
       local workdir_component = require("heirline-components.workdir")
-      local git_branch = require("heirline-components.git-branch")
       local diagnostics_component = require("heirline-components.diagnostics-component")
       local tabline_offet = require("heirline-components.tabline_offset")
       local bufferline = require("heirline-components.bufferline")
@@ -30,7 +31,11 @@ return {
         ---@diagnostic disable-next-line: missing-fields
         statusline = {
           vimode_component,
-          git_branch,
+
+          surrounds.LeftSlantStart,
+          git_component,
+          surrounds.LeftSlantEnd,
+
           workdir_component,
           align_component,
           breadcrumb_component,
