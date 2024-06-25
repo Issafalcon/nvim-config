@@ -1,9 +1,6 @@
-local conditions = require("heirline.conditions")
 local space_component = require("heirline-components.space-component")
 
 local Git = {
-  condition = conditions.is_git_repo,
-
   init = function(self)
     ---@diagnostic disable-next-line: undefined-field
     self.status_dict = vim.b.gitsigns_status_dict

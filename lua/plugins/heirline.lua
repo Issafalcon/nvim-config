@@ -33,9 +33,12 @@ return {
         statusline = {
           vimode_component,
 
-          surrounds.LeftSlantStart,
-          git_component,
-          surrounds.LeftSlantEnd,
+          {
+            condition = conditions.is_git_repo,
+            surrounds.LeftSlantStart,
+            git_component,
+            surrounds.LeftSlantEnd,
+          },
 
           surrounds.LeftSlantStart,
           workdir_component,

@@ -38,6 +38,9 @@ function fignvim.plug.setup_lazy_plugins()
       defaults = {
         lazy = true,
       },
+      rocks = {
+        enabled = false,
+      },
       dev = {
         path = project_path,
         ---@type string[] plugins that match these patterns will use your local versions instead of being fetched from GitHub
