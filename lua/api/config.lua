@@ -46,16 +46,16 @@ function fignvim.config.set_win32yank_wsl_as_clip()
   }
 
   -- sync with system clipboard on focus
-  vim.api.nvim_create_autocmd({ "FocusGained" }, {
-    pattern = { "*" },
-    command = [[call setreg("@", getreg("+"))]],
-  })
+  -- vim.api.nvim_create_autocmd({ "FocusGained" }, {
+  --   pattern = { "*" },
+  --   command = [[call setreg("@", getreg("+"))]],
+  -- })
 
   -- sync with system clipboard on focus
-  vim.api.nvim_create_autocmd({ "FocusLost" }, {
-    pattern = { "*" },
-    command = [[call setreg("+", getreg("@"))]],
-  })
+  -- vim.api.nvim_create_autocmd({ "FocusLost" }, {
+  --   pattern = { "*" },
+  --   command = [[call setreg("+", getreg("@"))]],
+  -- })
 end
 
 return fignvim.config

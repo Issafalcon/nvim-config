@@ -1,7 +1,7 @@
 local options = {
   opt = {
     backspace = vim.opt.backspace + { "nostop" }, -- Don't stop backspace at insert
-    clipboard = "", -- Connection to the system clipboard
+    clipboard = "unnamedplus", -- Connection to the system clipboard
     cmdheight = 1, -- hide command line unless needed
     completeopt = { "menu", "menuone", "noselect" }, -- Options for insert mode completion
     copyindent = true, -- Copy the previous indentation on autoindenting
