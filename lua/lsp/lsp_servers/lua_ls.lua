@@ -8,6 +8,9 @@ M.opts = {
       diagnostics = {
         globals = { "vim" },
       },
+      hint = {
+        enable = true,
+      },
     },
   },
 }
