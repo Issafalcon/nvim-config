@@ -118,6 +118,7 @@ M.theme = {
     GitSignsCurrentLineBlame = { link = "Comment" },
     BqfPreviewBorder = { fg = M.colours.vue },
     BqfPreviewRange = { link = "Search" },
+    LspInlayHint = { fg = M.colours.grey_7, bg = "NONE" },
   },
 }
 

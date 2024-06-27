@@ -50,7 +50,9 @@ function fignvim.lsp.on_attach(client, bufnr)
     fignvim.lsp.formatting.create_buf_autocmds(bufnr, client.name)
   end
 
-  if capabilities.documentHighlightProvider then fignvim.lsp.handlers.handle_document_highlighting(bufnr) end
+  if capabilities.documentHighlightProvider then
+    fignvim.lsp.handlers.handle_document_highlighting(bufnr)
+  end
 
   if client.server_capabilities.signatureHelpProvider then
     local lsp_overloads_ok, lsp_overloads = pcall(require, "lsp-overloads")
@@ -157,16 +159,32 @@ function fignvim.lsp.server_settings(server_name)
   local custom_on_attach = server_config and server_config.on_attach
 
   local opts = {
-    capabilities = vim.tbl_deep_extend("force", server.capabilities or {}, fignvim_capabilities),
+    capabilities = vim.tbl_deep_extend(
+      "force",
+      server.capabilities or {},
+      fignvim_capabilities
+    ),
     flags = server.flags or {},
     on_attach = function(client, bufnr)
-      fignvim.fn.conditional_func(server_on_attach, server_on_attach ~= nil, client, bufnr)
+      fignvim.fn.conditional_func(
+        server_on_attach,
+        server_on_attach ~= nil,
+        client,
+        bufnr
+      )
       fignvim.lsp.on_attach(client, bufnr)
-      fignvim.fn.conditional_func(custom_on_attach, custom_on_attach ~= nil, client, bufnr)
+      fignvim.fn.conditional_func(
+        custom_on_attach,
+        custom_on_attach ~= nil,
+        client,
+        bufnr
+      )
     end,
   }
 
-  if server_config and server_config.opts then opts = vim.tbl_deep_extend("force", opts, server_config.opts) end
+  if server_config and server_config.opts then
+    opts = vim.tbl_deep_extend("force", opts, server_config.opts)
+  end
 
   return opts
 end
@@ -180,6 +198,22 @@ function fignvim.lsp.setup_lsp_servers(server_list)
         require("roslyn").setup({
           on_attach = fignvim.lsp.on_attach,
           capabilities = fignvim.lsp.capabilities,
+          settings = {
+            ["csharp|inlay_hints"] = {
+              ["csharp_enable_inlay_hints_for_implicit_object_creation"] = true,
+              ["csharp_enable_inlay_hints_for_implicit_variable_types"] = true,
+              ["csharp_enable_inlay_hints_for_lambda_parameter_types"] = true,
+              ["csharp_enable_inlay_hints_for_types"] = true,
+              ["dotnet_enable_inlay_hints_for_indexer_parameters"] = true,
+              ["dotnet_enable_inlay_hints_for_literal_parameters"] = true,
+              ["dotnet_enable_inlay_hints_for_object_creation_parameters"] = true,
+              ["dotnet_enable_inlay_hints_for_other_parameters"] = true,
+              ["dotnet_enable_inlay_hints_for_parameters"] = true,
+              ["dotnet_suppress_inlay_hints_for_parameters_that_differ_only_by_suffix"] = true,
+              ["dotnet_suppress_inlay_hints_for_parameters_that_match_argument_name"] = true,
+              ["dotnet_suppress_inlay_hints_for_parameters_that_match_method_intent"] = true,
+            },
+          },
         })
       else
         fignvim.lsp.setup(server)
