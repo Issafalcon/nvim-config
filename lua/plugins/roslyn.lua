@@ -1,6 +1,6 @@
 return {
   {
-    "jmederosalvarado/roslyn.nvim",
+    "seblj/roslyn.nvim",
     event = "BufReadPre",
   },
 }

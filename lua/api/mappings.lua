@@ -21,10 +21,9 @@ end
 ---@param prefix string The keymap prefix to register
 ---@param groupname string The name of the group
 function fignvim.mappings.register_whichkey_prefix(prefix, groupname)
-  require("which-key").register({
-    [prefix] = {
-      name = "+" .. groupname,
-    },
+  require("which-key").add({
+    prefix,
+    group = groupname,
   })
 end
 
