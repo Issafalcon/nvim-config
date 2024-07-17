@@ -41,8 +41,10 @@ end
 function fignvim.lsp.on_attach(client, bufnr)
   local capabilities = client.server_capabilities
 
-  -- For some reason, in nvim v0.10.0, the server_capabilities for omnisharp are not being passed correctly
-  local force_mappings = client.name == "omnisharp" or client.name == "csharp_ls"
+  -- For some reason, in nvim v0.10.0, the server_capabilities for c# LSPs are not being passed correctly
+  local force_mappings = client.name == "omnisharp"
+    or client.name == "csharp_ls"
+    or client.name == "roslyn"
 
   fignvim.lsp.mappings.set_buf_mappings(capabilities, client.name, bufnr, force_mappings)
 
@@ -196,22 +198,24 @@ function fignvim.lsp.setup_lsp_servers(server_list)
     for _, server in ipairs(server_list) do
       if server == "roslyn.nvim" then
         require("roslyn").setup({
-          on_attach = fignvim.lsp.on_attach,
-          capabilities = fignvim.lsp.capabilities,
-          settings = {
-            ["csharp|inlay_hints"] = {
-              ["csharp_enable_inlay_hints_for_implicit_object_creation"] = true,
-              ["csharp_enable_inlay_hints_for_implicit_variable_types"] = true,
-              ["csharp_enable_inlay_hints_for_lambda_parameter_types"] = true,
-              ["csharp_enable_inlay_hints_for_types"] = true,
-              ["dotnet_enable_inlay_hints_for_indexer_parameters"] = true,
-              ["dotnet_enable_inlay_hints_for_literal_parameters"] = true,
-              ["dotnet_enable_inlay_hints_for_object_creation_parameters"] = true,
-              ["dotnet_enable_inlay_hints_for_other_parameters"] = true,
-              ["dotnet_enable_inlay_hints_for_parameters"] = true,
-              ["dotnet_suppress_inlay_hints_for_parameters_that_differ_only_by_suffix"] = true,
-              ["dotnet_suppress_inlay_hints_for_parameters_that_match_argument_name"] = true,
-              ["dotnet_suppress_inlay_hints_for_parameters_that_match_method_intent"] = true,
+          config = {
+            on_attach = fignvim.lsp.on_attach,
+            capabilities = fignvim.lsp.capabilities,
+            settings = {
+              ["csharp|inlay_hints"] = {
+                ["csharp_enable_inlay_hints_for_implicit_object_creation"] = true,
+                ["csharp_enable_inlay_hints_for_implicit_variable_types"] = true,
+                ["csharp_enable_inlay_hints_for_lambda_parameter_types"] = true,
+                ["csharp_enable_inlay_hints_for_types"] = true,
+                ["dotnet_enable_inlay_hints_for_indexer_parameters"] = true,
+                ["dotnet_enable_inlay_hints_for_literal_parameters"] = true,
+                ["dotnet_enable_inlay_hints_for_object_creation_parameters"] = true,
+                ["dotnet_enable_inlay_hints_for_other_parameters"] = true,
+                ["dotnet_enable_inlay_hints_for_parameters"] = true,
+                ["dotnet_suppress_inlay_hints_for_parameters_that_differ_only_by_suffix"] = true,
+                ["dotnet_suppress_inlay_hints_for_parameters_that_match_argument_name"] = true,
+                ["dotnet_suppress_inlay_hints_for_parameters_that_match_method_intent"] = true,
+              },
             },
           },
         })
