@@ -68,7 +68,7 @@ function fignvim.lsp.mappings.set_buf_mappings(
 
   if capabilities.codeActionProvider or force_mappings then
     table.insert(lsp_keymaps, {
-      "n",
+      { "n", "v" },
       "<leader>ca",
       function()
         vim.lsp.buf.code_action()
