@@ -5,7 +5,9 @@ local install_dir = fignvim.path.concat({ vim.fn.stdpath("data"), "mason" })
 -- Helper functions for .NET taken from https://github.com/mfussenegger/nvim-dap/wiki/Cookbook#making-debugging-net-easier
 vim.g.dotnet_build_project = function()
   local default_path = vim.fn.getcwd() .. "/"
-  if vim.g["dotnet_last_proj_path"] ~= nil then default_path = vim.g["dotnet_last_proj_path"] end
+  if vim.g["dotnet_last_proj_path"] ~= nil then
+    default_path = vim.g["dotnet_last_proj_path"]
+  end
   local path = vim.fn.input("Path to your *proj file", default_path, "file")
   vim.g["dotnet_last_proj_path"] = path
   local cmd = "dotnet build -c Debug " .. path .. " > /dev/null"
@@ -21,11 +23,19 @@ end
 
 vim.g.dotnet_get_dll_path = function()
   local request = function()
-    local label_fn = function(dll) return string.format("dll = %s", dll.short_path) end
+    local label_fn = function(dll)
+      return string.format("dll = %s", dll.short_path)
+    end
     local procs = {}
-    for _, csprojPath in ipairs(vim.fn.glob(vim.fn.getcwd() .. "**/*.csproj", false, true)) do
+    for _, csprojPath in
+      ipairs(vim.fn.glob(vim.fn.getcwd() .. "**/*.csproj", false, true))
+    do
       local name = vim.fn.fnamemodify(csprojPath, ":t:r")
-      for _, path in ipairs(vim.fn.glob(vim.fn.getcwd() .. "**/bin/**/" .. name .. ".dll", false, true)) do
+      for _, path in
+        ipairs(
+          vim.fn.glob(vim.fn.getcwd() .. "**/bin/**/" .. name .. ".dll", false, true)
+        )
+      do
         table.insert(procs, {
           path = path,
           short_path = vim.fn.fnamemodify(path, ":p:."),
@@ -43,7 +53,13 @@ vim.g.dotnet_get_dll_path = function()
   if vim.g["dotnet_last_dll_path"] == nil then
     vim.g["dotnet_last_dll_path"] = request()
   else
-    if vim.fn.confirm("Do you want to change the path to dll?\n" .. vim.g["dotnet_last_dll_path"], "&yes\n&no", 2) == 1 then
+    if
+      vim.fn.confirm(
+        "Do you want to change the path to dll?\n" .. vim.g["dotnet_last_dll_path"],
+        "&yes\n&no",
+        2
+      ) == 1
+    then
       vim.g["dotnet_last_dll_path"] = request()
     end
   end
@@ -60,11 +76,41 @@ M.javascript = {
     cwd = "${workspaceFolder}",
   },
   {
+    -- use nvim-dap-vscode-js's pwa-node debug adapter
     type = "pwa-node",
+    -- attach to an already running node process with --inspect flag
+    -- default port: 9222
     request = "attach",
-    name = "Attach to Node Process",
+    -- allows us to pick the process using a picker
     processId = require("dap.utils").pick_process,
-    cwd = "${workspaceFolder}",
+    -- name of the debug action you have to select for this config
+    name = "Attach debugger to existing `node --inspect` process",
+    -- for compiled languages like TypeScript or Svelte.js
+    sourceMaps = true,
+    -- resolve source maps in nested locations while ignoring node_modules
+    resolveSourceMapLocations = {
+      "${workspaceFolder}/**",
+      "!**/node_modules/**",
+    },
+    -- path to src in vite based projects (and most other projects as well)
+    cwd = "${workspaceFolder}/src",
+    -- we don't want to debug code inside node_modules, so skip it!
+    skipFiles = { "${workspaceFolder}/node_modules/**/*.js" },
+  },
+  {
+    type = "pwa-chrome",
+    name = "Launch Chrome to debug client",
+    request = "launch",
+    url = function()
+      local port = vim.fn.input("Select application port: ", 3000)
+      return "http://localhost:" .. port
+    end,
+    sourceMaps = true,
+    protocol = "inspector",
+    port = 9222,
+    webRoot = "${workspaceFolder}/src",
+    -- skip files from vite's hmr
+    skipFiles = { "**/node_modules/**/*", "**/@vite/*", "**/src/client/*", "**/src/*" },
   },
   {
     type = "pwa-node",
@@ -82,17 +128,6 @@ M.javascript = {
   },
   {
     type = "pwa-chrome",
-    request = "launch",
-    name = "Launch Chrome",
-    cwd = vim.fn.getcwd(),
-    sourceMaps = true,
-    protocol = "inspector",
-    hostName = "127.0.0.1",
-    port = 9222,
-    webRoot = "${workspaceFolder}",
-  },
-  {
-    type = "pwa-chrome",
     request = "attach",
     name = "Attach to Chrome",
     program = "${file}",
@@ -100,7 +135,10 @@ M.javascript = {
     sourceMaps = true,
     protocol = "inspector",
     hostName = "127.0.0.1",
-    port = 9222,
+    port = function()
+      local port = vim.fn.input("Select application port: ", 5137)
+      return port
+    end,
     webRoot = "${workspaceFolder}",
   },
 }
@@ -121,10 +159,14 @@ M.sh = {
     pathCat = "cat",
     pathMkfifo = "mkfifo",
     pathPkill = "pkill",
-    pathBashdb = { install_dir .. "/packages/bash-debug-adapter/extension/bashdb_dir/bashdb" },
+    pathBashdb = {
+      install_dir .. "/packages/bash-debug-adapter/extension/bashdb_dir/bashdb",
+    },
     pathBashdbLib = { install_dir .. "/packages/bash-debug-adapter/extension/bashdb_dir" },
     terminalKind = "integrated",
-    args = function() return vim.fn.split(vim.fn.input("Scripts args:")) end,
+    args = function()
+      return vim.fn.split(vim.fn.input("Scripts args:"))
+    end,
   },
 }
 
@@ -140,7 +182,9 @@ M.cs = {
     name = "launch - netcoredbg",
     request = "launch",
     program = function()
-      if vim.fn.confirm("Should I recompile first?", "&yes\n&no", 2) == 1 then vim.g.dotnet_build_project() end
+      if vim.fn.confirm("Should I recompile first?", "&yes\n&no", 2) == 1 then
+        vim.g.dotnet_build_project()
+      end
       return vim.g.dotnet_get_dll_path()
     end,
   },

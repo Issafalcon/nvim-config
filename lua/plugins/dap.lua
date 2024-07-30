@@ -108,6 +108,13 @@ return {
         "mason.nvim",
         "jbyuki/one-small-step-for-vimkind",
         "rcarriga/nvim-dap-ui",
+        "mxsdev/nvim-dap-vscode-js",
+        -- build debugger from source
+        {
+          "microsoft/vscode-js-debug",
+          version = "1.x",
+          build = "npm i && npm run compile vsDebugServerBundle && mv dist out",
+        },
       },
       config = function()
         local dap = require("dap")
@@ -116,39 +123,25 @@ return {
         dap.defaults.fallback.terminal_win_cmd = "80vsplit new"
 
         -- dap.set_log_level("TRACE") -- Verbose logging
-        vim.fn.sign_define("DapBreakpoint", { text = "👊", texthl = "", linehl = "", numhl = "" })
-        vim.fn.sign_define("DapBreakpointRejected", { text = "✋", texthl = "", linehl = "", numhl = "" })
-        vim.fn.sign_define("DapStopped", { text = "👉", texthl = "", linehl = "", numhl = "" })
+        vim.fn.sign_define(
+          "DapBreakpoint",
+          { text = "👊", texthl = "", linehl = "", numhl = "" }
+        )
+        vim.fn.sign_define(
+          "DapBreakpointRejected",
+          { text = "✋", texthl = "", linehl = "", numhl = "" }
+        )
+        vim.fn.sign_define(
+          "DapStopped",
+          { text = "👉", texthl = "", linehl = "", numhl = "" }
+        )
 
         -- Adapters
-        dap.adapters.node2 = {
-          type = "executable",
-          name = "node-debug",
-          command = "node",
-          args = { install_dir .. "/packages/node-debug2-adapter/out/src/nodeDebug.js" },
-        }
-
-        dap.adapters.chrome = {
-          type = "executable",
-          command = "node",
-          args = { install_dir .. "/packages/chrome-debug-adapter/out/src/chromeDebug.js" },
-        }
-
-        dap.adapters["pwa-node"] = {
-          type = "server",
-          host = "localhost",
-          port = "${port}",
-          executable = {
-            command = "node",
-            -- 💀 Make sure to update this path to point to your installation
-            args = { install_dir .. "/packages/js-debug-adapter/js-debug/src/dapDebugServer.js", "${port}" },
-          },
-        }
-
         local netcoredbg_install_dir
 
         if vim.fn.has("win32") == 1 then
-          netcoredbg_install_dir = install_dir .. "/packages/netcoredbg/netcoredbg/netcoredbg.exe"
+          netcoredbg_install_dir = install_dir
+            .. "/packages/netcoredbg/netcoredbg/netcoredbg.exe"
         else
           netcoredbg_install_dir = install_dir .. "/packages/netcoredbg/netcoredbg"
         end
@@ -162,12 +155,31 @@ return {
         dap.adapters.bashdb = {
           type = "executable",
           command = "node",
-          args = { install_dir .. "/packages/bash-debug-adapter/extension/out/bashDebug.js" },
+          args = {
+            install_dir .. "/packages/bash-debug-adapter/extension/out/bashDebug.js",
+          },
         }
 
         dap.adapters.nlua = function(callback, config)
-          callback({ type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 })
+          callback({
+            type = "server",
+            host = config.host or "127.0.0.1",
+            port = config.port or 8086,
+          })
         end
+
+        -- Can't get this to work on WSL currently, but seems to be the best best to try
+        require("dap-vscode-js").setup({
+          debugger_path = vim.fn.stdpath("data") .. "/lazy/vscode-js-debug",
+          adapters = {
+            "chrome",
+            "pwa-node",
+            "pwa-chrome",
+            "pwa-msedge",
+            "node-terminal",
+            "pwa-extensionHost",
+          },
+        })
 
         fignvim.debug.setup_debug_configs()
       end,
