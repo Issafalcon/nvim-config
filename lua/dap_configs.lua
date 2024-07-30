@@ -102,13 +102,14 @@ M.javascript = {
     name = "Launch Chrome to debug client",
     request = "launch",
     url = function()
-      local port = vim.fn.input("Select application port: ", 3000)
+      local port = vim.fn.input("Select application port: ", 5173) -- Default vite / remix port
       return "http://localhost:" .. port
     end,
     sourceMaps = true,
     protocol = "inspector",
     port = 9222,
-    webRoot = "${workspaceFolder}/src",
+    -- This may need updating depending on the framework source dir
+    webRoot = "${workspaceFolder}",
     -- skip files from vite's hmr
     skipFiles = { "**/node_modules/**/*", "**/@vite/*", "**/src/client/*", "**/src/*" },
   },
@@ -126,6 +127,8 @@ M.javascript = {
     console = "integratedTerminal",
     internalConsoleOptions = "neverOpen",
   },
+  -- This needs tweaking for WSL and Brave
+  -- See https://stackoverflow.com/questions/53380075/how-to-attach-the-vscode-debugger-to-the-brave-browser
   {
     type = "pwa-chrome",
     request = "attach",
@@ -135,10 +138,8 @@ M.javascript = {
     sourceMaps = true,
     protocol = "inspector",
     hostName = "127.0.0.1",
-    port = function()
-      local port = vim.fn.input("Select application port: ", 5137)
-      return port
-    end,
+    urlFilter = "http://localhost:5173/*",
+    port = 9222,
     webRoot = "${workspaceFolder}",
   },
 }
