@@ -16,7 +16,7 @@ return {
         debug = true,
         sources = {
           formatting.prettier.with({
-            extra_args = { "--single-quote", "--jsx-single-quote" },
+            -- extra_args = { "--single-quote", "--jsx-single-quote" },
             condition = function(utils)
               return utils.root_has_file({
                 -- https://prettier.io/docs/en/configuration.html

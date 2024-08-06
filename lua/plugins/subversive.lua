@@ -3,19 +3,25 @@ local subversive_keys = {
     "n",
     "s",
     "<plug>(SubversiveSubstitute)",
-    { desc = "Subversive: Substitute the motion specified with whatever is in default yank register" },
+    {
+      desc = "Subversive: Substitute the motion specified with whatever is in default yank register",
+    },
   },
   {
     "n",
     "ss",
     "<plug>(SubversiveSubstituteLine)",
-    { desc = "Subversive: Substitute the line with whatever is in default yank register" },
+    {
+      desc = "Subversive: Substitute the line with whatever is in default yank register",
+    },
   },
   {
     "n",
     "S",
     "<plug>(SubversiveSubstituteToEndOfLine)",
-    { desc = "Subversive: Substitute everything until the end of the line with whatever is in the yank register" },
+    {
+      desc = "Subversive: Substitute everything until the end of the line with whatever is in the yank register",
+    },
   },
   {
     { "n", "x" },
@@ -29,11 +35,13 @@ local subversive_keys = {
     "n",
     "<leader>ss",
     "<plug>(SubversiveSubstituteWordRange)",
-    { desc = "Subversive: Substitute all instances of word under the cursor within the motion specified" },
+    {
+      desc = "Subversive: Substitute all instances of word under the cursor within the motion specified",
+    },
   },
   {
     { "n", "x" },
-    "<leader><leader>v",
+    "<leader><leader>s",
     "<plug>(SubversiveSubvertRange)",
     {
       desc = "Subversive: Subvert all instances of the text in the first motion that exist in the text within the second motion",
@@ -41,9 +49,11 @@ local subversive_keys = {
   },
   {
     "n",
-    "<leader><leader>vv",
+    "<leader><leader>ss",
     "<plug>(SubversiveSubvertWordRange)",
-    { desc = "Subversive: Subvert all instances of word under the cursor within the motion specified" },
+    {
+      desc = "Subversive: Subvert all instances of word under the cursor within the motion specified",
+    },
   },
 }
 

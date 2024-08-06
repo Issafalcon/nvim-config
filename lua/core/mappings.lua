@@ -4,13 +4,17 @@ M.Lists = {
   {
     "n",
     "<C-q>",
-    function() fignvim.ui.toggle_fix_list(true) end,
+    function()
+      fignvim.ui.toggle_fix_list(true)
+    end,
     { desc = "Toggle quickfix window" },
   },
   {
     "n",
     "<leader>q",
-    function() fignvim.ui.toggle_fix_list(false) end,
+    function()
+      fignvim.ui.toggle_fix_list(false)
+    end,
     { desc = "Toggle location list window" },
   },
 }
@@ -22,8 +26,18 @@ M.Window = {
   { "n", "<C-k>", "<C-w>k", { desc = "Move to next window up" } },
   { "n", "<C-Up>", ":resize +2<CR>", { desc = "Resize window horizontally up" } },
   { "n", "<C-Down>", ":resize -2<CR>", { desc = "Resize window horizontally down" } },
-  { "n", "<C-Left>", ":vertical resize +2<CR>", { desc = "Resize window vertically to the left" } },
-  { "n", "<C-Right>", ":vertical resize -2<CR>", { desc = "Resize window vertically to the right" } },
+  {
+    "n",
+    "<C-Left>",
+    ":vertical resize +2<CR>",
+    { desc = "Resize window vertically to the left" },
+  },
+  {
+    "n",
+    "<C-Right>",
+    ":vertical resize -2<CR>",
+    { desc = "Resize window vertically to the right" },
+  },
 }
 
 M.Terminal = {
@@ -42,11 +56,26 @@ M.Editing = {
   { "x", "<A-K>", ":move '<-2<CR>gv-gv", { desc = "Move current line down" } },
   { "i", "<A-j>", "<Esc>:m .+1<CR>==gi", { desc = "Move current line up" } },
   { "i", "<A-K>", "<Esc>:m .-2<CR>==gi", { desc = "Move current line down" } },
-  { "n", "<leader>bo", "<cmd>%bd|e#<cr>", { desc = "Close all buffers except the current one" } },
+  {
+    "n",
+    "<leader>bo",
+    "<cmd>%bd|e#<cr>",
+    { desc = "Close all buffers except the current one" },
+  },
 
   -- Create new text objects
-  { "o", "ie", ":exec 'normal! ggVG'<cr>", { desc = "Creates new text object to operate on entire buffer" } },
-  { "o", "iv", ":exec 'normal! HVL'<cr>", { desc = "Creates new text object to operate on all text in view" } },
+  {
+    "o",
+    "ie",
+    ":exec 'normal! ggVG'<cr>",
+    { desc = "Creates new text object to operate on entire buffer" },
+  },
+  {
+    "o",
+    "iv",
+    ":exec 'normal! HVL'<cr>",
+    { desc = "Creates new text object to operate on all text in view" },
+  },
 }
 
 M.Navigation = {
@@ -61,15 +90,20 @@ M.Navigation = {
   {
     "n",
     "<leader>l",
-    function() fignvim.ui.toggle_line_numbers() end,
+    function()
+      fignvim.ui.toggle_line_numbers()
+    end,
     { desc = "Toggle line numbers" },
   },
   {
     "n",
     "<leader>rn",
-    function() fignvim.ui.toggle_relative_line_numbers() end,
+    function()
+      fignvim.ui.toggle_relative_line_numbers()
+    end,
     { desc = "Toggle relative line numbers" },
   },
+  { "n", "\\m", "m", { desc = "Set a mark" } },
 }
 
 return M
