@@ -14,13 +14,13 @@ local dap_keys = {
   {
     "n",
     "<leader>db",
-    ':lua require"dap".toggle_breakpoint()<CR>',
+    '<cmd>lua require("persistent-breakpoints.api").toggle_breakpoint()<cr>',
     { desc = "DAP Toggle Breakpoint" },
   },
   {
     "n",
     "<leader>dB",
-    ':lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>',
+    '<cmd>lua require("persistent-breakpoints.api").set_conditional_breakpoint()<cr>',
     { desc = "DAP Toggle Conditional Breakpoint" },
   },
   {
@@ -32,7 +32,7 @@ local dap_keys = {
   {
     "n",
     "<leader>dbc",
-    ':lua require"dap".clear_breakpoints()<CR>',
+    '<cmd>lua require("persistent-breakpoints.api").clear_all_breakpoints()<cr>',
     { desc = "DAP Clear all breakpoints on exceptions" },
   },
   {
@@ -114,6 +114,19 @@ return {
           "microsoft/vscode-js-debug",
           version = "1.x",
           build = "npm i && npm run compile vsDebugServerBundle && mv dist out",
+        },
+        {
+          "Weissle/persistent-breakpoints.nvim",
+          event = "BufReadPre",
+          opts = {
+            save_dir = vim.fn.stdpath("data") .. "/nvim_checkpoints",
+            -- when to load the breakpoints? "BufReadPost" is recommanded.
+            load_breakpoints_event = { "BufReadPost" },
+            -- record the performance of different function. run :lua require('persistent-breakpoints.api').print_perf_data() to see the result.
+            perf_record = false,
+            -- perform callback when loading a persisted breakpoint
+            on_load_breakpoint = nil,
+          },
         },
       },
       config = function()
