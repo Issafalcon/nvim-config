@@ -8,7 +8,8 @@ end
 M.opts = {
   settings = {
     json = {
-      schemas = load_schemas()
+      schemas = load_schemas(),
+      validate = { enable = true },
     },
   },
   setup = {

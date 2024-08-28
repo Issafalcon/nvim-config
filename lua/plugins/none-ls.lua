@@ -34,6 +34,7 @@ return {
             end,
           }),
           formatting.black.with({ extra_args = { "--fast" } }),
+          formatting.yamlfmt,
           formatting.stylua,
           formatting.shfmt,
           -- formatting.sql_formatter.with({

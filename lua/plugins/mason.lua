@@ -26,6 +26,7 @@ return {
             "stylua",
             "clang-format",
             "black",
+            "yamlfmt",
             -- "ruff",
 
             -- Linters

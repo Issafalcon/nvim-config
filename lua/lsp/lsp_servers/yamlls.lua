@@ -1,13 +1,9 @@
 M = {}
 
-local function load_schemas()
-  local schemastore_ok, schemastore = pcall(require, "schemastore")
-  return schemastore_ok and schemastore.yaml.schemas() or {}
-end
-
 M.opts = {
   settings = {
     yaml = {
+      validate = { enable = true },
       schemas = require("schemastore").yaml.schemas({
         extra = {
           {
