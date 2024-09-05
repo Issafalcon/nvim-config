@@ -148,7 +148,7 @@ fignvim.plug.setup_lazy_plugins()
 fignvim.lsp.setup_lsp_servers({
   "jsonls",
   "cucumber_language_server",
-  "tsserver",
+  "ts_ls",
   "lua_ls",
   "texlab",
   -- "omnisharp",
