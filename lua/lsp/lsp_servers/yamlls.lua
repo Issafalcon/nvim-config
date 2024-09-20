@@ -6,12 +6,12 @@ M.opts = {
       validate = { enable = true },
       schemas = require("schemastore").yaml.schemas({
         extra = {
-          {
-            description = "Azure DevOps Pipeline Yaml schema",
-            name = "azure-pipelines",
-            fileMatch = { "*.yml", "*.yaml", "*pipelines.yml", "*pipelines.yaml" },
-            url = "https://dev.azure.com/awsmtech/_apis/distributedtask/yamlschema",
-          },
+          -- {
+          --   description = "Azure DevOps Pipeline Yaml schema",
+          --   name = "azure-pipelines",
+          --   fileMatch = { "*.yml", "*.yaml", "*pipelines.yml", "*pipelines.yaml" },
+          --   url = "https://dev.azure.com/awsmtech/_apis/distributedtask/yamlschema",
+          -- },
         },
       }),
       schemaStore = {

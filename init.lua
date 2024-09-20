@@ -159,6 +159,7 @@ fignvim.lsp.setup_lsp_servers({
   "emmet_ls",
   "bashls",
   "dockerls",
+  "docker_compose_language_service",
   "html",
   "vimls",
   "yamlls",
