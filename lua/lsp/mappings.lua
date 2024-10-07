@@ -178,7 +178,7 @@ function fignvim.lsp.mappings.set_buf_mappings(
     })
   end
 
-  if client_name == "tsserver" then
+  if client_name == "ts_ls" then
     table.insert(lsp_keymaps, {
       "n",
       "<leader>to",

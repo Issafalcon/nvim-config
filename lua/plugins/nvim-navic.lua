@@ -9,7 +9,7 @@ return {
       preference = {
         "roslyn",
         "lua_ls",
-        "tsserver",
+        "ts_ls",
       },
     },
   },
