@@ -51,7 +51,7 @@ M.on_attach = function(client, bufnr)
   fignvim.fn.conditional_func(ts_utils.setup, ts_utils_ok ~= nil, {})
   fignvim.fn.conditional_func(ts_utils.setup_client, ts_utils_ok ~= nil, client)
 
-  local clients = vim.lsp.buf_get_clients(bufnr)
+  local clients = vim.lsp.get_active_clients({ bufnr = bufnr })
   for _, other_client in pairs(clients) do
     if other_client.name == "angularls" then
       -- Prevent tsserver rename duplication when angularls is in use
