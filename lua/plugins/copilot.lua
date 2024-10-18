@@ -3,7 +3,11 @@ local copilot_keys = {
     "i",
     "<Plug>(vimrc:copilot-dummy-map)",
     'copilot#Accept("")',
-    { desc = "Copilot dummy accept to workaround fallback issues with nvim-cmp", expr = true, silent = true },
+    {
+      desc = "Copilot dummy accept to workaround fallback issues with nvim-cmp",
+      expr = true,
+      silent = true,
+    },
   },
 }
 

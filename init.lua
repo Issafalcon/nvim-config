@@ -131,6 +131,9 @@ fignvim.module.register_plugins({
 
   -- Nx
   "nx",
+
+  -- HTTP
+  "rest",
 })
 
 if vim.fn.has("win32") == 1 then
