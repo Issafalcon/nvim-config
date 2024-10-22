@@ -54,6 +54,7 @@ fignvim.module.register_plugins({
   -- Completions and Snippets
   "cmp",
   "copilot",
+  "copilot-chat",
   "luasnip",
 
   -- Treesitter
@@ -132,8 +133,8 @@ fignvim.module.register_plugins({
   -- Nx
   "nx",
 
-  -- HTTP
-  "rest",
+  -- Packages
+  "luarocks",
 })
 
 if vim.fn.has("win32") == 1 then
