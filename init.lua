@@ -103,6 +103,7 @@ fignvim.module.register_plugins({
   "plantuml",
   "markdown-preview",
   "obsidian",
+  "swagger-preview",
 
   -- Icons
   "nvim-web-devicons",
