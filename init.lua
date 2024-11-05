@@ -124,6 +124,7 @@ fignvim.module.register_plugins({
   -- .NET
   "omnisharp-extended-lsp",
   "roslyn",
+  "easy-dotnet",
 
   -- C++
   "vim-cmake",
