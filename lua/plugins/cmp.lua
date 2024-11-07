@@ -22,10 +22,13 @@ return {
           lspkind.init(fignvim.lspkind)
         end,
       },
+      "PasiBergman/cmp-nuget",
     },
     config = function()
       -- code
       local cmp = require("cmp")
+      local nuget = require("cmp-nuget")
+      nuget.setup({})
 
       local sources = {
         nvim_lsp = { name = "nvim_lsp", priority = 1000, keyword_length = 2 },
@@ -36,6 +39,7 @@ return {
         buffer = { name = "buffer", priority = 500, keyword_length = 2 },
         path = { name = "path", priority = 250, keyword_length = 2 },
         rg = { name = "rg", priority = 200, keyword_length = 2 },
+        nuget = { name = "nuget", priority = 800, keyword_length = 1 },
       }
 
       local common_sources = {
@@ -49,10 +53,13 @@ return {
 
       cmp.setup({
         enabled = function()
-          if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
+          if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+            return false
+          end
           return true
         end,
         preselect = cmp.PreselectMode.None,
+        ---@diagnostic disable-next-line: missing-fields
         formatting = {
           fields = {
             cmp.ItemField.Abbr,
@@ -60,11 +67,18 @@ return {
             cmp.ItemField.Menu,
           },
           format = function(entry, vim_item)
-            local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+            if entry.source.name == "nuget" then
+              vim_item.kind = "NuGet"
+              return vim_item
+            end
+
+            local kind = require("lspkind").cmp_format({
+              mode = "symbol_text",
+              maxwidth = 50,
+            })(entry, vim_item)
             local strings = vim.split(kind.kind, "%s", { trimempty = true })
             kind.kind = " " .. strings[1] .. " "
-            kind.menu = "(" .. strings[2] .. ")"
-
+            kind.menu = strings[2] and "(" .. strings[2] .. ")" or kind.menu
             return kind
           end,
         },
@@ -97,10 +111,18 @@ return {
           },
         },
         mapping = cmp.mapping.preset.insert({
-          ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-          ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-          ["<Up>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-          ["<Down>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<C-k>"] = cmp.mapping.select_prev_item({
+            behavior = cmp.SelectBehavior.Select,
+          }),
+          ["<C-j>"] = cmp.mapping.select_next_item({
+            behavior = cmp.SelectBehavior.Select,
+          }),
+          ["<Up>"] = cmp.mapping.select_prev_item({
+            behavior = cmp.SelectBehavior.Insert,
+          }),
+          ["<Down>"] = cmp.mapping.select_next_item({
+            behavior = cmp.SelectBehavior.Insert,
+          }),
           ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
           ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
           ["<C-space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
@@ -111,11 +133,15 @@ return {
           }),
           ["<CR>"] = cmp.mapping.confirm({ select = false }),
           -- Fix for copilot key-mapping fallback mechanism issue - https://github.com/hrsh7th/nvim-cmp/blob/b16e5bcf1d8fd466c289eab2472d064bcd7bab5d/doc/cmp.txt#L830-L852
-          ["<C-x>"] = cmp.mapping(
-            function(fallback)
-              vim.api.nvim_feedkeys(vim.fn["copilot#Accept"](vim.api.nvim_replace_termcodes("<Tab>", true, true, true)), "n", true)
-            end
-          ),
+          ["<C-x>"] = cmp.mapping(function(fallback)
+            vim.api.nvim_feedkeys(
+              vim.fn["copilot#Accept"](
+                vim.api.nvim_replace_termcodes("<Tab>", true, true, true)
+              ),
+              "n",
+              true
+            )
+          end),
           ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
@@ -164,6 +190,13 @@ return {
       cmp.setup.filetype("mysql", {
         sources = cmp.config.sources({
           { name = "vim-dadbod-completion" },
+        }),
+      })
+
+      cmp.setup.filetype("xml", {
+        sources = cmp.config.sources({
+          sources.nuget,
+          sources.rg,
         }),
       })
     end,
