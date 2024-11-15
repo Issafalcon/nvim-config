@@ -86,6 +86,7 @@ fignvim.module.register_plugins({
   "gitsigns",
   "diffview",
   "git-messenger",
+  "octo",
 
   -- Session management
   "auto-session",
