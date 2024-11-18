@@ -87,6 +87,7 @@ fignvim.module.register_plugins({
   "diffview",
   "git-messenger",
   "octo",
+  "gh-actions",
 
   -- Session management
   "auto-session",
