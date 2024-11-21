@@ -119,6 +119,7 @@ fignvim.module.register_plugins({
 
   -- Terraform
   "vim-terraform",
+  "vim-helm",
 
   -- LaTeX
   "vimtex",
@@ -127,6 +128,7 @@ fignvim.module.register_plugins({
   "omnisharp-extended-lsp",
   "roslyn",
   "easy-dotnet",
+  "nuget",
 
   -- C++
   "vim-cmake",
@@ -180,6 +182,7 @@ fignvim.lsp.setup_lsp_servers({
   "cmake",
   "pyright",
   "tailwindcss",
+  "helm_ls",
   -- "ruff_lsp",
 })
 

@@ -40,6 +40,7 @@ return {
 
             -- Debuggers
             "debugpy",
+            "netcoredbg",
           },
         },
       },
