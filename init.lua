@@ -104,6 +104,7 @@ fignvim.module.register_plugins({
   "neogen",
   "plantuml",
   "markdown-preview",
+  "render-markdown",
   "obsidian",
   "swagger-preview",
 

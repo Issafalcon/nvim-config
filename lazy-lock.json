@@ -85,6 +85,7 @@
   "playground": { "branch": "master", "commit": "ba48c6a62a280eefb7c85725b0915e021a1a0749" },
   "plenary.nvim": { "branch": "master", "commit": "2d9b06177a975543726ce5c73fca176cedbffe9d" },
   "refactoring.nvim": { "branch": "master", "commit": "53ed6854e0bba64d467c58e87084dcf8b1c22d36" },
+  "render-markdown.nvim": { "branch": "main", "commit": "d6a82d70765aa238b7ea48d257a1d57a92501423" },
   "rnvimr": { "branch": "main", "commit": "3c41af742a61caf74a9f83fb82b9ed03ef13b880" },
   "roslyn.nvim": { "branch": "main", "commit": "322e5295d3cfe7400954ca1154fb4aff5b2aadfe" },
   "schemastore.nvim": { "branch": "main", "commit": "a7ad1f6205500d1369382e2e43df4e60eeae7cb6" },
