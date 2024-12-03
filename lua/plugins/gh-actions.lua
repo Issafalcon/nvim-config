@@ -1,12 +1,12 @@
 return {
   {
-    "topaxi/gh-actions.nvim",
+    "topaxi/pipeline.nvim",
     keys = {
-      { "<leader>gh", "<cmd>GhActions<cr>", desc = "Open Github Actions" },
+      { "<leader>gh", "<cmd>Pipeline<cr>", desc = "Open Pipeline" },
     },
     -- optional, you can also install and use `yq` instead.
     build = "make",
-    ---@type GhActionsConfig
+    ---@type pipeline.Config
     opts = {},
   },
 }
