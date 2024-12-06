@@ -3,7 +3,7 @@ local dap_keys = {
     "n",
     "<F5>",
     ':lua require"osv".launch({port=8086})<CR>',
-    { desc = "DAP Continue" },
+    { desc = "Launch OSV server" },
   },
   {
     "n",

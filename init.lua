@@ -117,6 +117,7 @@ fignvim.module.register_plugins({
 
   -- Testing
   "neotest",
+  "neosharper",
 
   -- Terraform
   "vim-terraform",
