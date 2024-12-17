@@ -67,6 +67,28 @@ vim.g.dotnet_get_dll_path = function()
   return vim.g["dotnet_last_dll_path"]
 end
 
+local launch_json = vim.fn.getcwd() .. "/.nvim/env.json"
+
+local readAll = function(file)
+  local f = assert(io.open(file, "rb"))
+  local content = f:read("*all")
+  f:close()
+  return content
+end
+
+local load_json = function()
+  return vim.json.decode(readAll(launch_json))
+end
+
+vim.g.dotnet_get_env = function()
+  if vim.g["dotnet_env_vars"] == nil then
+    vim.g["dotnet_env_vars"] = load_json()
+  end
+
+  fignvim.fn.put(vim.g["dotnet_env_vars"])
+  return vim.g["dotnet_env_vars"]
+end
+
 M.javascript = {
   {
     type = "pwa-node",
@@ -174,14 +196,29 @@ M.sh = {
 M.cs = {
   {
     type = "netcoredbg",
+    justMyCode = false,
+    stopAtEntry = false,
     name = "attach - netcoredbg",
     request = "attach",
     processId = require("dap.utils").pick_process,
   },
   {
+    justMyCode = false,
+    stopAtEntry = false,
     type = "netcoredbg",
     name = "launch - netcoredbg",
     request = "launch",
+    console = "integratedTerminal",
+    symbolOptions = {
+      searchMicrosoftSymbolServer = true,
+      searchNugetOrg = true,
+    },
+    suppressJITOptimization = true,
+    env = vim.g.dotnet_get_env,
+    -- Modify to get the dir of the dll path
+    cwd = function()
+      return vim.fn.fnamemodify(vim.g["dotnet_last_dll_path"], ":p:h")
+    end,
     program = function()
       if vim.fn.confirm("Should I recompile first?", "&yes\n&no", 2) == 1 then
         vim.g.dotnet_build_project()
