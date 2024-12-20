@@ -67,26 +67,6 @@ return {
           --- Optional table of extra args e.g "--blame crash"
           additional_args = {},
         },
-        ---@param action "test" | "restore" | "build" | "run"
-        terminal = function(path, action)
-          local commands = {
-            run = function()
-              return "dotnet run --project " .. path
-            end,
-            test = function()
-              return "dotnet test " .. path
-            end,
-            restore = function()
-              return "dotnet restore " .. path
-            end,
-            build = function()
-              return "dotnet build " .. path
-            end,
-          }
-          local command = commands[action]() .. "\r"
-          vim.cmd("vsplit")
-          vim.cmd("term " .. command)
-        end,
         secrets = {
           path = get_secret_path,
         },

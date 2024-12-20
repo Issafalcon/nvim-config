@@ -117,7 +117,6 @@ fignvim.module.register_plugins({
 
   -- Testing
   "neotest",
-  "neosharper",
 
   -- Terraform
   "vim-terraform",
@@ -144,6 +143,12 @@ fignvim.module.register_plugins({
   -- Packages
   "luarocks",
 })
+
+if vim.fn.isdirectory(vim.fn.expand("$PROJECTS/neosharper.nvim")) == 1 then
+  fignvim.module.register_plugins({
+    "neosharper",
+  })
+end
 
 if vim.fn.has("win32") == 1 then
   fignvim.config.set_shell_as_powershell()
