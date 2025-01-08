@@ -1,5 +1,6 @@
 -- Get all the required Fignvim API functions and commands required for setup
 for _, source in ipairs({
+  "rocks",
   "api",
   "lsp",
   "core",
@@ -158,6 +159,7 @@ if vim.fn.has("wsl") == 1 then
   fignvim.config.set_win32yank_wsl_as_clip()
 end
 
+fignvim.plug.initialize_rocks_nvim()
 fignvim.plug.initialise_lazy_nvim()
 fignvim.plug.setup_lazy_plugins()
 
