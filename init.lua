@@ -160,8 +160,8 @@ if vim.fn.has("wsl") == 1 then
 end
 
 fignvim.plug.initialize_rocks_nvim()
-fignvim.plug.initialise_lazy_nvim()
-fignvim.plug.setup_lazy_plugins()
+-- fignvim.plug.initialise_lazy_nvim()
+-- fignvim.plug.setup_lazy_plugins()
 
 -- 5. Set up the LSP servers (also sets keymaps for LSP related actions)
 fignvim.lsp.setup_lsp_servers({

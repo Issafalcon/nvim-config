@@ -112,7 +112,7 @@
   "vim-terraform": { "branch": "master", "commit": "174789e2f0a1c8348ae129223581760807162e82" },
   "vim-terraform-completion": { "branch": "master", "commit": "125d0e892f5fd8f32b57a5a5983d03f1aa611949" },
   "vim-unimpaired": { "branch": "master", "commit": "6d44a6dc2ec34607c41ec78acf81657248580bf1" },
-  "vimtex": { "branch": "master", "commit": "f822c8018effb44dc0e810eb765ec9cb4f395b5a" },
+  "vimtex": { "branch": "master", "commit": "254085af6bb6893813638b4bcc5c2286750fdd9b" },
   "vscode-csharp-snippets": { "branch": "master", "commit": "3522981cf1700ce0e7ae13a5b57cfd5d2b67a9d8" },
   "vscode-es7-javascript-react-snippets": { "branch": "master", "commit": "185bb91a0b692c54136663464e8225872c434637" },
   "vscode-js-debug": { "branch": "main", "commit": "f1fe28ba28aa338598772dd6211a010dc3deea87" },
