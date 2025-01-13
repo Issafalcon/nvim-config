@@ -1,3 +1,4 @@
+-- https://github.com/junegunn/vim-easy-align
 local easy_align_keys = {
   {
     { "n", "x" },

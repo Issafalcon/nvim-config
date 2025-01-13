@@ -1,3 +1,4 @@
+-- https://github.com/mbbill/undotree
 local undotree_keys = {
   { "n", "<A-u>", ":UndotreeToggle<CR>", { desc = "Undotree: Toggle undotree" } },
 }
