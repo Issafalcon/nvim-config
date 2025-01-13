@@ -26,6 +26,7 @@ treesj = "scm"
 nvim-surround = "2.1.5"
 "plenary.nvim" = "scm"
 "toggleterm.nvim" = "2.13.1"
+"lazydev.nvim" = {version = "1.9.0", opt = true }
 
 [plugins.nvim-autopairs]
 git = "https://github.com/windwp/nvim-autopairs"
