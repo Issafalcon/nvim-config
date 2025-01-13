@@ -1,3 +1,4 @@
+-- https://github.com/folke/lazydev.nvim
 vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
   pattern = "*.lua",
   callback = function()
