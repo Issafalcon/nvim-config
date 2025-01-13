@@ -17,8 +17,11 @@ plugins_dir = "plugin-rocks/"
 "rocks.nvim" = "2.42.4" # rocks.nvim can also manage itself :D
 "rocks-config.nvim" = "3.1.0"
 "rocks-git.nvim" = "2.5.2"
-catppuccin = "0.1.0"
 
 [plugins.nvim-autopairs]
 git = "https://github.com/windwp/nvim-autopairs"
 rev = "3d02855468f94bf435db41b661b58ec4f48a06b7"
+
+[plugins.catpuccin]
+git = "https://github.com/catppuccin/nvim"
+rev = "v1.9.0"
