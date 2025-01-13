@@ -28,7 +28,7 @@ fignvim.module.register_plugins({
   "ssr",
   "treesj",
   "dial",
-  "matchup", -- https://github.com/andymass/vim-matchup
+  "matchup",
   "autopairs",
   "nvim-surround",
   "vim-unimpaired",
