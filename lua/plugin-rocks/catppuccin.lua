@@ -17,4 +17,5 @@ require("catppuccin").setup({
     percentage = 0.10,
   },
 })
+
 vim.cmd.colorscheme("catppuccin")

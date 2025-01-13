@@ -4,6 +4,9 @@
 # [plugins]
 # nvim-treesitter = "semver_version"  # e.g. "1.0.0"
 
+[config]
+plugins_dir = "plugin-rocks/"
+
 # List of non-Neovim rocks.
 # This includes things like `toml` or other lua packages.
 [rocks]
@@ -12,3 +15,10 @@
 # If the plugin name contains a dot then you must add quotes to the key name!
 [plugins]
 "rocks.nvim" = "2.42.4" # rocks.nvim can also manage itself :D
+"rocks-config.nvim" = "3.1.0"
+"rocks-git.nvim" = "2.5.2"
+catppuccin = "0.1.0"
+
+[plugins.nvim-autopairs]
+git = "https://github.com/windwp/nvim-autopairs"
+rev = "3d02855468f94bf435db41b661b58ec4f48a06b7"
