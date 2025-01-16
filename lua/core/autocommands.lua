@@ -106,6 +106,9 @@ cmd({ "BufReadPre", "BufNewFile" }, {
       "helm_ls",
       -- "ruff_lsp",
     })
+
+    -- Needs to load after telescope
+    require("lazy-plugins.cheatsheet")
     return true
   end,
 })

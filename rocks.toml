@@ -30,6 +30,8 @@ nvim-surround = "2.1.5"
 "mason.nvim" = "1.10.0"
 "mason-lspconfig.nvim" = "1.31.0"
 "mason-tool-installer.nvim" = "scm"
+"which-key.nvim" = "3.15.0"
+"telescope.nvim" = "scm"
 
 [plugins.nvim-autopairs]
 git = "https://github.com/windwp/nvim-autopairs"
@@ -60,3 +62,16 @@ rev = "2db6d378e873de31d18ade549c2edba64ff1c2e3"
 git = "https://github.com/seblj/roslyn.nvim"
 # 322e5295d3cfe7400954ca1154fb4aff5b2aadfe = Pinned rev in old config
 rev = "85aca5d48ddf8ada4e010ee9fa4d43c77ebf68c9"
+
+[plugins."cheatsheet.nvim"]
+git = "https://github.com/sudormrfbin/cheatsheet.nvim"
+rev = "9716f9aaa94dd1fd6ce59b5aae0e5f25e2a463ef"
+
+[plugins."telescope-fzf-native.nvim"]
+git = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
+rev = "dae2eac9d91464448b584c7949a31df8faefec56"
+build = "make"
+
+[plugins."telescope-fzy-native.nvim"]
+git = "https://github.com/nvim-telescope/telescope-fzy-native.nvim"
+rev = "282f069504515eec762ab6d6c89903377252bf5b"
