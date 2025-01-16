@@ -160,40 +160,6 @@ if vim.fn.has("wsl") == 1 then
 end
 
 fignvim.plug.initialize_rocks_nvim()
--- fignvim.plug.initialise_lazy_nvim()
--- fignvim.plug.setup_lazy_plugins()
-
--- 5. Set up the LSP servers (also sets keymaps for LSP related actions)
-fignvim.lsp.setup_lsp_servers({
-  "jsonls",
-  "cucumber_language_server",
-  "ts_ls",
-  "lua_ls",
-  "texlab",
-  -- "omnisharp",
-  "roslyn.nvim", -- Not directly language server - See https://github.com/jmederosalvarado/roslyn.nvim
-  -- "csharp_ls",
-  "terraformls",
-  "stylelint_lsp",
-  "emmet_ls",
-  "bashls",
-  "dockerls",
-  "docker_compose_language_service",
-  "html",
-  "vimls",
-  "yamlls",
-  "angularls",
-  "cssls",
-  "tflint",
-  "powershell_es",
-  "eslint",
-  "clangd",
-  "cmake",
-  "pyright",
-  "tailwindcss",
-  "helm_ls",
-  -- "ruff_lsp",
-})
 
 -- 6. Create mappings
 vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { silent = true }) -- Prep for space to be leader key

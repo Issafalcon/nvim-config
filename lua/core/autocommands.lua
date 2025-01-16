@@ -106,5 +106,15 @@ cmd({ "BufReadPre", "BufNewFile" }, {
       "helm_ls",
       -- "ruff_lsp",
     })
+    return true
+  end,
+})
+
+cmd({ "BufReadPre", "BufNewFile" }, {
+  pattern = "*.lua",
+  group = "lazy_plugins",
+  callback = function()
+    require("lazy-plugins.lua-dev")
+    return true
   end,
 })

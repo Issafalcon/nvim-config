@@ -27,6 +27,9 @@ nvim-surround = "2.1.5"
 "plenary.nvim" = "scm"
 "toggleterm.nvim" = "2.13.1"
 "lazydev.nvim" = {version = "1.9.0", opt = true }
+"mason.nvim" = "1.10.0"
+"mason-lspconfig.nvim" = "1.31.0"
+"mason-tool-installer.nvim" = "scm"
 
 [plugins.nvim-autopairs]
 git = "https://github.com/windwp/nvim-autopairs"
@@ -52,3 +55,8 @@ rev = "2556c6800b210b2096b55b66e74b4cc1d9ebbe4f"
 [plugins."refactoring.nvim"]
 git = "https://github.com/theprimeagen/refactoring.nvim"
 rev = "2db6d378e873de31d18ade549c2edba64ff1c2e3"
+
+[plugins."roslyn.nvim"]
+git = "https://github.com/seblj/roslyn.nvim"
+# 322e5295d3cfe7400954ca1154fb4aff5b2aadfe = Pinned rev in old config
+rev = "85aca5d48ddf8ada4e010ee9fa4d43c77ebf68c9"
