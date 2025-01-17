@@ -7,7 +7,7 @@ if vim.fn.executable("ranger") == 1 then
       function()
         require("ranger-nvim").open(true)
       end,
-      { desc = "Rnvimr: Toggle Rnvimr" },
+      { desc = "Toggle ranger" },
     },
   }
 

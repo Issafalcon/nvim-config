@@ -74,6 +74,8 @@ cmd({ "BufReadPre", "BufNewFile" }, {
   callback = function()
     require("lazy-plugins.mason")
     require("lazy-plugins.mason-lspconfig")
+    require("lazy-plugins.mason-tool-installer")
+    require("lazy-plugins.none-ls")
 
     -- 5. Set up the LSP servers (also sets keymaps for LSP related actions)
     fignvim.lsp.setup_lsp_servers({
