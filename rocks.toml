@@ -31,6 +31,8 @@ nvim-surround = "2.1.5"
 "mason-tool-installer.nvim" = "scm"
 "which-key.nvim" = "3.15.0"
 "telescope.nvim" = "scm"
+"heirline.nvim" = "1.0.7"
+nvim-web-devicons = "0.100"
 
 [plugins.nvim-autopairs]
 git = "https://github.com/windwp/nvim-autopairs"
@@ -138,3 +140,15 @@ rev = "v1.3.11"
 [plugins."cutlass.nvim"]
 git = "https://github.com/gbprod/cutlass.nvim"
 rev = "v1.0.1"
+
+[plugins.nvim-navic]
+git = "https://github.com/smiteshp/nvim-navic"
+rev = "8649f694d3e76ee10c19255dece6411c29206a54"
+
+[plugins."lsp-progress.nvim"]
+git = "https://github.com/linrongbin16/lsp-progress.nvim"
+rev = "v1.0.13"
+
+[plugins."ranger.nvim"]
+git = "https://github.com/kelly-lin/ranger.nvim"
+rev = "fd2cc999f3ef88f7cdcbcad5f26000c52b16c489"

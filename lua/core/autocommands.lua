@@ -117,7 +117,7 @@ cmd({ "BufReadPre", "BufNewFile" }, {
   pattern = "*.lua",
   group = "lazy_plugins",
   callback = function()
-    require("lazy-plugins.lua-dev")
+    require("lazy-plugins.lazydev")
     return true
   end,
 })
