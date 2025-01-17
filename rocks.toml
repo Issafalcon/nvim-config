@@ -18,7 +18,6 @@ plugins_dir = "plugin-rocks/"
 "rocks-config.nvim" = "3.1.0"
 "rocks-git.nvim" = "2.5.2"
 "comment.nvim" = "0.8.0"
-nvim-ts-context-commentstring = "scm"
 "dial.nvim" = "0.4.0"
 "indent-blankline.nvim" = "3.8.6"
 treesj = "scm"
@@ -75,3 +74,63 @@ build = "make"
 [plugins."telescope-fzy-native.nvim"]
 git = "https://github.com/nvim-telescope/telescope-fzy-native.nvim"
 rev = "282f069504515eec762ab6d6c89903377252bf5b"
+
+[plugins.cmp-nuget]
+git = "https://github.com/pasibergman/cmp-nuget"
+rev = "6558e778e02238a898b5a6170b56f8bd7af733d7"
+
+[plugins.nvim-treesitter]
+git = "https://github.com/nvim-treesitter/nvim-treesitter"
+rev = "v0.9.3"
+
+[plugins.nvim-ts-context-commentstring ]
+git = "https://github.com/joosepalviste/nvim-ts-context-commentstring"
+rev = "1b212c2eee76d787bbea6aa5e92a2b534e7b4f8f"
+
+[plugins.nvim-ts-autotag]
+git = "https://github.com/windwp/nvim-ts-autotag"
+rev = "1cca23c9da708047922d3895a71032bc0449c52d"
+
+[plugins.nvim-treesitter-textobjects]
+git = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
+rev = "ad8f0a472148c3e0ae9851e26a722ee4e29b1595"
+
+[plugins.vim-abolish]
+git = "https://github.com/tpope/vim-abolish"
+rev = "v1.2"
+
+[plugins."lspkind.nvim"]
+git = "https://github.com/onsails/lspkind.nvim"
+rev = "d79a1c3299ad0ef94e255d045bed9fa26025dab6"
+
+[plugins.nvim-cmp]
+git = "https://github.com/hrsh7th/nvim-cmp"
+rev = "v0.0.2"
+
+[plugins.cmp_luasnip]
+git = "https://github.com/saadparwaiz1/cmp_luasnip"
+rev = "98d9cb5c2c38532bd9bdb481067b20fea8f32e90"
+
+[plugins.cmp-buffer]
+git = "https://github.com/hrsh7th/cmp-buffer"
+rev = "3022dbc9166796b644a841a02de8dd1cc1d311fa"
+
+[plugins.cmp-cmdline]
+git = "https://github.com/hrsh7th/cmp-cmdline"
+rev = "d250c63aa13ead745e3a40f61fdd3470efde3923"
+
+[plugins.cmp-path]
+git = "https://github.com/hrsh7th/cmp-path"
+rev = "91ff86cd9c29299a64f968ebb45846c485725f23"
+
+[plugins.cmp-nvim-lsp]
+git = "https://github.com/hrsh7th/cmp-nvim-lsp"
+rev = "99290b3ec1322070bcfb9e846450a46f6efa50f0"
+
+[plugins.cmp-npm]
+git = "https://github.com/david-kunz/cmp-npm"
+rev = "2337f109f51a09297596dd6b538b70ccba92b4e4"
+
+[plugins.cmp-rg]
+git = "https://github.com/lukas-reineke/cmp-rg"
+rev = "v1.3.11"

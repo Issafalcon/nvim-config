@@ -142,7 +142,7 @@ fignvim.module.register_plugins({
   "nx",
 
   -- Packages
-  "luarocks",
+  -- "luarocks",
 })
 
 if vim.fn.isdirectory(vim.fn.expand("$PROJECTS/neosharper.nvim")) == 1 then
