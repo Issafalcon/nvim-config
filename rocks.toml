@@ -134,3 +134,7 @@ rev = "2337f109f51a09297596dd6b538b70ccba92b4e4"
 [plugins.cmp-rg]
 git = "https://github.com/lukas-reineke/cmp-rg"
 rev = "v1.3.11"
+
+[plugins."cutlass.nvim"]
+git = "https://github.com/gbprod/cutlass.nvim"
+rev = "v1.0.1"

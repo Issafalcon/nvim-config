@@ -22,25 +22,20 @@ local yanky_mappings = {
   {
     "n",
     "<leader>P",
-    function() require("telescope").extensions.yank_history.yank_history({}) end,
+    function()
+      require("telescope").extensions.yank_history.yank_history({})
+    end,
     { desc = "Paste from Yanky" },
   },
 }
 
-return {
-  {
-    "gbprod/yanky.nvim",
-    event = "BufReadPost",
-    keys = fignvim.mappings.make_lazy_keymaps(yanky_mappings, true),
-    config = function()
-      require("yanky").setup({
-        highlight = {
-          timer = 150,
-        },
-        ring = {
-          storage = jit.os:find("Windows") and "shada" or "sqlite",
-        },
-      })
-    end,
+require("yanky").setup({
+  highlight = {
+    timer = 150,
   },
-}
+  ring = {
+    storage = jit.os:find("Windows") and "shada" or "sqlite",
+  },
+})
+
+fignvim.mappings.create_keymaps(yanky_mappings)
