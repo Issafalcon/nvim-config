@@ -171,3 +171,7 @@ rev = "af318216b744f2fe2d5afa6febb01f455ae61d6c"
 [plugins."typescript.nvim"]
 git = "https://github.com/jose-elias-alvarez/typescript.nvim"
 rev = "4de85ef699d7e6010528dcfbddc2ed4c2c421467"
+
+[plugins.nvim-spectre]
+git = "https://github.com/nvim-pack/nvim-spectre"
+rev = "ddd7383e856a7c939cb4f5143278fe041bbb8cb9"

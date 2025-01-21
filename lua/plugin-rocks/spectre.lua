@@ -25,10 +25,5 @@ local spectre_keys = {
   },
 }
 
-return {
-  {
-    "windwp/nvim-spectre",
-    keys = fignvim.mappings.make_lazy_keymaps(spectre_keys, true),
-    config = true,
-  },
-}
+require("spectre").setup({})
+fignvim.mappings.create_keymaps(spectre_keys)
