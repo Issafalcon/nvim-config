@@ -219,6 +219,62 @@ function fignvim.lsp.setup_lsp_servers(server_list)
             },
           },
         })
+      elseif server == "ts_ls" then
+        -- Uses https://github.com/jose-elias-alvarez/typescript.nvim to integrate over ts_ls
+        require("typescript").setup({
+          disable_commands = false, -- prevent the plugin from creating Vim commands
+          debug = false, -- enable debug logging for commands
+          go_to_source_definition = {
+            fallback = true, -- fall back to standard LSP definition on failure
+          },
+          server = { -- pass options to lspconfig's setup method
+            on_attach = function(client, bufnr)
+              client.server_capabilities.document_formatting = false
+
+              local ts_utils_ok, ts_utils = pcall(require, "nvim-lsp-ts-utils")
+              fignvim.fn.conditional_func(ts_utils.setup, ts_utils_ok ~= nil, {})
+              fignvim.fn.conditional_func(
+                ts_utils.setup_client,
+                ts_utils_ok ~= nil,
+                client
+              )
+
+              local clients = vim.lsp.get_clients({ bufnr = bufnr })
+              for _, other_client in pairs(clients) do
+                if other_client.name == "angularls" then
+                  -- Prevent tsserver rename duplication when angularls is in use
+                  client.server_capabilities.rename = false
+                end
+              end
+            end,
+            settings = {
+              typescript = {
+                inlayHints = {
+                  includeInlayParameterNameHints = "all",
+                  includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                  includeInlayFunctionParameterTypeHints = true,
+                  includeInlayVariableTypeHints = true,
+                  includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+                  includeInlayPropertyDeclarationTypeHints = true,
+                  includeInlayFunctionLikeReturnTypeHints = true,
+                  includeInlayEnumMemberValueHints = true,
+                },
+              },
+              javascript = {
+                inlayHints = {
+                  includeInlayParameterNameHints = "all",
+                  includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                  includeInlayFunctionParameterTypeHints = true,
+                  includeInlayVariableTypeHints = true,
+                  includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+                  includeInlayPropertyDeclarationTypeHints = true,
+                  includeInlayFunctionLikeReturnTypeHints = true,
+                  includeInlayEnumMemberValueHints = true,
+                },
+              },
+            },
+          },
+        })
       else
         fignvim.lsp.setup(server)
       end

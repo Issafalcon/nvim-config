@@ -167,3 +167,7 @@ rev = "v1.5.0"
 [plugins."none-ls.nvim"]
 git = "https://github.com/nvimtools/none-ls.nvim"
 rev = "af318216b744f2fe2d5afa6febb01f455ae61d6c"
+
+[plugins."typescript.nvim"]
+git = "https://github.com/jose-elias-alvarez/typescript.nvim"
+rev = "4de85ef699d7e6010528dcfbddc2ed4c2c421467"

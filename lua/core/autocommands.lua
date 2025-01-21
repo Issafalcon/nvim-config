@@ -81,7 +81,6 @@ cmd({ "BufReadPre", "BufNewFile" }, {
     fignvim.lsp.setup_lsp_servers({
       "jsonls",
       "cucumber_language_server",
-      "ts_ls",
       "lua_ls",
       "texlab",
       -- "omnisharp",

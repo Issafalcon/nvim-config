@@ -1,7 +1,7 @@
 M = {}
 
-M.on_attach = function(client, bufnr)
-  local clients = vim.lsp.get_active_clients({ bufnr = bufnr })
+M.on_attach = function(_, bufnr)
+  local clients = vim.lsp.get_clients({ bufnr = bufnr })
   for _, other_client in pairs(clients) do
     if other_client.name == "ts_ls" then
       -- Prevent tsserver rename duplication when angularls is in use

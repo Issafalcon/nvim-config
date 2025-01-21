@@ -178,27 +178,6 @@ function fignvim.lsp.mappings.set_buf_mappings(
     })
   end
 
-  if client_name == "ts_ls" then
-    table.insert(lsp_keymaps, {
-      "n",
-      "<leader>to",
-      ":TSLspOrganize<CR>",
-      { desc = "Organize imports using tsserver", buffer = bufnr },
-    })
-    table.insert(lsp_keymaps, {
-      "n",
-      "<leader>trn",
-      ":TSLspRenameFile<CR>",
-      { desc = "Rename file using tsserver", buffer = bufnr },
-    })
-    table.insert(lsp_keymaps, {
-      "n",
-      "<leader>ti",
-      ":TSLspImportAll<CR>",
-      { desc = "Import all missing imports using tsserver", buffer = bufnr },
-    })
-  end
-
   fignvim.mappings.create_keymaps(lsp_keymaps)
 end
 

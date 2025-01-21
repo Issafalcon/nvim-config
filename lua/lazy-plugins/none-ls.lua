@@ -43,6 +43,7 @@ null_ls.setup({
     diagnostics.yamllint,
     diagnostics.vint,
     code_actions.refactoring,
+    require("typescript.extensions.null-ls.code-actions"),
   },
   on_attach = fignvim.lsp.on_attach,
 })
