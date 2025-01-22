@@ -12,6 +12,10 @@ rev = "af318216b744f2fe2d5afa6febb01f455ae61d6c"
 git = "https://github.com/whoissethdaniel/mason-tool-installer.nvim"
 rev = "c5e07b8ff54187716334d585db34282e46fa2932"
 
+[plugins."lsp-progress.nvim"]
+git = "https://github.com/linrongbin16/lsp-progress.nvim"
+rev = "v1.0.13"
+
 [bundles.lsp]
 items = [
   "nvim-lspconfig",
@@ -19,7 +23,6 @@ items = [
   "mason.nvim",
   "mason-lspconfig.nvim",
   "mason-tool-installer.nvim",
-  "none-ls.nvim"
+  "none-ls.nvim",
+  "lsp-progress.nvim"
 ]
-config = "plugin-rocks.lsp.init"
-

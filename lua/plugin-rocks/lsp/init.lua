@@ -3,6 +3,7 @@ require("plugin-rocks.lsp.mason-lspconfig")
 require("plugin-rocks.lsp.mason-tool-installer")
 require("plugin-rocks.lsp.none-ls")
 require("plugin-rocks.lsp.lazydev")
+require("plugin-rocks.lsp.lsp-progress")
 
 fignvim.lsp.setup_lsp_servers({
   "jsonls",

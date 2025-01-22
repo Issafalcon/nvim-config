@@ -9,7 +9,7 @@ local dial_keys = {
   },
   {
     "n",
-    "<C-x>",
+    "<C-s>",
     function()
       return require("dial.map").dec_normal()
     end,
