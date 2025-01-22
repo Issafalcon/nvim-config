@@ -36,6 +36,7 @@ nvim-surround = "2.1.5"
 "telescope.nvim" = "scm"
 "heirline.nvim" = "1.0.7"
 nvim-web-devicons = "0.100"
+"aerial.nvim" = "2.4.0"
 
 [plugins."mason-tool-installer.nvim" ]
 git = "https://github.com/whoissethdaniel/mason-tool-installer.nvim"
