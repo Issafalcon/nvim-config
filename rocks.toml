@@ -5,7 +5,8 @@
 # nvim-treesitter = "semver_version"  # e.g. "1.0.0"
 
 import = [
-  "rocks-lsp.toml"
+  "rocks-lsp.toml",
+  "rocks-completion.toml"
 ]
 
 [config]
@@ -82,10 +83,6 @@ build = "make"
 git = "https://github.com/nvim-telescope/telescope-fzy-native.nvim"
 rev = "282f069504515eec762ab6d6c89903377252bf5b"
 
-[plugins.cmp-nuget]
-git = "https://github.com/pasibergman/cmp-nuget"
-rev = "6558e778e02238a898b5a6170b56f8bd7af733d7"
-
 [plugins.nvim-treesitter]
 git = "https://github.com/nvim-treesitter/nvim-treesitter"
 rev = "v0.9.3"
@@ -110,37 +107,6 @@ rev = "v1.2"
 git = "https://github.com/onsails/lspkind.nvim"
 rev = "d79a1c3299ad0ef94e255d045bed9fa26025dab6"
 
-[plugins.nvim-cmp]
-git = "https://github.com/hrsh7th/nvim-cmp"
-rev = "v0.0.2"
-
-[plugins.cmp_luasnip]
-git = "https://github.com/saadparwaiz1/cmp_luasnip"
-rev = "98d9cb5c2c38532bd9bdb481067b20fea8f32e90"
-
-[plugins.cmp-buffer]
-git = "https://github.com/hrsh7th/cmp-buffer"
-rev = "3022dbc9166796b644a841a02de8dd1cc1d311fa"
-
-[plugins.cmp-cmdline]
-git = "https://github.com/hrsh7th/cmp-cmdline"
-rev = "d250c63aa13ead745e3a40f61fdd3470efde3923"
-
-[plugins.cmp-path]
-git = "https://github.com/hrsh7th/cmp-path"
-rev = "91ff86cd9c29299a64f968ebb45846c485725f23"
-
-[plugins.cmp-nvim-lsp]
-git = "https://github.com/hrsh7th/cmp-nvim-lsp"
-rev = "99290b3ec1322070bcfb9e846450a46f6efa50f0"
-
-[plugins.cmp-npm]
-git = "https://github.com/david-kunz/cmp-npm"
-rev = "2337f109f51a09297596dd6b538b70ccba92b4e4"
-
-[plugins.cmp-rg]
-git = "https://github.com/lukas-reineke/cmp-rg"
-rev = "v1.3.11"
 
 [plugins."cutlass.nvim"]
 git = "https://github.com/gbprod/cutlass.nvim"
@@ -153,10 +119,6 @@ rev = "8649f694d3e76ee10c19255dece6411c29206a54"
 [plugins."ranger.nvim"]
 git = "https://github.com/kelly-lin/ranger.nvim"
 rev = "fd2cc999f3ef88f7cdcbcad5f26000c52b16c489"
-
-[plugins."lsp-overloads.nvim"]
-git = "https://github.com/issafalcon/lsp-overloads.nvim"
-rev = "v1.5.0"
 
 [plugins."typescript.nvim"]
 git = "https://github.com/jose-elias-alvarez/typescript.nvim"
