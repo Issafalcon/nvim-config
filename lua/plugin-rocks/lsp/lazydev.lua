@@ -1,4 +1,3 @@
-vim.cmd("packadd lazydev")
 require("lazydev").setup({
   runtime = vim.env.VIMRUNTIME --[[@as string]],
   library = {
