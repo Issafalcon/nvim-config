@@ -34,6 +34,10 @@ rev = "v1.3.11"
 git = "https://github.com/pasibergman/cmp-nuget"
 rev = "6558e778e02238a898b5a6170b56f8bd7af733d7"
 
+[plugins."copilot.vim"]
+git = "https://github.com/github/copilot.vim"
+rev = "v1.41.0"
+
 [bundles.completion]
 items = [
   "cmp-rg",
@@ -44,5 +48,6 @@ items = [
   "cmp-buffer",
   "cmp-nuget",
   "cmp-cmdline",
-  "nvim-cmp"
+  "nvim-cmp",
+  "copilot.vim"
 ]
