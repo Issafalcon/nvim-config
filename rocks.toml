@@ -159,3 +159,11 @@ rev = "ed12b5379ff203d0a15f01d71a64848b591e4adc"
 [plugins."leap.nvim"]
 git = "https://github.com/ggandor/leap.nvim"
 rev = "67d26a13cfbf558450955ee9c76e78e03d13ee9e"
+
+[plugins.nvim-luapad]
+git = "https://github.com/rafcamlet/nvim-luapad"
+rev = "v0.3"
+
+[plugins.vim-maximizer]
+git = "https://github.com/szw/vim-maximizer"
+rev = "2e54952fe91e140a2e69f35f22131219fcd9c5f1"
