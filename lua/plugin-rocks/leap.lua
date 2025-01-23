@@ -4,9 +4,4 @@ local leap_keys = {
   { "n", "gs", "<plug>(leap-cross-window)", { desc = "Leap: Across all windows" } },
 }
 
-return {{
-  "ggandor/leap.nvim",
-  event = "VeryLazy",
-  keys = fignvim.mappings.make_lazy_keymaps(leap_keys, true),
-}
-}
+fignvim.mappings.create_keymaps(leap_keys)
