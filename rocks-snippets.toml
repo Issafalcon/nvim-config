@@ -1,0 +1,23 @@
+[plugins.friendly-snippets]
+git = "https://github.com/rafamadriz/friendly-snippets"
+rev = "efff286dd74c22f731cdec26a70b46e5b203c619"
+
+[plugins.vscode-markdown-snippets]
+git = "https://github.com/robole/vscode-markdown-snippets"
+rev = "7d11618cfaf5469ce1f1afe2938e6add03106c4f"
+
+[plugins.vscode-csharp-snippets]
+git = "https://github.com/j0rgeserran0/vscode-csharp-snippets"
+rev = "3522981cf1700ce0e7ae13a5b57cfd5d2b67a9d8"
+
+[plugins.vscode-react-javascript-snippets]
+git = "https://github.com/r5n-labs/vscode-react-javascript-snippets"
+rev = "185bb91a0b692c54136663464e8225872c434637"
+
+[bundles.snippets]
+items = [
+  "friendly-snippets",
+  "vscode-markdown-snippets",
+  "vscode-csharp-snippets",
+  "vscode-react-javascript-snippets"
+]

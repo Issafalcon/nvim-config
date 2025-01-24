@@ -42,6 +42,7 @@ nvim-web-devicons = "0.100"
 "substitute.nvim" = "2.0.0"
 nvim-bqf = "1.1.1"
 "gitsigns.nvim" = "0.9.0"
+"obsidian.nvim" = "3.9.0"
 
 [plugins.nvim-autopairs]
 git = "https://github.com/windwp/nvim-autopairs"
