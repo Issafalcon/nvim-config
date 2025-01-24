@@ -1,3 +1,6 @@
+[plugins]
+luasnip = "2.3.0"
+
 [plugins.friendly-snippets]
 git = "https://github.com/rafamadriz/friendly-snippets"
 rev = "efff286dd74c22f731cdec26a70b46e5b203c619"
@@ -14,10 +17,21 @@ rev = "3522981cf1700ce0e7ae13a5b57cfd5d2b67a9d8"
 git = "https://github.com/r5n-labs/vscode-react-javascript-snippets"
 rev = "185bb91a0b692c54136663464e8225872c434637"
 
+[plugins.vscode-svelte-snippets]
+git = "https://github.com/fivethree-team/vscode-svelte-snippets"
+rev = "v0.5.0"
+
+[plugins.math-snippets]
+git = "https://github.com/thomanq/math-snippets"
+rev = "7475dc22e3c40d2d0cc2d31a96710d8232ee6089"
+
 [bundles.snippets]
 items = [
   "friendly-snippets",
   "vscode-markdown-snippets",
   "vscode-csharp-snippets",
-  "vscode-react-javascript-snippets"
+  "vscode-react-javascript-snippets",
+  "vscode-svelte-snippets",
+  "math-snippets",
+  "luasnip"
 ]

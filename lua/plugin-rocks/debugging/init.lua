@@ -1,0 +1,6 @@
+require("plugin-rocks.debugging.dap")
+require("plugin-rocks.debugging.dap-ui")
+require("plugin-rocks.debugging.dap-vscode-js")
+require("plugin-rocks.debugging.dap-python")
+require("plugin-rocks.debugging.persistent-breakpoints")
+require("plugin-rocks.debugging.dap-virtual-text")

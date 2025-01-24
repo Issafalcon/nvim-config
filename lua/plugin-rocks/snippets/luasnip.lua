@@ -35,44 +35,28 @@ local luasnip_keys = {
 }
 
 -- The best snippet engine
-return {
-  {
-    "L3MON4D3/LuaSnip",
-    dependencies = {
-      "rafamadriz/friendly-snippets",
-      "robole/vscode-markdown-snippets",
-      "J0rgeSerran0/vscode-csharp-snippets",
-      "dsznajder/vscode-es7-javascript-react-snippets",
-      "fivethree-team/vscode-svelte-snippets",
-      "xabikos/vscode-react",
-      "thomanq/math-snippets",
+local ls = require("luasnip")
+
+require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/snippets/vscode" } })
+require("luasnip.loaders.from_lua").lazy_load({ paths = { "~/snippets" } })
+
+local types = require("luasnip.util.types")
+
+ls.config.setup({
+  history = true,
+  update_events = "TextChanged,TextChangedI",
+  ext_opts = {
+    [types.choiceNode] = {
+      active = {
+        virt_text = { { " <- Current Choice", "NonTest" } },
+      },
     },
-    keys = fignvim.mappings.make_lazy_keymaps(luasnip_keys, true),
-    event = "InsertEnter",
-    config = function()
-      local ls = require("luasnip")
+  },
+})
 
-      require("luasnip.loaders.from_vscode").lazy_load()
-      require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/snippets/vscode" } })
-      require("luasnip.loaders.from_lua").lazy_load({ paths = { "~/snippets" } })
+fignvim.mappings.create_keymaps(luasnip_keys)
 
-      local types = require("luasnip.util.types")
-
-      ls.config.setup({
-        history = true,
-        update_events = "TextChanged,TextChangedI",
-        ext_opts = {
-          [types.choiceNode] = {
-            active = {
-              virt_text = { { " <- Current Choice", "NonTest" } },
-            },
-          },
-        },
-      })
-
-      vim.cmd([[
+vim.cmd([[
         command! LuaSnipEdit :lua require("luasnip.loaders").edit_snippet_files()
     ]])
-    end,
-  },
-}

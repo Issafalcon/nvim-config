@@ -6,7 +6,9 @@
 
 import = [
   "rocks-lsp.toml",
-  "rocks-completion.toml"
+  "rocks-completion.toml",
+  "rocks-snippets.toml",
+  "rocks-debugging.toml",
 ]
 
 [config]
