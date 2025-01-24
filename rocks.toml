@@ -167,3 +167,11 @@ rev = "v0.3"
 [plugins.vim-maximizer]
 git = "https://github.com/szw/vim-maximizer"
 rev = "2e54952fe91e140a2e69f35f22131219fcd9c5f1"
+
+[plugins."octo.nvim"]
+git = "https://github.com/pwntester/octo.nvim"
+rev = "5579f207e50cce726a2a5a460f48093ee7558fdb"
+
+[plugins."netrw.nvim"]
+git = "https://github.com/prichrd/netrw.nvim"
+rev = "90501c62b9b816ed3ed1e912ae9db9af5671a1b2"
