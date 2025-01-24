@@ -178,3 +178,16 @@ rev = "5579f207e50cce726a2a5a460f48093ee7558fdb"
 [plugins."netrw.nvim"]
 git = "https://github.com/prichrd/netrw.nvim"
 rev = "90501c62b9b816ed3ed1e912ae9db9af5671a1b2"
+
+[plugins.vim-subversive]
+git = "https://github.com/svermeulen/vim-subversive"
+rev = "v1.0"
+
+[plugins.vim-unimpaired]
+git = "https://github.com/tpope/vim-unimpaired"
+rev = "v2.1"
+
+[plugins."copilotchat.nvim"]
+git = "https://github.com/copilotc-nvim/copilotchat.nvim"
+rev = "v3.3.3"
+build = "make tiktoken" # Only on mac or linux

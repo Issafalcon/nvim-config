@@ -1,3 +1,4 @@
+-- https://github.com/svermeulen/vim-subversive
 local subversive_keys = {
   {
     "n",
@@ -57,20 +58,12 @@ local subversive_keys = {
   },
 }
 
-return {
-  {
-    "svermeulen/vim-subversive",
-    event = "BufEnter",
-    init = function()
-      local opt = {
-        g = {
-          subversivePromptWithCurrent = 0,
-          subversivePromptWithActualCommand = 1,
-        },
-      }
-
-      fignvim.config.set_vim_opts(opt)
-    end,
-    keys = fignvim.mappings.make_lazy_keymaps(subversive_keys, true),
+local opt = {
+  g = {
+    subversivePromptWithCurrent = 0,
+    subversivePromptWithActualCommand = 1,
   },
 }
+
+fignvim.config.set_vim_opts(opt)
+fignvim.mappings.create_keymaps(subversive_keys)
