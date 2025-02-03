@@ -52,6 +52,7 @@ auto-session = "2.5.0"
 neogen = "2.20.0"
 "render-markdown.nvim" = "7.9.0"
 "trouble.nvim" = "3.7.0"
+"schemastore.nvim" = "0.2.0" # https://github.com/b0o/SchemaStore.nvim
 
 [plugins.nvim-autopairs]
 git = "https://github.com/windwp/nvim-autopairs"
@@ -188,3 +189,7 @@ rev = "v2.1"
 git = "https://github.com/copilotc-nvim/copilotchat.nvim"
 rev = "v3.3.3"
 build = "make tiktoken" # Only on mac or linux
+
+[plugins."easy-dotnet.nvim"]
+git = "https://github.com/gustaveikaas/easy-dotnet.nvim"
+rev = "3058ad17272916879c1aeb300d2178b0a83d8d7c"
