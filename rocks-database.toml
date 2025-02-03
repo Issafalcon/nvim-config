@@ -1,0 +1,18 @@
+[plugins.vim-dadbod]
+git = "https://github.com/tpope/vim-dadbod"
+rev = "v1.4"
+
+[plugins.vim-dadbod-ui]
+git = "https://github.com/kristijanhusak/vim-dadbod-ui"
+rev = "f4d37b7312ae6489e5c04bee654ca521baac188a"
+
+[plugins.vim-dadbod-completion]
+git = "https://github.com/kristijanhusak/vim-dadbod-completion"
+rev = "c7f1be21a08b8fc9d927a19db89a4aa995402787"
+
+[bundles.database]
+items = [
+  "vim-dadbod",
+  "vim-dadbod-ui",
+  "vim-dadbod-completion"
+]
