@@ -19,3 +19,5 @@ require("auto-session").setup({
     previewer = false,
   },
 })
+
+fignvim.mappings.create_keymaps(session_lens_keys)

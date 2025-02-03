@@ -48,6 +48,10 @@ nvim-bqf = "1.1.1"
 "gitsigns.nvim" = "0.9.0"
 "obsidian.nvim" = "3.9.0"
 "colortils.nvim" = "1.2.0"
+auto-session = "2.5.0"
+neogen = "2.20.0"
+"render-markdown.nvim" = "7.9.0"
+"trouble.nvim" = "3.7.0"
 
 [plugins.nvim-autopairs]
 git = "https://github.com/windwp/nvim-autopairs"
