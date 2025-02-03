@@ -1,0 +1,23 @@
+[plugins]
+"telescope.nvim" = "scm"
+
+[plugins."telescope-fzf-native.nvim"]
+git = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
+rev = "dae2eac9d91464448b584c7949a31df8faefec56"
+build = "make"
+
+[plugins."telescope-fzy-native.nvim"]
+git = "https://github.com/nvim-telescope/telescope-fzy-native.nvim"
+rev = "282f069504515eec762ab6d6c89903377252bf5b"
+
+[plugins.fzf]
+git = "https://github.com/junegunn/fzf"
+rev = "v0.59.0"
+
+[bundles.picker]
+items = [
+  "telescope.nvim",
+  "telescope-fzf-native.nvim",
+  "telescope-fzy-native.nvim",
+  "fzf"
+]

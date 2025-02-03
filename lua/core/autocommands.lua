@@ -51,7 +51,7 @@ cmd("FileType", {
   pattern = { "qf", "help", "man", "lspinfo", "spectre_panel" },
   callback = function()
     vim.keymap.set("n", "q", ":close<CR>", { silent = true, buffer = true })
-    vim.api.nvim_set_option("buflisted", false)
+    vim.api.nvim_set_option_value("buflisted", false, {})
   end,
 })
 
@@ -63,5 +63,20 @@ cmd("FileType", {
   pattern = { "markdown", "text", "tex", "org" },
   callback = function()
     vim.api.nvim_set_option_value("spell", true, { scope = "local" })
+  end,
+})
+
+augroup("rocks_builds", { clear = true })
+cmd("User", {
+  desc = "Build rocks after installation",
+  pattern = "RocksInstallPost",
+  group = "rocks_builds",
+  callback = function(event)
+    ---@type rocks.user-events.data.RocksInstallPost
+    local data = event.data
+
+    if data.installed.name == "fzf" then
+      vim.fn["fzf#install"]()
+    end
   end,
 })

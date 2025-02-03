@@ -5,6 +5,7 @@
 # nvim-treesitter = "semver_version"  # e.g. "1.0.0"
 
 import = [
+  "rocks-picker.toml",
   "rocks-lsp.toml",
   "rocks-completion.toml",
   "rocks-snippets.toml",
@@ -80,15 +81,6 @@ rev = "85aca5d48ddf8ada4e010ee9fa4d43c77ebf68c9"
 git = "https://github.com/sudormrfbin/cheatsheet.nvim"
 rev = "9716f9aaa94dd1fd6ce59b5aae0e5f25e2a463ef"
 
-[plugins."telescope-fzf-native.nvim"]
-git = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
-rev = "dae2eac9d91464448b584c7949a31df8faefec56"
-build = "make"
-
-[plugins."telescope-fzy-native.nvim"]
-git = "https://github.com/nvim-telescope/telescope-fzy-native.nvim"
-rev = "282f069504515eec762ab6d6c89903377252bf5b"
-
 [plugins.nvim-treesitter]
 git = "https://github.com/nvim-treesitter/nvim-treesitter"
 rev = "v0.9.3"
@@ -112,7 +104,6 @@ rev = "v1.2"
 [plugins."lspkind.nvim"]
 git = "https://github.com/onsails/lspkind.nvim"
 rev = "d79a1c3299ad0ef94e255d045bed9fa26025dab6"
-
 
 [plugins."cutlass.nvim"]
 git = "https://github.com/gbprod/cutlass.nvim"
@@ -191,3 +182,4 @@ rev = "v2.1"
 git = "https://github.com/copilotc-nvim/copilotchat.nvim"
 rev = "v3.3.3"
 build = "make tiktoken" # Only on mac or linux
+
