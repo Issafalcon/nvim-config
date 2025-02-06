@@ -1,0 +1,19 @@
+[plugins."pipeline.nvim"]
+git = "https://github.com/topaxi/pipeline.nvim"
+rev = "805d918b0ff0811611a40eaa7a662600900044e8"
+build = "make"
+
+[plugins.vim-terraform]
+git = "https://github.com/hashivim/vim-terraform"
+rev = "8912ca1be3025a1c9fab193618f3b99517e01973"
+
+[plugins.vim-terraform-completion]
+git = "https://github.com/juliosueiras/vim-terraform-completion"
+rev = "0.0.1"
+
+[bundles.infrastructure]
+items = [
+  "vim-terraform",
+  "pipeline.nvim",
+  "vim-terraform-completion"
+]
