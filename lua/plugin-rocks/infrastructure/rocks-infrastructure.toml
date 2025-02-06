@@ -11,9 +11,14 @@ rev = "8912ca1be3025a1c9fab193618f3b99517e01973"
 git = "https://github.com/juliosueiras/vim-terraform-completion"
 rev = "0.0.1"
 
+[plugins.vim-helm]
+git = "https://github.com/towolf/vim-helm"
+rev = "ae1ebc160d2b9b90108477ab10df7a4fc501e358"
+
 [bundles.infrastructure]
 items = [
   "vim-terraform",
   "pipeline.nvim",
-  "vim-terraform-completion"
+  "vim-terraform-completion",
+  "vim-helm"
 ]

@@ -1,3 +1,4 @@
+-- https://github.com/prichrd/netrw.nvim
 local netrw_nvim_keys = {
   {
     "n",
