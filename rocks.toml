@@ -12,7 +12,8 @@ import = [
   "rocks-debugging.toml",
   "rocks-database.toml",
   "lua/plugin-rocks/testing/rocks-testing.toml",
-  "lua/plugin-rocks/infrastructure/rocks-infrastructure.toml"
+  "lua/plugin-rocks/infrastructure/rocks-infrastructure.toml",
+  "lua/plugin-rocks/documentation/rocks-documentation.toml"
 ]
 
 [config]
@@ -200,3 +201,11 @@ rev = "3058ad17272916879c1aeb300d2178b0a83d8d7c"
 [plugins."nuget.nvim"]
 git = "https://github.com/d7omdev/nuget.nvim"
 rev = "ce137d6503e96657d133b48946f8739c8600834b"
+
+[plugins."nx.nvim"]
+git = "https://github.com/equilibris/nx.nvim"
+rev = "f8a3a21b3d540889401a40d1f2803083794c0372"
+
+[plugins."open-browser.vim"]
+git = "https://github.com/tyru/open-browser.vim"
+rev = "v2.0.0"

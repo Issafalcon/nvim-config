@@ -1,0 +1,19 @@
+[plugins."plantuml-previewer.vim"]
+git = "https://github.com/weirongxu/plantuml-previewer.vim"
+rev = "v1.5.1"
+
+[plugins.plantuml-syntax]
+git = "https://github.com/aklt/plantuml-syntax"
+rev = "v0.2.0"
+
+[plugins."swagger-preview.nvim"]
+git = "https://github.com/vinnymeller/swagger-preview.nvim"
+build = "npm i"
+rev = "v0.2.0"
+
+[bundles.documentation]
+items = [
+  "plantuml-previewer.vim",
+  "plantuml-syntax",
+  "swagger-preview.nvim"
+]
