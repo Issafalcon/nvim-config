@@ -1,6 +1,3 @@
-[plugins]
-"telescope.nvim" = "scm"
-
 [plugins."telescope-fzf-native.nvim"]
 git = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
 rev = "dae2eac9d91464448b584c7949a31df8faefec56"
@@ -13,6 +10,10 @@ rev = "282f069504515eec762ab6d6c89903377252bf5b"
 [plugins.fzf]
 git = "https://github.com/junegunn/fzf"
 rev = "v0.59.0"
+
+[plugins."telescope.nvim"]
+git = "https://github.com/nvim-telescope/telescope.nvim"
+rev = "0.1.8"
 
 [bundles.picker]
 items = [

@@ -1,16 +1,16 @@
 [plugins]
-nvim-lspconfig = "1.4.0"
+nvim-lspconfig = "1.6.0"
 "lazydev.nvim" = "1.9.0"
 "mason.nvim" = "1.10.0"
 "mason-lspconfig.nvim" = "1.31.0"
 
 [plugins."none-ls.nvim"]
 git = "https://github.com/nvimtools/none-ls.nvim"
-rev = "af318216b744f2fe2d5afa6febb01f455ae61d6c"
+rev = "ed8f80849ef1ad31c2f74679fafdef7801091247"
 
 [plugins."mason-tool-installer.nvim" ]
 git = "https://github.com/whoissethdaniel/mason-tool-installer.nvim"
-rev = "c5e07b8ff54187716334d585db34282e46fa2932"
+rev = "374c78d3ebb5c53f43ea6bd906b6587b5e899b9e"
 
 [plugins."lsp-progress.nvim"]
 git = "https://github.com/linrongbin16/lsp-progress.nvim"

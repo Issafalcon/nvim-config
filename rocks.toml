@@ -28,20 +28,16 @@ path = "~/repos"
 # List of Neovim plugins to install alongside their versions.
 # If the plugin name contains a dot then you must add quotes to the key name!
 [plugins]
-"rocks.nvim" = "2.42.4" # rocks.nvim can also manage itself :D
+"rocks.nvim" = "2.43.0"
 "rocks-config.nvim" = "3.1.0"
 "rocks-git.nvim" = "2.5.2"
 "rocks-dev.nvim" = "1.7.0"
 "comment.nvim" = "0.8.0"
 "dial.nvim" = "0.4.0"
-"indent-blankline.nvim" = "3.8.6"
-treesj = "scm"
-"ssr.nvim" = "scm"
+"indent-blankline.nvim" = "3.8.7"
 nvim-surround = "2.1.5"
-"plenary.nvim" = "scm"
 "toggleterm.nvim" = "2.13.1"
-"which-key.nvim" = "3.15.0"
-"telescope.nvim" = "scm"
+"which-key.nvim" = "3.16.0"
 "heirline.nvim" = "1.0.7"
 nvim-web-devicons = "0.100"
 "aerial.nvim" = "2.4.0"
@@ -54,10 +50,13 @@ auto-session = "2.5.0"
 neogen = "2.20.0"
 "render-markdown.nvim" = "7.9.0"
 "trouble.nvim" = "3.7.0"
-"schemastore.nvim" = "0.2.0" # https://github.com/b0o/SchemaStore.nvim
+"schemastore.nvim" = "0.2.0"
 nvim-notify = "3.15.0"
 "nui.nvim" = "0.3.0"
 "dressing.nvim" = "3.1.1"
+treesj= "scm"
+"ssr.nvim"= "scm"
+"plenary.nvim"= "scm"
 
 [plugins.nvim-autopairs]
 git = "https://github.com/windwp/nvim-autopairs"
@@ -86,8 +85,7 @@ rev = "2db6d378e873de31d18ade549c2edba64ff1c2e3"
 
 [plugins."roslyn.nvim"]
 git = "https://github.com/seblj/roslyn.nvim"
-# 322e5295d3cfe7400954ca1154fb4aff5b2aadfe = Pinned rev in old config
-rev = "85aca5d48ddf8ada4e010ee9fa4d43c77ebf68c9"
+rev = "4c55dedb5e47ba551c8c1ef9acd4896cdc29158c"
 
 [plugins."cheatsheet.nvim"]
 git = "https://github.com/sudormrfbin/cheatsheet.nvim"
@@ -192,9 +190,13 @@ rev = "v2.1"
 
 [plugins."copilotchat.nvim"]
 git = "https://github.com/copilotc-nvim/copilotchat.nvim"
-rev = "v3.3.3"
-build = "make tiktoken" # Only on mac or linux
+rev = "v3.5.0"
+build = "make tiktoken"
 
 [plugins."easy-dotnet.nvim"]
 git = "https://github.com/gustaveikaas/easy-dotnet.nvim"
 rev = "3058ad17272916879c1aeb300d2178b0a83d8d7c"
+
+[plugins."nuget.nvim"]
+git = "https://github.com/d7omdev/nuget.nvim"
+rev = "ce137d6503e96657d133b48946f8739c8600834b"
