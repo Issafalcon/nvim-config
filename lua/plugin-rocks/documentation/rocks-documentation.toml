@@ -11,9 +11,14 @@ git = "https://github.com/vinnymeller/swagger-preview.nvim"
 build = "npm i"
 rev = "v0.2.0"
 
+[plugins.vimtex]
+git = "https://github.com/lervag/vimtex"
+rev = "v2.16"
+
 [bundles.documentation]
 items = [
   "plantuml-previewer.vim",
   "plantuml-syntax",
-  "swagger-preview.nvim"
+  "swagger-preview.nvim",
+  "vimtex",
 ]
