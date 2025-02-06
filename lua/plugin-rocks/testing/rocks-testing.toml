@@ -1,0 +1,26 @@
+[plugins]
+neotest = "5.8.0"
+nvim-nio = "1.10.1"
+neotest-dotnet = { version = "stable", dev = true }
+
+[plugins.neotest-python]
+git = "https://github.com/nvim-neotest/neotest-python"
+rev = "a2861ab3c9a0bf75a56b11835c2bfc8270f5be7e"
+
+[plugins.neotest-plenary]
+git = "https://github.com/nvim-neotest/neotest-plenary"
+rev = "3523adcf9ffaad1911960c5813b0136c1b63a2ec"
+
+[plugins.neotest-jest]
+git = "https://github.com/nvim-neotest/neotest-jest"
+rev = "514fd4eae7da15fd409133086bb8e029b65ac43f"
+
+[bundles.testing]
+items = [
+  "neotest",
+  "nvim-nio",
+  "neotest-dotnet",
+  "neotest-python",
+  "neotest-plenary",
+  "neotest-jest",
+]
