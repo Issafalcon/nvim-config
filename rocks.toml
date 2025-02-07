@@ -3,7 +3,6 @@
 #
 # [plugins]
 # nvim-treesitter = "semver_version"  # e.g. "1.0.0"
-
 import = [
   "rocks-picker.toml",
   "rocks-lsp.toml",
@@ -22,9 +21,6 @@ plugins_dir = "plugin-rocks/"
 # List of non-Neovim rocks.
 # This includes things like `toml` or other lua packages.
 [rocks]
-
-[dev]
-path = "~/repos"
 
 # List of Neovim plugins to install alongside their versions.
 # If the plugin name contains a dot then you must add quotes to the key name!
@@ -146,7 +142,6 @@ rev = "3ee9a0ea9feeef08ae35e40c8be6a2fa2c20f2d3"
 
 [plugins."markdown-preview.nvim"]
 git = "https://github.com/iamcco/markdown-preview.nvim"
-build = "cd app && npm install"
 rev = "v0.0.10"
 
 [plugins."diffview.nvim"]
@@ -209,3 +204,7 @@ rev = "f8a3a21b3d540889401a40d1f2803083794c0372"
 [plugins."open-browser.vim"]
 git = "https://github.com/tyru/open-browser.vim"
 rev = "v2.0.0"
+
+[plugins.vim-cmake]
+git = "https://github.com/cdelledonne/vim-cmake"
+rev = "v0.16.0"

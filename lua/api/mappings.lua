@@ -27,24 +27,4 @@ function fignvim.mappings.register_whichkey_prefix(prefix, groupname)
   })
 end
 
---- Creates a set of keymaps for lazy.nvim plugin configuration
----@param mappings table List of mapping configurations compatible with vim.api.nvim_set_keymap()
----@param[opt=false] perform_bind boolean True if the bindings should not be made by lazy.nvim
----@return table Lazy Compatible keymaps
-function fignvim.mappings.make_lazy_keymaps(mappings, perform_bind)
-  local lazy_keys = {}
-  for _, map in ipairs(mappings) do
-    table.insert(
-      lazy_keys,
-      vim.tbl_deep_extend("force", {
-        map[2],
-        perform_bind and map[3] or nil,
-        mode = map[1],
-      }, map[4] or {})
-    )
-  end
-
-  return lazy_keys
-end
-
 return fignvim.mappings

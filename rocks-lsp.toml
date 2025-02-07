@@ -1,3 +1,6 @@
+[dev]
+path = "~/repos"
+
 [plugins]
 nvim-lspconfig = "1.6.0"
 "lazydev.nvim" = "1.9.0"
@@ -29,5 +32,4 @@ items = [
   "mason-tool-installer.nvim",
   "none-ls.nvim",
   "lsp-progress.nvim",
-  "lsp-overloads.nvim"
 ]

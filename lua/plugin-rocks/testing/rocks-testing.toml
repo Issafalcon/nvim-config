@@ -1,7 +1,10 @@
+[dev]
+path = "~/repos"
+
 [plugins]
 neotest = "5.8.0"
 nvim-nio = "1.10.1"
-neotest-dotnet = { version = "stable", dev = true }
+neotest-dotnet = { dev = true, version = "stable" }
 
 [plugins.neotest-python]
 git = "https://github.com/nvim-neotest/neotest-python"
@@ -19,7 +22,6 @@ rev = "514fd4eae7da15fd409133086bb8e029b65ac43f"
 items = [
   "neotest",
   "nvim-nio",
-  "neotest-dotnet",
   "neotest-python",
   "neotest-plenary",
   "neotest-jest",

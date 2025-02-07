@@ -11,7 +11,7 @@
 - API convenience functions (many of which are courtesy of the AstroNvim codebase) under the `api` folder
 - Core Neovim Configuration in the `core` folder
 - LSP area with self contained API and LSP-Server configurations
-- Plugin modules loaded with [Lazy.nvim](https://github.com/folke/lazy.nvim) for optimized lazy loaded plugins
+- Plugin modules loaded with [rocks.nvim](https://github.com/nvim-neorocks/rocks.nvim)
 
 ## Plugins
 

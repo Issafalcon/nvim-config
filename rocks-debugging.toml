@@ -6,11 +6,6 @@ nvim-dap-ui = "4.0.0"
 git = "https://github.com/jbyuki/one-small-step-for-vimkind"
 rev = "b9def31568d20b16f7da9479a4174d165046fe8a"
 
-[plugins.vscode-js-debug]
-git = "https://github.com/microsoft/vscode-js-debug"
-rev = "v2023.6.817"
-build = "npm i && npm run compile vsDebugServerBundle && mv dist out"
-
 [plugins.nvim-dap-vscode-js]
 git = "https://github.com/mxsdev/nvim-dap-vscode-js"
 rev = "v1.1.0"
@@ -32,7 +27,6 @@ items = [
   "nvim-dap",
   "nvim-dap-ui",
   "one-small-step-for-vimkind",
-  "vscode-js-debug",
   "nvim-dap-vscode-js",
   "nvim-dap-python",
   "persistent-breakpoints.nvim",
