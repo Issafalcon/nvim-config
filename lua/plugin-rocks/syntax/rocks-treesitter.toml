@@ -1,3 +1,4 @@
 [plugins]
 tree-sitter-toml = "0.0.31"
 tree-sitter-gitcommit = "0.0.33"
+tree-sitter-c_sharp = "0.0.40"

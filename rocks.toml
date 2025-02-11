@@ -4,6 +4,8 @@
 # [plugins]
 # nvim-treesitter = "semver_version"  # e.g. "1.0.0"
 import = [
+  "lua/plugin-rocks/syntax/rocks-treesitter.toml",
+  "lua/plugin-rocks/syntax/rocks-syntax.toml",
   "rocks-picker.toml",
   "rocks-lsp.toml",
   "rocks-completion.toml",
@@ -11,10 +13,9 @@ import = [
   "rocks-debugging.toml",
   "rocks-database.toml",
   "lua/plugin-rocks/testing/rocks-testing.toml",
-  "lua/plugin-rocks/syntax/rocks-syntax.toml",
   "lua/plugin-rocks/infrastructure/rocks-infrastructure.toml",
-  "lua/plugin-rocks/documentation/rocks-documentation.toml"
-, "lua/plugin-rock/syntax/rocks-syntax.toml", "lua/plugin-rocks/syntax/rocks-treesitter.toml"]
+  "lua/plugin-rocks/documentation/rocks-documentation.toml",
+]
 
 [config]
 plugins_dir = "plugin-rocks/"
