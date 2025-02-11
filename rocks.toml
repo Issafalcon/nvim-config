@@ -11,9 +11,10 @@ import = [
   "rocks-debugging.toml",
   "rocks-database.toml",
   "lua/plugin-rocks/testing/rocks-testing.toml",
+  "lua/plugin-rocks/syntax/rocks-syntax.toml",
   "lua/plugin-rocks/infrastructure/rocks-infrastructure.toml",
   "lua/plugin-rocks/documentation/rocks-documentation.toml"
-]
+, "lua/plugin-rock/syntax/rocks-syntax.toml", "lua/plugin-rocks/syntax/rocks-treesitter.toml"]
 
 [config]
 plugins_dir = "plugin-rocks/"
@@ -87,22 +88,6 @@ rev = "4c55dedb5e47ba551c8c1ef9acd4896cdc29158c"
 [plugins."cheatsheet.nvim"]
 git = "https://github.com/sudormrfbin/cheatsheet.nvim"
 rev = "9716f9aaa94dd1fd6ce59b5aae0e5f25e2a463ef"
-
-[plugins.nvim-treesitter]
-git = "https://github.com/nvim-treesitter/nvim-treesitter"
-rev = "v0.9.3"
-
-[plugins.nvim-ts-context-commentstring ]
-git = "https://github.com/joosepalviste/nvim-ts-context-commentstring"
-rev = "1b212c2eee76d787bbea6aa5e92a2b534e7b4f8f"
-
-[plugins.nvim-ts-autotag]
-git = "https://github.com/windwp/nvim-ts-autotag"
-rev = "1cca23c9da708047922d3895a71032bc0449c52d"
-
-[plugins.nvim-treesitter-textobjects]
-git = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
-rev = "ad8f0a472148c3e0ae9851e26a722ee4e29b1595"
 
 [plugins.vim-abolish]
 git = "https://github.com/tpope/vim-abolish"

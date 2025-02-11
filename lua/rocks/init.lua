@@ -6,6 +6,17 @@ do
   -- Set up configuration options related to rocks.nvim (recommended to leave as default)
   local rocks_config = {
     rocks_path = vim.fs.normalize(install_location),
+    -- rocks.nvim config
+    treesitter = {
+      auto_highlight = "all",
+      auto_install = "prompt",
+      parser_map = {},
+      ---@type string[] | fun(lang: string, bufnr: integer):boolean
+      disable = {
+        "latex",
+      }, -- filetypes or a function
+      config_path = "lua/plugin-rocks/syntax/rocks-treesitter.toml",
+    },
   }
 
   vim.g.rocks_nvim = rocks_config

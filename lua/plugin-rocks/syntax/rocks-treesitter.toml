@@ -1,0 +1,2 @@
+[plugins]
+tree-sitter-toml = "0.0.31"
