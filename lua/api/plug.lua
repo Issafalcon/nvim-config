@@ -30,6 +30,16 @@ function fignvim.plug.setup_lazy_plugins()
     table.insert(import_list, { import = "plugins." .. plugin_name })
   end
 
+  -- Hardcode module list for now
+  local modules = {
+    "ui",
+    "completion",
+  }
+
+  for _, module_name in ipairs(modules) do
+    table.insert(import_list, { import = module_name .. ".lazy-spec" })
+  end
+
   local status_ok, lazy = pcall(require, "lazy")
   if status_ok then
     local project_path = os.getenv("PROJECTS")

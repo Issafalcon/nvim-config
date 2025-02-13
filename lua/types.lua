@@ -1,0 +1,4 @@
+---@class FigNvimPluginConfig
+---@field setup? fun() Calls the setup function for the plugin. Compatible for most plugin managers
+---@field lazy_init? fun(self?: LazyPlugin) Lazy specific init function for the plugin
+---@field lazy_opts? PluginOpts Lazy specific options table for the plugin
