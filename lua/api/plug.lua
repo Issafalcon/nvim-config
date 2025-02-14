@@ -34,6 +34,7 @@ function fignvim.plug.setup_lazy_plugins()
   local modules = {
     "ui",
     "completion",
+    "ai",
   }
 
   for _, module_name in ipairs(modules) do

@@ -15,6 +15,7 @@ fignvim.lsp.setup = function(server)
 
     -- For developing Lua plugins for Neovim Only
     -- Comment out below lines so lua_dev is not used when working on other Lua projects
+    -- Some
     if neodev_ok then
       neodev.setup({
         library = {
@@ -42,9 +43,7 @@ function fignvim.lsp.on_attach(client, bufnr)
   local capabilities = client.server_capabilities
 
   -- For some reason, in nvim v0.10.0, the server_capabilities for c# LSPs are not being passed correctly
-  local force_mappings = client.name == "omnisharp"
-    or client.name == "csharp_ls"
-    or client.name == "roslyn"
+  local force_mappings = client.name == "omnisharp" or client.name == "csharp_ls" or client.name == "roslyn"
 
   fignvim.lsp.mappings.set_buf_mappings(capabilities, client.name, bufnr, force_mappings)
 
@@ -161,26 +160,12 @@ function fignvim.lsp.server_settings(server_name)
   local custom_on_attach = server_config and server_config.on_attach
 
   local opts = {
-    capabilities = vim.tbl_deep_extend(
-      "force",
-      server.capabilities or {},
-      fignvim_capabilities
-    ),
+    capabilities = vim.tbl_deep_extend("force", server.capabilities or {}, fignvim_capabilities),
     flags = server.flags or {},
     on_attach = function(client, bufnr)
-      fignvim.fn.conditional_func(
-        server_on_attach,
-        server_on_attach ~= nil,
-        client,
-        bufnr
-      )
+      fignvim.fn.conditional_func(server_on_attach, server_on_attach ~= nil, client, bufnr)
       fignvim.lsp.on_attach(client, bufnr)
-      fignvim.fn.conditional_func(
-        custom_on_attach,
-        custom_on_attach ~= nil,
-        client,
-        bufnr
-      )
+      fignvim.fn.conditional_func(custom_on_attach, custom_on_attach ~= nil, client, bufnr)
     end,
   }
 

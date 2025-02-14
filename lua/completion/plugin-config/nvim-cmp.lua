@@ -1,15 +1,20 @@
--- https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
+local keymaps = require("keymaps").Completion
 
 ---@type FigNvimPluginConfig
 local M = {}
 
 M.setup = function()
+  vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
   local cmp = require("cmp")
   local nuget = require("cmp-nuget")
+  local luasnip = require("luasnip")
   nuget.setup({})
 
+  -- https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
   local sources = {
     nvim_lsp = { name = "nvim_lsp", priority = 1000, keyword_length = 2 },
+    lazydev = { name = "lazydev", priority = 900, keyword_length = 2 },
+    nuget = { name = "nuget", priority = 800, keyword_length = 1 },
     nvim_lua = { name = "nvim_lua", priority = 800, keyword_length = 2 },
     luasnip = { name = "luasnip", priority = 750, keyword_length = 2 },
     npm = { name = "npm", priority = 725, keyword_length = 2 },
@@ -17,7 +22,6 @@ M.setup = function()
     buffer = { name = "buffer", priority = 500, keyword_length = 2 },
     path = { name = "path", priority = 250, keyword_length = 2 },
     rg = { name = "rg", priority = 200, keyword_length = 2 },
-    nuget = { name = "nuget", priority = 800, keyword_length = 1 },
   }
 
   local common_sources = {
@@ -30,6 +34,9 @@ M.setup = function()
   }
 
   cmp.setup({
+    completion = {
+      completeopt = "menu,menuone,noinsert,noselect",
+    },
     enabled = function()
       if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
         return false
@@ -50,14 +57,6 @@ M.setup = function()
           return item
         end
 
-        -- local kind = require("lspkind").cmp_format({
-        --   mode = "symbol_text",
-        --   maxwidth = 50,
-        -- })(entry, vim_item)
-        -- local strings = vim.split(kind.kind, "%s", { trimempty = true })
-        -- kind.kind = " " .. strings[1] .. " "
-        -- kind.menu = strings[2] and "(" .. strings[2] .. ")" or kind.menu
-        -- return kind
         local icons = require("icons").kinds
         if icons[item.kind] then
           item.kind = icons[item.kind] .. item.kind
@@ -122,36 +121,51 @@ M.setup = function()
       ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
       ["<C-space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
       ["<C-y>"] = cmp.config.disable,
-      ["<C-e>"] = cmp.mapping({
-        i = cmp.mapping.abort(),
-        c = cmp.mapping.close(),
-      }),
-      ["<CR>"] = cmp.mapping.confirm({ select = false }),
-      -- Fix for copilot key-mapping fallback mechanism issue - https://github.com/hrsh7th/nvim-cmp/blob/b16e5bcf1d8fd466c289eab2472d064bcd7bab5d/doc/cmp.txt#L830-L852
-      ["<C-x>"] = cmp.mapping(function(fallback)
-        vim.api.nvim_feedkeys(
-          vim.fn["copilot#Accept"](
-            vim.api.nvim_replace_termcodes("<Tab>", true, true, true)
-          ),
-          "n",
-          true
-        )
+      ["<C-e>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
+      -- ["<CR>"] = cmp.mapping.confirm({ select = false }),
+      ["<CR>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          if luasnip.expandable() then
+            luasnip.expand()
+          else
+            cmp.confirm({
+              select = true,
+            })
+          end
+        else
+          fallback()
+        end
       end),
-      ["<Tab>"] = cmp.mapping(function(fallback)
+      -- -- Fix for copilot key-mapping fallback mechanism issue - https://github.com/hrsh7th/nvim-cmp/blob/b16e5bcf1d8fd466c289eab2472d064bcd7bab5d/doc/cmp.txt#L830-L852
+      -- ["<C-x>"] = cmp.mapping(function(fallback)
+      --   vim.api.nvim_feedkeys(
+      --     vim.fn["copilot#Accept"](vim.api.nvim_replace_termcodes("<Tab>", true, true, true)),
+      --     "n",
+      --     true
+      --   )
+      -- end),
+      [keymaps.SuperTab.keys] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
+        elseif luasnip.locally_jumpable(1) then
+          luasnip.jump(1)
+        elseif require("copilot.suggestion").is_visible() then
+          fignvim.completion.create_undo()
+          require("copilot.suggestion").accept()
         else
           fallback()
         end
-      end, { "i", "s" }),
+      end, keymaps.SuperTab.mode),
 
-      ["<S-Tab>"] = cmp.mapping(function(fallback)
+      [keymaps.SuperTabBack.keys] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
+        elseif luasnip.locally_jumpable(-1) then
+          luasnip.jump(-1)
         else
           fallback()
         end
-      end, { "i", "s" }),
+      end, keymaps.SuperTabBack.mode),
     }),
   })
 
