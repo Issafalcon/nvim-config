@@ -14,7 +14,7 @@ return {
 
       fignvim.config.set_vim_opts(opt)
     end,
-    keys = fignvim.mappings.make_lazy_keymaps(require("core.mappings").Lists, false),
+    keys = fignvim.mappings.make_lazy_keymaps(require("keymaps").Core.Lists, false),
     opts = {
       auto_enable = true,
       auto_resize_height = true, -- highly recommended enable

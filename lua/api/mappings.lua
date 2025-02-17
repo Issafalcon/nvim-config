@@ -2,7 +2,7 @@ fignvim.mappings = {}
 
 --- Registers all core mappings in FigNvim
 function fignvim.mappings.create_core_mappings()
-  local core_map_groups = require("core.mappings")
+  local core_map_groups = require("keymaps").Core
 
   for _, maps in pairs(core_map_groups) do
     fignvim.mappings.create_keymaps(maps)
@@ -12,8 +12,14 @@ end
 --- Creates a set of keymaps when given a table of vim.api.nvim_set_keymap() compatible mappings
 ---@param mappings
 function fignvim.mappings.create_keymaps(mappings)
-  for _, map in ipairs(mappings) do
-    vim.keymap.set(unpack(map))
+  for _, map in pairs(mappings) do
+    if type(map[2]) == "table" then
+      for _, key in ipairs(map[2]) do
+        vim.keymap.set(map[1], key, map[3], map[4] or {})
+      end
+    else
+      vim.keymap.set(unpack(map))
+    end
   end
 end
 

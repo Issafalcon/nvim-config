@@ -1,5 +1,3 @@
-local keymaps = require("keymaps").Completion
-
 ---@type FigNvimPluginConfig
 local M = {}
 
@@ -8,6 +6,7 @@ M.setup = function()
   local cmp = require("cmp")
   local nuget = require("cmp-nuget")
   local luasnip = require("luasnip")
+  local keymaps = require("keymaps").Completion
   nuget.setup({})
 
   -- https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
@@ -105,25 +104,25 @@ M.setup = function()
       },
     },
     mapping = cmp.mapping.preset.insert({
-      ["<C-k>"] = cmp.mapping.select_prev_item({
+      [keymaps.SelectPrevItem] = cmp.mapping.select_prev_item({
         behavior = cmp.SelectBehavior.Select,
       }),
-      ["<C-j>"] = cmp.mapping.select_next_item({
+      [keymaps.SelectNextItem] = cmp.mapping.select_next_item({
         behavior = cmp.SelectBehavior.Select,
       }),
-      ["<Up>"] = cmp.mapping.select_prev_item({
+      [keymaps.SelectPrevItemInsert] = cmp.mapping.select_prev_item({
         behavior = cmp.SelectBehavior.Insert,
       }),
-      ["<Down>"] = cmp.mapping.select_next_item({
+      [keymaps.SelectPrevItemInsert] = cmp.mapping.select_next_item({
         behavior = cmp.SelectBehavior.Insert,
       }),
-      ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-      ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-      ["<C-space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-      ["<C-y>"] = cmp.config.disable,
-      ["<C-e>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
+      [keymaps.ScrollDocsUp] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
+      [keymaps.ScrollDocsDown] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+      [keymaps.Complete] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+      [keymaps.Disable] = cmp.config.disable,
+      [keymaps.Abort] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
       -- ["<CR>"] = cmp.mapping.confirm({ select = false }),
-      ["<CR>"] = cmp.mapping(function(fallback)
+      [keymaps.Confirm] = cmp.mapping(function(fallback)
         if cmp.visible() then
           if luasnip.expandable() then
             luasnip.expand()
@@ -137,27 +136,25 @@ M.setup = function()
         end
       end),
       -- -- Fix for copilot key-mapping fallback mechanism issue - https://github.com/hrsh7th/nvim-cmp/blob/b16e5bcf1d8fd466c289eab2472d064bcd7bab5d/doc/cmp.txt#L830-L852
-      -- ["<C-x>"] = cmp.mapping(function(fallback)
-      --   vim.api.nvim_feedkeys(
-      --     vim.fn["copilot#Accept"](vim.api.nvim_replace_termcodes("<Tab>", true, true, true)),
-      --     "n",
-      --     true
-      --   )
-      -- end),
-      [keymaps.SuperTab.keys] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item()
-        elseif luasnip.locally_jumpable(1) then
-          luasnip.jump(1)
-        elseif require("copilot.suggestion").is_visible() then
+      [keymaps.AcceptCopilotSuggestion] = cmp.mapping(function(fallback)
+        if require("copilot.suggestion").is_visible() then
           fignvim.completion.create_undo()
           require("copilot.suggestion").accept()
         else
           fallback()
         end
-      end, keymaps.SuperTab.mode),
+      end),
+      [keymaps.SuperTab] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item()
+        elseif luasnip.locally_jumpable(1) then
+          luasnip.jump(1)
+        else
+          fallback()
+        end
+      end, { "i", "s" }),
 
-      [keymaps.SuperTabBack.keys] = cmp.mapping(function(fallback)
+      [keymaps.SuperTabBack] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
         elseif luasnip.locally_jumpable(-1) then
@@ -165,7 +162,7 @@ M.setup = function()
         else
           fallback()
         end
-      end, keymaps.SuperTabBack.mode),
+      end, { "i", "s" }),
     }),
   })
 
