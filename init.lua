@@ -13,7 +13,6 @@ end
 fignvim.module.register_plugins({
   -- Plugin Development
   -- "sqlite",
-  "neodev",
   "luapad",
 
   -- Keybinds and Cheatsheets
@@ -44,7 +43,6 @@ fignvim.module.register_plugins({
   "transparent",
 
   -- LSP
-  "lsp_config",
   "mason",
   "none-ls",
   "lsp-overloads",

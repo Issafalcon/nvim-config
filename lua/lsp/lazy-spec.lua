@@ -1,9 +1,17 @@
+local lazydev_config = require("lsp.plugin-config.lazydev")
+
 return {
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    cmd = "LazyDev",
+    opts = lazydev_config.lazy_opts,
+  },
   {
     "neovim/nvim-lspconfig",
     event = "BufReadPre",
     dependencies = {
-      "folke/neodev.nvim",
+      "lazydev.nvim",
       "lsp-overloads.nvim",
       "mason.nvim",
       -- LSP Completion sources

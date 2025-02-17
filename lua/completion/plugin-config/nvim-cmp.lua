@@ -11,10 +11,10 @@ M.setup = function()
 
   -- https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
   local sources = {
+    lazydev = { name = "lazydev", priority = 1100, keyword_length = 2 },
     nvim_lsp = { name = "nvim_lsp", priority = 1000, keyword_length = 2 },
-    lazydev = { name = "lazydev", priority = 900, keyword_length = 2 },
     nuget = { name = "nuget", priority = 800, keyword_length = 1 },
-    nvim_lua = { name = "nvim_lua", priority = 800, keyword_length = 2 },
+    -- nvim_lua = { name = "nvim_lua", priority = 800, keyword_length = 2 },
     luasnip = { name = "luasnip", priority = 750, keyword_length = 2 },
     npm = { name = "npm", priority = 725, keyword_length = 2 },
     emoji = { name = "emoji", priority = 700, keyword_length = 2 },
