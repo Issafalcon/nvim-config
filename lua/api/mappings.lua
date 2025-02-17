@@ -39,7 +39,7 @@ end
 ---@return table Lazy Compatible keymaps
 function fignvim.mappings.make_lazy_keymaps(mappings, perform_bind)
   local lazy_keys = {}
-  for _, map in ipairs(mappings) do
+  for _, map in pairs(mappings) do
     table.insert(
       lazy_keys,
       vim.tbl_deep_extend("force", {

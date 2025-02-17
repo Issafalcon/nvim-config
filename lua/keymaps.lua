@@ -107,4 +107,39 @@ M.Completion = {
   SuperTabBack = "<S-Tab>",
 }
 
+M.Annotations = {
+  GenerateFileAnnotations = {
+    "n",
+    "<leader>/F",
+    function()
+      require("neogen").generate({ type = "file" })
+    end,
+    { desc = "Generates filetype specific annotations for the nearest file" },
+  },
+  GenerateFunctionAnnotations = {
+    "n",
+    "<leader>/f",
+    function()
+      require("neogen").generate({ type = "func" })
+    end,
+    { desc = "Generates filetype specific annotations for the nearest function" },
+  },
+  GenerateClassAnnotations = {
+    "n",
+    "<leader>/c",
+    function()
+      require("neogen").generate({ type = "class" })
+    end,
+    { desc = "Generates filetype specific annotations for the nearest class" },
+  },
+  GenerateTypeAnnotations = {
+    "n",
+    "<leader>/t",
+    function()
+      require("neogen").generate({ type = "type" })
+    end,
+    { desc = "Generates filetype specific annotations for the nearest type" },
+  },
+}
+
 return M

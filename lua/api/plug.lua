@@ -36,6 +36,7 @@ function fignvim.plug.setup_lazy_plugins()
     "completion",
     "lsp",
     "ai",
+    "documentation",
   }
 
   for _, module_name in ipairs(modules) do

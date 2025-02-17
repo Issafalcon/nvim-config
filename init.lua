@@ -98,7 +98,6 @@ fignvim.module.register_plugins({
   "dap-virtual-text",
 
   -- Documenting
-  "neogen",
   "plantuml",
   "markdown-preview",
   "render-markdown",
