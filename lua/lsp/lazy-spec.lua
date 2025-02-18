@@ -1,4 +1,7 @@
 local lazydev_config = require("lsp.plugin-config.lazydev")
+local mason_config = require("lsp.plugin-config.mason")
+local mason_lspconfig_config = require("lsp.plugin-config.mason-lspconfig")
+local mason_tool_installer_config = require("lsp.plugin-config.mason-tool-installer")
 
 return {
   {
@@ -7,6 +10,7 @@ return {
     cmd = "LazyDev",
     opts = lazydev_config.lazy_opts,
   },
+
   {
     "neovim/nvim-lspconfig",
     event = "BufReadPre",
@@ -19,5 +23,23 @@ return {
       -- Typescript LSP Enhancements
       "jose-elias-alvarez/nvim-lsp-ts-utils",
     },
+  },
+
+  {
+    "williamboman/mason.nvim",
+    cmd = "Mason",
+    dependencies = {
+      -- Enhancements for Mason for autoinstallation of LSP servers
+      {
+        "williamboman/mason-lspconfig.nvim",
+        opts = mason_lspconfig_config.lazy_opts,
+      },
+      -- Mason tools installer enhancements
+      {
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        opts = mason_tool_installer_config.lazy_opts,
+      },
+    },
+    opts = mason_config.lazy_opts,
   },
 }

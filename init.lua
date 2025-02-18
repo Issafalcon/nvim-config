@@ -43,7 +43,6 @@ fignvim.module.register_plugins({
   "transparent",
 
   -- LSP
-  "mason",
   "none-ls",
   "lsp-overloads",
   "lsp-progress",

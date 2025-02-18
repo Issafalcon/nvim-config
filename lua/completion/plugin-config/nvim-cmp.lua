@@ -37,7 +37,8 @@ M.setup = function()
       completeopt = "menu,menuone,noinsert,noselect",
     },
     enabled = function()
-      if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+      -- Change the deprecation function below to recommended replacement
+      if vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "prompt" then
         return false
       end
       return true
