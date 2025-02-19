@@ -49,7 +49,6 @@ fignvim.module.register_plugins({
   "schemastore",
 
   -- Completions and Snippets
-  "copilot",
   "copilot-chat",
   "luasnip",
 
