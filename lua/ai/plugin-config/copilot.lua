@@ -1,26 +1,13 @@
 ---@type FigNvimPluginConfig
 local M = {}
 
-M.lazy_opts = {
-  suggestion = {
-    enabled = true,
-    auto_trigger = true,
-    hide_during_completion = true,
-    keymap = {
-      accept = false, -- handled by nvim-cmp / blink.cmp
-      next = "<M-]>",
-      prev = "<M-[>",
+M.lazy_init = function()
+  fignvim.config.set_vim_opts({
+    g = {
+      copilot_no_tab_map = true, -- Disable tab mapping in insert mode when using copilot (so you can override the default mapping)
+      copilot_proxy_strict_ssl = false,
     },
-  },
-  panel = { enabled = false },
-  filetypes = {
-    markdown = true,
-    help = true,
-  },
-}
-
-M.setup = function()
-  require("copilot").setup(M.lazy_opts)
+  })
 end
 
 return M
