@@ -6,200 +6,61 @@ fignvim.lsp.mappings = {}
 ---@param client_name string Name of the current language server client
 ---@param bufnr number the buffer number to set mappings for
 ---@param force_mappings boolean Whether to force the mappings to be set, regardless of client capabilities
-function fignvim.lsp.mappings.set_buf_mappings(
-  capabilities,
-  client_name,
-  bufnr,
-  force_mappings
-)
+function fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr, force_mappings)
+  local keymaps = require("keymaps").Lsp
   local lsp_keymaps = {}
-  table.insert(lsp_keymaps, {
-    "n",
-    "[g",
-    function()
-      vim.diagnostic.goto_prev()
-    end,
-    { desc = "Go to previous diagnostic", buffer = bufnr },
-  })
-  table.insert(lsp_keymaps, {
-    "n",
-    "]g",
-    function()
-      vim.diagnostic.goto_next()
-    end,
-    { desc = "Go to next diagnostic", buffer = bufnr },
-  })
-  table.insert(lsp_keymaps, {
-    "n",
-    "<leader>ld",
-    function()
-      vim.diagnostic.goto_prev()
-    end,
-    { desc = "Hover diagnostics", buffer = bufnr },
-  })
-  table.insert(lsp_keymaps, {
-    "n",
-    "<leader>gs",
-    function()
-      require("telescope.builtin").lsp_document_symbols()
-    end,
-    { desc = "List document symbols in Telescope", buffer = bufnr },
-  })
-  table.insert(lsp_keymaps, {
-    "n",
-    "<leader>gS",
-    function()
-      require("telescope.builtin").lsp_workspace_symbols()
-    end,
-    { desc = "List workspace symbols in Telescope", buffer = bufnr },
-  })
-  table.insert(lsp_keymaps, {
-    "n",
-    "<leader>ih",
-    function()
-      if vim.lsp.inlay_hint.is_enabled() then
-        vim.lsp.inlay_hint.enable(false)
-      else
-        vim.lsp.inlay_hint.enable(true)
-      end
-    end,
-    { desc = "Toggles inlay hints", buffer = bufnr },
-  })
+  -- Insert keymaps into lsp_keymaps with the 4th item in the keymap table merged with { buffer = bufnr }
+
+  table.insert(lsp_keymaps, keymaps.DiagnosticsNext)
+  table.insert(lsp_keymaps, keymaps.DiagnosticsPrev)
+  table.insert(lsp_keymaps, keymaps.ListDocumentSymbols)
+  table.insert(lsp_keymaps, keymaps.ListWorkspaceSymbols)
+  table.insert(lsp_keymaps, keymaps.ToggleInlayHints)
 
   if capabilities.codeActionProvider or force_mappings then
-    table.insert(lsp_keymaps, {
-      { "n", "v" },
-      "<leader>ca",
-      function()
-        vim.lsp.buf.code_action()
-      end,
-      { desc = "Opens the default Code Action Window", buffer = bufnr },
-    })
+    table.insert(lsp_keymaps, keymaps.CodeActions)
   end
 
   if capabilities.declarationProvider or force_mappings then
-    table.insert(lsp_keymaps, {
-      "n",
-      "gD",
-      function()
-        vim.lsp.buf.declaration()
-      end,
-      { desc = "Go to declaration of current symbol", buffer = bufnr },
-    })
+    table.insert(lsp_keymaps, keymaps.GoToDeclaration)
   end
 
-  if
-    capabilities.definitionProvider
-    or capabilities.typeDefinitionProvider
-    or force_mappings
-  then
-    table.insert(lsp_keymaps, {
-      "n",
-      "gd",
-      function()
-        vim.lsp.buf.definition()
-      end,
-      { desc = "Go to definition of current symbol", buffer = bufnr },
-    })
+  if capabilities.definitionProvider or capabilities.typeDefinitionProvider or force_mappings then
+    table.insert(lsp_keymaps, keymaps.GoToDefinition)
   end
 
   if capabilities.documentFormattingProvider or force_mappings then
-    table.insert(lsp_keymaps, {
-      { "n", "v" },
-      "<leader>f",
-      fignvim.lsp.formatting.format,
-      { desc = "Format code in file, or the selected portion of code", buffer = bufnr },
-    })
-    table.insert(lsp_keymaps, {
-      "n",
-      "<leader>taf",
-      fignvim.ui.toggle_autoformat,
-      { desc = "Toggle autoformatting on save", buffer = bufnr },
-    })
+    table.insert(lsp_keymaps, keymaps.Format)
+    table.insert(lsp_keymaps, keymaps.ToggleAutoFormatOnSave)
   end
 
   if capabilities.hoverProvider or force_mappings then
-    table.insert(lsp_keymaps, {
-      "n",
-      "K",
-      function()
-        vim.lsp.buf.hover()
-      end,
-      { desc = "Hover documentation", buffer = bufnr },
-    })
+    table.insert(lsp_keymaps, keymaps.HoverDocumentation)
   end
 
   if capabilities.implementationProvider or force_mappings then
-    table.insert(lsp_keymaps, {
-      "n",
-      "gI",
-      function()
-        require("telescope.builtin").lsp_implementations()
-      end,
-      { desc = "Go to implementation of current symbol using Telescope", buffer = bufnr },
-    })
+    table.insert(lsp_keymaps, keymaps.GotoTelescopeImplementations)
   end
 
   if capabilities.referencesProvider or force_mappings then
-    table.insert(lsp_keymaps, {
-      "n",
-      "gr",
-      function()
-        require("telescope.builtin").lsp_references()
-      end,
-      { desc = "Go to references of current symbol using Telescope", buffer = bufnr },
-    })
+    table.insert(lsp_keymaps, keymaps.GotoTelescopeReferences)
   end
 
   if capabilities.renameProvider or force_mappings then
-    table.insert(lsp_keymaps, {
-      "n",
-      "rn",
-      function()
-        vim.lsp.buf.rename()
-      end,
-      { desc = "Rename current symbol", buffer = bufnr },
-    })
+    table.insert(lsp_keymaps, keymaps.RenameSymbol)
   end
 
   if capabilities.signatureHelpProvider or force_mappings then
-    table.insert(lsp_keymaps, {
-      "n",
-      "<A-s>",
-      ":LspOverloadsSignature<CR>",
-      { desc = "Show signature help with overloads", buffer = bufnr },
-    })
-    table.insert(lsp_keymaps, {
-      "i",
-      "<A-s>",
-      "<cmd>LspOverloadsSignature<CR>",
-      -- function() vim.lsp.buf.signature_help() end,
-      { desc = "Show signature help in insert mode", buffer = bufnr },
-    })
+    table.insert(lsp_keymaps, keymaps.ShowSignatureHelp)
   end
 
   if client_name == "ts_ls" then
-    table.insert(lsp_keymaps, {
-      "n",
-      "<leader>to",
-      ":TSLspOrganize<CR>",
-      { desc = "Organize imports using tsserver", buffer = bufnr },
-    })
-    table.insert(lsp_keymaps, {
-      "n",
-      "<leader>trn",
-      ":TSLspRenameFile<CR>",
-      { desc = "Rename file using tsserver", buffer = bufnr },
-    })
-    table.insert(lsp_keymaps, {
-      "n",
-      "<leader>ti",
-      ":TSLspImportAll<CR>",
-      { desc = "Import all missing imports using tsserver", buffer = bufnr },
-    })
+    table.insert(lsp_keymaps, keymaps.TypeScriptOrganizeImports)
+    table.insert(lsp_keymaps, keymaps.TypeScriptRenameFile)
+    table.insert(lsp_keymaps, keymaps.TypescriptImportAll)
   end
 
-  fignvim.mappings.create_keymaps(lsp_keymaps)
+  fignvim.mappings.create_buf_local_keymaps(lsp_keymaps, bufnr)
 end
 
 return fignvim.lsp.mappings

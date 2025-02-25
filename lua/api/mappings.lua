@@ -23,6 +23,18 @@ function fignvim.mappings.create_keymaps(mappings)
   end
 end
 
+function fignvim.mappings.create_buf_local_keymaps(mappings, bufnr)
+  for _, map in pairs(mappings) do
+    if type(map[2]) == "table" then
+      for _, key in ipairs(map[2]) do
+        vim.keymap.set(map[1], key, map[3], vim.tbl_extend("force", map[4] or {}, { buffer = bufnr }))
+      end
+    else
+      vim.keymap.set(map[1], map[2], map[3], vim.tbl_extend("force", map[4] or {}, { buffer = bufnr }))
+    end
+  end
+end
+
 --- Registers a prefix in which-key without binding any keymaps
 ---@param prefix string The keymap prefix to register
 ---@param groupname string The name of the group

@@ -142,4 +142,142 @@ M.Annotations = {
   },
 }
 
+M.Lsp = {
+  Format = {
+    { "n", "v" },
+    "<leader>f",
+    fignvim.lsp.formatting.format,
+    { desc = "Format code in file, or the selected portion of code" },
+  },
+  ToggleAutoFormatOnSave = {
+    "n",
+    "<leader>taf",
+    fignvim.ui.toggle_autoformat,
+    { desc = "Toggle autoformatting on save" },
+  },
+  DiagnosticsNext = {
+    "n",
+    "]g",
+    function()
+      vim.diagnostic.goto_next()
+    end,
+    { desc = "Go to next diagnostic" },
+  },
+  DiagnosticsPrev = {
+    "n",
+    "[g",
+    function()
+      vim.diagnostic.goto_prev()
+    end,
+    { desc = "Go to previous diagnostic" },
+  },
+  ListDocumentSymbols = {
+    "n",
+    "<leader>gs",
+    function()
+      require("telescope.builtin").lsp_document_symbols()
+    end,
+    { desc = "List document symbols in Telescope" },
+  },
+  ListWorkspaceSymbols = {
+    "n",
+    "<leader>gS",
+    function()
+      require("telescope.builtin").lsp_workspace_symbols()
+    end,
+    { desc = "List workspace symbols in Telescope" },
+  },
+  ToggleInlayHints = {
+    "n",
+    "<leader>ih",
+    function()
+      if vim.lsp.inlay_hint.is_enabled() then
+        vim.lsp.inlay_hint.enable(false)
+      else
+        vim.lsp.inlay_hint.enable(true)
+      end
+    end,
+    { desc = "Toggles inlay hints" },
+  },
+  CodeActions = {
+    { "n", "v" },
+    "<leader>ca",
+    function()
+      vim.lsp.buf.code_action()
+    end,
+    { desc = "Opens the default Code Action Window" },
+  },
+  GotoDeclaration = {
+    "n",
+    "gD",
+    function()
+      vim.lsp.buf.declaration()
+    end,
+    { desc = "Go to declaration of current symbol" },
+  },
+  GotoDefinition = {
+    "n",
+    "gd",
+    function()
+      vim.lsp.buf.definition()
+    end,
+    { desc = "Go to definition of current symbol" },
+  },
+  HoverDocumentation = {
+    "n",
+    "K",
+    function()
+      vim.lsp.buf.hover()
+    end,
+    { desc = "Hover documentation" },
+  },
+  GotoTelescopeImplementations = {
+    "n",
+    "gI",
+    function()
+      require("telescope.builtin").lsp_implementations()
+    end,
+    { desc = "Go to implementation of current symbol using Telescope" },
+  },
+  GotoTelescopeReferences = {
+    "n",
+    "gr",
+    function()
+      require("telescope.builtin").lsp_references()
+    end,
+    { desc = "Go to references of current symbol using Telescope" },
+  },
+  RenameSymbol = {
+    "n",
+    "rn",
+    function()
+      vim.lsp.buf.rename()
+    end,
+    { desc = "Rename current symbol" },
+  },
+  ShowSignatureHelp = {
+    { "n", "i" },
+    "<A-s>",
+    "<cmd>LspOverloadsSignature<CR>",
+    { desc = "Show signature help with overloads" },
+  },
+  TypeScriptOrganizeImports = {
+    "n",
+    "<leader>to",
+    ":TSLspOrganize<CR>",
+    { desc = "Organize imports using tsserver" },
+  },
+  TypeScriptRenameFile = {
+    "n",
+    "<leader>trn",
+    ":TSLspRenameFile<CR>",
+    { desc = "Rename file using tsserver" },
+  },
+  TypescriptImportAll = {
+    "n",
+    "<leader>ti",
+    ":TSLspImportAll<CR>",
+    { desc = "Import all missing imports using tsserver" },
+  },
+}
 return M
