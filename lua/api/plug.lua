@@ -1,5 +1,10 @@
 fignvim.plug = {}
 
+---@param name string
+function fignvim.plug.get_plugin(name)
+  return require("lazy.core.config").spec.plugins[name]
+end
+
 --- Bootstraops Lazy.nvim
 function fignvim.plug.initialise_lazy_nvim()
   local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
