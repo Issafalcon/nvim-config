@@ -22,11 +22,11 @@ function fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr,
   end
 
   if capabilities.declarationProvider or force_mappings then
-    table.insert(lsp_keymaps, keymaps.GoToDeclaration)
+    table.insert(lsp_keymaps, keymaps.GotoDeclaration)
   end
 
   if capabilities.definitionProvider or capabilities.typeDefinitionProvider or force_mappings then
-    table.insert(lsp_keymaps, keymaps.GoToDefinition)
+    table.insert(lsp_keymaps, keymaps.GotoDefinition)
   end
 
   if capabilities.documentFormattingProvider or force_mappings then
