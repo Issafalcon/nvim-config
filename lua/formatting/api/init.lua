@@ -1,13 +1,5 @@
 fignvim.formatting = {}
 
----@class fignvim.formatting
----@overload fun(opts?: {force?:boolean})
-fignvim.formatting = setmetatable({}, {
-  __call = function(m, ...)
-    return m.format(...)
-  end,
-})
-
 ---@class FigNvimFormatter
 ---@field name string
 ---@field primary? boolean
@@ -17,6 +9,26 @@ fignvim.formatting = setmetatable({}, {
 
 ---@type FigNvimFormatter[]
 fignvim.formatting.formatters = {}
+
+fignvim.formatting.setup = function()
+  -- Autoformat autocmd
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    group = vim.api.nvim_create_augroup("FigNvimFormat", {}),
+    callback = function(event)
+      fignvim.formatting.format({ buf = event.buf })
+    end,
+  })
+
+  -- Manual format
+  vim.api.nvim_create_user_command("FigNvimFormat", function()
+    fignvim.formatting.format({ force = true })
+  end, { desc = "Format selection or buffer" })
+
+  -- Format info
+  vim.api.nvim_create_user_command("FigNvimFormatInfo", function()
+    fignvim.formatting.info()
+  end, { desc = "Show info about the formatters for the current buffer" })
+end
 
 ---@param formatter FigNvimFormatter
 fignvim.formatting.register = function(formatter)
@@ -77,7 +89,8 @@ function fignvim.formatting.info(buf)
   if not have then
     lines[#lines + 1] = "\n***No formatters available for this buffer.***"
   end
-  FigNvimVim[enabled and "info" or "warn"](
+
+  fignvim.ui.notifications.info(
     table.concat(lines, "\n"),
     { title = "FigNvimFormat (" .. (enabled and "enabled" or "disabled") .. ")" }
   )
@@ -130,13 +143,13 @@ function fignvim.formatting.format(opts)
   for _, formatter in ipairs(fignvim.formatting.resolve(buf)) do
     if formatter.active then
       done = true
-      FigNvim.try(function()
+      fignvim.core.utils.try(function()
         return formatter.format(buf)
       end, { msg = "Formatter `" .. formatter.name .. "` failed" })
     end
   end
 
   if not done and opts and opts.force then
-    FigNvim.warn("No formatter available", { title = "FigNvimVim" })
+    fignvim.ui.notifications.warn("No formatter available", { title = "FigNvim" })
   end
 end

@@ -10,7 +10,18 @@ for _, source in ipairs({
   end
 end
 
-fignvim.module.register_plugins({
+-- Load core API functions (needed for upcoming setup)
+require("core.api")
+
+fignvim.core.module.register_modules({
+  "ui",
+  "completion",
+  "lsp",
+  "ai",
+  "documentation",
+})
+
+fignvim.core.module.register_plugins({
   -- Plugin Development
   -- "sqlite",
   "luapad",
@@ -139,10 +150,12 @@ fignvim.module.register_plugins({
 })
 
 if vim.fn.isdirectory(vim.fn.expand("$PROJECTS/neosharper.nvim")) == 1 then
-  fignvim.module.register_plugins({
+  fignvim.core.module.register_plugins({
     "neosharper",
   })
 end
+
+fignvim.core.module.load_module_apis()
 
 if vim.fn.has("win32") == 1 then
   fignvim.config.set_shell_as_powershell()

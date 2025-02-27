@@ -35,17 +35,10 @@ function fignvim.plug.setup_lazy_plugins()
     table.insert(import_list, { import = "plugins." .. plugin_name })
   end
 
-  -- Hardcode module list for now
-  local modules = {
-    "ui",
-    "completion",
-    "lsp",
-    "ai",
-    "documentation",
-  }
+  local module_imports = fignvim.core.module.import_module_lazy_plugin_specs()
 
-  for _, module_name in ipairs(modules) do
-    table.insert(import_list, { import = module_name .. ".lazy-spec" })
+  for _, module in ipairs(module_imports) do
+    table.insert(import_list, module)
   end
 
   local status_ok, lazy = pcall(require, "lazy")
