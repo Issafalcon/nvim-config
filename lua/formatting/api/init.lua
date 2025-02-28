@@ -153,3 +153,23 @@ function fignvim.formatting.format(opts)
     fignvim.ui.notifications.warn("No formatter available", { title = "FigNvim" })
   end
 end
+
+--- Checks if a parser can be inferred for the given context:
+--- * If the filetype is in the supported list, return true
+--- * Otherwise, check if a parser can be inferred
+---@param ctx ConformCtx
+---@param supported table<string>
+function fignvim.formatting.has_parser(ctx, supported)
+  local ft = vim.bo[ctx.buf].filetype --[[@as string]]
+  -- default filetypes are always supported
+  if vim.tbl_contains(supported, ft) then
+    return true
+  end
+  -- otherwise, check if a parser can be inferred
+  local ret = vim.fn.system({ "prettier", "--file-info", ctx.filename })
+  ---@type boolean, string?
+  local ok, parser = pcall(function()
+    return vim.fn.json_decode(ret).inferredParser
+  end)
+  return ok and parser and parser ~= vim.NIL
+end

@@ -2,8 +2,9 @@ fignvim.lsp.servers = {}
 
 --- Helper function to set up a given server with the Neovim LSP client
 -- @param server the name of the server to be setup
-fignvim.lsp.servers.setup = function(server, capabilities)
+function fignvim.lsp.servers.setup(server, capabilities)
   local opts = fignvim.lsp.servers.server_settings(server, capabilities)
+  fignvim.lsp.on_attach(opts.on_attach, server)
 
   if server == "lua_ls" then
     local neodev_ok, neodev = pcall(require, "neodev")
@@ -35,27 +36,13 @@ end
 -- @param  server_name the name of the server
 -- @return the table of LSP options used when setting up the given language server
 function fignvim.lsp.servers.server_settings(server_name, capabilities)
-  local server = require("lspconfig")[server_name]
   local _, server_config = pcall(require, "lsp.lsp_servers." .. server_name)
 
-  local server_on_attach = server.on_attach
-  local custom_on_attach = server_config and server_config.on_attach
+  local server_opts = vim.tbl_deep_extend("force", {
+    capabilities = vim.deepcopy(capabilities),
+  }, server_config or {})
 
-  local opts = {
-    capabilities = vim.tbl_deep_extend("force", server.capabilities or {}, capabilities),
-    flags = server.flags or {},
-    on_attach = function(client, bufnr)
-      fignvim.fn.conditional_func(server_on_attach, server_on_attach ~= nil, client, bufnr)
-      fignvim.lsp.servers.on_attach(client, bufnr)
-      fignvim.fn.conditional_func(custom_on_attach, custom_on_attach ~= nil, client, bufnr)
-    end,
-  }
-
-  if server_config and server_config.opts then
-    opts = vim.tbl_deep_extend("force", opts, server_config.opts)
-  end
-
-  return opts
+  return server_opts
 end
 
 function fignvim.lsp.servers.setup_lsp_servers(server_list, capabilities)

@@ -45,6 +45,7 @@ local options = {
       "winpos",
       "terminal",
     },
+    shiftround = true, -- Round indent
     shiftwidth = 2, -- Number of space inserted for indentation
     showmode = false, -- Disable showing modes in command line
     showtabline = 2, -- always display tabline
@@ -62,10 +63,12 @@ local options = {
     wrap = false, -- Disable wrapping of lines longer than the width of window
     writebackup = false, -- Disable making a backup before overwriting a file
     backup = false,
+    smoothscroll = true,
   },
   g = {
     mapleader = " ", -- set leader key
     maplocalleader = " ", -- set local leader key
+    autoformat = true, -- enable autoformat
     diagnostics_enabled = true, -- enable diagnostics at start
     autoformat_enabled = true, -- enable or disable auto formatting at start (lsp.formatting.format_on_save must be enabled)
     autopairs_enabled = true, -- enable autopairs at start

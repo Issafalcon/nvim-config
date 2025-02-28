@@ -1,4 +1,5 @@
 local lazydev_config = require("lsp.plugin-config.lazydev")
+local lspconfig_config = require("lsp.plugin-config.nvim-lspconfig")
 local mason_config = require("lsp.plugin-config.mason")
 local mason_lspconfig_config = require("lsp.plugin-config.mason-lspconfig")
 local mason_tool_installer_config = require("lsp.plugin-config.mason-tool-installer")
@@ -23,6 +24,10 @@ return {
       -- Typescript LSP Enhancements
       "jose-elias-alvarez/nvim-lsp-ts-utils",
     },
+    -- opts = lspconfig_config.lazy_opts,
+    -- config = function(_, opts)
+    --   fignvim.lsp.setup(opts)
+    -- end,
   },
 
   {
