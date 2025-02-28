@@ -1,11 +1,9 @@
 fignvim.lsp.servers = {}
 
----@alias lsp.Client.filter {id?: number, bufnr?: number, name?: string, method?: string, filter?:fun(client: lsp.Client):boolean}
-
 --- Helper function to set up a given server with the Neovim LSP client
 -- @param server the name of the server to be setup
-fignvim.lsp.servers.setup = function(server)
-  local opts = fignvim.lsp.servers.server_settings(server)
+fignvim.lsp.servers.setup = function(server, capabilities)
+  local opts = fignvim.lsp.servers.server_settings(server, capabilities)
 
   if server == "lua_ls" then
     local neodev_ok, neodev = pcall(require, "neodev")
@@ -33,123 +31,10 @@ fignvim.lsp.servers.setup = function(server)
   require("lspconfig")[server].setup(opts)
 end
 
---- The `on_attach` function used by fignvim
--- @param client the LSP client details when attaching
--- @param bufnr the number of the buffer that the LSP client is attaching to
-function fignvim.lsp.servers.on_attach(client, bufnr)
-  local capabilities = client.server_capabilities
-
-  -- For some reason, in nvim v0.10.0, the server_capabilities for c# LSPs are not being passed correctly
-  local force_mappings = client.name == "omnisharp" or client.name == "csharp_ls" or client.name == "roslyn"
-
-  fignvim.lsp.mappings.set_buf_mappings(capabilities, client.name, bufnr, force_mappings)
-
-  if capabilities.documentFormattingProvider or client.name == "eslint" then
-    fignvim.lsp.formatting.create_buf_autocmds(bufnr, client.name)
-  end
-
-  if capabilities.documentHighlightProvider then
-    fignvim.lsp.handlers.handle_document_highlighting(bufnr)
-  end
-
-  if client.server_capabilities.signatureHelpProvider then
-    local lsp_overloads_ok, lsp_overloads = pcall(require, "lsp-overloads")
-    if lsp_overloads_ok then
-      lsp_overloads.setup(client, {
-        ui = {
-          close_events = { "CursorMoved", "CursorMovedI", "InsertCharPre" },
-          floating_window_above_cur_line = true,
-          silent = true,
-        },
-      })
-    end
-  end
-
-  -- Workaround for semantic token issue with omnisharp-roslyn
-  -- See https://github.com/OmniSharp/omnisharp-roslyn/issues/2483
-  if client.name == "omnisharp" then
-    client.server_capabilities.semanticTokensProvider = {
-      full = vim.empty_dict(),
-      legend = {
-        tokenModifiers = { "static_symbol" },
-        tokenTypes = {
-          "comment",
-          "excluded_code",
-          "identifier",
-          "keyword",
-          "keyword_control",
-          "number",
-          "operator",
-          "operator_overloaded",
-          "preprocessor_keyword",
-          "string",
-          "whitespace",
-          "text",
-          "static_symbol",
-          "preprocessor_text",
-          "punctuation",
-          "string_verbatim",
-          "string_escape_character",
-          "class_name",
-          "delegate_name",
-          "enum_name",
-          "interface_name",
-          "module_name",
-          "struct_name",
-          "type_parameter_name",
-          "field_name",
-          "enum_member_name",
-          "constant_name",
-          "local_name",
-          "parameter_name",
-          "method_name",
-          "extension_method_name",
-          "property_name",
-          "event_name",
-          "namespace_name",
-          "label_name",
-          "xml_doc_comment_attribute_name",
-          "xml_doc_comment_attribute_quotes",
-          "xml_doc_comment_attribute_value",
-          "xml_doc_comment_cdata_section",
-          "xml_doc_comment_comment",
-          "xml_doc_comment_delimiter",
-          "xml_doc_comment_entity_reference",
-          "xml_doc_comment_name",
-          "xml_doc_comment_processing_instruction",
-          "xml_doc_comment_text",
-          "xml_literal_attribute_name",
-          "xml_literal_attribute_quotes",
-          "xml_literal_attribute_value",
-          "xml_literal_cdata_section",
-          "xml_literal_comment",
-          "xml_literal_delimiter",
-          "xml_literal_embedded_expression",
-          "xml_literal_entity_reference",
-          "xml_literal_name",
-          "xml_literal_processing_instruction",
-          "xml_literal_text",
-          "regex_comment",
-          "regex_character_class",
-          "regex_anchor",
-          "regex_quantifier",
-          "regex_grouping",
-          "regex_alternation",
-          "regex_text",
-          "regex_self_escaped_character",
-          "regex_other_escape",
-        },
-      },
-      range = true,
-    }
-  end
-end
-
 --- Get the server settings for a given language server to be provided to the server's `setup()` call
 -- @param  server_name the name of the server
 -- @return the table of LSP options used when setting up the given language server
-function fignvim.lsp.servers.server_settings(server_name)
-  local fignvim_capabilities = require("lsp.capabilities")
+function fignvim.lsp.servers.server_settings(server_name, capabilities)
   local server = require("lspconfig")[server_name]
   local _, server_config = pcall(require, "lsp.lsp_servers." .. server_name)
 
@@ -157,7 +42,7 @@ function fignvim.lsp.servers.server_settings(server_name)
   local custom_on_attach = server_config and server_config.on_attach
 
   local opts = {
-    capabilities = vim.tbl_deep_extend("force", server.capabilities or {}, fignvim_capabilities),
+    capabilities = vim.tbl_deep_extend("force", server.capabilities or {}, capabilities),
     flags = server.flags or {},
     on_attach = function(client, bufnr)
       fignvim.fn.conditional_func(server_on_attach, server_on_attach ~= nil, client, bufnr)
@@ -173,7 +58,7 @@ function fignvim.lsp.servers.server_settings(server_name)
   return opts
 end
 
-function fignvim.lsp.servers.setup_lsp_servers(server_list)
+function fignvim.lsp.servers.setup_lsp_servers(server_list, capabilities)
   local status_ok, _ = pcall(require, "lspconfig")
   if status_ok then
     fignvim.lsp.handlers.add_global_handlers()
@@ -182,7 +67,7 @@ function fignvim.lsp.servers.setup_lsp_servers(server_list)
         require("roslyn").setup({
           config = {
             on_attach = fignvim.lsp.servers.on_attach,
-            capabilities = fignvim.lsp.capabilities,
+            capabilities = capabilities,
             settings = {
               ["csharp|inlay_hints"] = {
                 ["csharp_enable_inlay_hints_for_implicit_object_creation"] = true,
@@ -202,7 +87,7 @@ function fignvim.lsp.servers.setup_lsp_servers(server_list)
           },
         })
       else
-        fignvim.lsp.servers.setup(server)
+        fignvim.lsp.servers.setup(server, capabilities)
       end
     end
   else
@@ -210,4 +95,4 @@ function fignvim.lsp.servers.setup_lsp_servers(server_list)
   end
 end
 
-return fignvim.lsp
+return fignvim.lsp.servers
