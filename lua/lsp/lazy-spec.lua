@@ -24,10 +24,10 @@ return {
       -- Typescript LSP Enhancements
       "jose-elias-alvarez/nvim-lsp-ts-utils",
     },
-    -- opts = lspconfig_config.lazy_opts,
-    -- config = function(_, opts)
-    --   fignvim.lsp.setup(opts)
-    -- end,
+    opts = lspconfig_config.lazy_opts,
+    config = function(_, opts)
+      fignvim.lsp.setup(opts)
+    end,
   },
 
   {

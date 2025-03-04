@@ -1,6 +1,12 @@
 ---@diagnostic disable: missing-parameter
 fignvim.lsp.mappings = {}
 
+fignvim.lsp.mappings.on_attach = function(client, bufnr)
+  local capabilities = client.server_capabilities
+  local client_name = client.name
+  fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr, false)
+end
+
 --- Sets buffer mappings for the given client, if the client supports them.
 ---@param capabilities table The current server capabilities for the language server
 ---@param client_name string Name of the current language server client

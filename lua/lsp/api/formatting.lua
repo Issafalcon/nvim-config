@@ -42,7 +42,7 @@ function fignvim.lsp.formatting.format(opts)
     "force",
     {},
     opts or {},
-    require("lsp.plugin-config-nvim-lspconfig").lazy_opts.format or {},
+    require("lsp.plugin-config.nvim-lspconfig").lazy_opts.format or {},
     require("formatting.plugin-configs.conform").lazy_opts.default_format_opts or {}
   )
   local ok, conform = pcall(require, "conform")

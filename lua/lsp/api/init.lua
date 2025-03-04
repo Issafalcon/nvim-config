@@ -3,11 +3,12 @@ fignvim.lsp = {}
 ---@type table<string, table<vim.lsp.Client, table<number, boolean>>>
 fignvim.lsp.supports_method = {}
 
-require("lsp.wip-api.servers")
-require("lsp.wip-api.capabilities")
-require("lsp.wip-api.formatting")
-require("lsp.wip-api.mappings")
-require("lsp.wip-api.code-action")
+require("lsp.api.servers")
+require("lsp.api.capabilities")
+require("lsp.api.formatting")
+require("lsp.api.mappings")
+require("lsp.api.handlers")
+require("lsp.api.code-action")
 
 ---@param on_attach fun(client:vim.lsp.Client, buffer)
 ---@param name? string
