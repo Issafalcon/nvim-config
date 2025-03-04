@@ -32,7 +32,7 @@ M.Core.Window = {
   ResizeRight = { "n", "<C-Right>", ":vertical resize -2<CR>", { desc = "Resize window vertically to the right" } },
 }
 
-M.CoreTerminal = {
+M.Core.Terminal = {
   NormalMode = { "t", "<esc>", [[<C-\><C-n>]], { desc = "Enter normal mode in terminal" } },
 }
 
@@ -288,4 +288,5 @@ M.Lsp = {
     { desc = "Import all missing imports using tsserver" },
   },
 }
+
 return M

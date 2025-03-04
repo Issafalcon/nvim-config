@@ -22,8 +22,19 @@ function fignvim.table.index_of(array, value)
   return nil
 end
 
+local function is_list(t)
+  local i = 0
+  for _ in pairs(t) do
+    i = i + 1
+    if t[i] == nil then
+      return false
+    end
+  end
+  return true
+end
+
 local function can_merge(v)
-  return type(v) == "table" and (vim.tbl_isempty(v) or not M.is_list(v))
+  return type(v) == "table" and (vim.tbl_isempty(v) or not is_list(v))
 end
 
 --- Merges the values similar to vim.tbl_deep_extend with the **force** behavior,

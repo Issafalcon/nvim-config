@@ -173,3 +173,5 @@ function fignvim.formatting.has_parser(ctx, supported)
   end)
   return ok and parser and parser ~= vim.NIL
 end
+
+return fignvim.formatting
