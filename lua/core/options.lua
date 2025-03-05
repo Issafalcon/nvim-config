@@ -73,6 +73,7 @@ local options = {
     autoformat_enabled = true, -- enable or disable auto formatting at start (lsp.formatting.format_on_save must be enabled)
     autopairs_enabled = true, -- enable autopairs at start
     status_diagnostics_enabled = true, -- enable diagnostics in statusline
+    inlay_hint_default_enable = false, -- enable inlay hints by default for each LSP that supports
     fignvim_modules = {}, -- Track modules
     fignvim_plugins = {}, -- Track modules
   },

@@ -117,7 +117,7 @@ fignvim.lsp.setup = function(opts)
         and vim.bo[buffer].buftype == ""
         and not vim.tbl_contains(opts.inlay_hints.exclude, vim.bo[buffer].filetype)
       then
-        vim.lsp.inlay_hint.enable(true, { bufnr = buffer })
+        vim.lsp.inlay_hint.enable(vim.g.inlay_hint_default_enable, { bufnr = buffer })
       end
     end)
   end
