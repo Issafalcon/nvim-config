@@ -1,4 +1,4 @@
--- Get all the required Fignvim API functions and commands required for setup
+-- Get all the required Fignvim API functions and commands required for setupinit
 for _, source in ipairs({
   "api",
   -- "lsp",
@@ -14,6 +14,7 @@ end
 require("core.api")
 
 fignvim.core.module.register_modules({
+  "editing",
   "ui",
   "completion",
   "formatting",
@@ -38,7 +39,6 @@ fignvim.core.module.register_plugins({
   "ssr",
   "treesj",
   "dial",
-  "matchup",
   "autopairs",
   "nvim-surround",
   "vim-unimpaired",
@@ -48,7 +48,6 @@ fignvim.core.module.register_plugins({
   -- UI
   "notify",
   "heirline",
-  "colourschemes",
   "dressing",
   "colorizer",
   "maximizer",
@@ -81,7 +80,6 @@ fignvim.core.module.register_plugins({
 
   -- Search and replace
   "vim-abolish",
-  "spectre",
   "substitute",
   "bqf",
 

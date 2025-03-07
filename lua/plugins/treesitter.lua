@@ -55,7 +55,6 @@ return {
         "ocaml",
         "ocaml_interface",
         "ocamllex",
-        "org",
         "passwd",
         "proto",
         "python",
