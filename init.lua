@@ -71,7 +71,6 @@ fignvim.core.module.register_plugins({
   -- "neo_tree",
   "netrw_nvim",
   "leap",
-  "rnvimr",
   "nvim-navic", -- https://github.com/SmiteshP/nvim-navic
 
   -- Cut and paste

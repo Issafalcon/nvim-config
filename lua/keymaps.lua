@@ -291,7 +291,7 @@ M.Lsp = {
 
 M.Editing = {
   SearchAndReplace = {
-    {"n", "v"},
+    { "n", "v" },
     "<leader>sr",
     function()
       local grug = require("grug-far")
@@ -304,7 +304,34 @@ M.Editing = {
       })
     end,
     { desc = "Search and Replace" },
-  }
+  },
+}
+
+M.UI = {
+  OpenTerminalFileManager = {
+    { "n", "v" },
+    "-",
+    "<cmd>Yazi<cr>",
+    {
+      desc = "Open yazi at the current file",
+    },
+  },
+  OpenFileManagerInWorkingDirectory = {
+    "n",
+    "<leader>cw",
+    "<cmd>Yazi cwd<cr>",
+    {
+      desc = "Open the file manager in nvim's working directory",
+    }
+  },
+  ResumeLastFileManagerSession = {
+    "n",
+    "<c-up>",
+    "<cmd>Yazi toggle<cr>",
+    {
+      desc = "Resume the last yazi session",
+    }
+  },
 }
 
 return M
