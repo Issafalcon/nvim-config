@@ -34,9 +34,7 @@ fignvim.core.module.register_plugins({
 
   -- General Editing
   "undotree",
-  "refactoring",
   "easyalign",
-  "ssr",
   "treesj",
   "dial",
   "autopairs",

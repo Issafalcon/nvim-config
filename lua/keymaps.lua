@@ -305,6 +305,14 @@ M.Editing = {
     end,
     { desc = "Search and Replace" },
   },
+  Refactor = {
+    { "n", "v" },
+    "<leader>R",
+    function()
+      require("telescope").extensions.refactoring.refactors()
+    end,
+    { desc = "Refactor Actions" },
+  },
 }
 
 M.UI = {
@@ -322,7 +330,7 @@ M.UI = {
     "<cmd>Yazi cwd<cr>",
     {
       desc = "Open the file manager in nvim's working directory",
-    }
+    },
   },
   ResumeLastFileManagerSession = {
     "n",
@@ -330,7 +338,7 @@ M.UI = {
     "<cmd>Yazi toggle<cr>",
     {
       desc = "Resume the last yazi session",
-    }
+    },
   },
 }
 
