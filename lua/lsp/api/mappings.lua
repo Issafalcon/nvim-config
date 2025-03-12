@@ -4,7 +4,12 @@ fignvim.lsp.mappings = {}
 fignvim.lsp.mappings.on_attach = function(client, bufnr)
   local capabilities = client.server_capabilities
   local client_name = client.name
-  fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr, false)
+
+  if client_name == "roslyn.nvim" then
+    fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr, true)
+  else
+    fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr, false)
+  end
 end
 
 --- Sets buffer mappings for the given client, if the client supports them.
