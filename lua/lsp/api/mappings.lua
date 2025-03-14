@@ -1,7 +1,7 @@
 ---@diagnostic disable: missing-parameter
 fignvim.lsp.mappings = {}
 
-fignvim.lsp.mappings.on_attach = function(client, bufnr)
+function fignvim.lsp.mappings.on_attach(client, bufnr)
   local capabilities = client.server_capabilities
   local client_name = client.name
 

@@ -18,7 +18,7 @@ function fignvim.lsp.capabilities.create_capabilities(opts)
   return capabilities
 end
 
-fignvim.lsp.capabilities.setup_capability_registration_handler = function()
+function fignvim.lsp.capabilities.setup_capability_registration_handler()
   local register_capability = vim.lsp.handlers["client/registerCapability"]
   vim.lsp.handlers["client/registerCapability"] = function(err, res, ctx)
     ---@diagnostic disable-next-line: no-unknown
@@ -39,7 +39,7 @@ end
 
 ---@param fn fun(client:vim.lsp.Client, buffer):boolean?
 ---@param opts? {group?: integer}
-fignvim.lsp.capabilities.on_dynamic_capability = function(fn, opts)
+function fignvim.lsp.capabilities.on_dynamic_capability(fn, opts)
   return vim.api.nvim_create_autocmd("User", {
     pattern = "LspDynamicCapability",
     group = opts and opts.group or nil,

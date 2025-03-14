@@ -12,7 +12,7 @@ require("lsp.api.code-action")
 
 ---@param on_attach fun(client:vim.lsp.Client, buffer)
 ---@param name? string
-fignvim.lsp.on_attach = function(on_attach, name)
+function fignvim.lsp.on_attach(on_attach, name)
   return vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
       local buffer = args.buf ---@type number
@@ -26,7 +26,7 @@ end
 
 ---@param method string
 ---@param fn fun(client:vim.lsp.Client, buffer)
-fignvim.lsp.on_supports_method = function(method, fn)
+function fignvim.lsp.on_supports_method(method, fn)
   fignvim.lsp.supports_method[method] = fignvim.lsp.supports_method[method] or setmetatable({}, { __mode = "k" })
   return vim.api.nvim_create_autocmd("User", {
     pattern = "LspSupportsMethod",
@@ -40,7 +40,7 @@ fignvim.lsp.on_supports_method = function(method, fn)
   })
 end
 ---@param client vim.lsp.Client
-fignvim.lsp.check_methods = function(client, buffer)
+function fignvim.lsp.check_methods(client, buffer)
   -- don't trigger on invalid buffers
   if not vim.api.nvim_buf_is_valid(buffer) then
     return
@@ -69,7 +69,7 @@ end
 
 ---Setup LSP
 ---@param opts PluginLspOpts
-fignvim.lsp.setup = function(opts)
+function fignvim.lsp.setup(opts)
   local client_capabilities = fignvim.lsp.capabilities.create_capabilities(opts)
 
   -- 1. Register our LSP formatter

@@ -14,7 +14,7 @@ function fignvim.lsp.formatting.get_formatter(opts)
     primary = true,
     priority = 1,
     format = function(buf)
-      fignvim.lsp.servers.format(fignvim.table.merge({}, filter, { bufnr = buf }))
+      fignvim.lsp.formatting.format(fignvim.table.merge({}, filter, { bufnr = buf }))
     end,
     sources = function(buf)
       local clients = vim.lsp.get_clients(fignvim.table.merge({}, filter, { bufnr = buf }))

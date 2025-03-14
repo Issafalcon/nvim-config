@@ -1,7 +1,6 @@
 -- Get all the required Fignvim API functions and commands required for setupinit
 for _, source in ipairs({
   "api",
-  -- "lsp",
   "core",
 }) do
   local status_ok, fault = pcall(require, source)
@@ -166,3 +165,6 @@ fignvim.plug.setup_lazy_plugins()
 -- 6. Create mappings
 vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { silent = true }) -- Prep for space to be leader key
 fignvim.mappings.create_core_mappings()
+
+-- 7. Setup formatters
+fignvim.formatting.setup()

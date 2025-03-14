@@ -160,7 +160,7 @@ M.Lsp = {
   ToggleAutoFormatOnSave = {
     "n",
     "<leader>taf",
-    fignvim.ui.toggle_autoformat,
+    fignvim.formatting.toggle,
     { desc = "Toggle autoformatting on save" },
   },
   DiagnosticsNext = {

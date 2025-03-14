@@ -67,3 +67,5 @@ function fignvim.ui.notifications.warn(msg, opts)
   opts.level = vim.log.levels.WARN
   fignvim.ui.notifications.notify(msg, opts)
 end
+
+return fignvim.ui.notifications

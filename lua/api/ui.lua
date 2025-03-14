@@ -1,9 +1,5 @@
 fignvim.ui = {}
 
-local bool2str = function(bool)
-  return bool and "on" or "off"
-end
-
 --- Initialize icons used throughout the user interface
 function fignvim.ui.initialize_icons()
   fignvim.ui.icons = require("core.icons.nerd_font")
@@ -89,14 +85,6 @@ function fignvim.ui.toggle_fix_list(global)
       vim.cmd("lopen")
     end
   end
-end
-
---- Toggle auto format
-function fignvim.ui.toggle_autoformat()
-  vim.g.autoformat_enabled = not vim.g.autoformat_enabled
-  fignvim.ui.notify(
-    string.format("Autoformatting %s", bool2str(vim.g.autoformat_enabled))
-  )
 end
 
 --- Get highlight properties for a given highlight name

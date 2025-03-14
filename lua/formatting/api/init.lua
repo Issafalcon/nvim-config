@@ -10,7 +10,7 @@ fignvim.formatting = {}
 ---@type FigNvimFormatter[]
 fignvim.formatting.formatters = {}
 
-fignvim.formatting.setup = function()
+function fignvim.formatting.setup()
   -- Autoformat autocmd
   vim.api.nvim_create_autocmd("BufWritePre", {
     group = vim.api.nvim_create_augroup("FigNvimFormat", {}),
@@ -31,7 +31,7 @@ fignvim.formatting.setup = function()
 end
 
 ---@param formatter FigNvimFormatter
-fignvim.formatting.register = function(formatter)
+function fignvim.formatting.register(formatter)
   fignvim.formatting.formatters[#fignvim.formatting.formatters + 1] = formatter
   table.sort(fignvim.formatting.formatters, function(a, b)
     return a.priority > b.priority
