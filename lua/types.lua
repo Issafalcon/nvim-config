@@ -2,3 +2,4 @@
 ---@field setup? fun() Calls the setup function for the plugin. Compatible for most plugin managers
 ---@field lazy_init? fun(self?: LazyPlugin) Lazy specific init function for the plugin
 ---@field lazy_opts? table Lazy specific options table for the plugin
+---@field lazy_config? fun(self?: LazyPlugin, opts?: table) Lazy specific config function for the plugin

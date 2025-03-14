@@ -33,10 +33,8 @@ fignvim.core.module.register_plugins({
 
   -- General Editing
   "undotree",
-  "easyalign",
   "treesj",
   "dial",
-  "autopairs",
   "nvim-surround",
   "vim-unimpaired",
   "comment",
