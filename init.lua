@@ -20,6 +20,7 @@ fignvim.core.module.register_modules({
   "lsp",
   "ai",
   "documentation",
+  "treesitter",
 })
 
 fignvim.core.module.register_plugins({
@@ -57,8 +58,6 @@ fignvim.core.module.register_plugins({
   -- Completions and Snippets
   "copilot-chat",
   "luasnip",
-  -- Treesitter
-  "treesitter", -- Loads treesitter-related plugins as well
   "aerial",
 
   -- Navigation

@@ -1,13 +1,15 @@
 -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-align.md
 
+local keys = require("keymaps").Editing
+
 ---@type FigNvimPluginConfig
 local M = {}
 
 M.lazy_opts = {
   -- Module mappings. Use `''` (empty string) to disable one.
   mappings = {
-    start = "<leader>ga",
-    start_with_preview = "<leader>gA",
+    start = keys.Align,
+    start_with_preview = keys.AlignWithPreview,
   },
 
   -- Default options controlling alignment process

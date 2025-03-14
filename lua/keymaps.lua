@@ -313,6 +313,8 @@ M.Editing = {
     end,
     { desc = "Refactor Actions" },
   },
+  Align = "<leader>ga",
+  AlignWithPreview = "<leader>gA",
 }
 
 M.UI = {
