@@ -105,6 +105,41 @@ M.Completion = {
   AcceptCopilotSuggestion = "<C-x>",
   SuperTab = "<Tab>",
   SuperTabBack = "<S-Tab>",
+
+  --- Snippets
+  ToggleNextSnippetChoice = {
+    { "i", "s" },
+    "<C-l>",
+    function()
+      local ls = require("luasnip")
+      if ls.choice_active() then
+        ls.change_choice()
+      end
+    end,
+    { desc = "Toggle the next choice in the LuaSnip snippet" },
+  },
+  ExpandSnippetOrJump = {
+    { "i", "s" },
+    "<C-k>",
+    function()
+      local ls = require("luasnip")
+      if ls.expand_or_jumpable() then
+        ls.expand_or_jump()
+      end
+    end,
+    { desc = "Expand the snippet under the cursor or jump to next snippet placeholder" },
+  },
+  PreviousSnippetPlaceholder = {
+    { "i", "s" },
+    "<C-j>",
+    function()
+      local ls = require("luasnip")
+      if ls.jumpable(-1) then
+        ls.jump(-1)
+      end
+    end,
+    { desc = "Jump to the previous snippet placeholder" },
+  },
 }
 
 M.Annotations = {

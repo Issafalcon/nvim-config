@@ -1,3 +1,4 @@
+-- https://github.com/stevearc/conform.nvim
 ---@type FigNvimPluginConfig
 local M = {}
 
@@ -38,7 +39,7 @@ local get_opts = function()
     formatters = {
       injected = { options = { ignore_errors = true } },
       prettier = function(_, ctx)
-        return fignvim.formatting.has_parser(ctx, prettier_filetpyes)
+        return ctx ~= nil and fignvim.formatting.has_parser(ctx, prettier_filetpyes)
       end,
     },
   }

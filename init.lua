@@ -57,7 +57,6 @@ fignvim.core.module.register_plugins({
 
   -- Completions and Snippets
   "copilot-chat",
-  "luasnip",
   "aerial",
 
   -- Navigation
