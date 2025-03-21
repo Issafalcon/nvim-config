@@ -2,7 +2,6 @@
 local M = {}
 
 M.lazy_opts = {
-  runtime = vim.env.VIMRUNTIME --[[@as string]],
   library = {
     -- See the configuration section for more details
     -- Load luvit types when the `vim.uv` word is found
@@ -17,6 +16,7 @@ M.lazy_opts = {
     -- `require "modname"`
     -- `---@module "modname"`
     cmp = true,
+    coq = false,
   },
 }
 
