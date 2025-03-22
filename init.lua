@@ -21,6 +21,7 @@ fignvim.core.module.register_modules({
   "ai",
   "documentation",
   "treesitter",
+  "misc",
 })
 
 fignvim.core.module.register_plugins({

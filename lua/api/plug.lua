@@ -86,4 +86,17 @@ function fignvim.plug.setup_lazy_plugins()
   end
 end
 
+---@param name string
+---@param path string?
+function fignvim.plug.get_plugin_path(name, path)
+  local plugin = fignvim.plug.get_plugin(name)
+  path = path and "/" .. path or ""
+  return plugin and (plugin.dir .. path)
+end
+
+---@param plugin string
+function fignvim.plug.has(plugin)
+  return fignvim.plug.get_plugin(plugin) ~= nil
+end
+
 return fignvim.plug

@@ -32,7 +32,7 @@ return {
   ---@type LazySpec
   {
     "mikavilpas/yazi.nvim",
-    dependencies = { "folke/snacks.nvim", lazy = true },
+    dependencies = { "snacks.nvim" },
     event = "VeryLazy",
     keys = fignvim.mappings.make_lazy_keymaps({
       keymaps.OpenTerminalFileManager,
