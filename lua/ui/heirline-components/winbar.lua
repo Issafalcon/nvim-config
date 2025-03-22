@@ -1,7 +1,7 @@
 local conditions = require("heirline.conditions")
-local space_component = require("heirline-components.space-component")
-local terminal_name_component = require("heirline-components.terminal-name-component")
-local filename_component = require("heirline-components.filename")
+local space_component = require("ui.heirline-components.space-component")
+local terminal_name_component = require("ui.heirline-components.terminal-name-component")
+local filename_component = require("ui.heirline-components.filename")
 
 local WinBars = {
   fallthrough = false,

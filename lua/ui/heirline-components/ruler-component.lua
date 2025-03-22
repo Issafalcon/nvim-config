@@ -1,4 +1,4 @@
-local surrounds = require("heirline-components.surrounds")
+local surrounds = require("ui.heirline-components.surrounds")
 
 local Ruler = {
   -- %l = current line number

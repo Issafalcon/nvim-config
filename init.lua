@@ -43,7 +43,6 @@ fignvim.core.module.register_plugins({
 
   -- UI
   "notify",
-  "heirline",
   "dressing",
   "colorizer",
   "maximizer",

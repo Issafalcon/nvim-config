@@ -52,14 +52,27 @@ end
 function fignvim.mappings.make_lazy_keymaps(mappings, perform_bind)
   local lazy_keys = {}
   for _, map in pairs(mappings) do
-    table.insert(
-      lazy_keys,
-      vim.tbl_deep_extend("force", {
-        map[2],
-        perform_bind and map[3] or nil,
-        mode = map[1],
-      }, map[4] or {})
-    )
+    if type(map[2]) == "table" then
+      for _, key in ipairs(map[2]) do
+        table.insert(
+          lazy_keys,
+          vim.tbl_deep_extend("force", {
+            key,
+            perform_bind and map[3] or nil,
+            mode = map[1],
+          }, map[4] or {})
+        )
+      end
+    else
+      table.insert(
+        lazy_keys,
+        vim.tbl_deep_extend("force", {
+          map[2],
+          perform_bind and map[3] or nil,
+          mode = map[1],
+        }, map[4] or {})
+      )
+    end
   end
 
   return lazy_keys

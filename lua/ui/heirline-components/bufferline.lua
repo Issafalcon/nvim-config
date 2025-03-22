@@ -133,7 +133,7 @@ local TablineFileNameBlock = {
     name = "heirline_tabline_buffer_callback",
   },
   TablineBufnr,
-  require("heirline-components.file_icon"), -- turns out the version defined in #crash-course-part-ii-filename-and-friends can be reutilized as is here!
+  require("ui.heirline-components.file_icon"), -- turns out the version defined in #crash-course-part-ii-filename-and-friends can be reutilized as is here!
   TablineFileName,
   TablineFileFlags,
 }
