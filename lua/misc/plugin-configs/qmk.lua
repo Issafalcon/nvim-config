@@ -2,7 +2,7 @@
 local M = {}
 
 M.lazy_opts = {
-  name = "LAYOUT_sofle_rgb_issafalcon",
+  name = "LAYOUT_split_4x6_5",
   layout = {
     "x x x x x x _ _ _ _ _ x x x x x x",
     "x x x x x x _ _ _ _ _ x x x x x x",
