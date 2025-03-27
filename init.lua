@@ -141,6 +141,12 @@ fignvim.core.module.register_plugins({
 
 if vim.fn.isdirectory(vim.fn.expand("$PROJECTS/neosharper.nvim")) == 1 then
   fignvim.core.module.register_plugins({
+    "neosharper-nvim",
+  })
+end
+
+if vim.fn.isdirectory(vim.fn.expand("$PROJECTS/neosharper")) == 1 then
+  fignvim.core.module.register_plugins({
     "neosharper",
   })
 end
