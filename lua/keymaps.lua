@@ -71,7 +71,14 @@ M.Core.Editing = {
 M.Core.Navigation = {
   MoveNextBuffer = { "n", "<S-l>", ":bnext<CR>", { desc = "Move to next buffer" } },
   MovePreviousBuffer = { "n", "<S-h>", ":bprevious<CR>", { desc = "Move to previous buffer" } },
-  CloseCurrentBuffer = { "n", "<C-x>", ":bdelete<CR>", { desc = "Close current buffer" } },
+  CloseCurrentBuffer = {
+    "n",
+    "<C-o>",
+    function()
+      Snacks.bufdelete()
+    end,
+    { desc = "Close current buffer" },
+  },
   ToggleLineNumbers = {
     "n",
     "<leader>l",
