@@ -73,7 +73,7 @@ M.Core.Navigation = {
   MovePreviousBuffer = { "n", "<S-h>", ":bprevious<CR>", { desc = "Move to previous buffer" } },
   CloseCurrentBuffer = {
     "n",
-    "<C-o>",
+    "<leader>bd",
     function()
       Snacks.bufdelete()
     end,
