@@ -27,15 +27,9 @@ vim.g.dotnet_get_dll_path = function()
       return string.format("dll = %s", dll.short_path)
     end
     local procs = {}
-    for _, csprojPath in
-      ipairs(vim.fn.glob(vim.fn.getcwd() .. "**/*.csproj", false, true))
-    do
+    for _, csprojPath in ipairs(vim.fn.glob(vim.fn.getcwd() .. "**/*.csproj", false, true)) do
       local name = vim.fn.fnamemodify(csprojPath, ":t:r")
-      for _, path in
-        ipairs(
-          vim.fn.glob(vim.fn.getcwd() .. "**/bin/**/" .. name .. ".dll", false, true)
-        )
-      do
+      for _, path in ipairs(vim.fn.glob(vim.fn.getcwd() .. "**/bin/**/" .. name .. ".dll", false, true)) do
         table.insert(procs, {
           path = path,
           short_path = vim.fn.fnamemodify(path, ":p:."),
@@ -54,11 +48,7 @@ vim.g.dotnet_get_dll_path = function()
     vim.g["dotnet_last_dll_path"] = request()
   else
     if
-      vim.fn.confirm(
-        "Do you want to change the path to dll?\n" .. vim.g["dotnet_last_dll_path"],
-        "&yes\n&no",
-        2
-      ) == 1
+      vim.fn.confirm("Do you want to change the path to dll?\n" .. vim.g["dotnet_last_dll_path"], "&yes\n&no", 2) == 1
     then
       vim.g["dotnet_last_dll_path"] = request()
     end
@@ -175,6 +165,7 @@ M.sh = {
     type = "bashdb",
     name = "launch - bashDebug",
     program = "${file}",
+    file = "${file}",
     request = "launch",
     env = {},
     cwd = "${workspaceFolder}",

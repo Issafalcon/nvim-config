@@ -136,25 +136,15 @@ return {
         dap.defaults.fallback.terminal_win_cmd = "80vsplit new"
 
         -- dap.set_log_level("TRACE") -- Verbose logging
-        vim.fn.sign_define(
-          "DapBreakpoint",
-          { text = "👊", texthl = "", linehl = "", numhl = "" }
-        )
-        vim.fn.sign_define(
-          "DapBreakpointRejected",
-          { text = "✋", texthl = "", linehl = "", numhl = "" }
-        )
-        vim.fn.sign_define(
-          "DapStopped",
-          { text = "👉", texthl = "", linehl = "", numhl = "" }
-        )
+        vim.fn.sign_define("DapBreakpoint", { text = "👊", texthl = "", linehl = "", numhl = "" })
+        vim.fn.sign_define("DapBreakpointRejected", { text = "✋", texthl = "", linehl = "", numhl = "" })
+        vim.fn.sign_define("DapStopped", { text = "👉", texthl = "", linehl = "", numhl = "" })
 
         -- Adapters
         local netcoredbg_install_dir
 
         if vim.fn.has("win32") == 1 then
-          netcoredbg_install_dir = install_dir
-            .. "/packages/netcoredbg/netcoredbg/netcoredbg.exe"
+          netcoredbg_install_dir = install_dir .. "/packages/netcoredbg/netcoredbg/netcoredbg.exe"
         else
           netcoredbg_install_dir = install_dir .. "/packages/netcoredbg/netcoredbg"
         end
@@ -167,10 +157,8 @@ return {
 
         dap.adapters.bashdb = {
           type = "executable",
-          command = "node",
-          args = {
-            install_dir .. "/packages/bash-debug-adapter/extension/out/bashDebug.js",
-          },
+          command = install_dir .. "/packages/bash-debug-adapter/bash-debug-adapter",
+          name = "bashdb",
         }
 
         dap.adapters.nlua = function(callback, config)
