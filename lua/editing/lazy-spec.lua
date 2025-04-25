@@ -3,6 +3,7 @@ local grugfar_config = require("editing.plugin-config.grug-far")
 local refactoring_config = require("editing.plugin-config.refactoring")
 local mini_align_config = require("editing.plugin-config.mini-align")
 local mini_pairs_config = require("editing.plugin-config.mini-pairs")
+local cutlass_config = require("editing.plugin-config.cutlass")
 
 return {
   -- General editing tools
@@ -51,5 +52,14 @@ return {
       require("refactoring").setup(opts)
       require("telescope").load_extension("refactoring")
     end,
+  },
+
+  -- Cut and paste
+  {
+    {
+      "gbprod/cutlass.nvim",
+      lazy = false,
+      opts = cutlass_config.lazy_opts,
+    },
   },
 }

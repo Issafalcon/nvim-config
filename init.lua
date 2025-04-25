@@ -1,4 +1,4 @@
--- Get all the required Fignvim API functions and commands required for setupinit
+-- Get all the required Fignvim API functions and commands required for setupinitinit
 for _, source in ipairs({
   "api",
   "core",
@@ -67,7 +67,6 @@ fignvim.core.module.register_plugins({
   "nvim-navic", -- https://github.com/SmiteshP/nvim-navic
 
   -- Cut and paste
-  "cutlass",
   -- "yanky"  - Performance is an issue when using this plugin. Pastes / yanks are slow
 
   -- Search and replace
