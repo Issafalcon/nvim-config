@@ -35,6 +35,7 @@ local get_opts = function()
       fish = { "fish_indent" },
       sh = { "shfmt" },
       python = { "black" },
+      c = { "clang_format" },
     },
     formatters = {
       injected = { options = { ignore_errors = true } },

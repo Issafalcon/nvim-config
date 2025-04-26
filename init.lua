@@ -17,6 +17,7 @@ fignvim.core.module.register_modules({
   "ui",
   "completion",
   "formatting",
+  "linting",
   "lsp",
   "ai",
   "documentation",
@@ -50,7 +51,6 @@ fignvim.core.module.register_plugins({
   "transparent",
 
   -- LSP
-  "none-ls",
   "lsp-overloads",
   "lsp-progress",
   "schemastore",
