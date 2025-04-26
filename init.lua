@@ -22,6 +22,7 @@ fignvim.core.module.register_modules({
   "ai",
   "documentation",
   "treesitter",
+  "git",
   "misc",
 })
 
@@ -78,7 +79,6 @@ fignvim.core.module.register_plugins({
   "trouble",
 
   -- Git
-  "gitsigns",
   "diffview",
   "git-messenger",
   "octo",

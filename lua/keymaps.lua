@@ -399,4 +399,126 @@ M.UI = {
   MoveBufNext = { "n", "]B", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" },
 }
 
+M.GitSigns = {
+  NextHunk = {
+    "n",
+    "]c",
+    function()
+      fignvim.git.gitsigns.next_hunk()
+    end,
+    {
+      desc = "Gitsigns: Next hunk",
+      noremap = true,
+      silent = true,
+      buffer = true,
+      expr = true,
+    },
+  },
+  PrevHunk = {
+    "n",
+    "[c",
+    function()
+      fignvim.git.gitsigns.prev_hunk()
+    end,
+    { desc = "Gitsigns: Previous hunk", silent = true, buffer = true, expr = true },
+  },
+  StageHunk = {
+    { "v", "n" },
+    "<leader>hs",
+    ":Gitsigns stage_hunk<CR>",
+    { desc = "Gitsigns: Stage hunk", silent = true, buffer = true },
+  },
+  UndoStageHunk = {
+
+    "n",
+    "<leader>hu",
+    "<cmd>Gitsigns undo_stage_hunk<CR>",
+    {
+      desc = "Gitsigns: Undo the last hunk or buffer staging command",
+      silent = true,
+      buffer = true,
+    },
+  },
+  ResetHunk = {
+    { "v", "n" },
+    "<leader>hr",
+    ":Gitsigns reset_hunk<CR>",
+    { desc = "Gitsigns: Reset hunk", silent = true, buffer = true },
+  },
+  StageBuffer = {
+    "n",
+    "<leader>hS",
+    "<cmd>Gitsigns stage_buffer<CR>",
+    { desc = "Gitsigns: Stage buffer", silent = true, buffer = true },
+  },
+  ResetBuffer = {
+    "n",
+    "<leader>hR",
+    "<cmd>Gitsigns reset_buffer<CR>",
+    { desc = "Gitsigns: Reset the buffer", silent = true, buffer = true },
+  },
+  PreviewHunk = {
+    "n",
+    "<leader>hp",
+    "<cmd>Gitsigns preview_hunk<CR>",
+    {
+      desc = "Gitsigns: Preview the hunk in floating window",
+      silent = true,
+      buffer = true,
+    },
+  },
+  FullBlame = {
+    "n",
+    "<leader>hb",
+    "<cmd>lua require'gitsigns'.blame_line{full=true}<CR>",
+    {
+      desc = "Gitsigns: Show git blame of full change in floating window",
+      silent = true,
+      buffer = true,
+    },
+  },
+  ToggleBlameLine = {
+    "n",
+    "<leader>gB",
+    "<cmd>Gitsigns toggle_current_line_blame<CR>",
+    { desc = "Gitsigns: Toggle virtual text line blame", silent = true, buffer = true },
+  },
+  DiffIndex = {
+    "n",
+    "<leader>hd",
+    "<cmd>Gitsigns diffthis<CR>",
+    {
+      desc = "Gitsigns: Diff the current file against index",
+      silent = true,
+      buffer = true,
+    },
+  },
+  DiffMain = {
+    "n",
+    "<leader>hD",
+    "<cmd>Gitsigns diffthis('main')<CR>",
+    {
+      desc = "Gitsigns: Diff the current file against main",
+      silent = true,
+      buffer = true,
+    },
+  },
+  {
+    "n",
+    "<leader>gd",
+    "<cmd>Gitsigns toggle_deleted<CR>",
+    { desc = "Gitsigns: Toggle deleted lines in buffer", silent = true, buffer = true },
+  },
+  {
+    { "o", "x" },
+    "ih",
+    ":<C-U>Gitsigns select_hunk<CR>",
+    {
+      desc = "Gitsigns: Select the current hunk as a text object",
+      silent = true,
+      buffer = true,
+    },
+  },
+}
+
 return M

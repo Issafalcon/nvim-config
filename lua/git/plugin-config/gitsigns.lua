@@ -1,3 +1,5 @@
+local gitsigns_keymaps = require("keymaps").GitSigns
+
 ---@type FigNvimPluginConfig
 local M = {}
 
@@ -38,10 +40,17 @@ M.lazy_opts = {
     col = 1,
   },
   on_attach = function(bufnr)
-    -- for _, keymap in ipairs(gitsigns_mappings) do
-    --   local buf_specific_opts = fignvim.table.default_tbl({ buffer = bufnr }, keymap[4])
-    --   vim.keymap.set(keymap[1], keymap[2], keymap[3], buf_specific_opts)
-    -- end
+    for _, keymap in pairs(gitsigns_keymaps) do
+      local buf_specific_opts = fignvim.table.default_tbl({ buffer = bufnr }, keymap[4])
+      vim.keymap.set(keymap[1], keymap[2], keymap[3], buf_specific_opts)
+    end
   end,
 }
+
+M.lazy_config = function(_, opts)
+  local gitsigns = require("gitsigns")
+  gitsigns.setup(opts)
+  fignvim.mappings.register_whichkey_prefix("<leader>h", "Git Signs Hunk")
+  fignvim.mappings.create_keymaps(gitsigns_keymaps)
+end
 return M
