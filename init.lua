@@ -5,7 +5,7 @@ for _, source in ipairs({
 }) do
   local status_ok, fault = pcall(require, source)
   if not status_ok then
-    vim.api.nvim_err_writeln("Failed to load " .. source .. "\n\n" .. fault)
+    vim.api.nvim_echo({ { "Failed to load " .. source .. "\n\n" .. fault } }, true, { err = true })
   end
 end
 
@@ -77,12 +77,6 @@ fignvim.core.module.register_plugins({
 
   -- Diagnostics
   "trouble",
-
-  -- Git
-  "diffview",
-  "git-messenger",
-  "octo",
-  "gh-actions",
 
   -- Session management
   "auto-session",
