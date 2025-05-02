@@ -524,10 +524,18 @@ M.Git = {
     "<leader>lg",
     function()
       Snacks.lazygit()
-      -- fignvim.term.toggle_term_cmd("lazygit")
     end,
     { desc = "ToggleTerm with lazygit" },
   },
+  ToggleGitBrowse = {
+    "n",
+    "<leader>gb",
+    function()
+      Snacks.gitbrowse()
+    end,
+    { desc = "ToggleTerm with gitbrowse" },
+  },
 }
 
+M.Terminal = {}
 return M

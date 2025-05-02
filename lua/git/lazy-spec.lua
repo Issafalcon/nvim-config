@@ -1,6 +1,7 @@
 local gitsign_config = require("git.plugin-config.gitsigns")
 local octo_config = require("git.plugin-config.octo")
 local pipeline_config = require("git.plugin-config.pipeline")
+local git_messenger_config = require("git.plugin-config.git-messenger")
 
 return {
   {
@@ -42,5 +43,11 @@ return {
     -- optional, you can also install and use `yq` instead.
     build = "make",
     opts = pipeline_config.lazy_opts,
+  },
+
+  {
+    "rhysd/git-messenger.vim",
+    event = "VeryLazy",
+    init = git_messenger_config.lazy_init,
   },
 }

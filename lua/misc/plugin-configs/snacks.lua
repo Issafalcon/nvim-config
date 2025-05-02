@@ -3,6 +3,10 @@ local M = {}
 
 M.lazy_opts = {
   image = { enabled = true },
+  scroll = { enabled = true },
+  lazygit = { enabled = true },
+  gitbrowse = { enabled = true },
+  styles = { enabled = false },
   bigfile = { enabled = false },
   dashboard = { enabled = false },
   explorer = { enabled = false },
@@ -12,11 +16,9 @@ M.lazy_opts = {
   notifier = { enabled = false },
   quickfile = { enabled = false },
   scope = { enabled = false },
-  scroll = { enabled = false },
   statuscolumn = { enabled = false },
   words = { enabled = false },
   terminal = { enabled = false },
-  lazygit = {},
 }
 
 M.lazy_config = function(_, opts)
