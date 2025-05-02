@@ -4,6 +4,7 @@ local refactoring_config = require("editing.plugin-config.refactoring")
 local mini_align_config = require("editing.plugin-config.mini-align")
 local mini_pairs_config = require("editing.plugin-config.mini-pairs")
 local cutlass_config = require("editing.plugin-config.cutlass")
+local matchup_config = require("editing.plugin-config.vim-matchup")
 
 return {
   -- General editing tools
@@ -22,6 +23,12 @@ return {
     event = "VeryLazy",
     opts = mini_pairs_config.lazy_opts,
     config = mini_pairs_config.lazy_config,
+  },
+
+  {
+    "andymass/vim-matchup",
+    event = "BufReadPost",
+    config = matchup_config.lazy_config,
   },
 
   -- Search and replace

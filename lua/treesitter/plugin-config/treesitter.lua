@@ -119,6 +119,9 @@ M.lazy_opts = {
       },
     },
   },
+  matchup = {
+    enable = true,
+  },
   playground = {
     enable = true,
     disable = {},
