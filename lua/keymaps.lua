@@ -397,22 +397,6 @@ M.UI = {
   NextBuffer = { "n", { "<S-l>", "]b" }, "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
   MoveBufPrev = { "n", "[B", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
   MoveBufNext = { "n", "]B", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" },
-  EdgyToggle = {
-    "n",
-    "<leader>ue",
-    function()
-      require("edgy").toggle()
-    end,
-    desc = "Edgy Toggle",
-  },
-  EdgySelectWindow = {
-    "n",
-    "<leader>uE",
-    function()
-      require("edgy").select()
-    end,
-    desc = "Edgy Select Window",
-  },
 }
 
 M.Git = {

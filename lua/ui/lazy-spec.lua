@@ -3,7 +3,6 @@ local catpuccin_colourscheme = require("ui.plugin-config.catppuccin")
 local yazi_config = require("ui.plugin-config.yazi")
 local heirline_config = require("ui.plugin-config.heirline")
 local bufferline_config = require("ui.plugin-config.bufferline")
-
 local keymaps = require("keymaps").UI
 
 return {
@@ -67,13 +66,5 @@ return {
     }, true),
     opts = bufferline_config.lazy_opts,
     config = bufferline_config.lazy_config,
-  },
-  {
-    "folke/edgy.nvim",
-    event = "VeryLazy",
-    keys = fignvim.mappings.make_lazy_keymaps({
-      keymaps.EdgySelectWindow,
-      keymaps.EdgyToggle,
-    }, true),
   },
 }

@@ -1,10 +1,4 @@
 local toggleterm_keys = {
-  -- {
-  --   "n",
-  --   "<leader>lg",
-  --   function() fignvim.term.toggle_term_cmd("lazygit") end,
-  --   { desc = "ToggleTerm with lazygit" },
-  -- },
   {
     "n",
     "<F7>n",
