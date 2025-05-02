@@ -6,7 +6,15 @@ M.lazy_opts = {
   scroll = { enabled = true },
   lazygit = { enabled = true },
   gitbrowse = { enabled = true },
-  styles = { enabled = false },
+  styles = {
+    styles = {
+      lazygit = {
+        border = "rounded",
+        width = 0.8,
+        height = 0.8,
+      },
+    },
+  },
   bigfile = { enabled = false },
   dashboard = { enabled = false },
   explorer = { enabled = false },

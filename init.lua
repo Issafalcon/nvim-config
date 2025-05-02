@@ -24,6 +24,7 @@ fignvim.core.module.register_modules({
   "treesitter",
   "git",
   "misc",
+  "dotnet",
 })
 
 fignvim.core.module.register_plugins({
@@ -114,8 +115,6 @@ fignvim.core.module.register_plugins({
   "vimtex",
 
   -- .NET
-  "omnisharp-extended-lsp",
-  "roslyn",
   "easy-dotnet",
   "nuget",
 

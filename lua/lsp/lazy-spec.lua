@@ -3,6 +3,7 @@ local lspconfig_config = require("lsp.plugin-config.nvim-lspconfig")
 local mason_config = require("lsp.plugin-config.mason")
 local mason_lspconfig_config = require("lsp.plugin-config.mason-lspconfig")
 local mason_tool_installer_config = require("lsp.plugin-config.mason-tool-installer")
+local workspace_diagnostics_config = require("lsp.plugin-config.workspace-diagnostics")
 
 return {
   {
@@ -46,5 +47,10 @@ return {
       },
     },
     opts = mason_config.lazy_opts,
+  },
+  {
+    "artemave/workspace-diagnostics.nvim",
+    event = "LspAttach",
+    config = workspace_diagnostics_config.lazy_config,
   },
 }

@@ -257,6 +257,14 @@ M.Lsp = {
     end,
     { desc = "Opens the default Code Action Window" },
   },
+  CodeLens = {
+    { "n", "v" },
+    "<leader>cl",
+    function()
+      vim.lsp.codelens.run()
+    end,
+    { desc = "Run the code lens" },
+  },
   GotoDeclaration = {
     "n",
     "gD",

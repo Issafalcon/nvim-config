@@ -27,6 +27,7 @@ function fignvim.lsp.mappings.set_buf_mappings(capabilities, client_name, bufnr,
   table.insert(lsp_keymaps, keymaps.ListDocumentSymbols)
   table.insert(lsp_keymaps, keymaps.ListWorkspaceSymbols)
   table.insert(lsp_keymaps, keymaps.ToggleInlayHints)
+  table.insert(lsp_keymaps, keymaps.CodeLens)
 
   if capabilities.codeActionProvider or force_mappings then
     table.insert(lsp_keymaps, keymaps.CodeActions)
