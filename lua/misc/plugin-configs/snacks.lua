@@ -15,6 +15,8 @@ M.lazy_opts = {
   scroll = { enabled = false },
   statuscolumn = { enabled = false },
   words = { enabled = false },
+  terminal = { enabled = false },
+  lazygit = {},
 }
 
 M.lazy_config = function(_, opts)

@@ -397,9 +397,25 @@ M.UI = {
   NextBuffer = { "n", { "<S-l>", "]b" }, "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
   MoveBufPrev = { "n", "[B", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
   MoveBufNext = { "n", "]B", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" },
+  EdgyToggle = {
+    "n",
+    "<leader>ue",
+    function()
+      require("edgy").toggle()
+    end,
+    desc = "Edgy Toggle",
+  },
+  EdgySelectWindow = {
+    "n",
+    "<leader>uE",
+    function()
+      require("edgy").select()
+    end,
+    desc = "Edgy Select Window",
+  },
 }
 
-M.GitSigns = {
+M.Git = {
   NextHunk = {
     "n",
     "]c",
@@ -503,13 +519,13 @@ M.GitSigns = {
       buffer = true,
     },
   },
-  {
+  ToggleDeleted = {
     "n",
     "<leader>gd",
     "<cmd>Gitsigns toggle_deleted<CR>",
     { desc = "Gitsigns: Toggle deleted lines in buffer", silent = true, buffer = true },
   },
-  {
+  SelectHunk = {
     { "o", "x" },
     "ih",
     ":<C-U>Gitsigns select_hunk<CR>",
@@ -518,6 +534,15 @@ M.GitSigns = {
       silent = true,
       buffer = true,
     },
+  },
+  ToggleLazygit = {
+    "n",
+    "<leader>lg",
+    function()
+      Snacks.lazygit()
+      -- fignvim.term.toggle_term_cmd("lazygit")
+    end,
+    { desc = "ToggleTerm with lazygit" },
   },
 }
 

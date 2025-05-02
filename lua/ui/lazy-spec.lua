@@ -68,4 +68,12 @@ return {
     opts = bufferline_config.lazy_opts,
     config = bufferline_config.lazy_config,
   },
+  {
+    "folke/edgy.nvim",
+    event = "VeryLazy",
+    keys = fignvim.mappings.make_lazy_keymaps({
+      keymaps.EdgySelectWindow,
+      keymaps.EdgyToggle,
+    }, true),
+  },
 }

@@ -22,7 +22,8 @@
   "dial.nvim": { "branch": "master", "commit": "2c7e2750372918f072a20f3cf754d845e143d7c9" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "dressing.nvim": { "branch": "master", "commit": "2d7c2db2507fa3c4956142ee607431ddb2828639" },
-  "easy-dotnet.nvim": { "branch": "main", "commit": "a56369eaa3de8950d35d6a74b585d250bb076105" },
+  "easy-dotnet.nvim": { "branch": "main", "commit": "f65f809d012c37db45069ac57d648ac1fb59c5b8" },
+  "edgy.nvim": { "branch": "main", "commit": "7e8dedc39abebe40c289b8012cc89b11c69aa7a0" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
   "fzf": { "branch": "master", "commit": "9c1a47acf7453f9dad5905b7f23ad06e5195d51f" },
   "git-messenger.vim": { "branch": "master", "commit": "edc603d4cda7894a743e383e16c638e206d03148" },
@@ -121,5 +122,5 @@
   "vscode-react": { "branch": "master", "commit": "9c54fbfbb4e299035439f32d63ed50fd70832fd5" },
   "vscode-svelte-snippets": { "branch": "master", "commit": "564ac3300bfeda01ff0bf6b89152cef43f85a4ce" },
   "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" },
-  "yazi.nvim": { "branch": "main", "commit": "df236eeb58b7a13d13364b7bd857487b4fe8c43b" }
+  "yazi.nvim": { "branch": "main", "commit": "64b8a4632dbde89e00303defac770e9f17117479" }
 }

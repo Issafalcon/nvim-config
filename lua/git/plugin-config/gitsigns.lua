@@ -1,4 +1,4 @@
-local gitsigns_keymaps = require("keymaps").GitSigns
+local gitsigns_keymaps = require("keymaps").Git
 
 ---@type FigNvimPluginConfig
 local M = {}

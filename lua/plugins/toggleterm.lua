@@ -1,20 +1,24 @@
 local toggleterm_keys = {
-  {
-    "n",
-    "<leader>lg",
-    function() fignvim.term.toggle_term_cmd("lazygit") end,
-    { desc = "ToggleTerm with lazygit" },
-  },
+  -- {
+  --   "n",
+  --   "<leader>lg",
+  --   function() fignvim.term.toggle_term_cmd("lazygit") end,
+  --   { desc = "ToggleTerm with lazygit" },
+  -- },
   {
     "n",
     "<F7>n",
-    function() fignvim.term.toggle_term_cmd("node") end,
+    function()
+      fignvim.term.toggle_term_cmd("node")
+    end,
     { desc = "ToggleTerm with Node" },
   },
   {
     "n",
     "<F7>p",
-    function() fignvim.term.toggle_term_cmd("python") end,
+    function()
+      fignvim.term.toggle_term_cmd("python")
+    end,
     { desc = "ToggleTerm with Python" },
   },
   {
@@ -53,7 +57,9 @@ return {
   {
     "akinsho/toggleterm.nvim",
     cmd = "ToggleTerm",
-    init = function() fignvim.mappings.register_whichkey_prefix("<F7>", "Terminal") end,
+    init = function()
+      fignvim.mappings.register_whichkey_prefix("<F7>", "Terminal")
+    end,
     keys = fignvim.mappings.make_lazy_keymaps(toggleterm_keys, true),
     opts = {
       size = 10,
