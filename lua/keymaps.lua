@@ -81,7 +81,7 @@ M.Core.Navigation = {
   },
   ToggleLineNumbers = {
     "n",
-    "<leader>l",
+    "<leader>ln",
     function()
       fignvim.ui.toggle_line_numbers()
     end,
