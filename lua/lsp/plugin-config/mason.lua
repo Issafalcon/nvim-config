@@ -3,6 +3,10 @@
 local M = {}
 
 M.lazy_opts = {
+  registries = {
+    "github:mason-org/mason-registry",
+    "github:Crashdummyy/mason-registry",
+  },
   providers = {
     "mason.providers.registry-api",
     "mason.providers.client",
