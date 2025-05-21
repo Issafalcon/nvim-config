@@ -1,6 +1,7 @@
 ---@type FigNvimPluginConfig
 local M = {}
 
+-- Currently unused as it breaks roslyn server
 M.lazy_config = function()
   vim.api.nvim_set_keymap("n", "<space>X", "", {
     noremap = true,

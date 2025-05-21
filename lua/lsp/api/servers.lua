@@ -43,7 +43,7 @@ function fignvim.lsp.servers.setup_lsp_servers(server_list, capabilities)
       if server == "roslyn.nvim" then
         require("roslyn").setup({
           config = {
-            -- filetypes = { "cs" },
+            filetypes = { "cs" },
             on_attach = fignvim.lsp.servers.on_attach,
             capabilities = capabilities,
             settings = {
@@ -65,10 +65,6 @@ function fignvim.lsp.servers.setup_lsp_servers(server_list, capabilities)
                 dotnet_enable_references_code_lens = true,
                 dotnet_enable_tests_code_lens = true,
               },
-              -- ["csharp|background_analysis"] = {
-              --   dotnet_analyzer_diagnostics_scope = "openFiles",
-              --   dotnet_compiler_diagnostics_scope = "fullSolution",
-              -- },
             },
           },
         })
