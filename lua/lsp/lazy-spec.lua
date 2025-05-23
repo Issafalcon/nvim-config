@@ -3,6 +3,7 @@ local lspconfig_config = require("lsp.plugin-config.nvim-lspconfig")
 local mason_config = require("lsp.plugin-config.mason")
 local mason_lspconfig_config = require("lsp.plugin-config.mason-lspconfig")
 local mason_tool_installer_config = require("lsp.plugin-config.mason-tool-installer")
+local lsp_progress_config = require("lsp.plugin-config.lsp-progress")
 
 return {
   {
@@ -46,5 +47,17 @@ return {
       },
     },
     opts = mason_config.lazy_opts,
+  },
+  {
+    "linrongbin16/lsp-progress.nvim",
+    config = lsp_progress_config.lazy_config,
+  },
+  {
+    "Issafalcon/lsp-overloads.nvim",
+    event = "BufReadPre",
+  },
+  {
+    "b0o/schemastore.nvim",
+    ft = "json",
   },
 }

@@ -546,4 +546,104 @@ M.Git = {
 }
 
 M.Terminal = {}
+
+M.Debugging = {
+  LaunchOneSmallStepForVimkindServer = {
+    "n",
+    "<F5>",
+    ':lua require"osv".launch({port=8086})<CR>',
+    { desc = "Launch OSV server" },
+  },
+  DebugContinue = {
+    "n",
+    "<F9>",
+    ':lua require"dap".continue()<CR>',
+    { desc = "DAP Continue" },
+  },
+  ToggleBreakpoint = {
+    "n",
+    "<leader>db",
+    '<cmd>lua require("persistent-breakpoints.api").toggle_breakpoint()<cr>',
+    { desc = "DAP Toggle Breakpoint" },
+  },
+  ToggleConditionalBreakpoint = {
+    "n",
+    "<leader>dB",
+    '<cmd>lua require("persistent-breakpoints.api").set_conditional_breakpoint()<cr>',
+    { desc = "DAP Toggle Conditional Breakpoint" },
+  },
+  SetExceptionBreakpoint = {
+    "n",
+    "<leader>de",
+    ':lua require"dap".set_exception_breakpoints()<CR>',
+    { desc = "DAP Set breakpoints on exceptions" },
+  },
+  ClearAllExceptionBreakpoints = {
+    "n",
+    "<leader>dbc",
+    '<cmd>lua require("persistent-breakpoints.api").clear_all_breakpoints()<cr>',
+    { desc = "DAP Clear all breakpoints on exceptions" },
+  },
+  DebugStepOut = {
+    "n",
+    "<leader>dk",
+    ':lua require"dap".step_out()<CR>',
+    { desc = "DAP Step Out" },
+  },
+  DebugStepInto = {
+    "n",
+    "<leader>dj",
+    ':lua require"dap".step_into()<CR>',
+    { desc = "DAP Step Into" },
+  },
+  DebugStepOver = {
+    "n",
+    "<leader>dl",
+    ':lua require"dap".step_over()<CR>',
+    { desc = "DAP Step Over" },
+  },
+  DebugPreviousStackFrame = {
+    "n",
+    "<leader>dp",
+    ':lua require"dap".up()<CR>',
+    { desc = "DAP Go up in current stacktrace without stepping" },
+  },
+  DebugNextStackFrame = {
+    "n",
+    "<leader>dn",
+    ':lua require"dap".down()<CR>',
+    { desc = "DAP Go down in current stacktrace without stepping" },
+  },
+  DebugDisconnectClient = {
+    "n",
+    "<leader>dc",
+    ':lua require"dap".disconnect();require"dap".close();require"dapui".close()<CR>',
+    { desc = "DAP Disconnect and close nvim-dap and dap-ui. Doesn't kill the debugee" },
+  },
+  DebugKillSession = {
+    "n",
+    "<leader>dC",
+    ':lua require"dap".terminate();require"dap".close()<CR>',
+    { desc = "DAP Terminates the debug session}, also killing the debugee" },
+  },
+  DebugHoverInfo = {
+    "n",
+    "<F12>",
+    ':lua require"dap.ui.widgets".hover()<CR>',
+    { desc = "DAP Hover info for variables" },
+  },
+  DebugShowScopes = {
+    "n",
+    "<leader>d?",
+    ':lua local widgets = require"dap.ui.widgets";widgets.centered_float(widgets.scopes)<CR>',
+    { desc = "DAP Show scopes in sidebar" },
+  },
+  DebugOpenReplInVsplit = {
+    "n",
+    "<leader>dr",
+    ':lua require"dap".repl.open({}, "vsplit")<CR><C-w>l',
+    { desc = "DAP Opens repl in vsplit" },
+  },
+}
+
 return M

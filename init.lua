@@ -25,6 +25,7 @@ fignvim.core.module.register_modules({
   "git",
   "misc",
   "dotnet",
+  "debugging",
 })
 
 fignvim.core.module.register_plugins({
@@ -51,11 +52,6 @@ fignvim.core.module.register_plugins({
   "colorizer",
   "maximizer",
   "transparent",
-
-  -- LSP
-  "lsp-overloads",
-  "lsp-progress",
-  "schemastore",
 
   -- Completions and Snippets
   "copilot-chat",
@@ -84,11 +80,6 @@ fignvim.core.module.register_plugins({
 
   -- Terminal
   "toggleterm",
-
-  -- Debugging
-  "dap",
-  "dap-ui",
-  "dap-virtual-text",
 
   -- Documenting
   "plantuml",
