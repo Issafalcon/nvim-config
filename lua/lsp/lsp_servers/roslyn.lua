@@ -22,3 +22,5 @@ M.opts = {
     },
   },
 }
+
+return M

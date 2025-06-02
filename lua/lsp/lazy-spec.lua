@@ -17,6 +17,7 @@ return {
     "neovim/nvim-lspconfig",
     event = "BufReadPre",
     dependencies = {
+      "roslyn.nvim",
       "lazydev.nvim",
       "lsp-overloads.nvim",
       -- LSP Completion sources
