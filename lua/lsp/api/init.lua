@@ -154,9 +154,7 @@ function fignvim.lsp.setup(opts)
     "ts_ls",
     "lua_ls",
     "texlab",
-    -- "omnisharp",
     "roslyn.nvim", -- Not directly language server - See https://github.com/jmederosalvarado/roslyn.nvim
-    -- "csharp_ls",
     "terraformls",
     "stylelint_lsp",
     "emmet_ls",
@@ -176,6 +174,5 @@ function fignvim.lsp.setup(opts)
     "pyright",
     "tailwindcss",
     "helm_ls",
-    -- "ruff_lsp",
   }, client_capabilities)
 end
