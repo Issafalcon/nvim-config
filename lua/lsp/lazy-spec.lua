@@ -19,11 +19,6 @@ return {
     dependencies = {
       "lazydev.nvim",
       "lsp-overloads.nvim",
-      "mason.nvim",
-      {
-        "mason-org/mason-lspconfig.nvim",
-        opts = mason_lspconfig_config.lazy_opts,
-      },
       -- LSP Completion sources
       "hrsh7th/cmp-nvim-lsp",
       -- Typescript LSP Enhancements
@@ -36,6 +31,14 @@ return {
   },
 
   -- Enhancements for Mason for autoinstallation of LSP servers
+  {
+    "mason-org/mason-lspconfig.nvim",
+    opts = mason_lspconfig_config.lazy_opts,
+    dependencies = {
+      "mason.nvim",
+      "nvim-lspconfig",
+    },
+  },
 
   {
     "mason-org/mason.nvim",
