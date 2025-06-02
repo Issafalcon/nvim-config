@@ -58,7 +58,7 @@ end
 M.lazy_opts = get_opts()
 
 M.setup = function()
-  fignvim.lsp.setup(M.lazy_opts)
+  fignvim.lsp.setup(M.lazy_opts())
 end
 
 return M

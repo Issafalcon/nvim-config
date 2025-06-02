@@ -51,6 +51,7 @@ return {
       },
     },
     opts = mason_config.lazy_opts,
+    config = mason_config.lazy_config,
   },
   {
     "linrongbin16/lsp-progress.nvim",
