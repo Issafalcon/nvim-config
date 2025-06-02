@@ -24,7 +24,10 @@ function fignvim.lsp.servers.setup(server, capabilities)
 
   fignvim.lsp.on_attach(opts.on_attach, server)
 
-  vim.lsp.enable(server)
+  if server ~= "roslyn" then
+    vim.lsp.enable(server)
+  end
+
   vim.lsp.config(server, opts)
 end
 

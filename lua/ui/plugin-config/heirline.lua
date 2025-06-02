@@ -22,7 +22,6 @@ M.lazy_config = function()
   local lspserver_component = require("ui.heirline-components.lspservers-component")
 
   local align_component = require("ui.heirline-components.align-component")
-  local breadcrumb_component = require("ui.heirline-components.breadcrumb-component")
   local winbars = require("ui.heirline-components.winbar")
 
   heirline.load_colors(colours.setup_colors())
@@ -42,8 +41,6 @@ M.lazy_config = function()
       workdir_component,
       surrounds.LeftSlantEnd,
 
-      align_component,
-      breadcrumb_component,
       align_component,
 
       {

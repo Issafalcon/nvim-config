@@ -20,10 +20,6 @@ M.lazy_opts = {
   },
 }
 
-M.lazy_config = function(_, opts)
-  require("mason").setup(opts)
-end
-
 M.setup = function()
   ---@diagnostic disable-next-line: param-type-mismatch
   require("mason").setup(M.lazy_opts)
