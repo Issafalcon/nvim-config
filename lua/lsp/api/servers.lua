@@ -24,11 +24,8 @@ function fignvim.lsp.servers.setup(server, capabilities)
 
   fignvim.lsp.on_attach(opts.on_attach, server)
 
-  if server ~= "roslyn" then
-    vim.lsp.enable(server)
-  end
-
   vim.lsp.config(server, opts)
+  vim.lsp.enable(server)
 end
 
 --- Get the server settings for a given language server to be provided to the server's `setup()` call

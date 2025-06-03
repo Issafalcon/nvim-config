@@ -1,6 +1,14 @@
 M = {}
 M.opts = {
   filetypes = { "cs" },
+  capabilities = {
+    -- HACK: Doesn't show any diagnostics if we do not set this to true
+    textDocument = {
+      diagnostic = {
+        dynamicRegistration = true,
+      },
+    },
+  },
   settings = {
     ["csharp|inlay_hints"] = {
       csharp_enable_inlay_hints_for_implicit_object_creation = true,

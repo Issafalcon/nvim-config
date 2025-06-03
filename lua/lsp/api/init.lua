@@ -154,7 +154,7 @@ function fignvim.lsp.setup(opts)
     "ts_ls",
     "lua_ls",
     "texlab",
-    "roslyn", -- Not directly language server - See https://github.com/jmederosalvarado/roslyn.nvim
+    "roslyn",
     "terraformls",
     "stylelint_lsp",
     "emmet_ls",
