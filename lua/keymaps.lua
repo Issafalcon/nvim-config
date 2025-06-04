@@ -545,6 +545,49 @@ M.Git = {
   },
 }
 
+M.Testing = {
+  ToggleNeotestSummary = {
+    "n",
+    "<leader>us",
+    function()
+      require("neotest").summary.toggle()
+    end,
+    { desc = "Neotest: Open test summary window" },
+  },
+  RunTestsInFile = {
+    "n",
+    "<leader>uf",
+    function()
+      require("neotest").run.run(vim.fn.expand("%"))
+    end,
+    { desc = "Neotest: Run tests in file" },
+  },
+  RunNearestTest = {
+    "n",
+    "<leader>un",
+    function()
+      require("neotest").run.run()
+    end,
+    { desc = "Neotest: Run nearest test" },
+  },
+  DebugNearestTest = {
+    "n",
+    "<leader>ud",
+    function()
+      require("neotest").run.run({ strategy = "dap" })
+    end,
+    { desc = "Neotest: Debug nearest test" },
+  },
+  RunAllTestsInSuite = {
+    "n",
+    "<leader>ua",
+    function()
+      require("neotest").run.run({ suite = true })
+    end,
+    { desc = "Neotest: Run all tests in suite" },
+  },
+}
+
 M.Terminal = {}
 
 M.Debugging = {

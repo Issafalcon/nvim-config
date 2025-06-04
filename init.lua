@@ -26,6 +26,7 @@ fignvim.core.module.register_modules({
   "misc",
   "dotnet",
   "debugging",
+  "testing",
 })
 
 fignvim.core.module.register_plugins({
@@ -94,9 +95,6 @@ fignvim.core.module.register_plugins({
 
   -- Colours
   "colorutils",
-
-  -- Testing
-  "neotest",
 
   -- Terraform
   "vim-terraform",

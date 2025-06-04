@@ -34,6 +34,9 @@ return {
   },
   {
     "rcarriga/nvim-dap-ui",
+    dependencies = {
+      "nvim-neotest/nvim-nio",
+    },
     opts = dap_ui_config.lazy_opts,
     config = dap_ui_config.lazy_config,
   },
