@@ -82,13 +82,6 @@ fignvim.core.module.register_plugins({
   -- Terminal
   "toggleterm",
 
-  -- Documenting
-  "plantuml",
-  "markdown-preview",
-  "render-markdown",
-  "obsidian",
-  "swagger-preview",
-
   -- Icons
   "nvim-web-devicons",
   "icon-picker",
