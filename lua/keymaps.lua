@@ -405,6 +405,14 @@ M.UI = {
   NextBuffer = { "n", { "<S-l>", "]b" }, "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
   MoveBufPrev = { "n", "[B", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
   MoveBufNext = { "n", "]B", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" },
+  DismissNotifications = {
+    "n",
+    "<leader>nd",
+    function()
+      require("notify").dismiss({ silent = true, pending = true })
+    end,
+    { desc = "Dismiss all notifications" },
+  },
 }
 
 M.Git = {

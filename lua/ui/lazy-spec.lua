@@ -5,6 +5,7 @@ local heirline_config = require("ui.plugin-config.heirline")
 local bufferline_config = require("ui.plugin-config.bufferline")
 local dressing_config = require("ui.plugin-config.dressing")
 local transparent_config = require("ui.plugin-config.transparent")
+local notify_config = require("ui.plugin-config.notify")
 local keymaps = require("keymaps").UI
 
 return {
@@ -81,5 +82,15 @@ return {
     "xiyaowong/transparent.nvim",
     lazy = false,
     opts = transparent_config.lazy_opts,
+  },
+
+  {
+    "rcarriga/nvim-notify",
+    event = "UIEnter",
+    keys = fignvim.mappings.make_lazy_keymaps({
+      keymaps.DismissNotifications,
+    }, true),
+    opts = notify_config.lazy_opts,
+    config = notify_config.lazy_config,
   },
 }

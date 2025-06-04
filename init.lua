@@ -48,7 +48,6 @@ fignvim.core.module.register_plugins({
   "indent-blankline",
 
   -- UI
-  "notify",
   "colorizer",
   "maximizer",
 
