@@ -49,10 +49,8 @@ fignvim.core.module.register_plugins({
 
   -- UI
   "notify",
-  "dressing",
   "colorizer",
   "maximizer",
-  "transparent",
 
   -- Completions and Snippets
   "copilot-chat",

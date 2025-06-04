@@ -3,6 +3,8 @@ local catpuccin_colourscheme = require("ui.plugin-config.catppuccin")
 local yazi_config = require("ui.plugin-config.yazi")
 local heirline_config = require("ui.plugin-config.heirline")
 local bufferline_config = require("ui.plugin-config.bufferline")
+local dressing_config = require("ui.plugin-config.dressing")
+local transparent_config = require("ui.plugin-config.transparent")
 local keymaps = require("keymaps").UI
 
 return {
@@ -66,5 +68,18 @@ return {
     }, true),
     opts = bufferline_config.lazy_opts,
     config = bufferline_config.lazy_config,
+  },
+
+  {
+    "stevearc/dressing.nvim",
+    event = "UIEnter",
+    init = dressing_config.lazy_init,
+    opts = dressing_config.lazy_opts,
+  },
+
+  {
+    "xiyaowong/transparent.nvim",
+    lazy = false,
+    opts = transparent_config.lazy_opts,
   },
 }
