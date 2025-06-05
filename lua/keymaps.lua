@@ -697,4 +697,8 @@ M.Debugging = {
   },
 }
 
+M.Navigation = {
+  ToggleLspOutline = { "n", "<leader>a", "<cmd>AerialToggle!<CR>", { desc = "Toggle LSP symbol outline panel" } },
+}
+
 return M

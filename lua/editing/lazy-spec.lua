@@ -5,6 +5,7 @@ local mini_align_config = require("editing.plugin-config.mini-align")
 local mini_pairs_config = require("editing.plugin-config.mini-pairs")
 local cutlass_config = require("editing.plugin-config.cutlass")
 local matchup_config = require("editing.plugin-config.vim-matchup")
+local bqf_config = require("editing.plugin-config.bqf")
 
 return {
   -- General editing tools
@@ -63,10 +64,16 @@ return {
 
   -- Cut and paste
   {
-    {
-      "gbprod/cutlass.nvim",
-      lazy = false,
-      opts = cutlass_config.lazy_opts,
-    },
+    "gbprod/cutlass.nvim",
+    lazy = false,
+    opts = cutlass_config.lazy_opts,
+  },
+
+  {
+    "kevinhwang91/nvim-bqf",
+    lazy = false,
+    init = bqf_config.lazy_init,
+    keys = fignvim.mappings.make_lazy_keymaps(require("keymaps").Core.Lists, false),
+    opts = bqf_config.lazy_opts,
   },
 }

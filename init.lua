@@ -27,6 +27,7 @@ fignvim.core.module.register_modules({
   "dotnet",
   "debugging",
   "testing",
+  "navigation",
 })
 
 fignvim.core.module.register_plugins({
@@ -53,7 +54,6 @@ fignvim.core.module.register_plugins({
 
   -- Completions and Snippets
   "copilot-chat",
-  "aerial",
 
   -- Navigation
   "telescope",
@@ -68,7 +68,6 @@ fignvim.core.module.register_plugins({
   -- Search and replace
   "vim-abolish",
   "substitute",
-  "bqf",
 
   -- Diagnostics
   "trouble",
