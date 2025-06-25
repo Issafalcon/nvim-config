@@ -93,7 +93,7 @@ fignvim.core.module.register_plugins({
   "vimtex",
 
   -- .NET
-  "easy-dotnet",
+  -- "easy-dotnet",
   "nuget",
 
   -- C++
