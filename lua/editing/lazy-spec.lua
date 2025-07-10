@@ -8,6 +8,7 @@ local matchup_config = require("editing.plugin-config.vim-matchup")
 local bqf_config = require("editing.plugin-config.bqf")
 local dial_config = require("editing.plugin-config.dial")
 local substitute_config = require("editing.plugin-config.substitute")
+local comment_config = require("editing.plugin-config.comment")
 
 return {
   -- General editing tools
@@ -33,6 +34,14 @@ return {
     event = "BufReadPost",
     config = matchup_config.lazy_config,
   },
+  {
+    "numToStr/Comment.nvim",
+    event = "BufReadPost",
+    dependencies = {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+    },
+    config = comment_config.lazy_config,
+  },
 
   -- Search and replace
   {
@@ -45,6 +54,10 @@ return {
     }, true),
   },
 
+  {
+    "tpope/vim-abolish",
+    event = "BufEnter",
+  },
   {
     "gbprod/substitute.nvim",
     dependencies = { "tpope/vim-abolish" },

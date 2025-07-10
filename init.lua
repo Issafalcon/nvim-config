@@ -43,7 +43,6 @@ fignvim.core.module.register_plugins({
   "undotree",
   "treesj",
   "nvim-surround",
-  "comment",
   "indent-blankline",
 
   -- UI
@@ -62,10 +61,6 @@ fignvim.core.module.register_plugins({
 
   -- Cut and paste
   -- "yanky"  - Performance is an issue when using this plugin. Pastes / yanks are slow
-
-  -- Search and replace
-  "vim-abolish",
-  "substitute",
 
   -- Diagnostics
   "trouble",
