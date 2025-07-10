@@ -365,6 +365,112 @@ M.Editing = {
   },
   Align = "<leader>ga",
   AlignWithPreview = "<leader>gA",
+  DialIncrement = {
+    "n",
+    "<C-a>",
+    function()
+      return require("dial.map").inc_normal()
+    end,
+    { expr = true, desc = "Increment" },
+  },
+  DialDecrement = {
+    "n",
+    "<C-x>",
+    function()
+      return require("dial.map").dec_normal()
+    end,
+    { expr = true, desc = "Decrement" },
+  },
+
+  Substitute = {
+    "n",
+    "s",
+    function()
+      require("substitute").operator()
+    end,
+    { noremap = true, desc = "Substitute: substitute using operator with value in default buffer" },
+  },
+  SubstituteLine = {
+    "n",
+    "ss",
+    function()
+      require("substitute").line()
+    end,
+    { noremap = true, desc = "Substutute: Substutute line using with value in default buffer" },
+  },
+  SubstituteToEndOfLine = {
+    "n",
+    "S",
+    function()
+      require("substitute").eol()
+    end,
+    { noremap = true, desc = "Substutute: Substitute to end of line using value in default buffer" },
+  },
+  SubstituteVisual = {
+    "x",
+    "s",
+    function()
+      require("substitute").visual()
+    end,
+    { noremap = true, desc = "Substitute: Sustitute visual selection with value in defautl buffer" },
+  },
+
+  SubstituteRange = {
+    "n",
+    "<leader>s",
+    function()
+      require("substitute.range").operator()
+    end,
+    { noremap = true },
+  },
+  SubstitureRangeVisual = {
+    "x",
+    "<leader>s",
+    function()
+      require("substitute.range").visual()
+    end,
+    { noremap = true },
+  },
+  SubstituteRangeWord = {
+    "n",
+    "<leader>ss",
+    function()
+      require("substitute.range").word()
+    end,
+    { noremap = true },
+  },
+  SubstituteExchangeOperator = {
+    "n",
+    "sx",
+    function()
+      require("substitute.exchange").operator()
+    end,
+    { noremap = true },
+  },
+  SubstituteExchangeLine = {
+    "n",
+    "sxx",
+    function()
+      require("substitute.exchange").line()
+    end,
+    { noremap = true },
+  },
+  SubstituteExchangeVisual = {
+    "x",
+    "X",
+    function()
+      require("substitute.exchange").visual()
+    end,
+    { noremap = true },
+  },
+  SubstituteExchangeCancel = {
+    "n",
+    "sxc",
+    function()
+      require("substitute.exchange").cancel()
+    end,
+    { noremap = true },
+  },
 }
 
 M.UI = {

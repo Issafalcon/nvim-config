@@ -34,6 +34,7 @@ function fignvim.config.set_win32yank_wsl_as_clip()
       ["*"] = "win32yank.exe -o --lf",
     },
     cache_enabled = 1,
+    -- Recommended from the :h clipboard_wsl section but win32yank is faster (as long as you keep it updated!)
     -- name = "wsl-clipboard",
     -- copy = {
     --   ["+"] = "clip.exe",

@@ -42,9 +42,7 @@ fignvim.core.module.register_plugins({
   -- General Editing
   "undotree",
   "treesj",
-  "dial",
   "nvim-surround",
-  "vim-unimpaired",
   "comment",
   "indent-blankline",
 

@@ -6,6 +6,8 @@ local mini_pairs_config = require("editing.plugin-config.mini-pairs")
 local cutlass_config = require("editing.plugin-config.cutlass")
 local matchup_config = require("editing.plugin-config.vim-matchup")
 local bqf_config = require("editing.plugin-config.bqf")
+local dial_config = require("editing.plugin-config.dial")
+local substitute_config = require("editing.plugin-config.substitute")
 
 return {
   -- General editing tools
@@ -41,6 +43,35 @@ return {
     keys = fignvim.mappings.make_lazy_keymaps({
       keymaps.SearchAndReplace,
     }, true),
+  },
+
+  {
+    "gbprod/substitute.nvim",
+    dependencies = { "tpope/vim-abolish" },
+    keys = fignvim.mappings.make_lazy_keymaps({
+      keymaps.Substitute,
+      keymaps.SubstituteLine,
+      keymaps.SubstituteToEndOfLine,
+      keymaps.SubstituteVisual,
+      keymaps.SubstituteRange,
+      keymaps.SubstituteRangeVisual,
+      keymaps.SubstituteRangeWord,
+      keymaps.SubstituteExchangeOperator,
+      keymaps.SubstituteExchangeLine,
+      keymaps.SubstituteExchangeVisual,
+      keymaps.SubstituteExchangeCancel,
+    }, true),
+    opts = substitute_config.lazy_opts,
+  },
+
+  -- Better increment / decrement
+  {
+    "monaqa/dial.nvim",
+    keys = fignvim.mappings.make_lazy_keymaps({
+      keymaps.DialIncrement,
+      keymaps.DialDecrement,
+    }, true),
+    config = dial_config.lazy_config,
   },
 
   -- Refactoring
