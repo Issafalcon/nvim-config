@@ -28,12 +28,14 @@ fignvim.core.module.register_modules({
   "debugging",
   "testing",
   "navigation",
+  "pwsh",
 })
 
 fignvim.core.module.register_plugins({
   -- Plugin Development
   -- "sqlite",
   "luapad",
+  -- "pwsh",
 
   -- Keybinds and Cheatsheets
   "cheatsheet",
