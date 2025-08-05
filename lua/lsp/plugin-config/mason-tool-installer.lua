@@ -24,6 +24,7 @@ M.lazy_opts = {
     "shellcheck",
     "vint",
     "yamllint",
+    "ansible-lint",
 
     -- Debuggers
     "debugpy",

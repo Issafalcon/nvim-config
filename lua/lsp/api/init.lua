@@ -174,5 +174,6 @@ function fignvim.lsp.setup(opts)
     "pyright",
     "tailwindcss",
     "helm_ls",
+    "ansiblels",
   }, client_capabilities)
 end
