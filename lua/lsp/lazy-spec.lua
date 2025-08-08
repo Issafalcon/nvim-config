@@ -70,11 +70,11 @@ return {
     ft = "json",
   },
 
-  -- {
-  --   "gruntwork-io/terragrunt-ls",
-  --   ft = "hcl",
-  --   build = "go build -o " .. vim.fn.stdpath("data") .. "/mason/bin/terragrunt-ls",
-  --   opts = terragrunt_ls_config.lazy_opts,
-  --   config = terragrunt_ls_config.lazy_config,
-  -- },
+  {
+    "gruntwork-io/terragrunt-ls",
+    ft = "hcl",
+    build = "go build -o " .. vim.fn.stdpath("data") .. "/mason/bin/terragrunt-ls",
+    opts = terragrunt_ls_config.lazy_opts,
+    config = terragrunt_ls_config.lazy_config,
+  },
 }
