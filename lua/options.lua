@@ -1,0 +1,97 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- Other custom global variables
+vim.g.diagnostics_enabled = true
+vim.g.autoformat = true -- enable autoformat
+
+vim.g.autopairs_enabled = true -- enable autopairs at start
+vim.g.status_diagnostics_enabled = true -- enable diagnostics in statusline
+vim.g.inlay_hint_default_enable = false -- enable inlay hints by default for each LSP that supports
+
+vim.o.backspace = vim.opt.backspace + { "nostop" } -- Don't stop backspace at insert
+
+-- Sync clipboard between OS and Neovim.
+--  Schedule the setting after `UiEnter` because it can increase startup-time.
+--  Remove this option if you want your OS clipboard to remain independent.
+--  See `:help 'clipboard'`
+vim.schedule(function()
+  vim.o.clipboard = "unnamedplus"
+end)
+
+-- Enable break indent (wrapped lines will continue visually indented)
+vim.o.breakindent = true
+
+vim.o.cmdheight = 1 -- hide command line unless needed
+vim.o.completeopt = { "menu", "menuone", "noselect" } -- Options for insert mode completion
+vim.o.copyindent = true -- Copy the previous indentation on autoindenting
+vim.o.cursorline = true -- Highlight the text line of the cursor
+vim.o.conceallevel = 1 -- so that `` is visible in markdown files
+vim.o.expandtab = true -- Enable the use of space in tab
+vim.o.fileencoding = "utf-8" -- File content encoding for the buffer
+vim.o.fillchars = {
+  eob = " ", -- Disable `~` on nonexistent lines
+  horiz = "-",
+  horizup = "-",
+  horizdown = "-",
+  vert = "|",
+  vertleft = "|",
+  vertright = "|",
+  verthoriz = "|",
+}
+vim.o.history = 100 -- Number of commands to remember in a history table
+vim.o.ignorecase = true -- Case insensitive searching
+vim.o.inccommand = "split" -- Show the effect of a command incrementally
+vim.o.iskeyword = vim.opt.iskeyword + { "-", "@" } -- Treat dash separated words as a word text object
+vim.o.laststatus = 3 -- globalstatus
+vim.o.lazyredraw = true -- lazily redraw screen
+vim.o.list = true -- Show some invisible characters
+vim.o.listchars = vim.opt.listchars + { space = "⋅", eol = "↴" } -- Invisible characters
+
+-- Enable mouse support
+vim.o.mouse = "a"
+
+-- Show line numbers by default
+vim.o.number = true
+vim.o.preserveindent = true -- Preserve indent structure as much as possible
+vim.o.pumheight = 10 -- Height of the pop up menu
+vim
+  .o
+  -- Better QF list UI (from https://github.com/kevinhwang91/nvim-bqf#format-new-quickfix)
+  .vim
+  .o
+  .qftf =
+  "{info -> v:lua.fignvim.ui.qftf(info)}"
+vim.o.relativenumber = false -- Show relative numberline
+vim.o.scrolloff = 8 -- Number of lines to keep above and below the cursor
+vim.o.sessionoptions = {
+  "blank",
+  "buffers",
+  "curdir",
+  "folds",
+  "help",
+  "tabpages",
+  "winpos",
+  "terminal",
+}
+vim.o.shiftround = true -- Round indent
+vim.o.shiftwidth = 2 -- Number of space inserted for indentation
+
+-- Disable showing modes in command line
+vim.o.showmode = false
+vim.o.showtabline = 2 -- always display tabline
+vim.o.sidescrolloff = 8 -- Number of columns to keep at the sides of the cursor
+vim.o.signcolumn = "yes:2" -- Always show the sign column
+vim.o.smartcase = true -- Case sensitivie searching
+vim.o.splitbelow = true -- Splitting a new window below the current one
+vim.o.splitright = true -- Splitting a new window at the right of the current one
+vim.o.swapfile = false -- Disable use of swapfile for the buffer
+vim.o.tabstop = 2 -- Number of space in a tab
+vim.o.termguicolors = true -- Enable 24-bit RGB color in the TUI
+vim.o.timeoutlen = 300 -- Length of time to wait for a mapped sequence
+vim.o.undofile = true -- Enable persistent undo
+vim.o.updatetime = 300 -- Length of time to wait before triggering the plugin
+vim.o.wrap = false -- Disable wrapping of lines longer than the width of window
+vim.o.writebackup = false -- Disable making a backup before overwriting a file
+vim.o.backup = false
+vim.o.smoothscroll = true
