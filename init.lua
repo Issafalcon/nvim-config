@@ -1,3 +1,6 @@
+-- Load core API functions (needed for upcoming setup)
+require("core.api")
+
 require("options") -- 1. Set options
 -- Get all the required Fignvim API functions and commands required for setupinitinit
 -- for _, source in ipairs({
@@ -10,8 +13,6 @@ require("options") -- 1. Set options
 --   end
 -- end
 --
--- -- Load core API functions (needed for upcoming setup)
--- require("core.api")
 --
 -- fignvim.core.module.register_modules({
 --   "editing",
