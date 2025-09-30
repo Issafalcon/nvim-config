@@ -42,9 +42,9 @@ map("o", "iv", ":exec 'normal! HVL'<cr>", { desc = "Creates new text object to o
 -- Core.Navigation
 map("n", "<S-l>", ":bnext<CR>", { desc = "Move to next buffer" })
 map("n", "<S-h>", ":bprevious<CR>", { desc = "Move to previous buffer" })
-map("n", "<leader>bd", function()
-  Snacks.bufdelete()
-end, { desc = "Close current buffer" })
+-- map("n", "<leader>bd", function()
+--   Snacks.bufdelete()
+-- end, { desc = "Close current buffer" })
 map("n", "<leader>ln", function()
   fignvim.ui.toggle_line_numbers()
 end, { desc = "Toggle line numbers" })
