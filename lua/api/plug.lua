@@ -2,7 +2,8 @@ fignvim.plug = {}
 
 ---@param name string
 function fignvim.plug.get_plugin(name)
-  return require("lazy.core.config").spec.plugins[name]
+  return vim.pack.get({ name })
+  -- return require("lazy.core.config").spec.plugins[name]
 end
 
 --- Bootstraops Lazy.nvim
