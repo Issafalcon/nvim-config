@@ -70,7 +70,7 @@ vim.opt.fillchars = {
 vim.o.history = 100 -- Number of commands to remember in a history table
 
 vim.o.inccommand = "split" -- Show the effect of a command incrementally
-vim.o.iskeyword = vim.opt.iskeyword + { "-", "@" } -- Treat dash separated words as a word text object
+vim.opt.iskeyword = vim.opt.iskeyword + { "-", "@" } -- Treat dash separated words as a word text object
 vim.o.laststatus = 3 -- globalstatus
 vim.o.lazyredraw = true -- lazily redraw screen
 

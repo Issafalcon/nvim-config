@@ -1,3 +1,5 @@
+_G.fignvim = {} -- Create global fignvim table
+
 -- Load core API functions (needed for upcoming setup)
 require("core.api")
 
