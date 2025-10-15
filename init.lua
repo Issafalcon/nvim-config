@@ -3,7 +3,11 @@ _G.fignvim = {} -- Create global fignvim table
 -- Load core API functions (needed for upcoming setup)
 require("core.api")
 
-require("options") -- 1. Set options
+require("options")
+require("mappings")
+
+require("plugins-minimal")
+
 -- Get all the required Fignvim API functions and commands required for setupinitinit
 -- for _, source in ipairs({
 --   "api",

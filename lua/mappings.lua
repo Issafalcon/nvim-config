@@ -1,6 +1,6 @@
 local map = vim.keymap.set
 
--- Core.Lists
+-- Lists
 map("n", "<C-q>", function()
   fignvim.ui.toggle_fix_list(true)
 end, { desc = "Toggle quickfix window" })
@@ -9,7 +9,7 @@ map("n", "<leader>q", function()
   fignvim.ui.toggle_fix_list(false)
 end, { desc = "Toggle location list window" })
 
--- Core.Window
+-- Window
 map("n", "<C-h>", "<C-w>h", { desc = "Move to next window to the left" })
 map("n", "<C-l>", "<C-w>l", { desc = "Move to next window to the right" })
 map("n", "<C-j>", "<C-w>j", { desc = "Move to next window down" })
@@ -19,10 +19,10 @@ map("n", "<C-Down>", ":resize -2<CR>", { desc = "Resize window horizontally down
 map("n", "<C-Left>", ":vertical resize +2<CR>", { desc = "Resize window vertically to the left" })
 map("n", "<C-Right>", ":vertical resize -2<CR>", { desc = "Resize window vertically to the right" })
 
--- Core.Terminal
+-- Terminal
 map("t", "<esc>", "<C-\\><C-n>", { desc = "Enter normal mode in terminal" })
 
--- Core.Editing
+-- Editing
 map("i", "jk", "<ESC>", { desc = "Escape insert mode" })
 map("v", "<", "<gv", { desc = "Indent selection left" })
 map("v", ">", ">gv", { desc = "Indent selection right" })
@@ -39,16 +39,20 @@ map("n", "<leader>bo", "<cmd>%bd|e#<cr>", { desc = "Close all buffers except the
 map("o", "ie", ":exec 'normal! ggVG'<cr>", { desc = "Creates new text object to operate on entire buffer" })
 map("o", "iv", ":exec 'normal! HVL'<cr>", { desc = "Creates new text object to operate on all text in view" })
 
--- Core.Navigation
+-- Navigation
 map("n", "<S-l>", ":bnext<CR>", { desc = "Move to next buffer" })
 map("n", "<S-h>", ":bprevious<CR>", { desc = "Move to previous buffer" })
+
 -- map("n", "<leader>bd", function()
 --   Snacks.bufdelete()
 -- end, { desc = "Close current buffer" })
+--
 map("n", "<leader>ln", function()
   fignvim.ui.toggle_line_numbers()
 end, { desc = "Toggle line numbers" })
+
 map("n", "<leader>rn", function()
   fignvim.ui.toggle_relative_line_numbers()
 end, { desc = "Toggle relative line numbers" })
+
 map("n", "\\m", "m", { desc = "Set a mark" })
