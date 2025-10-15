@@ -6,7 +6,9 @@ require("core.api")
 require("options")
 require("mappings")
 
-require("plugins-minimal")
+require("plugins")
+
+require("colourscheme")
 
 -- Get all the required Fignvim API functions and commands required for setupinitinit
 -- for _, source in ipairs({
