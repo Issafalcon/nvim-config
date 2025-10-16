@@ -185,26 +185,6 @@ M.Annotations = {
 }
 
 M.Lsp = {
-  Format = {
-    { "n", "v" },
-    "<leader>f",
-    fignvim.lsp.formatting.format,
-    { desc = "Format code in file, or the selected portion of code" },
-  },
-  FormatInjectedLangs = {
-    { "n", "v" },
-    "<leader>cF",
-    function()
-      require("conform").format({ formatters = { "injected" }, timeout_ms = 3000 })
-    end,
-    { desc = "Format Injected Langs" },
-  },
-  ToggleAutoFormatOnSave = {
-    "n",
-    "<leader>taf",
-    fignvim.formatting.toggle,
-    { desc = "Toggle autoformatting on save" },
-  },
   DiagnosticsNext = {
     "n",
     "]g",
