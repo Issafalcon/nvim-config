@@ -121,27 +121,32 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     if vim.g.disable_autoformat or vim.b[ev.buf].disable_autoformat then
       return
     end
+
     -- Disable autoformat for files in a certain path
     local bufname = vim.api.nvim_buf_get_name(ev.buf)
     if bufname:match("/node_modules/") then
       return
     end
 
-    local client = vim.lsp.get_clients({ name = "ts_ls", bufnr = ev.buf })[1]
-
-    if not client then
-      require("conform").format(conform_opts)
-      return
+    local eslint_client = vim.lsp.get_clients({ name = "eslint", bufnr = ev.buf })[1]
+    if eslint_client then
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = ev.buf,
+        command = "EslintFixAll",
+      })
     end
 
-    local request_result = client:request_sync("workspace/executeCommand", {
-      command = "_typescript.organizeImports",
-      arguments = { vim.api.nvim_buf_get_name(ev.buf) },
-    })
+    local ts_client = vim.lsp.get_clients({ name = "ts_ls", bufnr = ev.buf })[1]
+    if ts_client then
+      local request_result = ts_client:request_sync("workspace/executeCommand", {
+        command = "_typescript.organizeImports",
+        arguments = { vim.api.nvim_buf_get_name(ev.buf) },
+      })
 
-    if request_result and request_result.err then
-      vim.notify(request_result.err.message, vim.log.levels.ERROR)
-      return
+      if request_result and request_result.err then
+        vim.notify(request_result.err.message, vim.log.levels.ERROR)
+        return
+      end
     end
 
     require("conform").format(conform_opts)
