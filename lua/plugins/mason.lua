@@ -5,7 +5,16 @@ vim.pack.add({
 })
 
 require("mason").setup()
-require("mason-lspconfig").setup()
+require("mason-lspconfig").setup({
+    -- Automatically install all servers setup via lsp-config
+  automatic_installation = true,
+  automatic_enable = {
+    exclude = {
+      "roslyn",
+    },
+  },
+
+})
 require("mason-tool-installer").setup({
   ensure_installed = {
     "lua_ls",
