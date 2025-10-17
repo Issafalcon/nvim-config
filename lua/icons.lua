@@ -1,5 +1,9 @@
 local M = {}
 
+M.ft = {
+    octo = "",
+}
+
 --- Diagnostic severities.
 M.diagnostics = {
     ERROR = '',
@@ -7,6 +11,21 @@ M.diagnostics = {
     HINT = '',
     INFO = '',
 }
+
+M.debug =
+  {
+    Stopped =  "󰁕 ",
+    Breakpoint = " ",
+    BreakpointCondition = " ",
+    BreakpointRejected =  " ",
+    LogPoint = ".>",
+  },
+-- Git
+M.git = {
+    added = " ",
+    modified = " ",
+    removed = " ",
+  }
 
 --- For folding.
 M.arrows = {
@@ -52,6 +71,7 @@ M.misc = {
     git = '',
     search = '',
     vertical_bar = '│',
+    dots = "󰇘",
 }
 
 return M
