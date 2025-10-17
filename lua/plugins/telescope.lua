@@ -25,6 +25,7 @@ vim.api.nvim_create_autocmd('PackChanged', {
       local telescope = require("telescope")
 
       local actions = require("telescope.actions")
+      local icons = require("icons")
 
       telescope.setup({
         defaults = {
@@ -38,8 +39,7 @@ vim.api.nvim_create_autocmd('PackChanged', {
             "--smart-case",
             "--glob=!accounts/",
           },
-          prompt_prefix = string.format("%s ", fignvim.ui.get_icon("Search")),
-          selection_caret = string.format("%s ", fignvim.ui.get_icon("Selected")),
+          prompt_prefix = string.format("%s ", icons.misc.search),
           file_sorter = require("telescope.sorters").get_fzy_sorter,
           file_ignore_patterns = { "node_modules" },
           file_previewer = require("telescope.previewers").vim_buffer_cat.new,
@@ -116,16 +116,16 @@ local map = vim.keymap.set
     "<leader>tf",
     ":lua require('telescope.builtin').find_files({hidden = true})<CR>",
     { desc = "Search files in current directory" }
-  ),
+  )
   map( "n", "<leader>tb", ":lua require('telescope.builtin').buffers()<CR>", { desc = "Search buffers" })
   map( "n", "<leader>th", ":lua require('telescope.builtin').help_tags()<CR>", { desc = "Search help tags" })
-  map( "n", "<leader>tc", fignvim.search.dev_config_files, { desc = "Search config files" })
+  -- map( "n", "<leader>tc", fignvim.search.dev_config_files, { desc = "Search config files" })
   map( "n", "<leader>tgc", ":lua require('telescope.builtin').git_commits()<CR>", { desc = "Search git commits" })
   map(
     "n",
     "<leader>tbc",
     ":lua require('telescope.builtin').git_bcommits()<CR>",
-    { desc = "Search git commits on current branch" },
+    { desc = "Search git commits on current branch" }
   )
   map( "n", "<leader>tgb", ":lua require('telescope.builtin').git_branches()<CR>", { desc = "Search git branches" })
   map( "n", "<leader>tgs", ":lua require('telescope.builtin').git_status()<CR>", { desc = "Search git status" })
@@ -136,12 +136,12 @@ local map = vim.keymap.set
     "i",
     "<A-2>",
     ":lua require('telescope.builtin').registers()<CR>",
-    { desc = "Search registers while in insert mode" },
-  },
+    { desc = "Search registers while in insert mode" }
+  )
   map(
     "n",
     "<leader>tvc",
     ":lua require('telescope.builtin').command_history()<CR>",
-    { desc = "Search command history" },
+    { desc = "Search command history" }
   )
-  map({ "n", "<leader>ts", ":Telescope aerial<CR>", { desc = "Search through Aerial Symbols" })
+  map("n", "<leader>ts", ":Telescope aerial<CR>", { desc = "Search through Aerial Symbols" })

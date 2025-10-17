@@ -1,4 +1,6 @@
+require("plugins.plenary")
 require("plugins.catppuccin")
 require("plugins.mason")
 require("plugins.lsp")
 require("plugins.conform")
+require("plugins.telescope")

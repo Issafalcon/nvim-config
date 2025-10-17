@@ -19,7 +19,8 @@ M.debug =
     BreakpointCondition = " ",
     BreakpointRejected =  " ",
     LogPoint = ".>",
-  },
+  }
+
 -- Git
 M.git = {
     added = " ",
