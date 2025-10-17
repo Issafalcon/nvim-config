@@ -1,6 +1,8 @@
 require("plugins.plenary")
+require("plugins.vim-matchup")
 require("plugins.catppuccin")
 require("plugins.lsp")
 require("plugins.mason")
 require("plugins.conform")
 require("plugins.telescope")
+require("plugins.treesitter")
