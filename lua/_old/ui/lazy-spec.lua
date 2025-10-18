@@ -1,10 +1,8 @@
 local mini_icons = require("ui.plugin-config.mini-icons")
 local catpuccin_colourscheme = require("ui.plugin-config.catppuccin")
-local yazi_config = require("ui.plugin-config.yazi")
 local heirline_config = require("ui.plugin-config.heirline")
 local bufferline_config = require("ui.plugin-config.bufferline")
 local dressing_config = require("ui.plugin-config.dressing")
-local transparent_config = require("ui.plugin-config.transparent")
 local notify_config = require("ui.plugin-config.notify")
 local keymaps = require("keymaps").UI
 
