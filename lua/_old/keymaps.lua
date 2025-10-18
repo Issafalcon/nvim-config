@@ -454,30 +454,6 @@ M.Editing = {
 }
 
 M.UI = {
-  OpenTerminalFileManager = {
-    { "n", "v" },
-    "-",
-    "<cmd>Yazi<cr>",
-    {
-      desc = "Open yazi at the current file",
-    },
-  },
-  OpenFileManagerInWorkingDirectory = {
-    "n",
-    "<leader>cw",
-    "<cmd>Yazi cwd<cr>",
-    {
-      desc = "Open the file manager in nvim's working directory",
-    },
-  },
-  ResumeLastFileManagerSession = {
-    "n",
-    "<c-up>",
-    "<cmd>Yazi toggle<cr>",
-    {
-      desc = "Resume the last yazi session",
-    },
-  },
   PinBuffer = { "n", "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle Pin" },
   DeleteUnpinnedBuffers = {
     "n",

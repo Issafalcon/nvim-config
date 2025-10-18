@@ -85,4 +85,41 @@ M.colours = {
   md = "#519aba",
 }
 
+local normal = fignvim.ui.get_hlgroup("Normal")
+local fg, bg = normal.fg, M.colours.black
+local green = fignvim.ui.get_hlgroup("String").fg
+local red = fignvim.ui.get_hlgroup("Error").fg
+
+vim.api.nvim_set_hl(0, "Whitespace", { fg = "#4b5263" })
+vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#CBA6F7" })
+vim.api.nvim_set_hl(0, "PmenuSel", { bg = M.colours.grey_7, fg = "NONE" })
+vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = fg, bg = M.colours.bg_1 })
+vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = M.colours.orange_2 })
+vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { fg = bg, bg = bg })
+vim.api.nvim_set_hl(0, "TelescopePreviewNormal", { bg = bg })
+vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { fg = bg, bg = green })
+vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = M.colours.bg_1, bg = M.colours.bg_1 })
+vim.api.nvim_set_hl(0, "TelescopePromptNormal", { fg = fg, bg = M.colours.bg_1 })
+vim.api.nvim_set_hl(0, "TelescopePromptPrefix", { fg = red, bg = M.colours.bg_1 })
+vim.api.nvim_set_hl(0, "TelescopePromptTitle", { fg = M.colours.black, bg = M.colours.vue })
+vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { fg = bg, bg = bg })
+vim.api.nvim_set_hl(0, "TelescopeResultsNormal", { bg = bg })
+vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { fg = bg, bg = bg })
+vim.api.nvim_set_hl(0, "CmpItemMenu", { fg = "#C792EA", bg = "NONE", italic = true })
+vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { bg = "NONE", fg = "#808080", strikethrough = true })
+vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { bg = "NONE", fg = "#569CD6", bold = true })
+vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { link = "CmpItemAbbrMatch" })
+vim.api.nvim_set_hl(0, "CmpItemKindVariable", { bg = "NONE", fg = "#9CDCFE" })
+vim.api.nvim_set_hl(0, "CmpItemKindInterface", { link = "CmpItemKindVariable" })
+vim.api.nvim_set_hl(0, "CmpItemKindText", { link = "CmpItemKindVariable" })
+vim.api.nvim_set_hl(0, "CmpItemKindFunction", { bg = "NONE", fg = "#C586C0" })
+vim.api.nvim_set_hl(0, "CmpItemKindMethod", { link = "CmpItemKindFunction" })
+vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { bg = "NONE", fg = "#D4D4D4" })
+vim.api.nvim_set_hl(0, "CmpItemKindProperty", { link = "CmpItemKindKeyword" })
+vim.api.nvim_set_hl(0, "CmpItemKindUnit", { link = "CmpItemKindKeyword" })
+vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", { link = "Comment" })
+vim.api.nvim_set_hl(0, "BqfPreviewBorder", { fg = M.colours.vue })
+vim.api.nvim_set_hl(0, "BqfPreviewRange", { link = "Search" })
+vim.api.nvim_set_hl(0, "LspInlayHint", { fg = M.colours.grey_7, bg = "NONE" })
+
 return M

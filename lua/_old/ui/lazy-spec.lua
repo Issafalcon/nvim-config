@@ -30,23 +30,6 @@ return {
   },
   { "shaunsingh/oxocarbon.nvim", lazy = false },
 
-  --- file managers
-  ---@type LazySpec
-  {
-    "mikavilpas/yazi.nvim",
-    dependencies = { "snacks.nvim" },
-    event = "VeryLazy",
-    keys = fignvim.mappings.make_lazy_keymaps({
-      keymaps.OpenTerminalFileManager,
-      keymaps.OpenFileManagerInWorkingDirectory,
-      keymaps.ResumeLastFileManagerSession,
-    }, true),
-    ---@type YaziConfig | {}
-    opts = yazi_config.lazy_opts,
-    -- 👇 if you use `open_for_directories=true`, this is recommended
-    init = yazi_config.lazy_init,
-  },
-
   --- Statusline / Bufferlines
   {
     "rebelot/heirline.nvim",
@@ -76,12 +59,6 @@ return {
     event = "UIEnter",
     init = dressing_config.lazy_init,
     opts = dressing_config.lazy_opts,
-  },
-
-  {
-    "xiyaowong/transparent.nvim",
-    lazy = false,
-    opts = transparent_config.lazy_opts,
   },
 
   {
