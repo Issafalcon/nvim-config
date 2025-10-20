@@ -16,7 +16,9 @@ return {
         },
       },
       workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),
+        -- See https://github.com/folke/lazydev.nvim/discussions/94 for whether this is needed or not
+        -- library = vim.api.nvim_get_runtime_file("", true),
+        checkThirdParty = false,
       },
       telemetry = {
         enable = false,

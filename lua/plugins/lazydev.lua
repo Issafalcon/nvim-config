@@ -1,7 +1,8 @@
----@type FigNvimPluginConfig
-local M = {}
+vim.pack.add({
+  { src = "https://github.com/folke/lazydev.nvim" },
+})
 
-M.lazy_opts = {
+require("lazydev").setup({
   library = {
     -- See the configuration section for more details
     -- Load luvit types when the `vim.uv` word is found
@@ -18,10 +19,4 @@ M.lazy_opts = {
     cmp = true,
     coq = false,
   },
-}
-
-M.setup = function()
-  require("lazydev").setup(M.lazy_opts)
-end
-
-return M
+})

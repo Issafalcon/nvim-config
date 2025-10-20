@@ -1,7 +1,8 @@
----@type FigNvimPluginConfig
-local M = {}
+vim.pack.add({
+  { src = "https://github.com/gbprod/cutlass.nvim" },
+})
 
-M.lazy_opts = {
+require("cutlass").setup({
   cut_key = "m",
   exclude = {},
   registers = {
@@ -9,6 +10,4 @@ M.lazy_opts = {
     delete = "_",
     change = "_",
   },
-}
-
-return M
+})

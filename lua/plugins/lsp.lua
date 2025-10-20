@@ -16,7 +16,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
     local capabilities = client.server_capabilities
 
-    print("LSP started: " .. client.name)
     vim.keymap.set("n", "[g", function()
       vim.diagnostic.jump({ count = -1, float = true })
     end, { desc = "Go to previous diagnostic", buffer = args.buf })

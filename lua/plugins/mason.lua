@@ -1,23 +1,56 @@
 vim.pack.add({
   { src = "https://github.com/mason-org/mason.nvim" },
-  { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
   { src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
 })
 
-require("mason").setup()
-require("mason-lspconfig").setup({
-    -- Automatically install all servers setup via lsp-config
-  automatic_installation = true,
-  automatic_enable = {
-    exclude = {
-      "roslyn",
+require("mason").setup({
+  registries = {
+    "github:mason-org/mason-registry",
+    "github:Crashdummyy/mason-registry",
+  },
+  providers = {
+    "mason.providers.registry-api",
+    "mason.providers.client",
+  },
+  ui = {
+    icons = {
+      package_installed = "✓",
+      package_uninstalled = "✗",
+      package_pending = "⟳",
     },
   },
-
 })
+
 require("mason-tool-installer").setup({
   ensure_installed = {
-    "lua_ls",
+    -- LSPs
+    "lua-language-server",
+    "roslyn",
+
+    -- Formatters
+    "jq",
+    "prettier",
+    "prettierd",
+    "shfmt",
+    "sql-formatter",
+    "sqlfluff",
     "stylua",
+    "clang-format",
+    "black",
+    "yamlfmt",
+
+    -- Linters
+    "tflint",
+    "editorconfig-checker",
+    "eslint_d",
+    "markdownlint",
+    "shellcheck",
+    "vint",
+    "yamllint",
+    "ansible-lint",
+
+    -- Debuggers
+    "debugpy",
+    "netcoredbg",
   },
 })
