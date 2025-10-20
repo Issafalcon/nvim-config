@@ -1,5 +1,4 @@
 local gitsign_config = require("git.plugin-config.gitsigns")
-local octo_config = require("git.plugin-config.octo")
 local pipeline_config = require("git.plugin-config.pipeline")
 local git_messenger_config = require("git.plugin-config.git-messenger")
 
@@ -20,18 +19,6 @@ return {
   {
     "rhysd/git-messenger.vim",
     event = "VeryLazy",
-  },
-
-  {
-    "pwntester/octo.nvim",
-    event = "BufEnter",
-    dependencies = {
-      "plenary.nvim",
-      "telescope.nvim",
-      -- OR 'ibhagwan/fzf-lua',
-      "nvim-web-devicons",
-    },
-    config = octo_config.lazy_config,
   },
 
   {
