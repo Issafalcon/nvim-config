@@ -1,0 +1,56 @@
+vim.pack.add({
+  { src = "https://github.com/epwalsh/obsidian.nvim", version = "main" },
+})
+
+-- Autocommand on BufReadPre for Obsidian notes
+vim.api.nvim_create_autocmd("BufReadPre", {
+  pattern = vim.fn.expand("~") .. "/repos/obsidian-notes/**.md",
+  callback = function()
+    require("obsidian").setup({
+      workspaces = {
+        {
+          name = "obsidian-notes",
+          path = vim.fn.expand("~") .. "/repos/obsidian-notes",
+        },
+      },
+      disable_frontmatter = true,
+      log_level = vim.log.levels.INFO,
+
+      -- Optional, customize how names/IDs for new notes are created.
+      note_id_func = function(title)
+        return title
+      end,
+
+      -- Optional, for templates (see below).
+      templates = {
+        subdir = "templates",
+        date_format = "%Y-%m-%d",
+        time_format = "%H:%M",
+        -- A map for custom variables, the key should be the variable and the value a function
+        substitutions = {
+          project = function()
+            -- Return the name of the current folder that the file is in
+            return string.gsub(vim.fn.fnamemodify(vim.fn.expand("%"), ":h:t"), " ", "-")
+          end,
+          dir = function()
+            return vim.fn.fnamemodify(vim.fn.expand("%"), ":h:t")
+          end,
+        },
+      },
+
+      daily_notes = {
+        folder = "Daily",
+        template = "DailyTemplate.md",
+      },
+      mappings = {
+        -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
+        ["gf"] = {
+          action = function()
+            return require("obsidian").util.gf_passthrough()
+          end,
+          opts = { noremap = false, expr = true, buffer = true },
+        },
+      },
+    })
+  end,
+})

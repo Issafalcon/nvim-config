@@ -1,26 +1,10 @@
 local neogen_config = require("documentation.plugin-config.neogen")
-local obsidian_config = require("documentation.plugin-config.obsidian")
 
 return {
   {
     "danymat/neogen",
     keys = fignvim.mappings.make_lazy_keymaps(require("keymaps").Annotations, true),
     opts = neogen_config.lazy_opts,
-  },
-  {
-    "epwalsh/obsidian.nvim",
-    version = "*", -- recommended, use latest release instead of latest commit
-    lazy = true,
-    event = {
-      -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-      "BufReadPre "
-        .. vim.fn.expand("~")
-        .. "/repos/obsidian-notes/**.md",
-    },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    opts = obsidian_config.lazy_opts,
   },
 
   {
