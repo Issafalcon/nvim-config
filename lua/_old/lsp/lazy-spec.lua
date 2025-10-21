@@ -11,7 +11,6 @@ return {
     event = "BufReadPre",
     dependencies = {
       "nvim-navic",
-      "lazydev.nvim",
       "lsp-overloads.nvim",
       -- LSP Completion sources
       "hrsh7th/cmp-nvim-lsp",
