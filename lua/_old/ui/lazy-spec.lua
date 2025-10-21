@@ -53,13 +53,6 @@ return {
   },
 
   {
-    "stevearc/dressing.nvim",
-    event = "UIEnter",
-    init = dressing_config.lazy_init,
-    opts = dressing_config.lazy_opts,
-  },
-
-  {
     "rcarriga/nvim-notify",
     event = "UIEnter",
     keys = fignvim.mappings.make_lazy_keymaps({

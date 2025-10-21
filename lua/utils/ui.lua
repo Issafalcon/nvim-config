@@ -97,9 +97,7 @@ end
 -- @return the available sources for the given filetype and method
 function fignvim.ui.none_ls_sources(filetype, method)
   local methods_avail, methods = pcall(require, "null-ls.methods")
-  return methods_avail
-      and fignvim.ui.none_ls_providers(filetype)[methods.internal[method]]
-    or {}
+  return methods_avail and fignvim.ui.none_ls_providers(filetype)[methods.internal[method]] or {}
 end
 
 --- Taken from https://github.com/kevinhwang91/nvim-bqf#format-new-quickfix
@@ -155,6 +153,19 @@ function fignvim.ui.qftf(info)
     table.insert(ret, str)
   end
   return ret
+end
+
+function fignvim.ui.get_icon(category, name)
+  -- Use MiniIcons.get() in first instance. If not available, fallback to local icons module
+  local mini_available, _ = pcall(require, "mini.icons")
+  if mini_available then
+    return MiniIcons.get(category, name)
+  else
+    local icons = require("icons")
+    if icons[category] then
+      return icons[category][name]
+    end
+  end
 end
 
 return fignvim.ui

@@ -22,7 +22,7 @@ require("snacks").setup({
   dashboard = { enabled = false },
   explorer = { enabled = false },
   indent = { enabled = false },
-  input = { enabled = false },
+  input = { enabled = true },
   picker = { enabled = false },
   notifier = { enabled = false },
   quickfile = { enabled = false },
@@ -32,7 +32,7 @@ require("snacks").setup({
   terminal = { enabled = false },
 })
 
-local noice_installed, _ = pcall(vim.pack.get(), {"noice.nvim"})
+local noice_installed, _ = pcall(vim.pack.get(), { "noice.nvim" })
 if noice_installed then
   -- HACK: restore vim.notify after snacks setup and let noice.nvim take over
   -- this is needed to have early notifications show up in noice history
