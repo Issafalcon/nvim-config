@@ -156,14 +156,16 @@ function fignvim.ui.qftf(info)
 end
 
 function fignvim.ui.get_icon(category, name)
-  -- Use MiniIcons.get() in first instance. If not available, fallback to local icons module
-  local mini_available, _ = pcall(require, "mini.icons")
-  if mini_available then
-    return MiniIcons.get(category, name)
+  local icon_available, icon = pcall(MiniIcons.get, category, name)
+  if icon_available then
+    return icon
   else
     local icons = require("icons")
     if icons[category] then
       return icons[category][name]
+    else
+      -- Fallback icon
+      return icons.misc.dots
     end
   end
 end

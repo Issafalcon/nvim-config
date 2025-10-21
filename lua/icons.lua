@@ -1,17 +1,5 @@
 local M = {}
 
-M.ft = {
-  octo = "",
-}
-
-M.lsp = {
-  active = "",
-  loaded = "",
-  loading1 = "",
-  loading2 = "",
-  loading3 = "",
-}
-
 M.files = {
   file_modified = "",
   file_read_only = "",
@@ -22,10 +10,10 @@ M.files = {
 
 --- Diagnostic severities.
 M.diagnostics = {
-  ERROR = "",
-  WARN = "",
-  HINT = "",
-  INFO = "",
+  error = "",
+  warn = "",
+  hint = "",
+  info = "",
 }
 
 M.debug = {
@@ -59,33 +47,38 @@ M.arrows = {
 }
 
 --- LSP symbol kinds.
-M.symbol_kinds = {
-  Array = "󰅪",
-  Class = "",
-  Color = "󰏘",
-  Constant = "󰏿",
-  Constructor = "",
-  Enum = "",
-  EnumMember = "",
-  Event = "",
-  Field = "󰜢",
-  File = "󰈙",
-  Folder = "󰉋",
-  Function = "󰆧",
-  Interface = "",
-  Keyword = "󰌋",
-  Method = "󰆧",
-  Module = "",
-  Operator = "󰆕",
-  Property = "󰜢",
-  Reference = "󰈇",
-  Snippet = "",
-  Struct = "",
-  Text = "",
-  TypeParameter = "",
-  Unit = "",
-  Value = "",
-  Variable = "󰀫",
+M.lsp = {
+  array = "󰅪",
+  class = "",
+  color = "󰏘",
+  constant = "󰏿",
+  constructor = "",
+  enum = "",
+  enummember = "",
+  event = "",
+  field = "󰜢",
+  file = "󰈙",
+  folder = "󰉋",
+  ["function"] = "󰆧",
+  interface = "",
+  keyword = "󰌋",
+  method = "󰆧",
+  module = "",
+  operator = "󰆕",
+  property = "󰜢",
+  reference = "󰈇",
+  snippet = "",
+  struct = "",
+  text = "",
+  typeparameter = "",
+  unit = "",
+  value = "",
+  variable = "󰀫",
+  active = "",
+  loaded = "",
+  loading1 = "",
+  loading2 = "",
+  loading3 = "",
 }
 
 --- Shared icons that don't really fit into a category.

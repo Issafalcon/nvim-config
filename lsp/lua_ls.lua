@@ -13,6 +13,7 @@ return {
         globals = {
           "vim",
           "require",
+          "Snacks",
         },
       },
       workspace = {

@@ -33,9 +33,10 @@ require("plugins.mini-align")
 -- UI
 -- =============================================================================
 require("plugins.catppuccin") -- Theme
-require("plugins.nvim-web-devicons")
+require("plugins.mini-icons")
 require("plugins.treesitter")
 require("plugins.maximizer")
+require("plugins.bufferline")
 
 -- =============================================================================
 -- Navigation

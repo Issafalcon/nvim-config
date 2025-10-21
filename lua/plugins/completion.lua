@@ -63,9 +63,9 @@ cmp.setup({
         return item
       end
 
-      local icons = require("icons").symbol_kinds
-      if icons[item.kind] then
-        item.kind = icons[item.kind] .. item.kind
+      local icon = fignvim.ui.get_icon("lsp", item.kind)
+      if icon then
+        item.kind = icon .. " " .. item.kind
       end
 
       local widths = {

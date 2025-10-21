@@ -347,19 +347,6 @@ M.Editing = {
 }
 
 M.UI = {
-  PinBuffer = { "n", "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle Pin" },
-  DeleteUnpinnedBuffers = {
-    "n",
-    "<leader>bP",
-    "<Cmd>BufferLineGroupClose ungrouped<CR>",
-    desc = "Delete Non-Pinned Buffers",
-  },
-  DeleteBuffersRight = { "n", "<leader>br", "<Cmd>BufferLineCloseRight<CR>", desc = "Delete Buffers to the Right" },
-  DeleteBuffersLeft = { "n", "<leader>bl", "<Cmd>BufferLineCloseLeft<CR>", desc = "Delete Buffers to the Left" },
-  PrevBuffer = { "n", { "<S-h>", "[b" }, "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
-  NextBuffer = { "n", { "<S-l>", "]b" }, "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
-  MoveBufPrev = { "n", "[B", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
-  MoveBufNext = { "n", "]B", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" },
   DismissNotifications = {
     "n",
     "<leader>nd",

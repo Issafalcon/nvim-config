@@ -12,30 +12,14 @@ local icons = require("icons")
 --   { name = "DapBreakpointCondition", text = icons.debug.BreakpointCondition, texthl = "DiagnosticInfo" },
 --   { name = "DapLogPoint", text = icons.debug.LogPoint, texthl = "DiagnosticInfo" },
 -- }
---
--- for _, sign in ipairs(signs) do
---   if not sign.texthl then
---     sign.texthl = sign.name
---   end
---   vim.fn.sign_define(sign.name, sign)
--- end
-
--- vim.diagnostic.config({
---   virtual_text = { prefix = '●' },
---   signs = true,
---   underline = true,
---   update_in_insert = false,
---   severity_sort = true,
--- })
---
 vim.diagnostic.config({
   virtual_text = false,
   signs = {
     text = {
-      [vim.diagnostic.severity.ERROR] = icons.diagnostics.ERROR,
-      [vim.diagnostic.severity.WARN] = icons.diagnostics.WARN,
-      [vim.diagnostic.severity.INFO] = icons.diagnostics.INFO,
-      [vim.diagnostic.severity.HINT] = icons.diagnostics.HINT,
+      [vim.diagnostic.severity.ERROR] = icons.diagnostics.error,
+      [vim.diagnostic.severity.WARN] = icons.diagnostics.warn,
+      [vim.diagnostic.severity.INFO] = icons.diagnostics.info,
+      [vim.diagnostic.severity.HINT] = icons.diagnostics.hint,
     },
   },
   update_in_insert = false,
