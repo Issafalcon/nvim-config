@@ -10,7 +10,6 @@ return {
   {
     "folke/trouble.nvim",
     cmd = { "TroubleToggle", "Trouble" },
-    init = function() fignvim.mappings.register_whichkey_prefix("<leader>x", "Diagnostics") end,
     keys = fignvim.mappings.make_lazy_keymaps(trouble_keys, true),
     opts = {
       use_diagnostic_signs = true,

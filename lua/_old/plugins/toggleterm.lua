@@ -51,9 +51,6 @@ return {
   {
     "akinsho/toggleterm.nvim",
     cmd = "ToggleTerm",
-    init = function()
-      fignvim.mappings.register_whichkey_prefix("<F7>", "Terminal")
-    end,
     keys = fignvim.mappings.make_lazy_keymaps(toggleterm_keys, true),
     opts = {
       size = 10,

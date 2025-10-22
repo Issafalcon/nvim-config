@@ -50,7 +50,9 @@ return {
       },
       {
         "junegunn/fzf",
-        build = function() vim.fn["fzf#install"]() end,
+        build = function()
+          vim.fn["fzf#install"]()
+        end,
       },
     },
     keys = fignvim.mappings.make_lazy_keymaps(telescope_mappings, true),
@@ -138,8 +140,6 @@ return {
       })
       fignvim.fn.conditional_func(telescope.load_extension, pcall(require, "fzy_native"), "fzy_native")
       fignvim.fn.conditional_func(telescope.load_extension, pcall(require, "fzf"), "fzf")
-
-      fignvim.mappings.register_whichkey_prefix("<leader>t", "Navigation")
     end,
   },
 }

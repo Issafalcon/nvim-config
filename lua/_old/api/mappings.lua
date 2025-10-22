@@ -35,16 +35,6 @@ function fignvim.mappings.create_buf_local_keymaps(mappings, bufnr)
   end
 end
 
---- Registers a prefix in which-key without binding any keymaps
----@param prefix string The keymap prefix to register
----@param groupname string The name of the group
-function fignvim.mappings.register_whichkey_prefix(prefix, groupname)
-  require("which-key").add({
-    prefix,
-    group = groupname,
-  })
-end
-
 --- Creates a set of keymaps for lazy.nvim plugin configuration
 ---@param mappings table List of mapping configurations compatible with vim.api.nvim_set_keymap()
 ---@param[opt=false] perform_bind boolean True if the bindings should not be made by lazy.nvim
