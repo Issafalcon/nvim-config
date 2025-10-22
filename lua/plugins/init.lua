@@ -25,6 +25,7 @@ require("plugins.mason")
 -- =============================================================================
 require("plugins.vim-matchup")
 require("plugins.conform")
+require("plugins.nvim-lint")
 require("plugins.grug-far")
 require("plugins.substitute")
 require("plugins.cutlass")

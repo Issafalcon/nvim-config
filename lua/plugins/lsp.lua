@@ -10,6 +10,22 @@ vim.api.nvim_create_autocmd("FileType", {
   desc = "Start Python LSP",
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+  callback = function()
+    vim.lsp.enable("ts_ls")
+  end,
+  desc = "Start TypeScript/JavaScript LSP",
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "tf", "terraform" },
+  callback = function()
+    vim.lsp.enable("terraformls")
+  end,
+  desc = "Start terraform LSP",
+})
+
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("lsp-attach", {}),
   callback = function(args)

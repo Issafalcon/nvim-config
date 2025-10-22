@@ -1,6 +1,3 @@
-M = {}
-M.opts = {
+return {
   filetypes = { "terraform", "tf" },
 }
-
-return M
