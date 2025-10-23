@@ -20,11 +20,6 @@ return {
     ft = "c",
     opts = qmk_config.lazy_opts,
   },
-  -- Misc keymaps for navigation, encoding and quickfix / loc lists
-  {
-    "tpope/vim-unimpaired",
-    event = "BufReadPost",
-  },
 
   -- Jira stuff
   -- Jirac seems to be a bit broken at the moment, so disabling it for now
