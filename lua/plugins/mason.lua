@@ -52,5 +52,6 @@ require("mason-tool-installer").setup({
     -- Debuggers
     "debugpy",
     "netcoredbg",
+    "js-debug-adapter",
   },
 })
