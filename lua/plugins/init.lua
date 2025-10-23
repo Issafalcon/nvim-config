@@ -14,6 +14,7 @@ vim.pack.add({
 require("plugins.snacks")
 require("plugins.diffview")
 require("plugins.vim-unimpaired")
+require("plugins.which-key")
 
 -- =============================================================================
 -- LSP
@@ -47,6 +48,7 @@ require("plugins.bufferline")
 require("plugins.leap")
 require("plugins.telescope")
 require("plugins.yazi")
+require("plugins.aerial")
 
 -- =============================================================================
 -- Git

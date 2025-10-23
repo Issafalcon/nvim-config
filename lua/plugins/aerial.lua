@@ -1,14 +1,11 @@
----@type FigNvimPluginConfig
-local M = {}
+vim.pack.add({
+  { src = "https://github.com/stevearc/aerial.nvim" },
+})
 
-M.lazy_config = function(_, opts)
-  local _, aerial = pcall(require, "aerial")
-  local telescope_ok, telescope = pcall(require, "telescope")
-  aerial.setup(opts)
-  fignvim.fn.conditional_func(telescope.load_extension, telescope_ok, "aerial")
-end
+local _, aerial = pcall(require, "aerial")
+local telescope_ok, telescope = pcall(require, "telescope")
 
-M.lazy_opts = {
+aerial.setup({
   attach_mode = "window",
   backends = { "lsp", "treesitter", "markdown" },
   close_automatic_events = {},
@@ -34,6 +31,8 @@ M.lazy_opts = {
     ["[["] = false,
     ["]]"] = false,
   },
-}
+})
 
-return M
+fignvim.fn.conditional_func(telescope.load_extension, telescope_ok, "aerial")
+
+vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>", { desc = "Toggle LSP symbol outline panel" })

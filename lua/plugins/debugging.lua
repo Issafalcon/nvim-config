@@ -168,4 +168,74 @@ dapui.setup({
 })
 
 local path = vim.g.dap_install_dir .. "/packages/debugpy/venv/bin/python"
+
 require("dap-python").setup(path)
+
+-- Keymaps
+
+vim.keymap.set("n", "<F5>", ':lua require"osv".launch({port=8086})<CR>', { desc = "Launch OSV server" })
+vim.keymap.set("n", "<F9>", ':lua require"dap".continue()<CR>', { desc = "DAP Continue" })
+vim.keymap.set(
+  "n",
+  "<leader>db",
+  '<cmd>lua require("persistent-breakpoints.api").toggle_breakpoint()<cr>',
+  { desc = "DAP Toggle Breakpoint" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>dB",
+  '<cmd>lua require("persistent-breakpoints.api").set_conditional_breakpoint()<cr>',
+  { desc = "DAP Toggle Conditional Breakpoint" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>de",
+  ':lua require"dap".set_exception_breakpoints()<CR>',
+  { desc = "DAP Set breakpoints on exceptions" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>dbc",
+  '<cmd>lua require("persistent-breakpoints.api").clear_all_breakpoints()<cr>',
+  { desc = "DAP Clear all breakpoints on exceptions" }
+)
+vim.keymap.set("n", "<leader>dk", ':lua require"dap".step_out()<CR>', { desc = "DAP Step Out" })
+vim.keymap.set("n", "<leader>dj", ':lua require"dap".step_into()<CR>', { desc = "DAP Step Into" })
+vim.keymap.set("n", "<leader>dl", ':lua require"dap".step_over()<CR>', { desc = "DAP Step Over" })
+vim.keymap.set(
+  "n",
+  "<leader>dp",
+  ':lua require"dap".up()<CR>',
+  { desc = "DAP Go up in current stacktrace without stepping" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>dn",
+  ':lua require"dap".down()<CR>',
+  { desc = "DAP Go down in current stacktrace without stepping" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>dc",
+  ':lua require"dap".disconnect();require"dap".close();require"dapui".close()<CR>',
+  { desc = "DAP Disconnect and close nvim-dap and dap-ui. Doesn't kill the debugee" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>dC",
+  ':lua require"dap".terminate();require"dap".close()<CR>',
+  { desc = "DAP Terminates the debug session}, also killing the debugee" }
+)
+vim.keymap.set("n", "<F12>", ':lua require"dap.ui.widgets".hover()<CR>', { desc = "DAP Hover info for variables" })
+vim.keymap.set(
+  "n",
+  "<leader>d?",
+  ':lua local widgets = require"dap.ui.widgets";widgets.centered_float(widgets.scopes)<CR>',
+  { desc = "DAP Show scopes in sidebar" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>dr",
+  ':lua require"dap".repl.open({}, "vsplit")<CR><C-w>l',
+  { desc = "DAP Opens repl in vsplit" }
+)
