@@ -211,15 +211,4 @@ M.Editing = {
   },
 }
 
-M.UI = {
-  DismissNotifications = {
-    "n",
-    "<leader>nd",
-    function()
-      require("notify").dismiss({ silent = true, pending = true })
-    end,
-    { desc = "Dismiss all notifications" },
-  },
-}
-
 return M
