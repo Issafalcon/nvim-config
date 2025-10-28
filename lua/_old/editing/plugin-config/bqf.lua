@@ -1,4 +1,4 @@
-local colourscheme = require("core.colourscheme")
+local colourscheme = require("colourscheme")
 
 ---@type FigNvimPluginConfig
 local M = {}

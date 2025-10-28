@@ -1,4 +1,4 @@
-local colours = require("core.colourscheme")
+local colours = require("colourscheme")
 
 local ViMode = {
   init = function(self)

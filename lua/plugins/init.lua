@@ -21,6 +21,7 @@ require("plugins.which-key")
 -- =============================================================================
 require("plugins.lsp")
 require("plugins.mason")
+require("plugins.lsp-progress")
 
 -- =============================================================================
 -- Editing
@@ -41,6 +42,7 @@ require("plugins.mini-icons")
 require("plugins.treesitter")
 require("plugins.maximizer")
 require("plugins.bufferline")
+require("plugins.heirline")
 
 -- =============================================================================
 -- Navigation

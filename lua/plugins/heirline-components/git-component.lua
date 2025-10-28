@@ -1,4 +1,4 @@
-local space_component = require("ui.heirline-components.space-component")
+local space_component = require("plugins.heirline-components.space-component")
 
 local Git = {
   init = function(self)

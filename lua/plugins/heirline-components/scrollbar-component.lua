@@ -1,5 +1,5 @@
-local surrounds = require("ui.heirline-components.surrounds")
-local space_component = require("ui.heirline-components.space-component")
+local surrounds = require("plugins.heirline-components.surrounds")
+local space_component = require("plugins.heirline-components.space-component")
 
 local ScrollBar = {
   static = {

@@ -1,6 +1,6 @@
 local M = {}
 
-local C = require("core.colourscheme").colours
+local C = require("colourscheme").colours
 
 function M.setup_colors()
   local Error = fignvim.ui.get_hlgroup("Error", { fg = C.red, bg = C.bg })

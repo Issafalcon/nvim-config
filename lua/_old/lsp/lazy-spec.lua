@@ -25,10 +25,6 @@ return {
   },
 
   {
-    "linrongbin16/lsp-progress.nvim",
-    config = lsp_progress_config.lazy_config,
-  },
-  {
     "Issafalcon/lsp-overloads.nvim",
     event = "BufReadPre",
   },
