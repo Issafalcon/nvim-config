@@ -102,7 +102,7 @@ cmp.setup({
   },
   window = {
     completion = {
-      border = "none",
+      border = "rounded",
     },
     documentation = {
       border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
