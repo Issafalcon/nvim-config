@@ -1,6 +1,7 @@
 local map = vim.keymap.set
 
 map("", "<Space>", "<Nop>", { silent = true }) -- Prep for space to be leader key
+
 -- Lists
 map("n", "<C-q>", function()
   fignvim.ui.toggle_fix_list(true)

@@ -33,6 +33,7 @@ require("plugins.grug-far")
 require("plugins.substitute")
 require("plugins.cutlass")
 require("plugins.mini-align")
+require("plugins.mini-pairs")
 
 -- =============================================================================
 -- UI
@@ -42,6 +43,7 @@ require("plugins.mini-icons")
 require("plugins.treesitter")
 require("plugins.maximizer")
 require("plugins.bufferline")
+require("plugins.bqf")
 require("plugins.heirline")
 
 -- =============================================================================

@@ -1,20 +1,13 @@
+vim.pack.add({
+  { src = "https://github.com/kevinhwang91/nvim-bqf" },
+})
+
 local colourscheme = require("colourscheme")
 
----@type FigNvimPluginConfig
-local M = {}
+vim.g.BqfPreviewBorder = { fg = colourscheme.colours.vue }
+vim.g.BqfPreviewRange = { link = "Search" }
 
-M.lazy_init = function()
-  local opt = {
-    g = {
-      BqfPreviewBorder = { fg = colourscheme.colours.vue },
-      BqfPreviewRange = { link = "Search" },
-    },
-  }
-
-  fignvim.config.set_vim_opts(opt)
-end
-
-M.lazy_opts = {
+require("bqf").setup({
   auto_enable = true,
   auto_resize_height = true, -- highly recommended enable
   preview = {
@@ -23,7 +16,7 @@ M.lazy_opts = {
     delay_syntax = 80,
     border_chars = { "┃", "┃", "━", "━", "┏", "┓", "┗", "┛", "█" },
     show_title = false,
-    should_preview_cb = function(bufnr, qwinid)
+    should_preview_cb = function(bufnr, _)
       local ret = true
       local bufname = vim.api.nvim_buf_get_name(bufnr)
       local fsize = vim.fn.getfsize(bufname)
@@ -43,5 +36,4 @@ M.lazy_opts = {
       extra_opts = { "--bind", "ctrl-o:toggle-all", "--prompt", "> " },
     },
   },
-}
-return M
+})
