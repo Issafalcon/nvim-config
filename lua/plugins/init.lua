@@ -44,7 +44,6 @@ require("plugins.treesitter")
 require("plugins.maximizer")
 require("plugins.bufferline")
 require("plugins.bqf")
-require("plugins.heirline")
 
 -- =============================================================================
 -- Navigation
@@ -112,3 +111,6 @@ require("plugins.vim-terraform")
 -- Lua / Neovim Development
 -- =============================================================================
 require("plugins.lazydev")
+
+-- Stick this one last (too many dependencies)
+require("plugins.heirline")
