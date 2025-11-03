@@ -10,6 +10,20 @@ vim.api.nvim_create_autocmd("FileType", {
   desc = "Start Python LSP",
 })
 
+local lspconfig = require("lspconfig")
+
+-- Set up capabilities
+local default_capabilities = vim.lsp.protocol.make_client_capabilities()
+local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if status_ok then
+  default_capabilities = vim.tbl_deep_extend("force", default_capabilities, cmp_nvim_lsp.default_capabilities())
+end
+
+-- Apply to all LSP servers by default
+lspconfig.util.default_config = vim.tbl_deep_extend("force", lspconfig.util.default_config, {
+  capabilities = default_capabilities,
+})
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
   callback = function()
