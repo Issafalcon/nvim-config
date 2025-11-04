@@ -57,6 +57,8 @@ require("plugins.aerial")
 -- Git
 -- =============================================================================
 require("plugins.git-signs")
+require("plugins.git-messenger")
+require("plugins.pipeline")
 
 -- =============================================================================
 -- Completions
