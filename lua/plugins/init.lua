@@ -34,6 +34,7 @@ require("plugins.substitute")
 require("plugins.cutlass")
 require("plugins.mini-align")
 require("plugins.mini-pairs")
+require("plugins.mini-ai")
 
 -- =============================================================================
 -- UI
