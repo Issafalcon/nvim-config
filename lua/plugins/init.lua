@@ -71,8 +71,8 @@ require("plugins.completion")
 -- AI
 -- =============================================================================
 require("plugins.copilot")
+require("plugins.mcphub")
 require("plugins.codecompanion")
--- require("plugins.avante")
 
 -- =============================================================================
 -- Documentation
