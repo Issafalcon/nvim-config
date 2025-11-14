@@ -9,14 +9,6 @@ vim.pack.add({
 })
 
 -- =============================================================================
--- Misc
--- =============================================================================
-require("plugins.snacks")
-require("plugins.diffview")
-require("plugins.vim-unimpaired")
-require("plugins.which-key")
-
--- =============================================================================
 -- LSP
 -- =============================================================================
 require("plugins.lsp")
@@ -45,6 +37,7 @@ require("plugins.treesitter")
 require("plugins.maximizer")
 require("plugins.bufferline")
 require("plugins.bqf")
+require("plugins.indent-blankline")
 
 -- =============================================================================
 -- Navigation
@@ -53,6 +46,16 @@ require("plugins.leap")
 require("plugins.telescope")
 require("plugins.yazi")
 require("plugins.aerial")
+
+-- =============================================================================
+-- Misc
+-- =============================================================================
+require("plugins.snacks")
+require("plugins.diffview")
+require("plugins.vim-unimpaired")
+require("plugins.which-key")
+require("plugins.qmk")
+require("plugins.cheatsheet")
 
 -- =============================================================================
 -- Git

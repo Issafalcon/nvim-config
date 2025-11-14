@@ -1,7 +1,8 @@
----@type FigNvimPluginConfig
-local M = {}
+vim.pack.add({
+  { src = "https://github.com/codethread/qmk.nvim" },
+})
 
-M.lazy_opts = {
+require("qmk").setup({
   name = "LAYOUT_split_4x6_5",
   layout = {
     "x x x x x x _ _ _ _ _ x x x x x x",
@@ -10,6 +11,4 @@ M.lazy_opts = {
     "x x x x x x x _ _ _ x x x x x x x",
     "_ _ _ x x x x x _ x x x x x _ _ _",
   },
-}
-
-return M
+})

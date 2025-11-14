@@ -52,6 +52,10 @@ vim.keymap.set("n", "<leader>nd", function()
   Snacks.notifier.hide()
 end, { desc = "Dismiss all notifications" })
 
+vim.keymap.set("n", "<leader>bd", function()
+  Snacks.bufdelete()
+end, { desc = "Close current buffer" })
+
 -- Fancy lsp progress notifications for notifier (https://github.com/folke/snacks.nvim/blob/main/docs/notifier.md)
 ---@type table<number, {token:lsp.ProgressToken, msg:string, done:boolean}[]>
 local progress = vim.defaulttable()
