@@ -24,6 +24,7 @@ require("plugins.nvim-lint")
 require("plugins.grug-far")
 require("plugins.substitute")
 require("plugins.cutlass")
+require("plugins.icon-picker")
 require("plugins.mini-align")
 require("plugins.mini-pairs")
 require("plugins.mini-ai")
@@ -37,6 +38,7 @@ require("plugins.treesitter")
 require("plugins.maximizer")
 require("plugins.bufferline")
 require("plugins.bqf")
+require("plugins.colorutils")
 require("plugins.indent-blankline")
 
 -- =============================================================================
@@ -56,6 +58,7 @@ require("plugins.vim-unimpaired")
 require("plugins.which-key")
 require("plugins.qmk")
 require("plugins.cheatsheet")
+require("plugins.auto-session")
 
 -- =============================================================================
 -- Git
