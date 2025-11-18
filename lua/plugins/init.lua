@@ -58,7 +58,7 @@ require("plugins.vim-unimpaired")
 require("plugins.which-key")
 require("plugins.qmk")
 require("plugins.cheatsheet")
-require("plugins.auto-session")
+require("plugins.persistence")
 
 -- =============================================================================
 -- Git

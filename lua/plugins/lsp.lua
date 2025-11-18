@@ -45,6 +45,53 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
     local capabilities = client.server_capabilities
+    local bufnr = args.buf
+
+    if client and (client.name == "roslyn" or client.name == "roslyn_ls") then
+      vim.api.nvim_create_autocmd("InsertCharPre", {
+        desc = "Roslyn: Trigger an auto insert on '/'.",
+        buffer = bufnr,
+        callback = function()
+          local char = vim.v.char
+
+          if char ~= "/" then
+            return
+          end
+
+          local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+          row, col = row - 1, col + 1
+          local uri = vim.uri_from_bufnr(bufnr)
+
+          local params = {
+            _vs_textDocument = { uri = uri },
+            _vs_position = { line = row, character = col },
+            _vs_ch = char,
+            _vs_options = {
+              tabSize = vim.bo[bufnr].tabstop,
+              insertSpaces = vim.bo[bufnr].expandtab,
+            },
+          }
+
+          -- NOTE: We should send textDocument/_vs_onAutoInsert request only after
+          -- buffer has changed.
+          vim.defer_fn(function()
+            client:request(
+              ---@diagnostic disable-next-line: param-type-mismatch
+              "textDocument/_vs_onAutoInsert",
+              params,
+              function(err, result, _)
+                if err or not result then
+                  return
+                end
+
+                vim.snippet.expand(result._vs_textEdit.newText)
+              end,
+              bufnr
+            )
+          end, 1)
+        end,
+      })
+    end
 
     vim.keymap.set("n", "[g", function()
       vim.diagnostic.jump({ count = -1, float = true })
@@ -65,8 +112,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<leader>ih", function()
       if vim.lsp.inlay_hint.is_enabled() then
         vim.lsp.inlay_hint.enable(false)
+        vim.notify("Inlay hints disabled", vim.log.levels.INFO)
       else
         vim.lsp.inlay_hint.enable(true)
+        vim.notify("Inlay hints enabled", vim.log.levels.INFO)
       end
     end, { desc = "Toggles inlay hints", buffer = args.buf })
 
@@ -122,6 +171,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.keymap.set("n", "gr", function()
         require("telescope.builtin").lsp_references()
       end, { desc = "Go to references of current symbol using Telescope", buffer = args.buf })
+    end
+
+    if capabilities.codeLensProvider then
+      vim.lsp.codelens.refresh()
+      vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave" }, {
+        buffer = bufnr,
+        callback = vim.lsp.codelens.refresh,
+      })
     end
 
     if capabilities.renameProvider then
