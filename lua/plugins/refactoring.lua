@@ -1,8 +1,10 @@
--- https://github.com/ThePrimeagen/refactoring.nvim
----@type FigNvimPluginConfig
-local M = {}
+vim.pack.add({
+  {
+    src = "https://github.com/ThePrimeagen/refactoring.nvim",
+  },
+})
 
-M.lazy_opts = {
+require("refactoring").setup({
   prompt_func_return_type = {
     go = false,
     java = false,
@@ -25,16 +27,10 @@ M.lazy_opts = {
   print_var_statements = {},
   show_success_message = true, -- shows a message with information about the refactor on success
   -- i.e. [Refactor] Inlined 3 variable occurrences
-}
+})
 
-M.setup = function()
-  require("refactoring").setup(M.lazy_opts)
-  require("telescope").load_extension("refactoring")
+require("telescope").load_extension("refactoring")
 
-  local keymaps = require("keymaps").Editing
-  fignvim.mappings.create_keymaps({
-    keymaps.Refactor,
-  })
-end
-
-return M
+vim.keymap.set({ "n", "v" }, "<leader>R", function()
+  require("telescope").extensions.refactoring.refactors()
+end, { desc = "Refactor Actions" })

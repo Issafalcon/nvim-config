@@ -149,31 +149,4 @@ M.Completion = {
   },
 }
 
-M.Editing = {
-  Refactor = {
-    { "n", "v" },
-    "<leader>R",
-    function()
-      require("telescope").extensions.refactoring.refactors()
-    end,
-    { desc = "Refactor Actions" },
-  },
-  DialIncrement = {
-    "n",
-    "<C-a>",
-    function()
-      return require("dial.map").inc_normal()
-    end,
-    { expr = true, desc = "Increment" },
-  },
-  DialDecrement = {
-    "n",
-    "<C-x>",
-    function()
-      return require("dial.map").dec_normal()
-    end,
-    { expr = true, desc = "Decrement" },
-  },
-}
-
 return M

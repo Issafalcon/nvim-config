@@ -25,6 +25,9 @@ require("plugins.grug-far")
 require("plugins.substitute")
 require("plugins.cutlass")
 require("plugins.icon-picker")
+require("plugins.treesj")
+require("plugins.nvim-surround")
+require("plugins.undotree")
 require("plugins.mini-align")
 require("plugins.mini-pairs")
 require("plugins.mini-ai")
@@ -40,6 +43,7 @@ require("plugins.bufferline")
 require("plugins.bqf")
 require("plugins.colorutils")
 require("plugins.indent-blankline")
+require("plugins.nvim-navic")
 
 -- =============================================================================
 -- Navigation
@@ -59,6 +63,7 @@ require("plugins.which-key")
 require("plugins.qmk")
 require("plugins.cheatsheet")
 require("plugins.persistence")
+require("plugins.refactoring")
 
 -- =============================================================================
 -- Git
@@ -128,6 +133,8 @@ require("plugins.lazydev")
 -- =============================================================================
 require("plugins.obsidian")
 require("plugins.neogen")
+-- The builtin commenting functionality is sufficient, but leaving this here for reference
+-- require("plugins.comment")
 
 -- Stick this one last (too many dependencies)
 require("plugins.heirline")
