@@ -34,21 +34,21 @@ local Git = {
   {
     provider = function(self)
       local count = self.status_dict.added or 0
-      return count > 0 and " " .. (fignvim.ui.get_icon("GitAdd") .. " " .. count)
+      return count > 0 and " " .. (fignvim.ui.get_icon("git", "added") .. " " .. count)
     end,
     hl = { fg = "git_added" },
   },
   {
     provider = function(self)
       local count = self.status_dict.removed or 0
-      return count > 0 and " " .. (fignvim.ui.get_icon("GitDelete") .. " " .. count)
+      return count > 0 and " " .. (fignvim.ui.get_icon("git", "removed") .. " " .. count)
     end,
     hl = { fg = "git_removed" },
   },
   {
     provider = function(self)
       local count = self.status_dict.changed or 0
-      return count > 0 and " " .. (fignvim.ui.get_icon("GitChange") .. " " .. count)
+      return count > 0 and " " .. (fignvim.ui.get_icon("git", "modified") .. " " .. count)
     end,
     hl = { fg = "git_changed" },
   },
