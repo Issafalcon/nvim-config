@@ -52,6 +52,7 @@ require("plugins.leap")
 require("plugins.telescope")
 require("plugins.yazi")
 require("plugins.aerial")
+require("plugins.harpoon")
 
 -- =============================================================================
 -- Misc

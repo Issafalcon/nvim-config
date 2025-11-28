@@ -105,14 +105,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.diagnostic.jump({ count = 1, float = true })
     end, { desc = "Go to next diagnostic", buffer = args.buf })
 
-    vim.keymap.set("n", "<leader>gs", function()
-      require("telescope.builtin").lsp_document_symbols()
-    end, { desc = "List document symbols in Telescope", buffer = args.buf })
-
-    vim.keymap.set("n", "<leader>gS", function()
-      require("telescope.builtin").lsp_workspace_symbols()
-    end, { desc = "List workspace symbols in Telescope", buffer = args.buf })
-
     vim.keymap.set("n", "<leader>ih", function()
       if vim.lsp.inlay_hint.is_enabled() then
         vim.lsp.inlay_hint.enable(false)

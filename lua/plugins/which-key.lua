@@ -23,4 +23,5 @@ which_key.add({
     group = "Terminal",
   },
   { "<leader>x", group = "Diagnostics" },
+  { "<leader>g", group = "Git" },
 })

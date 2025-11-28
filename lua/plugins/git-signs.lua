@@ -55,12 +55,12 @@ require("gitsigns").setup({
 
     vim.keymap.set(
       { "v", "n" },
-      "<leader>hs",
+      "<leader>gs",
       ":Gitsigns stage_hunk<CR>",
       { desc = "Gitsigns: Stage hunk", silent = true, buffer = bufnr }
     )
 
-    vim.keymap.set("n", "<leader>hu", "<cmd>Gitsigns undo_stage_hunk<CR>", {
+    vim.keymap.set("n", "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<CR>", {
       desc = "Gitsigns: Undo the last hunk or buffer staging command",
       silent = true,
       buffer = bufnr,
@@ -68,32 +68,32 @@ require("gitsigns").setup({
 
     vim.keymap.set(
       { "v", "n" },
-      "<leader>hr",
+      "<leader>gr",
       ":Gitsigns reset_hunk<CR>",
       { desc = "Gitsigns: Reset hunk", silent = true, buffer = bufnr }
     )
 
     vim.keymap.set(
       "n",
-      "<leader>hS",
+      "<leader>gS",
       "<cmd>Gitsigns stage_buffer<CR>",
       { desc = "Gitsigns: Stage buffer", silent = true, buffer = bufnr }
     )
 
     vim.keymap.set(
       "n",
-      "<leader>hR",
+      "<leader>gR",
       "<cmd>Gitsigns reset_buffer<CR>",
       { desc = "Gitsigns: Reset the buffer", silent = true, buffer = bufnr }
     )
 
-    vim.keymap.set("n", "<leader>hp", "<cmd>Gitsigns preview_hunk<CR>", {
+    vim.keymap.set("n", "<leader>gp", "<cmd>Gitsigns preview_hunk<CR>", {
       desc = "Gitsigns: Preview the hunk in floating window",
       silent = true,
       buffer = bufnr,
     })
 
-    vim.keymap.set("n", "<leader>hb", "<cmd>lua require'gitsigns'.blame_line{full=true}<CR>", {
+    vim.keymap.set("n", "<leader>gb", "<cmd>lua require'gitsigns'.blame_line{full=true}<CR>", {
       desc = "Gitsigns: Show git blame of full change in floating window",
       silent = true,
       buffer = bufnr,
@@ -106,13 +106,13 @@ require("gitsigns").setup({
       { desc = "Gitsigns: Toggle virtual text line blame", silent = true, buffer = bufnr }
     )
 
-    vim.keymap.set("n", "<leader>hd", "<cmd>Gitsigns diffthis<CR>", {
+    vim.keymap.set("n", "<leader>gd", "<cmd>Gitsigns diffthis<CR>", {
       desc = "Gitsigns: Diff the current file against index",
       silent = true,
       buffer = bufnr,
     })
 
-    vim.keymap.set("n", "<leader>hD", "<cmd>Gitsigns diffthis('main')<CR>", {
+    vim.keymap.set("n", "<leader>gD", "<cmd>Gitsigns diffthis('main')<CR>", {
       desc = "Gitsigns: Diff the current file against main",
       silent = true,
       buffer = bufnr,
@@ -120,7 +120,7 @@ require("gitsigns").setup({
 
     vim.keymap.set(
       "n",
-      "<leader>gd",
+      "<leader>gr",
       "<cmd>Gitsigns toggle_deleted<CR>",
       { desc = "Gitsigns: Toggle deleted lines in buffer", silent = true, buffer = bufnr }
     )

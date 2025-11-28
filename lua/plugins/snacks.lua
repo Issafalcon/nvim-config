@@ -44,7 +44,7 @@ vim.keymap.set("n", "<leader>lg", function()
   Snacks.lazygit()
 end, { desc = "Open lazygit in Snacks" })
 
-vim.keymap.set("n", "<leader>gb", function()
+vim.keymap.set("n", "<leader>G", function()
   Snacks.gitbrowse()
 end, { desc = "ToggleTerm with gitbrowse" })
 
