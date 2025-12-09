@@ -44,6 +44,7 @@ require("plugins.bqf")
 require("plugins.colorutils")
 require("plugins.indent-blankline")
 require("plugins.nvim-navic")
+require("plugins.colorizer")
 
 -- =============================================================================
 -- Navigation
@@ -65,6 +66,8 @@ require("plugins.qmk")
 require("plugins.cheatsheet")
 require("plugins.persistence")
 require("plugins.refactoring")
+require("plugins.pack-manager")
+require("plugins.nx")
 
 -- =============================================================================
 -- Git
@@ -112,6 +115,7 @@ require("plugins.toggleterm")
 -- .NET
 -- =============================================================================
 require("plugins.roslyn")
+require("plugins.nuget")
 
 -- =============================================================================
 -- Terraform
