@@ -116,6 +116,7 @@ require("plugins.toggleterm")
 -- =============================================================================
 require("plugins.roslyn")
 require("plugins.nuget")
+require("plugins.easy-dotnet")
 
 -- =============================================================================
 -- Terraform
@@ -132,6 +133,7 @@ require("plugins.render-markdown")
 -- Lua / Neovim Development
 -- =============================================================================
 require("plugins.lazydev")
+require("plugins.luapad")
 
 -- =============================================================================
 -- Documentation
