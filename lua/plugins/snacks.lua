@@ -52,6 +52,10 @@ vim.keymap.set("n", "<leader>nd", function()
   Snacks.notifier.hide()
 end, { desc = "Dismiss all notifications" })
 
+vim.keymap.set("n", "<leader>nh", function()
+  Snacks.notifier.show_history()
+end, { desc = "Show notification history" })
+
 vim.keymap.set("n", "<leader>bd", function()
   Snacks.bufdelete()
 end, { desc = "Close current buffer" })
