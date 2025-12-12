@@ -56,6 +56,8 @@ vim.o.expandtab = true
 
 vim.o.fileencoding = "utf-8" -- File content encoding for the buffer
 
+vim.o.winborder = "rounded"
+
 vim.opt.fillchars = {
   eob = " ", -- Disable `~` on nonexistent lines
   horiz = "-",
@@ -72,7 +74,6 @@ vim.o.history = 100 -- Number of commands to remember in a history table
 vim.o.inccommand = "split" -- Show the effect of a command incrementally
 vim.opt.iskeyword = vim.opt.iskeyword + { "-", "@" } -- Treat dash separated words as a word text object
 vim.o.laststatus = 3 -- globalstatus
-vim.o.lazyredraw = true -- lazily redraw screen
 
 -- Enable mouse support
 vim.o.mouse = "a"

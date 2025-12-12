@@ -45,6 +45,7 @@ require("plugins.colorutils")
 require("plugins.indent-blankline")
 require("plugins.nvim-navic")
 require("plugins.colorizer")
+require("plugins.noice")
 
 -- =============================================================================
 -- Navigation
