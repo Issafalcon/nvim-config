@@ -129,7 +129,7 @@ vim.o.updatetime = 300 -- Length of time to wait before triggering the plugin
 vim.o.wrap = false -- Disable wrapping of lines longer than the width of window
 vim.o.writebackup = false -- Disable making a backup before overwriting a file
 vim.o.backup = false
-vim.o.smoothscroll = true
+vim.o.smoothscroll = false
 
 -- Set Python3 host program for neovim
 --  See `:help g:python3_host_prog`
