@@ -65,8 +65,7 @@ end
 function fignvim.ui.get_hlgroup(name, fallback)
   local hl = vim.fn.hlexists(name) == 1 and vim.api.nvim_get_hl(0, { name = name }) or {}
   return fignvim.table.default_tbl(
-    vim.o.termguicolors and { fg = hl.foreground, bg = hl.background, sp = hl.special }
-      or { cterfm = hl.foreground, ctermbg = hl.background },
+    vim.o.termguicolors and { fg = hl.fg, bg = hl.bg, sp = hl.sp } or { cterfm = hl.fg, ctermbg = hl.bg },
     fallback
   )
 end

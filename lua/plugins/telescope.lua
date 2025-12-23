@@ -109,20 +109,7 @@ fignvim.fn.conditional_func(telescope.load_extension, pcall(require, "fzf"), "fz
 
 local map = vim.keymap.set
 
-map("n", "<C-p>", ":lua require('telescope.builtin').git_files()<CR>", { desc = "Search files in git repo" })
-map(
-  "n",
-  "<leader>tf",
-  ":lua require('telescope.builtin').find_files({hidden = true})<CR>",
-  { desc = "Search files in current directory" }
-)
-
-map("n", "<leader>tS", function()
-  require("telescope.builtin").lsp_workspace_symbols()
-end, { desc = "List workspace symbols in Telescope" })
-
 map("n", "<leader>tb", ":lua require('telescope.builtin').buffers()<CR>", { desc = "Search buffers" })
-map("n", "<leader>th", ":lua require('telescope.builtin').help_tags()<CR>", { desc = "Search help tags" })
 -- map( "n", "<leader>tc", fignvim.search.dev_config_files, { desc = "Search config files" })
 map("n", "<leader>tgc", ":lua require('telescope.builtin').git_commits()<CR>", { desc = "Search git commits" })
 map(
