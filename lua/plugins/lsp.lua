@@ -159,14 +159,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     if capabilities.implementationProvider then
       vim.keymap.set("n", "gI", function()
-        require("telescope.builtin").lsp_implementations()
-      end, { desc = "Go to implementation of current symbol using Telescope", buffer = args.buf })
+        Snacks.picker.lsp_implementations()
+      end, { desc = "Go to implementation of current symbol using Snacks.piclker", buffer = args.buf })
     end
 
     if capabilities.referencesProvider then
       vim.keymap.set("n", "gr", function()
-        require("telescope.builtin").lsp_references()
-      end, { desc = "Go to references of current symbol using Telescope", buffer = args.buf })
+        Snacks.picker.lsp_references()
+      end, { desc = "Go to references of current symbol using Snacks.picker", buffer = args.buf })
     end
 
     if capabilities.codeLensProvider then

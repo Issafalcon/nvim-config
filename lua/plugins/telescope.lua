@@ -109,9 +109,6 @@ fignvim.fn.conditional_func(telescope.load_extension, pcall(require, "fzf"), "fz
 
 local map = vim.keymap.set
 
-map("n", "<leader>tb", ":lua require('telescope.builtin').buffers()<CR>", { desc = "Search buffers" })
--- map( "n", "<leader>tc", fignvim.search.dev_config_files, { desc = "Search config files" })
-map("n", "<leader>tgc", ":lua require('telescope.builtin').git_commits()<CR>", { desc = "Search git commits" })
 map(
   "n",
   "<leader>tbc",
@@ -129,5 +126,3 @@ map(
   ":lua require('telescope.builtin').registers()<CR>",
   { desc = "Search registers while in insert mode" }
 )
-map("n", "<leader>tvc", ":lua require('telescope.builtin').command_history()<CR>", { desc = "Search command history" })
-map("n", "<leader>ts", ":Telescope aerial<CR>", { desc = "Search through Aerial Symbols" })

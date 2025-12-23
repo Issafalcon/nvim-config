@@ -48,7 +48,7 @@ require("catppuccin").setup({
     notify = true,
     semantic_tokens = true,
     snacks = true,
-    telescope = true,
+    telescope = false,
     treesitter = true,
     treesitter_context = true,
     which_key = true,

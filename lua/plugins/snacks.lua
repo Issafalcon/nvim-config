@@ -181,6 +181,23 @@ vim.keymap.set("n", "<leader>th", function()
   Snacks.picker.help()
 end, { desc = "Search help tags" })
 
+vim.keymap.set("n", "<leader>tb", function()
+  Snacks.picker.buffers()
+end, { desc = "Search open buffers" })
+
+-- Git
+vim.keymap.set("n", "<leader>tgl", function()
+  Snacks.picker.git_log()
+end, { desc = "Search git logs" })
+
+vim.keymap.set("n", "<leader>tgd", function()
+  Snacks.picker.git_diff()
+end, { desc = "Search git diff" })
+
+vim.keymap.set("n", "<leader>tr", function()
+  Snacks.picker.registers()
+end, { desc = "Search registers" })
+
 -- Files
 vim.keymap.set("n", "<C-p>", function()
   Snacks.picker.git_files()

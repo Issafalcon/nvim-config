@@ -51,7 +51,7 @@ require("plugins.noice")
 -- Navigation
 -- =============================================================================
 require("plugins.leap")
-require("plugins.telescope")
+-- require("plugins.telescope")
 require("plugins.yazi")
 require("plugins.aerial")
 require("plugins.harpoon")
@@ -64,11 +64,9 @@ require("plugins.diffview")
 require("plugins.vim-unimpaired")
 require("plugins.which-key")
 require("plugins.qmk")
-require("plugins.cheatsheet")
 require("plugins.persistence")
 require("plugins.refactoring")
 require("plugins.pack-manager")
-require("plugins.nx")
 
 -- =============================================================================
 -- Git
@@ -116,7 +114,6 @@ require("plugins.toggleterm")
 -- .NET
 -- =============================================================================
 require("plugins.roslyn")
-require("plugins.nuget")
 require("plugins.easy-dotnet")
 
 -- =============================================================================

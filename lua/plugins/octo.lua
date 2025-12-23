@@ -9,7 +9,7 @@ require("octo").setup({
   default_merge_method = "merge", -- default merge method which should be used for both `Octo pr merge` and merging from picker, could be `commit`, `rebase` or `squash`
   default_delete_branch = false, -- whether to delete branch when merging pull request with either `Octo pr merge` or from picker (can be overridden with `delete`/`nodelete` argument to `Octo pr merge`)
   ssh_aliases = {}, -- SSH aliases. e.g. `ssh_aliases = {["github.com-work"] = "github.com"}`. The key part will be interpreted as an anchored Lua pattern.
-  picker = "telescope", -- or "fzf-lua"
+  picker = "snacks", -- or "fzf-lua"
   picker_config = {
     use_emojis = false, -- only used by "fzf-lua" picker for now
     mappings = { -- mappings for the pickers

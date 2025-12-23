@@ -28,9 +28,3 @@ require("refactoring").setup({
   show_success_message = true, -- shows a message with information about the refactor on success
   -- i.e. [Refactor] Inlined 3 variable occurrences
 })
-
-require("telescope").load_extension("refactoring")
-
-vim.keymap.set({ "n", "v" }, "<leader>R", function()
-  require("telescope").extensions.refactoring.refactors()
-end, { desc = "Refactor Actions" })
