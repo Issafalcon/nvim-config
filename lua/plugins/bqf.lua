@@ -2,7 +2,7 @@ vim.pack.add({
   { src = "https://github.com/kevinhwang91/nvim-bqf" },
 })
 
-local colourscheme = require("colourscheme")
+local colourscheme = require("ui.colourscheme")
 
 vim.g.BqfPreviewBorder = { fg = colourscheme.colours.vue }
 vim.g.BqfPreviewRange = { link = "Search" }

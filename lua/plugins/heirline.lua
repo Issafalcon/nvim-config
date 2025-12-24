@@ -58,7 +58,7 @@ heirline.setup({
     ruler_component,
     scrollbar_component,
   },
-  winbar = winbars,
+  winbar = nil,
   tabline = nil,
   statuscolumn = nil,
   opts = {

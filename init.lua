@@ -6,7 +6,7 @@ require("mappings")
 
 require("plugins")
 
-require("colourscheme")
+require("ui")
 
 require("diagnostics")
 

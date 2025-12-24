@@ -36,6 +36,7 @@ require("plugins.mini-ai")
 -- UI
 -- =============================================================================
 require("plugins.catppuccin") -- Theme
+require("plugins.eldritch") -- Theme
 require("plugins.mini-icons")
 require("plugins.treesitter")
 require("plugins.maximizer")
