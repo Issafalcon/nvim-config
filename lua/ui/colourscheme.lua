@@ -1,4 +1,7 @@
-vim.cmd.colorscheme("catppuccin")
+-- vim.cmd.colorscheme("catppuccin")
+-- vim.cmd.colorscheme("eldritch")
+vim.cmd.colorscheme("custom-theme")
+
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
@@ -6,32 +9,6 @@ vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
 local M = {}
 
 M.colours = {
-  linkarzu_color18 = "#002931",
-  linkarzu_color19 = "#1c1c1c",
-  linkarzu_color20 = "#393939",
-  linkarzu_color21 = "#736902",
-  linkarzu_color22 = "#453f01",
-  linkarzu_color23 = "#7b7b7b",
-  linkarzu_color26 = "#000000",
-  linkarzu_color04 = "#667e83",
-  linkarzu_color02 = "#666666",
-  linkarzu_color03 = "#c2c2c2",
-  linkarzu_color01 = "#c0b004",
-  linkarzu_color05 = "#877c03",
-  linkarzu_color08 = "#ffffff",
-  linkarzu_color06 = "#c3f4fe",
-  linkarzu_color10 = "#000000",
-  linkarzu_color17 = "#0a0a0a",
-  linkarzu_color07 = "#141414",
-  linkarzu_color25 = "#1f1f1f",
-  linkarzu_color13 = "#333333",
-  linkarzu_color15 = "#474747",
-  linkarzu_color09 = "#8a96b1",
-  linkarzu_color11 = "#f8b4b8",
-  linkarzu_color12 = "#fef9c6",
-  linkarzu_color14 = "#ffffff",
-  linkarzu_color16 = "#0390ac",
-  linkarzu_color24 = "#04d1f9",
   none = "NONE",
   fg = "#abb2bf",
   bg = "#1e222a",
