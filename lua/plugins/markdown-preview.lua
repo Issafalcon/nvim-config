@@ -8,10 +8,10 @@ vim.api.nvim_create_autocmd("PackChanged", {
   desc = "Handle fzf updates",
   group = vim.api.nvim_create_augroup("fzf-pack-changed-update-handler", { clear = true }),
   callback = function(event)
-    if event.data.kind ~= "delete" and event.data.spec.name == "markdown-preview" then
+    if event.data.kind ~= "delete" and event.data.spec.name == "markdown-preview.nvim" then
       fignvim.ui.notify("markdown-preview updated, running Install...", vim.log.levels.INFO)
       ---@diagnostic disable-next-line: param-type-mismatch
-      local ok = pcall(vim.fn["mkdp#util#install"])
+      local ok = pcall(vim.fn.call("mkdp#util#install", {}))
       if ok then
         fignvim.ui.notify("mkdp#util#install completed successfully!", vim.log.levels.INFO)
       else
