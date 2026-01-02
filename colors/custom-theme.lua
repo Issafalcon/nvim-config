@@ -6,42 +6,7 @@ end
 vim.o.termguicolors = true
 vim.g.colors_name = "custom-theme"
 
-local colors = {
-  bg = "#0E1419",
-  black = "#000000",
-  bright_blue = "#D0B5F3",
-  bright_cyan = "#BCF4F5",
-  bright_green = "#97EDA2",
-  bright_magenta = "#E7A1D7",
-  bright_red = "#EC6A88",
-  bright_white = "#FFFFFF",
-  bright_yellow = "#F6F6B6",
-  comment = "#B08BBB",
-  cyan = "#A7DFEF",
-  fg = "#F6F6F5",
-  fuchsia = "#E11299",
-  green = "#87E58E",
-  grey = "#A9ABAC",
-  gutter_fg = "#4B5263",
-  lavender = "#6272A4",
-  lilac = "#6D5978",
-  menu = "#21222C",
-  neon_cyan = "#00DFDF",
-  nontext = "#3B4048",
-  orange = "#FFBFA9",
-  pink = "#E48CC1",
-  purple = "#BAA0E8",
-  red = "#E95678",
-  selection = "#3C4148",
-  transparent_black = "#1E1F29",
-  transparent_blue = "#19272C",
-  transparent_green = "#22372c",
-  transparent_red = "#342231",
-  transparent_yellow = "#202624",
-  visual = "#3E4452",
-  white = "#F6F6F5",
-  yellow = "#E8EDA2",
-}
+local colors = require("ui.colours").FignvimColors
 
 -- Terminal colors.
 vim.g.terminal_color_0 = colors.transparent_black
@@ -66,6 +31,7 @@ vim.g.terminal_color_foreground = colors.fg
 -- Groups used for my statusline.
 ---@type table<string, vim.api.keyset.highlight>
 local statusline_groups = {}
+
 for mode, color in pairs({
   Normal = "purple",
   Pending = "pink",
@@ -77,14 +43,21 @@ for mode, color in pairs({
   statusline_groups["StatuslineMode" .. mode] = { fg = colors.transparent_black, bg = colors[color] }
   statusline_groups["StatuslineModeSeparator" .. mode] = { fg = colors[color], bg = colors.transparent_black }
 end
+
 statusline_groups = vim.tbl_extend("error", statusline_groups, {
   StatuslineItalic = { fg = colors.grey, bg = colors.transparent_black, italic = true },
   StatuslineSpinner = { fg = colors.bright_green, bg = colors.transparent_black, bold = true },
   StatuslineTitle = { fg = colors.bright_white, bg = colors.transparent_black, bold = true },
 })
 
+-- LazyGitGroups
+local lazygit_groups = {
+  LazyGitActiveBorder = { fg = colors.bright_green, bold = true },
+  LazyGitInactiveBorder = { fg = colors.purple },
+}
+
 ---@type table<string, vim.api.keyset.highlight>
-local groups = vim.tbl_extend("error", statusline_groups, {
+local groups = vim.tbl_extend("error", lazygit_groups, statusline_groups, {
   -- Builtins.
   Boolean = { fg = colors.cyan },
   Character = { fg = colors.green },

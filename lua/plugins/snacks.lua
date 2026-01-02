@@ -7,7 +7,21 @@ local notify = vim.notify
 require("snacks").setup({
   image = { enabled = true },
   scroll = { enabled = true },
-  lazygit = { enabled = true },
+  lazygit = {
+    enabled = true,
+    theme = {
+      [241] = { fg = "Special" },
+      activeBorderColor = { fg = "LazyGitActiveBorder", bold = true },
+      cherryPickedCommitBgColor = { fg = "Identifier" },
+      cherryPickedCommitFgColor = { fg = "Function" },
+      defaultFgColor = { fg = "Normal" },
+      inactiveBorderColor = { fg = "LazyGitInactiveBorder" },
+      optionsTextColor = { fg = "Function" },
+      searchingActiveBorderColor = { fg = "MatchParen", bold = true },
+      selectedLineBgColor = { bg = "Visual" }, -- set to `default` to have no background colour
+      unstagedChangesColor = { fg = "DiagnosticError" },
+    },
+  },
   gitbrowse = { enabled = true },
   styles = {
     styles = {
