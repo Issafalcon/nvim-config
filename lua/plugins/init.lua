@@ -51,7 +51,7 @@ require("plugins.noice")
 -- Navigation
 -- =============================================================================
 require("plugins.leap")
--- require("plugins.telescope")
+require("plugins.telescope") -- Not main picker but still required by some plugins
 require("plugins.yazi")
 require("plugins.aerial")
 require("plugins.harpoon")
@@ -67,6 +67,7 @@ require("plugins.qmk")
 require("plugins.persistence")
 require("plugins.refactoring")
 require("plugins.pack-manager")
+require("plugins.nx")
 
 -- =============================================================================
 -- Git
@@ -115,6 +116,7 @@ require("plugins.toggleterm")
 -- =============================================================================
 require("plugins.roslyn")
 require("plugins.easy-dotnet")
+require("plugins.nuget")
 
 -- =============================================================================
 -- Terraform
