@@ -1,6 +1,7 @@
 _G.fignvim = {} -- Create global fignvim table
 
 require("utils")
+require("autocmds")
 require("options")
 require("mappings")
 
