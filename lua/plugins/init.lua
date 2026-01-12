@@ -140,6 +140,7 @@ require("plugins.luapad")
 -- =============================================================================
 require("plugins.obsidian")
 require("plugins.neogen")
+require("plugins.plantuml")
 -- The builtin commenting functionality is sufficient, but leaving this here for reference
 -- require("plugins.comment")
 

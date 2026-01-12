@@ -38,9 +38,6 @@ map("i", "<A-j>", "<Esc>:m .+1<CR>==gi", { desc = "Move current line up" })
 map("i", "<A-K>", "<Esc>:m .-2<CR>==gi", { desc = "Move current line down" })
 map("n", "<leader>bo", "<cmd>%bd|e#<cr>", { desc = "Close all buffers except the current one" })
 
-map("o", "ie", ":exec 'normal! ggVG'<cr>", { desc = "Creates new text object to operate on entire buffer" })
-map("o", "iv", ":exec 'normal! HVL'<cr>", { desc = "Creates new text object to operate on all text in view" })
-
 -- Navigation
 map("n", "<S-l>", ":bnext<CR>", { desc = "Move to next buffer" })
 map("n", "<S-h>", ":bprevious<CR>", { desc = "Move to previous buffer" })

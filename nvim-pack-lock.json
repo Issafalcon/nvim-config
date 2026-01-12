@@ -311,6 +311,10 @@
       "rev": "8fdbb4ed7bd20f92d3c1344b1e619af9017c743d",
       "src": "https://github.com/jbyuki/one-small-step-for-vimkind"
     },
+    "open-browser.vim": {
+      "rev": "7d4c1d8198e889d513a030b5a83faa07606bac27",
+      "src": "https://github.com/tyru/open-browser.vim"
+    },
     "pack-manager.nvim": {
       "rev": "e947437ab03c2e20d7eb4e27d1a5f043a9ab1d72",
       "src": "https://github.com/mplusp/pack-manager.nvim"
@@ -326,6 +330,14 @@
     "pipeline.nvim": {
       "rev": "0aedeb88a01b4fe93937f4f1a5ba7632d4a88a79",
       "src": "https://github.com/topaxi/pipeline.nvim"
+    },
+    "plantuml-previewer.vim": {
+      "rev": "368a1f331c1ff29f6a3ee76facfca39a7f374b13",
+      "src": "https://github.com/weirongxu/plantuml-previewer.vim"
+    },
+    "plantuml-syntax": {
+      "rev": "9d4900aa16674bf5bb8296a72b975317d573b547",
+      "src": "https://github.com/aklt/plantuml-syntax"
     },
     "plenary.nvim": {
       "rev": "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
