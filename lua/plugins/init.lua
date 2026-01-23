@@ -115,7 +115,7 @@ require("plugins.toggleterm")
 -- .NET
 -- =============================================================================
 require("plugins.roslyn")
-require("plugins.easy-dotnet")
+-- require("plugins.easy-dotnet") -- 23-01-2026: Still has issues. Can't load multiple solutions in different tabs. Solution select fails and gets confused.
 require("plugins.nuget")
 
 -- =============================================================================
