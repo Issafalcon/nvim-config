@@ -26,6 +26,7 @@ require("mason-tool-installer").setup({
     -- LSPs
     "lua-language-server",
     "copilot-language-server",
+    "bash-language-server",
     "roslyn",
 
     -- Formatters
