@@ -44,6 +44,14 @@ vim.api.nvim_create_autocmd("FileType", {
   desc = "Start terraform LSP",
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "bash", "sh", "zsh" },
+  callback = function()
+    vim.lsp.enable("bashls")
+  end,
+  desc = "Start bash LSP",
+})
+
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("lsp-attach", {}),
   callback = function(args)
