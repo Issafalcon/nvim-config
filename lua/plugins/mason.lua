@@ -27,7 +27,10 @@ require("mason-tool-installer").setup({
     "lua-language-server",
     "copilot-language-server",
     "bash-language-server",
+    "cucumber-language-server",
     "roslyn",
+    "vtsls", -- vscode typescript language features
+    "angular-language-server",
 
     -- Formatters
     "jq",

@@ -6,14 +6,6 @@ vim.pack.add({
   { src = "https://github.com/Issafalcon/lsp-overloads.nvim" },
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "lua",
-  callback = function()
-    vim.lsp.enable("lua_ls")
-  end,
-  desc = "Start Python LSP",
-})
-
 local lspconfig = require("lspconfig")
 
 -- Set up capabilities
@@ -26,30 +18,6 @@ end
 -- Apply to all LSP servers by default
 lspconfig.util.default_config = vim.tbl_deep_extend("force", lspconfig.util.default_config, {
   capabilities = default_capabilities,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
-  callback = function()
-    vim.lsp.enable("ts_ls")
-  end,
-  desc = "Start TypeScript/JavaScript LSP",
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "tf", "terraform" },
-  callback = function()
-    vim.lsp.enable("terraformls")
-  end,
-  desc = "Start terraform LSP",
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "bash", "sh", "zsh" },
-  callback = function()
-    vim.lsp.enable("bashls")
-  end,
-  desc = "Start bash LSP",
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -240,27 +208,65 @@ vim.api.nvim_create_autocmd("LspAttach", {
       )
     end
 
-    if client.name == "ts_ls" then
-      vim.keymap.set(
-        "n",
-        "<leader>to",
-        ":TSLspOrganize<CR>",
-        { desc = "Organize imports using tsserver", buffer = args.buf }
-      )
-
-      vim.keymap.set(
-        "n",
-        "<leader>trn",
-        ":TSLspRenameFile<CR>",
-        { desc = "Rename file using tsserver", buffer = args.buf }
-      )
-
-      vim.keymap.set(
-        "n",
-        "<leader>ti",
-        ":TSLspImportAll<CR>",
-        { desc = "Import all missing imports using tsserver", buffer = args.buf }
-      )
+    if client.name == "vtsls" then
+      -- Note: vtsls keybindings are now handled in lsp/vtsls.lua
+      -- Keeping this section for any additional vtsls-specific setup if needed
     end
   end,
+})
+
+-- Enabling LSP servers
+vim.lsp.enable("emmet_ls")
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "lua",
+  callback = function()
+    vim.lsp.enable("lua_ls")
+  end,
+  desc = "Start Python LSP",
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+  callback = function()
+    vim.lsp.enable("vtsls")
+  end,
+  desc = "Start vtsls for TypeScript/JavaScript",
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "tf", "terraform" },
+  callback = function()
+    vim.lsp.enable("terraformls")
+  end,
+  desc = "Start terraform LSP",
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "bash", "sh", "zsh" },
+  callback = function()
+    vim.lsp.enable("bashls")
+  end,
+  desc = "Start bash LSP",
+})
+
+-- Enable Angular LSP for Angular projects
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "typescript", "html", "typescriptreact" },
+  callback = function()
+    -- Check if we're in an Angular project
+    local root = vim.fs.root(0, { "angular.json", "project.json" })
+    if root then
+      vim.lsp.enable("angularls")
+    end
+  end,
+  desc = "Start Angular LSP in Angular projects",
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "cucumber", "feature" },
+  callback = function()
+    vim.lsp.enable("cucumber_language_server")
+  end,
+  desc = "Start cucumber LSP",
 })

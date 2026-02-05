@@ -11,6 +11,7 @@ local prettier_filetpyes = {
   "graphql",
   "handlebars",
   "html",
+  "htmlangular",
   "javascript",
   "javascriptreact",
   "json",
@@ -23,7 +24,6 @@ local prettier_filetpyes = {
   "typescriptreact",
   "vue",
   "yaml",
-  "htmlangular",
 }
 
 local opts = {
@@ -55,6 +55,7 @@ local opts = {
           css = "css",
           scss = "scss",
           less = "less",
+          htmlangular = "html",
           html = "html",
           json = "json",
           jsonc = "json",
@@ -136,9 +137,9 @@ vim.api.nvim_create_autocmd("BufWritePre", {
       })
     end
 
-    local ts_client = vim.lsp.get_clients({ name = "ts_ls", bufnr = ev.buf })[1]
-    if ts_client then
-      local request_result = ts_client:request_sync("workspace/executeCommand", {
+    local vtsls_client = vim.lsp.get_clients({ name = "vtsls", bufnr = ev.buf })[1]
+    if vtsls_client then
+      local request_result = vtsls_client:request_sync("workspace/executeCommand", {
         command = "_typescript.organizeImports",
         arguments = { vim.api.nvim_buf_get_name(ev.buf) },
       })

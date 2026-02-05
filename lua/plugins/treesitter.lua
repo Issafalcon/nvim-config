@@ -14,6 +14,7 @@ require("ts_context_commentstring").setup({})
 
 require("nvim-treesitter.configs").setup({
   ensure_installed = {
+    "angular",
     "arduino",
     "arduino",
     "awk",
@@ -136,4 +137,13 @@ require("nvim-treesitter.configs").setup({
     updatetime = 25,
     persist_queries = false,
   },
+})
+
+-- Configure Angular parser for component templates
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+  pattern = { "*.component.html", "*.container.html" },
+  callback = function()
+    vim.treesitter.start(nil, "angular")
+  end,
+  desc = "Use Angular parser for component templates",
 })

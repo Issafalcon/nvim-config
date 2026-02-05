@@ -12,6 +12,8 @@ return {
         "**/StagingTests/**/*.cs",
         "**/Behaviours/*.cs",
         "**/*.feature.cs",
+        "**/*.feature",
+        "**/test/src/*.ts",
       },
     },
   },
