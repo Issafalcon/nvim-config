@@ -375,6 +375,10 @@
       "rev": "9db749a880e3dd3b0eb57f698aa8f1e1630e1f25",
       "src": "https://github.com/gbprod/substitute.nvim"
     },
+    "swagger-preview.nvim": {
+      "rev": "42999dd6ad0bbb3e6ca5e857f3fc3c12de014110",
+      "src": "https://github.com/vinnymeller/swagger-preview.nvim"
+    },
     "telescope-fzf-native.nvim": {
       "rev": "6fea601bd2b694c6f2ae08a6c6fab14930c60e2c",
       "src": "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
@@ -386,6 +390,10 @@
     "telescope.nvim": {
       "rev": "a8c2223ea6b185701090ccb1ebc7f4e41c4c9784",
       "src": "https://github.com/nvim-telescope/telescope.nvim"
+    },
+    "terragrunt-ls": {
+      "rev": "a82e24338bae87e5a3d1e8cf81179ce8a848ae3e",
+      "src": "https://github.com/gruntwork-io/terragrunt-ls"
     },
     "toggleterm.nvim": {
       "rev": "9a88eae817ef395952e08650b3283726786fb5fb",

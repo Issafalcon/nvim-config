@@ -15,6 +15,8 @@ require("plugins.lsp")
 require("plugins.mason")
 require("plugins.lsp-progress")
 
+require("plugins.terragrunt-ls")
+
 -- =============================================================================
 -- Editing
 -- =============================================================================
@@ -146,6 +148,7 @@ require("plugins.luapad")
 require("plugins.obsidian")
 require("plugins.neogen")
 require("plugins.plantuml")
+require("plugins.swagger-preview")
 -- The builtin commenting functionality is sufficient, but leaving this here for reference
 -- require("plugins.comment")
 

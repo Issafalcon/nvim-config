@@ -54,5 +54,40 @@ vim.api.nvim_create_autocmd("PackChanged", {
         vim.notify("TSUpdate command not available yet, skipping", vim.log.levels.WARN)
       end
     end
+
+    -- Swagger Preview
+    if event.data.kind ~= "delete" and event.data.spec.name == "swagger-preview.nvim" then
+      vim.notify("swagger-preview.nvim updated, running npm i...", vim.log.levels.INFO)
+      ---@diagnostic disable-next-line: param-type-mismatch
+      local ok = os.execute("cd " .. event.data.path .. " && npm i")
+      if ok then
+        vim.notify("npm i completed successfully!", vim.log.levels.INFO)
+      else
+        vim.notify("npm i failed, please check the output for details", vim.log.levels.ERROR)
+      end
+    end
+
+    -- Terragrunt Language Server
+    if event.data.kind ~= "delete" and event.data.spec.name == "terragrunt-ls" then
+      vim.notify("terragrunt-ls updated, running go install...", vim.log.levels.INFO)
+
+      local ok = os.execute("cd " .. event.data.path .. " && mise install && go install")
+
+      if ok then
+        vim.notify("go install completed successfully!", vim.log.levels.INFO)
+      else
+        vim.notify("go install failed, please check the output for details", vim.log.levels.ERROR)
+      end
+
+      local build_ok = os.execute(
+        "cd " .. event.data.path .. " && go build -o " .. vim.fn.stdpath("data") .. "/mason/bin/terragrunt-ls"
+      )
+
+      if build_ok then
+        vim.notify("terragrunt-ls built successfully!", vim.log.levels.INFO)
+      else
+        vim.notify("Failed to build terragrunt-ls, please check the output for details", vim.log.levels.ERROR)
+      end
+    end
   end,
 })
