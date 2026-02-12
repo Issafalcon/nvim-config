@@ -218,7 +218,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- Enabling LSP servers
 vim.lsp.enable("emmet_ls")
 
+-- Setup autocmd group to clear for the lsp filetype autocmds when the lsp server is disabled
+
+local lsp_filetype_group = vim.api.nvim_create_augroup("lsp_filetype", { clear = true })
+
 vim.api.nvim_create_autocmd("FileType", {
+  group = lsp_filetype_group,
   pattern = "lua",
   callback = function()
     vim.lsp.enable("lua_ls")
@@ -227,6 +232,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
+  group = lsp_filetype_group,
   pattern = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
   callback = function()
     vim.lsp.enable("vtsls")
@@ -235,6 +241,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
+  group = lsp_filetype_group,
   pattern = { "tf", "terraform" },
   callback = function()
     vim.lsp.enable("terraformls")
@@ -243,6 +250,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
+  group = lsp_filetype_group,
   pattern = { "bash", "sh", "zsh" },
   callback = function()
     vim.lsp.enable("bashls")
@@ -252,6 +260,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Enable Angular LSP for Angular projects
 vim.api.nvim_create_autocmd("FileType", {
+  group = lsp_filetype_group,
   pattern = { "typescript", "html", "typescriptreact" },
   callback = function()
     -- Check if we're in an Angular project
@@ -264,9 +273,19 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
+  group = lsp_filetype_group,
   pattern = { "cucumber", "feature" },
   callback = function()
     vim.lsp.enable("cucumber_language_server")
   end,
   desc = "Start cucumber LSP",
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = lsp_filetype_group,
+  pattern = { "http", "rest" },
+  callback = function()
+    vim.lsp.enable("kulala_ls")
+  end,
+  desc = "Start Kulala http client LSP",
 })

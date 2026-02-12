@@ -43,6 +43,7 @@ require("mason-tool-installer").setup({
     "clang-format",
     "black",
     "yamlfmt",
+    "kulala-fmt",
 
     -- Linters
     "tflint",
