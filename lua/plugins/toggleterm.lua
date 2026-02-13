@@ -20,6 +20,10 @@ vim.keymap.set("n", "<F7>n", function()
   fignvim.term.toggle_term_cmd("node")
 end, { desc = "ToggleTerm with Node" })
 
+vim.keymap.set("n", "<F7>d", function()
+  fignvim.term.toggle_term_cmd("lazydotnet") -- https://github.com/ckob/lazydotnet
+end, { desc = "ToggleTerm with LazyDotnet" })
+
 vim.keymap.set("n", "<F7>p", function()
   fignvim.term.toggle_term_cmd("python")
 end, { desc = "ToggleTerm with Python" })
