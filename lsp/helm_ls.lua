@@ -1,5 +1,4 @@
-M = {}
-M.opts = {
+return {
   settings = {
     ["helm-ls"] = {
       yamlls = {
@@ -8,5 +7,3 @@ M.opts = {
     },
   },
 }
-
-return M

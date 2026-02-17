@@ -11,6 +11,9 @@ require("ui")
 
 require("diagnostics")
 
+-- Load statusline module for native/Heirline toggle
+require("statusline")
+
 local cmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 

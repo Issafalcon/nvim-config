@@ -31,6 +31,7 @@ require("mason-tool-installer").setup({
     "roslyn",
     "vtsls", -- vscode typescript language features
     "angular-language-server",
+    "helm-ls",
 
     -- Formatters
     "jq",
