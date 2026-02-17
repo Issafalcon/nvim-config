@@ -350,6 +350,9 @@ local groups = vim.tbl_extend("error", lazygit_groups, statusline_groups, {
 
   -- CodeCompanion.
   CodeCompanionInlineDiffHint = { link = "LspCodeLens" },
+
+  -- Snacks.
+  SnacksPickerDir = { fg = colors.bright_magenta, italic = true },
 })
 
 if vim.g.colors_name == nil or vim.g.colors_name == "custom-theme" then
