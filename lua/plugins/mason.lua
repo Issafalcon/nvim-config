@@ -30,6 +30,7 @@ require("mason-tool-installer").setup({
     "cucumber-language-server",
     "roslyn",
     "vtsls", -- vscode typescript language features
+    "json-lsp",
     "angular-language-server",
     "helm-ls",
 

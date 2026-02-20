@@ -289,3 +289,12 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
   desc = "Start Kulala http client LSP",
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = lsp_filetype_group,
+  pattern = { "json" },
+  callback = function()
+    vim.lsp.enable("json-lsp")
+  end,
+  desc = "Start json LSP",
+})
