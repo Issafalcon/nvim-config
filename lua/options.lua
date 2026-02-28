@@ -134,9 +134,11 @@ vim.o.smoothscroll = false
 -- Set Python3 host program for neovim
 --  See `:help g:python3_host_prog`
 if vim.fn.has("win32") == 1 then
-  vim.g.python3_host_prog = "~/AppData/Local/python3/Envs/neovim/Scripts/python.exe"
+  vim.g.python3_host_prog = vim.env.HOME .. "/AppData/Local/python3/Envs/neovim/Scripts/python.exe"
+  vim.env.QUARTO_PYTHON = vim.env.HOME .. "/AppData/Local/python3/Envs/neovim/Scripts/python.exe"
 else
-  vim.g.python3_host_prog = "~/python3/envs/neovim/bin/python3"
+  vim.g.python3_host_prog = vim.env.HOME .. "/python3/envs/neovim/bin/python3"
+  vim.env.QUARTO_PYTHON = vim.env.HOME .. "/python3/envs/neovim/bin/python3"
 end
 
 if vim.fn.has("win32") == 1 then
