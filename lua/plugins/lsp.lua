@@ -294,8 +294,6 @@ vim.api.nvim_create_autocmd("FileType", {
   group = lsp_filetype_group,
   pattern = { "json" },
   callback = function()
-    -- vim.lsp.enable("json-lsp")
-    -- vim.lsp.enable("vscode-json-language-server")
     vim.lsp.enable("jsonls")
   end,
   desc = "Start json LSP",
