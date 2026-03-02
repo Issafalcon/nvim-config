@@ -427,6 +427,10 @@
       "rev": "178d19e00a643f825ea11d581b1684745d0c4eda",
       "src": "https://github.com/mbbill/undotree"
     },
+    "venv-selector.nvim": {
+      "rev": "42e8faadf9b819654f29eb1a785797a3a328f301",
+      "src": "https://github.com/linux-cultist/venv-selector.nvim"
+    },
     "vim-abolish": {
       "rev": "dcbfe065297d31823561ba787f51056c147aa682",
       "src": "https://github.com/tpope/vim-abolish"

@@ -1,9 +1,13 @@
+---@diagnostic disable: missing-fields
 vim.pack.add({
   {
     src = "https://github.com/jmbuhr/otter.nvim",
   },
   {
     src = "https://github.com/quarto-dev/quarto-nvim",
+  },
+  {
+    src = "https://github.com/linux-cultist/venv-selector.nvim",
   },
 })
 
@@ -28,6 +32,18 @@ require("quarto").setup({
     ft_runners = {}, -- filetype to runner, ie. `{ python = "molten" }`.
     -- Takes precedence over `default_method`
     never_run = { "yaml" }, -- filetypes which are never sent to a code runner
+  },
+})
+
+require("venv-selector").setup({
+  search = {
+    nvim_venv = {
+      command = "fd '/bin/python$' ~/python3/envs/neovim --no-ignore-vcs --full-path --color never",
+    },
+  },
+  options = {
+    picker = "auto",
+    log_level = "DEBUG",
   },
 })
 
