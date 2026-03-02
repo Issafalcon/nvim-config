@@ -133,6 +133,10 @@
       "rev": "005b56001b2cb30bfa61b7986bc50657816ba4ba",
       "src": "https://github.com/lukas-reineke/indent-blankline.nvim"
     },
+    "iron.nvim": {
+      "rev": "88cd340407b959f1168af2a6ae5a3d180e6df32c",
+      "src": "https://github.com/Vigemus/iron.nvim"
+    },
     "kulala.nvim": {
       "rev": "6656c9d332735ca6a27725e0fb45a1715c4372d9",
       "src": "https://github.com/mistweaverco/kulala.nvim"
@@ -142,8 +146,8 @@
       "src": "https://github.com/folke/lazydev.nvim"
     },
     "leap.nvim": {
-      "rev": "f19d43590c4b6d31188ee1ea2954d2b7558a9e11",
-      "src": "https://github.com/ggandor/leap.nvim"
+      "rev": "b81866399072af08195ebfbcfea9d3dcab970972",
+      "src": "https://codeberg.org/andyg/leap.nvim"
     },
     "lsp-overloads.nvim": {
       "rev": "187912c9da30c2b4a1e8f2d3e3bc5dc899f91ea0",
@@ -319,6 +323,10 @@
       "rev": "7d4c1d8198e889d513a030b5a83faa07606bac27",
       "src": "https://github.com/tyru/open-browser.vim"
     },
+    "otter.nvim": {
+      "rev": "4796602953348e19fb24916557af7b89e188751f",
+      "src": "https://github.com/jmbuhr/otter.nvim"
+    },
     "pack-manager.nvim": {
       "rev": "e947437ab03c2e20d7eb4e27d1a5f043a9ab1d72",
       "src": "https://github.com/mplusp/pack-manager.nvim"
@@ -354,6 +362,10 @@
     "qmk.nvim": {
       "rev": "3c804c1480991e4837514900b22b9358cfd64fa1",
       "src": "https://github.com/codethread/qmk.nvim"
+    },
+    "quarto-nvim": {
+      "rev": "d923bb7cfc2bde41143e1c531c28190f0fade3a2",
+      "src": "https://github.com/quarto-dev/quarto-nvim"
     },
     "refactoring.nvim": {
       "rev": "6784b54587e6d8a6b9ea199318512170ffb9e418",

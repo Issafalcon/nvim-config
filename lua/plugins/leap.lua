@@ -1,5 +1,5 @@
 vim.pack.add({
-  { src = "https://github.com/ggandor/leap.nvim" },
+  { src = "https://codeberg.org/andyg/leap.nvim" },
 })
 
 vim.keymap.set("n", "<C-m>", "<plug>(leap-forward)", { desc = "Leap: Forward to" })

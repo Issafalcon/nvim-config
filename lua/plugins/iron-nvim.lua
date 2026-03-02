@@ -39,9 +39,13 @@ iron.setup({
     end,
     -- Send selections to the DAP repl if an nvim-dap session is running.
     dap_integration = true,
-    -- How the repl window will be displayed
-    -- See below for more information
-    repl_open_cmd = view.bottom(20),
+
+    repl_open_cmd = view.split("40%", {
+      winfixwidth = false,
+      winfixheight = false,
+      -- any window-local configuration can be used here
+      number = true,
+    }),
 
     -- repl_open_cmd can also be an array-style table so that multiple
     -- repl_open_commands can be given.
@@ -65,23 +69,23 @@ iron.setup({
     -- available
     -- toggle_repl_with_cmd_1 = "<leader>rv",
     -- toggle_repl_with_cmd_2 = "<leader>rh",
-    restart_repl = "<leader>rR", -- calls `IronRestart` to restart the repl
-    send_motion = "<leader>sc",
-    visual_send = "<leader>sc",
-    send_file = "<leader>rsf",
-    send_line = "<leader>rsl",
-    send_paragraph = "<leader>rsp",
-    send_until_cursor = "<leader>su",
+    restart_repl = "<leader>iR", -- calls `IronRestart` to restart the repl
+    send_motion = "<leader>ic",
+    visual_send = "<leader>ic",
+    send_file = "<leader>if",
+    send_line = "<leader>il",
+    send_paragraph = "<leader>ip",
+    send_until_cursor = "<leader>iu",
     -- send_mark = "<leader>sm",
     -- send_code_block = "<leader>sb",
     -- send_code_block_and_move = "<leader>sn",
     -- mark_motion = "<leader>mc",
     -- mark_visual = "<leader>mc",
     -- remove_mark = "<leader>md",
-    cr = "<leader>rs<cr>",
-    interrupt = "<leader>rs<leader>",
-    exit = "<leader>rsq",
-    clear = "<leader>rcl",
+    cr = "<leader>is<cr>",
+    interrupt = "<leader>is<leader>",
+    exit = "<leader>iq",
+    clear = "<leader>icl",
   },
   -- If the highlight is on, you can change how it looks
   -- For the available options, check nvim_set_hl
