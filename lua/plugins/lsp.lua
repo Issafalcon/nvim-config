@@ -228,7 +228,16 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.lsp.enable("lua_ls")
   end,
-  desc = "Start Python LSP",
+  desc = "Start lua LSP",
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = lsp_filetype_group,
+  pattern = { "python", "py" },
+  callback = function()
+    vim.lsp.enable("pyright")
+  end,
+  desc = "Start pyright LSP",
 })
 
 vim.api.nvim_create_autocmd("FileType", {

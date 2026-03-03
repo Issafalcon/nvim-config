@@ -127,10 +127,11 @@ require("plugins.roslyn")
 require("plugins.nuget")
 
 -- =============================================================================
--- Data Science
+-- Data Science / Python
 -- =============================================================================
 require("plugins.iron-nvim")
 require("plugins.quarto-nvim")
+require("plugins.venv-selector")
 
 -- =============================================================================
 -- Terraform
