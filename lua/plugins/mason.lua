@@ -33,6 +33,7 @@ require("mason-tool-installer").setup({
     "json-lsp",
     "angular-language-server",
     "helm-ls",
+    "pyright",
 
     -- Formatters
     "jq",
