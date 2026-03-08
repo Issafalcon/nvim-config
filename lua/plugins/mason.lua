@@ -34,6 +34,7 @@ require("mason-tool-installer").setup({
     "angular-language-server",
     "helm-ls",
     "pyright",
+    "clangd",
 
     -- Formatters
     "jq",

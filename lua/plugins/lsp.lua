@@ -222,6 +222,16 @@ vim.lsp.enable("emmet_ls")
 
 local lsp_filetype_group = vim.api.nvim_create_augroup("lsp_filetype", { clear = true })
 
+-- C Lang D
+vim.api.nvim_create_autocmd("FileType", {
+  group = lsp_filetype_group,
+  pattern = { "c", "cpp", "objc", "objcpp" },
+  callback = function()
+    vim.lsp.enable("clangd")
+  end,
+  desc = "Start clangd LSP",
+})
+
 vim.api.nvim_create_autocmd("FileType", {
   group = lsp_filetype_group,
   pattern = "lua",
