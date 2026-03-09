@@ -31,8 +31,6 @@ require("quarto").setup({
   },
 })
 
-fignvim.fn.put("quarto", "quarto")
-
 local runner = require("quarto.runner")
 
 vim.keymap.set("n", "<localleader>rc", runner.run_cell, { desc = "run cell", silent = true })
