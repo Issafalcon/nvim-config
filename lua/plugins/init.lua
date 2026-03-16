@@ -96,6 +96,7 @@ require("plugins.completion")
 require("plugins.copilot")
 require("plugins.mcphub")
 require("plugins.codecompanion")
+require("plugins.nvim-mcp")
 
 -- =============================================================================
 -- GitHub

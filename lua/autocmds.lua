@@ -89,5 +89,18 @@ vim.api.nvim_create_autocmd("PackChanged", {
         vim.notify("Failed to build terragrunt-ls, please check the output for details", vim.log.levels.ERROR)
       end
     end
+
+    -- nvim-mcp
+    if event.data.kind ~= "delete" and event.data.spec.name == "nvim-mcp" then
+      vim.notify("nvim-mcp updated, running cargo install...", vim.log.levels.INFO)
+      ---@diagnostic disable-next-line: param-type-mismatch
+      local ok = os.execute("cd " .. event.data.path .. " && cargo install --path .")
+
+      if ok then
+        vim.notify("cargo install completed successfully!", vim.log.levels.INFO)
+      else
+        vim.notify("cargo install failed, please check the output for details", vim.log.levels.ERROR)
+      end
+    end
   end,
 })
