@@ -93,6 +93,12 @@ vim.api.nvim_create_autocmd("PackChanged", {
     -- nvim-mcp
     if event.data.kind ~= "delete" and event.data.spec.name == "nvim-mcp" then
       vim.notify("nvim-mcp updated, running cargo install...", vim.log.levels.INFO)
+      -- Check if cargo is available
+      if vim.fn.executable("cargo") == 0 then
+        vim.notify("Cargo is not installed or not in PATH, skipping cargo install for nvim-mcp", vim.log.levels.WARN)
+        return
+      end
+
       ---@diagnostic disable-next-line: param-type-mismatch
       local ok = os.execute("cd " .. event.data.path .. " && cargo install --path .")
 
