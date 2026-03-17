@@ -1,5 +1,4 @@
-M = {}
-M.opts = {
+return {
   settings = {
     codeAction = {
       disableRuleComment = {
@@ -35,5 +34,3 @@ M.opts = {
     },
   },
 }
-
-return M

@@ -259,6 +259,16 @@ vim.api.nvim_create_autocmd("FileType", {
   desc = "Start vtsls for TypeScript/JavaScript",
 })
 
+-- Eslint
+vim.api.nvim_create_autocmd("FileType", {
+  group = lsp_filetype_group,
+  pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+  callback = function()
+    vim.lsp.enable("eslint")
+  end,
+  desc = "Start eslint LSP",
+})
+
 vim.api.nvim_create_autocmd("FileType", {
   group = lsp_filetype_group,
   pattern = { "tf", "terraform" },
