@@ -2,7 +2,7 @@ fignvim.mappings = {}
 
 --- Registers all core mappings in FigNvim
 function fignvim.mappings.create_core_mappings()
-  local core_map_groups = require("core.mappings")
+  local core_map_groups = require("keymaps").Core
 
   for _, maps in pairs(core_map_groups) do
     fignvim.mappings.create_keymaps(maps)
@@ -12,8 +12,26 @@ end
 --- Creates a set of keymaps when given a table of vim.api.nvim_set_keymap() compatible mappings
 ---@param mappings
 function fignvim.mappings.create_keymaps(mappings)
-  for _, map in ipairs(mappings) do
-    vim.keymap.set(unpack(map))
+  for _, map in pairs(mappings) do
+    if type(map[2]) == "table" then
+      for _, key in ipairs(map[2]) do
+        vim.keymap.set(map[1], key, map[3], map[4] or {})
+      end
+    else
+      vim.keymap.set(unpack(map))
+    end
+  end
+end
+
+function fignvim.mappings.create_buf_local_keymaps(mappings, bufnr)
+  for _, map in pairs(mappings) do
+    if type(map[2]) == "table" then
+      for _, key in ipairs(map[2]) do
+        vim.keymap.set(map[1], key, map[3], vim.tbl_extend("force", map[4] or {}, { buffer = bufnr }))
+      end
+    else
+      vim.keymap.set(map[1], map[2], map[3], vim.tbl_extend("force", map[4] or {}, { buffer = bufnr }))
+    end
   end
 end
 
@@ -33,15 +51,28 @@ end
 ---@return table Lazy Compatible keymaps
 function fignvim.mappings.make_lazy_keymaps(mappings, perform_bind)
   local lazy_keys = {}
-  for _, map in ipairs(mappings) do
-    table.insert(
-      lazy_keys,
-      vim.tbl_deep_extend("force", {
-        map[2],
-        perform_bind and map[3] or nil,
-        mode = map[1],
-      }, map[4] or {})
-    )
+  for _, map in pairs(mappings) do
+    if type(map[2]) == "table" then
+      for _, key in ipairs(map[2]) do
+        table.insert(
+          lazy_keys,
+          vim.tbl_deep_extend("force", {
+            key,
+            perform_bind and map[3] or nil,
+            mode = map[1],
+          }, map[4] or {})
+        )
+      end
+    else
+      table.insert(
+        lazy_keys,
+        vim.tbl_deep_extend("force", {
+          map[2],
+          perform_bind and map[3] or nil,
+          mode = map[1],
+        }, map[4] or {})
+      )
+    end
   end
 
   return lazy_keys
