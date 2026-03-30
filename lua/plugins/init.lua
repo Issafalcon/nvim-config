@@ -11,6 +11,7 @@ vim.pack.add({
 -- =============================================================================
 -- LSP
 -- =============================================================================
+require("plugins.schemastore") -- For yamlls and json-lsp
 require("plugins.lsp")
 require("plugins.mason")
 require("plugins.lsp-progress")
@@ -94,8 +95,8 @@ require("plugins.completion")
 -- AI
 -- =============================================================================
 require("plugins.copilot")
-require("plugins.mcphub")
-require("plugins.codecompanion")
+-- require("plugins.mcphub")
+-- require("plugins.codecompanion")
 require("plugins.nvim-mcp")
 
 -- =============================================================================
@@ -170,6 +171,7 @@ require("plugins.obsidian")
 require("plugins.neogen")
 require("plugins.plantuml")
 require("plugins.swagger-preview")
+require("plugins.vimtex")
 -- The builtin commenting functionality is sufficient, but leaving this here for reference
 -- require("plugins.comment")
 

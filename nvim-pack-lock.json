@@ -475,6 +475,10 @@
       "rev": "db65482581a28e4ccf355be297f1864a4e66985c",
       "src": "https://github.com/tpope/vim-unimpaired"
     },
+    "vimtex": {
+      "rev": "82d2305ff71dfb3bd91602534cc9bb9a195bcb38",
+      "src": "https://github.com/lervag/vimtex"
+    },
     "vscode-csharp-snippets": {
       "rev": "3522981cf1700ce0e7ae13a5b57cfd5d2b67a9d8",
       "src": "https://github.com/J0rgeSerran0/vscode-csharp-snippets"

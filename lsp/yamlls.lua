@@ -1,6 +1,4 @@
-M = {}
-
-M.opts = {
+return {
   settings = {
     yaml = {
       validate = { enable = true },
@@ -23,5 +21,3 @@ M.opts = {
     },
   },
 }
-
-return M
