@@ -1,5 +1,4 @@
-M = {}
-M.opts = {
+return {
   cmd = { "texlab" },
   filetypes = { "tex", "bib" },
   settings = {
@@ -9,19 +8,17 @@ M.opts = {
       build = {
         args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
         executable = "latexmk",
-        isContinuous = false
+        isContinuous = false,
       },
       chktex = {
         onEdit = false,
-        onOpenAndSave = false
+        onOpenAndSave = false,
       },
       diagnosticsDelay = 300,
       formatterLineLength = 80,
       forwardSearch = {
-        args = {}
-      }
-    }
-  }
+        args = {},
+      },
+    },
+  },
 }
-
-return M

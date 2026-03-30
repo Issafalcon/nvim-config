@@ -35,6 +35,8 @@ require("mason-tool-installer").setup({
     "helm-ls",
     "pyright",
     "clangd",
+    "stylelint-language-server",
+    "yaml-language-server",
 
     -- Formatters
     "jq",

@@ -1,12 +1,8 @@
-M = {}
-
-M.opts = {
+return {
   filetypes = { "css", "scss" },
   settings = {
     stylelintplus = {
-      autoFixOnSave = true
-    }
-  }
+      autoFixOnSave = true,
+    },
+  },
 }
-
-return M

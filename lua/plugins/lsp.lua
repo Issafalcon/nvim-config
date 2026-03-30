@@ -327,3 +327,33 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
   desc = "Start json LSP",
 })
+
+-- Yamlls
+vim.api.nvim_create_autocmd("FileType", {
+  group = lsp_filetype_group,
+  pattern = { "yaml" },
+  callback = function()
+    vim.lsp.enable("yaml-language-server")
+  end,
+  desc = "Start yaml language server",
+})
+
+-- Stylelint_lsp
+vim.api.nvim_create_autocmd("FileType", {
+  group = lsp_filetype_group,
+  pattern = { "css", "scss", "less" },
+  callback = function()
+    vim.lsp.enable("stylelint-language-server")
+  end,
+  desc = "Start stylelint language server",
+})
+
+-- Texlab
+vim.api.nvim_create_autocmd("FileType", {
+  group = lsp_filetype_group,
+  pattern = { "tex", "latex", "bib" },
+  callback = function()
+    vim.lsp.enable("texlab")
+  end,
+  desc = "Start texlab LSP",
+})

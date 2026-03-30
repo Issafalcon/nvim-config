@@ -1,7 +1,3 @@
-vim.pack.add({
-  { src = "https://github.com/b0o/schemastore.nvim" },
-})
-
 local function load_schemas()
   local schemastore_ok, schemastore = pcall(require, "schemastore")
   return schemastore_ok and schemastore.json.schemas() or {}
