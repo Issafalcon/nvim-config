@@ -133,11 +133,13 @@ require("plugins.nuget")
 require("plugins.iron-nvim")
 require("plugins.quarto-nvim")
 require("plugins.venv-selector")
+require("plugins.dadbod")
 
 -- =============================================================================
 -- Terraform
 -- =============================================================================
 require("plugins.vim-terraform")
+require("plugins.vim-helm")
 
 -- =============================================================================
 -- Markdown
