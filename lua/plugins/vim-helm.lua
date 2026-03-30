@@ -1,6 +1,3 @@
-return {
-  {
-    "towolf/vim-helm",
-    ft = "helm",
-  },
-}
+vim.pack.add({
+  { src = "https://github.com/towolf/vim-helm" },
+})

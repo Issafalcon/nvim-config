@@ -1,9 +1,4 @@
-return {
-  {
-    "hashivim/vim-terraform",
-    event = "VeryLazy",
-    dependencies = {
-      "juliosueiras/vim-terraform-completion",
-    },
-  },
-}
+vim.pack.add({
+  { src = "https://github.com/juliosueiras/vim-terraform-completion" },
+  { src = "https://github.com/hashivim/vim-terraform" },
+})

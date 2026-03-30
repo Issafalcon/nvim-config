@@ -1,12 +1,10 @@
--- Enhanced join / split functionality
-local treesj_keys = {
-  { "n", "<leader>j", "<cmd>TSJToggle<cr>", { desc = "Join Toggle" } },
-}
+vim.pack.add({
+  { src = "https://github.com/Wansmer/treesj" },
+})
 
-return {
-  {
-    "Wansmer/treesj",
-    keys = fignvim.mappings.make_lazy_keymaps(treesj_keys, true),
-    opts = { use_default_keymaps = false, max_join_length = 140 },
-  },
-}
+require("treesj").setup({
+  use_default_keymaps = false,
+  max_join_length = 140,
+})
+
+vim.keymap.set("n", "<leader>j", "<cmd>TSJToggle<cr>", { desc = "Join Toggle" })

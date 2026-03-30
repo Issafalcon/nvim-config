@@ -1,5 +1,5 @@
-return {
-  "max397574/colortils.nvim",
-  cmd = "Colortils",
-  config = function() require("colortils").setup() end,
-}
+vim.pack.add({
+  { src = "https://github.com/max397574/colortils.nvim" },
+})
+
+require("colortils").setup()

@@ -1,44 +1,19 @@
-local session_lens_keys = {
+vim.pack.add({
   {
-    "n",
-    "<leader>Du",
-    ":DBUIToggle<CR>",
-    { desc = "Dadbod UI: Toggle" },
+    src = "https://github.com/tpope/vim-dadbod",
   },
   {
-    "n",
-    "<leader>Df",
-    ":DBUIFindBuffer<CR>",
-    { desc = "Dadbod UI: Fine Buffer" },
+    src = "https://github.com/kristijanhusak/vim-dadbod-ui",
   },
   {
-    "n",
-    "<leader>Dr",
-    ":DBUIRenameBuffer<CR>",
-    { desc = "Dadbod UI: Rename Buffer" },
+    src = "https://github.com/kristijanhusak/vim-dadbod-completion",
   },
-  {
-    "n",
-    "<leader>Dl",
-    ":DBUILastQueryInfo<CR>",
-    { desc = "Dadbod UI: Last query info" },
-  },
-}
+})
 
-return {
-  {
-    "tpope/vim-dadbod",
-    keys = fignvim.mappings.make_lazy_keymaps(session_lens_keys, true),
-    dependencies = {
-      "kristijanhusak/vim-dadbod-ui",
-      "kristijanhusak/vim-dadbod-completion",
-    },
-    init = function()
-      fignvim.config.set_vim_opts({
-        g = {
-          db_ui_save_location = "~/.config/nvim/db_ui",
-        },
-      })
-    end,
-  },
-}
+vim.g.db_ui_use_nerd_fonts = 1
+vim.g.db_ui_save_location = "~/.config/nvim/db_ui"
+
+vim.keymap.set("n", "<leader>Du", ":DBUIToggle<CR>", { desc = "Dadbod UI: Toggle" })
+vim.keymap.set("n", "<leader>Df", ":DBUIFindBuffer<CR>", { desc = "Dadbod UI: Fine Buffer" })
+vim.keymap.set("n", "<leader>Dr", ":DBUIRenameBuffer<CR>", { desc = "Dadbod UI: Rename Buffer" })
+vim.keymap.set("n", "<leader>Dl", ":DBUILastQueryInfo<CR>", { desc = "Dadbod UI: Last query info" })

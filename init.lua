@@ -1,137 +1,70 @@
--- Get all the required Fignvim API functions and commands required for setupinitinit
-for _, source in ipairs({
-  "api",
-  "core",
-}) do
-  local status_ok, fault = pcall(require, source)
-  if not status_ok then
-    vim.api.nvim_echo({ { "Failed to load " .. source .. "\n\n" .. fault } }, true, { err = true })
-  end
-end
+_G.fignvim = {} -- Create global fignvim table
 
--- Load core API functions (needed for upcoming setup)
-require("core.api")
+require("utils")
+require("autocmds")
+require("options")
+require("mappings")
 
-fignvim.core.module.register_modules({
-  "editing",
-  "ui",
-  "completion",
-  "formatting",
-  "linting",
-  "lsp",
-  "ai",
-  "documentation",
-  "treesitter",
-  "git",
-  "misc",
-  "dotnet",
-  "debugging",
-  "testing",
-  "navigation",
-  "pwsh",
+require("plugins")
+
+require("ui")
+
+require("diagnostics")
+
+-- Load statusline module for native/Heirline toggle
+require("statusline")
+
+local cmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
+
+-- Quit Nvim when only sidebars are left
+augroup("auto_quit", { clear = true })
+cmd("BufEnter", {
+  desc = "Quit AstroNvim if more than one window is open and only sidebar windows are list",
+  group = "auto_quit",
+  callback = function()
+    local wins = vim.api.nvim_tabpage_list_wins(0)
+    -- Both neo-tree and aerial will auto-quit if there is only a single window left
+    if #wins <= 1 then
+      return
+    end
+    local sidebar_fts = { aerial = true, ["neo-tree"] = true }
+    for _, winid in ipairs(wins) do
+      if vim.api.nvim_win_is_valid(winid) then
+        local bufnr = vim.api.nvim_win_get_buf(winid)
+        -- If any visible windows are not sidebars, early return
+        if not sidebar_fts[vim.api.nvim_buf_get_option(bufnr, "filetype")] then
+          return
+        end
+      end
+    end
+    if #vim.api.nvim_list_tabpages() > 1 then
+      vim.cmd.tabclose()
+    else
+      vim.cmd.qall()
+    end
+  end,
 })
 
-fignvim.core.module.register_plugins({
-  -- Plugin Development
-  -- "sqlite",
-  "luapad",
-  -- "pwsh",
-
-  -- Keybinds and Cheatsheets
-  "cheatsheet",
-  "whichkey",
-
-  -- General Editing
-  "undotree",
-  "treesj",
-  "nvim-surround",
-  "indent-blankline",
-
-  -- UI
-  "colorizer",
-  "maximizer",
-
-  -- Completions and Snippets
-  "copilot-chat",
-
-  -- Navigation
-  "telescope",
-  -- "neo_tree",
-  "netrw_nvim",
-  "leap",
-  "nvim-navic", -- https://github.com/SmiteshP/nvim-navic
-
-  -- Cut and paste
-  -- "yanky"  - Performance is an issue when using this plugin. Pastes / yanks are slow
-
-  -- Diagnostics
-  "trouble",
-
-  -- Session management
-  "auto-session",
-
-  -- Terminal
-  "toggleterm",
-
-  -- Icons
-  "nvim-web-devicons",
-  "icon-picker",
-
-  -- Colours
-  "colorutils",
-
-  -- Terraform
-  "vim-terraform",
-  "vim-helm",
-
-  -- LaTeX
-  "vimtex",
-
-  -- .NET
-  -- "easy-dotnet",
-  "nuget",
-
-  -- C++
-  "vim-cmake",
-
-  -- Databases
-  "dadbod",
-
-  -- Nx
-  "nx",
-
-  -- Packages
-  "luarocks",
+-- Modifies settings and mappings for certain plugin buffer types
+augroup("support_buffers", { clear = true })
+cmd("FileType", {
+  desc = "Close the matching buffer types with 'q'",
+  group = "support_buffers",
+  pattern = { "qf", "help", "man", "lspinfo", "spectre_panel", "grug-far" },
+  callback = function()
+    vim.keymap.set("n", "q", ":close<CR>", { silent = true, buffer = true })
+    vim.api.nvim_set_option_value("buflisted", false, { scope = "local" })
+  end,
 })
 
-if vim.fn.isdirectory(vim.fn.expand("$PROJECTS/neosharper.nvim")) == 1 then
-  fignvim.core.module.register_plugins({
-    "neosharper-nvim",
-  })
-end
-
-if vim.fn.isdirectory(vim.fn.expand("$PROJECTS/neosharper")) == 1 then
-  fignvim.core.module.register_plugins({
-    "neosharper",
-  })
-end
-
-fignvim.core.module.load_module_apis()
-
-if vim.fn.has("win32") == 1 then
-  fignvim.config.set_shell_as_powershell()
-end
-
-if vim.fn.has("wsl") == 1 then
-  fignvim.config.set_win32yank_wsl_as_clip()
-end
-
-fignvim.plug.initialise_lazy_nvim()
-fignvim.plug.setup_lazy_plugins()
-
--- 6. Create mappings
-vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { silent = true }) -- Prep for space to be leader key
-fignvim.mappings.create_core_mappings()
-
--- 7. Setup formatters
-fignvim.formatting.setup()
+-- Sets spelling option for certain filetypes
+augroup("enable_spelling", { clear = true })
+cmd("FileType", {
+  desc = "Enable spell checking for certain filetypes",
+  group = "enable_spelling",
+  pattern = { "markdown", "text", "tex", "org" },
+  callback = function()
+    vim.api.nvim_set_option_value("spell", true, { scope = "local" })
+  end,
+})

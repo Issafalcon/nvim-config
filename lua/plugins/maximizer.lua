@@ -1,11 +1,5 @@
-local maximizer_keys = {
-  { "n", "<leader>m", ":MaximizerToggle!<CR>", { desc = "Toggle maximizer (current window)" } },
-}
+vim.pack.add({
+  { src = "https://github.com/szw/vim-maximizer" },
+})
 
-return {
-  {
-    "szw/vim-maximizer",
-    cmd = "MaximizerToggle",
-    keys = fignvim.mappings.make_lazy_keymaps(maximizer_keys, true),
-  },
-}
+vim.keymap.set("n", "<leader>m", ":MaximizerToggle!<CR>", { desc = "Toggle maximizer (current window)" })

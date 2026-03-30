@@ -1,22 +1,10 @@
-local nx_keys = {
-  {
-    "n",
-    "<leader>nx",
-    "<cmd>Telescope nx actions<CR>",
-    { desc = "Brings up Nx command pallete" },
-  },
-}
+vim.pack.add({
+  { src = "https://github.com/Equilibris/nx.nvim" },
+})
 
-return {
-  {
-    "Equilibris/nx.nvim",
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-    },
-    opts = {
-      -- See below for config options
-      nx_cmd_root = "nx",
-    },
-    keys = fignvim.mappings.make_lazy_keymaps(nx_keys, true),
-  },
-}
+require("nx").setup({
+  -- See below for config options
+  nx_cmd_root = "nx",
+})
+
+vim.keymap.set("n", "<leader>nx", "<cmd>Telescope nx actions<CR>", { desc = "Brings up Nx command pallete" })

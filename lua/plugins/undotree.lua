@@ -1,12 +1,5 @@
--- https://github.com/mbbill/undotree
-local undotree_keys = {
-  { "n", "<A-u>", ":UndotreeToggle<CR>", { desc = "Undotree: Toggle undotree" } },
-}
+vim.pack.add({
+  { src = "https://github.com/mbbill/undotree" },
+})
 
-return {
-  {
-    "mbbill/undotree",
-    cmd = "UndoTreeToggle",
-    keys = fignvim.mappings.make_lazy_keymaps(undotree_keys, true),
-  },
-}
+vim.keymap.set("n", "<A-u>", ":UndotreeToggle<CR>", { desc = "Undotree: Toggle undotree" })

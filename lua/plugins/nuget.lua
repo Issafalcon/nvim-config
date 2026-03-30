@@ -1,14 +1,5 @@
-return {
-  {
-    "d7omdev/nuget.nvim",
-    dependencies = {
-      "plenary.nvim",
-      "telescope.nvim",
-    },
-    ft = "cs",
-    cmd = { "NuGetInstall", "NuGetRemove" },
-    config = function()
-      require("nuget").setup()
-    end,
-  },
-}
+vim.pack.add({
+  { src = "https://github.com/d7omdev/nuget.nvim" },
+})
+
+require("nuget").setup()

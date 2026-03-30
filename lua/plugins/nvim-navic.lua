@@ -1,18 +1,16 @@
-return {
-  "SmiteshP/nvim-navic",
-  dependencies = {
-    "neovim/nvim-lspconfig",
-  },
-  opts = {
-    lsp = {
-      auto_attach = true,
-      preference = {
-        "roslyn",
-        "lua_ls",
-        "ts_ls",
-      },
-    },
-  },
+vim.pack.add({
+  { src = "https://github.com/SmiteshP/nvim-navic" },
+})
+
+require("nvim-navic").setup({
   highlight = true,
   click = true,
-}
+  lsp = {
+    auto_attach = true,
+    preference = {
+      "roslyn",
+      "lua_ls",
+      "ts_ls",
+    },
+  },
+})
