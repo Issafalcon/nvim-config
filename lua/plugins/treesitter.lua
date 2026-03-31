@@ -5,12 +5,12 @@ vim.pack.add({
   },
   { src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects" },
   { src = "https://github.com/windwp/nvim-ts-autotag" },
-  { src = "https://github.com/JoosepAlviste/nvim-ts-context-commentstring" },
+  -- { src = "https://github.com/JoosepAlviste/nvim-ts-context-commentstring" },
 })
 
-vim.g.skip_ts_context_commentstring_module = true
-
-require("ts_context_commentstring").setup({})
+-- vim.g.skip_ts_context_commentstring_module = true
+--
+-- require("ts_context_commentstring").setup({})
 
 require("nvim-treesitter.configs").setup({
   ensure_installed = {
