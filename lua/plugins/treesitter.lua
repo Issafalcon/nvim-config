@@ -18,6 +18,7 @@ vim.pack.add({
     version = "main",
   },
   { src = "https://github.com/windwp/nvim-ts-autotag" },
+  { src = "https://github.com/JoosepAlviste/nvim-ts-context-commentstring" },
 })
 
 require("nvim-treesitter").setup({})
@@ -120,6 +121,19 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Autotag (standalone setup, no longer an nvim-treesitter module)
 require("nvim-ts-autotag").setup({})
+
+-- Context-aware commentstring (standalone setup)
+-- Integration with Neovim's native gc commenting (0.10+)
+require("ts_context_commentstring").setup({
+  enable_autocmd = false,
+})
+
+local get_option = vim.filetype.get_option
+vim.filetype.get_option = function(filetype, option)
+  return option == "commentstring"
+      and require("ts_context_commentstring.internal").calculate_commentstring()
+    or get_option(filetype, option)
+end
 
 -- Textobjects (standalone setup on main branch)
 require("nvim-treesitter-textobjects").setup({
