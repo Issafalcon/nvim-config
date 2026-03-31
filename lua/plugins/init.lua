@@ -69,7 +69,6 @@ require("plugins.which-key")
 require("plugins.qmk")
 require("plugins.persistence")
 require("plugins.refactoring")
-require("plugins.pack-manager")
 require("plugins.nx")
 
 -- Needs xclip which is not available in WSL by default, and clipboard integration
