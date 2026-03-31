@@ -58,7 +58,6 @@ local opts = {
           htmlangular = "html",
           html = "html",
           json = "json",
-          jsonc = "json",
           yaml = "yaml",
           markdown = "markdown",
           ["markdown.mdx"] = "mdx",

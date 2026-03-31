@@ -60,7 +60,6 @@ require("nvim-treesitter").install({
   "jsdoc",
   "json",
   "json5",
-  "jsonc",
   "jsonnet",
   "llvm",
   "lua",
@@ -130,8 +129,7 @@ require("ts_context_commentstring").setup({
 
 local get_option = vim.filetype.get_option
 vim.filetype.get_option = function(filetype, option)
-  return option == "commentstring"
-      and require("ts_context_commentstring.internal").calculate_commentstring()
+  return option == "commentstring" and require("ts_context_commentstring.internal").calculate_commentstring()
     or get_option(filetype, option)
 end
 
@@ -158,8 +156,12 @@ vim.keymap.set({ "n", "x", "o" }, "[a", function() move.goto_previous_start("@pa
 vim.keymap.set({ "n", "x", "o" }, "[A", function() move.goto_previous_end("@parameter.inner", "textobjects") end, { desc = "Prev parameter end" })
 -- stylua: ignore end
 
-vim.keymap.set("n", "<leader>xp", function() swap.swap_next("@parameter.inner") end, { desc = "Swap next parameter" })
-vim.keymap.set("n", "<leader>xP", function() swap.swap_previous("@parameter.inner") end, { desc = "Swap previous parameter" })
+vim.keymap.set("n", "<leader>xp", function()
+  swap.swap_next("@parameter.inner")
+end, { desc = "Swap next parameter" })
+vim.keymap.set("n", "<leader>xP", function()
+  swap.swap_previous("@parameter.inner")
+end, { desc = "Swap previous parameter" })
 
 -- Configure Angular parser for component templates
 vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
