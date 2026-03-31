@@ -1,143 +1,151 @@
+-- =============================================================================
+-- nvim-treesitter (main branch) for Neovim 0.12+
+--
+-- The main branch is a full rewrite:
+--   - No module system (matchup, playground, autotag modules removed)
+--   - Highlighting/indentation via Neovim builtins + FileType autocmds
+--   - Playground replaced by built-in :InspectTree
+--   - Textobjects and autotag use their own standalone setup()
+-- =============================================================================
+
 vim.pack.add({
   {
     src = "https://github.com/nvim-treesitter/nvim-treesitter",
-    version = "master",
+    version = "main",
   },
-  { src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects" },
+  {
+    src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
+    version = "main",
+  },
   { src = "https://github.com/windwp/nvim-ts-autotag" },
-  -- { src = "https://github.com/JoosepAlviste/nvim-ts-context-commentstring" },
 })
 
--- vim.g.skip_ts_context_commentstring_module = true
---
--- require("ts_context_commentstring").setup({})
+require("nvim-treesitter").setup({})
 
-require("nvim-treesitter.configs").setup({
-  ensure_installed = {
-    "angular",
-    "arduino",
-    "arduino",
-    "awk",
-    "bash",
-    "bibtex",
-    "bicep",
-    "c",
-    "c_sharp",
-    "cmake",
-    "comment",
-    "cpp",
-    "css",
-    "diff",
-    "dockerfile",
-    "dot",
-    "embedded_template",
-    "fish",
-    "fsh",
-    "func",
-    "git_config",
-    "git_rebase",
-    "gitattributes",
-    "gitcommit",
-    "gitignore",
-    "graphql",
-    "hcl",
-    "html",
-    "htmldjango",
-    "http",
-    "java",
-    "javascript",
-    "jq",
-    "jsdoc",
-    "json",
-    "json5",
-    "jsonc",
-    "jsonnet",
-    "llvm",
-    "lua",
-    "luadoc",
-    "luap",
-    "make",
-    "markdown",
-    "markdown_inline",
-    "nix",
-    "ocaml",
-    "ocaml_interface",
-    "passwd",
-    "proto",
-    "python",
-    "query",
-    "r",
-    "regex",
-    "ruby",
-    "rust",
-    "scheme",
-    "scss",
-    "sparql",
-    "sql",
-    "svelte",
-    "tablegen",
-    "terraform",
-    "todotxt",
-    "toml",
-    "tsx",
-    "typescript",
-    "vim",
-    "vimdoc",
-    "vue",
-    "yaml",
-  },
-  ignore_install = {},
-  highlight = {
-    enable = true, -- false will disable the whole extension
-    disable = { "latex" },
-    additional_vim_regex_highlighting = false,
-  },
-  indent = { enable = true },
-  incremental_selection = { enable = true },
-  autotag = { enable = true },
-  textobjects = {
-    incremental_selection = {
-      enable = true,
-      keymaps = {
-        init_selection = "<C-space>",
-        node_incremental = "<C-space>",
-        scope_incremental = false,
-        node_decremental = "<bs>",
-      },
-    },
-    textobjects = {
-      move = {
-        enable = true,
-        goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer", ["]a"] = "@parameter.inner" },
-        goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer", ["]A"] = "@parameter.inner" },
-        goto_previous_start = { ["[f"] = "@function.outer", ["[c"] = "@class.outer", ["[a"] = "@parameter.inner" },
-        goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer", ["[A"] = "@parameter.inner" },
-      },
-    },
-    swap = {
-      enable = true,
-      swap_next = { ["<leader>xp"] = "@parameter.inner" },
-      swap_previous = { ["<leader>xP"] = "@parameter.inner" },
-    },
-    lsp_interop = {
-      enable = true,
-      border = "none",
-      peek_definition_code = {
-        ["<leader>pf"] = "@function.outer",
-        ["<leader>pc"] = "@class.outer",
-      },
-    },
-  },
-  matchup = {
-    enable = true,
-  },
-  playground = {
-    enable = true,
-    disable = {},
-    updatetime = 25,
-    persist_queries = false,
-  },
+-- Install parsers (async, no-op if already installed)
+require("nvim-treesitter").install({
+  "angular",
+  "arduino",
+  "awk",
+  "bash",
+  "bibtex",
+  "bicep",
+  "c",
+  "c_sharp",
+  "cmake",
+  "comment",
+  "cpp",
+  "css",
+  "diff",
+  "dockerfile",
+  "dot",
+  "embedded_template",
+  "fish",
+  "fsh",
+  "func",
+  "git_config",
+  "git_rebase",
+  "gitattributes",
+  "gitcommit",
+  "gitignore",
+  "graphql",
+  "hcl",
+  "html",
+  "htmldjango",
+  "http",
+  "java",
+  "javascript",
+  "jq",
+  "jsdoc",
+  "json",
+  "json5",
+  "jsonc",
+  "jsonnet",
+  "llvm",
+  "lua",
+  "luadoc",
+  "luap",
+  "make",
+  "markdown",
+  "markdown_inline",
+  "nix",
+  "ocaml",
+  "ocaml_interface",
+  "passwd",
+  "proto",
+  "python",
+  "query",
+  "r",
+  "regex",
+  "ruby",
+  "rust",
+  "scheme",
+  "scss",
+  "sparql",
+  "sql",
+  "svelte",
+  "tablegen",
+  "terraform",
+  "todotxt",
+  "toml",
+  "tsx",
+  "typescript",
+  "vim",
+  "vimdoc",
+  "vue",
+  "yaml",
 })
+
+-- Enable treesitter highlighting for all filetypes with an available parser
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(args)
+    if args.match == "latex" then
+      return
+    end
+    pcall(vim.treesitter.start)
+  end,
+  desc = "Enable treesitter highlighting",
+})
+
+-- Enable treesitter-based indentation (experimental)
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function()
+    if vim.bo.filetype == "latex" then
+      return
+    end
+    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+  end,
+  desc = "Enable treesitter indentation",
+})
+
+-- Autotag (standalone setup, no longer an nvim-treesitter module)
+require("nvim-ts-autotag").setup({})
+
+-- Textobjects (standalone setup on main branch)
+require("nvim-treesitter-textobjects").setup({
+  move = { set_jumps = true },
+})
+
+local move = require("nvim-treesitter-textobjects.move")
+local swap = require("nvim-treesitter-textobjects.swap")
+
+-- stylua: ignore start
+vim.keymap.set({ "n", "x", "o" }, "]f", function() move.goto_next_start("@function.outer", "textobjects") end, { desc = "Next function start" })
+vim.keymap.set({ "n", "x", "o" }, "]F", function() move.goto_next_end("@function.outer", "textobjects") end, { desc = "Next function end" })
+vim.keymap.set({ "n", "x", "o" }, "]c", function() move.goto_next_start("@class.outer", "textobjects") end, { desc = "Next class start" })
+vim.keymap.set({ "n", "x", "o" }, "]C", function() move.goto_next_end("@class.outer", "textobjects") end, { desc = "Next class end" })
+vim.keymap.set({ "n", "x", "o" }, "]a", function() move.goto_next_start("@parameter.inner", "textobjects") end, { desc = "Next parameter" })
+vim.keymap.set({ "n", "x", "o" }, "]A", function() move.goto_next_end("@parameter.inner", "textobjects") end, { desc = "Next parameter end" })
+vim.keymap.set({ "n", "x", "o" }, "[f", function() move.goto_previous_start("@function.outer", "textobjects") end, { desc = "Prev function start" })
+vim.keymap.set({ "n", "x", "o" }, "[F", function() move.goto_previous_end("@function.outer", "textobjects") end, { desc = "Prev function end" })
+vim.keymap.set({ "n", "x", "o" }, "[c", function() move.goto_previous_start("@class.outer", "textobjects") end, { desc = "Prev class start" })
+vim.keymap.set({ "n", "x", "o" }, "[C", function() move.goto_previous_end("@class.outer", "textobjects") end, { desc = "Prev class end" })
+vim.keymap.set({ "n", "x", "o" }, "[a", function() move.goto_previous_start("@parameter.inner", "textobjects") end, { desc = "Prev parameter" })
+vim.keymap.set({ "n", "x", "o" }, "[A", function() move.goto_previous_end("@parameter.inner", "textobjects") end, { desc = "Prev parameter end" })
+-- stylua: ignore end
+
+vim.keymap.set("n", "<leader>xp", function() swap.swap_next("@parameter.inner") end, { desc = "Swap next parameter" })
+vim.keymap.set("n", "<leader>xP", function() swap.swap_previous("@parameter.inner") end, { desc = "Swap previous parameter" })
 
 -- Configure Angular parser for component templates
 vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
