@@ -130,7 +130,8 @@ require("plugins.nuget")
 -- =============================================================================
 -- Data Science / Python
 -- =============================================================================
-require("plugins.iron-nvim")
+-- require("plugins.iron-nvim")
+require("plugins.slime")
 require("plugins.quarto-nvim")
 require("plugins.venv-selector")
 require("plugins.dadbod")
