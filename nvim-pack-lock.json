@@ -464,6 +464,10 @@
       "rev": "2e54952fe91e140a2e69f35f22131219fcd9c5f1",
       "src": "https://github.com/szw/vim-maximizer"
     },
+    "vim-slime": {
+      "rev": "2cfdc3b24e7ebaa64f5a1a04b00555600c622b79",
+      "src": "https://github.com/jpalardy/vim-slime"
+    },
     "vim-terraform": {
       "rev": "520498fab16a3a11f2ae1b8cb65e0a1684bc317a",
       "src": "https://github.com/hashivim/vim-terraform"
