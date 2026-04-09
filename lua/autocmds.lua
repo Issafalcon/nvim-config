@@ -1,131 +1,116 @@
+-- Run a shell command asynchronously and route its stdout/stderr directly into
+-- a snacks/noice notification window once it completes.
+local function run_cmd_notify(cmd, cwd, title)
+  vim.notify("Running…", vim.log.levels.INFO, { title = title })
+
+  vim.system({ "sh", "-c", cmd }, { cwd = cwd, text = true }, vim.schedule_wrap(function(result)
+    local stdout = vim.trim(result.stdout or "")
+    local stderr = vim.trim(result.stderr or "")
+    -- Prefer stderr for build tools (most relevant errors live there), fall
+    -- back to stdout, fall back to a generic message.
+    local output = stderr ~= "" and stderr or stdout
+
+    -- Trim to the last 60 lines so the notification window stays readable.
+    if output ~= "" then
+      local lines = vim.split(output, "\n")
+      if #lines > 60 then
+        lines = vim.list_slice(lines, #lines - 59, #lines)
+        table.insert(lines, 1, "… (output truncated, showing last 60 lines)")
+      end
+      output = table.concat(lines, "\n")
+    end
+
+    if result.code == 0 then
+      vim.notify(output ~= "" and output or "Completed successfully.", vim.log.levels.INFO, { title = title })
+    else
+      vim.notify(
+        output ~= "" and output or ("Failed (exit code " .. result.code .. ")."),
+        vim.log.levels.ERROR,
+        { title = title }
+      )
+    end
+  end))
+end
+
+-- Run a Vimscript command/function and route its captured output into a
+-- snacks/noice notification window.
+local function vimcmd_notify(cmd, title)
+  vim.notify("Running…", vim.log.levels.INFO, { title = title })
+  local ok, result = pcall(vim.api.nvim_exec2, cmd, { output = true })
+  local output = ok and vim.trim(result.output or "") or tostring(result)
+  local level = ok and vim.log.levels.INFO or vim.log.levels.WARN
+  vim.notify(output ~= "" and output or (ok and "Done." or "Not available, skipping."), level, { title = title })
+end
+
 vim.api.nvim_create_autocmd("PackChanged", {
   desc = "Handle vim.pack updates",
   group = vim.api.nvim_create_augroup("pipeline-pack-changed", { clear = true }),
   callback = function(event)
+    local path = event.data.path
+
     -- Pipeline
     if event.data.kind ~= "delete" and event.data.spec.name == "pipeline" then
-      vim.notify("pipeline updated, running make...", vim.log.levels.INFO)
-      ---@diagnostic disable-next-line: param-type-mismatch
-      -- Navigate to the avante.nvim directory and run 'make'
-      local ok = os.execute("cd " .. event.data.spec.path .. " && make")
-
-      if ok then
-        vim.notify("make completed successfully!", vim.log.levels.INFO)
-      end
+      run_cmd_notify("make", path, "pipeline: make")
     end
 
     -- Markdown Preview
     if event.data.kind ~= "delete" and event.data.spec.name == "markdown-preview.nvim" then
-      fignvim.ui.notify("markdown-preview updated, running Install...", vim.log.levels.INFO)
-      ---@diagnostic disable-next-line: param-type-mismatch
-
       if not event.data.active then
         vim.cmd.packadd("markdown-preview.nvim")
       end
-
-      local ok = pcall(vim.fn.call("mkdp#util#install", {}))
-      if ok then
-        fignvim.ui.notify("mkdp#util#install completed successfully!", vim.log.levels.INFO)
-      else
-        fignvim.ui.notify("mkdp#util#install function not available yet, skipping", vim.log.levels.WARN)
-      end
+      vimcmd_notify("call mkdp#util#install()", "markdown-preview: install")
     end
 
     -- fzf
     if event.data.kind ~= "delete" and event.data.spec.name == "fzf" then
-      vim.notify("fzf updated, running Install...", vim.log.levels.INFO)
-      ---@diagnostic disable-next-line: param-type-mismatch
-      local ok = pcall(vim.fn["fzf#install"])
-      if ok then
-        vim.notify("fzf#install completed successfully!", vim.log.levels.INFO)
-      else
-        vim.notify("fzf#install function not available yet, skipping", vim.log.levels.WARN)
-      end
+      vimcmd_notify("call fzf#install()", "fzf: install")
     end
 
     -- Treesitter
     if event.data.kind == "update" and event.data.spec.name == "nvim-treesitter" then
-      vim.notify("nvim-treesitter updated, running TSUpdate...", vim.log.levels.INFO)
-      ---@diagnostic disable-next-line: param-type-mismatch
-      local ok = pcall(vim.cmd, "TSUpdate")
-      if ok then
-        vim.notify("TSUpdate completed successfully!", vim.log.levels.INFO)
-      else
-        vim.notify("TSUpdate command not available yet, skipping", vim.log.levels.WARN)
-      end
+      vimcmd_notify("TSUpdate", "nvim-treesitter: TSUpdate")
     end
 
     -- Swagger Preview
     if event.data.kind ~= "delete" and event.data.spec.name == "swagger-preview.nvim" then
-      vim.notify("swagger-preview.nvim updated, running npm i...", vim.log.levels.INFO)
-      ---@diagnostic disable-next-line: param-type-mismatch
-      local ok = os.execute("cd " .. event.data.path .. " && npm i")
-      if ok then
-        vim.notify("npm i completed successfully!", vim.log.levels.INFO)
-      else
-        vim.notify("npm i failed, please check the output for details", vim.log.levels.ERROR)
-      end
+      run_cmd_notify("npm i", path, "swagger-preview: npm i")
     end
 
-    -- Terragrunt Language Server
+    -- Terragrunt Language Server – install then build sequentially via chained callbacks
     if event.data.kind ~= "delete" and event.data.spec.name == "terragrunt-ls" then
-      vim.notify("terragrunt-ls updated, running go install...", vim.log.levels.INFO)
-
-      local ok = os.execute("cd " .. event.data.path .. " && mise install && go install")
-
-      if ok then
-        vim.notify("go install completed successfully!", vim.log.levels.INFO)
-      else
-        vim.notify("go install failed, please check the output for details", vim.log.levels.ERROR)
-      end
-
-      local build_ok = os.execute(
-        "cd " .. event.data.path .. " && go build -o " .. vim.fn.stdpath("data") .. "/mason/bin/terragrunt-ls"
+      local bin_path = vim.fn.stdpath("data") .. "/mason/bin/terragrunt-ls"
+      vim.notify("Running…", vim.log.levels.INFO, { title = "terragrunt-ls: install" })
+      vim.system(
+        { "sh", "-c", "mise install && go install" },
+        { cwd = path, text = true },
+        vim.schedule_wrap(function(install_result)
+          local out = vim.trim((install_result.stderr or "") .. (install_result.stdout or ""))
+          if install_result.code ~= 0 then
+            vim.notify(out ~= "" and out or "Failed.", vim.log.levels.ERROR, { title = "terragrunt-ls: install" })
+            return
+          end
+          vim.notify(out ~= "" and out or "Done.", vim.log.levels.INFO, { title = "terragrunt-ls: install" })
+          run_cmd_notify("go build -o " .. bin_path, path, "terragrunt-ls: go build")
+        end)
       )
-
-      if build_ok then
-        vim.notify("terragrunt-ls built successfully!", vim.log.levels.INFO)
-      else
-        vim.notify("Failed to build terragrunt-ls, please check the output for details", vim.log.levels.ERROR)
-      end
     end
 
     -- blink.cmp
     if event.data.kind ~= "delete" and event.data.spec.name == "blink.cmp" then
-      vim.notify("blink.cmp updated, running cargo build --release...", vim.log.levels.INFO)
-
       if vim.fn.executable("cargo") == 0 then
-        vim.notify("Cargo is not installed or not in PATH, skipping build for blink.cmp", vim.log.levels.WARN)
+        vim.notify("Cargo not in PATH, skipping build.", vim.log.levels.WARN, { title = "blink.cmp: build" })
         return
       end
-
-      ---@diagnostic disable-next-line: param-type-mismatch
-      local ok = os.execute("cd " .. event.data.path .. " && cargo build --release")
-
-      if ok then
-        vim.notify("blink.cmp built successfully!", vim.log.levels.INFO)
-      else
-        vim.notify("blink.cmp build failed, please check the output for details", vim.log.levels.ERROR)
-      end
+      run_cmd_notify("cargo build --release", path, "blink.cmp: cargo build")
     end
 
     -- nvim-mcp
     if event.data.kind ~= "delete" and event.data.spec.name == "nvim-mcp" then
-      vim.notify("nvim-mcp updated, running cargo install...", vim.log.levels.INFO)
-      -- Check if cargo is available
       if vim.fn.executable("cargo") == 0 then
-        vim.notify("Cargo is not installed or not in PATH, skipping cargo install for nvim-mcp", vim.log.levels.WARN)
+        vim.notify("Cargo not in PATH, skipping install.", vim.log.levels.WARN, { title = "nvim-mcp: cargo install" })
         return
       end
-
-      ---@diagnostic disable-next-line: param-type-mismatch
-      local ok = os.execute("cd " .. event.data.path .. " && cargo install --path .")
-
-      if ok then
-        vim.notify("cargo install completed successfully!", vim.log.levels.INFO)
-      else
-        vim.notify("cargo install failed, please check the output for details", vim.log.levels.ERROR)
-      end
+      run_cmd_notify("cargo install --path .", path, "nvim-mcp: cargo install")
     end
   end,
 })
