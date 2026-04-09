@@ -4,6 +4,11 @@
 require("plugins.plenary")
 require("plugins.nui")
 
+-- Load notification UIs early so that PackChanged autocmds (post-install build
+-- hooks, etc.) can display through snacks/noice rather than the default cmdline.
+require("plugins.snacks")
+require("plugins.noice")
+
 vim.pack.add({
   { src = "https://github.com/echasnovski/mini.nvim" },
 })
@@ -48,7 +53,6 @@ require("plugins.colorutils")
 require("plugins.indent-blankline")
 require("plugins.nvim-navic")
 require("plugins.colorizer")
-require("plugins.noice")
 
 -- =============================================================================
 -- Navigation
@@ -62,7 +66,6 @@ require("plugins.harpoon")
 -- =============================================================================
 -- Misc
 -- =============================================================================
-require("plugins.snacks")
 require("plugins.diffview")
 require("plugins.vim-unimpaired")
 require("plugins.which-key")
