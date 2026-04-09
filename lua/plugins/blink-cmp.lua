@@ -82,7 +82,7 @@ require("blink.cmp").setup({
 
     per_filetype = {
       -- markdown gets spell completion in addition to the standard set.
-      markdown = { "lsp", "snippets", "path", "buffer", "spell" },
+      -- markdown = { "lsp", "snippets", "path", "buffer", "spell" },
       mysql = { "dadbod" },
       xml = { "lsp", "path", "snippets", "nuget", "rg" },
     },
@@ -127,22 +127,6 @@ require("blink.cmp").setup({
       dadbod = {
         name = "vim-dadbod-completion",
         module = "blink.compat.source",
-      },
-
-      spell = {
-        name = "spell",
-        module = "blink.compat.source",
-        score_offset = -5,
-        -- Only activate when spell checking is enabled for the buffer.
-        enabled = function()
-          return vim.bo.spell
-        end,
-        opts = {
-          keep_all_entries = false,
-          enable_in_context = function()
-            return true
-          end,
-        },
       },
     },
   },
