@@ -6,7 +6,6 @@ vim.pack.add({
   { src = "https://github.com/lukas-reineke/cmp-rg" },
   { src = "https://github.com/David-Kunz/cmp-npm" },
   { src = "https://github.com/PasiBergman/cmp-nuget" },
-  { src = "https://github.com/hrsh7th/cmp-spell" },
 })
 
 require("blink.compat").setup()
@@ -84,8 +83,8 @@ require("blink.cmp").setup({
     per_filetype = {
       -- markdown gets spell completion in addition to the standard set.
       markdown = { "lsp", "snippets", "path", "buffer", "spell" },
-      mysql    = { "dadbod" },
-      xml      = { "lsp", "path", "snippets", "nuget", "rg" },
+      mysql = { "dadbod" },
+      xml = { "lsp", "path", "snippets", "nuget", "rg" },
     },
 
     providers = {
@@ -140,7 +139,9 @@ require("blink.cmp").setup({
         end,
         opts = {
           keep_all_entries = false,
-          enable_in_context = function() return true end,
+          enable_in_context = function()
+            return true
+          end,
         },
       },
     },
@@ -150,13 +151,17 @@ require("blink.cmp").setup({
     enabled = true,
     sources = function()
       local type = vim.fn.getcmdtype()
-      if type == "/" or type == "?" then return { "buffer" } end
-      if type == ":" then return { "cmdline", "path" } end
+      if type == "/" or type == "?" then
+        return { "buffer" }
+      end
+      if type == ":" then
+        return { "cmdline", "path" }
+      end
       return {}
     end,
   },
 
-  -- Prefer the prebuilt Rust fuzzy binary; silently falls back to the Lua
-  -- implementation if the binary is not available (no Rust toolchain needed).
-  fuzzy = { implementation = "prefer_rust_with_warning" },
+  -- Use the Rust fuzzy binary built via the PackChanged autocmd in autocmds.lua.
+  -- Falls back silently to the Lua implementation until the build has run.
+  fuzzy = { implementation = "prefer_rust" },
 })

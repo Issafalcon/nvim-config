@@ -90,6 +90,25 @@ vim.api.nvim_create_autocmd("PackChanged", {
       end
     end
 
+    -- blink.cmp
+    if event.data.kind ~= "delete" and event.data.spec.name == "blink.cmp" then
+      vim.notify("blink.cmp updated, running cargo build --release...", vim.log.levels.INFO)
+
+      if vim.fn.executable("cargo") == 0 then
+        vim.notify("Cargo is not installed or not in PATH, skipping build for blink.cmp", vim.log.levels.WARN)
+        return
+      end
+
+      ---@diagnostic disable-next-line: param-type-mismatch
+      local ok = os.execute("cd " .. event.data.path .. " && cargo build --release")
+
+      if ok then
+        vim.notify("blink.cmp built successfully!", vim.log.levels.INFO)
+      else
+        vim.notify("blink.cmp build failed, please check the output for details", vim.log.levels.ERROR)
+      end
+    end
+
     -- nvim-mcp
     if event.data.kind ~= "delete" and event.data.spec.name == "nvim-mcp" then
       vim.notify("nvim-mcp updated, running cargo install...", vim.log.levels.INFO)
