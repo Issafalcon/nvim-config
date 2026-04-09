@@ -13,10 +13,8 @@ require("lazydev").setup({
     -- Only create a new workspace if the buffer is not part
     -- of an existing workspace or one of its libraries
     lspconfig = true,
-    -- add the cmp source for completion of:
-    -- `require "modname"`
-    -- `---@module "modname"`
-    cmp = true,
+    -- blink.cmp uses its own lazydev provider (see plugins/blink-cmp.lua)
+    cmp = false,
     coq = false,
   },
 })

@@ -88,7 +88,7 @@ require("plugins.pipeline")
 -- Completions
 -- =============================================================================
 require("plugins.luasnip")
-require("plugins.completion")
+require("plugins.blink-cmp")
 
 -- =============================================================================
 -- AI

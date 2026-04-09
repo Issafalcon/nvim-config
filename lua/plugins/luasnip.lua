@@ -33,20 +33,11 @@ vim.cmd([[
     command! LuaSnipEdit :lua require("luasnip.loaders").edit_snippet_files()
 ]])
 
-vim.keymap.set({ "i", "s" }, "<C-k>", function()
-  if ls.expand_or_jumpable() then
-    ls.expand_or_jump()
-  end
-end, { desc = "Expand the snippet under the cursor or jump to next snippet placeholder" })
-
+-- Snippet expansion and placeholder jumping (<Tab>/<S-Tab>) are handled by
+-- blink.cmp via its 'snippet_forward' / 'snippet_backward' commands.
+-- Only the choice-cycling binding stays here since blink has no equivalent.
 vim.keymap.set({ "i", "s" }, "<C-l>", function()
   if ls.choice_active() then
     ls.change_choice()
   end
-end, { desc = "Toggle the next choice in the LuaSnip snippet" })
-
-vim.keymap.set({ "i", "s" }, "<C-j>", function()
-  if ls.jumpable(-1) then
-    ls.jump(-1)
-  end
-end, { desc = "Jump to the previous snippet placeholder" })
+end, { desc = "Cycle to the next choice in the active LuaSnip choice node" })

@@ -10,9 +10,9 @@ local lspconfig = require("lspconfig")
 
 -- Set up capabilities
 local default_capabilities = vim.lsp.protocol.make_client_capabilities()
-local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+local status_ok, blink_cmp = pcall(require, "blink.cmp")
 if status_ok then
-  default_capabilities = vim.tbl_deep_extend("force", default_capabilities, cmp_nvim_lsp.default_capabilities())
+  default_capabilities = blink_cmp.get_lsp_capabilities(default_capabilities)
 end
 
 -- Apply to all LSP servers by default
