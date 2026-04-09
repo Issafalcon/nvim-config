@@ -74,7 +74,7 @@ require("plugins.nx")
 -- Needs xclip which is not available in WSL by default, and clipboard integration
 -- is generally more difficult in WSL, so skip this plugin there
 if not vim.fn.has("wsl") == 1 then
-  require("plugins.clipboard-image")
+  require("plugins.img-clip")
 end
 
 -- =============================================================================
