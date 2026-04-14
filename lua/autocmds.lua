@@ -3,33 +3,37 @@
 local function run_cmd_notify(cmd, cwd, title)
   vim.notify("Running…", vim.log.levels.INFO, { title = title })
 
-  vim.system({ "sh", "-c", cmd }, { cwd = cwd, text = true }, vim.schedule_wrap(function(result)
-    local stdout = vim.trim(result.stdout or "")
-    local stderr = vim.trim(result.stderr or "")
-    -- Prefer stderr for build tools (most relevant errors live there), fall
-    -- back to stdout, fall back to a generic message.
-    local output = stderr ~= "" and stderr or stdout
+  vim.system(
+    { "sh", "-c", cmd },
+    { cwd = cwd, text = true },
+    vim.schedule_wrap(function(result)
+      local stdout = vim.trim(result.stdout or "")
+      local stderr = vim.trim(result.stderr or "")
+      -- Prefer stderr for build tools (most relevant errors live there), fall
+      -- back to stdout, fall back to a generic message.
+      local output = stderr ~= "" and stderr or stdout
 
-    -- Trim to the last 60 lines so the notification window stays readable.
-    if output ~= "" then
-      local lines = vim.split(output, "\n")
-      if #lines > 60 then
-        lines = vim.list_slice(lines, #lines - 59, #lines)
-        table.insert(lines, 1, "… (output truncated, showing last 60 lines)")
+      -- Trim to the last 60 lines so the notification window stays readable.
+      if output ~= "" then
+        local lines = vim.split(output, "\n")
+        if #lines > 60 then
+          lines = vim.list_slice(lines, #lines - 59, #lines)
+          table.insert(lines, 1, "… (output truncated, showing last 60 lines)")
+        end
+        output = table.concat(lines, "\n")
       end
-      output = table.concat(lines, "\n")
-    end
 
-    if result.code == 0 then
-      vim.notify(output ~= "" and output or "Completed successfully.", vim.log.levels.INFO, { title = title })
-    else
-      vim.notify(
-        output ~= "" and output or ("Failed (exit code " .. result.code .. ")."),
-        vim.log.levels.ERROR,
-        { title = title }
-      )
-    end
-  end))
+      if result.code == 0 then
+        vim.notify(output ~= "" and output or "Completed successfully.", vim.log.levels.INFO, { title = title })
+      else
+        vim.notify(
+          output ~= "" and output or ("Failed (exit code " .. result.code .. ")."),
+          vim.log.levels.ERROR,
+          { title = title }
+        )
+      end
+    end)
+  )
 end
 
 -- Run a Vimscript command/function and route its captured output into a
@@ -111,6 +115,11 @@ vim.api.nvim_create_autocmd("PackChanged", {
         return
       end
       run_cmd_notify("cargo install --path .", path, "nvim-mcp: cargo install")
+    end
+
+    -- molten-nvim
+    if event.data.kind ~= "delete" and event.data.spec.name == "molten-nvim" then
+      vimcmd_notify("UpdateRemotePlugins", "molten-nvim: UpdateRemotePlugins")
     end
   end,
 })

@@ -137,6 +137,7 @@ require("plugins.nuget")
 require("plugins.slime")
 require("plugins.quarto-nvim")
 require("plugins.venv-selector")
+require("plugins.molten")
 require("plugins.dadbod")
 
 -- =============================================================================

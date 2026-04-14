@@ -25,7 +25,7 @@ vim.keymap.set("n", "<F7>d", function()
 end, { desc = "ToggleTerm with LazyDotnet" })
 
 vim.keymap.set("n", "<F7>p", function()
-  fignvim.term.toggle_term_cmd("python")
+  fignvim.term.toggle_term_cmd("python3")
 end, { desc = "ToggleTerm with Python" })
 
 vim.keymap.set("n", "<F7>f", "<cmd>ToggleTerm direction=float<cr>", { desc = "ToggleTerm in floating window" })
