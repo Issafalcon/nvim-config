@@ -149,6 +149,7 @@ require("plugins.vim-helm")
 -- =============================================================================
 -- Markdown
 -- =============================================================================
+require("plugins.image-nvim")
 require("plugins.markdown-preview")
 require("plugins.render-markdown")
 
