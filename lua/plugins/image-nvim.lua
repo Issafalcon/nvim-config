@@ -1,14 +1,14 @@
+-- Ensure luarocks magick module is on the path
 vim.pack.add({
   {
     src = "https://github.com/3rd/image.nvim",
-    -- build = false is needed when using magick_cli (no Lua rock required)
   },
 })
 
 vim.api.nvim_create_autocmd("UIEnter", {
   callback = function()
     require("image").setup({
-      backend = "ueberzug",
+      backend = "kitty",
       processor = "magick_cli",
       integrations = {
         markdown = {
