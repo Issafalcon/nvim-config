@@ -12,6 +12,10 @@
       "rev": "da0ceef62eb58b9bec1975017beb2f28c3b1e72c",
       "src": "https://github.com/stevearc/aerial.nvim"
     },
+    "agentic.nvim": {
+      "rev": "69da7037824780a8b5998f5d7dcb35fe9b099a9c",
+      "src": "https://github.com/carlos-algms/agentic.nvim"
+    },
     "auto-session": {
       "rev": "292492ab7af4bd8b9e37e28508bc8ce995722fd5",
       "src": "https://github.com/rmagatti/auto-session"
