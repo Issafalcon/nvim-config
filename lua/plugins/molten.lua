@@ -5,7 +5,9 @@ vim.pack.add({
   },
 })
 
-vim.g.molten_image_provider = "image.nvim"
+if vim.fn.has("wsl") == 0 then
+  vim.g.molten_image_provider = "image.nvim"
+end
 vim.g.molten_auto_open_output = true
 vim.g.molten_auto_open_html_in_browser = true
 vim.g.molten_tick_rate = 200

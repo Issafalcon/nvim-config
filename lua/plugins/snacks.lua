@@ -5,7 +5,7 @@ vim.pack.add({
 local notify = vim.notify
 
 require("snacks").setup({
-  image = { enabled = true },
+  image = { enabled = vim.fn.has("wsl") == 0 },
   scroll = { enabled = true },
   lazygit = {
     enabled = true,

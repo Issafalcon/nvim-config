@@ -149,7 +149,10 @@ require("plugins.vim-helm")
 -- =============================================================================
 -- Markdown
 -- =============================================================================
-require("plugins.image-nvim")
+-- image.nvim uses the kitty graphics protocol which doesn't work in WSL via WezTerm
+if vim.fn.has("wsl") == 0 then
+  require("plugins.image-nvim")
+end
 require("plugins.markdown-preview")
 require("plugins.render-markdown")
 
