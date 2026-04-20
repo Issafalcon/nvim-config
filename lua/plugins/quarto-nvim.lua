@@ -40,7 +40,7 @@ local function insert_code_chunk(lang, curly)
   local keys
   if inside_chunk then
     if curly then
-      keys = "o```\r\r```{" .. lang .. "}\ro"  -- close + reopen
+      keys = "o```\r\r```{" .. lang .. "}\ro" -- close + reopen
     else
       keys = "o```\r\r```" .. lang .. "\ro"
     end
@@ -54,10 +54,18 @@ local function insert_code_chunk(lang, curly)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(keys, true, false, true), "n", false)
 end
 
-local function insert_python_chunk() insert_code_chunk("python", true) end
-local function insert_r_chunk()      insert_code_chunk("r", true) end
-local function insert_bash_chunk()   insert_code_chunk("bash", true) end
-local function insert_lua_chunk()    insert_code_chunk("lua", true) end
+local function insert_python_chunk()
+  insert_code_chunk("python", true)
+end
+local function insert_r_chunk()
+  insert_code_chunk("r", true)
+end
+local function insert_bash_chunk()
+  insert_code_chunk("bash", true)
+end
+local function insert_lua_chunk()
+  insert_code_chunk("lua", true)
+end
 
 local runner = require("quarto.runner")
 
@@ -80,10 +88,15 @@ vim.keymap.set(
 
 -- Quarto preview
 vim.keymap.set("n", "<localleader>qp", require("quarto").quartoPreview, { desc = "quarto [p]review", silent = true })
-vim.keymap.set("n", "<localleader>qq", require("quarto").quartoClosePreview, { desc = "quarto [q]uit preview", silent = true })
+vim.keymap.set(
+  "n",
+  "<localleader>qq",
+  require("quarto").quartoClosePreview,
+  { desc = "quarto [q]uit preview", silent = true }
+)
 
 -- Code chunk insertion (normal + insert mode)
-vim.keymap.set({ "n", "i" }, "<localleader>op", insert_python_chunk, { desc = "insert [p]ython chunk" })
-vim.keymap.set({ "n", "i" }, "<localleader>or", insert_r_chunk,      { desc = "insert [r] chunk" })
-vim.keymap.set({ "n", "i" }, "<localleader>ob", insert_bash_chunk,   { desc = "insert [b]ash chunk" })
-vim.keymap.set({ "n", "i" }, "<localleader>ol", insert_lua_chunk,    { desc = "insert [l]ua chunk" })
+vim.keymap.set({ "n" }, "<localleader>op", insert_python_chunk, { desc = "insert [p]ython chunk" })
+vim.keymap.set({ "n" }, "<localleader>or", insert_r_chunk, { desc = "insert [r] chunk" })
+vim.keymap.set({ "n" }, "<localleader>ob", insert_bash_chunk, { desc = "insert [b]ash chunk" })
+vim.keymap.set({ "n" }, "<localleader>ol", insert_lua_chunk, { desc = "insert [l]ua chunk" })
