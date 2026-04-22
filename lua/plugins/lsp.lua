@@ -23,6 +23,15 @@ lspconfig.util.default_config = vim.tbl_deep_extend("force", lspconfig.util.defa
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("lsp-attach", {}),
   callback = function(args)
+    -- Prevent LSP servers from attaching to Octo review buffers
+    local bufname = vim.api.nvim_buf_get_name(args.buf)
+    if bufname:match("^octo://") then
+      vim.schedule(function()
+        vim.lsp.buf_detach_client(args.buf, args.data.client_id)
+      end)
+      return
+    end
+
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
     local capabilities = client.server_capabilities
     local bufnr = args.buf
