@@ -11,6 +11,9 @@ require("noice").setup({
     },
   },
   lsp = {
+    signature = {
+      enabled = false, -- Use lsp_overloads instead
+    },
     -- override markdown rendering so that LSP and other plugins use Treesitter
     override = {
       ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
