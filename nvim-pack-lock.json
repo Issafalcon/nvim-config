@@ -174,8 +174,9 @@
       "src": "https://codeberg.org/andyg/leap.nvim"
     },
     "lsp-overloads.nvim": {
-      "rev": "187912c9da30c2b4a1e8f2d3e3bc5dc899f91ea0",
-      "src": "https://github.com/Issafalcon/lsp-overloads.nvim"
+      "rev": "9954154f6a1945f337bf8e0f4a8ae20a01db8088",
+      "src": "https://github.com/Issafalcon/lsp-overloads.nvim",
+      "version": "'refactor/best-practices'"
     },
     "lsp-progress.nvim": {
       "rev": "ae52979ad412371ea6dc39ff70c8dfc681fb42b8",

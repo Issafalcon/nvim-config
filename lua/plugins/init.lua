@@ -20,6 +20,7 @@ require("plugins.schemastore") -- For yamlls and json-lsp
 require("plugins.lsp")
 require("plugins.mason")
 require("plugins.lsp-progress")
+require("plugins.lsp-overloads")
 
 require("plugins.terragrunt-ls")
 

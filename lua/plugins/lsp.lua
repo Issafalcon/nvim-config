@@ -2,10 +2,6 @@ vim.pack.add({
   { src = "https://github.com/neovim/nvim-lspconfig" },
 })
 
-vim.pack.add({
-  { src = "https://github.com/Issafalcon/lsp-overloads.nvim" },
-})
-
 local lspconfig = require("lspconfig")
 
 -- Set up capabilities
@@ -183,40 +179,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
       })
     end
 
-    if capabilities.signatureHelpProvider then
-      -- Setup lsp overloads plugin an mappings
-      local lsp_overloads_ok, lsp_overloads = pcall(require, "lsp-overloads")
-      if lsp_overloads_ok then
-        lsp_overloads.setup(client, {
-          ui = {
-            close_events = { "CursorMoved", "CursorMovedI", "InsertCharPre" },
-            floating_window_above_cur_line = true,
-            silent = true,
-            border = "rounded",
-          },
-        })
-      end
-
-      vim.keymap.set(
-        "n",
-        "<A-s>",
-        ":LspOverloadsSignature<CR>",
-        { desc = "Show signature help with overloads", buffer = args.buf }
-      )
-
-      vim.keymap.set(
-        "i",
-        "<A-s>",
-        "<cmd>LspOverloadsSignature<CR>",
-        -- function() vim.lsp.buf.signature_help() end,
-        { desc = "Show signature help in insert mode", buffer = args.buf }
-      )
-    end
-
-    if client.name == "vtsls" then
-      -- Note: vtsls keybindings are now handled in lsp/vtsls.lua
-      -- Keeping this section for any additional vtsls-specific setup if needed
-    end
+    -- if capabilities.signatureHelpProvider then
+    -- if client.name == "vtsls" then
+    --
+    --   -- Note: vtsls keybindings are now handled in lsp/vtsls.lua
+    --   -- Keeping this section for any additional vtsls-specific setup if needed
+    -- end
   end,
 })
 

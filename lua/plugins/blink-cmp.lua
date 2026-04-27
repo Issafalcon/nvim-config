@@ -18,7 +18,7 @@ require("blink.cmp").setup({
 
     -- <C-k>/<C-j> are window-navigation keys in normal mode; in insert mode
     -- repurpose <C-k> for signature help (replaces the old cmp select_prev role).
-    ["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
+    -- ["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
 
     -- Arrow keys navigate the menu.
     ["<Up>"] = { "select_prev", "fallback" },
@@ -73,7 +73,7 @@ require("blink.cmp").setup({
   },
 
   signature = {
-    enabled = true,
+    enabled = false,
     window = { border = "rounded" },
   },
 
