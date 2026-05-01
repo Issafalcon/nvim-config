@@ -61,6 +61,7 @@ require("nvim-treesitter").install({
   "json",
   "json5",
   "jsonnet",
+  "latex",
   "llvm",
   "lua",
   "luadoc",
