@@ -85,6 +85,7 @@ require("blink.cmp").setup({
       -- markdown = { "lsp", "snippets", "path", "buffer", "spell" },
       mysql = { "dadbod" },
       xml = { "lsp", "path", "snippets", "nuget", "rg" },
+      codecompanion = { "codecompanion" },
     },
 
     providers = {

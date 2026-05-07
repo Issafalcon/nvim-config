@@ -98,9 +98,7 @@ require("plugins.blink-cmp")
 -- AI
 -- =============================================================================
 require("plugins.copilot")
-require("plugins.agentic")
--- require("plugins.mcphub")
--- require("plugins.codecompanion")
+require("plugins.codecompanion")
 require("plugins.nvim-mcp")
 
 -- =============================================================================
