@@ -154,7 +154,11 @@ if vim.fn.has("wsl") == 0 then
   require("plugins.image-nvim")
 end
 require("plugins.markdown-preview")
-require("plugins.render-markdown")
+
+-- Render markdown suddenly very slow in wsl (11-05-2026). Not sure why so disable for now
+if vim.fn.has("wsl") == 0 then
+  require("plugins.render-markdown")
+end
 
 -- =============================================================================
 -- PowerShell
