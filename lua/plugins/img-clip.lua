@@ -6,7 +6,8 @@ vim.pack.add({
 
 require("img-clip").setup({
   default = {
-    dir_path = "img",
+    dir_path = "attachments",
+    relative_to_current_file = true,
     drag_and_drop = {
       enabled = false,
       insert_mode = false,
@@ -15,7 +16,7 @@ require("img-clip").setup({
   filetypes = {
     markdown = {
       url_encode_path = true,
-      template = "![$CURSOR]($FILE_PATH)",
+      template = '<div style="text-align: center;">\n   <img src="$FILE_PATH" alt="$CURSOR" style="width: 50%;">\n</div>',
       drag_and_drop = {
         download_images = false,
       },
