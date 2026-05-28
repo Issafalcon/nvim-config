@@ -84,7 +84,7 @@ vim.o.preserveindent = true -- Preserve indent structure as much as possible
 vim.o.pumheight = 10 -- Height of the pop up menu
 
 -- Better QF list UI (from https://github.com/kevinhwang91/nvim-bqf#format-new-quickfix)
-vim.o.qftf = "{info -> v:lua.fignvim.ui.qftf(info)}"
+-- vim.o.qftf = "{info -> v:lua.fignvim.ui.qftf(info)}"
 
 vim.o.relativenumber = false -- Show relative numberline
 vim.o.scrolloff = 8 -- Number of lines to keep above and below the cursor
