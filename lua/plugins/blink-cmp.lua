@@ -82,8 +82,7 @@ require("blink.cmp").setup({
     default = { "lazydev", "lsp", "path", "snippets", "buffer", "rg", "npm", "emoji" },
 
     per_filetype = {
-      -- markdown gets spell completion in addition to the standard set.
-      -- markdown = { "lsp", "snippets", "path", "buffer", "spell" },
+      markdown = { "lsp", "snippets", "path", "buffer", "obsidian", "obsidian_new", "obsidian_tags" },
       mysql = { "dadbod" },
       xml = { "lsp", "path", "snippets", "nuget", "rg" },
       codecompanion = { "codecompanion" },
@@ -128,6 +127,21 @@ require("blink.cmp").setup({
 
       dadbod = {
         name = "vim-dadbod-completion",
+        module = "blink.compat.source",
+      },
+
+      obsidian = {
+        name = "obsidian",
+        module = "blink.compat.source",
+      },
+
+      obsidian_new = {
+        name = "obsidian_new",
+        module = "blink.compat.source",
+      },
+
+      obsidian_tags = {
+        name = "obsidian_tags",
         module = "blink.compat.source",
       },
     },
