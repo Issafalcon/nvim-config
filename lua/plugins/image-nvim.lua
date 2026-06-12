@@ -16,7 +16,7 @@ vim.api.nvim_create_autocmd("UIEnter", {
           clear_in_insert_mode = false,
           download_remote_images = true,
           only_render_image_at_cursor = false,
-          only_render_image_at_cursor_mode = "popup",
+          only_render_image_at_cursor_mode = "inline",
           floating_windows = false,
           filetypes = { "markdown", "vimwiki", "quarto" },
         },
