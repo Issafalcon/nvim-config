@@ -23,7 +23,7 @@ require("img-clip").setup({
     },
     quarto = {
       url_encode_path = true,
-      template = "![$CURSOR]($FILE_PATH)",
+      template = '<div style="text-align: center;">\n   <img src="$FILE_PATH" alt="$CURSOR" style="width: 50%;">\n</div>',
       drag_and_drop = {
         download_images = false,
       },

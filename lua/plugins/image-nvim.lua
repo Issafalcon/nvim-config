@@ -8,16 +8,16 @@ vim.pack.add({
 vim.api.nvim_create_autocmd("UIEnter", {
   callback = function()
     require("image").setup({
-      backend = "ueberzug",
+      backend = "sixel",
       processor = "magick_cli",
       integrations = {
         markdown = {
-          enabled = false,
+          enabled = true,
           clear_in_insert_mode = false,
           download_remote_images = true,
-          only_render_image_at_cursor = false,
-          only_render_image_at_cursor_mode = "inline",
-          floating_windows = false,
+          only_render_image_at_cursor = true,
+          only_render_image_at_cursor_mode = "popup",
+          floating_windows = true,
           filetypes = { "markdown", "vimwiki", "quarto" },
         },
         neorg = {
