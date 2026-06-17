@@ -1,12 +1,6 @@
 ---@diagnostic disable: missing-fields
 vim.pack.add({
   {
-    src = "https://github.com/jmbuhr/otter.nvim",
-  },
-  {
-    src = "https://github.com/quarto-dev/quarto-nvim",
-  },
-  {
     src = "https://github.com/linux-cultist/venv-selector.nvim",
   },
 })
@@ -19,6 +13,9 @@ require("venv-selector").setup({
     -- The fix replaces the command with find ~/python3/envs/neovim/bin -name 'python', which correctly returns /home/adam/python3/envs/neovim/bin/python and doesn't depend on fd-find being installed.
     nvim_venv = {
       command = "find ~/python3/envs/neovim/bin -name 'python'",
+    },
+    repos = {
+      command = "find ~/repos \\( -type f -o -type l \\) -name 'python' -path '*/bin/*'",
     },
   },
   options = {
