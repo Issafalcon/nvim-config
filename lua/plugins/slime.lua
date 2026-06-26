@@ -71,12 +71,23 @@ local function new_terminal(lang)
   vim.cmd("vsplit term://" .. lang)
 end
 
+local function python_host()
+  local ok, venv_selector = pcall(require, "venv-selector")
+  if ok and venv_selector.python then
+    local python = venv_selector.python()
+    if python and python ~= "" then
+      return python
+    end
+  end
+  return vim.g.python3_host_prog or "python3"
+end
+
 local function new_terminal_python()
-  new_terminal("python3")
+  new_terminal(python_host())
 end
 
 local function new_terminal_ipython()
-  new_terminal("ipython --no-confirm-exit --no-autoindent")
+  new_terminal(python_host() .. " -m IPython --no-confirm-exit --no-autoindent")
 end
 
 local function new_terminal_r()

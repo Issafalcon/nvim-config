@@ -15,7 +15,7 @@ require("venv-selector").setup({
       command = "find ~/python3/envs/neovim/bin -name 'python'",
     },
     repos = {
-      command = "find ~/repos \\( -type f -o -type l \\) -name 'python' -path '*/bin/*'",
+      command = "find ~/repos -name 'python' -path '*/bin/*'",
     },
   },
   options = {
