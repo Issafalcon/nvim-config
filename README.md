@@ -47,6 +47,7 @@ A comprehensive Neovim setup built for polyglot development across C#/.NET, Pyth
 │   └── plugins/
 │       ├── init.lua  # Plugin registration — comment out to disable any group
 │       └── *.lua     # One file per plugin or plugin family
+├── review-queue/     # Internal plugin: PR review queue (:ReviewQueue)
 └── init.lua          # Entry point
 ```
 
@@ -372,7 +373,43 @@ Stage a hunk with `<leader>gs`, preview it with `<leader>gp`, open the full diff
 
 [octo.nvim](https://github.com/pwntester/octo.nvim) provides a full GitHub UI — browse issues, comment, review diffs, approve, merge.
 
-### Typical workflow
+### Review Queue (internal plugin)
+
+`review-queue/` is a small in-config plugin that lists open PRs where you are a requested reviewer, using the `gh` CLI and Snacks picker. Selecting a PR checks out the branch, opens it in Octo, and starts a review automatically.
+
+**Command**: `:ReviewQueue`
+
+**Configuration**: `lua/review-queue-config.lua`
+
+```lua
+return {
+  repos_dir = vim.fn.expand("~/repos"),
+
+  -- When non-empty, only PRs from these repositories are shown (owner/repo).
+  include_repos = {},
+
+  -- Repositories to hide even if you are requested as a reviewer.
+  exclude_repos = {},
+
+  gh_cmd = "gh",
+  search_limit = 100,
+  picker = { layout = "ivy" },
+}
+```
+
+**Typical workflow**
+
+1. Run `:ReviewQueue` — fetches PRs via `gh search prs review-requested:<you>`.
+2. Browse the picker; the preview pane shows the `gh pr view` overview for the highlighted PR.
+3. Select a PR:
+   - If the repo is not under `repos_dir`, you are prompted to clone via SSH or HTTPS.
+   - Neovim `cd`s to the repo root, checks out the PR branch, opens it in Octo, and runs `Octo review start`.
+
+Repos not yet cloned locally are marked `[clone]` in the list. Local paths are resolved as `repos_dir/owner/repo` or `repos_dir/repo`.
+
+Run `:checkhealth review-queue` to verify `gh`, `git`, Octo, and Snacks are available.
+
+### Typical workflow (Octo)
 
 `:Octo pr list` → open a PR → `<leader>pd` to see the diff → `<leader>vs` to start a review → `<leader>ca` to add a review comment → `<leader>pm` to merge.
 
