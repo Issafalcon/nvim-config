@@ -21,5 +21,9 @@ require("venv-selector").setup({
   options = {
     picker = "auto",
     log_level = "DEBUG",
+    on_venv_activate_callback = function()
+      local python = require("venv-selector").python()
+      vim.cmd("LspPyrightSetPythonPath " .. python)
+    end,
   },
 })
