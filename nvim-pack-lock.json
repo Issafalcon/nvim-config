@@ -305,7 +305,7 @@
       "src": "https://github.com/rafcamlet/nvim-luapad"
     },
     "nvim-mcp": {
-      "rev": "0827b45db33a3b9f16c1d59467b08470e9c781aa",
+      "rev": "80dfc06d2e92a928aa546ebbb8ec57cabff54db7",
       "src": "https://github.com/linw1995/nvim-mcp"
     },
     "nvim-navic": {
