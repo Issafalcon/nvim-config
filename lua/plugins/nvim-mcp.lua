@@ -12,4 +12,7 @@ if vim.fn.has("win32") == 1 then
   opts.pipe = string.format("nvim-mcp.%d", vim.fn.getpid())
 end
 
-require("nvim-mcp").setup(opts)
+local ok, err = pcall(require("nvim-mcp").setup, opts)
+if not ok then
+  vim.notify("nvim-mcp: " .. tostring(err), vim.log.levels.WARN)
+end

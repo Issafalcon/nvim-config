@@ -93,6 +93,9 @@ require("blink.cmp").setup({
         name = "LazyDev",
         module = "lazydev.integrations.blink",
         score_offset = 100,
+        enabled = function()
+          return vim.bo.filetype == "lua"
+        end,
       },
 
       rg = {
