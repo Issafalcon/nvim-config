@@ -47,5 +47,8 @@ lua/packer_compiled.lua
 # lua-ls output
 .luarc.json
 
+# graphify generated knowledge graph
+graphify-out/
+
 # DadBod UI connections
 db_ui/connections.json

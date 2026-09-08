@@ -47,6 +47,7 @@ A comprehensive Neovim setup built for polyglot development across C#/.NET, Pyth
 │   └── plugins/
 │       ├── init.lua  # Plugin registration — comment out to disable any group
 │       └── *.lua     # One file per plugin or plugin family
+├── docs/            # How-to notes (e.g. .NET debugging)
 ├── review-queue/     # Internal plugin: PR review queue (:ReviewQueue)
 └── init.lua          # Entry point
 ```
@@ -452,6 +453,8 @@ Run `:checkhealth review-queue` to verify `gh`, `git`, Octo, and Snacks are avai
 
 **Why**: A full DAP (Debug Adapter Protocol) client replaces the need for an external IDE for step-through debugging across Python, JavaScript/TypeScript, .NET, and Lua.
 
+.NET launch-profile debugging (VS Code–style `launchSettings.json`, build, then netcoredbg) is documented in [docs/debugging.md](docs/debugging.md).
+
 | Plugin | Purpose |
 |---|---|
 | [nvim-dap](https://github.com/mfussenegger/nvim-dap) | Core DAP client |
@@ -466,8 +469,9 @@ Run `:checkhealth review-queue` to verify `gh`, `git`, Octo, and Snacks are avai
 
 | Key | Action |
 |---|---|
-| `<F5>` | Launch debugger |
-| `<F9>` | Continue |
+| `<F5>` | Launch Lua OSV debug server |
+| `<F9>` | .NET: launch profile flow if idle; otherwise continue |
+| `<leader>da` | Build and debug a .NET launch profile (`:DotnetDebug`) |
 | `<leader>db` | Toggle breakpoint |
 | `<leader>dB` | Conditional breakpoint |
 | `<leader>de` | Set exception breakpoints |
@@ -509,6 +513,8 @@ Run `:checkhealth review-queue` to verify `gh`, `git`, Octo, and Snacks are avai
 | [nuget.nvim](https://github.com/d7omdev/nuget.nvim) | NuGet package name and version completion in `.csproj` files |
 
 Roslyn attaches automatically when a `.cs` file is opened inside a solution. NuGet completions activate in `<PackageReference>` elements.
+
+To debug a project with a `launchSettings.json` profile (or a default when none exist), see [docs/debugging.md](docs/debugging.md). `:Roslyn target` sets the solution used as the search root.
 
 ---
 

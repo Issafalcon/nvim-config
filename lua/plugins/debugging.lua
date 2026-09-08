@@ -96,18 +96,20 @@ require("persistent-breakpoints").setup({
 
 local dapui = require("dapui")
 
-dap.listeners.after.event_initialized["dapui_config"] = function()
+dap.listeners.before.launch["dapui_config"] = function()
+  dapui.open()
+end
+
+dap.listeners.before.attach["dapui_config"] = function()
   dapui.open()
 end
 
 dap.listeners.before.event_terminated["dapui_config"] = function()
-  dapui.close("tray")
   dap.repl.close()
   dapui.close()
 end
 
 dap.listeners.before.event_exited["dapui_config"] = function()
-  dapui.close("tray")
   dap.repl.close()
   dapui.close()
 end
@@ -174,7 +176,18 @@ require("dap-python").setup(path)
 -- Keymaps
 
 vim.keymap.set("n", "<F5>", ':lua require"osv".launch({port=8086})<CR>', { desc = "Launch OSV server" })
-vim.keymap.set("n", "<F9>", ':lua require"dap".continue()<CR>', { desc = "DAP Continue" })
+vim.api.nvim_create_user_command("DotnetDebug", function()
+  require("utils.dotnet_debug").launch()
+end, { desc = "Build and debug a .NET launch profile" })
+
+vim.keymap.set("n", "<F9>", function()
+  if vim.bo.filetype == "cs" and not dap.session() then
+    require("utils.dotnet_debug").launch()
+  else
+    dap.continue()
+  end
+end, { desc = "DAP Launch or continue" })
+vim.keymap.set("n", "<leader>da", "<cmd>DotnetDebug<cr>", { desc = "DAP Launch .NET profile" })
 vim.keymap.set(
   "n",
   "<leader>db",
